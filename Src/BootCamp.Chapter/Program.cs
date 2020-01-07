@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bootcamp.Lesson
+namespace BootCamp.Chapter
 {
     class Program
     {
