@@ -43,6 +43,7 @@ building a house if you never built one. Programming is hard only until you prac
   
   ## Homework review
   ### Automatic code reviewer
+  To automate standards review, we have a static analysis tool--Codacy. It will grade your code (A- being the highest grade). Homework will not be considered complete, if grade is D or lower. 
   ### Auto build and auto tests
   In order to find out if your code works not just on your machine but in all environments, check the build status. 
   In PR you will see Azure Pipelines and it should have x check passed. 
@@ -63,7 +64,8 @@ building a house if you never built one. Programming is hard only until you prac
   
 
   # Community
-  
+  If you want to join as either mentor or pupil or have any questions, please refer to our discord Community.  
+  https://discord.gg/rCMKcUU
   
   
 
