@@ -7,7 +7,7 @@ building a house if you never built one. Programming is hard only until you prac
   
   # Requirements
   Visual Studio Community 2019 or similar with Web Development and desktop development workloads.  
-  Any PC  
+
   Patience and persistence  
   Git installed  
   Github account  
