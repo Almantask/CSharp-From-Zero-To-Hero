@@ -6,15 +6,19 @@
 building a house if you never built one. Programming is hard only until you practice it (like any other skill). I would like to invite you to learn programming and C# following this course to practice programming and ignite passion for finding little miracles in code every day 🙂
   
   # Requirements
-  Visual Studio Community 2019 or similar with Web Development and desktop development workloads. 
-  Any PC
-  Patience and persistence
-  Git installed
-  Github account
+  Visual Studio Community 2019 or similar with Web Development and desktop development workloads.  
+  Any PC  
+  Patience and persistence  
+  Git installed  
+  Github account  
   
   # Get started
 
   Fork this repository (selected lesson branch). 
+  The fork target is called upstream branch. For every chapter, you will need to keep updating upstream branch. 
+  How to work with forked repository in Visual Studio Teams:  
+  http://doc.fireflymigration.com/working-with-github-fork-in-visual-studio.html
+  
   
 
 
