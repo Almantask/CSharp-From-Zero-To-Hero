@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace BootCamp.Chapter.Tests
+namespace BootCamp.Chapter1.Tests
 {
     // You don't have to be here for a long time.
     public class UnitTest1

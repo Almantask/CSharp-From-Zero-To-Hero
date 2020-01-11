@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\BootCamp.Chapter\BootCamp.Chapter.csproj" />
+    <ProjectReference Include="..\..\Src\BootCamp.Chapter1\BootCamp.Chapter1.csproj" />
   </ItemGroup>
 
 </Project>
