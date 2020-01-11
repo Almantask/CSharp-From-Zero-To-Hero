@@ -1,8 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿// Ignore using System; for now
+using System;
 
+// Ignore namespace BootCamp.Chapter1 for now
 namespace BootCamp.Chapter1
 {
+    // Ignore class Program for now.
     class Program
     {
         // In C# comments are with "//"
@@ -13,6 +15,10 @@ namespace BootCamp.Chapter1
         // Comments are just text which will taken as an instruction, thus will be skipped.
         // Running with VS menu will put application in debug mode.
         // Running with "ctrl + F5" will put it in release mode.
+
+        // Every function has some entry point.
+        // Starting (entry) point of a console application is Main.
+        // Write code below, within Main.
         static void Main(string[] args)
         {
             // PascalCase (first letter is capital and all other words start with capital letter)
@@ -74,14 +80,17 @@ namespace BootCamp.Chapter1
             var fullGreetingTimes = fullGreeting + 1;
             Console.WriteLine(fullGreetingTimes);
 
-            // We can add char, int and char, etc
             var a = 'a';
+            // char + string = string
+            // (int)char = ascii 
             Console.WriteLine(a + " is " + (int)a);
             var b = 'b';
             Console.WriteLine(b + " is " + (int)b);
+            // char + char = int
             var aAndB = a + b;
             Console.WriteLine("a + b =" + aAndB);
             Console.WriteLine("What symbol goes after 'Z' in ascii?");
+            // char + int = int
             var afterZ = Convert.ToChar('Z' + 1);
             Console.WriteLine("Answer: " + afterZ);
 
@@ -104,6 +113,7 @@ namespace BootCamp.Chapter1
             const double pi = 3.1415926535;
 
             Console.Write("Input your name: ");
+            // Read line of text from console.
             string name = Console.ReadLine();
             Console.WriteLine("Hello again, " + name);
         }
