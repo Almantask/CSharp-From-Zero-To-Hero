@@ -8,13 +8,12 @@ namespace BootCamp.Chapter
         {
             string firstName;
             string lastName;
-            string[] attributes;
 
             int age;
-            float weight;
-            float height;
+            double weight;
+            double height;
 
-            float bmi;
+            double bmi;
             for (int i = 0; i < 2; i++)
             {
                 Console.WriteLine("What is your First Name?");
@@ -23,18 +22,20 @@ namespace BootCamp.Chapter
                 Console.WriteLine("\nWhat is your Last Name?");
                 lastName = Console.ReadLine();
 
-                Console.WriteLine("\nWhate is your age weight(kg) and height(cm)? (Please seperate with spaces)");
-                attributes = Console.ReadLine().Split(' ');
+                Console.WriteLine("\nWhate is your age?");
+                age = Convert.ToInt32(Console.ReadLine());
 
-                age = int.Parse(attributes[0]);
-                weight = float.Parse(attributes[1]);
-                height = float.Parse(attributes[2]);
+                Console.WriteLine("\nWhate is your weight(kg)?");
+                weight = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("\nWhate is your height(cm)?");
+                height = Convert.ToDouble(Console.ReadLine());
 
                 Console.WriteLine("\n" + firstName + " " + lastName + " is a " + age + " year old, their weight is " +
                     weight + " kg and their height is " + height + " cm.");
 
 
-                float heightInMeters = height * .01f;
+                double heightInMeters = height * .01;
                 bmi = weight / (heightInMeters * heightInMeters);
 
                 Console.WriteLine("Their Body-Mass Index (BMI) is " + bmi + "\n");
