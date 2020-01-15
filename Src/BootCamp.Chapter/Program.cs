@@ -2,9 +2,10 @@
 
 namespace BootCamp.Chapter
 {
-     static void Main(string[] args)
+    class Program
+    {
+        static void Main(string[] args)
         {
-
             for (int i = 0; i < 2; i++)
             {
                 Console.Write("What is your name: ");
@@ -33,11 +34,17 @@ namespace BootCamp.Chapter
                 }
             }
         }
-
+     
         private static float GetBmi(float weight, float height)
         {
             return weight / (float)Math.Pow(height, 2);
         }
+        
     }
-    
 }
+
+
+
+    
+
+
