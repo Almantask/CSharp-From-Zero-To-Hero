@@ -6,27 +6,39 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What is your First Name?");
-            string firstName = Console.ReadLine();
+            string firstName;
+            string lastName;
+            string[] attributes;
 
-            Console.WriteLine("\nWhat is your Last Name?");
-            string lastName = Console.ReadLine();
+            int age;
+            float weight;
+            float height;
 
-            Console.WriteLine("\nWhate is your age weight(kg) and height(cm)? (Please seperate with spaces)");
-            string[] attributes = Console.ReadLine().Split(' ');
+            float bmi;
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine("What is your First Name?");
+                firstName = Console.ReadLine();
 
-            int age = int.Parse(attributes[0]);
-            float weight = float.Parse(attributes[1]);
-            float height = float.Parse(attributes[2]);
+                Console.WriteLine("\nWhat is your Last Name?");
+                lastName = Console.ReadLine();
 
-            Console.WriteLine("\n" + firstName + " " + lastName + " is a " + age + " year old, their weight is " + 
-                weight + " kg and their height is " + height + " cm.");
+                Console.WriteLine("\nWhate is your age weight(kg) and height(cm)? (Please seperate with spaces)");
+                attributes = Console.ReadLine().Split(' ');
+
+                age = int.Parse(attributes[0]);
+                weight = float.Parse(attributes[1]);
+                height = float.Parse(attributes[2]);
+
+                Console.WriteLine("\n" + firstName + " " + lastName + " is a " + age + " year old, their weight is " +
+                    weight + " kg and their height is " + height + " cm.");
 
 
-            float heightInMeters = height * .01f;
-            float bmi = weight / (heightInMeters * heightInMeters);
+                float heightInMeters = height * .01f;
+                bmi = weight / (heightInMeters * heightInMeters);
 
-            Console.WriteLine("Their Body-Mass Index (BMI) is " + bmi);
+                Console.WriteLine("Their Body-Mass Index (BMI) is " + bmi + "\n");
+            }
         }
     }
 }
