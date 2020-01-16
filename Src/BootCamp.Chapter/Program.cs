@@ -18,12 +18,12 @@ namespace BootCamp.Chapter
                 var age = int.Parse(Console.ReadLine());
 
                 Console.Write("What is your weight in kilogram: ");
-                float weight = float.Parse(Console.ReadLine());
+                var weight = float.Parse(Console.ReadLine());
 
                 Console.Write("What is your height in metres: ");
-                float height = float.Parse(Console.ReadLine());
+                var height = float.Parse(Console.ReadLine());
 
-                float bmi = GetBmi(weight, height);
+                var bmi = GetBmi(weight, height);
 
                 Console.WriteLine($"{name}  {surnname}  is {age} years old, his weight is {weight} kg and his height is {height:F2} cm.");
                 Console.WriteLine($"His BMI is:  {bmi:N2}");
