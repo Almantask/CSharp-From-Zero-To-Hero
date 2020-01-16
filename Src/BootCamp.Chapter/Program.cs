@@ -12,8 +12,8 @@ namespace BootCamp.Chapter
             const float weight = 81;
             const float heightcm = 180;
             const float heightm = heightcm / 100;
-            float heightsq = heightm * heightm;
-            float BMI = weight / heightsq;
+            const float heightsq = heightm * heightm;
+            const float BMI = weight / heightsq;
 
             Console.WriteLine("Name: " + name);
             Console.WriteLine("Surname: " + surname);
