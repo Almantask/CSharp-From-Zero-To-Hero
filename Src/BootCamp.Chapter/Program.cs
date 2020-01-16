@@ -55,8 +55,9 @@ namespace BootCamp.Chapter
             Console.WriteLine(); //Add empty line
             //Ask about new data (new person)
             Console.WriteLine("Do you want to add another person (Y/y = Yes, everything else = No)?");
-            string decision = Console.ReadLine().ToUpper();
-            return decision;
+            string decision = Console.ReadLine();
+            var decisionToUpper = decision.ToUpperInvariant();
+            return decisionToUpper;
         }
     }
 }
