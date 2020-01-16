@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Lesson_1
 {
@@ -39,7 +35,7 @@ namespace Lesson_1
             Console.WriteLine("How tall are you? Answer in CM.");
             double height2 = double.Parse(Console.ReadLine());
 
-            double bmi2 = weight2 / ( (height2 / 100.0 ) * (height2 / 100.0) );
+            
             Console.WriteLine("");
             Console.WriteLine($"{name2} is {age2} years old, his weight is {weight2} kg, and his height is {height2}.");
             Console.WriteLine($"His BMI is {bmi1}.\n");
