@@ -4,30 +4,66 @@ namespace BootCamp.Chapter
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            string firstName = "Tom";
-            string lastName = "Jefferson";
-            Decimal prisonerAge = 19;
-            Decimal weight = 50;
-            Decimal height = 156.5m;
-            Decimal bodyMassIndex = (weight / height / height) * 10000;
+            Console.WriteLine("Enter the data of the prisoner. \n");
 
-            Console.WriteLine(firstName + " " + lastName + ", is " + prisonerAge + " years old, " + weight + " kg, and " + height + " cm.");
-            Console.WriteLine("Prisoner BMI: " + bodyMassIndex);
-            Console.ReadLine();
+            {
+                Console.WriteLine("Prisoner Firstname: ");
+                string firstName = Console.ReadLine();
 
-            string firstNameTu = "Kai";
-            string lastNameTu = "the Nigerian C# prince";
-            Decimal prisonerAgeTu = 25;
-            Decimal weightTu = 69;
-            Decimal heightTu = 420;
-            Decimal bodyMassIndexTu = (weightTu / heightTu / heightTu) * 10000;
+                Console.WriteLine("Prisoner Lastname: ");
+                string lastName = Console.ReadLine();
 
-            Console.WriteLine(firstNameTu + " " + lastNameTu + ", is " + prisonerAgeTu + " years old, " + weightTu + " kg, and " + heightTu + " cm.");
-            Console.WriteLine("Prisoner BMI: " + bodyMassIndexTu);
-            Console.ReadLine();
+                Console.WriteLine("Prisoner Age: ");
+                int age = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Prisoner Weight in Kg: ");
+                int weight = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Prisoner Height in cm: ");
+                int height = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Prisoner Data: " + firstName + " " + lastName + " is " + age + "years old." +
+                            " With a weight of " + weight + " Kg, with a height of " + height + " cm.");
+
+                Double heightTu = height * .01;
+                Double bodyMassIndex = weight / (heightTu * heightTu);
+
+                Console.WriteLine("Prisoner BMI: " + bodyMassIndex + ".\n");
+
+            }
+            Console.WriteLine("Do it again: \n ");
+            {
+                Console.WriteLine("Prisoner Firstname: ");
+                string firstName = Console.ReadLine();
+
+                Console.WriteLine("Prisoner Lastname: ");
+                string lastName = Console.ReadLine();
+
+                Console.WriteLine("Prisoner Age: ");
+                int age = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Prisoner Weight in Kg: ");
+                int weight = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Prisoner Height in cm: ");
+                int height = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Prisoner Data: " + firstName + " " + lastName + " is " + age + "years old." +
+                            " With a weight of " + weight + " Kg, with a height of " + height + " cm.");
+
+                Double heightTu = height * .01;
+                Double bodyMassIndex = weight / (heightTu * heightTu);
+
+                Console.WriteLine("Prisoner BMI: " + bodyMassIndex + ".\n");
+                Console.ReadLine();
+            }
+
 
         }
-    }
+
+        
+}
 }
