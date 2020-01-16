@@ -6,11 +6,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string name = "Hancock";
-            string surname = "Johnson";
-            int age = 20;
-            float weight = 81;
-            float heightcm = 180;
+            const string name = "Hancock";
+            const string surname = "Johnson";
+            const int age = 20;
+            const float weight = 81;
+            const float heightcm = 180;
             float heightm = heightcm / 100;
             float heightsq = heightm * heightm;
             float BMI = weight / heightsq;
@@ -24,11 +24,16 @@ namespace BootCamp.Chapter
 
             Console.WriteLine();
 
-            string name2 = "Debra";
-            string surname2 = "Jones";
-            int age2 = 22;
-            float weight2 = 45;
-            float heightcm2 = 165;
+            Console.WriteLine("What is your first name?");
+            string name2 = Console.ReadLine();
+            Console.WriteLine("What is your last name?");
+            string surname2 = Console.ReadLine();
+            Console.WriteLine("What is your age?");
+            int age2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("What is your weight?");
+            float weight2 = float.Parse(Console.ReadLine());
+            Console.WriteLine("What is your height?");
+            float heightcm2 = float.Parse(Console.ReadLine());
             float heightm2 = heightcm2 / 100;
             float heightsq2 = heightm2 * heightm2;
             float BMI2 = weight2 / heightsq2;
@@ -40,7 +45,6 @@ namespace BootCamp.Chapter
             Console.WriteLine("Height: " + heightcm2 + "cm");
             Console.WriteLine("BMI: " + BMI2);
 
-            Console.ReadLine();
         }
     }
 }
