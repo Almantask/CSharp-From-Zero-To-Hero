@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
             const int age = 20;
             const float weight = 81;
             const float heightcm = 180;
-            float heightm = heightcm / 100;
+            const float heightm = heightcm / 100;
             float heightsq = heightm * heightm;
             float BMI = weight / heightsq;
 
