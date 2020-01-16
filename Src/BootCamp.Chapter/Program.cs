@@ -56,10 +56,10 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Do you want to add another person (Y/y = Yes, everything else = No)?");
                 decision = Console.ReadLine();
                 //Clear console window if user wants to add new person's data
-                if (decision == "Y" || decision == "y")
+                if (decision.ToUpper() == "Y")
                     Console.Clear();
 
-            } while (decision == "Y" || decision == "y"); //Repeat if user wants to add new person's data
+            } while (decision.ToUpper() == "Y"); //Repeat if user wants to add new person's data
         }
     }
 }
