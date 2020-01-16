@@ -26,7 +26,7 @@ namespace BootCamp.Chapter
                 // Convert weight to a Double.
                 var weightToDouble = Convert.ToDouble(weight);
                 //Calculate BMI.
-                Double Bmi = weightToDouble / heightToDouble;
+                var Bmi = weightToDouble / heightToDouble;
                 //Convert BMI from Double to Int for better readability by the user.
                 var BmiFinal = Convert.ToInt32(Bmi);
                 var BmiOutput = ("Your estimated BMI is " + BmiFinal);
