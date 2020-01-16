@@ -20,14 +20,14 @@ namespace BootCamp.Chapter
                 int age = Convert.ToInt32(Console.ReadLine());
 
                 RequestInput("weight in kilograms");
-                double weight = Convert.ToDouble(Console.ReadLine());
+                double weightInKilograms = Convert.ToDouble(Console.ReadLine());
 
                 RequestInput("height in centimeters");
-                double height = Convert.ToDouble(Console.ReadLine());
+                double heightInCentimeters = Convert.ToDouble(Console.ReadLine());
 
-                ReportBasicInfo(firstName, surname, age, weight, height);
+                ReportBasicInfo(firstName, surname, age, weightInKilograms, heightInCentimeters);
 
-                ReportBmi(firstName, weight, height);
+                ReportBodyMassIndex(firstName, weightInKilograms, heightInCentimeters);
 
                 again = RequestUserChoiceToRepeatOrNot();
             }
@@ -46,12 +46,12 @@ namespace BootCamp.Chapter
                 "and their height is " + height + " cm.");
         }
 
-        private static void ReportBmi(string firstName, double weight, double height)
+        private static void ReportBodyMassIndex(string firstName, double weight, double height)
         {
-            Console.WriteLine("\n" + firstName + "'s BMI is " + (CalculateBmi(weight, height)) + ".");
+            Console.WriteLine("\n" + firstName + "'s BMI is " + (CalculateBodyMassIndex(weight, height)) + ".");
         }
 
-        private static double CalculateBmi(double weight, double height)
+        private static double CalculateBodyMassIndex(double weight, double height)
         {
             double heightInMeters = height * .01;
             return weight / (heightInMeters * heightInMeters);
