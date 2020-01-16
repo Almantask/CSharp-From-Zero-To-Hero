@@ -32,5 +32,6 @@ namespace BootCamp.Chapter
                 string BmiOutput = ("Your estimated BMI is " + BmiFinal);
                 Console.WriteLine(BmiOutput);
             }
+        }
     }
 }
