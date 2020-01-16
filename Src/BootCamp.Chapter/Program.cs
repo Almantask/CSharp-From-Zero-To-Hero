@@ -12,12 +12,16 @@ namespace BootCamp.Chapter
                     2) Calculate and print body-mass index (BMI)
                     3) Do 1 and 2 for another person.
                 */
-
-        private static string name, surname, decision = "Y";
-        private static float age, weight, height, heightInMeters, BMI;
-
         static void Main(string[] args)
         {
+            string name;
+            string surname;
+            string decision;
+            float age;
+            float weight;
+            float height;
+            float heightInMeters;
+            float BMI;
             do
             {
                 //Read name
