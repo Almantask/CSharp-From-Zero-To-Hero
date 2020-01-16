@@ -30,7 +30,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("");
                 if (i == 0)
                 {
-                    Console.WriteLine("Now for another person \n ");
+                    Console.WriteLine($"Now for another person {Environment.NewLine}  ");
                 }
             }
         }
