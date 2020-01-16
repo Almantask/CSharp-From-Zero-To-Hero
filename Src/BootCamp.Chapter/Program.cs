@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
 
                 ReportBasicInfo(firstName, surname, age, weight, height);
 
-                ReportBMI(firstName, weight, height);
+                ReportBmi(firstName, weight, height);
 
                 again = RequestUserChoiceToRepeatOrNot();
             }
@@ -46,12 +46,12 @@ namespace BootCamp.Chapter
                 "and their height is " + height + " cm.");
         }
 
-        private static void ReportBMI(string firstName, double weight, double height)
+        private static void ReportBmi(string firstName, double weight, double height)
         {
-            Console.WriteLine("\n" + firstName + "'s BMI is " + (CalculateBMI(weight, height)) + ".");
+            Console.WriteLine("\n" + firstName + "'s BMI is " + (CalculateBmi(weight, height)) + ".");
         }
 
-        private static double CalculateBMI(double weight, double height)
+        private static double CalculateBmi(double weight, double height)
         {
             double heightInMeters = height * .01;
             return weight / (heightInMeters * heightInMeters);
