@@ -38,9 +38,9 @@ namespace BootCamp.Chapter
             Console.WriteLine(name2 + " is " + age2 + ", and weighs " + weight2 + "kg at a height of " + height2 + "cm.\n");
 
             // Their BMI
-            float heightConvert2 = height2 / 100;
-            float height_s2 = heightConvert2 * heightConvert2;
-            float sum2 = weight2 / height_s2;
+            const float heightConvert2 = height2 / 100;
+            const float height_s2 = heightConvert2 * heightConvert2;
+            const float sum2 = weight2 / height_s2;
             Console.WriteLine(name2 + " has a BMI of " + sum2 + ".");
         }
     }
