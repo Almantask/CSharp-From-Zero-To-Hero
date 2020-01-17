@@ -55,15 +55,17 @@ namespace BootCamp.Chapter
         private static string CheckStringForLettersOnly(string testString)
         {
             bool stop = true;
+            string checkString = "";
 
             while (stop)
             {
                 //read the input from console this is what will be tested for only letters
                 testString = Console.ReadLine();
+                checkString = testString;
 
                 //check it by calling the method IsAllLetters
                 // if it has a number run this 
-                if (IsAllLetters(testString) != true)
+                if (IsAllLetters(checkString) != true)
                 {
                     Console.WriteLine("You entereted that wrong. Please try again.\n");
                 }
@@ -74,7 +76,7 @@ namespace BootCamp.Chapter
                 }
             }
             //return the approved string
-            return testString;
+            return checkString;
         }
 
         //check each character in string to see if it has any numbers
@@ -84,7 +86,9 @@ namespace BootCamp.Chapter
             {
                 //if it has a number return it as false
                 if (!Char.IsLetter(c))
+                {
                     return false;
+                }
             }
             // if passed return true.
             return true;
@@ -94,12 +98,14 @@ namespace BootCamp.Chapter
         private static string CheckStringForDigitsOnly(string testDigits)
         {
             bool stop = true;
+            string checkForNumbers = "";
 
             while (stop)
             {
                 testDigits = Console.ReadLine();
+                checkForNumbers = testDigits;
 
-                if (IsAllDigits(testDigits) != true)
+                if (IsAllDigits(checkForNumbers) != true)
                 {
                     Console.WriteLine("You entereted that wrong. Please try again.\n");
                 }
@@ -109,7 +115,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return testDigits;
+            return checkForNumbers;
         }
 
         //same as checking for letters but for numbers
@@ -117,8 +123,10 @@ namespace BootCamp.Chapter
         {
             foreach (char c in testForNumbers)
             {
-                if (!Char.IsDigit(c))
+                if (!Char.IsDigit(c) && c != '.')
+                {
                     return false;
+                }
             }
             return true;
         }
