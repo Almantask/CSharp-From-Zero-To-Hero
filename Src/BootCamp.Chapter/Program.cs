@@ -37,8 +37,8 @@ namespace BootCamp.Chapter
 
 
                 //Convert to Singles
-                float weightsingle = Convert.ToSingle(weight);
-                float heightsingle = Convert.ToSingle(height);
+                var weightsingle = Convert.ToSingle(weight);
+                var heightsingle = Convert.ToSingle(height);
 
 
                 //Calc for BMI
