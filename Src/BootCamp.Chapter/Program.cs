@@ -28,16 +28,6 @@ namespace BootCamp.Chapter
 
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, their weight is " + weight + "kg, their height is " + height + " cm and their BMI is ");
 
-            // BMI formula: weight (kg) / [height (m)]2
-            // Calculation: [weight(kg) / height(cm) / height(cm)] x 10,000
-            // cm to m --> divide by 100
-
-            // my code.. this is where I am having trouble
-            // var toMeters = height / 100;
-            // var metersSquared = toMeters * toMeters;
-            // var bmi = weight / metersSquared;
-            // Console.WriteLine(bmi);
-
         }
     }
 }
