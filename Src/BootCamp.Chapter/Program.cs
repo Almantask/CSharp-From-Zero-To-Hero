@@ -46,11 +46,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"\n``` {firstName} {lastName} is {age} years old, your weight is {weightInKg} kg and" +
                               $" your height is {height} cm. ```");
 
-            //tell user to press anybutton to close
-            Console.WriteLine("Press any button to exit.");
-
-            //wait for the button to be pressed
-            Console.ReadKey();
+           
         }
 
         //Method that checks if string has only letters in it
