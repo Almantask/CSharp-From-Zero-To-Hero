@@ -31,7 +31,6 @@ namespace BootCamp.Chapter
 
             //same as age
             Console.WriteLine("Please enter your weight in kg.");
-            //weightInKg = float.Parse(CheckStringForDigitsOnly(weightInKg.ToString()));
             weightInKg = float.Parse(CheckStringForDigitsOnly());
 
             //same as age
