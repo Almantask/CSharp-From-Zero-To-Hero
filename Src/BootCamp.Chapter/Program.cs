@@ -1,40 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BootCamp.Chapter
+namespace Bootcamp_From_Discord_and_Twitch
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //initialize my variables
-            string firstName = "";
-            string lastName = "";
-            int age = 0;
-            float weightInKg = 0f;
-            float height = 0f;
+            //declare my variables
+            string firstName;
+            string lastName;
+            float age;
+            float weightInKg;
+            float height;
 
             //ask for first input of name
             // then send call method to make sure it fits name paramter of only letters and assign to name variable
             Console.WriteLine("Please enter your first name.");
-            firstName = CheckStringForLettersOnly(firstName);
+            firstName = CheckStringForLettersOnly();
 
             // same as first name but for last name
             Console.WriteLine("Please enter your last name.");
-            lastName = CheckStringForLettersOnly(lastName);
+            lastName = CheckStringForLettersOnly();
 
 
             // same as name inputs but for age
             //call age method and check to make sure it fits parameter of numbers only.
             Console.WriteLine("Please enter your age.");
-            age = int.Parse(CheckStringForDigitsOnly(age.ToString()));
+            //I went with float for age because maybe someone likes to put percent of new age such as 7.5 years old...
+            age = float.Parse(CheckStringForDigitsOnly());
 
             //same as age
             Console.WriteLine("Please enter your weight in kg.");
-            weightInKg = float.Parse(CheckStringForDigitsOnly(weightInKg.ToString()));
+            //weightInKg = float.Parse(CheckStringForDigitsOnly(weightInKg.ToString()));
+            weightInKg = float.Parse(CheckStringForDigitsOnly());
 
             //same as age
             Console.WriteLine("Please enter your height in cm.");
-            height = float.Parse(CheckStringForDigitsOnly(height.ToString()));
+            height = float.Parse(CheckStringForDigitsOnly());
 
 
             //after all values added run this at end of program
@@ -52,20 +58,19 @@ namespace BootCamp.Chapter
         }
 
         //Method that checks if string has only letters in it
-        private static string CheckStringForLettersOnly(string testString)
+        private static string CheckStringForLettersOnly()
         {
             bool stop = true;
-            string checkString = "";
+            string testString = "";
 
             while (stop)
             {
                 //read the input from console this is what will be tested for only letters
                 testString = Console.ReadLine();
-                checkString = testString;
 
                 //check it by calling the method IsAllLetters
                 // if it has a number run this 
-                if (IsAllLetters(checkString) != true)
+                if (IsAllLetters(testString) != true)
                 {
                     Console.WriteLine("You entereted that wrong. Please try again.\n");
                 }
@@ -76,7 +81,7 @@ namespace BootCamp.Chapter
                 }
             }
             //return the approved string
-            return checkString;
+            return testString;
         }
 
         //check each character in string to see if it has any numbers
@@ -95,17 +100,16 @@ namespace BootCamp.Chapter
         }
 
         //same as checking the letters but for numbers only
-        private static string CheckStringForDigitsOnly(string testDigits)
+        private static string CheckStringForDigitsOnly()
         {
             bool stop = true;
-            string checkForNumbers = "";
+            string testDigits = "";
 
             while (stop)
             {
                 testDigits = Console.ReadLine();
-                checkForNumbers = testDigits;
 
-                if (IsAllDigits(checkForNumbers) != true)
+                if (IsAllDigits(testDigits) != true)
                 {
                     Console.WriteLine("You entereted that wrong. Please try again.\n");
                 }
@@ -115,7 +119,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return checkForNumbers;
+            return testDigits;
         }
 
         //same as checking for letters but for numbers
