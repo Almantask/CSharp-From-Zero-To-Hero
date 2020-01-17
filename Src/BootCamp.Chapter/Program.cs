@@ -29,8 +29,8 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Body-mass index (BMI) is: " + String.Format("{0:F2}", bmi));
 
                 Console.Write("\nDo you want to check BMI for another person? y/n: ");
-                var answer = Console.ReadLine().ToLower();
-                doAnotherPerson = answer.Equals("y") || answer.Equals("yes") ? true : false;
+                var answer = Console.ReadLine().ToLowerInvariant();
+                doAnotherPerson = answer.Equals("y") || answer.Equals("yes");
             }
 
         }
