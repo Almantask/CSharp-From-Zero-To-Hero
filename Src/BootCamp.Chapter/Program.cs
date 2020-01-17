@@ -57,7 +57,7 @@ namespace BootCamp.Chapter
 
             bmi2 = (weight2 / ((height2 / 100.0) * (height2 / 100.0)));
 
-            Console.WriteLine(name2 + " " + surename2 + " BMI is " + bmi2;
+            Console.WriteLine(name2 + " " + surename2 + " BMI is " + bmi2);
             Console.ReadLine();
         }
     }
