@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Homework1
 {
@@ -16,8 +13,7 @@ namespace Homework1
             // First Person Start.
             Console.Write("Can the first person please press enter to start!");
             Console.ReadKey();
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             Console.Write("Enter your First Name: ");
             string firstName = Console.ReadLine();
@@ -26,25 +22,23 @@ namespace Homework1
             string lastName = Console.ReadLine();
             
             Console.Write("Enter your Age: ");
-            int age = Convert.ToInt32(Console.ReadLine());
+            int age = Convert.ToInt16(Console.ReadLine());
             
             Console.Write("Enter your Height (in CM) : ");
-            float height = (float)Convert.ToDouble(Console.ReadLine());
+            float height = float.Parse(Console.ReadLine());
 
             Console.Write("Enter your Weight (in KG): ");
-            float weight = (float)Convert.ToDouble(Console.ReadLine());
+            float weight = float.Parse(Console.ReadLine());
 
             Console.WriteLine();
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, " + "his weight is " + weight + "kg and his height is " + height + "cm");
             Console.Write(firstName + " " + lastName + " has a BMI of: " + (weight/height/height)*10000);
 
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("\n");
             // Second Person Start.
             Console.Write("Can the second person please press enter to start!");
             Console.ReadKey();
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             Console.Write("Enter your First Name: ");
             string firstName2 = Console.ReadLine();
@@ -65,8 +59,7 @@ namespace Homework1
             Console.WriteLine(firstName2 + " " + lastName2 + " is " + age2 + " years old, " + "his weight is " + weight2 + "kg and his height is " + height2 + "cm");
             Console.Write(firstName2 + " " + lastName2 + " has a BMI of: " + (weight2 / height2 / height2) * 10000);
 
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             Console.WriteLine("Judging by our calculations, we have come to the conclusion that both users are not fit enough.");
             Console.WriteLine("Have a nice day!");
