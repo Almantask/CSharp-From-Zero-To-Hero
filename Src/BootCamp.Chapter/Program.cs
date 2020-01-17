@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
 
                 //check it by calling the method IsAllLetters
                 // if it has a number run this 
-                if (IsAllLetters(testString) != true)
+                if (!IsAllLetters(testString))
                 {
                     Console.WriteLine("You entereted that wrong. Please try again.\n");
                 }
@@ -100,7 +100,7 @@ namespace BootCamp.Chapter
             {
                 testDigits = Console.ReadLine();
 
-                if (IsAllDigits(testDigits) != true)
+                if (!IsAllDigits(testDigits))
                 {
                     Console.WriteLine("You entereted that wrong. Please try again.\n");
                 }
