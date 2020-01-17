@@ -10,6 +10,7 @@ namespace BootCamp.Chapter
 
 
 			{
+				//Test for push function 
 				// test comment recording chnages test 
 				// test 2 
 				//CONTROL + F5
@@ -18,10 +19,10 @@ namespace BootCamp.Chapter
 
 				string CarinaSurename = "Rod";
 				int CarinaAge = 24;
-				float CarinaWeight = 63.5f;
-				float CarinaHeight = 162.56f;
-				float doubleHeight = CarinaHeight * CarinaHeight;
-				float CarinaBMI = (CarinaWeight / doubleHeight) * 10000;
+				double CarinaWeight = 63.5;
+				double CarinaHeight = 162.56f;
+				//Why does ¨/¨double weight work in the BMI formula
+				double CarinaBMI = (CarinaWeight / CarinaHeight/CarinaHeight) *10000;
 
 				var greeting = CarinaName + " " + CarinaSurename + " is " +
 					CarinaAge + " years old, her weight is " +
@@ -34,10 +35,11 @@ namespace BootCamp.Chapter
 
 				string alexSurename = "Pez";
 				int alexAge = 27;
-				float alexWeight = 69.5f;
-				float alexHeight = 175.56f;
-				float doubleAlexHeight = alexHeight * alexHeight;
-				float AlexBMI = (alexWeight / doubleAlexHeight) * 10000;
+				double alexWeight = 69.5f;
+				double alexHeight = 175.56f;
+				double doubleAlexHeight = alexHeight * alexHeight;
+				double AlexBMI = (alexWeight / alexHeight/alexHeight)*10000 ;
+			
 				//need help with the fraction calculation. 
 				//I know 10000 does not belong there but it makes it work. 
 
