@@ -9,12 +9,13 @@ namespace BootCamp.Chapter
 
             //Set variable
             bool backtotop = true;
-            string option;
+            
 
             //Start While loop
-            while (backtotop == true)
+            while (backtotop)
 
             {
+                string option;
                 backtotop = true;
 
                 //USer data input
@@ -35,9 +36,9 @@ namespace BootCamp.Chapter
                 var height = Console.ReadLine();
 
 
-                //Convert vars
-                var weightsingle = Convert.ToSingle(weight);
-                var heightsingle = Convert.ToSingle(height);
+                //Convert to Singles
+                float weightsingle = Convert.ToSingle(weight);
+                float heightsingle = Convert.ToSingle(height);
 
 
                 //Calc for BMI
@@ -75,12 +76,7 @@ namespace BootCamp.Chapter
                 {
                     backtotop = false;
                 }
-
-                else
-                {
-
-                }
-
+               
             }
         }
     }
