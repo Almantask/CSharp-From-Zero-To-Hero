@@ -6,9 +6,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            for (int num = 0; num < 3; num++)
+            for (int num = 0; num < 2; num++)
             {
-                Console.WriteLine("Calculating BMI for a person.");
+                Console.WriteLine("Calculate BMI for a person.");
 
                 Console.Write("Enter name: ");
                 string name = Console.ReadLine();
