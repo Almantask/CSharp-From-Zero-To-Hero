@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
 				const double CarinaWeight = 63.5;
 				const double CarinaHeight = 162.56;
 				//Why does ¨/¨double weight work in the BMI formula
-				double CarinaBMI = (CarinaWeight / CarinaHeight/CarinaHeight) *10000;
+				const double CarinaBMI = (CarinaWeight / CarinaHeight/CarinaHeight) *10000;
 
 				var greeting = CarinaName + " " + CarinaSurename + " is " +
 					CarinaAge + " years old, her weight is " +
@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
 				const int alexAge = 27;
 				const double alexWeight = 69.5f;
 				const double alexHeight = 175.56f;
-				double AlexBMI = (alexWeight / alexHeight/alexHeight)*10000 ;
+				const double AlexBMI = (alexWeight / alexHeight/alexHeight)*10000 ;
 			
 				//need help with the fraction calculation. 
 				//I know 10000 does not belong there but it makes it work. 
