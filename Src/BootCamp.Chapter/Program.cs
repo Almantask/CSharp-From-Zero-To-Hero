@@ -20,8 +20,8 @@ namespace BootCamp.Chapter
             {
                 Console.Clear();
                 getInput(ref firstName, ref lastName, ref age, ref weight, ref height);
-                String name = firstName + " " + lastName;
-                displayOutput(firstName, age, weight, height);
+               
+                displayOutput(firstName, lastName, age, weight, height);
 
             }
 
@@ -49,10 +49,10 @@ namespace BootCamp.Chapter
 
 
             // Output function
-            void displayOutput(String name, int age, float weight, float height)
+            void displayOutput(String first, String last, int age, float weight, float height)
             {
-                Console.WriteLine(name + " is " + age + " years old; his weight is " + weight + " kg and his height is " + height + " cm.");
-                Console.WriteLine(name + "'s Body Mass Index is " + calcBMI(weight, height) + ".");
+                Console.WriteLine(first + " " + last +" is " + age + " years old; his weight is " + weight + " kg and his height is " + height + " cm.");
+                Console.WriteLine(first + "'s Body Mass Index is " + calcBMI(weight, height) + ".");
                 Console.WriteLine("\n\n\n\n\nPress Enter");
                 Console.ReadLine();
 
