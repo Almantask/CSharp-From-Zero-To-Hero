@@ -29,7 +29,7 @@ namespace BootCamp.Chapter
                     "height is " + height + " in cm.");
                 Console.WriteLine("Their BMI is " + (weight / (height / 100 * height / 100)));
                 
-                string ans;
+                
                 Console.WriteLine("Again?");
                 ans = Console.ReadLine();
 
