@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Their BMI is " + (weight / (height / 100 * height / 100)));
                 
                 
-                Console.WriteLine("Again? type no to exit");
+                Console.WriteLine("Again? type no to be able to exit");
                 ans = Console.ReadLine();
 
             } while (ans != "no");
