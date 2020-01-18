@@ -11,6 +11,71 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Lesson3 L3 = new Lesson3();
+            L3.Demo();            
+        }
+        
+        
+        
+        public static string GetStringInput(string prompt)
+        {
+            Console.WriteLine(prompt);
+            string input = Console.ReadLine();
+
+            return input;
+
+        }
+        public static float GetFloatInput(string prompt)
+        {
+            Console.WriteLine(prompt);
+            float input = float.Parse(Console.ReadLine());
+
+            return input;
+        }
+
+        
+        
+        // INput function
+        public static void GatherData(ref string firstName, ref string lastName, ref int age, ref float weight, ref float height)
+        {
+            firstName = GetStringInput("Hello, What is your First name? ");
+            lastName = GetStringInput("Hello, What is your Last name? ");
+
+            age = (int)GetFloatInput("How old are you?");
+            weight = GetFloatInput("How much do you weigh in kilograms?");
+            height = GetFloatInput("How tall are you?") / 100;
+            Console.Clear();
+        }
+
+
+
+        // Output function
+        public static void DisplayOutput(string first, string last, int age, float weight, float height)
+        {
+            Console.WriteLine(first + " " + last + " is " + age + " years old; his weight is " + weight + " kg and his height is " + (height * 100) + " cm.");
+            Console.WriteLine(first + "'s Body Mass Index is " + CalcBMI(weight, height) + ".");
+            Console.WriteLine("\n\n\n\n\nPress Enter");
+            Console.ReadLine();
+        }
+
+        
+        
+        //Calculate BMI
+        public static float CalcBMI(float weight, float height)
+        {
+            float bmi = weight / (height * height);
+            return bmi;
+
+        }
+    }
+    
+    
+    
+    public class Lesson3
+    {
+        public void Demo()
+        {
+
 
             string firstName = " ";
             string lastName = " ";
@@ -23,67 +88,10 @@ namespace BootCamp.Chapter
             for (int i = 0; i < 2; i++)
             {
                 Console.Clear();
-                gatherData(ref firstName, ref lastName, ref age, ref weight, ref height);
-               
-                displayOutput(firstName, lastName, age, weight, height);
-
+                Program.GatherData(ref firstName, ref lastName, ref age, ref weight, ref height);
+                Program.DisplayOutput(firstName, lastName, age, weight, height);
             }
-
-
-            
         }
-        public static string getStringInput(string prompt)
-        {
-            Console.WriteLine(prompt);
-            string input =  Console.ReadLine();
-
-            return input;
-
-        }
-
-
-
-        public static float getFloatInput(string prompt)
-        {
-            Console.WriteLine(prompt);
-            float input = float.Parse(Console.ReadLine());
-
-            return input;
-        }
-
-        // INput function
-        public static void gatherData(ref string firstName, ref string lastName, ref int age, ref float weight, ref float height)
-        {
-
-
-
-           
-            firstName = getStringInput("Hello, What is your First name? ");
-            lastName = getStringInput("Hello, What is your Last name? ");
-            
-            age = (int)getFloatInput("How old are you?");
-            weight = getFloatInput("How much do you weigh in kilograms?");
-            height = getFloatInput("How tall are you?")/100;
-            Console.Clear();
-        }
-
-
-        // Output function
-        public static void displayOutput(string first, string last, int age, float weight, float height)
-        {
-            Console.WriteLine(first + " " + last + " is " + age + " years old; his weight is " + weight + " kg and his height is " + (height*100) + " cm.");
-            Console.WriteLine(first + "'s Body Mass Index is " + calcBMI(weight, height) + ".");
-            Console.WriteLine("\n\n\n\n\nPress Enter");
-            Console.ReadLine();
-
-        }
-
-        //Calculate BMI
-        public static float calcBMI(float weight, float height)
-        {
-            float bmi = weight / (height * height);
-            return bmi;
-
-        }
+       
     }
 }
