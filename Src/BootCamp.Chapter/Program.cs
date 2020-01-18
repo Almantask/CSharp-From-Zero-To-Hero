@@ -19,19 +19,9 @@ namespace BootCamp.Chapter
 
         static void Main(string[] args)
         {
-            Demo();
+            lesson3.Demo();
         }
-        private static void Demo()
-        {
-            string decision;
-            do
-            {
-                Console.Clear(); //Clear console window
-                decision = AddNewPerson();
-
-            } while (decision == "Y"); //Repeat if user wants to add new person's data
-        }
-        private static string AddNewPerson()
+        public static string AddNewPerson()
         {
             //Read name
             string name = InputString("What is your name?");
