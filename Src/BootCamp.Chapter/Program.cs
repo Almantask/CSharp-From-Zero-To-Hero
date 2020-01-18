@@ -9,11 +9,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            descriptor();
-            descriptor();
+            Descriptor();
+            Descriptor();
         }
 
-        static void descriptor()
+        private static void Descriptor()
         {
             //ask user for their name, age, weight, and height
             string name = PromptString("Name: ");
