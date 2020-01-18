@@ -1,0 +1,44 @@
+using System;
+
+namespace BMISLeslie
+{
+    class Program
+    {
+        private static void Main(string[] args)
+        {
+            //Declare variables
+            string name;
+            string surname;
+            int age;
+            float weight;
+            float height;
+            float bmi;
+            string printOut;
+
+            //1st person variable values
+            name = "Tom";
+            surname = "Jefferson";
+            age = 19;
+            weight = 50;
+            height = 156.5f;
+            bmi = weight / ((height / 100) * (height / 100));
+            printOut = name + " " + surname + " is " + age + " years old, his weight is " + weight + "kg and his height is " + height + "cms. His BMI is " + Math.Round(bmi, 2) + ".";
+
+            //1st person console printout
+            Console.WriteLine(printOut);
+
+
+            //2nd person variable values
+            name = "Micky";
+            surname = "Howe";
+            age = 65;
+            weight = 86.5f;
+            height = 170;
+            bmi = weight / ((height / 100) * (height / 100));
+            printOut = name + " " + surname + " is " + age + " years old, his weight is " + weight + "kg and his height is " + height + "cms. His BMI is " + Math.Round(bmi, 2) + ".";
+
+            //2nd person console printout
+            Console.WriteLine(printOut);
+        }
+    }
+}
