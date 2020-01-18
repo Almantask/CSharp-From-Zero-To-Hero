@@ -40,7 +40,7 @@ namespace BootCamp.Chapter
             var age2 = Console.ReadLine();
 
             Console.Write("Height (in cm): ");
-            var height2 = float.Parse(Console.ReadLine()); ;
+            var height2 = float.Parse(Console.ReadLine());
 
             Console.Write("Weight (in kg): ");
             var weight2 = float.Parse(Console.ReadLine());
