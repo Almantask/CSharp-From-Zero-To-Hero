@@ -1,6 +1,6 @@
 using System;
 
-namespace CSharpHW1
+namespace BootCamp.Chapter
 {
     class Program
     {
