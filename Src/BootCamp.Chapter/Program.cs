@@ -15,12 +15,12 @@ namespace BootCamp.Chapter
 				// test 2 
 				//CONTROL + F5
 				//Need to read Tom Jefferson is 19 years old, his weight is 50 kg and his height is 156.5 cm. 
-				string CarinaName = "Carina";
+				const string CarinaName = "Carina";
 
-				string CarinaSurename = "Rod";
-				int CarinaAge = 24;
-				double CarinaWeight = 63.5;
-				double CarinaHeight = 162.56;
+				const string CarinaSurename = "Rod";
+				const int CarinaAge = 24;
+				const double CarinaWeight = 63.5;
+				const double CarinaHeight = 162.56;
 				//Why does ¨/¨double weight work in the BMI formula
 				double CarinaBMI = (CarinaWeight / CarinaHeight/CarinaHeight) *10000;
 
@@ -31,13 +31,12 @@ namespace BootCamp.Chapter
 				Console.WriteLine(greeting);
 				Console.WriteLine(CarinaBMI + " BMI");
 
-				string Name = "Alex";
+				const string Name = "Alex";
 
-				string alexSurename = "Pez";
-				int alexAge = 27;
-				double alexWeight = 69.5f;
-				double alexHeight = 175.56f;
-				double doubleAlexHeight = alexHeight * alexHeight;
+				const string alexSurename = "Pez";
+				const int alexAge = 27;
+				const double alexWeight = 69.5f;
+				const double alexHeight = 175.56f;
 				double AlexBMI = (alexWeight / alexHeight/alexHeight)*10000 ;
 			
 				//need help with the fraction calculation. 
