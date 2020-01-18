@@ -9,7 +9,7 @@ namespace BootCamp.Chapter.Tests
     // You don't have to be here for a long time.
     public class Lesson3Tests
     {
-        private const string _promptMessage = "Testing";
+        private const string PromptMessage = "Testing";
 
         [Theory]
         [InlineData(100, 2, 25)]
@@ -28,10 +28,10 @@ namespace BootCamp.Chapter.Tests
         {
             var consoleOutput = ConsoleStub.StubConsole(input);
 
-            var convertedInput = Checks.PromptString(_promptMessage);
+            var convertedInput = Checks.PromptString(PromptMessage);
 
             var promptedMessage = consoleOutput.ToString().Trim();
-            promptedMessage.Should().Be(_promptMessage);
+            promptedMessage.Should().Be(PromptMessage);
             convertedInput.Should().Be(input);
         }
 
@@ -42,10 +42,10 @@ namespace BootCamp.Chapter.Tests
         {
             var consoleOutput = ConsoleStub.StubConsole(input);
 
-            var convertedInput = Checks.PromptInt(_promptMessage);
+            var convertedInput = Checks.PromptInt(PromptMessage);
 
             var promptedMessage = consoleOutput.ToString().Trim();
-            promptedMessage.Should().Be(_promptMessage);
+            promptedMessage.Should().Be(PromptMessage);
             convertedInput.Should().Be(expectedConvertedInput);
         }
 
@@ -56,10 +56,10 @@ namespace BootCamp.Chapter.Tests
         {
             var consoleOutput = ConsoleStub.StubConsole(input);
 
-            var convertedInput = Checks.PromptFloat(_promptMessage);
+            var convertedInput = Checks.PromptFloat(PromptMessage);
 
             var promptedMessage = consoleOutput.ToString().Trim();
-            promptedMessage.Should().Be(_promptMessage);
+            promptedMessage.Should().Be(PromptMessage);
             convertedInput.Should().Be(expectedConvertedInput);
         }
     }
