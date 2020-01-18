@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
 
                 Console.WriteLine(firstName + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
                 var heightInMeters = height / 100;
-                var bmi = (weight / heightInMeters) / heightInMeters;
+                var bmi = weight / heightInMeters / heightInMeters;
                 Console.WriteLine("Body-mass index (BMI) is: " + String.Format("{0:F2}", bmi));
 
                 Console.Write("\nDo you want to check BMI for another person? y/n: ");
