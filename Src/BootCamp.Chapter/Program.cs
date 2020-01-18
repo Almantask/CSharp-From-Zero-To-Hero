@@ -8,12 +8,12 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        public static string firstName;
-        public static string surname;
-        public static int age;
-        public static float weight;
-        public static float height;
-        public static float bmi;
+        static string firstName;
+        static string surname;
+        static int age;
+        static float weight;
+        static float height;
+        static float bmi;
 
         static void Main(string[] args)
         {
@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
                 doAnotherPerson = answer.Equals("y") || answer.Equals("yes");
             }
         }
-        public static void GetUserInfo()
+        static void GetUserInfo()
         {
             firstName = PromptString("First Name: ");
             surname = PromptString("Surname: ");
@@ -36,9 +36,9 @@ namespace BootCamp.Chapter
             height = PromptFloat("Height in meters: ");
             bmi = CalculateBmi(weight, height);
         }
-        public static void PrintUserInfo()
+        static void PrintUserInfo()
         {
-            Console.WriteLine(firstName + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
+            Console.WriteLine(firstName + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " meters.");
             Console.WriteLine("Body-mass index (BMI) is: " + bmi.ToString("n2"));
         }
         public static string PromptString(string message)
@@ -57,7 +57,7 @@ namespace BootCamp.Chapter
             return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture.NumberFormat);
         }
         public static float CalculateBmi(float weight, float height)
-        {;
+        {
             return weight / height / height;
         }
 
