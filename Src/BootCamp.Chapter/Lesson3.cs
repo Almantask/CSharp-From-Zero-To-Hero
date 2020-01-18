@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
