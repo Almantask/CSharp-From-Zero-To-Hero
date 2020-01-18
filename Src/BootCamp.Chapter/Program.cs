@@ -17,7 +17,6 @@ namespace BootCamp.Chapter
 
         static void Main(string[] args)
         {
-            Console.WriteLine(CalculateBmi(70, 180));
             var doAnotherPerson = true;
             while (doAnotherPerson)
             {
