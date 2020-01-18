@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# IDE0035: Unreachable code detected
+dotnet_diagnostic.IDE0035.severity = none
