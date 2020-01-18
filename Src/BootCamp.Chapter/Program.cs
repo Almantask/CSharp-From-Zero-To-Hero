@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
 				string CarinaSurename = "Rod";
 				int CarinaAge = 24;
 				double CarinaWeight = 63.5;
-				double CarinaHeight = 162.56f;
+				double CarinaHeight = 162.56;
 				//Why does ¨/¨double weight work in the BMI formula
 				double CarinaBMI = (CarinaWeight / CarinaHeight/CarinaHeight) *10000;
 
@@ -49,7 +49,7 @@ namespace BootCamp.Chapter
 
 				Console.WriteLine(alexGreeting);
 				Console.WriteLine(AlexBMI + " BMI");
-				//TEST FOR CHANGE MARk 
+				//TEST FOR CHANGE MARK
 
 
 
