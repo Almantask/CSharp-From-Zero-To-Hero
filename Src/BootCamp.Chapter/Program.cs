@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace BootCamp.Chapter
 {
@@ -35,13 +34,13 @@ namespace BootCamp.Chapter
 
                 Console.WriteLine("\n{0} {1} is {2} years old, his weight is {3} kg and his height is {4} cm.", name, surname, age, weight, height);
 
-                double BMI = Math.Round(CalculateBMI(weight, height), 2);
+                double BMI = Math.Round(CalculateBmi(weight, height), 2);
 
                 Console.WriteLine("His BMI is: {0} \n", BMI);
             }
 
         }
-        static double CalculateBMI(double weight, double height)
+        static double CalculateBmi(double weight, double height)
         {
             return weight / (Math.Pow((height / 100), 2));
         }
