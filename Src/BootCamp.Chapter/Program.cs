@@ -19,7 +19,7 @@ namespace BootCamp.Chapter
 
         static void Main(string[] args)
         {
-            lesson3.Demo();
+            Lesson3.Demo();
         }
         public static string AddNewPerson()
         {
@@ -39,7 +39,7 @@ namespace BootCamp.Chapter
             //Change cm to m
             float heightInMeters = height / 100;
             //Calculate BMI
-            float BMI = CalculateBMI(weight,heightInMeters);
+            float BMI = CalculateBmi(weight,heightInMeters);
             //Show message about person's BMI
             Console.WriteLine("His/her BMI = " + string.Format("{0:N}", BMI)+ " \n");
             
@@ -72,7 +72,7 @@ namespace BootCamp.Chapter
             return input;
         }
        
-        public static float CalculateBMI(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             //Calculate BMI
             float bodyMassIndex = weight / (float)Pow(height, 2);
