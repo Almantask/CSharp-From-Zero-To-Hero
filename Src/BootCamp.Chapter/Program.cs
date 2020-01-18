@@ -23,6 +23,26 @@ namespace BootCamp.Chapter
 
             Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
             Console.WriteLine("BMI = " + bmi);
+
+            //For another user
+            Console.WriteLine("Let's calculate the BMI for another person.");
+            Console.Write("Enter your name: ");
+            name = Console.ReadLine();
+            Console.Write("Enter your surname: ");
+            surname = Console.ReadLine();
+            Console.Write("Enter your age: ");
+            age = Console.ReadLine();
+            Console.Write("Enter your weight in kg: ");
+            weight = Console.ReadLine();
+            Console.Write("Enter your height in cm: ");
+            height = Console.ReadLine();
+
+            heightInMeters = Convert.ToDouble(height) / 100;
+            heightSquared = Math.Pow(heightInMeters, 2);
+            bmi = Convert.ToDouble(weight) / heightSquared;
+
+            Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
+            Console.WriteLine("BMI = " + bmi);
         }
     }
 }
