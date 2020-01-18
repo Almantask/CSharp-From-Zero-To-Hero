@@ -47,9 +47,9 @@ namespace BootCamp.Chapter
 
             Console.WriteLine(firstName2 + " " + lastName2 + " is " + age2 + " years old, their weight is " + weight2 + "kg and their height is " + height2 + " cm.");
 
-            var toMeters2 = height / 100;
+            var toMeters2 = height2 / 100;
             var metersSquared2 = toMeters2 * toMeters2;
-            var bmi2 = weight / metersSquared2;
+            var bmi2 = weight2 / metersSquared2;
             Console.WriteLine(firstName2 + " " + lastName2 + " BMI: " + bmi2);
 
         }
