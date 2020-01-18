@@ -18,12 +18,12 @@ namespace BootCamp.Chapter
             do
             {
                 Console.Clear(); //Clear console window
-                decision = Add_new_person();
+                decision = AddNewPerson();
 
             } while (decision == "Y"); //Repeat if user wants to add new person's data
         }
 
-        private static string Add_new_person()
+        private static string AddNewPerson()
         {
             //Read name
             Console.WriteLine("What is your name?");
