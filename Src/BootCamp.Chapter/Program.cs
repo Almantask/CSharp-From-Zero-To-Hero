@@ -53,7 +53,7 @@ namespace BootCamp.Chapter
         public static void DisplayOutput(string first, string last, int age, float weight, float height)
         {
             Console.WriteLine(first + " " + last + " is " + age + " years old; his weight is " + weight + " kg and his height is " + (height * 100) + " cm.");
-            Console.WriteLine(first + "'s Body Mass Index is " + CalcBMI(weight, height) + ".");
+            Console.WriteLine(first + "'s Body Mass Index is " + CalcBmi(weight, height) + ".");
             Console.WriteLine("\n\n\n\n\nPress Enter");
             Console.ReadLine();
         }
@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
         
         
         //Calculate BMI
-        public static float CalcBMI(float weight, float height)
+        public static float CalcBmi(float weight, float height)
         {
             float bmi = weight / (height * height);
             return bmi;
