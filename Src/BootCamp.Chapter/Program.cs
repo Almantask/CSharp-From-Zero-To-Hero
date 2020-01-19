@@ -9,9 +9,8 @@ namespace BootCamp.Chapter
             //Tell me if I did the task wrongly, because I wasn't really sure if I had had to define them and not ask them in.
             //Read name, surename, age, weight (in kg) and height (in cm) from console
             // calculate BMI index
-            Console.WriteLine("Type in your firstname");
+            Console.WriteLine("Welcome to my homework. Please, type in your full name");
             string name = Console.ReadLine();
-            Console.WriteLine("Type in your lastname");
             string surname = Console.ReadLine();
             Console.WriteLine("Type in your age");
             int age = int.Parse(Console.ReadLine());
