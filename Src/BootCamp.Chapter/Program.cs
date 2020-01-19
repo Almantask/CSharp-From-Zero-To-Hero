@@ -8,45 +8,5 @@ namespace BootCamp.Chapter
         {
             Lesson3.Demo();
         }
-
-        public static void Descriptor()
-        {
-            //ask user for their name, age, weight, and height
-            string name = PromptString("Name: ");
-            string surname = PromptString("Surname: ");
-            int age = PromptInt("Age: ");
-            float weight = PromptFloat("Weight: ");
-            float height = PromptFloat("Height: ");
-            
-            //print a sentence about user
-            Console.WriteLine($"{name} {surname} is {age} years old, their weight is {weight}Kg and their height is {height}cm");
-
-            //calculate and print the BMI of the user
-            float bmi = CalculateBmi(weight, height / 100);
-            Console.WriteLine($"They have a BMI of {bmi}");
-        }
-
-        public static int PromptInt(string prompt)
-        {
-            Console.Write(prompt);
-            return int.Parse(Console.ReadLine());
-        }
-
-        public static string PromptString(string prompt)
-        {
-            Console.Write(prompt);
-            return Console.ReadLine();
-        }
-
-        public static float PromptFloat(string prompt)
-        {
-            Console.Write(prompt);
-            return float.Parse(Console.ReadLine());
-        }
-
-        public static float CalculateBmi(float weight, float height)
-        {
-            return weight / (height * height);
-        }
     }
 }
