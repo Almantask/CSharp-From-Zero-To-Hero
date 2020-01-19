@@ -23,31 +23,26 @@ namespace BootCamp.Chapter
         }
         public static string AddNewPerson()
         {
-            //Read name
-            string name = InputString("What is your name?");
-            //Read surname
-            string surname = InputString("What is your surname?");
-            //Read age
-            int age = InputInteger("How old are you?");
-            //Read weight
-            float weight = InputFloat("What is your weight (in kg)?");
-            //Read height in cm
-            float height = InputFloat("What is your height (in cm)?");
+            //Read user data
+            string name = PrintMessageAndInputString("What is your name?");
+            string surname = PrintMessageAndInputString("What is your surname?");
+            int age = PrintMessageAndInputIntager("How old are you?");
+            float weight = PrintMessageAndInputFloat("What is your weight (in kg)?");
+            float height = PrintMessageAndInputFloat("What is your height (in cm)?");
             //Show message about person
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
 
             //Change cm to m
             float heightInMeters = height / 100;
-            //Calculate BMI
             float BMI = CalculateBmi(weight,heightInMeters);
             //Show message about person's BMI
             Console.WriteLine("His/her BMI = " + string.Format("{0:N}", BMI)+ " \n");
             
             Console.WriteLine("Do you want to add another person (Y/y = Yes, everything else = No)?");
-            //Read decision
             string decision = Console.ReadLine();
             //Change decision to upper latter
             string decisionToUpper = decision.ToUpperInvariant();
+
             return decisionToUpper;
         }
         public static int PrintMessageAndInputIntager(string message)
