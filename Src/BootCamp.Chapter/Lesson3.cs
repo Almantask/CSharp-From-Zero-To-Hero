@@ -20,21 +20,19 @@ namespace BootCamp.Chapter
         public static float ConvertStringToFloat(string message)
         {
             Console.Write(message);
-
             return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
         }
         public static float Bmi(float weight, float heigth)
         {
             return weight / (float)Math.Pow(heigth, 2);
-
         }
 
         public static void Demo(int numberOfPersons = 1)
         {
-           int currentPerson = 0;
+            int currentPerson = 0;
 
-           while (currentPerson < numberOfPersons)
+            while (currentPerson < numberOfPersons)
             {
                 string name = ConvertStringToString("Name: ");
                 string sureName = ConvertStringToString("Surename: ");
@@ -50,7 +48,6 @@ namespace BootCamp.Chapter
                 Console.ReadLine();
                 currentPerson++;
             }
-
         }
     }
 }
