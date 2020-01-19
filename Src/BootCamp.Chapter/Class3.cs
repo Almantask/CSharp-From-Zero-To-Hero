@@ -5,9 +5,26 @@ namespace BootCamp.Chapter
 {
     public class Class3
     {
-        internal static void Demo()
+        public static void Demo()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < 2; i++)
+            {
+                var name = GetString("What is your name: ");
+                var surname = GetString("What is your surname: ");
+                var age = GetInt("What is your age: ");
+                var weight = GetFloat("What is your weight in kilogram: ");
+                var height = GetFloat("What is your height in metres: ");
+                var bmi = GetBmi(weight, height);
+
+                Console.WriteLine($"{name}  {surname}  is {age} years old, his weight is {weight} kg and his height is {height:F2} cm.");
+                Console.WriteLine($"His BMI is:  {bmi:N2}");
+                Console.WriteLine("");
+                if (i == 0)
+                {
+                    Console.WriteLine($"Now for another person {Environment.NewLine}  ");
+                } 
+            }
+
         }
 
         public static float GetBmi(float weight, float height)
