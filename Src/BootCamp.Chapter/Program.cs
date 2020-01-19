@@ -20,22 +20,18 @@ namespace BootCamp.Chapter
         public static string GetStringInput(string prompt)
         {
             Console.WriteLine(prompt);
-            string input = Console.ReadLine();
-
-            return input;
+            return Console.ReadLine();;
 
         }
         public static float GetFloatInput(string prompt)
         {
             Console.WriteLine(prompt);
-            float input = float.Parse(Console.ReadLine());
-
-            return input;
+            return float.Parse(Console.ReadLine());
         }
 
         
         
-        // INput function
+        // Input function
         public static void GatherData(ref string firstName, ref string lastName, ref int age, ref float weight, ref float height)
         {
             firstName = GetStringInput("Hello, What is your First name? ");
@@ -67,31 +63,5 @@ namespace BootCamp.Chapter
             return bmi;
 
         }
-    }
-    
-    
-    
-    public class Lesson3
-    {
-        public static void Demo()
-        {
-
-
-            string firstName = " ";
-            string lastName = " ";
-            int age = 0;
-            float weight = 0.00f;
-            float height = 0.00f;
-
-
-
-            for (int i = 0; i < 2; i++)
-            {
-                Console.Clear();
-                Program.GatherData(ref firstName, ref lastName, ref age, ref weight, ref height);
-                Program.DisplayOutput(firstName, lastName, age, weight, height);
-            }
-        }
-       
     }
 }
