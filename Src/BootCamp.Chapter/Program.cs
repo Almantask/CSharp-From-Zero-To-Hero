@@ -8,14 +8,14 @@ namespace BootCamp.Chapter
         {
 
             //Set variable
-            bool backtotop = true;
+            var backtotop = true;
             
 
             //Start While loop
             while (backtotop)
 
             {
-                string option;
+                
                 backtotop = true;
 
                 //USer data input
@@ -71,7 +71,7 @@ namespace BootCamp.Chapter
 
                 //Continue
                 Console.WriteLine("Would you like to do another person Y/N?");
-                option = Console.ReadLine();
+                var option = Console.ReadLine();
                 if ((option) == "N" || (option) == "n")
                 {
                     backtotop = false;
