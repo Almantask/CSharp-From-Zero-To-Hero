@@ -53,30 +53,27 @@ namespace BootCamp.Chapter
         public static int PrintMessageAndInputIntager(string message)
         {
             Console.WriteLine(message);
-            //Convert to int
-            int input = int.Parse(Console.ReadLine());
-            return input;
+            string input = Console.ReadLine();
+
+            return int.Parse(input);
         }
         public static float PrintMessageAndInputFloat(string message)
         {
             Console.WriteLine(message);
-            //Convert to float
-            float input = float.Parse(Console.ReadLine());
-            return input;
+            string input = Console.ReadLine();
+
+            return float.Parse(input);
         }
         public static string PrintMessageAndInputString(string message)
         {
             Console.WriteLine(message);
-            //Convert to string
-            string input = Console.ReadLine();
-            return input;
+
+            return Console.ReadLine();
         }
        
         public static float CalculateBmi(float weight, float height)
         {
-            //Calculate BMI
-            float bodyMassIndex = weight / (float)Pow(height, 2);
-            return bodyMassIndex;
+            return weight / (float)Pow(height, 2);
         }
         
     }
