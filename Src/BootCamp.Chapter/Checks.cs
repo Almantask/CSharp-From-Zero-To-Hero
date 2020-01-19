@@ -37,3 +37,5 @@ namespace BootCamp.Chapter
             Lesson3.CalculateBodyMassIndex(weight, height);
             return 0;
         }
+    }
+}
