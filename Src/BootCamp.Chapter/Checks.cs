@@ -16,25 +16,25 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            var answer = Class3.GetInt(message); 
+            var answer = Lesson3.GetInt(message); 
             return answer;
         }
 
         public static string PromptString(string message)
         {
-            var answer = Class3.GetString(message);
+            var answer = Lesson3.GetString(message);
             return answer; 
         }
 
         public static float PromptFloat(string message)
         {
-            var answer = Class3.GetFloat(message); 
+            var answer = Lesson3.GetFloat(message); 
             return answer;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            var answer = Class3.GetBmi(weight, height); 
+            var answer = Lesson3.GetBmi(weight, height); 
             return answer;
         }
     }

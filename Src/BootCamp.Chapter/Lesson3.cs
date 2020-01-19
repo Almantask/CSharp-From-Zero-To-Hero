@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace BootCamp.Chapter
 {
-    public class Class3
+    public class Lesson3
     {
         public static void Demo()
         {
