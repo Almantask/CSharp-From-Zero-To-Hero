@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Console = System.Console;
 
@@ -9,6 +10,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            var test = GetFloat("give me your height in metres: "); 
         }
 
         public static float GetBmi(float weight, float height)
@@ -33,7 +35,7 @@ namespace BootCamp.Chapter
         public static float GetFloat(string message)
         {
             Console.Write(message);
-            var input = float.Parse(Console.ReadLine());
+            var input = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture); 
             return input;
         }
     }
