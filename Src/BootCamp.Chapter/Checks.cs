@@ -32,7 +32,7 @@ namespace BootCamp.Chapter
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation. 
-            return Program.CalculateBMI(weight, height);
+            return Program.CalculateBmi(weight, height);
         }
     }
 }

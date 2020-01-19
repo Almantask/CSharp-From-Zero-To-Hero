@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Console = System.Console;
+﻿using Console = System.Console;
 
 namespace BootCamp.Chapter
 {
@@ -25,7 +22,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{name} {surname} is {age} years old, their weight is {weight}Kg and their height is {height}cm");
 
             //calculate and print the BMI of the user
-            float bmi = CalculateBMI(weight, height / 100);
+            float bmi = CalculateBmi(weight, height / 100);
             Console.WriteLine($"They have a BMI of {bmi}");
         }
 
@@ -47,7 +44,7 @@ namespace BootCamp.Chapter
             return float.Parse(Console.ReadLine());
         }
 
-        public static float CalculateBMI(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             return weight / (height * height);
         }
