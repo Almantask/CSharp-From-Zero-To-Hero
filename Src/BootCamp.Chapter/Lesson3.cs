@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
 
         public static double CalculateBodyMassIndex(double weight, double height)
         {
-            return weight / (height * height);
+            return weight / height / height);
         }
 
         public static char RequestUserChoiceToRepeatOrNot()
