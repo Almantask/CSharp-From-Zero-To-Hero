@@ -15,9 +15,9 @@ namespace BootCamp.Chapter
 
                 int age = RequestInt("Please enter age in years:");
 
-                double weightInKilograms = RequestDouble("Please enter weight in kilograms:");
+                float weightInKilograms = RequestFloat("Please enter weight in kilograms:");
 
-                double heightInMeters = RequestDouble("Please enter height in meters:");
+                float heightInMeters = RequestFloat("Please enter height in meters:");
 
                 ReportBasicInfo(firstName, surname, age, weightInKilograms, heightInMeters);
 
@@ -39,10 +39,10 @@ namespace BootCamp.Chapter
             return Convert.ToInt32(Console.ReadLine());
         }
 
-        public static double RequestDouble(string prompt)
+        public static float RequestFloat(string prompt)
         {
             Console.Write(prompt);
-            return Convert.ToDouble(Console.ReadLine());
+            return Convert.ToFloat(Console.ReadLine());
         }
 
         public static void ReportBasicInfo(string firstName, string surname, int age, double weight, double height)
