@@ -9,15 +9,15 @@ namespace BootCamp.Chapter
 
             while (again == 'y')
             {
-                string firstName = RequestString("first name");
+                string firstName = RequestString("Please enter first name:");
 
-                string surname = RequestString("last name");
+                string surname = RequestString("Please enter last name:");
 
-                int age = RequestInt("age in years");
+                int age = RequestInt("Please enter age in years:");
 
-                double weightInKilograms = RequestDouble("weight in kilograms");
+                double weightInKilograms = RequestDouble("Please enter weight in kilograms:");
 
-                double heightInMeters = RequestDouble("height in meters");
+                double heightInMeters = RequestDouble("Please enter height in meters:");
 
                 ReportBasicInfo(firstName, surname, age, weightInKilograms, heightInMeters);
 
