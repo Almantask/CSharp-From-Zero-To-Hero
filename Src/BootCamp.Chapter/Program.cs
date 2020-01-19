@@ -6,14 +6,21 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            const string name = "Hancock";
-            const string surname = "Johnson";
-            const int age = 20;
-            const float weight = 81;
-            const float heightcm = 180;
-            const float heightm = heightcm / 100;
-            const float heightsq = heightm * heightm;
-            const float BMI = weight / heightsq;
+            Console.WriteLine("First person enter your data");
+
+            Console.WriteLine("What is your first name?");
+            string name = Console.ReadLine();
+            Console.WriteLine("What is your last name?");
+            string surname = Console.ReadLine();
+            Console.WriteLine("What is your age?");
+            int age = int.Parse(Console.ReadLine());
+            Console.WriteLine("What is your weight?");
+            float weight = float.Parse(Console.ReadLine());
+            Console.WriteLine("What is your height?");
+            float heightcm = float.Parse(Console.ReadLine());
+            float heightm = heightcm / 100;
+            float heightsq = heightm * heightm;
+            float BMI = weight / heightsq;
 
             Console.WriteLine("Name: " + name);
             Console.WriteLine("Surname: " + surname);
@@ -23,6 +30,7 @@ namespace BootCamp.Chapter
             Console.WriteLine("BMI: " + BMI);
 
             Console.WriteLine();
+            Console.WriteLine("Second person enter your data");
 
             Console.WriteLine("What is your first name?");
             string name2 = Console.ReadLine();
