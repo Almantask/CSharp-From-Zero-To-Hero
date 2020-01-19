@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
         public static string GetStringInput(string prompt)
         {
             Console.WriteLine(prompt);
-            return Console.ReadLine();;
+            return Console.ReadLine();
 
         }
         public static float GetFloatInput(string prompt)
@@ -32,7 +32,7 @@ namespace BootCamp.Chapter
         
         
         // Input function
-        public static void GatherData(ref string firstName, ref string lastName, ref int age, ref float weight, ref float height)
+        public static void GatherData(out string firstName, out string lastName, out int age, out float weight, out float height)
         {
             firstName = GetStringInput("Hello, What is your First name? ");
             lastName = GetStringInput("Hello, What is your Last name? ");
@@ -59,8 +59,8 @@ namespace BootCamp.Chapter
         //Calculate BMI
         public static float CalcBmi(float weight, float height)
         {
-            float bmi = weight / (height * height);
-            return bmi;
+            
+            return weight / (height * height); 
 
         }
     }
