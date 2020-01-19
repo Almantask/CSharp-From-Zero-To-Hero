@@ -6,11 +6,11 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            Descriptor();
-            Descriptor();
+            Interview();
+            Interview();
         }
 
-        public static void Descriptor()
+        public static void Interview()
         {
             //ask user for their name, age, weight, and height
             string name = PromptString("Name: ");
