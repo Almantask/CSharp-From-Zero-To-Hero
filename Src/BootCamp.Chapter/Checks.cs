@@ -12,17 +12,17 @@
     {
         public static int PromptInt(string message)
         {
-            return Lesson3.ConvertStringToInt(message);
+            return Lesson3.PromtpStringToInt(message);
         }
 
         public static string PromptString(string message)
         {
-            return Lesson3.ConvertStringToString(message);
+            return Lesson3.PromptMessage(message);
         }
 
         public static float PromptFloat(string message)
         {
-            return Lesson3.ConvertStringToFloat(message);
+            return Lesson3.PromptStringToFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)

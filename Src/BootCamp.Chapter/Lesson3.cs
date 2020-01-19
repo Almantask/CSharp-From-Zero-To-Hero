@@ -5,19 +5,19 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
-        public static int ConvertStringToInt(string message)
+        public static int PromtpStringToInt(string message)
         {
             Console.Write(message);
             return Convert.ToInt32(Console.ReadLine());
         }
 
-        public static string ConvertStringToString(string message)
+        public static string PromptMessage(string message)
         {
             Console.Write(message);
             return Console.ReadLine();
         }
 
-        public static float ConvertStringToFloat(string message)
+        public static float PromptStringToFloat(string message)
         {
             Console.Write(message);
             return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
@@ -34,11 +34,11 @@ namespace BootCamp.Chapter
 
             while (currentPerson < numberOfPersons)
             {
-                string name = ConvertStringToString("Name: ");
-                string sureName = ConvertStringToString("Surename: ");
-                int age = ConvertStringToInt("Age: ");
-                float weight = ConvertStringToFloat("Weight: ");
-                float height = ConvertStringToFloat("Height: ");
+                string name = PromptMessage("Name: ");
+                string sureName = PromptMessage("Surename: ");
+                int age = PromtpStringToInt("Age: ");
+                float weight = PromptStringToFloat("Weight: ");
+                float height = PromptStringToFloat("Height: ");
 
                 Console.WriteLine($"{name} {sureName} is {age} old, his weight is {weight}kg and his heigth is {height}m");
 
