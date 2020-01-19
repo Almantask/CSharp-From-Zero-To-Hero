@@ -15,8 +15,7 @@ namespace BootCamp.Chapter
             while (backtotop)
 
             {
-                
-          
+
                 //USer data input
 
                 Console.WriteLine("What is your first name?");
@@ -48,25 +47,6 @@ namespace BootCamp.Chapter
                 //Display output to user
                 Console.WriteLine(firstname + " " + secondname + "is " + age + " years old, his weight is " + weightsingle + " kg and his height is " + heightsingle + " cm ");
                 Console.WriteLine("Your BMI is " + BMI);
-
-
-                // Calc BMI scale 
-                if (BMI <= 18.5f)
-                {
-                    Console.WriteLine("You are underweight");
-                }
-                else if (BMI >= 18.6f && BMI <= 24.99f)
-                {
-                    Console.WriteLine("You are normal Weight");
-                }
-                else if (BMI >= 25 && BMI <= 29.99f)
-                {
-                    Console.WriteLine("You are overweight");
-                }
-                else if (BMI >= 30)
-                {
-                    Console.WriteLine("You are obese");
-                }
 
                 //Continue
                 Console.WriteLine("Would you like to do another person Y/N?");
