@@ -11,8 +11,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Lesson3 L3 = new Lesson3();
-            L3.Demo();            
+           
+            Lesson3.Demo();            
         }
         
         
@@ -73,7 +73,7 @@ namespace BootCamp.Chapter
     
     public class Lesson3
     {
-        public void Demo()
+        public static void Demo()
         {
 
 
