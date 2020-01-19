@@ -24,11 +24,11 @@ namespace BootCamp.Chapter
         public static string AddNewPerson()
         {
             //Read user data
-            string name = PrintMessageAndInputString("What is your name?");
-            string surname = PrintMessageAndInputString("What is your surname?");
-            int age = PrintMessageAndInputIntager("How old are you?");
-            float weight = PrintMessageAndInputFloat("What is your weight (in kg)?");
-            float height = PrintMessageAndInputFloat("What is your height (in cm)?");
+            string name = PromptString("What is your name?");
+            string surname = PromptString("What is your surname?");
+            int age = PromptInteger("How old are you?");
+            float weight = PromptFloat("What is your weight (in kg)?");
+            float height = PromptFloat("What is your height (in cm)?");
             //Show message about person
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
 
@@ -45,21 +45,21 @@ namespace BootCamp.Chapter
 
             return decisionToUpper;
         }
-        public static int PrintMessageAndInputIntager(string message)
+        public static int PromptInteger(string message)
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
-
+            
             return int.Parse(input);
         }
-        public static float PrintMessageAndInputFloat(string message)
+        public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
 
             return float.Parse(input);
         }
-        public static string PrintMessageAndInputString(string message)
+        public static string PromptString(string message)
         {
             Console.WriteLine(message);
 

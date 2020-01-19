@@ -13,20 +13,20 @@
         public static int PromptInt(string message)
         {
             // To do: call your implementation. 
-            return Program.PrintMessageAndInputIntager(message);
+            return Program.PromptInteger(message);
         }
 
         public static string PromptString(string message)
         {
             // To do: call your implementation. 
             
-            return Program.PrintMessageAndInputString(message);
+            return Program.PromptString(message);
         }
 
         public static float PromptFloat(string message)
         {
             // To do: call your implementation. 
-            return Program.PrintMessageAndInputFloat(message);
+            return Program.PromptFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
