@@ -42,7 +42,7 @@ namespace BootCamp.Chapter
         public static float RequestFloat(string prompt)
         {
             Console.Write(prompt);
-            return Convert.ToFloat(Console.ReadLine());
+            return float.Parse(Console.ReadLine());
         }
 
         public static void ReportBasicInfo(string firstName, string surname, int age, double weight, double height)
@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
 
         public static double CalculateBodyMassIndex(double weight, double height)
         {
-            return weight / height / height);
+            return weight / height / height;
         }
 
         public static char RequestUserChoiceToRepeatOrNot()

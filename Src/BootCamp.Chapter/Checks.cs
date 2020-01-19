@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
 
         public static float PromptFloat(string message)
         {
-            Lesson3.RequestDouble(message);
+            Lesson3.RequestFloat(message);
             return 0;
         }
 
