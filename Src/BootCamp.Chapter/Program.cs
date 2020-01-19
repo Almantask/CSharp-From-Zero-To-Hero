@@ -6,60 +6,48 @@ namespace BootCamp.Chapter
     {
         public static void Main()
             {
-                PersonDetails();
-            }
 
-        public static void PersonDetails()
+            //run twice
+
+            for (int i = 0; i < 2; i++)
             {
-            string firstName, lastName;
-            float age, weight, height;
+
+                //input first name, last name
+                string firstName, lastName;
 
             Console.Write("Input First Name: ");
             firstName = Console.ReadLine();
             Console.Write("Input Last Name: ");
             lastName = Console.ReadLine();
 
-            // use s and returnValue to tryparse strings to floats
-            string s = "";
-            float returnValue;
+            // input age
+            int age;
 
             Console.Write("Input age: ");
-            s = Console.ReadLine();
-            float.TryParse(s, out returnValue);
-            age = returnValue;
+            string s = Console.ReadLine();
+            int.TryParse(s, out age);
+
+            // input weight and height
+            float weight, height;
 
             Console.Write("Input weight (in kg): ");
             s = Console.ReadLine();
-            float.TryParse(s, out returnValue);
-            weight = returnValue;
+            float.TryParse(s, out weight);
 
             Console.Write("Input height (in cm): ");
             s = Console.ReadLine();
-            float.TryParse(s, out returnValue);
-            height = returnValue;
+            float.TryParse(s, out height);
+            
+            //print info
+            Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
 
-            //gender differences
-            Console.Write("F/M?: ");
-            string gender = "";
-            gender = Console.ReadLine();
+            //calculate and print bmi
+            float bmi = weight / ((height / 100) * (height / 100));
 
-            if (gender == "M")
-            {
-               Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
+            Console.WriteLine(firstName + " " + lastName + " has a BMI of " + bmi + ".");
+
             }
-
-            else
-            {
-                Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, her weight is " + weight + " kg and her height is " + height + " cm.");
-            }
-
-            float bMI = weight / ((height / 100) * (height / 100));
-
-            Console.WriteLine(firstName + " " + lastName + " has a BMI of " + bMI + ".");
-
-            Console.WriteLine("Input details for another person?");
-            PersonDetails();
-            }
+        }
 
     }
 }
