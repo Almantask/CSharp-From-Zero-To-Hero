@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
 
                 Console.WriteLine($"{firstName} {surName} is {age} years old, his weight is {weightInKilograms} kg and his height is {heightInCentimeters} cm.");
 
-                var bodyMassIndex = CalculateBodyMassIndex((float)weightInKilograms, (float)heightInCentimeters);
+                var bodyMassIndex = CalculateBodyMassIndex(weightInKilograms, heightInCentimeters);
                 Console.WriteLine($"Their body mass index is {bodyMassIndex}");
 
                 Console.WriteLine("Press ENTER to continue onto the next iteration...");
