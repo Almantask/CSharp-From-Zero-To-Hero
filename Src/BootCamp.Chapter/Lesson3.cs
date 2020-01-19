@@ -29,19 +29,19 @@ namespace BootCamp.Chapter
 
         public static string RequestString(string prompt)
         {
-            Console.Write("Please enter the person's " + prompt + ": ");
+            Console.Write(prompt);
             return Console.ReadLine();
         }
 
         public static int RequestInt(string prompt)
         {
-            Console.Write("Please enter the person's " + prompt + ": ");
+            Console.Write(prompt);
             return Convert.ToInt32(Console.ReadLine());
         }
 
         public static double RequestDouble(string prompt)
         {
-            Console.Write("Please enter the person's " + prompt + ": ");
+            Console.Write(prompt);
             return Convert.ToDouble(Console.ReadLine());
         }
 
