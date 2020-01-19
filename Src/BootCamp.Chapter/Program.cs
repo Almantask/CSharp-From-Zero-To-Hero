@@ -50,21 +50,21 @@ namespace BootCamp.Chapter
             string decisionToUpper = decision.ToUpperInvariant();
             return decisionToUpper;
         }
-        public static int InputInteger(string message)
+        public static int PrintMessageAndInputIntager(string message)
         {
             Console.WriteLine(message);
             //Convert to int
             int input = int.Parse(Console.ReadLine());
             return input;
         }
-        public static float InputFloat(string message)
+        public static float PrintMessageAndInputFloat(string message)
         {
             Console.WriteLine(message);
             //Convert to float
             float input = float.Parse(Console.ReadLine());
             return input;
         }
-        public static string InputString(string message)
+        public static string PrintMessageAndInputString(string message)
         {
             Console.WriteLine(message);
             //Convert to string
