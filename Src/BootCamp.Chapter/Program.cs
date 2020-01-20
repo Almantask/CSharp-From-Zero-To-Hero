@@ -14,13 +14,13 @@ namespace BootCamp.Chapter
             Console.Write("Please tell me your age: ");
             int age = int.Parse(Console.ReadLine());
             Console.Write("Please tell me your weight in Kg: ");
-            int weight = int.Parse(Console.ReadLine());
+            float weight = float.Parse(Console.ReadLine());
             Console.Write("Please tell me your height in cm: ");
-            double height = double.Parse(Console.ReadLine());
+            float height = float.Parse(Console.ReadLine());
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm .");
             
-            double heightInMeters = height / 100; 
-            double bmi = weight / (heightInMeters * heightInMeters); // BMI = kg/m2
+            float heightInMeters = height / 100; 
+            float bmi = weight / (heightInMeters * heightInMeters); // BMI = kg/m2
             Console.WriteLine($"Your BMI is {bmi}");
 
             // Second person using the vars from the first person because they are not needed anymore.
@@ -31,9 +31,9 @@ namespace BootCamp.Chapter
             Console.Write("Please tell me your age: ");
             age = int.Parse(Console.ReadLine());
             Console.Write("Please tell me your weight in Kg: ");
-            weight = int.Parse(Console.ReadLine());
+            weight = float.Parse(Console.ReadLine());
             Console.Write("Please tell me your height in cm: ");
-            height = double.Parse(Console.ReadLine());
+            height = float.Parse(Console.ReadLine());
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm .");
 
             heightInMeters = height / 100;
