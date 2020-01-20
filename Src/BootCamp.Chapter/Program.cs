@@ -6,36 +6,30 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            //declare my variables
-            string firstName;
-            string lastName;
-            float age;
-            float weightInKg;
-            float height;
-
+            
             //ask for first input of name
             // then send call method to make sure it fits name paramter of only letters and assign to name variable
             Console.WriteLine("Please enter your first name.");
-            firstName = CheckStringForLettersOnly();
+            string firstName = CheckStringForLettersOnly();
 
             // same as first name but for last name
             Console.WriteLine("Please enter your last name.");
-            lastName = CheckStringForLettersOnly();
+            string lastName = CheckStringForLettersOnly();
 
 
             // same as name inputs but for age
             //call age method and check to make sure it fits parameter of numbers only.
             Console.WriteLine("Please enter your age.");
             //I went with float for age because maybe someone likes to put percent of new age such as 7.5 years old...
-            age = float.Parse(CheckStringForDigitsOnly());
+            float age = float.Parse(CheckStringForDigitsOnly());
 
             //same as age
             Console.WriteLine("Please enter your weight in kg.");
-            weightInKg = float.Parse(CheckStringForDigitsOnly());
+            float weightInKg = float.Parse(CheckStringForDigitsOnly());
 
             //same as age
             Console.WriteLine("Please enter your height in cm.");
-            height = float.Parse(CheckStringForDigitsOnly());
+            float height = float.Parse(CheckStringForDigitsOnly());
 
 
             //after all values added run this at end of program
@@ -100,7 +94,7 @@ namespace BootCamp.Chapter
             {
                 testDigits = Console.ReadLine();
 
-                if (!IsAllDigits(testDigits))
+                if (! IsAllDigits(testDigits))
                 {
                     Console.WriteLine("You entereted that wrong. Please try again.\n");
                 }
