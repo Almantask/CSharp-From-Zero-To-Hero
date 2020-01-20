@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter
 {
-    class BMI
+    class Bmi
     {
         public static void CalculateBmi(float weightInKg, float height)
         {

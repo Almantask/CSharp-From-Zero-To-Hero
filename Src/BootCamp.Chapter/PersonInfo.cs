@@ -38,7 +38,7 @@ namespace BootCamp.Chapter
                               $" your height is {height} cm. ```");
 
             //Call class method and pss in the weight and height of person.
-           BMI.CalculateBmi(weightInKg, height);
+           Bmi.CalculateBmi(weightInKg, height);
         }
 
         
