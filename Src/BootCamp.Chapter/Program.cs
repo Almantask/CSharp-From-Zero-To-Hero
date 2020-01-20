@@ -44,8 +44,9 @@ namespace BootCamp.Chapter
                 Console.WriteLine("\nWould you like to enter another person? " +
                                                            "Press Y to enter another or any other button to exit.");
 
-                string checkAnswer = Console.ReadLine();
-                if(checkAnswer.ToLower() != "y" )
+                //changed this to .ToLowerInvariant() as suggested
+                string checkAnswer = Console.ReadLine().ToLowerInvariant();
+                if(checkAnswer != "y" )
                 {
                     Console.WriteLine("You chose not to enter another user. Thank you, goodbye.");
                     moreEntries = false;
