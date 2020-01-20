@@ -17,11 +17,10 @@ namespace BootCamp.Chapter
             int weight = int.Parse(Console.ReadLine());
             Console.Write("Please tell me your height in cm: ");
             double height = double.Parse(Console.ReadLine());
-            // Tom Jefferson is 19 years old, his weight is 50 kg and his height is 156.5 cm. 
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm .");
-            // BMI = kg/m2
-            double heightInMeters = height / 100;
-            double bmi = weight / (heightInMeters * heightInMeters);
+            
+            double heightInMeters = height / 100; 
+            double bmi = weight / (heightInMeters * heightInMeters); // BMI = kg/m2
             Console.WriteLine($"Your BMI is {bmi}");
 
             // Second person using the vars from the first person because they are not needed anymore.
@@ -35,11 +34,10 @@ namespace BootCamp.Chapter
             weight = int.Parse(Console.ReadLine());
             Console.Write("Please tell me your height in cm: ");
             height = double.Parse(Console.ReadLine());
-            // Tom Jefferson is 19 years old, his weight is 50 kg and his height is 156.5 cm. 
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm .");
-            // BMI = kg/m2
+
             heightInMeters = height / 100;
-            bmi = weight / (heightInMeters * heightInMeters);
+            bmi = weight / (heightInMeters * heightInMeters); // BMI = kg/m2
             Console.WriteLine($"Your BMI is {bmi}");
         }
     }
