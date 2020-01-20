@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"\n``` {firstName} {lastName} is {age} years old, your weight is {weightInKg} kg and" +
                               $" your height is {height} cm. ```");
 
-            //Call class method and pss in the weight and height of person.
+            //Call class method and passes in the weight and height of person.
            Bmi.CalculateBmi(weightInKg, height);
         }
 
