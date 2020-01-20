@@ -7,23 +7,17 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string name;
             string askAgain;
-            int age;
-            int weight;
-            int height;
-            
-
             do
             {
                 Console.WriteLine("What is your name?");
-                name = Console.ReadLine();
+                string name = Console.ReadLine();
                 Console.WriteLine("How old are you?");
-                age = int.Parse(Console.ReadLine());
+                int age = int.Parse(Console.ReadLine());
                 Console.WriteLine("How tall are you in inches?");
-                height = int.Parse(Console.ReadLine());
+                float height = float.Parse(Console.ReadLine());
                 Console.WriteLine("How much do you weight in pounds?");
-                weight = int.Parse(Console.ReadLine());
+                float weight = float.Parse(Console.ReadLine());
                 
                 float calculateBMI = 703f * weight / (height * height);
 
