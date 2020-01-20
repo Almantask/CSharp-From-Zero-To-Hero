@@ -16,7 +16,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData(100, 10, 1)]
         public void CalculateBmi_With_ValidInput_Returns_Expected(float weightKg, float heightM, float expectedBmi)
         {
-            var bmi = Checks.CalculateBmi(weightKg, heightM);
+            var bmi = Lesson3.CalculateBmi(weightKg, heightM);
 
             bmi.Should().Be(expectedBmi);
         }
@@ -28,7 +28,7 @@ namespace BootCamp.Chapter.Tests
         {
             var consoleOutput = ConsoleStub.StubConsole(input);
 
-            var convertedInput = Checks.PromptString(PromptMessage);
+            var convertedInput = Lesson3.PromptString(PromptMessage);
 
             var promptedMessage = consoleOutput.ToString().Trim();
             promptedMessage.Should().Be(PromptMessage);
@@ -42,7 +42,7 @@ namespace BootCamp.Chapter.Tests
         {
             var consoleOutput = ConsoleStub.StubConsole(input);
 
-            var convertedInput = Checks.PromptInt(PromptMessage);
+            var convertedInput = Lesson3.PromptInt(PromptMessage);
 
             var promptedMessage = consoleOutput.ToString().Trim();
             promptedMessage.Should().Be(PromptMessage);
@@ -56,7 +56,7 @@ namespace BootCamp.Chapter.Tests
         {
             var consoleOutput = ConsoleStub.StubConsole(input);
 
-            var convertedInput = Checks.PromptFloat(PromptMessage);
+            var convertedInput = Lesson3.PromptFloat(PromptMessage);
 
             var promptedMessage = consoleOutput.ToString().Trim();
             promptedMessage.Should().Be(PromptMessage);
