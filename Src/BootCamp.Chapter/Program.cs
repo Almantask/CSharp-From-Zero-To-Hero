@@ -6,40 +6,52 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            
-            //ask for first input of name
-            // then send call method to make sure it fits name paramter of only letters and assign to name variable
-            Console.WriteLine("Please enter your first name.");
-            string firstName = CheckStringForLettersOnly();
+            bool moreEntries = true;
+            while (moreEntries)
+            {
+                //ask for first input of name
+                // then send call method to make sure it fits name paramter of only letters and assign to name variable
+                Console.WriteLine("Please enter your first name.");
+                string firstName = CheckStringForLettersOnly();
 
-            // same as first name but for last name
-            Console.WriteLine("Please enter your last name.");
-            string lastName = CheckStringForLettersOnly();
-
-
-            // same as name inputs but for age
-            //call age method and check to make sure it fits parameter of numbers only.
-            Console.WriteLine("Please enter your age.");
-            //I went with float for age because maybe someone likes to put percent of new age such as 7.5 years old...
-            float age = float.Parse(CheckStringForDigitsOnly());
-
-            //same as age
-            Console.WriteLine("Please enter your weight in kg.");
-            float weightInKg = float.Parse(CheckStringForDigitsOnly());
-
-            //same as age
-            Console.WriteLine("Please enter your height in cm.");
-            float height = float.Parse(CheckStringForDigitsOnly());
+                // same as first name but for last name
+                Console.WriteLine("Please enter your last name.");
+                string lastName = CheckStringForLettersOnly();
 
 
-            //after all values added run this at end of program
-            Console.WriteLine("Thank you for your information. You entered:");
+                // same as name inputs but for age
+                //call age method and check to make sure it fits parameter of numbers only.
+                Console.WriteLine("Please enter your age.");
+                //I went with float for age because maybe someone likes to put percent of new age such as 7.5 years old...
+                float age = float.Parse(CheckStringForDigitsOnly());
 
-            //now dispaly the data that was given in a sentence. 
-            Console.WriteLine($"\n``` {firstName} {lastName} is {age} years old, your weight is {weightInKg} kg and" +
-                              $" your height is {height} cm. ```");
+                //same as age
+                Console.WriteLine("Please enter your weight in kg.");
+                float weightInKg = float.Parse(CheckStringForDigitsOnly());
 
-           
+                //same as age
+                Console.WriteLine("Please enter your height in cm.");
+                float height = float.Parse(CheckStringForDigitsOnly());
+
+
+                //after all values added run this at end of program
+                Console.WriteLine("Thank you for your information. You entered:");
+
+                //now dispaly the data that was given in a sentence. 
+                Console.WriteLine($"\n``` {firstName} {lastName} is {age} years old, your weight is {weightInKg} kg and" +
+                                  $" your height is {height} cm. ```");
+
+                Console.WriteLine("\nWould you like to enter another person? " +
+                                                           "Press Y to enter another or any other button to exit.");
+
+                string checkAnswer = Console.ReadLine();
+                if(checkAnswer.ToLower() != "y" )
+                {
+                    Console.WriteLine("You chose not to enter another user. Thank you, goodbye.");
+                    moreEntries = false;
+                }
+
+            }
         }
 
         //Method that checks if string has only letters in it
