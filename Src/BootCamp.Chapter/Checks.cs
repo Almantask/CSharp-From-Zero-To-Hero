@@ -34,7 +34,7 @@
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation. 
-            BMI.CalculateBMI(85, 160);
+            BMI.CalculateBmi(85, 160);
             return 0;
         }
     }

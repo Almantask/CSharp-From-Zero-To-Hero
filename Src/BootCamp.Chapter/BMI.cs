@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     class BMI
     {
-        public static void CalculateBMI(float weightInKg, float height)
+        public static void CalculateBmi(float weightInKg, float height)
         {
             float bmi = weightInKg / (height * height);
 
