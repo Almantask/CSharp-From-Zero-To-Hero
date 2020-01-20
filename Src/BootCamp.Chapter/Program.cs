@@ -18,7 +18,6 @@ namespace BootCamp.Chapter
             float weight1 = float.Parse(Console.ReadLine());
             Console.Write("How tall are you? (cm) ");
             float height1 = float.Parse(Console.ReadLine());
-            // Testing string + variable layouts
             Console.WriteLine("\n{0} is {1}, and weighs {2}kg at a height of {3}cm.\n", name1, age1, weight1, height1);
 
             // Their BMI
@@ -37,7 +36,6 @@ namespace BootCamp.Chapter
             float weight2 = float.Parse(Console.ReadLine());
             Console.Write("How tall are you? (cm) ");
             float height2 = float.Parse(Console.ReadLine());
-            // Testing string + variable layouts
             Console.WriteLine("\n{0} is {1}, and weighs {2}kg at a height of {3}cm.\n", name2, age2, weight2, height2);
 
             // Their BMI
