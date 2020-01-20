@@ -47,19 +47,20 @@ namespace BootCamp.Chapter
 
         public static void ReportBasicInfo(string firstName, string surname, int age, double weight, double height)
         {
-            Console.WriteLine("\n" + firstName + " " + surname +
+            Console.WriteLine();
+            Console.WriteLine(firstName + " " + surname +
                 " is " + age + " years old, " +
                 "their weight is " + weight + " kg " +
                 "and their height is " + height + " m.");
         }
 
-        public static void ReportBodyMassIndex(string firstName, double weight, double height)
+        public static void ReportBodyMassIndex(string firstName, float weight, float height)
         {
             Console.WriteLine();
             Console.WriteLine(firstName + "s BMI is " + (CalculateBodyMassIndex(weight, height)) + ".");
         }
 
-        public static double CalculateBodyMassIndex(double weight, double height)
+        public static float CalculateBodyMassIndex(float weight, float height)
         {
             return weight / height / height;
         }
