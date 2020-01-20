@@ -30,11 +30,11 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine("You are Underweight.");
             } 
-            else if (BMI >= 18.5 & BMI < 25)
+            else if (BMI >= 18.5 && BMI < 25)
             {
                 Console.WriteLine("You have a Normal Weight.");
             }
-            else if (BMI >= 25 & BMI < 30)
+            else if (BMI >= 25 && BMI < 30)
             {
                 Console.WriteLine("You are Overweight.");
             }
