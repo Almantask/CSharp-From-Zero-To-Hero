@@ -16,7 +16,6 @@ namespace BootCamp.Chapter
                 moreEntries = AddAnotherPerson();
             }
 
-
         }
 
         public static bool AddAnotherPerson()
@@ -44,12 +43,12 @@ namespace BootCamp.Chapter
             
             Console.WriteLine("Please enter your first name.");
             string firstName = CheckStringForLettersOnly();
-            ConvertToString(firstName);
+            
 
        
             Console.WriteLine("Please enter your last name.");
             string lastName = CheckStringForLettersOnly();
-            ConvertToString(lastName);
+           
 
 
             Console.WriteLine("Please enter your age.");
