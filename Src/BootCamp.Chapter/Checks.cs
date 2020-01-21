@@ -23,6 +23,7 @@
         {
             // To do: call your implementation. 
            string convertedToString = Lesson3.ConvertToString(message);
+
             return convertedToString;
         }
 
@@ -30,6 +31,7 @@
         {
             // To do: call your implementation. 
            float convertedToFloat = Lesson3.ConvertToFloat(message);
+
             return convertedToFloat;
         }
 
@@ -37,6 +39,7 @@
         {
             // To do: call your implementation. 
            float convertedBmi = Lesson3.CalculateBmi(weight, height);
+
             return convertedBmi;
         }
     }
