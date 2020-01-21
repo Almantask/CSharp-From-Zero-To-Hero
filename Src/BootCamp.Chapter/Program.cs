@@ -6,17 +6,13 @@ namespace BootCamp.Chapter
     {
         public static void Main()
             {
-
             //run twice
-
             for (int i = 0; i < 2; i++)
             {
 
             //input first name, last name
-            Console.Write("Input First Name: ");
-            string firstName = Console.ReadLine();
-            Console.Write("Input Last Name: ");
-            string lastName = Console.ReadLine();
+            string firstName = checkStringInput("Input First Name: ");
+            string lastName = checkStringInput("Input Last Name: ");
 
             // input age
             Console.Write("Input age: ");
@@ -38,8 +34,14 @@ namespace BootCamp.Chapter
             //calculate and print bmi
             float bmi = weight / ((height / 100) * (height / 100));
             Console.WriteLine(firstName + " " + lastName + " has a BMI of " + bmi + ".");
-
             }
+        }
+
+        public static string checkStringInput(string checkString)
+        {
+            Console.WriteLine(checkString);
+            string returnString = Console.ReadLine();
+            return returnString;
         }
 
     }
