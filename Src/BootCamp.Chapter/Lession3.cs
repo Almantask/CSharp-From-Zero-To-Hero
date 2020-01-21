@@ -18,14 +18,13 @@ namespace BootCamp.Chapter
             var age = MessageInt("What is your age?");
             var weight = MessageFloat("What is your weight in kg?");
             var height = MessageFloat("What is your height in Meters?");
-            float BMI = CalcBMI(weight, height);
            
             //Calc and return BMI
             CalcBMI(weight, height);
 
             //Display output to user
             Console.WriteLine(firstname + " " + secondname + "is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm ");
-            Console.WriteLine("Your BMI is " + BMI);
+            Console.WriteLine("Your BMI is " + CalcBMI(weight, height));
 
             //Continue
             Console.WriteLine("Would you like to do another person Y/N?");
@@ -46,7 +45,6 @@ namespace BootCamp.Chapter
         {
             return Convert.ToSingle(MessageString(message));
         }
-
         public static int MessageInt(string message)
         {
             return Convert.ToInt32(MessageString(message));
@@ -60,7 +58,8 @@ namespace BootCamp.Chapter
 
                 //Calc for BMI
                 var Calc1 = weightsingle / heightsingle;
-                return Calc1 / heightsingle;
+                var BMI = Calc1 / heightsingle;
+                return BMI;
         }
     }     
 }
