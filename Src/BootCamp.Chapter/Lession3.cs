@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
             //User data input
             var firstname = MessageString("What is your first name ?");
             var secondname = MessageString("What is your second name ? ");
-            var age = MessageFloat("What is your age?");
+            var age = MessageInt("What is your age?");
             var weight = MessageFloat("What is your weight in kg?");
             var height = MessageFloat("What is your height in Meters?");
             float BMI = CalcBMI(weight, height);
@@ -46,6 +46,12 @@ namespace BootCamp.Chapter
         {
             return Convert.ToSingle(MessageString(message));
         }
+
+        public static int MessageInt(string message)
+        {
+            return Convert.ToInt32(MessageString(message));
+        }
+
         public static float CalcBMI(float weight, float height)
         {
                 //Convert to Singles
