@@ -64,7 +64,7 @@ namespace BootCamp.Chapter.Tests
 
             ConsoleOutput.Should().Be($"{PromptMessage}{Environment.NewLine}Name cannot be empty.");
             const string invalid = "-";
-            convertedInput.Should().Be("-");
+            convertedInput.Should().Be(invalid);
         }
 
         [Theory]
@@ -119,7 +119,6 @@ namespace BootCamp.Chapter.Tests
             var convertedInput = Checks.PromptFloat(PromptMessage);
 
             ConsoleOutput.Should().Be(PromptMessage + errorMessage);
-
             const float invalid = -1;
             convertedInput.Should().Be(invalid);
         }
