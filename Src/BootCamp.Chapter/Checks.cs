@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
+    
     /// <summary>
     /// Test class is used to test your implementation.
     /// Each homework will have a set of steps that you will have to do.
@@ -14,28 +16,32 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
+        
         public static int PromptInt(string message)
         {
+            
             // To do: call your implementation. 
-            return 0;
+            return Convert.ToInt32(PromptString(message)); ;
         }
 
         public static string PromptString(string message)
         {
             // To do: call your implementation. 
-            return "";
+            Console.WriteLine(message);
+            return Console.ReadLine();
         }
 
         public static float PromptFloat(string message)
         {
             // To do: call your implementation. 
-            return 0;
+            return Convert.ToSingle(PromptString(message), CultureInfo.InvariantCulture);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation. 
-            return 0;
+            float bmi = (weight / (height * height));
+            return bmi;
         }
     }
 }

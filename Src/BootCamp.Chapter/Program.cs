@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Globalization;
 using Console = System.Console;
 
 namespace BootCamp.Chapter
@@ -9,6 +10,14 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Lesson3.Demo();
         }
+
+
+
+        
     }
 }
+    
+ 
+
