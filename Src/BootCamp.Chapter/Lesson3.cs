@@ -13,9 +13,19 @@ namespace BootCamp.Chapter
             while (moreEntries)
             {
                 UserInfo();
+                string convertedString = ConvertToString("\nEnter something to be converted to String");
+                Console.WriteLine($"Your converted string is \"{convertedString}\"");
+
+                int convertedInt = ConvertToInt("\nEnter a number to be converted to Int, no '.'");
+                Console.WriteLine($"Your converted int is \"{convertedInt}\"");
+
+                float convertedFloat = ConvertToFloat("\nEnter something to be converted to a float. Only numbers.");
+                Console.WriteLine($"Your converted float is \"{convertedFloat}\"");
+
                 moreEntries = AddAnotherPerson();
             }
-
+           
+            
         }
 
         public static bool AddAnotherPerson()
@@ -171,55 +181,26 @@ namespace BootCamp.Chapter
         public static int ConvertToInt(string message)
         {
             Console.WriteLine(message);
-            int toAnInt;
-            if(count == 0)
-            {
-                toAnInt = 10;
-                count++;
-            }
-            else
-            {
-                toAnInt = 1;
-                count = 0;
-            }
+
+            int toAnInt = int.Parse(Console.ReadLine());
             return toAnInt;
         }
 
-       
 
         public static string ConvertToString(string message)
         {
             Console.WriteLine(message);
-            string toAString;
-            if (count == 0)
-            {
-                toAString = "Tom";
-                count++;
-            }
-            else
-            {
-                toAString = "X";
-                count = 0;
-            }
-           return toAString;
+            string readInString = Console.ReadLine().ToString();
+
+            return readInString;
         }
       
 
         public static float ConvertToFloat(string message)
         {
             Console.WriteLine(message);
-            float toAFloat;
+            float toAFloat = float.Parse(Console.ReadLine());
 
-            if (count == 0)
-            {
-                toAFloat = 10f;
-                count++;
-            }
-            else
-            {
-                toAFloat = 1f;
-                count = 0;
-            }
             return toAFloat;
         }
 
