@@ -7,7 +7,7 @@ namespace BootCamp.Chapter.Tests.Utils
 {
     public static class ConsoleStub
     {
-        private const string testFileExtension = "consoleStub";
+        public const string TestFileExtension = "consoleStub";
 
         public static StringWriter StubConsole(string readLineReturn)
         {
@@ -25,7 +25,7 @@ namespace BootCamp.Chapter.Tests.Utils
         /// </summary>
         public static StreamWriter StubConsole(string readLineReturn, string testKey)
         {
-            var output = new StreamWriter($"{testKey}.{testFileExtension}");
+            var output = new StreamWriter($"{testKey}.{TestFileExtension}");
             Console.SetOut(output);
 
             var input = new StringReader(readLineReturn);
@@ -40,7 +40,7 @@ namespace BootCamp.Chapter.Tests.Utils
         /// </summary>
         public static string ReadAllText(string testKey)
         {
-            var output = File.ReadAllText($"{testKey}.{testFileExtension}");
+            var output = File.ReadAllText($"{testKey}.{TestFileExtension}");
 
             return output;
         }
@@ -51,7 +51,7 @@ namespace BootCamp.Chapter.Tests.Utils
         /// </summary>
         public static void Cleanup(string testKey)
         {
-            File.Delete($"{testKey}.{testFileExtension}");
+            File.Delete($"{testKey}.{TestFileExtension}");
         }
     }
 }
