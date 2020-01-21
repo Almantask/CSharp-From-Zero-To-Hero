@@ -11,8 +11,7 @@
     public static class Checks
     {
         public static int PromptInt(string message)
-        {
-            // To do: call your implementation. 
+        { 
             int convertedToInt = Lesson3.ConvertToInt(message);
 
             return convertedToInt;
@@ -21,7 +20,7 @@
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
+            
            string convertedToString = Lesson3.ConvertToString(message);
 
             return convertedToString;
@@ -29,7 +28,6 @@
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
            float convertedToFloat = Lesson3.ConvertToFloat(message);
 
             return convertedToFloat;
@@ -37,7 +35,6 @@
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
            float convertedBmi = Lesson3.CalculateBmi(weight, height);
 
             return convertedBmi;
