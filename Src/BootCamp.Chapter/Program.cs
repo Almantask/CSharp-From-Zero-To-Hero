@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿
+
+namespace BootCamp.Chapter
 {
     class Program
     {
