@@ -30,9 +30,9 @@ namespace BootCamp.Chapter
             Console.WriteLine("Would you like to do another person Y/N?");
             var option = Console.ReadLine();
             if ((option) == "N" || (option) == "n")
-            {
-            backtotop = false;
-            }
+                {
+                backtotop = false;
+                }
 
             }
         }
