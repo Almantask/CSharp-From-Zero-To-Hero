@@ -26,8 +26,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         /// <summary>
-        /// Stubs <see cref="Console.ReadLine()"/> and fakes <see cref="Console.WriteLine()"/>.
-        /// ReadLine will be the value set and writes will be redirected to file.
+        /// Stubs <see cref="Console.ReadLine()"/> with the value set.
         /// </summary>
         protected string ConsoleInput
         {
