@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter
 {
-    public class HwFunctions
+    public class Lesson3
     {
         public static string PromptString(string message)
         {
