@@ -39,10 +39,10 @@ namespace BootCamp.Chapter.Tests
         }
 
         /// <summary>
-        /// Fakes <see cref="Console.WriteLine()"/>
+        /// Fakes <see cref="Console.WriteLine()"/>.
         /// Console output goes to file.
         /// </summary>
-        protected void FakeConsoleOutput()
+        protected void RedirectConsoleToFile()
         {
             _testKey = Guid.NewGuid().ToString();
             _consoleOutput = new StreamWriter($"{_testKey}.{FakeConsole.TestFileExtension}");
@@ -50,7 +50,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         /// <summary>
-        /// Used for identifying test file for the current test case console stub output.
+        /// Used for identifying test file for the current test case console redirected output.
         /// </summary>
         private string _testKey;
         private StreamWriter _consoleOutput;
