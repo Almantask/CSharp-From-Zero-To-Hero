@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         {
             bool calculateAgain = true;
 
-            while (calculateAgain == true)
+            while (calculateAgain)
             {
                 Console.WriteLine("BMI Calculator");
 
@@ -60,13 +60,13 @@ namespace BootCamp.Chapter
                     continueTheFight = Console.ReadLine();
                 }
 
-                if (continueTheFight == "y")
+                if (continueTheFight == "n")
                 {
-                    calculateAgain = true;
+                    calculateAgain = false;
                 }
                 else
                 {
-                    calculateAgain = false;
+                    Console.WriteLine("Something went wrong.");
                 }
 
                 Console.WriteLine("Exiting...");
