@@ -15,6 +15,8 @@ namespace BootCamp.Chapter
                 UserInfo();
                 moreEntries = AddAnotherPerson();
             }
+
+
         }
 
         public static bool AddAnotherPerson()
@@ -42,15 +44,18 @@ namespace BootCamp.Chapter
             
             Console.WriteLine("Please enter your first name.");
             string firstName = CheckStringForLettersOnly();
+            ConvertToString(firstName);
 
        
             Console.WriteLine("Please enter your last name.");
             string lastName = CheckStringForLettersOnly();
+            ConvertToString(lastName);
 
 
             Console.WriteLine("Please enter your age.");
             //I went with float for age because maybe someone likes to put percent of new age such as 7.5 years old...
             float age = float.Parse(CheckStringForDigitsOnly());
+           
 
          
             Console.WriteLine("Please enter your weight in kg.");

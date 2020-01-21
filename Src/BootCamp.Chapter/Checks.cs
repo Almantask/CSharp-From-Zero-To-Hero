@@ -11,33 +11,27 @@
     public static class Checks
     {
         public static int PromptInt(string message)
-        { 
-            int convertedToInt = Lesson3.ConvertToInt(message);
-
-            return convertedToInt;
+        {
             
+            return Lesson3.ConvertToInt(message);
         }
 
         public static string PromptString(string message)
         {
-            
-           string convertedToString = Lesson3.ConvertToString(message);
-
-            return convertedToString;
+            return Lesson3.ConvertToString(message);
         }
+
+            
 
         public static float PromptFloat(string message)
         {
-           float convertedToFloat = Lesson3.ConvertToFloat(message);
-
-            return convertedToFloat;
+         return Lesson3.ConvertToFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-           float convertedBmi = Lesson3.CalculateBmi(weight, height);
+           return Lesson3.CalculateBmi(weight, height);
 
-            return convertedBmi;
         }
     }
 }
