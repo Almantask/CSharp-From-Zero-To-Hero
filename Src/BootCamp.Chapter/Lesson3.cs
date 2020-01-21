@@ -157,25 +157,19 @@ namespace BootCamp.Chapter
         //For Checks
         public static int ConvertToInt(string message)
         {
-           // Console.WriteLine("Type something and it will be returned as an int.");
             int toAnInt = int.Parse(message);
-           // Console.WriteLine($"The converted entry is: {toAnInt}");
             return toAnInt;
         }
 
         public static string ConvertToString(string message)
         {
-           // Console.WriteLine("Type something and it will be returned as a string.");
             string toAString = message;
-            // Console.WriteLine($"The converted entry is {toAString}");
             return toAString;
         }
 
         public static float ConvertToFloat(string message)
         {
-            //Console.WriteLine("Type something and it will be returned as a string.");
             float toAFloat = float.Parse(message);
-            //Console.WriteLine($"The converted entry is {toAFloat}");
             return toAFloat;
         }
 
