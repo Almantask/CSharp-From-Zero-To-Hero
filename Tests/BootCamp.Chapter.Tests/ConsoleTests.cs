@@ -59,6 +59,7 @@ namespace BootCamp.Chapter.Tests
         {
             if (_testKey != null)
             {
+                _consoleOutput.Dispose();
                 FakeConsole.Cleanup(_testKey);
             }
         }
