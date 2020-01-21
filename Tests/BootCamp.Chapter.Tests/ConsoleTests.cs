@@ -33,20 +33,9 @@ namespace BootCamp.Chapter.Tests
         {
             set
             {
-                _testKey = Guid.NewGuid().ToString();
-                _consoleOutput = FakeConsole.Initialize(value, _testKey);
+                var input = new StringReader(value);
+                Console.SetIn(input);
             }
-        }
-
-        /// <summary>
-        /// Fakes <see cref="Console.WriteLine()"/>.
-        /// Console output goes to file.
-        /// </summary>
-        protected void RedirectConsoleToFile()
-        {
-            _testKey = Guid.NewGuid().ToString();
-            _consoleOutput = new StreamWriter($"{_testKey}.{FakeConsole.TestFileExtension}");
-            Console.SetOut(_consoleOutput);
         }
 
         /// <summary>
@@ -54,6 +43,22 @@ namespace BootCamp.Chapter.Tests
         /// </summary>
         private string _testKey;
         private StreamWriter _consoleOutput;
+
+        public ConsoleTests()
+        {
+            RedirectConsoleToFile();
+        }
+
+        /// <summary>
+        /// Fakes <see cref="Console.WriteLine()"/>.
+        /// Console output goes to file.
+        /// </summary>
+        private void RedirectConsoleToFile()
+        {
+            _testKey = Guid.NewGuid().ToString();
+            _consoleOutput = new StreamWriter($"{_testKey}.{FakeConsole.TestFileExtension}");
+            Console.SetOut(_consoleOutput);
+        }
 
         public void Dispose()
         {
