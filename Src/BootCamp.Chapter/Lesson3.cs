@@ -170,13 +170,6 @@ namespace BootCamp.Chapter
             return bmi;
         }
 
-
-
-
-
-        //I know there will be 2 inputs so I count to get right return string
-        static int count;
-
         //For Checks
         public static int ConvertToInt(string message)
         {
@@ -190,7 +183,7 @@ namespace BootCamp.Chapter
         public static string ConvertToString(string message)
         {
             Console.WriteLine(message);
-            string readInString = Console.ReadLine().ToString();
+            string readInString = Console.ReadLine();
 
             return readInString;
         }
