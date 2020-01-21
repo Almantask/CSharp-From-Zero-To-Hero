@@ -5,11 +5,11 @@ using System.Text;
 
 namespace BootCamp.Chapter.Tests.Utils
 {
-    public static class ConsoleStub
+    public static class FakeConsole
     {
         public const string TestFileExtension = "consoleStub";
 
-        public static StringWriter StubConsole(string readLineReturn)
+        public static StringWriter Initialize(string readLineReturn)
         {
             var output = new StringWriter();
             Console.SetOut(output);
@@ -21,9 +21,10 @@ namespace BootCamp.Chapter.Tests.Utils
         }
 
         /// <summary>
-        /// Writes console output to a file called {testKey}.consoleStub
+        /// Fakes console output to write to a file called {testKey}.consoleStub
+        /// Stubs out console input.
         /// </summary>
-        public static StreamWriter StubConsole(string readLineReturn, string testKey)
+        public static StreamWriter Initialize(string readLineReturn, string testKey)
         {
             var output = new StreamWriter($"{testKey}.{TestFileExtension}");
             Console.SetOut(output);

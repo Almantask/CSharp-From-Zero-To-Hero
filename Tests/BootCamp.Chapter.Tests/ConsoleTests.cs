@@ -19,45 +19,48 @@ namespace BootCamp.Chapter.Tests
                 }
 
                 _consoleOutput.Dispose();
-                var content = ConsoleStub.ReadAllText(_testKey);
+                var content = FakeConsole.ReadAllText(_testKey);
 
                 return content;
             }
         }
 
         /// <summary>
-        /// Stubs <see cref="Console.ReadLine()"/> and <see cref="Console.WriteLine()"/>.
-        /// ReadLine will be the value set and writes will go to file.
+        /// Stubs <see cref="Console.ReadLine()"/> and fakes <see cref="Console.WriteLine()"/>.
+        /// ReadLine will be the value set and writes will be redirected to file.
         /// </summary>
         protected string ConsoleInput
         {
             set
             {
                 _testKey = Guid.NewGuid().ToString();
-                _consoleOutput = ConsoleStub.StubConsole(value, _testKey);
+                _consoleOutput = FakeConsole.Initialize(value, _testKey);
             }
         }
 
         /// <summary>
-        /// Stubs out <see cref="Console.WriteLine()"/>
+        /// Fakes <see cref="Console.WriteLine()"/>
         /// Console output goes to file.
         /// </summary>
         protected void StubConsoleOutput()
         {
             _testKey = Guid.NewGuid().ToString();
-            var output = new StreamWriter($"{_testKey}.{ConsoleStub.TestFileExtension}");
-            Console.SetOut(output);
+            _consoleOutput = new StreamWriter($"{_testKey}.{FakeConsole.TestFileExtension}");
+            Console.SetOut(_consoleOutput);
         }
 
-        private const string PromptMessage = "Testing";
+        /// <summary>
+        /// Used for identifying test file for the current test case console stub output.
+        /// </summary>
         private string _testKey;
         private StreamWriter _consoleOutput;
 
         public void Dispose()
         {
-            if (_testKey == null) return;
-
-            ConsoleStub.Cleanup(_testKey);
+            if (_testKey != null)
+            {
+                FakeConsole.Cleanup(_testKey);
+            }
         }
     }
 }
