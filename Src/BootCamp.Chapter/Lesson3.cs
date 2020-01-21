@@ -162,18 +162,20 @@ namespace BootCamp.Chapter
             return toAnInt;
         }
 
-        public static void ConvertToString()
+        public static string ConvertToString(string message)
         {
-            Console.WriteLine("Type something and it will be returned as a string.");
-            string toAString = Console.ReadLine();
-            Console.WriteLine($"The converted entry is {toAString}");
+           // Console.WriteLine("Type something and it will be returned as a string.");
+            string toAString = message;
+            // Console.WriteLine($"The converted entry is {toAString}");
+            return toAString;
         }
 
-        public static void ConvertToFloat()
+        public static float ConvertToFloat(string message)
         {
-            Console.WriteLine("Type something and it will be returned as a string.");
-            float toAFloat = float.Parse(Console.ReadLine());
-            Console.WriteLine($"The converted entry is {toAFloat}");
+            //Console.WriteLine("Type something and it will be returned as a string.");
+            float toAFloat = float.Parse(message);
+            //Console.WriteLine($"The converted entry is {toAFloat}");
+            return toAFloat;
         }
 
 
