@@ -12,14 +12,14 @@ namespace BootCamp.Chapter
             // First Person Start.
             Console.WriteLine("Hello person one, please enter your details below.");
 
-            Person();
+            ProcessPerson();
 
             Console.WriteLine();
 
             // Second Person Start
             Console.WriteLine("Hello person two, let's compare you with person one.");
 
-            Person();
+            ProcessPerson();
 
 
             // End.
@@ -33,15 +33,15 @@ namespace BootCamp.Chapter
         }
 
 
-        public static void Person()
+        public static void ProcessPerson()
         {
-            string firstName = EnterName("Please enter your first name: ");
-            string lastName = EnterName("Please enter your last name: ");
+            string firstName = PromptString("Please enter your first name: ");
+            string lastName = PromptString("Please enter your last name: ");
 
-            int age = Age("Enter your Age: ");
+            int age = PromptInt("Enter your Age: ");
 
-            float weight = Stats("Please enter your weight in KG: ");
-            float height = Stats("Please enter your weight in Meters: ");
+            float weight = PromptFloat("Please enter your weight in KG: ");
+            float height = PromptFloat("Please enter your weight in Meters: ");
 
             float bmi = CalculateBmi(weight, height);
 
@@ -50,21 +50,21 @@ namespace BootCamp.Chapter
         }
 
 
-        public static string EnterName(string message)
+        public static string PromptString(string message)
         {
             Console.Write(message);
 
             return Console.ReadLine();
         }
 
-        public static int Age(string message)
+        public static int PromptInt(string message)
         {
             Console.Write(message);
 
             return Convert.ToInt16(Console.ReadLine());
         }
 
-        public static float Stats(string message)
+        public static float PromptFloat(string message)
         {
             Console.Write(message);
 
