@@ -13,28 +13,30 @@
         public static int PromptInt(string message)
         {
             // To do: call your implementation. 
-            Conversions.ConvertToInt();
-            return 0;
+            int conversion = Lesson3.ConvertToInt(message);
+
+            return conversion;
+            
         }
 
         public static string PromptString(string message)
         {
             // To do: call your implementation. 
-            Conversions.ConvertToString();
+            Lesson3.ConvertToString();
             return "";
         }
 
         public static float PromptFloat(string message)
         {
             // To do: call your implementation. 
-            Conversions.ConvertToFloat();
+            Lesson3.ConvertToFloat();
             return 0;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation. 
-            Bmi.CalculateBmi(85, 160);
+            Lesson3.CalculateBmi(85, 160);
             return 0;
         }
     }
