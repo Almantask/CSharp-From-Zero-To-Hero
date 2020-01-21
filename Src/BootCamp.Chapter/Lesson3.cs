@@ -161,7 +161,7 @@ namespace BootCamp.Chapter
 
 
         //I know there will be 2 inputs so I count to get right return string
-        public static int count = 0;
+        static int count;
 
         //For Checks
         public static int ConvertToInt(string message)
