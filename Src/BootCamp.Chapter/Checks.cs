@@ -14,6 +14,11 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
+        public static void Demo()
+        {
+
+        }
+
         public static int PromptInt(string message)
         {
             // To do: call your implementation. 
