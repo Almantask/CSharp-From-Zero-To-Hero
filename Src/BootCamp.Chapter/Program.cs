@@ -9,14 +9,9 @@ namespace BootCamp.Chapter
             //run twice
             for (int i = 0; i < 2; i++)
             {
-            //input first name, last name
             string firstName = getStringOutput("Input First Name: ");
             string lastName = getStringOutput("Input Last Name: ");
-
-            // input age
             int age = getIntOutput("Input age: ");
-
-            // input weight and height
             float weight = getFloatOutput("Input weight (in kg): ");
             float height = getFloatOutput("Input height (in cm): ");
             
@@ -24,7 +19,7 @@ namespace BootCamp.Chapter
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
 
             //calculate and print bmi
-            float bmi = weight / ((height / 100) * (height / 100));
+            float bmi = calculateBMI(weight, height);
             Console.WriteLine(firstName + " " + lastName + " has a BMI of " + bmi + ".");
             }
         }
@@ -47,6 +42,11 @@ namespace BootCamp.Chapter
             Console.Write(checkString);
             float returnFloat = float.Parse(Console.ReadLine());
             return returnFloat;
+        }
+
+        public static float calculateBMI(float weight, float height)
+        {
+            return weight / ((height / 100) * (height / 100));
         }
     }
 }
