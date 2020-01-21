@@ -42,7 +42,7 @@ namespace BootCamp.Chapter.Tests
         /// Fakes <see cref="Console.WriteLine()"/>
         /// Console output goes to file.
         /// </summary>
-        protected void StubConsoleOutput()
+        protected void FakeConsoleOutput()
         {
             _testKey = Guid.NewGuid().ToString();
             _consoleOutput = new StreamWriter($"{_testKey}.{FakeConsole.TestFileExtension}");
