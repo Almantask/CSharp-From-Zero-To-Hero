@@ -64,13 +64,10 @@ namespace BootCamp.Chapter
                 {
                     calculateAgain = false;
                 }
-                else
-                {
-                    Console.WriteLine("Something went wrong.");
-                }
+                
+            }
 
-                Console.WriteLine("Exiting...");
-            }            
+            Console.WriteLine("Exiting...");
 
         }
     }
