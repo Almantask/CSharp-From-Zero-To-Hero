@@ -14,7 +14,6 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation.
             var answer = Lesson3.PromptInt(message);
             return answer;
         }
