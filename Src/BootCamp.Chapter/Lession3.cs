@@ -54,9 +54,9 @@ namespace BootCamp.Chapter
                 var heightsingle = Convert.ToSingle(height);
 
                 //Calc for BMI
-                var Calc1 = weightsingle / heightsingle;
-                var BMI = Calc1 / heightsingle;
-                return BMI;
+                var calc1 = weightsingle / heightsingle;
+                var bmi = calc1 / heightsingle;
+                return bmi;
         }
     }     
 }
