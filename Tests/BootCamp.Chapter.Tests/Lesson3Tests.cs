@@ -19,7 +19,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0.Height cannot be less than zero, but was 0.")]
         public void CalculateBmi_With_InvalidInput_Returns_MinusOne_And_PrintsErrorInConsole(float weightKg, float heightM, string fault)
         {
-            FakeConsoleOutput();
+            RedirectConsoleToFile();
 
             var bmi = Checks.CalculateBmi(weightKg, heightM);
 
@@ -35,7 +35,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData(100, 10, 1)]
         public void CalculateBmi_With_ValidInput_Returns_Expected(float weightKg, float heightM, float expectedBmi)
         {
-            FakeConsoleOutput();
+            RedirectConsoleToFile();
 
             var bmi = Checks.CalculateBmi(weightKg, heightM);
 
