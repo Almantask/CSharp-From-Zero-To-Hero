@@ -34,12 +34,13 @@ namespace BootCamp.Chapter
 
         }
 
-        public static void CalculateBmi(float weightInKg, float height)
+        public static float CalculateBmi(float weightInKg, float height)
         {
             float bmi = weightInKg / (height * height);
 
             Console.WriteLine($"\nYour BMI based on your heigh of {height}m and your weight of {weightInKg}Kg " +
                              $"is {bmi} kg/(m*m)");
+            return bmi;
         }
 
 
