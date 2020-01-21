@@ -9,24 +9,16 @@ namespace BootCamp.Chapter
             //run twice
             for (int i = 0; i < 2; i++)
             {
-
             //input first name, last name
-            string firstName = checkStringInput("Input First Name: ");
-            string lastName = checkStringInput("Input Last Name: ");
+            string firstName = getStringOutput("Input First Name: ");
+            string lastName = getStringOutput("Input Last Name: ");
 
             // input age
-            Console.Write("Input age: ");
-            string s = Console.ReadLine();
-            int.TryParse(s, out int age);
+            int age = getIntOutput("Input age: ");
 
             // input weight and height
-            Console.Write("Input weight (in kg): ");
-            s = Console.ReadLine();
-            float.TryParse(s, out float weight);
-
-            Console.Write("Input height (in cm): ");
-            s = Console.ReadLine();
-            float.TryParse(s, out float height);
+            float weight = getFloatOutput("Input weight (in kg): ");
+            float height = getFloatOutput("Input height (in cm): ");
             
             //print info
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
@@ -37,12 +29,24 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static string checkStringInput(string checkString)
+        public static string getStringOutput(string checkString)
         {
-            Console.WriteLine(checkString);
+            Console.Write(checkString);
             string returnString = Console.ReadLine();
             return returnString;
         }
 
+        public static int getIntOutput(string checkString)
+        {
+            Console.Write(checkString);
+            int returnInt = int.Parse(Console.ReadLine());
+            return returnInt;
+        }
+        public static float getFloatOutput(string checkString)
+        {
+            Console.Write(checkString);
+            float returnFloat = float.Parse(Console.ReadLine());
+            return returnFloat;
+        }
     }
 }
