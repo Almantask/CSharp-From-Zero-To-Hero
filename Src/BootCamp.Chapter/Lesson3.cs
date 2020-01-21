@@ -6,9 +6,9 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            const int NumOfPerson = 2;
+            const int numOfPerson = 2;
 
-            for (var num = 0; num < NumOfPerson; num++)
+            for (var num = 0; num < numOfPerson; num++)
             {
                 Console.WriteLine("Calculate BMI for a person.");
 
@@ -26,23 +26,23 @@ namespace BootCamp.Chapter
         public static string PromptString(string message)
         {
             Console.Write(message);
-            return (Console.ReadLine());
+            return Console.ReadLine();
         }
 
         public static int PromptInt(string message)
         {
-            return (Convert.ToInt32(PromptString(message)));
+            return Convert.ToInt32(PromptString(message));
         }
 
         public static float PromptFloat(string message)
         {
-            return (Convert.ToSingle(PromptString(message)));
+            return Convert.ToSingle(PromptString(message));
         }
 
         public static float CalculateBmi(float weightKg, float heightM)
         {
             //BMI is weight (kg) / [height (m)] ^ 2
-            return ((float)(weightKg / Math.Pow(heightM, 2)));
+            return (float)(weightKg / Math.Pow(heightM, 2));
         }
     }
 }

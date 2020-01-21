@@ -16,7 +16,6 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
             return Lesson3.PromptInt(message);
         }
 
@@ -27,13 +26,11 @@ namespace BootCamp.Chapter
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
             return Lesson3.PromptFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
             return Lesson3.CalculateBmi(weight, height);
         }
     }
