@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -20,11 +18,11 @@ namespace BootCamp.Chapter
             var height = MessageFloat("What is your height in Meters?");
            
             //Calc and return BMI
-            CalcBMI(weight, height);
+            CalcBmi(weight, height);
 
             //Display output to user
             Console.WriteLine(firstname + " " + secondname + "is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm ");
-            Console.WriteLine("Your BMI is " + CalcBMI(weight, height));
+            Console.WriteLine("Your BMI is " + CalcBmi(weight, height));
 
             //Continue
             Console.WriteLine("Would you like to do another person Y/N?");
@@ -33,7 +31,6 @@ namespace BootCamp.Chapter
                 {
                 backtotop = false;
                 }
-
             }
         }
         public static string MessageString(string message)
@@ -50,7 +47,7 @@ namespace BootCamp.Chapter
             return Convert.ToInt32(MessageString(message));
         }
 
-        public static float CalcBMI(float weight, float height)
+        public static float CalcBmi(float weight, float height)
         {
                 //Convert to Singles
                 var weightsingle = Convert.ToSingle(weight);
