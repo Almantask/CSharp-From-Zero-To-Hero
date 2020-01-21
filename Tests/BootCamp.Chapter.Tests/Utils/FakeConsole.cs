@@ -52,6 +52,7 @@ namespace BootCamp.Chapter.Tests.Utils
         /// </summary>
         public static void Cleanup(string testKey)
         {
+
             File.Delete($"{testKey}.{TestFileExtension}");
         }
     }
