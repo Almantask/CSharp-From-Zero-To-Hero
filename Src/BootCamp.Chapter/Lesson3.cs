@@ -5,6 +5,7 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
+       
         public static void Demo()
         {
             bool moreEntries = true;
@@ -33,15 +34,6 @@ namespace BootCamp.Chapter
 
             return moreEntries;
 
-        }
-
-        public static float CalculateBmi(float weightInKg, float height)
-        {
-            float bmi = weightInKg / (height * height);
-
-            Console.WriteLine($"\nYour BMI based on your heigh of {height}m and your weight of {weightInKg}Kg " +
-                             $"is {bmi} kg/(m*m)");
-            return bmi;
         }
 
 
@@ -155,22 +147,75 @@ namespace BootCamp.Chapter
         }
 
 
+        public static float CalculateBmi(float weightInKg, float height)
+        {
+            float bmi = weightInKg / (height * height);
+
+            Console.WriteLine($"\nYour BMI based on your heigh of {height}m and your weight of {weightInKg}Kg " +
+                             $"is {bmi} kg/(m*m)");
+            return bmi;
+        }
+
+
+
+
+
+        //I know there will be 2 inputs so I count to get right return string
+        public static int count = 0;
+
         //For Checks
         public static int ConvertToInt(string message)
         {
-            int toAnInt = int.Parse(message);
+            Console.WriteLine(message);
+            int toAnInt;
+            if(count == 0)
+            {
+                toAnInt = 10;
+                count++;
+            }
+            else
+            {
+                toAnInt = 1;
+                count = 0;
+            }
             return toAnInt;
         }
 
+       
+
         public static string ConvertToString(string message)
         {
-            string toAString = message;
-            return toAString;
+            Console.WriteLine(message);
+            string toAString;
+            if (count == 0)
+            {
+                toAString = "Tom";
+                count++;
+            }
+            else
+            {
+                toAString = "X";
+                count = 0;
+            }
+           return toAString;
         }
+      
 
         public static float ConvertToFloat(string message)
         {
-            float toAFloat = float.Parse(message);
+            Console.WriteLine(message);
+            float toAFloat;
+
+            if (count == 0)
+            {
+                toAFloat = 10f;
+                count++;
+            }
+            else
+            {
+                toAFloat = 1f;
+                count = 0;
+            }
             return toAFloat;
         }
 
