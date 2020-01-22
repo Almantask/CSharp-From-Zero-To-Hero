@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -14,12 +12,12 @@ namespace BootCamp.Chapter
             int userAge = UserAge(message: "Enter your age: ");
             float userHeight = UserHeightWeight(message: "Enter your height in cm: ");
             float userWeight = UserHeightWeight(message: "Enter your weight in kg: ");
-            float userBMI = CalculateBMI(userWeight, userHeight);
+            float userBMI = CalculateBmi(userWeight, userHeight);
             Console.WriteLine(userFirstName + " " + userSurname + " is " + userAge + " years old, his weight is " + userWeight + " kg and his height is " + userHeight + " cm.");
             Console.WriteLine("BMI = " + userBMI);
         }
 
-        public static float CalculateBMI(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             double bmi = weight / Math.Pow(height, 2);
             return Convert.ToSingle(bmi);
