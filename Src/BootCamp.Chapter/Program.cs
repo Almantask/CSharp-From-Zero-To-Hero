@@ -9,6 +9,10 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Checks.PromptString("hello there");
+            Checks.PromptInt("300");
+            Checks.PromptFloat("10,1");
+            Checks.CalculateBmi(72, 1.83f);
             Lesson3.Demo();
         }
     }
