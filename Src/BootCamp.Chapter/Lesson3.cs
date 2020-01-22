@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
                 var age = PromptInt("What is your age");
                 var weight = PromptFloat("What is your weight in kilograms");
                 var heightCm = PromptFloat("What is your height in centimeters");
-                var BMI = CalculateBMI(weight, heightCm / 100);
+                var BMI = CalculateBmi(weight, heightCm / 100);
 
                 Console.WriteLine();
                 Console.WriteLine("Name: " + name + " " + surname);
@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
             return float.Parse(Console.ReadLine());
         }
 
-        public static float CalculateBMI(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             return weight / (height * height);
 
