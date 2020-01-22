@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
 				string name = Console.ReadLine();
 				Console.WriteLine("Hello again, " + name);
 				
-				//Line that will ask user for their age. 
+				//Line that will ask for age. 
 				Console.Write(name + ", what is your age? ");
 				string age = Console.ReadLine();
 
@@ -24,10 +24,6 @@ namespace BootCamp.Chapter
 
 				Console.WriteLine(name + " is " + age + " years old, his weight is " + weight +
 					" kgs and his height is " + height + " cm.");
-
-				//Formula for user BMI. 
-				//var BMI = height / weight / weight;
-				//Console.WriteLine(name + " BMI is " + BMI);
 			}
 
 		}
