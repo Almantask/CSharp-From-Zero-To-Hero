@@ -7,11 +7,11 @@ namespace BootCamp.Chapter
     {
         public static void Demo ()
         {
-            string userFirstName = UserName(message: "Enter your first name: ");
-            string userSurname = UserName(message: "Enter your surname: ");
-            int userAge = UserAge(message: "Enter your age: ");
-            float userHeight = UserHeightWeight(message: "Enter your height in cm: ");
-            float userWeight = UserHeightWeight(message: "Enter your weight in kg: ");
+            string userFirstName = GetStringInput(message: "Enter your first name: ");
+            string userSurname = GetStringInput(message: "Enter your surname: ");
+            int userAge = GetIntInput(message: "Enter your age: ");
+            float userHeight = GetFloatInput(message: "Enter your height in cm: ");
+            float userWeight = GetFloatInput(message: "Enter your weight in kg: ");
             float userBMI = CalculateBmi(userWeight, userHeight);
             Console.WriteLine(userFirstName + " " + userSurname + " is " + userAge + " years old, his weight is " + userWeight + " kg and his height is " + userHeight + " cm.");
             Console.WriteLine("BMI = " + userBMI);
@@ -19,29 +19,30 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            double bmi = weight / Math.Pow(height, 2);
-            return Convert.ToSingle(bmi);
+            float bmi = weight / (height * height);
+            return bmi;
         }
 
-        public static float UserHeightWeight(string message)
+        public static float GetFloatInput(string message)
         {
             Console.Write(message);
-            var heightOrWeight = Console.ReadLine();
-            return float.Parse(heightOrWeight, CultureInfo.InvariantCulture.NumberFormat);
+            var floatInput = Console.ReadLine();
+            return float.Parse(floatInput, CultureInfo.InvariantCulture.NumberFormat);
         }
 
-        public static string UserName(string message)
+        public static string GetStringInput(string message)
         {
             Console.Write(message);
             var name = Console.ReadLine();
             return name;
         }
 
-        public static int UserAge(string message)
+        public static int GetIntInput(string message)
         {
             Console.Write(message);
             var age = Console.ReadLine();
-            return Convert.ToInt32(age);
+            //return Convert.ToInt32(age);
+            return int.Parse(age);
         }
     }
 }
