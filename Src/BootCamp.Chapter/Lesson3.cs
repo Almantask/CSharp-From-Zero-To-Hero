@@ -35,7 +35,7 @@ namespace BootCamp.Chapter
             Console.Write(message);
             return float.Parse(Console.ReadLine());
         }
-        public static float BMICalculator(float weight, float height)
+        public static float BmiCalculator(float weight, float height)
         {
             return weight / (height * height); // BMI = kg/m2
         }
