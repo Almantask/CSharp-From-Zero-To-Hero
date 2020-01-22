@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -19,7 +18,7 @@ namespace BootCamp.Chapter
         
         public static int PromptInt(string message)
         {
-            return Convert.ToInt32(PromptString(message)); ;
+            return Convert.ToInt32(PromptString(message));
         }
 
         public static string PromptString(string message)
@@ -30,7 +29,7 @@ namespace BootCamp.Chapter
 
         public static float PromptFloat(string message)
         {
-            return Convert.ToSingle(PromptString(message),);
+            return Convert.ToSingle(PromptString(message));
         }
 
         public static float CalculateBmi(float weight, float height)
