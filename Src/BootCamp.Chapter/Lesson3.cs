@@ -13,10 +13,10 @@ namespace BootCamp.Chapter
                 string lastName = PromptString("Input Last Name: ");
                 int age = PromptInt("Input age: ");
                 float weight = PromptFloat("Input weight (in kg): ");
-                float height = PromptFloat("Input height (in cm): ");
+                float height = PromptFloat("Input height (in m): ");
 
                 //print info
-                Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
+                Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " m.");
 
                 //calculate and print bmi
                 float bmi = CalculateBodyMassIndex(weight, height);
@@ -46,7 +46,7 @@ namespace BootCamp.Chapter
 
         public static float CalculateBodyMassIndex(float weight, float height)
         {
-            return weight / ((height / 100) * (height / 100));
+            return weight / (height * height);
         }
     }
 }
