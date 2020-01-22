@@ -33,15 +33,15 @@ namespace BootCamp.Chapter
         public static string GetStringInput(string message)
         {
             Console.Write(message);
-            var name = Console.ReadLine();
-            return name;
+            var stringInput = Console.ReadLine();
+            return stringInput;
         }
 
         public static int GetIntInput(string message)
         {
             Console.Write(message);
-            var age = Console.ReadLine();
-            return int.Parse(age);
+            var intInput = Console.ReadLine();
+            return int.Parse(intInput);
         }
     }
 }
