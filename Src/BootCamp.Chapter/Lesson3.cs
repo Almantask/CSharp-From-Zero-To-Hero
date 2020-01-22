@@ -1,42 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
 
 namespace BootCamp.Chapter
 {
     class Lesson3
     {
-        static void Main(string[] args)
+        public static void Demo()
         {
-            string name = printAndReadString("What is your name?");
-            string surename = printAndReadString("What is your surename?");
-            int age = printAndReadInt("What is your age?");
-            float height = printAndReadFloat("What is your height in meters?");
-            float weight = printAndReadFloat("What is your weight in kg?");
+            string name = PrintAndReadString("What is your name?");
+            string surename = PrintAndReadString("What is your surename?");
+            int age = PrintAndReadInt("What is your age?");
+            float height = PrintAndReadFloat("What is your height in meters?");
+            float weight = PrintAndReadFloat("What is your weight in kg?");
 
             Console.WriteLine(name + " " + surename + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " m ");
-            Console.WriteLine("Your BMI is " + bmiCalc(weight, height));
+            Console.WriteLine("Your BMI is " + BmiCalc(weight, height));
 
             Console.ReadLine();
         }
-        public static float bmiCalc(float weight, float height)
+        public static float BmiCalc(float weight, float height)
         {
-            float bmi = (weight / (height * height));
-            return bmi;
+            return (weight / (height * height));
         }
-        public static string printAndReadString(string message)
+        public static string PrintAndReadString(string message)
         {
             Console.WriteLine(message);
             return Console.ReadLine();
         }
-        public static int printAndReadInt(string message)
+        public static int PrintAndReadInt(string message)
         {
-            return Convert.ToInt32(printAndReadString(message));
+            return Convert.ToInt32(PrintAndReadString(message));
         }
-        public static float printAndReadFloat(string message)
+        public static float PrintAndReadFloat(string message)
         {
-            return Convert.ToSingle(printAndReadFloat(message), CultureInfo.InvariantCulture);
+            return Convert.ToSingle(PrintAndReadString(message), CultureInfo.InvariantCulture);
         }
     }
 }

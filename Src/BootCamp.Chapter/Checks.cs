@@ -19,29 +19,23 @@ namespace BootCamp.Chapter
         
         public static int PromptInt(string message)
         {
-            
-            // To do: call your implementation. 
             return Convert.ToInt32(PromptString(message)); ;
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
             Console.WriteLine(message);
             return Console.ReadLine();
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
             return Convert.ToSingle(PromptString(message), CultureInfo.InvariantCulture);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            float bmi = (weight / (height * height));
-            return bmi;
+            return (weight / (height * height));
         }
     }
 }
