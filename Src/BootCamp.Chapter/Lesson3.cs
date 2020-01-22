@@ -61,9 +61,9 @@ namespace BootCamp.Chapter
             return float.Parse(Console.ReadLine());
         }
 
-        public static float CalculateBMI(float weight, float heightM)
+        public static float CalculateBMI(float weight, float height)
         {
-            return weight / (heightM * heightM);
+            return weight / (height * height);
 
         }
     }
