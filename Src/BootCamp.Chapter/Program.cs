@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using Microsoft.VisualBasic;
-
-#pragma warning disable 162
-
-// ReSharper disable All
-#pragma warning disable 219
 
 namespace BootCamp.Chapter
 {
