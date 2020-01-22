@@ -1,5 +1,4 @@
-﻿using System;
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     /// <summary>
     /// Test class is used to test your implementation.
@@ -13,25 +12,22 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            Console.Write(message);
-            return int.Parse(Console.ReadLine());
+            return Lesson3.ConsolePromptToInt(message);
         }
 
         public static string PromptString(string message)
         {
-            Console.Write(message);
-            return Console.ReadLine();
+            return Lesson3.ConsolePromptToString(message); 
         }
 
         public static float PromptFloat(string message)
         {
-            Console.Write(message);
-            return float.Parse(Console.ReadLine());
+            return Lesson3.ConsolePromptToFloat(message); 
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            return weight / (height * height);
+            return Lesson3.CalculateBmi(weight, height);
         }
     }
 }
