@@ -1,6 +1,4 @@
-﻿using System;
-using Console = System.Console;
-
+﻿
 namespace BootCamp.Chapter
 {
     public class Program
