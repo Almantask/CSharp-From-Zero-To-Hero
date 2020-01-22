@@ -17,22 +17,22 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            string userName = "", userSurname = "";
-            int userAge = 0;
-            float userWeight = 0f, userHeight = 0f;
-
+            string userName, userSurname;
             userName = PromptString("Please input your name.");
             userSurname = PromptString("Please input your surname.");
 
             Console.WriteLine("Hi " + userName + " " + userSurname + "!");
 
+            int userAge;
             userAge = PromptInt("Please input your age.");
 
+            float userWeight, userHeight;
             userWeight = PromptFloat("Please input your weight in kg.");
-            userHeight = PromptFloat("Please input your height in cm.");
+            userHeight = PromptFloat("Please input your height in meters.");
 
-            Console.WriteLine("Calculating BMI for " + userName + "...");
-            Console.WriteLine("BMI: " + CalculateBmi(userWeight, userHeight));
+            Console.WriteLine("Calculating BMI for " + userName + " " + userSurname + ".");
+            Console.WriteLine("Age: " + userAge);
+            Console.WriteLine("BMI: " + CalculateBmi(userWeight, userHeight) + "\n");
         }
 
         public static int PromptInt(string message)
@@ -103,6 +103,12 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
+            if (height == 0)
+            {
+                Console.WriteLine("Height cannot be 0.");
+                return 0;
+            }
+
             return weight / (height * height);
         }
     }
