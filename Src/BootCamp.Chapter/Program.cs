@@ -29,7 +29,7 @@ namespace BootCamp.Chapter
             float userHeight;
             CheckForUserInput("Please input your height in cm.", out userHeight);
 
-            CalculateBMI(userName, userSurname, userAge, userWeight, userHeight);
+            CalculateBmi(userName, userSurname, userAge, userWeight, userHeight);
         }
 
         static void CheckBmi(in string userName, in string userSurname, in int userAge, in float userWeight, in float userHeight)
