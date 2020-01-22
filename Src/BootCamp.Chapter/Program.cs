@@ -24,10 +24,16 @@ namespace BootCamp.Chapter
             int age = Checks.PromptInt("Age: ");
             Console.WriteLine();
 
-            var weight = Checks.PromptFloat("Weight: ");
+            float weight = Checks.PromptFloat("Weight: ");
+            Console.WriteLine();
+            
+            float height = Checks.PromptFloat2("Height: ");
             Console.WriteLine();
 
-            //Checks.CalculateBmi(weight, height);
+            float bmi = Checks.CalculateBmi(weight, height);
+            Console.WriteLine();
+
+            Console.WriteLine(name + " is " + age + " years old, their weight is " + weight + "kg and their height is " + height + " m. Their BMI is " + bmi + ".");
 
         }
     }
