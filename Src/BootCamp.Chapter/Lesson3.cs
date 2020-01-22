@@ -11,26 +11,26 @@ namespace BootCamp.Chapter
         }
         private static void PersonInfoAskerAndPrinter()
         {
-            string firstName = NameAsker("What is your first name: ");
-            string lastName = NameAsker("What is your last name: ");
-            int age = AgeAsker("What is your age: ");
-            float weight = WeightOrHightAsker("what is your weight in Kg: ");
-            float height = WeightOrHightAsker("what is your height in cm: ");
+            string firstName = StringPrompter("What is your first name: ");
+            string lastName = StringPrompter("What is your last name: ");
+            int age = IntPrompter("What is your age: ");
+            float weight = FloatPrompter("what is your weight in Kg: ");
+            float height = FloatPrompter("what is your height in cm: ");
             Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
             float bmi = BMICalculator(weight, height / 100);
             Console.WriteLine($"Your BMI is {bmi}");
         }
-        public static string NameAsker(string message)
+        public static string StringPrompter(string message)
         {
             Console.Write(message);
             return Console.ReadLine();
         }
-        public static int AgeAsker(string message)
+        public static int IntPrompter(string message)
         {
             Console.Write(message);
             return int.Parse(Console.ReadLine());
         }
-        public static float WeightOrHightAsker(string message)
+        public static float FloatPrompter(string message)
         {
             Console.Write(message);
             return float.Parse(Console.ReadLine());
