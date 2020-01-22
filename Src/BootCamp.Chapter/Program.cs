@@ -7,11 +7,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            CheckBMI("Tom", "Jefferson", 19, 50, 156.5f);
-            CheckBMI();
+            CheckBmi("Tom", "Jefferson", 19, 50, 156.5f);
+            CheckBmi();
         }
 
-        static void CheckBMI()
+        static void CheckBmi()
         {
             string userName;
             CheckForUserInput("Please input your name.", out userName);
@@ -32,12 +32,12 @@ namespace BootCamp.Chapter
             CalculateBMI(userName, userSurname, userAge, userWeight, userHeight);
         }
 
-        static void CheckBMI(in string userName, in string userSurname, in int userAge, in float userWeight, in float userHeight)
+        static void CheckBmi(in string userName, in string userSurname, in int userAge, in float userWeight, in float userHeight)
         {
-            CalculateBMI(userName, userSurname, userAge, userWeight, userHeight);
+            CalculateBmi(userName, userSurname, userAge, userWeight, userHeight);
         }
 
-        static void CalculateBMI(in string userName, in string userSurname, in int userAge, in float userWeight, in float userHeight)
+        static void CalculateBmi(in string userName, in string userSurname, in int userAge, in float userWeight, in float userHeight)
         {
             Console.WriteLine("Calculating BMI for " + userName + " " + userSurname + ".");
             Console.WriteLine("Age: " + userAge);
