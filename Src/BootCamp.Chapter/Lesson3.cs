@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
             float weight = FloatPrompter("what is your weight in Kg: ");
             float height = FloatPrompter("what is your height in cm: ");
             Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
-            float bmi = BMICalculator(weight, height / 100);
+            float bmi = BmiCalculator(weight, height / 100);
             Console.WriteLine($"Your BMI is {bmi}");
         }
         public static string StringPrompter(string message)
