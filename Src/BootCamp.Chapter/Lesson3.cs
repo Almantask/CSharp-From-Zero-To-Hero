@@ -41,7 +41,6 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             var age = Console.ReadLine();
-            //return Convert.ToInt32(age);
             return int.Parse(age);
         }
     }
