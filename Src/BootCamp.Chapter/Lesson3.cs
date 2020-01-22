@@ -12,14 +12,14 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine("BMI Calculator");
 
-                string name = GetString("Enter your name: ");
-                int age = GetInt("Enter your age: ");
-                float weight = GetFloat("Enter your weight(kg): ");
-                float height = GetFloat("Enter your height(cm): ");
+                string name = PromptString("Enter your name: ");
+                int age = PromptInt("Enter your age: ");
+                float weight = PromptFloat("Enter your weight(kg): ");
+                float height = PromptFloat("Enter your height(cm): ");
 
                 Console.WriteLine(name + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
 
-                float BMI = CalculateBMI(weight, height / 100);
+                float BMI = CalculateBmi(weight, height / 100);
 
                 Console.WriteLine("Your BMI is " + BMI);
 
@@ -45,27 +45,27 @@ namespace BootCamp.Chapter
                         
         }
                 
-        public static string GetString(string message)
+        public static string PromptString(string message)
         {
             Console.Write(message);
             return Console.ReadLine();
         }
 
-        public static int GetInt(string message)
+        public static int PromptInt(string message)
         {
             Console.Write(message);
-            return Convert.ToInt32(Console.ReadLine());
+            return int.Parse(Console.ReadLine());
         }
 
-        public static float GetFloat(string message)
+        public static float PromptFloat(string message)
         {
             Console.Write(message);
-            return Convert.ToSingle(Console.ReadLine());
+            return float.Parse(Console.ReadLine());
         }
 
-        public static float CalculateBMI(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
-            return weight / (Convert.ToSingle(Math.Pow(height, 2)));
+            return weight / (height * height);
         }
 
         public static void WeightType(float BMI)
