@@ -27,7 +27,7 @@
         {
             var result = Lesson3.GetBmi(height, weight);
 
-            return weight;
+            return result;
         }
     }
 }
