@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -14,14 +12,14 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine("BMI Calculator");
 
-                string name = getString("Enter your name: ");
-                int age = getInt("Enter your age: ");
-                float weight = getFloat("Enter your weight(kg): ");
-                float height = getFloat("Enter your height(cm): ");
+                string name = GetString("Enter your name: ");
+                int age = GetInt("Enter your age: ");
+                float weight = GetFloat("Enter your weight(kg): ");
+                float height = GetFloat("Enter your height(cm): ");
 
                 Console.WriteLine(name + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
 
-                float BMI = calculateBMI(weight, height / 100);
+                float BMI = CalculateBMI(weight, height / 100);
 
                 Console.WriteLine("Your BMI is " + BMI);
 
@@ -66,25 +64,25 @@ namespace BootCamp.Chapter
                         
         }
                 
-        public static string getString(string message)
+        public static string GetString(string message)
         {
             Console.Write(message);
             return Console.ReadLine();
         }
 
-        public static int getInt(string message)
+        public static int GetInt(string message)
         {
             Console.Write(message);
             return Convert.ToInt32(Console.ReadLine());
         }
 
-        public static float getFloat(string message)
+        public static float GetFloat(string message)
         {
             Console.Write(message);
             return Convert.ToSingle(Console.ReadLine());
         }
 
-        public static float calculateBMI(float weight, float height)
+        public static float CalculateBMI(float weight, float height)
         {
             return weight / (Convert.ToSingle(Math.Pow(height, 2)));
         }
