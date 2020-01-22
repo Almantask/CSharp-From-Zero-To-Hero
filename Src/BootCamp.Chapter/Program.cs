@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             string name = "";
-            string sureName = "";
+            //string sureName = "";
             int age = 0;
             float weight = 0f;
             float height = 0f;
@@ -15,8 +15,8 @@ namespace BootCamp.Chapter
             Console.Write("Name: ");
             name = Console.ReadLine();
 
-            Console.Write("Surename: ");
-            sureName = Console.ReadLine();
+            //Console.Write("Surename: ");
+            //sureName = Console.ReadLine();
 
             Console.Write("Age: ");
             age = int.Parse(Console.ReadLine());
