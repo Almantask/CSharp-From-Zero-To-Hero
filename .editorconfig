@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CS1718: Comparison made to same variable
+dotnet_diagnostic.CS1718.severity = none
+
+# IDE0035: Unreachable code detected
+dotnet_diagnostic.IDE0035.severity = none
