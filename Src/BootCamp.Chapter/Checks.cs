@@ -103,7 +103,7 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            if (height == 0)
+            if (MathF.Abs(height) <= float.Epsilon)
             {
                 Console.WriteLine("Height cannot be 0.");
                 return 0;
