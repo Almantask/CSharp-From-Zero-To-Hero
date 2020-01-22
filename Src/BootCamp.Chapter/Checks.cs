@@ -5,6 +5,14 @@
  * have to do a little cheating in looking at what this would look like, but eventually
  * I will self practice in how I think on TDD before creating a base project and running
  * it as to have full familiarity with TDD and how it helps in the long run with coding.
+ * 
+ * For notes on my own understanding:
+ *  Each function in a test class needs a method that mimics the method being
+ *  used in the program. This would be a test method. Initially this is created
+ *  with nothing set in the program yet(thus it fails)
+ *  
+ *  Once something is created the method is tested until it passes with correct
+ *  and expected results. 
 */
 
 using System;
