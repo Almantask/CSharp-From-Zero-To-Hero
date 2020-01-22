@@ -14,30 +14,25 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
-        public static int PromptInt(string checkString)
+        public static int PromptInt(string message)
         {
-            Console.Write(checkString);
-            int returnInt = int.Parse(Console.ReadLine());
-            return returnInt;
+            return Lesson3.PromptInt(message);
         }
 
-        public static string PromptString(string checkString)
+        public static string PromptString(string message)
         {
-            Console.Write(checkString);
-            string returnString = Console.ReadLine();
-            return returnString;
+            return Lesson3.PromptString(message);
         }
 
-        public static float PromptFloat(string checkString)
+        public static float PromptFloat(string message)
         {
-            Console.Write(checkString);
-            float returnFloat = float.Parse(Console.ReadLine());
-            return returnFloat;
+            return Lesson3.PromptFloat(message);
         }
 
-        public static float CalculateBodyMassIndex(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
-            return weight / ((height / 100) * (height / 100));
+            return Lesson3.CalculateBodyMassIndex(weight, height);
         }
+
     }
 }
