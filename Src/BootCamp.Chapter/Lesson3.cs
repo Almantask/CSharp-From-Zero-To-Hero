@@ -16,8 +16,10 @@ namespace BootCamp.Chapter
             int age = PromptInt("What is your age: ");
             float weight = PromptFloat("what is your weight in Kg: ");
             float height = PromptFloat("what is your height in cm: ");
-            Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
             float bmi = BmiCalculator(weight, height / 100);
+
+            Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
+
             Console.WriteLine($"Your BMI is {bmi}");
         }
         public static string PromptString(string message)
