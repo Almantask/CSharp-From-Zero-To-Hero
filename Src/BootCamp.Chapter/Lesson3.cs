@@ -23,26 +23,7 @@ namespace BootCamp.Chapter
 
                 Console.WriteLine("Your BMI is " + BMI);
 
-                if (BMI < 18.5)
-                {
-                    Console.WriteLine("You are Underweight.");
-                }
-                else if (BMI >= 18.5 && BMI < 25)
-                {
-                    Console.WriteLine("You have a Normal Weight.");
-                }
-                else if (BMI >= 25 && BMI < 30)
-                {
-                    Console.WriteLine("You are Overweight.");
-                }
-                else if (BMI >= 30)
-                {
-                    Console.WriteLine("You are Obese.");
-                }
-                else
-                {
-                    Console.WriteLine("Something went wrong. Please try again.");
-                }
+                WeightType(BMI);                
 
                 Console.WriteLine("Do you want to calculate another persoon's BMI? (y/n)");
                 string continueTheFight = Console.ReadLine();
@@ -85,6 +66,30 @@ namespace BootCamp.Chapter
         public static float CalculateBMI(float weight, float height)
         {
             return weight / (Convert.ToSingle(Math.Pow(height, 2)));
+        }
+
+        public static void WeightType(float BMI)
+        {
+            if (BMI < 18.5)
+            {
+                Console.WriteLine("You are Underweight.");
+            }
+            else if (BMI >= 18.5 && BMI < 25)
+            {
+                Console.WriteLine("You have a Normal Weight.");
+            }
+            else if (BMI >= 25 && BMI < 30)
+            {
+                Console.WriteLine("You are Overweight.");
+            }
+            else if (BMI >= 30)
+            {
+                Console.WriteLine("You are Obese.");
+            }
+            else
+            {
+                Console.WriteLine("Something went wrong. Please try again.");
+            }
         }
 
     }
