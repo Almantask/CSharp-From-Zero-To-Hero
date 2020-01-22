@@ -7,28 +7,48 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string userName = "", userSurname = "";
-            int userAge = 0;
-            float userWeight = 0f, userHeight = 0f;
+            CheckBMI("Tom", "Jefferson", 19, 50, 156.5f);
+            CheckBMI();
+        }
 
-            CheckForUserInput("Please input your name.", ref userName);
-            CheckForUserInput("Please input your surname.", ref userSurname);
+        static void CheckBMI()
+        {
+            string userName;
+            CheckForUserInput("Please input your name.", out userName);
+
+            string userSurname;
+            CheckForUserInput("Please input your surname.", out userSurname);
 
             Console.WriteLine("Hi " + userName + " " + userSurname + "!");
 
-            CheckForUserInput("Please input your age.", ref userAge);
+            int userAge;
+            CheckForUserInput("Please input your age.", out userAge);
 
-            CheckForUserInput("Please input your weight in kg.", ref userWeight);
-            CheckForUserInput("Please input your height in cm.", ref userHeight);
+            float userWeight;
+            CheckForUserInput("Please input your weight in kg.", out userWeight);
+            float userHeight;
+            CheckForUserInput("Please input your height in cm.", out userHeight);
 
-            Console.WriteLine("Calculating BMI for " + userName + "...");
-            float bmi = userWeight / (userHeight * userHeight);
-            Console.WriteLine("BMI: " + bmi);
+            CalculateBMI(userName, userSurname, userAge, userWeight, userHeight);
         }
 
-        static void CheckForUserInput(in string outputText, ref string userInput)
+        static void CheckBMI(in string userName, in string userSurname, in int userAge, in float userWeight, in float userHeight)
+        {
+            CalculateBMI(userName, userSurname, userAge, userWeight, userHeight);
+        }
+
+        static void CalculateBMI(in string userName, in string userSurname, in int userAge, in float userWeight, in float userHeight)
+        {
+            Console.WriteLine("Calculating BMI for " + userName + " " + userSurname + ".");
+            Console.WriteLine("Age: " + userAge);
+            float bmi = userWeight / (userHeight * userHeight);
+            Console.WriteLine("BMI: " + bmi + "\n");
+        }
+
+        static void CheckForUserInput(in string outputText, out string userInput)
         {
             bool validInput = false;
+            userInput = "";
 
             while (!validInput)
             {
@@ -45,9 +65,10 @@ namespace BootCamp.Chapter
             }
         }
 
-        static void CheckForUserInput(in string outputText, ref int userInput)
+        static void CheckForUserInput(in string outputText, out int userInput)
         {
             bool validInput = false;
+            userInput = 0;
 
             while (!validInput)
             {
@@ -64,9 +85,10 @@ namespace BootCamp.Chapter
             }
         }
 
-        static void CheckForUserInput(in string outputText, ref float userInput)
+        static void CheckForUserInput(in string outputText, out float userInput)
         {
             bool validInput = false;
+            userInput = 0f;
 
             while (!validInput)
             {
