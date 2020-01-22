@@ -15,14 +15,14 @@ namespace BootCamp.Chapter
                 var age = PromptInt("What is your age");
                 var weight = PromptFloat("What is your weight in kilograms");
                 var heightCm = PromptFloat("What is your height in centimeters");
-                var BMI = CalculateBmi(weight, heightCm / 100);
+                var Bmi = CalculateBmi(weight, heightCm / 100);
 
                 Console.WriteLine();
                 Console.WriteLine("Name: " + name + " " + surname);
                 Console.WriteLine("Age: " + age);
                 Console.WriteLine("Weight: " + weight + "kg");
                 Console.WriteLine("Height: " + heightCm / 100 + "m");
-                Console.WriteLine("BMI: " + BMI);
+                Console.WriteLine("BMI: " + Bmi);
 
 
                 Console.WriteLine(Environment.NewLine + "Continue with a new set of inputs? " +
