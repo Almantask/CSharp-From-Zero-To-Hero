@@ -32,40 +32,41 @@ namespace BootCamp.Chapter
             Console.WriteLine();
 
             Console.WriteLine(name + " is " + age + " years old, their weight is " + weight + "kg and their height is " + height + " m. Their BMI is " + bmi + ".");
-
+            Console.WriteLine();
         }
 
         public static string PromptFullName(string message)
         {
-            Console.WriteLine("Full name: ");
+            Console.WriteLine(message);
             string name = Console.ReadLine();
             return name;
         }
 
         public static int PromptAge(string message)
         {
-            Console.WriteLine("Age: ");
+            Console.WriteLine(message);
             int age = int.Parse(Console.ReadLine());
             return age;
         }
 
         public static float PromptWeight(string message)
         {
-            Console.WriteLine("Weight (in kg): ");
+            Console.WriteLine(message);
             float weight = float.Parse(Console.ReadLine());
             return weight;
         }
 
         public static float PromptHeight(string message)
         {
-            Console.WriteLine("Height (in m): ");
+            Console.WriteLine(message);
             float height = float.Parse(Console.ReadLine());
             return height;
         }
 
         public static float CalcBmi(float weight, float height)
         {
-            return (height * height) / weight;
+            float bmi = weight / (height * height);
+            return bmi;
         }
     }
 }
