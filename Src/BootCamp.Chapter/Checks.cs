@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     /// <summary>
     /// Test class is used to test your implementation.
@@ -16,12 +12,12 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            return Lesson3.RegisterAge(message);
+            return Lesson3.RegisterIntValue(message);
         }
 
         public static string PromptString(string message)
         {
-            return Lesson3.RegisterName(message);
+            return Lesson3.RegisterStringValue(message);
         }
 
         public static float PromptFloat(string message)
@@ -31,7 +27,7 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            return weight / (height * height);
+            return Lesson3.CalculateBmi(weight, height);
         }
     }
 }

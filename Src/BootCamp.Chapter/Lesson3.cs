@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BootCamp.Chapter
 {
@@ -9,13 +8,15 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            const int maxEntries = 3;
+            const int maxEntries = 2;
 
-            for (int i = 1; i < maxEntries; i++)
+            for (int i = 1; i <= maxEntries; i++)
             {
                 Console.Clear();
 
                 RegisterNewPersonData(i);
+
+                PromptNewPerson(i);
             }
         }
 
@@ -23,42 +24,72 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine($"Enter the following information for person #{entry}.");
 
-            string firstName = Checks.PromptString("Firstname: ");
+            string firstName = RegisterStringValue("Firstname: ");
+            string lastName = RegisterStringValue("Lastname: ");
 
-            string lastName = Checks.PromptString("Lastname: ");
+            int age = RegisterIntValue("Age:");
 
-            int age = Checks.PromptInt("Age:");
+            float weight = RegisterFloatValue("Weight in kilograms:");
+            float height = RegisterFloatValue("Height in meters:");
 
-            float weight = Checks.PromptFloat("Weight in kilograms:");
-
-            float height = Checks.PromptFloat("Height in meters:");
-
-            var bmi = Checks.CalculateBmi(weight, height);
+            var bmi = CalculateBmi(weight, height);
 
             Summarize(firstName, lastName, age, weight, height, bmi);
-
-            PromptNewPerson(entry);
         }
 
-        public static string RegisterName(string message)
+        public static string RegisterStringValue(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
 
-            return Console.ReadLine();
+            string stringValue = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(stringValue))
+            {
+                Console.Write($"{Environment.NewLine}Name cannot be empty.");
+                return "-";
+            }
+
+            return stringValue;
         }
 
-        public static int RegisterAge(string message)
+        public static int RegisterIntValue(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
 
-            return Convert.ToInt16(Console.ReadLine());
+            string userInput = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(userInput))
+            {
+                return 0;
+            }
+
+            if (!int.TryParse(userInput, out int intValue))
+            {
+                Console.Write($"\"{userInput}\" is not a valid number.");
+                return -1;
+            }
+
+            return intValue;
         }
 
         public static float RegisterFloatValue(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
 
-            return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture.NumberFormat); 
+            string userInput = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(userInput))
+            {
+                return 0;
+            }
+
+            if (!float.TryParse(userInput, out float floatValue))
+            {
+                Console.Write($"{Environment.NewLine}\"{userInput}\" is not a valid number.");
+                return -1;
+            }
+
+            return floatValue;
         }
 
         public static void Summarize(string firstName, string lastName, int age, float weight, float height, float bmi)
@@ -80,6 +111,39 @@ namespace BootCamp.Chapter
             {
                 Environment.Exit(0);
             }
+        }
+
+        public static float CalculateBmi(float weight, float height)
+        {
+            var calculatedBmi = weight / (height * height);
+
+            if (height <= 0 && weight <= 0)
+            {
+                Console.WriteLine($"Failed calculating BMI. Reason:");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+
+                return -1;
+            }
+
+            if (height <= 0 || weight <= 0)
+            {
+                Console.WriteLine($"Failed calculating BMI. Reason:");
+
+                if (height <= 0)
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
+
+                if (weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
+
+                return -1;
+            }
+
+            return calculatedBmi;
         }
     }
 }
