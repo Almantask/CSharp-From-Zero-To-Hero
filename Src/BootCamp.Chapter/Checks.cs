@@ -30,7 +30,7 @@ namespace BootCamp.Chapter
 
         public static float PromptFloat(string message)
         {
-            return Convert.ToSingle(PromptString(message), CultureInfo.InvariantCulture);
+            return Convert.ToSingle(PromptString(message),);
         }
 
         public static float CalculateBmi(float weight, float height)

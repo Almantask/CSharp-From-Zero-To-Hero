@@ -32,7 +32,7 @@ namespace BootCamp.Chapter
         }
         public static float PrintAndReadFloat(string message)
         {
-            return Convert.ToSingle(PrintAndReadString(message), CultureInfo.InvariantCulture);
+            return Convert.ToSingle(PrintAndReadString(message));
         }
     }
 }
