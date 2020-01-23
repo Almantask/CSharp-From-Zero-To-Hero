@@ -1,4 +1,10 @@
-﻿using System;
+﻿// This file is for hunting bugs only.
+// Completing homework 3 before looking at this is HIGHLY recommended.
+// Try to look at the code in GitHub first. Try to find the mistakes that
+// were made without help or tools first.
+// After that try to find every single thing that seems off.
+// Have fun! :)
+using System;
 using BootCamp.Chap;
 
 namespace BootCamp.Chapter
@@ -14,7 +20,7 @@ namespace BootCamp.Chapter
             } while (iteration < count);
         }
 
-        private static void ProcPrsn()
+        private static void PrcPrsn()
         {
             WriteLine("What's ya name, mate?");
             Checks.PromptString(name);
@@ -30,7 +36,7 @@ namespace BootCamp.Chapter
             return int.ReadFromConsole();
         }
 
-        internal static float AsFloat()
+        private static float AsFloat()
         {
             return (float)ReadMyInput();
         }
