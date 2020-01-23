@@ -2,7 +2,7 @@
 using System;
 namespace BootCamp.Chapter
 {
-    public static class Lesson3
+    public static class Lesson4
     {
         public static void Demo()
         {
