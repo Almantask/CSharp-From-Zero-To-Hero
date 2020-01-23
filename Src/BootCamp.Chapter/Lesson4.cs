@@ -86,17 +86,17 @@ namespace BootCamp.Chapter
         }
         public static float BmiCalculator(float weight, float height)
         {
-            bool isWeightLessThan1 = weight < 1;
-            bool isHeightLessThan1 = height < 1;
+            bool isWeightLessThanOrEqualTo0 = weight <= 0;
+            bool isHeightLessThanOrEqualTo0 = height <= 0;
 
-            if (isWeightLessThan1 || isHeightLessThan1)
+            if (isWeightLessThanOrEqualTo0 || isHeightLessThanOrEqualTo0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                if (isHeightLessThan1)
+                if (isHeightLessThanOrEqualTo0)
                 {
                     Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
                 }
-                if (isWeightLessThan1)
+                if (isWeightLessThanOrEqualTo0)
                 {
                     Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
                 }
