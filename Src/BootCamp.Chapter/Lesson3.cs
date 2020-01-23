@@ -23,29 +23,27 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine($"Enter the following information for person #{entry}.");
 
-            string firstName = Checks.PromptString("Firstname: ");
+            string firstName = RegisterStringValue("Firstname: ");
+            string lastName = RegisterStringValue("Lastname: ");
 
-            string lastName = Checks.PromptString("Lastname: ");
+            int age = RegisterIntValue("Age:");
 
-            int age = Checks.PromptInt("Age:");
+            float weight = RegisterFloatValue("Weight in kilograms:");
+            float height = RegisterFloatValue("Height in meters:");
 
-            float weight = Checks.PromptFloat("Weight in kilograms:");
-
-            float height = Checks.PromptFloat("Height in meters:");
-
-            var bmi = Checks.CalculateBmi(weight, height);
+            var bmi = CalculateBmi(weight, height);
 
             Summarize(firstName, lastName, age, weight, height, bmi);
         }
 
-        public static string RegisterName(string message)
+        public static string RegisterStringValue(string message)
         {
             Console.Write(message);
 
             return Console.ReadLine();
         }
 
-        public static int RegisterAge(string message)
+        public static int RegisterIntValue(string message)
         {
             Console.Write(message);
 

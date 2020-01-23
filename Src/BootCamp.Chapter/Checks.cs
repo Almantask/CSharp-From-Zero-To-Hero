@@ -12,12 +12,12 @@
     {
         public static int PromptInt(string message)
         {
-            return Lesson3.RegisterAge(message);
+            return Lesson3.RegisterIntValue(message);
         }
 
         public static string PromptString(string message)
         {
-            return Lesson3.RegisterName(message);
+            return Lesson3.RegisterStringValue(message);
         }
 
         public static float PromptFloat(string message)
