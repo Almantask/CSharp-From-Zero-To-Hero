@@ -57,20 +57,38 @@ namespace BootCamp.Chapter
         {
             float bmi = weightInKg / (height * height);
 
+            if((weightInKg <= 0) && (height <= 0))
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weightInKg}.");
+                Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+                return -1;
+            }
+
             if(weightInKg <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine($"Weight cannot be equal or less than zero, but was {weightInKg}.");
+                return -1;
             }
 
             if(height <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                return -1;
             }
 
-            Console.WriteLine($"\nYour BMI based on your heigh of {height}m and your weight of {weightInKg}Kg " +
-                             $"is {bmi} kg/(m*m)");
+            if(weightInKg >= height)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine("Weight cannot be more or equal to height.");
+                Console.WriteLine($" Height= {height}, Weight= {weightInKg}.");
+                return -1;
+            }
+
+           // Console.WriteLine($"\nYour BMI based on your heigh of {height}m and your weight of {weightInKg}Kg " +
+                          //   $"is {bmi} kg/(m*m)");
             return bmi;
         }
 
@@ -104,8 +122,8 @@ namespace BootCamp.Chapter
 
             string readInString = Console.ReadLine();
 
-            //check string if null empty or just white space
-           if(string.IsNullOrWhiteSpace(readInString))
+            
+           if(string.IsNullOrEmpty(readInString))
             {
                 Console.WriteLine($"Name can not be empty.");
                 return "-";
@@ -132,6 +150,10 @@ namespace BootCamp.Chapter
             if(!isFloat)
             {
                 Console.WriteLine($"{toAFloat} is not a valid number.");
+                return -1;
+            }
+            if(measurement <= 0 )
+            {
                 return -1;
             }
 
