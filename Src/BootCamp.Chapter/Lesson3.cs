@@ -14,6 +14,8 @@ namespace BootCamp.Chapter
                 Console.Clear();
 
                 RegisterNewPersonData(i);
+
+                PromptNewPerson(i);
             }
         }
 
@@ -34,8 +36,6 @@ namespace BootCamp.Chapter
             var bmi = Checks.CalculateBmi(weight, height);
 
             Summarize(firstName, lastName, age, weight, height, bmi);
-
-            PromptNewPerson(entry);
         }
 
         public static string RegisterName(string message)
