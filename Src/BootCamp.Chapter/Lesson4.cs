@@ -49,6 +49,7 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             string input = Console.ReadLine();
+
             if (String.IsNullOrEmpty(input))
             {
                 return 0;
@@ -87,12 +88,6 @@ namespace BootCamp.Chapter
         }
         public static float BmiCalculator(float weight, float height)
         {
-            //4) During BMI calculation, height or weight less or equal to 0 should print error message in console:
-            //-It should start with "Failed calculating BMI. Reason:" followed by a new line:
-            //-"Height cannot be equal or less than zero, but was X.", where X is the console input. (X <= 0)
-            //- "Weight cannot be equal or less than zero, but was X.", where X is the console input(X <= 0)
-            // - If both height and weight are invalid, both validation messages should be printed to console(each in new line)
-
             bool isWeightLessThan1 = weight < 1;
             bool isHeightLessThan1 = height < 1;
 
