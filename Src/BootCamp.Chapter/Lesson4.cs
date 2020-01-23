@@ -55,7 +55,7 @@ namespace BootCamp.Chapter
 
         public static void DisplayErrorMessageForNumbers(string input)
         {
-            Console.WriteLine($"{Environment.NewLine} \"{input}\" is not a valid number.");
+            Console.WriteLine($"{Environment.NewLine}\"{input}\" is not a valid number.");
         }
 
         private static int ValidateInt(string input)

@@ -10,23 +10,7 @@ namespace BootCamp.Chapter.Tests
     {
         private readonly string _promptMessage = $"Testing";
 
-        [Theory]
-        [InlineData(100, -100, "Height cannot be equal or less than zero, but was -100.")]
-        [InlineData(100, 0, "Height cannot be equal or less than zero, but was 0.")]
-        [InlineData(50, 50, "Weight cannot be more or equal to height. Height= 50, Weight= 50.")]
-        [InlineData(0, 50, "Weight cannot be equal or less than zero, but was 0.")]
-        [InlineData(-100, 50, "Weight cannot be equal or less than zero, but was -100.")]
-        [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0.Height cannot be less than zero, but was 0.")]
-        public void CalculateBmi_With_InvalidInput_Returns_MinusOne_And_PrintsErrorInConsole(float weightKg, float heightM, string fault)
-        {
-            var bmi = Checks.CalculateBmi(weightKg, heightM);
 
-            fault = fault.ToNewlineSentences();
-            ConsoleOutput.Should().Be($"Failed calculating BMI. Reason:{Environment.NewLine}{fault}");
-
-            const float invalid = -1;
-            bmi.Should().Be(invalid);
-        }
 
         [Theory]
         [InlineData(100, 2, 25)]
