@@ -6,7 +6,6 @@ namespace BootCamp.Chapter
 {
     class Lesson4
     {
-        private static string originalHeight, originalWeight;
         public static void Demo()
         {
             PromptPersonData();
