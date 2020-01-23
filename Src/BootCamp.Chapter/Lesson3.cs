@@ -7,9 +7,9 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            const int maxEntries = 3;
+            const int maxEntries = 2;
 
-            for (int i = 1; i < maxEntries; i++)
+            for (int i = 1; i <= maxEntries; i++)
             {
                 Console.Clear();
 
