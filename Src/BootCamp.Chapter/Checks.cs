@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization; // NumberStyles.Float, CultureInfo.InvariantCulture
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     /// <summary>
     /// Test class is used to test your implementation.
