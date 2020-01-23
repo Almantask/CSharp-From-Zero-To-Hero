@@ -6,10 +6,10 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            PersonInfoAskerAndPrinter();
-            PersonInfoAskerAndPrinter();
+            PromptPersonData();
+            PromptPersonData();
         }
-        private static void PersonInfoAskerAndPrinter()
+        private static void PromptPersonData()
         {
             string firstName = PromptString("What is your first name: ");
             string lastName = PromptString("What is your last name: ");
