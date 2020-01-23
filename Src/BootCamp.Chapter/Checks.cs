@@ -27,7 +27,7 @@
 
         public static float CalculateBmi(float weight, float height)
         {
-            return weight / (height * height);
+            return Lesson3.CalculateBmi(weight, height);
         }
     }
 }
