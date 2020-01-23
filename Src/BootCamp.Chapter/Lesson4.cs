@@ -6,13 +6,7 @@ namespace BootCamp.Chapter
 {
     class Lesson4
     {
-        /*
-            Modify your old functions to fit the specification:
-        
-        
-        
-        
-    */
+        private static string originalHeight, originalWeight;
         public static void Demo()
         {
             PromptPersonData();
@@ -20,19 +14,25 @@ namespace BootCamp.Chapter
         }
         private static void PromptPersonData()
         {
-            string firstName = PromptString("What is your first name: ");
-            string lastName = PromptString("What is your last name: ");
-            //TODO: Invalid height or weight or age that are not numbers should return -1 and print error message ""X" is not a valid number." where X is input from console.
+            string firstName = NamePrompt("What is your first name: ");
+            string lastName = NamePrompt("What is your last name: ");
             int age = PromptInt("What is your age: ");
-            
-            //TODO: Empty string for height or weight or age returns 0
             float weight = PromptFloat("what is your weight in Kg: ");
             float height = PromptFloat("what is your height in cm: ");
-            float bmi = BmiCalculator(weight, height / 100);
-
+            
             Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
 
+            float bmi = BmiCalculator(weight, height / 100);
             Console.WriteLine($"Your BMI is {bmi}");
+        }
+        public static string NamePrompt(string message)
+        {
+            string name = PromptString(message);
+            if (name.Equals("-"))
+            {
+                Console.WriteLine("Name cannot be empty.");
+            }
+            return name;
         }
         public static string PromptString(string message)
         {
@@ -41,7 +41,6 @@ namespace BootCamp.Chapter
 
             if (String.IsNullOrEmpty(input))
             {
-                Console.WriteLine("Name cannot be empty.");
                 return "-";
             }
 
@@ -49,15 +48,18 @@ namespace BootCamp.Chapter
         }
         public static int PromptInt(string message)
         {
-
-            //TODO: Invalid height or weight or age that are not numbers should return -1 and print error message ""X" is not a valid number." where X is input from console.
             Console.Write(message);
-            string readLine = Console.ReadLine();
-            bool isNumber = int.TryParse(readLine, out int number);
+            string input = Console.ReadLine();
+            if (String.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+
+            bool isNumber = int.TryParse(input, out int number);
 
             if (!isNumber)
             {
-                Console.WriteLine($"{readLine} is not a valid number");
+                Console.WriteLine($"{input} is not a valid number");
                 return  -1;
             }
 
@@ -65,15 +67,19 @@ namespace BootCamp.Chapter
         }
         public static float PromptFloat(string message)
         {
-
-            //TODO: Invalid height or weight or age that are not numbers should return -1 and print error message ""X" is not a valid number." where X is input from console.
             Console.Write(message);
-            string readLine = Console.ReadLine();
-            bool isNumber = float.TryParse(readLine, out float number);
+            string input = Console.ReadLine();
+
+            if (String.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+
+            bool isNumber = float.TryParse(input, out float number);
 
             if (!isNumber)
             {
-                Console.WriteLine($"{readLine} is not a valid number");
+                Console.WriteLine($"{input} is not a valid number");
                 return -1;
             }
 
@@ -88,7 +94,24 @@ namespace BootCamp.Chapter
             //- "Weight cannot be equal or less than zero, but was X.", where X is the console input(X <= 0)
             // - If both height and weight are invalid, both validation messages should be printed to console(each in new line)
 
+            bool isWeightLessThan1 = weight < 1;
+            bool isHeightLessThan1 = height < 1;
+
+            if (isWeightLessThan1 || isHeightLessThan1)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (isHeightLessThan1)
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
+                if (isWeightLessThan1)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
+            }
+
             return weight / (height * height); // BMI = kg/m2
         }
+
     }
 }
