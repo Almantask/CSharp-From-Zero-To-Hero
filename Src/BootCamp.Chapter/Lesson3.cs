@@ -16,51 +16,47 @@ namespace BootCamp.Chapter
         public static void EnterUserData()
         {
 
-            string name = Lesson3.PromptFullName("Full name: ");
+            string firstName = Lesson3.PromptUserString("First name: ");
             Console.WriteLine();
 
-            int age = Lesson3.PromptAge("Age: ");
+            string lastName = Lesson3.PromptUserString("Last name: ");
             Console.WriteLine();
 
-            float weight = Lesson3.PromptWeight("Weight: ");
+            int age = Lesson3.PromptUserInt("Age: ");
             Console.WriteLine();
 
-            float height = Lesson3.PromptHeight("Height: ");
+            float weight = Lesson3.PromptUserFloat("Weight (in kg): ");
+            Console.WriteLine();
+
+            float height = Lesson3.PromptUserFloat("Height (in m): ");
             Console.WriteLine();
 
             float bmi = Lesson3.CalcBmi(weight, height);
             Console.WriteLine();
 
-            Console.WriteLine(name + " is " + age + " years old, their weight is " + weight + "kg and their height is " + height + " m. Their BMI is " + bmi + ".");
+            Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, their weight is " + weight + "kg and their height is " + height + "m. Their BMI is " + bmi + ".");
             Console.WriteLine();
         }
 
-        public static string PromptFullName(string message)
+        public static string PromptUserString(string message)
         {
             Console.WriteLine(message);
             string name = Console.ReadLine();
             return name;
         }
 
-        public static int PromptAge(string message)
+        public static int PromptUserInt(string message)
         {
             Console.WriteLine(message);
-            int age = int.Parse(Console.ReadLine());
-            return age;
+            int num = int.Parse(Console.ReadLine());
+            return num;
         }
 
-        public static float PromptWeight(string message)
+        public static float PromptUserFloat(string message)
         {
             Console.WriteLine(message);
-            float weight = float.Parse(Console.ReadLine());
-            return weight;
-        }
-
-        public static float PromptHeight(string message)
-        {
-            Console.WriteLine(message);
-            float height = float.Parse(Console.ReadLine());
-            return height;
+            float measurments = float.Parse(Console.ReadLine());
+            return measurments;
         }
 
         public static float CalcBmi(float weight, float height)
