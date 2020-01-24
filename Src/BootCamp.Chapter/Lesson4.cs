@@ -14,7 +14,7 @@ namespace BootCamp.Chapter
                 string surname = RequestString("Please enter last name:");
 
                 int age = RequestInt("Please enter age in years:");
-               
+
                 float weightInKilograms = RequestFloat("Please enter weight in kilograms:");
 
                 float heightInMeters = RequestFloat("Please enter height in meters:");
@@ -41,7 +41,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
             }
-            
+
             return userInput;
         }
 
@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine($" {input} is not a valid number.");
                 return -1;
             }
-                         
+
             return number;
         }
 
@@ -89,7 +89,7 @@ namespace BootCamp.Chapter
         {
             return string.IsNullOrEmpty(input);
         }
-        private static bool SafeStringCheck (string input1, string input2)
+        private static bool SafeStringCheck(string input1, string input2)
         {
             return input1.Equals(input2);
         }
@@ -112,31 +112,44 @@ namespace BootCamp.Chapter
         {
             if (height <= 0 && weight <= 0)
             {
-                Console.WriteLine("Failed calculating BMI: Reason:");
-                HeightErrorMessage(height);
+                FailureMessage();
                 WeightErrorMessage(weight);
-                return 0;
+                ShortHeightErrorMessage(height);
+                return -1;
             }
             if (height <= 0)
-            {       HeightErrorMessage(height);
-                return 0;
+            {
+                FailureMessage();
+                HeightErrorMessage(height);
+                return -1;
 
             }
             if (weight <= 0)
-            {       
+            {
+                FailureMessage();
                 WeightErrorMessage(weight);
-                return 0;
+                return -1;
             }
-            
+
             return weight / height / height;
         }
+
+        public static void FailureMessage()
+        {
+            Console.WriteLine("Failed calculating BMI. Reason:");
+        }
+
         public static void HeightErrorMessage(float height)
+        {
+            Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+        }
+        public static void ShortHeightErrorMessage(float height)
         {
             Console.WriteLine($"Height cannot be less than zero, but was {height}.");
         }
-        public static void WeightErrorMessage(float height)
+        public static void WeightErrorMessage(float weight)
         {
-            Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+            Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
         }
 
         public static char RequestUserChoiceToRepeatOrNot()
