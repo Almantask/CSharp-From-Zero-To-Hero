@@ -30,22 +30,50 @@ namespace BootCamp.Chapter
 
         public static float GetBmi(float weight, float height)
         {
+            if (height <= 0)
+            {
+                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}."); 
+            }
+
+            if (weight <= 0)
+            {
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+            }
+
+
             return weight / (float)Math.Pow(height, 2);
         }
 
         public static string GetString(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             var input = Console.ReadLine();
-            return input;
+            var validated  = ValidateString(input);
+            if (validated == "-")
+            {
+                Console.Write($"Name cannot be empty."); 
+            }
+
+            return validated;
+        }
+
+        public static string ValidateString(string input)
+        {
+            if (String.IsNullOrEmpty(input))
+            {
+                return "-";
+            }
+
+            return input; 
+             
         }
 
         public static int GetInt(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             var input = Console.ReadLine();
             var validated = ValidateInt(input);
-            if (validated == -2)
+            if (validated == -1)
             {
                 DisplayErrorMessageForNumbers(input);
             }
@@ -55,7 +83,7 @@ namespace BootCamp.Chapter
 
         public static void DisplayErrorMessageForNumbers(string input)
         {
-            Console.Write($"{Environment.NewLine}\"{input}\" is not a valid number.");
+            Console.Write($"\"{input}\" is not a valid number.");
         }
 
         private static int ValidateInt(string input)
@@ -75,15 +103,35 @@ namespace BootCamp.Chapter
             return -1;
         }
 
-
-
         public static float GetFloat(string message)
         {
-            Console.Write(message);
-            var input = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            return input;
+            Console.WriteLine(message);
+            var input = Console.ReadLine();
+            var validated = ValidateFloat(input);
+            if (validated == -1)
+            {
+                DisplayErrorMessageForNumbers(input);
+            }
+
+            return validated;
         }
 
+        private static float ValidateFloat(string input)
+        {
+            if (String.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+
+            var isValid = float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture,  out float number);
+
+            if (isValid)
+            {
+                return number;
+            }
+
+            return -1;
+        }
 
     }
 }
