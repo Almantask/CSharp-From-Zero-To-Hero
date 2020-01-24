@@ -91,10 +91,17 @@ namespace BootCamp.Chapter
             bool isWeightLessThanOrEqualTo0 = weight <= 0;
             bool isHeightLessThanOrEqualTo0 = height <= 0;
 
-            if (isWeightLessThanOrEqualTo0 || isHeightLessThanOrEqualTo0)
+            if (isWeightLessThanOrEqualTo0 && isHeightLessThanOrEqualTo0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+                return -1f;
 
+            }
+            else if (isWeightLessThanOrEqualTo0 || isHeightLessThanOrEqualTo0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
                 if (isWeightLessThanOrEqualTo0)
                 {
                     Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
@@ -102,8 +109,8 @@ namespace BootCamp.Chapter
                 if (isHeightLessThanOrEqualTo0)
                 {
                     Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
-                    return -1f;
                 }
+                return -1f;
             }
 
             return weight / (height * height); // BMI = kg/m2
