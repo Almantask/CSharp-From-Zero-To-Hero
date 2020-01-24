@@ -29,7 +29,7 @@ namespace BootCamp.Chapter
 
         public static string RequestString(string prompt)
         {
-            Console.Write(prompt);
+            Console.Write($"{prompt}{Environment.NewLine}");
             return ValidateString();
         }
 
@@ -38,7 +38,7 @@ namespace BootCamp.Chapter
             var userInput = Console.ReadLine();
             if (NullStringCheck(userInput))
             {
-                Console.WriteLine("\nName cannot be empty.");
+                Console.Write($"Name cannot be empty.");
                 return "-";
             }
 
@@ -47,11 +47,10 @@ namespace BootCamp.Chapter
 
         public static int RequestInt(string prompt)
         {
-            Console.Write(prompt);
+            Console.Write($"{prompt}{Environment.NewLine}");
             var userInput = Console.ReadLine();
             if (NullStringCheck(userInput))
             {
-                Console.WriteLine("");
                 return 0;
             }
             return ValidateInt(userInput);
@@ -63,7 +62,7 @@ namespace BootCamp.Chapter
             var isInt = int.TryParse(input, out var number);
             if (!isInt)
             {
-                Console.WriteLine("\n\"" + input + "\" is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
 
@@ -72,11 +71,11 @@ namespace BootCamp.Chapter
 
         public static float RequestFloat(string prompt)
         {
-            Console.Write(prompt);
+            Console.Write($"{prompt}{Environment.NewLine}");
             var userInput = Console.ReadLine();
             if (NullStringCheck(userInput))
             {
-                Console.WriteLine("");
+                Console.Write("");
                 return 0;
             }
             return ValidateFloat(userInput);
@@ -87,7 +86,7 @@ namespace BootCamp.Chapter
             var isFloat = float.TryParse(input, out var number);
             if (!isFloat)
             {
-                Console.WriteLine($"\n\"{input}\" is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
             else
@@ -97,10 +96,7 @@ namespace BootCamp.Chapter
         {
             return string.IsNullOrEmpty(input);
         }
-        private static bool SafeStringCheck(string input1, string input2)
-        {
-            return input1.Equals(input2);
-        }
+        
         public static void ReportBasicInfo(string firstName, string surname, int age, double weight, double height)
         {
             Console.WriteLine();
