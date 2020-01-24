@@ -30,19 +30,24 @@ namespace BootCamp.Chapter
 
         public static float GetBmi(float weight, float height)
         {
-            if (height < 0 || weight < 0)
+            if (height <= 0 || weight <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
 
-                if (height <= 0)
+                if (height <= 0 && weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was 0.{Environment.NewLine}Height cannot be less than zero, but was 0.");
+                }
+                else if (height <= 0)
                 {
                     Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
                 }
-
-                if (weight <= 0)
+                else if (weight <= 0)
                 {
                     Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
                 }
+
+                return -1; 
             }
             
 
