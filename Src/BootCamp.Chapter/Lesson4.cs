@@ -25,10 +25,12 @@ namespace BootCamp.Chapter
         public static string NamePrompt(string message)
         {
             string name = PromptString(message);
+
             if (name.Equals("-"))
             {
                 Console.WriteLine("Name cannot be empty.");
             }
+
             return name;
         }
         public static string PromptString(string message)
@@ -57,7 +59,7 @@ namespace BootCamp.Chapter
 
             if (!isNumber)
             {
-                Console.WriteLine($"{input} is not a valid number");
+                Console.WriteLine($"\"{input}\" is not a valid number");
                 return  -1;
             }
 
@@ -70,15 +72,15 @@ namespace BootCamp.Chapter
 
             if (String.IsNullOrEmpty(input))
             {
-                return 0;
+                return 0f;
             }
 
             bool isNumber = float.TryParse(input, out float number);
 
             if (!isNumber)
             {
-                Console.WriteLine($"{input} is not a valid number");
-                return -1;
+                Console.WriteLine($"\"{input}\" is not a valid number");
+                return -1f;
             }
 
             return number;
@@ -100,9 +102,14 @@ namespace BootCamp.Chapter
                 {
                     Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
                 }
+                return -1f;
+            }
+            else
+            {
+                return weight / (height * height); // BMI = kg/m2
             }
 
-            return weight / (height * height); // BMI = kg/m2
+           
         }
 
     }
