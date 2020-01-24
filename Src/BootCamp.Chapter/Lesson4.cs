@@ -30,10 +30,10 @@ namespace BootCamp.Chapter
         public static string RequestString(string prompt)
         {
             Console.Write($"{prompt}{Environment.NewLine}");
-            return ValidateString();
+            return ValidStringOrErrorCode();
         }
 
-        private static string ValidateString()
+        private static string ValidStringOrErrorCode()
         {
             var userInput = Console.ReadLine();
             if (NullStringCheck(userInput))
@@ -53,10 +53,10 @@ namespace BootCamp.Chapter
             {
                 return 0;
             }
-            return ValidateInt(userInput);
+            return ValidIntOrErrorCode(userInput);
         }
 
-        static int ValidateInt(string input)
+        static int ValidIntOrErrorCode(string input)
         {
            
             var isInt = int.TryParse(input, out var number);
@@ -78,10 +78,10 @@ namespace BootCamp.Chapter
                 Console.Write("");
                 return 0;
             }
-            return ValidateFloat(userInput);
+            return ValidFloatOrErrorCode(userInput);
         }
 
-        static float ValidateFloat(string input)
+        static float ValidFloatOrErrorCode(string input)
         {
             var isFloat = float.TryParse(input, out var number);
             if (!isFloat)
