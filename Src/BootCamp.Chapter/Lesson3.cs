@@ -29,8 +29,14 @@ namespace BootCamp.Chapter
         public static float BmiCalc(float weight, float height)
         {
             int control = 0;
-            if (height <= 0) control = 1;
-            if (weight <= 0) control += 2;
+            if (height <= 0) 
+            { 
+                control = 1; 
+            }
+            if (weight <= 0)
+            {
+                control += 2;
+            }
             switch (control)
             {
                 case (0):
@@ -48,8 +54,10 @@ namespace BootCamp.Chapter
                     Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
                     Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
                     return -1;
+                default:
+                    return 0;
             }
-            return 0;
+            
 
         }
         public static string PrintAndReadString(string message)
@@ -70,7 +78,10 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
             int age;
             bool isNumber;
-            if (string.IsNullOrEmpty(input)) return 0;
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
             else
             {
                 isNumber = int.TryParse(input, out age);
