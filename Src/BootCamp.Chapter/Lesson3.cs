@@ -29,8 +29,6 @@ namespace BootCamp.Chapter
 
                 moreEntries = AddAnotherPerson();
             }
-
-
         }
 
         public static bool AddAnotherPerson()
@@ -49,7 +47,6 @@ namespace BootCamp.Chapter
             }
 
             return moreEntries;
-
         }
 
 
@@ -57,6 +54,7 @@ namespace BootCamp.Chapter
         {
             float bmi = weightInKg / (height * height);
 
+           
             if((weightInKg <= 0) && (height <= 0))
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
@@ -87,8 +85,8 @@ namespace BootCamp.Chapter
                 return -1;
             }
 
-           // Console.WriteLine($"\nYour BMI based on your heigh of {height}m and your weight of {weightInKg}Kg " +
-                          //   $"is {bmi} kg/(m*m)");
+            Console.WriteLine($"\nYour BMI based on your heigh of {height}m and your weight of {weightInKg}Kg " +
+                             $"is {bmi} kg/(m*m)");
             return bmi;
         }
 
@@ -98,17 +96,19 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
 
             string toAnInt = Console.ReadLine();
+            
 
-            if (toAnInt == string.Empty)
+            if (string.IsNullOrEmpty(toAnInt))
             {
-                Console.WriteLine("You entered no age.");
                 return 0;
             }
+           
 
             bool isInt = int.TryParse(toAnInt, out int age);
+
             if(!isInt)
             {
-                Console.WriteLine($"{toAnInt} is an invalid number.");
+                Console.Write($"\"{toAnInt}\" is not a valid number.");
                 return -1 ;
             }
 
@@ -125,7 +125,7 @@ namespace BootCamp.Chapter
             
            if(string.IsNullOrEmpty(readInString))
             {
-                Console.WriteLine($"Name can not be empty.");
+                Console.Write($"Name cannot be empty.");
                 return "-";
             }
             
@@ -139,9 +139,9 @@ namespace BootCamp.Chapter
 
             string toAFloat = Console.ReadLine();
 
-            if (toAFloat == string.Empty)
+            if (string.IsNullOrEmpty(toAFloat))
             {
-                Console.WriteLine("You did not enter anything.");
+               // Console.WriteLine("You did not enter anything.");
                 return 0;
             }
 
@@ -149,7 +149,7 @@ namespace BootCamp.Chapter
 
             if(!isFloat)
             {
-                Console.WriteLine($"{toAFloat} is not a valid number.");
+                Console.Write($"\"{toAFloat}\" is not a valid number.");
                 return -1;
             }
             if(measurement <= 0 )
@@ -157,8 +157,6 @@ namespace BootCamp.Chapter
                 return -1;
             }
 
-            
-            
             return measurement;
         }
 
