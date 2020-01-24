@@ -11,7 +11,6 @@ namespace BootCamp.Chapter.Tests
         private readonly string _promptMessage = $"Testing";
 
 
-
         [Theory]
         [InlineData(100, 2, 25)]
         [InlineData(100, 10, 1)]
