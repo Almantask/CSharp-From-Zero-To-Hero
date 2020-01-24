@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace BootCamp.Chapter
 {
@@ -11,9 +11,20 @@ namespace BootCamp.Chapter
             {
                 PromptUserForStats();
 
-            } while (PromptCalculateNewBMI());
+            } while (PromptCalculateNewBmi());
         }
-        public static bool PromptCalculateNewBMI()
+        private static void WelcomePrompt()
+        {
+            Console.WriteLine("+------------------------------+");
+            Console.WriteLine("|                              |");
+            Console.WriteLine("|    Welcome to C# Bootcamp    |");
+            Console.WriteLine("|        BMI Calculator        |");
+            Console.WriteLine("|        Version 0.0.3         |");
+            Console.WriteLine("|                              |");
+            Console.WriteLine("+------------------------------+");
+        }
+        
+        public static bool PromptCalculateNewBmi()
         {
             Console.WriteLine("Do you wish to calculate another person? Y/N ");
             string response = Console.ReadLine();
@@ -43,29 +54,12 @@ namespace BootCamp.Chapter
 
         }
 
-        private static void WelcomePrompt()
-        {
-            Console.WriteLine("+------------------------------+");
-            Console.WriteLine("|                              |");
-            Console.WriteLine("|    Welcome to C# Bootcamp    |");
-            Console.WriteLine("|        BMI Calculator        |");
-            Console.WriteLine("|        Version 0.0.3         |");
-            Console.WriteLine("|                              |");
-            Console.WriteLine("+------------------------------+");
-        }
-
-        public static string GetInput()
-        {
-            return Console.ReadLine();
-        }
-
         // Validation Functions
         public static string PromptNameInput(string promptMessage)
         {
             Console.WriteLine(promptMessage);
 
-            var name = GetInput();
-
+            var name = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(name))
             {
                 Console.Write("Name cannot be empty.");
@@ -80,7 +74,7 @@ namespace BootCamp.Chapter
         public static int PromptAgeInput(string promptMessage)
         {
             Console.WriteLine(promptMessage);
-            var age = GetInput();
+            var age = Console.ReadLine();
             if (IsNumber(age) && IsPositive(float.Parse(age)))
             {
                 return int.Parse(age);             
@@ -99,9 +93,8 @@ namespace BootCamp.Chapter
         public static float PromptFloatInput(string promptMessage)
         {
             Console.WriteLine(promptMessage);
-            var value = GetInput();
-           
 
+            var value = Console.ReadLine();
             if (IsNumber(value) && IsPositive(float.Parse(value)))
             {
                 return float.Parse(value);
