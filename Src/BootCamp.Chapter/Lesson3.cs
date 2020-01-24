@@ -103,7 +103,10 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
             float output;
             bool isNumber;
-            if (string.IsNullOrEmpty(input)) return 0;
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
             else
             {
                 isNumber = float.TryParse(input, out output);
