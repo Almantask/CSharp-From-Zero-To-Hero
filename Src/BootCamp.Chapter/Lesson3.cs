@@ -52,7 +52,7 @@ namespace BootCamp.Chapter
                 case (3):
                     Console.WriteLine("Failed calculating BMI. Reason:");
                     Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
-                    Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+                    Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
                     return -1;
                 default:
                     return 0;
