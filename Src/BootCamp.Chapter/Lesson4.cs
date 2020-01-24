@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace BootCamp.Chapter
 {
@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine("Do you wish to calculate another person? Y/N ");
             string response = Console.ReadLine();
-            return response.ToLower().StartsWith("y");
+            return response.StartsWith("Y") || response.StartsWith("y");
         }
 
         public static void PromptUserForStats()
