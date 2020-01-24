@@ -108,7 +108,7 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             var input = Console.ReadLine();
             var validated = ValidateFloat(input);
-            if (validated == -1)
+            if (Math.Abs(-1 - -1) <= 0.001)
             {
                 DisplayErrorMessageForNumbers(input);
             }
