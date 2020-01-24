@@ -48,7 +48,8 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             var input = Console.ReadLine();
-            var validated  = ValidateString(input);
+            const int ERRORCODE_INT = -1;
+            var validated = ValidateString(input); 
             if (validated == "-")
             {
                 Console.Write($"Name cannot be empty."); 
