@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 namespace BootCamp.Chapter
 {
     public static class Lesson4
@@ -31,13 +30,13 @@ namespace BootCamp.Chapter
         public static string RequestString(string prompt)
         {
             Console.Write(prompt);
-            return ValidateString);
+            return ValidateString();
         }
 
-        private static string ValidateString(string prompt)
+        private static string ValidateString()
         {
             var userInput = Console.ReadLine();
-            if (NullStringCheck(userInput)
+            if (NullStringCheck(userInput))
             {
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
@@ -59,7 +58,7 @@ namespace BootCamp.Chapter
             var isInt = int.TryParse(input, out var number);
             if (!isInt)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.WriteLine($" {input} is not a valid number.");
                 return -1;
             }
                          
@@ -73,7 +72,7 @@ namespace BootCamp.Chapter
             var isFloat = float.TryParse(input, out var number);
             if (!isFloat)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.WriteLine($" {input} is not a valid number.");
                 return -1;
             }
             else
@@ -111,7 +110,33 @@ namespace BootCamp.Chapter
 
         public static float CalculateBodyMassIndex(float weight, float height)
         {
+            if (height <= 0 && weight <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI: Reason:");
+                HeightErrorMessage(height);
+                WeightErrorMessage(weight);
+                return 0;
+            }
+            if (height <= 0)
+            {       HeightErrorMessage(height);
+                return 0;
+
+            }
+            if (weight <= 0)
+            {       
+                WeightErrorMessage(weight);
+                return 0;
+            }
+            
             return weight / height / height;
+        }
+        public static void HeightErrorMessage(float height)
+        {
+            Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+        }
+        public static void WeightErrorMessage(float height)
+        {
+            Console.WriteLine($"Height cannot be less than zero, but was {height}.");
         }
 
         public static char RequestUserChoiceToRepeatOrNot()
