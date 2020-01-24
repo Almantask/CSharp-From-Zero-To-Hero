@@ -31,18 +31,31 @@ namespace BootCamp.Chapter
         public static string RequestString(string prompt)
         {
             Console.Write(prompt);
-            return Console.ReadLine();
+            return ValidateString);
+        }
+
+        private static string ValidateString(string prompt)
+        {
+            var userInput = Console.ReadLine();
+            if (NullStringCheck(userInput)
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            
+            return userInput;
         }
 
         public static int RequestInt(string prompt)
         {
             Console.Write(prompt);
-            return ParseInt(Console.ReadLine());
-            
+            return ValidateInt(Console.ReadLine());
         }
 
-        static int ParseInt(string input)
+        static int ValidateInt(string input)
         {
+            if (NullStringCheck(input))
+                return 0;
             var isInt = int.TryParse(input, out var number);
             if (!isInt)
             {
@@ -53,8 +66,10 @@ namespace BootCamp.Chapter
             return number;
         }
 
-        static float ParseFloat(string input)
+        static float ValidateFloat(string input)
         {
+            if (NullStringCheck(input))
+                return 0;
             var isFloat = float.TryParse(input, out var number);
             if (!isFloat)
             {
@@ -68,14 +83,14 @@ namespace BootCamp.Chapter
         public static float RequestFloat(string prompt)
         {
             Console.Write(prompt);
-            return ParseFloat(Console.ReadLine());
+            return ValidateFloat(Console.ReadLine());
         }
 
-        private bool SafeStringCheck(string input)
+        public static bool NullStringCheck(string input)
         {
             return string.IsNullOrEmpty(input);
         }
-        private bool SafeStringCheck (string input1, string input2)
+        private static bool SafeStringCheck (string input1, string input2)
         {
             return input1.Equals(input2);
         }
