@@ -4,6 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
+    
     /// <summary>
     /// Test class is used to test your implementation.
     /// Each homework will have a set of steps that you will have to do.
@@ -14,28 +15,25 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
+        
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            return Lesson3.PrintAndReadInt(message);
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            return Lesson3.PrintAndReadString(message);
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            return Lesson3.PrintAndReadFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            return Lesson3.BmiCalc(weight, height);
         }
     }
 }
