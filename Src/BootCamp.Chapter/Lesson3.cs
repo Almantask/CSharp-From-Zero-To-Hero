@@ -49,6 +49,11 @@ namespace BootCamp.Chapter
             return moreEntries;
         }
 
+        public static void BmiErrorMessage(string stat, float measurements)
+        {
+            Console.WriteLine("Failed calculating BMI. Reason:");
+            Console.WriteLine($"{stat} cannot be equal or less than zero, but was {measurements}.");
+        }
 
         public static float CalculateBmi(float weightInKg, float height)
         {
@@ -57,23 +62,20 @@ namespace BootCamp.Chapter
            
             if((weightInKg <= 0) && (height <= 0))
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weightInKg}.");
+                BmiErrorMessage("Weight", weightInKg);
                 Console.WriteLine($"Height cannot be less than zero, but was {height}.");
                 return -1;
             }
 
             if(weightInKg <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weightInKg}.");
+                BmiErrorMessage("Weight", weightInKg);
                 return -1;
             }
 
             if(height <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                BmiErrorMessage("Height", height);
                 return -1;
             }
 
@@ -141,7 +143,6 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(toAFloat))
             {
-               // Console.WriteLine("You did not enter anything.");
                 return 0;
             }
 
