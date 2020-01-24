@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
                 string surname = RequestString("Please enter last name:");
 
                 int age = RequestInt("Please enter age in years:");
-
+               
                 float weightInKilograms = RequestFloat("Please enter weight in kilograms:");
 
                 float heightInMeters = RequestFloat("Please enter height in meters:");
@@ -37,15 +37,48 @@ namespace BootCamp.Chapter
         public static int RequestInt(string prompt)
         {
             Console.Write(prompt);
-            return Convert.ToInt32(Console.ReadLine());
+            return ParseInt(Console.ReadLine());
+            
+        }
+
+        static int ParseInt(string input)
+        {
+            var isInt = int.TryParse(input, out var number);
+            if (!isInt)
+            {
+                Console.WriteLine($"{input} is not a valid number.");
+                return -1;
+            }
+                         
+            return number;
+        }
+
+        static float ParseFloat(string input)
+        {
+            var isFloat = float.TryParse(input, out var number);
+            if (!isFloat)
+            {
+                Console.WriteLine($"{input} is not a valid number.");
+                return -1;
+            }
+            else
+                return number;
         }
 
         public static float RequestFloat(string prompt)
         {
             Console.Write(prompt);
-            return float.Parse(Console.ReadLine());
+            return ParseFloat(Console.ReadLine());
         }
 
+        private bool SafeStringCheck(string input)
+        {
+            return string.IsNullOrEmpty(input);
+        }
+        private bool SafeStringCheck (string input1, string input2)
+        {
+            return input1.Equals(input2);
+        }
         public static void ReportBasicInfo(string firstName, string surname, int age, double weight, double height)
         {
             Console.WriteLine();
