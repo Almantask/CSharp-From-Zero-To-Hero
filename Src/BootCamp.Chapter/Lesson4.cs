@@ -59,7 +59,7 @@ namespace BootCamp.Chapter
 
             if (!isNumber)
             {
-                Console.WriteLine($"\"{input}\" is not a valid number");
+                Console.Write($"{Environment.NewLine}\"{input}\" is not a valid number.");
                 return -1;
             }
 
