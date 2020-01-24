@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BootCamp.Chapter
 {
@@ -38,23 +39,57 @@ namespace BootCamp.Chapter
 
         public static string RegisterStringValue(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
 
-            return Console.ReadLine();
+            string stringValue = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(stringValue))
+            {
+                Console.Write($"{Environment.NewLine}Name cannot be empty.");
+                return "-";
+            }
+
+            return stringValue;
         }
 
         public static int RegisterIntValue(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
 
-            return Convert.ToInt16(Console.ReadLine());
+            string userInput = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(userInput))
+            {
+                return 0;
+            }
+
+            if (!int.TryParse(userInput, out int intValue))
+            {
+                Console.Write($"\"{userInput}\" is not a valid number.");
+                return -1;
+            }
+
+            return intValue;
         }
 
         public static float RegisterFloatValue(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
 
-            return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture.NumberFormat); 
+            string userInput = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(userInput))
+            {
+                return 0;
+            }
+
+            if (!float.TryParse(userInput, out float floatValue))
+            {
+                Console.Write($"{Environment.NewLine}\"{userInput}\" is not a valid number.");
+                return -1;
+            }
+
+            return floatValue;
         }
 
         public static void Summarize(string firstName, string lastName, int age, float weight, float height, float bmi)
@@ -80,7 +115,35 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            return weight / (height * height);
+            var calculatedBmi = weight / (height * height);
+
+            if (height <= 0 && weight <= 0)
+            {
+                Console.WriteLine($"Failed calculating BMI. Reason:");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+
+                return -1;
+            }
+
+            if (height <= 0 || weight <= 0)
+            {
+                Console.WriteLine($"Failed calculating BMI. Reason:");
+
+                if (height <= 0)
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
+
+                if (weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
+
+                return -1;
+            }
+
+            return calculatedBmi;
         }
     }
 }
