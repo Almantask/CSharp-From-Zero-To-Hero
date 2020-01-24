@@ -30,15 +30,21 @@ namespace BootCamp.Chapter
 
         public static float GetBmi(float weight, float height)
         {
-            if (height <= 0)
+            if (height < 0 || weight < 0)
             {
-                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}."); 
-            }
+                Console.WriteLine("Failed calculating BMI. Reason:");
 
-            if (weight <= 0)
-            {
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                if (height <= 0)
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
+
+                if (weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
             }
+            
 
 
             return weight / (float)Math.Pow(height, 2);
@@ -48,7 +54,6 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             var input = Console.ReadLine();
-            const int ERRORCODE_INT = -1;
             var validated = ValidateString(input); 
             if (validated == "-")
             {
