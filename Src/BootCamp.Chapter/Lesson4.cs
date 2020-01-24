@@ -89,8 +89,8 @@ namespace BootCamp.Chapter
                 Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
-            else
-                return number;
+            return number;
+           
         }
         public static bool NullStringCheck(string input)
         {
