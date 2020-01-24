@@ -36,7 +36,7 @@ namespace BootCamp.Chapter
 
                 if (height <= 0 && weight <= 0)
                 {
-                    Console.WriteLine($"Weight cannot be equal or less than zero, but was 0.{Environment.NewLine}Height cannot be less than zero, but was 0.");
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.{Environment.NewLine}Height cannot be less than zero, but was 0.");
                 }
                 else if (height <= 0)
                 {
