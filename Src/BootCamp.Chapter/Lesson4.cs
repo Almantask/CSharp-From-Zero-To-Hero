@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
             int age = PromptInt("What is your age: ");
             float weight = PromptFloat("what is your weight in Kg: ");
             float height = PromptFloat("what is your height in cm: ");
-            
+
             Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
 
             float bmi = BmiCalculator(weight, height / 100);
@@ -60,7 +60,7 @@ namespace BootCamp.Chapter
             if (!isNumber)
             {
                 Console.WriteLine($"\"{input}\" is not a valid number");
-                return  -1;
+                return -1;
             }
 
             return number;
@@ -79,7 +79,7 @@ namespace BootCamp.Chapter
 
             if (!isNumber)
             {
-                Console.WriteLine($"\"{input}\" is not a valid number");
+                Console.Write($"{Environment.NewLine}\"{input}\" is not a valid number");
                 return -1f;
             }
 
@@ -94,14 +94,15 @@ namespace BootCamp.Chapter
             if (isWeightLessThanOrEqualTo0 || isHeightLessThanOrEqualTo0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                if (isHeightLessThanOrEqualTo0)
-                {
-                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
-                }
-                if (isWeightLessThanOrEqualTo0)
-                {
-                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
-                }
+
+            }
+            if (isWeightLessThanOrEqualTo0)
+            {
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+            }
+            if (isHeightLessThanOrEqualTo0)
+            {
+                Console.WriteLine($"Height cannot be less than zero, but was {height}.");
                 return -1f;
             }
             else
@@ -109,7 +110,7 @@ namespace BootCamp.Chapter
                 return weight / (height * height); // BMI = kg/m2
             }
 
-           
+
         }
 
     }
