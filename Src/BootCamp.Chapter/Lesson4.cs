@@ -18,7 +18,7 @@ namespace BootCamp.Chapter
                 var height = GetFloat("What is your height in metres: ");
                 var bmi = GetBmi(weight, height);
 
-                Console.WriteLine($"{name}  {surname}  is {age} years old, his weight is {weight} kg and his height is {height:F2} cm.");
+                Console.Write($"{name}  {surname}  is {age} years old, his weight is {weight} kg and his height is {height:F2} cm.");
                 Console.WriteLine($"His BMI is:  {bmi:N2}");
                 Console.WriteLine("");
                 if (i == 0)
@@ -55,7 +55,7 @@ namespace BootCamp.Chapter
 
         public static void DisplayErrorMessageForNumbers(string input)
         {
-            Console.WriteLine($"{Environment.NewLine}\"{input}\" is not a valid number.");
+            Console.Write($"{Environment.NewLine}\"{input}\" is not a valid number.");
         }
 
         private static int ValidateInt(string input)
@@ -72,7 +72,7 @@ namespace BootCamp.Chapter
                 return number;
             }
 
-            return -2;
+            return -1;
         }
 
 
