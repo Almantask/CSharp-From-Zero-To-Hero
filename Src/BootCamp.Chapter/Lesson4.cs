@@ -38,7 +38,7 @@ namespace BootCamp.Chapter
             var userInput = Console.ReadLine();
             if (NullStringCheck(userInput))
             {
-                Console.Write(userInput + " Name cannot be empty.");
+                Console.WriteLine("\nName cannot be empty.");
                 return "-";
             }
 
@@ -50,7 +50,10 @@ namespace BootCamp.Chapter
             Console.Write(prompt);
             var userInput = Console.ReadLine();
             if (NullStringCheck(userInput))
-                return -1;
+            {
+                Console.WriteLine("");
+                return 0;
+            }
             return ValidateInt(userInput);
         }
 
@@ -60,17 +63,27 @@ namespace BootCamp.Chapter
             var isInt = int.TryParse(input, out var number);
             if (!isInt)
             {
-                Console.WriteLine(input + "is not a valid number");
-                return 0;
+                Console.WriteLine("\n\"" + input + "\" is not a valid number.");
+                return -1;
             }
 
             return number;
         }
 
+        public static float RequestFloat(string prompt)
+        {
+            Console.Write(prompt);
+            var userInput = Console.ReadLine();
+            if (NullStringCheck(userInput))
+            {
+                Console.WriteLine("");
+                return 0;
+            }
+            return ValidateFloat(userInput);
+        }
+
         static float ValidateFloat(string input)
         {
-            if (NullStringCheck(input))
-                return 0;
             var isFloat = float.TryParse(input, out var number);
             if (!isFloat)
             {
@@ -80,16 +93,9 @@ namespace BootCamp.Chapter
             else
                 return number;
         }
-
-        public static float RequestFloat(string prompt)
-        {
-            Console.Write(prompt);
-            return ValidateFloat(Console.ReadLine());
-        }
-
         public static bool NullStringCheck(string input)
         {
-            return string.IsNullOrEmpty(input + " ");
+            return string.IsNullOrEmpty(input);
         }
         private static bool SafeStringCheck(string input1, string input2)
         {
