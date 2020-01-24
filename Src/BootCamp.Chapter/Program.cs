@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
-            Lesson3.Demo();
+            Lesson3.Demo(2);
         }
     }
 }
