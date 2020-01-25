@@ -6,14 +6,13 @@ using Xunit;
 namespace BootCamp.Chapter.Tests
 {
     // You don't have to be here for a long time.
-    public class Lesson3Tests: ConsoleTests
+    public class Lesson3Tests : ConsoleTests
     {
         private readonly string _promptMessage = $"Testing";
 
         [Theory]
         [InlineData(100, -100, "Height cannot be equal or less than zero, but was -100.")]
         [InlineData(100, 0, "Height cannot be equal or less than zero, but was 0.")]
-        [InlineData(50, 50, "Weight cannot be more or equal to height. Height= 50, Weight= 50.")]
         [InlineData(0, 50, "Weight cannot be equal or less than zero, but was 0.")]
         [InlineData(-100, 50, "Weight cannot be equal or less than zero, but was -100.")]
         [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0.Height cannot be less than zero, but was 0.")]
@@ -55,7 +54,7 @@ namespace BootCamp.Chapter.Tests
         public void PromptName_Empty_Returns_Dash_And_Prints_Error()
         {
             ConsoleInput = "";
-            
+
             var convertedInput = Checks.PromptString(_promptMessage);
 
             ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}Name cannot be empty.");

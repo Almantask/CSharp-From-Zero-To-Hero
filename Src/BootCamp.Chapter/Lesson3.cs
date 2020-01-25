@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -80,34 +77,31 @@ namespace BootCamp.Chapter
             }
             return number;
         }
+
+        public static void PrintErrorFor(string word, float number)
+        {
+            Console.WriteLine("Failed calculating BMI. Reason:");
+            Console.WriteLine($"{word} cannot be equal or less than zero, but was {number}.");
+        }
+
         public static float CalculateBmi(float weight, float height)
         {
+
             if (weight <= 0 && height <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                PrintErrorFor("Weight", weight);
                 Console.WriteLine($"Height cannot be less than zero, but was {height}.");
                 return -1;
             }
             if (weight <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                PrintErrorFor("Weight", weight);
                 return -1;
             }
 
             if(height <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
-                return -1;
-            }
-
-            if(weight == height)
-            {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Weight cannot be more or equal to height.");
-                Console.WriteLine($" Height= {height}, Weight= {weight}.");
+                PrintErrorFor("Height", height);
                 return -1;
             }
 
