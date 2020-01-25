@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
-        public static float CalculateBMI(float height, float weight)
+        public static float CalculateBmi(float height, float weight)
         {
             // Calculate BMI
             // Formula: weight (kg) / [height (m)]**2
@@ -26,14 +26,14 @@ namespace BootCamp.Chapter
         public static float ReadInputFloat(string message)
         {
             Console.Write(message);
-            bool _ = float.TryParse(Console.ReadLine(), out float value);
+            float.TryParse(Console.ReadLine(), out float value);
             return value;
         }
 
         public static int ReadInputInt(string message)
         {
             Console.Write(message);
-            bool _ = int.TryParse(Console.ReadLine(), out int value);
+            int.TryParse(Console.ReadLine(), out int value);
             return value;
         }
 
@@ -50,7 +50,7 @@ namespace BootCamp.Chapter
             string message = name + " " + surname + " is " + age + " years old, his weight is " + weight + "Kg and his height is " + height + "cm.";
             Console.WriteLine(message);
 
-            float BMI = CalculateBMI(height, weight);
+            float BMI = CalculateBmi(height, weight);
             Console.WriteLine("His BMI is: " + BMI);
         }
     }
