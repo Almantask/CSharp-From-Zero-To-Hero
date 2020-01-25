@@ -37,29 +37,86 @@ namespace BootCamp.Chapter
         public static string PromptString(string message)
         {
             Console.Write(message);
-            return Console.ReadLine();
+            var input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+
+            return input;
         }
 
         public static int PromptInt(string message)
         {
             Console.Write(message);
-            return int.Parse(Console.ReadLine());
+            var input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+
+            if(int.TryParse(input, out int output) == false)
+            {
+                Console.WriteLine('"' + input + '"' + " is not a valid number.");
+                return -1;
+            }
+            return output;
         }
 
         public static float PromptFloat(string message)
         {
             Console.Write(message);
-            return float.Parse(Console.ReadLine());
+            var input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+
+            if (float.TryParse(input, out float output) == false)
+            {
+                Console.WriteLine('"' + input + '"' + " is not a valid number.");
+                return -1;
+            }
+
+            return output;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
+            if(weight <= 0 && height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI:");
+                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+                return -1;
+            }
+            else if (weight <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI:");
+                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+                return -1;
+            }
+            else if (height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI:");
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+                return -1;
+            }
+
             return weight / (height * height);
         }
 
         public static void WeightType(float BMI)
         {
-            if (BMI < 18.5)
+            if (BMI == -1)
+            {
+                Console.WriteLine("Unable to tell weight type since BMI Calculation FAILED.");
+            }
+            else if (BMI < 18.5)
             {
                 Console.WriteLine("You are Underweight.");
             }
