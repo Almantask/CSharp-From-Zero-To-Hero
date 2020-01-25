@@ -54,7 +54,10 @@ namespace BootCamp.Chapter
                 Console.WriteLine(floatInput + " is not a valid number.");
                 return -1;
             }
-            else return float.Parse(floatInput, CultureInfo.InvariantCulture.NumberFormat);
+            else
+            {
+                return float.Parse(floatInput, CultureInfo.InvariantCulture.NumberFormat);
+            }
 
         }
 
@@ -67,7 +70,10 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
             }
-            else return stringInput;
+            else
+            {
+                return stringInput;
+            }
         }
 
         public static int GetIntInput(string message)
