@@ -19,6 +19,23 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
+            if (weight <= 0 && height <=0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight);
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height);
+            }
+            else if (weight <=0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight);
+            }
+            else if (height <=0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height);
+            }  
+                
             float bmi = weight / (height * height);
             return bmi;
         }
@@ -27,14 +44,30 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             var floatInput = Console.ReadLine();
-            return float.Parse(floatInput, CultureInfo.InvariantCulture.NumberFormat);
+            if (string.IsNullOrEmpty(floatInput))
+            {
+                Console.WriteLine(floatInput + " is not a valid number.");
+                return 0;
+            }
+            else if (!float.TryParse(floatInput, out float number))
+            {
+                Console.WriteLine(floatInput + " is not a valid number.");
+                return -1;
+            }
+            else return float.Parse(floatInput, CultureInfo.InvariantCulture.NumberFormat);
+
         }
 
         public static string GetStringInput(string message)
         {
             Console.Write(message);
             var stringInput = Console.ReadLine();
-            return stringInput;
+            if (string.IsNullOrEmpty(stringInput))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            else return stringInput;
         }
 
         public static int GetIntInput(string message)
@@ -45,3 +78,12 @@ namespace BootCamp.Chapter
         }
     }
 }
+/*Modify your old functions to fit the specification:
+1)  Invalid height or weight or age that are not numbers should return -1 and print error message ""X" is not a valid number." where X is input from console.
+2) Empty string for height or weight or age returns 0
+3) Empty string for name returns "-" and print error message "Name cannot be empty." in a new line.
+4) During BMI calculation, height or weight less or equal to 0 should print error message in console:
+  - It should start with "Failed calculating BMI. Reason:" followed by a new line:
+    - "Height cannot be less than zero, but was X.", where X is the console input. (X <= 0)
+    - "Weight cannot be equal or less than zero, but was X.", where X is the console input (X <= 0)
+    - If both height and weight are invalid, both validation messages should be printed to console (each in new line)*/
