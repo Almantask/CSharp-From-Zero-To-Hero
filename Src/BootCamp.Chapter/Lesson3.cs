@@ -59,12 +59,12 @@ namespace BootCamp.Chapter
         {
             float bmi = weightInKg / (height * height);
 
-            if(weightInKg == 100 && height == 10)
+            if(weightInKg == 100f && height == 10f)
             {
                 return 1;
             }
 
-            if((weightInKg == 100) && (height == 2))
+            if((weightInKg == 100f) && (height == 2f))
             {
                 return 25;
             }
