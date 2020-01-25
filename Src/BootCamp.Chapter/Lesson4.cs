@@ -36,7 +36,7 @@ namespace BootCamp.Chapter
         private static string ValidStringOrErrorCode()
         {
             var userInput = Console.ReadLine();
-            if (NullStringCheck(userInput))
+            if (ReportTrueIfUserInputIsEmpty(userInput))
             {
                 Console.Write($"Name cannot be empty.");
                 return "-";
@@ -49,14 +49,14 @@ namespace BootCamp.Chapter
         {
             Console.Write($"{prompt}{Environment.NewLine}");
             var userInput = Console.ReadLine();
-            if (NullStringCheck(userInput))
+            if (ReportTrueIfUserInputIsEmpty(userInput))
             {
                 return 0;
             }
-            return ValidIntOrErrorCode(userInput);
+            return GetValidIntOrErrorCode(userInput);
         }
 
-        static int ValidIntOrErrorCode(string input)
+        static int GetValidIntOrErrorCode(string input)
         {
            
             var isInt = int.TryParse(input, out var number);
@@ -73,15 +73,14 @@ namespace BootCamp.Chapter
         {
             Console.Write($"{prompt}{Environment.NewLine}");
             var userInput = Console.ReadLine();
-            if (NullStringCheck(userInput))
+            if (ReportTrueIfUserInputIsEmpty(userInput))
             {
-                Console.Write("");
                 return 0;
             }
-            return ValidFloatOrErrorCode(userInput);
+            return GetValidFloatOrErrorCode(userInput);
         }
 
-        static float ValidFloatOrErrorCode(string input)
+        static float GetValidFloatOrErrorCode(string input)
         {
             var isFloat = float.TryParse(input, out var number);
             if (!isFloat)
@@ -92,7 +91,7 @@ namespace BootCamp.Chapter
             return number;
            
         }
-        public static bool NullStringCheck(string input)
+        public static bool ReportTrueIfUserInputIsEmpty(string input)
         {
             return string.IsNullOrEmpty(input);
         }
