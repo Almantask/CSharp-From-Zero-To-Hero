@@ -10,6 +10,9 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
+            // No using statement to System so Console is not known 
+           //  No call to Lesson3.Demo so the user do not see the questions he/she excepted. 
+            
             Console.WriteLine("Hello World!");
         }
     }

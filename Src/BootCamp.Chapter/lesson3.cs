@@ -9,31 +9,32 @@ using BootCamp.Chap;
 
 namespace BootCamp.Chapter
 {
-    internal class lesson3
+    internal class lesson3   // class name must begin with a capital character. 
     {
-        public static int demo(string count)
+        public static int demo(string count)  // name must begin with a capital character.
         {
-            int count = count;
+            int count = count;  // on initialisation a variable can never point to itself. because at that point it null and it makes no sense 
             do
             {
-                ProcPrsn();
-            } while (iteration < count);
+                ProcPrsn(); // Name is wrong. so the compiler cannot find it. 
+                // count is never updated so this will be a endless loop. 
+            } while (iteration < count);   // Iteration is never initialized so it does not exist. 
         }
 
         private static void PrcPrsn()
         {
-            WriteLine("What's ya name, mate?");
-            Checks.PromptString(name);
-            WriteLine("What is your weight and height?");
+            WriteLine("What's ya name, mate?");  // A Console is mising so the compiler thinks its a function in Class3 
+            Checks.PromptString(name);   // name is is never initialized so it does not exist
+            WriteLine("What is your weight and height?"); // A Console. is mising so the compiler thinks its a function in Class3
             float weightAndHeight = AsFloat();
-            WriteLine("And your age?");
+            WriteLine("And your age?");  // A Console. is mising so the compiler thinks its a function in Class3
             int age = ReadMyInput();
 
         }
 
         internal static int ReadMyInput()
         {
-            return int.ReadFromConsole();
+            return int.ReadFromConsole();  // Int does not have a possibility to read things from console. So I think it should be Console. or Clas3 but then the function need to be written.
         }
 
         private static float AsFloat()
@@ -43,13 +44,13 @@ namespace BootCamp.Chapter
 
         private void calcBMI()
         {
-            WriteLine("Your BMI is:");
-            WriteLine(weight / height / height);
-
-            if (BMI > 40)
+            WriteLine("Your BMI is:"); // A Console. is mising so the compiler thinks its a function in Class3
+            WriteLine(weight / height / height); // A Console. is mising so the compiler thinks its a function in Class3 and I thing the formula is wrong. that should be (weight / (height * height) 
+                                                 // and weight and height are never initialized so they does not exist
+            if (BMI > 40) // BMI is never initialized or calculated so it does not exist
             {
-                WriteLine("You really shouldn't eat that much cake!");
-                WriteLine("No offense, mate.");
+                WriteLine("You really shouldn't eat that much cake!");  // A Console. is mising so the compiler thinks its a function in Class3
+                WriteLine("No offense, mate.");  // A Console. is mising so the compiler thinks its a function in Class3
             }
         }
     }
