@@ -21,17 +21,17 @@ namespace BootCamp.Chapter
 
         public static string PromptString(string message)
         {
-            return PromptString(message);
+            return Lesson4.PromptString(message);
         }
 
         public static float PromptFloat(string message)
         {
-            return PromptFloat(message);
+            return Lesson4.PromptFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            return CalculateBmi(weight, height);
+            return Lesson4.CalculateBmi(weight, height);
         }
     }
 }
