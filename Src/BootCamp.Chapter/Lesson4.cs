@@ -85,28 +85,29 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            if(weight <= 0 && height <= 0)
+            const string failedCalc = "Failed calculating BMI. Reason:";
+            if (weight <= 0 && height <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine(failedCalc);
                 Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
                 Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
                 return -1;
             }
             else if (weight <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine(failedCalc);
                 Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
                 return -1;
             }
             else if (height <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine(failedCalc);
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
                 return -1;
             }
             else if (weight >= height)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine(failedCalc);
                 Console.WriteLine("Weight cannot be more or equal to height.");
                 Console.WriteLine(" Height= " + height + ", Weight= " + weight + ".");
                 return -1;
