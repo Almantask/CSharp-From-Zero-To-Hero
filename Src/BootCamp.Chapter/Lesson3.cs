@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -43,7 +44,7 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(stringValue))
             {
-                Console.Write($"{Environment.NewLine}Name cannot be empty.");
+                Console.Write($"Name cannot be empty.");
                 return "-";
             }
 
@@ -72,7 +73,7 @@ namespace BootCamp.Chapter
 
         public static float RegisterFloatValue(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
 
             string userInput = Console.ReadLine();
 
@@ -81,7 +82,7 @@ namespace BootCamp.Chapter
                 return 0;
             }
 
-            if (!float.TryParse(userInput, out float floatValue))
+            if (!float.TryParse(userInput, NumberStyles.Any, CultureInfo.InvariantCulture, out float floatValue))
             {
                 Console.Write($"{Environment.NewLine}\"{userInput}\" is not a valid number.");
                 return -1;
