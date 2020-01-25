@@ -82,7 +82,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static float CalcBMI(float weight, float heigth)
+        public static float CalcBmi(float weight, float heigth)
         {
             const int maxBmi = 40;
             var bmi = weight / (float)Math.Round(Math.Pow(heigth, 2), 2);

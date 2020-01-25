@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
             return Lesson3.AsFloat(message);
         }
 
-        public float WhatIsTheBMI(float weight, float heigth)
+        public float WhatIsTheBmi(float weight, float heigth)
         {
             return Lesson3.CalcBMI(weight, heigth);
         }
