@@ -5,9 +5,9 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            char again = 'y';
+            char repeatQuestionAndReportForAnotherUser = 'y';
 
-            while (again == 'y')
+            while (repeatQuestionAndReportForAnotherUser == 'y')
             {
                 string firstName = RequestString("Please enter first name:");
 
@@ -23,17 +23,15 @@ namespace BootCamp.Chapter
 
                 ReportBodyMassIndex(firstName, weightInKilograms, heightInMeters);
 
-                again = RequestUserChoiceToRepeatOrNot();
+                repeatQuestionAndReportForAnotherUser = RequestUserChoiceToRepeatOrNot();
             }
         }
-
         public static string RequestString(string prompt)
         {
             Console.Write($"{prompt}{Environment.NewLine}");
-            return ValidStringOrErrorCode();
+            return GetValidStringOrErrorCode();
         }
-
-        private static string ValidStringOrErrorCode()
+        private static string GetValidStringOrErrorCode()
         {
             var userInput = Console.ReadLine();
             if (ReportTrueIfUserInputIsEmpty(userInput))
@@ -41,10 +39,8 @@ namespace BootCamp.Chapter
                 Console.Write($"Name cannot be empty.");
                 return "-";
             }
-
             return userInput;
         }
-
         public static int RequestInt(string prompt)
         {
             Console.Write($"{prompt}{Environment.NewLine}");
@@ -55,10 +51,8 @@ namespace BootCamp.Chapter
             }
             return GetValidIntOrErrorCode(userInput);
         }
-
         static int GetValidIntOrErrorCode(string input)
         {
-           
             var isInt = int.TryParse(input, out var number);
             if (!isInt)
             {
@@ -68,7 +62,6 @@ namespace BootCamp.Chapter
 
             return number;
         }
-
         public static float RequestFloat(string prompt)
         {
             Console.Write($"{prompt}{Environment.NewLine}");
@@ -79,7 +72,6 @@ namespace BootCamp.Chapter
             }
             return GetValidFloatOrErrorCode(userInput);
         }
-
         static float GetValidFloatOrErrorCode(string input)
         {
             var isFloat = float.TryParse(input, out var number);
@@ -89,13 +81,11 @@ namespace BootCamp.Chapter
                 return -1;
             }
             return number;
-           
         }
         public static bool ReportTrueIfUserInputIsEmpty(string input)
         {
             return string.IsNullOrEmpty(input);
         }
-        
         public static void ReportBasicInfo(string firstName, string surname, int age, double weight, double height)
         {
             Console.WriteLine();
@@ -104,13 +94,11 @@ namespace BootCamp.Chapter
                 "their weight is " + weight + " kg " +
                 "and their height is " + height + " m.");
         }
-
         public static void ReportBodyMassIndex(string firstName, float weight, float height)
         {
             Console.WriteLine();
             Console.WriteLine(firstName + "s BMI is " + (CalculateBodyMassIndex(weight, height)) + ".");
         }
-
         public static float CalculateBodyMassIndex(float weight, float height)
         {
             if (height <= 0 && weight <= 0)
@@ -125,7 +113,6 @@ namespace BootCamp.Chapter
                 FailureMessage();
                 HeightErrorMessage(height);
                 return -1;
-
             }
             if (weight <= 0)
             {
@@ -133,15 +120,12 @@ namespace BootCamp.Chapter
                 WeightErrorMessage(weight);
                 return -1;
             }
-
             return weight / height / height;
         }
-
         public static void FailureMessage()
         {
             Console.WriteLine("Failed calculating BMI. Reason:");
         }
-
         public static void HeightErrorMessage(float height)
         {
             Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
@@ -154,7 +138,6 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
         }
-
         public static char RequestUserChoiceToRepeatOrNot()
         {
             Console.WriteLine();
@@ -163,4 +146,3 @@ namespace BootCamp.Chapter
         }
     }
 }
-
