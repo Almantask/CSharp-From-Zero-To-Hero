@@ -49,7 +49,10 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             var input = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(input)) return 0;
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
 
             bool isNumber = int.TryParse(input, out var number);
             if (!isNumber)
