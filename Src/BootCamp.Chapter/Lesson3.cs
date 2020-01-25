@@ -4,6 +4,8 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
+        private const float mathTolerance = 0.0000001f;
+
         public static void Demo()
         {
             const int numOfPerson = 2;
@@ -21,7 +23,10 @@ namespace BootCamp.Chapter
                 Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weightKg + " kg and his height is " + heightCm + " cm.");
 
                 float bmi = CalculateBmi(weightKg, heightCm / 100);
-                if (bmi != -1) Console.WriteLine("Body-mass index (BMI) is " + bmi + ".");
+                if (bmi >= 0)
+                {
+                    Console.WriteLine("Body-mass index (BMI) is " + bmi + ".");
+                }
             }
         }
 
@@ -61,7 +66,10 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             var input = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(input)) return 0;
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
 
             bool isNumber = float.TryParse(input, out var number);
             if (!isNumber)
@@ -78,9 +86,10 @@ namespace BootCamp.Chapter
             if (weightKg <= 0 || heightM <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                if (weightKg == 0 && heightM == 0)
+
+                if (Math.Abs(weightKg) < mathTolerance && Math.Abs(heightM) < mathTolerance)
                 {
-                    //To handle special test case where if user enters 0 for Weight and 0 for Height then
+                    //To handle special test case where if user enters 0 for both Weight and Height then
                     //let user know Height cannot be less than 0 for the 0 Height entered by the user.
                     Console.WriteLine("Weight cannot be equal or less than zero, but was 0.");
                     Console.WriteLine("Height cannot be less than zero, but was 0.");
@@ -88,9 +97,13 @@ namespace BootCamp.Chapter
                 else
                 {
                     if (weightKg <= 0)
+                    {
                         Console.WriteLine("Weight cannot be equal or less than zero, but was " + weightKg + ".");
+                    }
                     if (heightM <= 0)
+                    {
                         Console.WriteLine("Height cannot be equal or less than zero, but was " + heightM + ".");
+                    }
                 }
 
                 return -1;
