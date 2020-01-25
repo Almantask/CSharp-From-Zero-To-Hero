@@ -49,8 +49,9 @@ namespace BootCamp.Chapter
             string value = Console.ReadLine();
 
             if (Empty(value))
+            {
                 return 0;
-
+            }
 
             if (float.TryParse(value, out float parsedfloat))
             {
@@ -100,13 +101,16 @@ namespace BootCamp.Chapter
             if (height < 0 || weight<=0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                
+
                 if (weight <= 0)
+                {
                     Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
-               
-                if (height <= 0 && weight>=0)
+                }
+
+                if (height <= 0 && weight >= 0)
+                {
                     Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
-              
+                }
                 return -1F;
             }
 
