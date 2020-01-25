@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -8,7 +6,7 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            //main
+            Interview();
             Interview();
         }
 
@@ -16,20 +14,15 @@ namespace BootCamp.Chapter
         {
             //  gets all the input from the user, if one of them is invalid
             //  it displays the relevant error code and returns
-            string name = PromptString("Name: ");
-            if (ErrorString(name, "Name cannot be empty.")) return;
+            string name = RecursivePromptString("Name: ", "Name cannot be empty");
             
-            string surname = PromptString("Surname: ");
-            if (ErrorString(surname, "Surname cannot be empty.")) return;
+            string surname = RecursivePromptString("Surname: ", "Surname cannot be empty");
+            
+            int age = RecursivePromptInt("Age: ");
 
-            int age = PromptInt("Age: ");
-            if (age < 0) return;
+            float weight = RecursivePromptFloat("Weight(Kg): ");
 
-            float weight = PromptFloat("Weight(Kg): ");
-            if (weight < 0) return;
-
-            float cmHeight = PromptFloat("Height (cm): ");
-            if (cmHeight < 0) return;
+            float cmHeight = RecursivePromptFloat("Height (cm): ");
             float mHeight = cmHeight / 100f;
 
             //  prints the description according to user's input
@@ -40,11 +33,11 @@ namespace BootCamp.Chapter
             if (bmi < 0)
             {
                 Console.WriteLine("Falied to calculate BMI. Reasons:");
-                if ((bmi == -2)||(bmi == -3))
+                if (mHeight <= 0)
                 {
-                    Console.WriteLine($"Height cannot be equal or less than zero, but was {cmHeight}.");
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {cmHeight}cm.");
                 }
-                if ((bmi == -1) || (bmi == -3))
+                if (weight <= 0)
                 {
                     Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
                 }
@@ -59,22 +52,40 @@ namespace BootCamp.Chapter
             //  if these are negative zero calculate error code based on which ones don't work
             if ((weight <= 0) || (height <= 0))
             {
-                int errorCode = 0;
-                if (weight <= 0) errorCode -= 1;
-                if (height <= 0) errorCode -= 2;
-                return errorCode;
+                return -1f;
             }
             return weight / (height * height);
         }
 
-        public static bool ErrorString(string input, string errorMessage)
+        public static string RecursivePromptString(string message, string errorMessage)
         {
+            string input = PromptString(message);
             if ("-".Equals(input))
             {
                 Console.WriteLine(errorMessage);
-                return true;
+                return RecursivePromptString(message, errorMessage);
             }
-            return false;
+            return input;
+        }
+
+        public static int RecursivePromptInt(string message)
+        {
+            int input = PromptInt(message);
+            if (input == -1)
+            {
+                return RecursivePromptInt(message);
+            }
+            return input;
+        }
+
+        public static float RecursivePromptFloat(string message)
+        {
+            float input = PromptFloat(message);
+            if (input < 0)
+            {
+                return RecursivePromptFloat(message);
+            }
+            return input;
         }
 
         public static int PromptInt(string message)
@@ -83,7 +94,10 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
 
             //return 0 with empty string
-            if ("".Equals(input)) return 0;
+            if (String.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
 
             int result;
             bool isInt = int.TryParse(input, out result);
@@ -102,7 +116,10 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
 
             //return 0 with empty string
-            if ("".Equals(input)) return 0f;
+            if (String.IsNullOrEmpty(input))
+            {
+                return 0f;
+            }
 
             float result;
             bool isFloat = float.TryParse(input, out result);
@@ -119,7 +136,11 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             string input = Console.ReadLine();
-            if (!string.IsNullOrEmpty(input)) return input;
+            if (!string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+                
             return "-";
         }
     }
