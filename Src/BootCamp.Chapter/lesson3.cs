@@ -32,7 +32,7 @@ namespace BootCamp.Chapter
 
             int age = ReadMyInput("And your age?");
             WriteLine($"{name} - {age} years old");
-            CalcBMI(weight, heigth);
+            CalcBmi(weight, heigth);
         }
 
         public static int ReadMyInput(string message)

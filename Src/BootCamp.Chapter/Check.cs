@@ -6,26 +6,26 @@
 // Have fun! :)
 namespace BootCamp.Chapter
 {
-    public class Checks
+    public static class Checks
     {
         public static string PromptString(string message)
         {
             return Lesson3.PromptString(message);
         }
 
-        public int PromptInt(string message)
+        public static int PromptInt(string message)
         {
             return Lesson3.ReadMyInput(message);
         }
 
-        public float PromptFloat(string message)
+        public static float PromptFloat(string message)
         {
             return Lesson3.AsFloat(message);
         }
 
-        public float WhatIsTheBmi(float weight, float heigth)
+        public static float WhatIsTheBmi(float weight, float heigth)
         {
-            return Lesson3.CalcBMI(weight, heigth);
+            return Lesson3.CalcBmi(weight, heigth);
         }
-}
+    }
 }
