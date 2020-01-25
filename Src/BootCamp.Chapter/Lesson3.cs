@@ -67,7 +67,7 @@ namespace BootCamp.Chapter
 
         }
         // Input function
-        public static void GatherData(out string firstName, out string lastName, out int age, out float weight, out float height)
+        private static void GatherData(out string firstName, out string lastName, out int age, out float weight, out float height)
         {
             firstName = GetStringInput("Hello, What is your First name?");
             lastName = GetStringInput("Hello, What is your Last name?");
