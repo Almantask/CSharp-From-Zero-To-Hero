@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -58,7 +56,7 @@ namespace BootCamp.Chapter
                 return 0;
             }
 
-            if(int.TryParse(input, out int output) == false)
+            if(!int.TryParse(input, out int output))
             {
                 Console.WriteLine('"' + input + '"' + " is not a valid number.");
                 return -1;
@@ -76,7 +74,7 @@ namespace BootCamp.Chapter
                 return 0;
             }
 
-            if (float.TryParse(input, out float output) == false)
+            if (!float.TryParse(input, out float output))
             {
                 Console.WriteLine('"' + input + '"' + " is not a valid number.");
                 return -1;
@@ -112,7 +110,7 @@ namespace BootCamp.Chapter
 
         public static void WeightType(float BMI)
         {
-            if (BMI == -1)
+            if (BMI < 0)
             {
                 Console.WriteLine("Unable to tell weight type since BMI Calculation FAILED.");
             }
