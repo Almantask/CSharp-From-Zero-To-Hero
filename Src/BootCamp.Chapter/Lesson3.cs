@@ -19,28 +19,83 @@ namespace BootCamp.Chapter
                 var heightCm = PromptFloat("Enter height (cm): ");
 
                 Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weightKg + " kg and his height is " + heightCm + " cm.");
-                Console.WriteLine("Body-mass index (BMI) is " + CalculateBmi(weightKg, heightCm / 100) + ".");
+
+                float bmi = CalculateBmi(weightKg, heightCm / 100);
+                if (bmi != -1) Console.WriteLine("Body-mass index (BMI) is " + bmi + ".");
             }
         }
 
         public static string PromptString(string message)
         {
-            Console.Write(message);
-            return Console.ReadLine();
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.Write("Name cannot be empty.");
+                return "-";
+            }
+
+            return input;
         }
 
         public static int PromptInt(string message)
         {
-            return Convert.ToInt32(PromptString(message));
+            Console.WriteLine(message);
+            var input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input)) return 0;
+
+            bool isNumber = int.TryParse(input, out var number);
+            if (!isNumber)
+            {
+                Console.Write("\"" + input + "\" is not a valid number.");
+                return -1;
+            }
+
+            return number;
         }
 
         public static float PromptFloat(string message)
         {
-            return Convert.ToSingle(PromptString(message));
+            Console.WriteLine(message);
+            var input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input)) return 0;
+
+            bool isNumber = float.TryParse(input, out var number);
+            if (!isNumber)
+            {
+                Console.Write("\"" + input + "\" is not a valid number.");
+                return -1;
+            }
+
+            return number;
         }
 
         public static float CalculateBmi(float weightKg, float heightM)
         {
+            if (weightKg <= 0 || heightM <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (weightKg == 0 && heightM == 0)
+                {
+                    //To handle special test case where if user enters 0 for Weight and 0 for Height then
+                    //let user know Height cannot be less than 0 for the 0 Height entered by the user.
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was 0.");
+                    Console.WriteLine("Height cannot be less than zero, but was 0.");
+                }
+                else
+                {
+                    if (weightKg <= 0)
+                        Console.WriteLine("Weight cannot be equal or less than zero, but was " + weightKg + ".");
+                    if (heightM <= 0)
+                        Console.WriteLine("Height cannot be equal or less than zero, but was " + heightM + ".");
+                }
+
+                return -1;
+            }
+
             //BMI is weight (kg) / [height (m)] ^ 2
             return (float)(weightKg / Math.Pow(heightM, 2));
         }
