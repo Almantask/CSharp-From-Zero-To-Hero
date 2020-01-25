@@ -6,11 +6,11 @@
 // Have fun! :)
 namespace BootCamp.Chapter
 {
-    internal class Program
+    internal static class Program
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Lesson3.Demo(1);
         }
     }
 }

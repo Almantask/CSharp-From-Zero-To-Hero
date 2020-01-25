@@ -4,28 +4,28 @@
 // were made without help or tools first.
 // After that try to find every single thing that seems off.
 // Have fun! :)
-namespace BootCamp.Chap
+namespace BootCamp.Chapter
 {
-    class Checks
+    public class Checks
     {
-        public string PromptString(String Message)
+        public static string PromptString(string message)
         {
-            return Console.ReadLine();
+            return Lesson3.PromptString(message);
         }
 
-        public int PromptInt(String message)
+        public int PromptInt(string message)
         {
-            return lesson3.ReadMyInput();
+            return Lesson3.ReadMyInput(message);
         }
 
-        public float PromptFloat(String message)
+        public float PromptFloat(string message)
         {
-            return lesson3.AsFloat();
+            return Lesson3.AsFloat(message);
         }
 
-        public float WhatIsTheBMI?()
+        public float WhatIsTheBMI(float weight, float heigth)
         {
-            return lesson3.EnterAndProcessBmiByHeightAndWeight();
+            return Lesson3.CalcBMI(weight, heigth);
         }
-    }
+}
 }

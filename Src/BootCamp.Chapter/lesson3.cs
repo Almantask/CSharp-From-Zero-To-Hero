@@ -5,52 +5,96 @@
 // After that try to find every single thing that seems off.
 // Have fun! :)
 using System;
-using BootCamp.Chap;
+using System.Globalization;
+using static System.Console;
 
 namespace BootCamp.Chapter
 {
-    internal class lesson3
+    internal static class Lesson3
     {
-        public static int demo(string count)
+        public static void Demo(int iterations)
         {
-            int count = count;
+            int count = 0;
             do
             {
                 ProcPrsn();
-            } while (iteration < count);
+                count++;
+            } while (count < iterations);
         }
 
-        private static void PrcPrsn()
+        private static void ProcPrsn()
         {
-            WriteLine("What's ya name, mate?");
-            Checks.PromptString(name);
-            WriteLine("What is your weight and height?");
-            float weightAndHeight = AsFloat();
-            WriteLine("And your age?");
-            int age = ReadMyInput();
+            string name = PromptString("What's ya name, mate?");
 
+            float weight = AsFloat("What is your weight?");
+
+            float heigth = AsFloat("What is your heigth?");
+
+            int age = ReadMyInput("And your age?");
+            WriteLine($"{name} - {age} years old");
+            CalcBMI(weight, heigth);
         }
 
-        internal static int ReadMyInput()
+        public static int ReadMyInput(string message)
         {
-            return int.ReadFromConsole();
+            WriteLine(message);
+            var input = ReadLine();
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                WriteLine("Invalid!");
+                return -1;
+            }
+            else
+            {
+                return int.Parse(input);
+            }
         }
 
-        private static float AsFloat()
+        public static string PromptString(string message)
         {
-            return (float)ReadMyInput();
+            WriteLine(message);
+
+            string input = ReadLine();
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                WriteLine("Invalid!");
+                return "Invalid";
+            }
+            else
+            {
+                return input;
+            }
         }
 
-        private void calcBMI()
+        public static float AsFloat(string message)
         {
-            WriteLine("Your BMI is:");
-            WriteLine(weight / height / height);
+            WriteLine(message);
+            string input = ReadLine();
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                WriteLine("Invalid!");
+                return -1;
+            }
+            else
+            {
+                return float.Parse(input, CultureInfo.InvariantCulture);
+            }
+        }
 
-            if (BMI > 40)
+        public static float CalcBMI(float weight, float heigth)
+        {
+            const int maxBmi = 40;
+            var bmi = weight / (float)Math.Round(Math.Pow(heigth, 2), 2);
+
+            WriteLine($"Your BMI is: {bmi}");
+
+            if (bmi > maxBmi)
             {
                 WriteLine("You really shouldn't eat that much cake!");
                 WriteLine("No offense, mate.");
             }
+            return bmi;
         }
     }
 }
