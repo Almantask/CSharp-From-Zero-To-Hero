@@ -38,7 +38,7 @@ namespace BootCamp.Chapter
 
         public static string RegisterStringValue(string message)
         {
-            Console.WriteLine(message);
+            Console.Write($"{message}{Environment.NewLine}");
 
             string stringValue = Console.ReadLine();
 
@@ -53,7 +53,7 @@ namespace BootCamp.Chapter
 
         public static int RegisterIntValue(string message)
         {
-            Console.WriteLine(message);
+            Console.Write($"{message}{Environment.NewLine}");
 
             string userInput = Console.ReadLine();
 
@@ -73,12 +73,13 @@ namespace BootCamp.Chapter
 
         public static float RegisterFloatValue(string message)
         {
-            Console.Write(message);
-
+            Console.Write($"{message}");
+            
             string userInput = Console.ReadLine();
 
             if (string.IsNullOrEmpty(userInput))
             {
+                Console.WriteLine();
                 return 0;
             }
 
@@ -87,6 +88,8 @@ namespace BootCamp.Chapter
                 Console.Write($"{Environment.NewLine}\"{userInput}\" is not a valid number.");
                 return -1;
             }
+
+            Console.WriteLine();
 
             return floatValue;
         }
