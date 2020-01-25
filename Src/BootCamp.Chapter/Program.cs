@@ -25,9 +25,9 @@ namespace BootCamp.Chapter
 
                 Console.WriteLine(fName + " " + lName + "is " + age + " years old, their weight is " + weight + " kg and their height is " + height + " cm.");
 
-                double BMI = weight / Math.Pow(height / 100.0, 2);
+                float bmi = weight / Math.Pow(height / 100.0, 2);
 
-                Console.WriteLine(fName + " " + lName + "'s BMI is " + BMI);
+                Console.WriteLine(fName + " " + lName + "'s BMI is " + bmi);
 
             }
         }
