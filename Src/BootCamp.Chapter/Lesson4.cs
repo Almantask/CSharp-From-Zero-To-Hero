@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -69,10 +67,9 @@ namespace BootCamp.Chapter
         /// <returns>An integer indicating the error.</returns>
         private static int InvalidInput(string input)
         {
-            if (string.IsNullOrEmpty(input))
-                return EmptyNumberInput;
-            else
-                return PrintInvalidNumber(input);
+            return string.IsNullOrEmpty(input)
+                ? EmptyNumberInput
+                : PrintInvalidNumber(input);
         }
 
         /// <summary>
@@ -82,10 +79,9 @@ namespace BootCamp.Chapter
         /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
         private static int RangeCheck(int value)
         {
-            if (IsValidInt(value, 0))
-                return value;
-            else
-                return InvalidNumberInput;
+            return IsValidInt(value, 0)
+                ? value
+                : InvalidNumberInput;
         }
 
         /// <summary>
@@ -95,10 +91,9 @@ namespace BootCamp.Chapter
         /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
         private static float RangeCheck(float value)
         {
-            if (IsValidFloat(value, 0))
-                return value;
-            else
-                return InvalidNumberInput;
+            return IsValidFloat(value, 0)
+                ? value
+                : InvalidNumberInput;
         }
 
         
@@ -110,8 +105,7 @@ namespace BootCamp.Chapter
         /// <returns>The user input.</returns>
         public static string PromptString(string message)
         {
-            IsValidName(PromptInput(message), out string result);
-            return result;
+            return IsValidName(PromptInput(message));
         }
 
         /// <summary>
@@ -170,7 +164,8 @@ namespace BootCamp.Chapter
         /// <returns>Returns true if the parsing succeeded, false otherwise.</returns>
         private static bool PromptTryParse(string message, out int result, out string input)
         {
-            return int.TryParse(input = PromptInput(message), out result);
+            input = PromptInput(message);
+            return int.TryParse(input, out result);
         }
 
         /// <summary>
@@ -182,7 +177,8 @@ namespace BootCamp.Chapter
         /// <returns>Returns true if the parsing succeeded, false otherwise.</returns>
         private static bool PromptTryParse(string message, out float result, out string input)
         {
-            return float.TryParse(input = PromptInput(message), NumberStyles.Float,
+            input = PromptInput(message);
+            return float.TryParse(input, NumberStyles.Float,
                 CultureInfo.InvariantCulture, out result);
         }
 
@@ -190,19 +186,16 @@ namespace BootCamp.Chapter
         /// Checks if the given name is valid.
         /// </summary>
         /// <param name="name">The name to check.</param>
-        /// <param name="result">The resulting string of the check. Is "-" if invalid.</param>
-        /// <returns>Returns true if name is not empty or null, false otherwise.</returns>
-        private static bool IsValidName(string name, out string result)
+        /// <returns>Returns the given name if it is not empty or null, <see cref="EmptyName"/> otherwise.</returns>
+        private static string IsValidName(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
                 Console.Write("Name cannot be empty.");
-                result = EmptyName;
-                return false;
+                return EmptyName;
             }
 
-            result = name;
-            return true;
+            return name;
         }
 
         /// <summary>
