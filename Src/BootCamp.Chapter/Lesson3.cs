@@ -89,6 +89,31 @@ namespace BootCamp.Chapter
         //Calculate BMI
         public static float CalcBmi(float weight, float height)
         {
+            if (weight > 0 && height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+
+                return -1F;
+            }
+            
+            if (height < 0 || weight<=0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                
+                if (weight <= 0)
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+               
+                if (height <= 0 && weight>=0)
+                    Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
+              
+                return -1F;
+            }
+
+           
+
+
+
             return weight / (height * height);
         }
 
@@ -107,19 +132,5 @@ namespace BootCamp.Chapter
             return false;
         }
         
-        //public static void Error()
-        //{
-        //    Console.WriteLine(string message, )
-        //}
-
-
-
-        //public static int ValidateInt(int ValidateMe)
-        //{
-        //    int Result;
-
-
-        //    return Result;
-        //}
     }
 }
