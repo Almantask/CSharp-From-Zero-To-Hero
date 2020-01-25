@@ -23,6 +23,7 @@ namespace BootCamp.Chapter
                 return "-";
             }
 
+            //default case
             return value;
         }
         public static int GetIntInput(string prompt)
@@ -114,18 +115,14 @@ namespace BootCamp.Chapter
                 return -1F;
             }
 
-           
-
-
-
             return weight / (height * height);
         }
-
+        //outputs error message if given invalid input
         public static void BadInput(string value)
         {
             Console.Write("\"" + value + "\" is not a valid number.");
         }
-        
+        //returns true on an empty input
         public static bool Empty(string value)
         {
             if (String.IsNullOrEmpty(value))
@@ -135,6 +132,5 @@ namespace BootCamp.Chapter
 
             return false;
         }
-        
     }
 }
