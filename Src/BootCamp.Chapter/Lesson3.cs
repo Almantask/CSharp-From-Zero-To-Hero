@@ -123,7 +123,7 @@ namespace BootCamp.Chapter
 
         public static void BadInput(string value)
         {
-            Console.Write("\"" + value.ToString() + "\" is not a valid number.");
+            Console.Write("\"" + value + "\" is not a valid number.");
         }
         
         public static bool Empty(string value)
