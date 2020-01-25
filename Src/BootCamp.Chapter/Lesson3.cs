@@ -32,7 +32,9 @@ namespace BootCamp.Chapter
             string value = Console.ReadLine();
 
             if (Empty(value))
+            {
                 return 0;
+            }
 
             if (int.TryParse(value, out int parsedInt))
             {
