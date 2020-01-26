@@ -9,7 +9,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            Lesson5.Sort(array);
         }
 
         /// <summary>
@@ -19,7 +19,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            Lesson5.Reverse(array);
         }
 
         /// <summary>
@@ -29,8 +29,7 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            return Lesson5.RemoveLast(array);
         }
 
         /// <summary>
@@ -39,8 +38,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            return Lesson5.RemoveFirst(array);
         }
 
         /// <summary>
@@ -51,8 +49,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            return Lesson5.RemoveAt(array, index);
         }
 
         /// <summary>
@@ -63,8 +60,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            return Lesson5.InsertFirst(array, number);
         }
 
         /// <summary>
@@ -75,8 +71,7 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns input array.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            return Lesson5.InsertLast(array, number);
         }
 
         /// <summary>
@@ -88,8 +83,7 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            return Lesson5.InsertAt(array, number, index);
         }
     }
 }
