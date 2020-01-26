@@ -66,7 +66,11 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length == 0) return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
             return RemoveAt(array, 0);
         }
 
