@@ -37,12 +37,9 @@ namespace BootCamp.Chapter
         /// <returns>The parsed integer if the input was valid, 0 when empty and -1 when invalid.</returns>
         public static int PromptInt(string message)
         {
-            if (!PromptTryParse(message, out int parsingResult, out string input))
-            {
-                return InvalidInput(input);
-            }
-
-            return RangeCheck(parsingResult);
+            return !PromptTryParse(message, out int parsingResult, out string input)
+                ? InvalidInput(input)
+                : RangeCheck(parsingResult);
         }
 
         /// <summary>
@@ -52,51 +49,10 @@ namespace BootCamp.Chapter
         /// <returns>The parsed float if the input was valid, 0 when empty and -1 when invalid.
         public static float PromptFloat(string message)
         {
-            if (!PromptTryParse(message, out float parsingResult, out string input))
-            {
-                return InvalidInput(input);
-            }
-
-            return RangeCheck(parsingResult);
+            return !PromptTryParse(message, out float parsingResult, out string input)
+                ? InvalidInput(input)
+                : RangeCheck(parsingResult);
         }
-
-        /// <summary>
-        /// Returns a value that indicates the type of input fault./>
-        /// </summary>
-        /// <param name="input">The input the user wrote.</param>
-        /// <returns>An integer indicating the error.</returns>
-        private static int InvalidInput(string input)
-        {
-            return string.IsNullOrEmpty(input)
-                ? EmptyNumberInput
-                : PrintInvalidNumber(input);
-        }
-
-        /// <summary>
-        /// Checks if the given value is in a valid range.
-        /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
-        private static int RangeCheck(int value)
-        {
-            return IsValidInt(value)
-                ? value
-                : InvalidNumberInput;
-        }
-
-        /// <summary>
-        /// Checks if the given value is in a valid range.
-        /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
-        private static float RangeCheck(float value)
-        {
-            return IsValidFloat(value)
-                ? value
-                : InvalidNumberInput;
-        }
-
-        
 
         /// <summary>
         /// Request for user name input.
@@ -145,17 +101,6 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Prints the message and reads in the user input.
-        /// </summary>
-        /// <param name="message">The message to print.</param>
-        /// <returns>The unparsed and unvalidated input.</returns>
-        private static string PromptInput(string message)
-        {
-            Console.WriteLine(message);
-            return Console.ReadLine();
-        }
-
-        /// <summary>
         /// Prompts for an integer value. Converts the string input to an integer if possible.
         /// </summary>
         /// <param name="message">The message to print before the prompt.</param>
@@ -183,6 +128,53 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
+        /// Prints the message and reads in the user input.
+        /// </summary>
+        /// <param name="message">The message to print.</param>
+        /// <returns>The unparsed and unvalidated input.</returns>
+        private static string PromptInput(string message)
+        {
+            Console.WriteLine(message);
+            return Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Returns a value that indicates the type of input fault./>
+        /// </summary>
+        /// <param name="input">The input the user wrote.</param>
+        /// <returns>An integer indicating the error.</returns>
+        private static int InvalidInput(string input)
+        {
+            return string.IsNullOrEmpty(input)
+                ? EmptyNumberInput
+                : PrintInvalidNumber(input);
+        }
+
+        /// <summary>
+        /// Checks if the given value is in a valid range.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
+        private static int RangeCheck(int value)
+        {
+            return value > 0
+                ? value
+                : InvalidNumberInput;
+        }
+
+        /// <summary>
+        /// Checks if the given value is in a valid range.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
+        private static float RangeCheck(float value)
+        {
+            return value > 0
+                ? value
+                : InvalidNumberInput;
+        }
+
+        /// <summary>
         /// Checks if the given name is valid.
         /// </summary>
         /// <param name="name">The name to check.</param>
@@ -196,26 +188,6 @@ namespace BootCamp.Chapter
             }
 
             return name;
-        }
-
-        /// <summary>
-        /// Checks if the given value is valid.
-        /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <returns></returns>
-        private static bool IsValidInt(int value)
-        {
-            return value > 0;
-        }
-
-        /// <summary>
-        /// Checks if the given value is valid.
-        /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <returns>True if the value is valid, false otherwise.</returns>
-        private static bool IsValidFloat(float value)
-        {
-            return value > 0;
         }
 
         /// <summary>
