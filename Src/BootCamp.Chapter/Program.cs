@@ -6,9 +6,9 @@
 // Have fun! :)
 namespace BootCamp.Chapter
 {
-    internal class Program
+    internal class Program  // should be  public so the class can be used outside. Right now nobody can use it. 
     {
-        private static void Main(string[] args)
+        private static void Main(string[] args) // should be public. Right now this function cannot be used outside the class 
         {
             // No using statement to System so Console is not known 
            //  No call to Lesson3.Demo so the user do not see the questions he/she excepted. 

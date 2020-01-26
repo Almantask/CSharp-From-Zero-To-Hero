@@ -32,7 +32,7 @@ namespace BootCamp.Chapter
 
         }
 
-        internal static int ReadMyInput()
+        internal static int ReadMyInput() // class is missing a static so a class initialisation is needed to use this function.
         {
             return int.ReadFromConsole();  // Int does not have a possibility to read things from console. So I think it should be Console. or Clas3 but then the function need to be written.
         }
@@ -42,7 +42,7 @@ namespace BootCamp.Chapter
             return (float)ReadMyInput();
         }
 
-        private void calcBMI()
+        private void calcBMI()   // class is missing a static so a class initialisation is needed to use this function.
         {
             WriteLine("Your BMI is:"); // A Console. is mising so the compiler thinks its a function in Class3
             WriteLine(weight / height / height); // A Console. is mising so the compiler thinks its a function in Class3 and I thing the formula is wrong. that should be (weight / (height * height) 

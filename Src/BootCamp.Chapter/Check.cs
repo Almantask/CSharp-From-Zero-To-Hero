@@ -6,7 +6,7 @@
 // Have fun! :)
 namespace BootCamp.Chap
 {
-    class Checks
+    class Checks // class is now private so the functions could not be used outside the class and all functions must be static so you do not have to initialize a class to use them.
     {
         public string PromptString(String Message) // this must be string because you want the type string not the class string.
         {
