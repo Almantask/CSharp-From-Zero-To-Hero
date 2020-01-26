@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
             
             if (IsEmpty(value))
             {
-                Console.Write("Name cannot be IsEmpty.");
+                Console.Write("Name cannot be empty.");
                 return "-";
             }
             //default case
