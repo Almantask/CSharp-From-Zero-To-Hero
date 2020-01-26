@@ -19,7 +19,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static string newLine(int count)
+        private static string WriteNewLine(int count)
         {
             string newLines = Environment.NewLine;
 
@@ -50,7 +50,7 @@ namespace BootCamp.Chapter
 
         public static string RegisterStringValue(string message)
         {
-            Console.Write($"{message}{newLine(1)}");
+            Console.Write($"{message}{WriteNewLine(1)}");
 
             string stringValue = Console.ReadLine();
 
@@ -65,7 +65,7 @@ namespace BootCamp.Chapter
 
         public static int RegisterIntValue(string message)
         {
-            Console.Write($"{message}{newLine(1)}");
+            Console.Write($"{message}{WriteNewLine(1)}");
 
             string userInput = Console.ReadLine();
 
@@ -97,7 +97,7 @@ namespace BootCamp.Chapter
 
             if (!float.TryParse(userInput, NumberStyles.Any, CultureInfo.InvariantCulture, out float floatValue))
             {
-                Console.Write($"{newLine(1)}\"{userInput}\" is not a valid number.");
+                Console.Write($"{WriteNewLine(1)}\"{userInput}\" is not a valid number.");
                 return -1;
             }
 
@@ -108,9 +108,9 @@ namespace BootCamp.Chapter
 
         public static void Summarize(string firstName, string lastName, int age, float weight, float height, float bmi)
         {
-            Console.WriteLine($"{newLine(1)}{firstName} {lastName} is {age} years old and his weight is {weight} and his height is {height} \n \n");
+            Console.WriteLine($"{WriteNewLine(1)}{firstName} {lastName} is {age} years old and his weight is {weight} and his height is {height} \n \n");
 
-            Console.WriteLine($"He/she has a BMI of {bmi} {newLine(3)}");
+            Console.WriteLine($"He/she has a BMI of {bmi} {WriteNewLine(3)}");
         }
 
         public static void PromptNewPerson(int entry)
