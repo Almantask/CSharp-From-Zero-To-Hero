@@ -125,8 +125,22 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                var nullableArray = new int[1];
+                nullableArray[0] = number;
+                return nullableArray;
+            }
+            else
+            {
+                var tempArray = new int[array.Length + 1];
+                tempArray[0] = number;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    tempArray[i + 1] = array[i];
+                }
+                return tempArray;
+            }
         }
 
         /// <summary>
