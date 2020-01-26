@@ -100,14 +100,7 @@
                 var tempArray = new int[array.Length - 1];
                 for (int i = 0; i < tempArray.Length; i++)
                 {
-                    if (i < index)
-                    {
-                        tempArray[i] = array[i];
-                    }
-                    else
-                    {
-                        tempArray[i] = array[i + 1];
-                    }
+                    tempArray[i] = i < index ? array[i] : array[i + 1];
                 }
                 return tempArray;
             }
