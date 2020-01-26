@@ -140,7 +140,6 @@ namespace BootCamp.Chapter
         }
         public static char RequestUserChoiceToRepeatOrNot()
         {
-            Console.WriteLine();
             Console.WriteLine("Would you like to repeat this program? (y or n)");
             return Convert.ToChar(Console.ReadLine());
         }
