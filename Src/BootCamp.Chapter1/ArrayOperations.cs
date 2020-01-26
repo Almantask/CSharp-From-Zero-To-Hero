@@ -25,9 +25,6 @@ namespace BootCamp.Chapter1
                 }
             }
         }
-
-
-
         /// <summary>
         /// Reverse the array elements, first being last and so on.
         /// If array empty or null- don't do anything.
@@ -37,9 +34,7 @@ namespace BootCamp.Chapter1
         {
             if (array != null)
             {
-
                 int[] tempArray = new int[array.Length];
-
                 for (int i = 0; i < array.Length; i++)
                 {
                     tempArray[i] = array[i];
@@ -97,17 +92,27 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            
-            if (array == null) { return array; }
-            if ((index >= array.Length)||(index<0)) { return array; }
+            if (array == null) 
+            { 
+                return array; 
+            }
+            if ((index >= array.Length)||(index<0)) 
+            { 
+                return array; 
+            }
             if (array.Length != 0)
             {
                 int[] shortenedArray = new int[array.Length - 1];
                 for (int i = 0; i < shortenedArray.Length; i++)
                 {
                     if (i >= index)
-                    { shortenedArray[i] = array[i + 1]; }
-                    else { shortenedArray[i] = array[i]; }
+                    { 
+                        shortenedArray[i] = array[i + 1]; 
+                    }
+                    else 
+                    { 
+                        shortenedArray[i] = array[i]; 
+                    }
                 }
                 array = shortenedArray;
             }
@@ -123,12 +128,12 @@ namespace BootCamp.Chapter1
         public static int[] InsertFirst(int[] array, int number)
         {
            if (array == null) 
-            { 
-                int[] lengthenedArray = new int[1] { number };
+           { 
+                int[] lengthenedArray = new int[1] {number};
                 array = lengthenedArray;
-            }
+           }
            else
-            {
+           {
                 int[] lengthenedArray = new int[array.Length + 1];
                 lengthenedArray[0] = number;
                 for (int i = 1; i < lengthenedArray.Length; i++)
@@ -136,10 +141,8 @@ namespace BootCamp.Chapter1
                     lengthenedArray[i] = array[i-1];
                 }
                 array = lengthenedArray;
-            }
-            
+           }
             return array;
-
         }
 
         /// <summary>
@@ -165,7 +168,6 @@ namespace BootCamp.Chapter1
                 }
                 array = lengthenedArray;
             }
-
             return array;
         }
 
@@ -185,7 +187,6 @@ namespace BootCamp.Chapter1
                 return array;
             }
             if ((index > array.Length) || (index < 0)) { return array; }
-           
             int[] lengthenedArray = new int[array.Length + 1];
             lengthenedArray[index] = number;
             for (int i = 0; i < lengthenedArray.Length-1; i++)
@@ -200,7 +201,6 @@ namespace BootCamp.Chapter1
                 }
             }
             array = lengthenedArray;
-           
             return array;
         }
     }
