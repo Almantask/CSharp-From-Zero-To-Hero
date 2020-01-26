@@ -121,14 +121,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (array == null)
-            {
-                return NullArrayHelper(number);
-            }
-            else
-            {
-                return InsertAt(array, number, 0);
-            }
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -151,11 +144,11 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array == null || index == 0)
+            if (array == null)
             {
                 return NullArrayHelper(number);
             }
-            else if (array.Length == 0)
+            if (index > array.Length || index < 0)
             {
                 return array;
             }
