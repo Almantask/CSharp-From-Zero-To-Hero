@@ -71,7 +71,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null) { return array; }
+            if (array == null) {return array; }
             if (array.Length != 0)
             {
                 int[] shortenedArray = new int[array.Length - 1];
@@ -129,8 +129,8 @@ namespace BootCamp.Chapter1
         {
            if (array == null) 
            { 
-                int[] lengthenedArray = new int[1] {number};
-                array = lengthenedArray;
+                int[] lengthenedArray = new int[] {number};
+                return lengthenedArray;
            }
            else
            {
@@ -155,8 +155,8 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                int[] lengthenedArray = new int[1] { number };
-                array = lengthenedArray;
+                int[] lengthenedArray = new int[] {number };
+                return lengthenedArray;
             }
             else
             {
@@ -182,9 +182,8 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                int[] tempArray = new int[1] { number };
-                array = tempArray;
-                return array;
+                int[] tempArray = new int[] {number };
+                return tempArray;
             }
             if ((index > array.Length) || (index < 0)) { return array; }
             int[] lengthenedArray = new int[array.Length + 1];
@@ -200,8 +199,7 @@ namespace BootCamp.Chapter1
                     lengthenedArray[i] = array[i]; 
                 }
             }
-            array = lengthenedArray;
-            return array;
+            return lengthenedArray;
         }
     }
 }
