@@ -45,7 +45,10 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             var input = Console.ReadLine();
-            if (String.IsNullOrEmpty(input)) return 0;
+            if (String.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
             var isNumber = int.TryParse(input, out var age);
             if (!isNumber)
             {
@@ -63,7 +66,10 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             var input = (Console.ReadLine());
-            if (String.IsNullOrEmpty(input)) return 0;
+            if (String.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
             var isFloat = float.TryParse(input, out var heightWeight);
             if (!isFloat)
             {
