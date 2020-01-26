@@ -52,7 +52,16 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
+            if (array != null && array.Length != 0)
+            {
+                var tempArray = new int[array.Length - 1];
+                for (int i = 0; i < tempArray.Length; i++)
+                {
+                    tempArray[i] = array[i];
+                }
+                return tempArray;
+            }
+
             return array;
         }
 
