@@ -105,6 +105,13 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
                 return -1;
             }
+            else if (weight >= height)
+            {
+                Console.WriteLine(failedCalc);
+                Console.WriteLine("Weight cannot be more or equal to height.");
+                Console.WriteLine(" Height= " + height + ", Weight= " + weight + ".");
+                return -1;
+            }
             else
             {
                 return weight / (height * height);
