@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -24,7 +23,7 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             var input = Console.ReadLine();
-            var userName = validateString(input);
+            var userName = ValidateString(input);
             if (userName == "-")
             {
                 Console.WriteLine("Name cannot be empty.");
@@ -32,7 +31,7 @@ namespace BootCamp.Chapter
             return userName;
         }
 
-        public static string validateString(string input)
+        public static string ValidateString(string input)
         {
             if (String.IsNullOrEmpty(input))
             {
@@ -87,9 +86,9 @@ namespace BootCamp.Chapter
         {
             var weightInt = Convert.ToInt32(weight);
             var heightInt = Convert.ToInt32(height);
-            var errorString = "Failed calculating BMI.Reason: ";
-            var errorWeight = "Weight cannot be equal or less than zero, but was ";
-            var errorHeight = "Weight cannot be equal or less than zero, but was ";
+            const string errorString = "Failed calculating BMI.Reason: ";
+            const string errorWeight = "Weight cannot be equal or less than zero, but was ";
+            const string errorHeight = "Weight cannot be equal or less than zero, but was ";
             if (weightInt <= 0 && heightInt <= 0)
             {
                 Console.WriteLine(errorString);
