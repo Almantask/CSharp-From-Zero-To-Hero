@@ -53,7 +53,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null) { return array; }
+            if (array == null) {return array; }
             if (array.Length != 0)
             {
                 int[] shortenedArray = new int[array.Length - 1];
@@ -106,7 +106,7 @@ namespace BootCamp.Chapter1
                 for (int i = 0; i < shortenedArray.Length; i++)
                 {
                 shortenedArray[i] = i >= index ? array[i + 1] : array[i];
-                 }
+                }
                 return shortenedArray;
             }
             return array;
@@ -122,12 +122,12 @@ namespace BootCamp.Chapter1
         {
            if (array == null) 
            { 
-                int[] lengthenedArray = new int[] {number};
+                int[] lengthenedArray = new [] {number};
                 return lengthenedArray;
            }
            else
            {
-                int[] lengthenedArray = new int[array.Length + 1];
+                int[] lengthenedArray = new int [array.Length + 1];
                 lengthenedArray[0] = number;
                 for (int i = 1; i < lengthenedArray.Length; i++)
                 {
@@ -148,7 +148,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                int[] lengthenedArray = new int[] {number };
+                int[] lengthenedArray = new [] {number };
                 return lengthenedArray;
             }
             else
@@ -175,7 +175,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                int[] tempArray = new int[] {number };
+                int[] tempArray = new [] {number };
                 return tempArray;
             }
             if ((index > array.Length) || (index < 0)) { return array; }
