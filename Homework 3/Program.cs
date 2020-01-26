@@ -4,12 +4,12 @@ namespace Homework_3
 {
     class Program
     {
-        private static void Main(string name, string surname, int age, float weight, float height, float bmi)
+        static void Main(string[] args)
         {
-            Program.Name();
-            Program.Age();
-            Program.Stats();
-            Program.Calculate();
+            Name();
+            Age();
+            Stats();
+            Calculate();
 
             //Printout
             Console.WriteLine($" Dear {name} {surname}, you are {age} years old. Your weight is {weight} kg and your height is {height} cms. This means that your BMI is {Math.Round(bmi, 2)}.");
