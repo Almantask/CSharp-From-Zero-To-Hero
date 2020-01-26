@@ -2,8 +2,10 @@
 
 
 namespace BootCamp.Chapter
-{    public class Lesson3
-    {   public static void Demo()
+{    
+    public class Lesson3
+    {   
+        public static void Demo()
         {
             for (int i = 0; i < 2; i++)
             {
@@ -17,12 +19,11 @@ namespace BootCamp.Chapter
             Console.WriteLine(prompt);
             string value = Console.ReadLine();
             
-            if (Empty(value))
+            if (IsEmpty(value))
             {
-                Console.Write("Name cannot be empty.");
+                Console.Write("Name cannot be IsEmpty.");
                 return "-";
             }
-
             //default case
             return value;
         }
@@ -30,48 +31,39 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(prompt);
             string value = Console.ReadLine();
-
-            if (Empty(value))
+            if (IsEmpty(value))
             {
                 return 0;
             }
-
             if (int.TryParse(value, out int parsedInt))
             {
                 return parsedInt;
             }
-
             //default case
             BadInput(value);
             return -1;
-            
         }
         public static float GetFloatInput(string prompt)
         {
             Console.WriteLine(prompt);
             string value = Console.ReadLine();
-
-            if (Empty(value))
+            if (IsEmpty(value))
             {
                 return 0;
             }
-
             if (float.TryParse(value, out float parsedfloat))
             {
                 return parsedfloat;
             }
-
             //default case
             BadInput(value);
             return -1;
-
         }
         // Input function
         private static void GatherData(out string firstName, out string lastName, out int age, out float weight, out float height)
         {
             firstName = GetStringInput("Hello, What is your First name?");
             lastName = GetStringInput("Hello, What is your Last name?");
-
             age = GetIntInput("How old are you?");
             weight = GetFloatInput("How much do you weigh in kilograms?");
             height = GetFloatInput("How tall are you?") / 100;
@@ -97,26 +89,21 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
-
                 return -1F;
             }
-            
-            if (height < 0 || weight<=0)
+            if (height < 0 || weight <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-
                 if (weight <= 0)
                 {
                     Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
                 }
-
                 if (height <= 0 && weight >= 0)
                 {
                     Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
                 }
                 return -1F;
             }
-
             return weight / (height * height);
         }
         //outputs error message if given invalid input
@@ -124,14 +111,13 @@ namespace BootCamp.Chapter
         {
             Console.Write("\"" + value + "\" is not a valid number.");
         }
-        //returns true on an empty input
-        public static bool Empty(string value)
+        //returns true on an IsEmpty input
+        public static bool IsEmpty(string value)
         {
             if (String.IsNullOrEmpty(value))
             {
                 return true;
             }
-
             return false;
         }
     }
