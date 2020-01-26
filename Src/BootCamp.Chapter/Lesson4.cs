@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter
 {
-    class Lesson4
+    class Lesson3
     {
 
         public static void Demo()
@@ -40,7 +40,7 @@ namespace BootCamp.Chapter
             var input = Console.ReadLine();
             if (string.IsNullOrEmpty(input) || (input == "-")) 
             {
-                Console.WriteLine("- Name cannot be empty");
+                Console.WriteLine("Name cannot be empty");
                 return "-";
             }
             bool Isitnumber = int.TryParse(input, out var number);
@@ -54,15 +54,15 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             var input = Console.ReadLine();
-            if (string.IsNullOrEmpty(input))
+            if (string.IsNullOrEmpty(input)) 
             {
-                Console.WriteLine(input + " Height/Weight cannot be Null or Empty ");
-                return -0;
+                Console.WriteLine(input + " cannot be empty ");
+                return 0;
             }
             bool Isitnumber = float.TryParse(input, out var number);
             if (!Isitnumber)
             {
-                Console.WriteLine(number + " This doesn't look like a number ");
+                Console.WriteLine(number + " is not a valid number");
                 return -1;
             }
             return number;
@@ -75,12 +75,12 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(input))
             {
                 Console.WriteLine(input + " Age cannot be Null or Empty ");
-                return -0;
+                return 0;
             }
             bool Isitnumber = int.TryParse(input, out var number);
             if (!Isitnumber)
             {
-                Console.WriteLine(number + " This doesn't look like a number ");
+                Console.WriteLine(number + " is not a valid number");
                 return -1;
             }
             if (number <= 0 || number >= 200)
