@@ -91,8 +91,30 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return array;
+            }
+            else if (index < 0 || index >= array.Length)
+            {
+                return array;
+            }
+            else
+            {
+                var tempArray = new int[array.Length - 1];
+                for (int i = 0; i < tempArray.Length; i++)
+                {
+                    if (i < index)
+                    {
+                        tempArray[i] = array[i];
+                    }
+                    else
+                    {
+                        tempArray[i] = array[i + 1];
+                    }
+                }
+                return tempArray;
+            }
         }
 
         /// <summary>
