@@ -1,77 +1,92 @@
 # CSharp-From-Zero-To-Hero
-[![Build Status](https://dev.azure.com/almantusk/From-Zero-To-Hero/_apis/build/status/csinn.CSharp-From-Zero-To-Hero?branchName=master)](https://dev.azure.com/almantusk/From-Zero-To-Hero/_build/latest?definitionId=6&branchName=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a358adf21c2442cd91a4827a50213ff1)](https://www.codacy.com/manual/Almantask/CSharp-From-Zero-To-Hero?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=csinn/CSharp-From-Zero-To-Hero&amp;utm_campaign=Badge_Grade)
-  # The vision
-"Programming is hard". Yes.But not harder than running a marathon for a person has never run. It's not harder than 
-building a house if you never built one. Programming is hard only until you practice it (like any other skill). I would like to invite you to learn programming and C# following this course to practice programming and ignite passion for finding little miracles in code every day 🙂
-  
-  # Requirements
-  Visual Studio Community 2019 or similar with Web Development and desktop development workloads.  
 
-  Patience and persistence  
-  Git installed  
-  Github account  
-  
-  # Homework 
-  Homework will be announced at the end of every lesson and placed in this repository base on lesson name. There will be 2 branches after every lesson:  
-  ```
-  Lesson/LessonName  
-  Homework/LessonName  
-  ```
-  ## Git
-  Fork this repository (Homework/LessonName). 
-  The fork target is called upstream branch. For every chapter, you will need to keep updating upstream branch. 
-  How to work with forked repository in Visual Studio Teams:  
-  http://doc.fireflymigration.com/working-with-github-fork-in-visual-studio.html
-  
-  ## How to complete homework? 
-  ### Implementation of homework
-  For the first chapters, homework branch will come with 2 projects:
-  ```
-  ChapterName.csproj
-  ChapterName.Tests.csproj
-  ```
-  For now, a student should not care about about the tests project, as long as it builds. 
-  All the student work will happen in **ChapterName.csproj**. 
-  You will have empty functions which you will have to implement based on the homework requirements. 
-  Student can consider a **homework complete if all tests pass**.
-  
-  ### Homework submission
- 
-  In order for mentors to review your homework, you will need to create a Pull Request (PR) 
-  How to do it can be found here: (TODO: add link) 
-  
-  ## Homework review
-  ### Automatic code reviewer
-  To automate standards review, we have a static analysis tool--Codacy. It will grade your code (A- being the highest grade). Homework will not be considered complete, if grade is D or lower. 
-  ### Auto build and auto tests
-  In order to find out if your code works not just on your machine but in all environments, check the build status. 
-  In PR you will see Azure Pipelines and it should have x check passed. 
-  Todo: screen shot
-  ### Mentor code review
-  In order for your PR to be complete, it needs a code review of at least 2 mentors. 
-  Both of the mentors will have to approve your code, otherwise you won't have a PR completed. 
-  How to do code review:
-  As a reviewer- Todo: link
-  As a reviewee-Todo: link
-  Code reviews on GitHub- Todo: link
-  
-  ### Finishing homework
-  You can consider your homework complete if all of the above steps pass. 
-  **Don't merge the PR to master branch**
-  A single best homework implementation will be merged to master. 
+# Homework 4
 
-  
+## Hints
+* Do use Environment.NewLine if you want to concanate a string with a newline command (or use WriteLine).
+* Be very careful where to place your NewLine's and where not!
+* Do use [CultureInfo.InvariantCulture](https://docs.microsoft.com/de-de/dotnet/api/system.globalization.cultureinfo.invariantculture?view=netcore-3.1) when reading in float numbers. (Due to differences in parsing numbers with '.' and ',' character.
+* The better your design, the easier it will be to find and fix errors!
+* Be careful when it comes to the BMI. You have to use cm and m for the height.
+* Do not hesitate to ask mentors for advice. This homework IS puzzling.
 
-  # Community
-  If you want to join as either mentor or pupil or have any questions, please refer to our discord Community.  
-  https://discord.gg/rCMKcUU
-  
-  
+## Task
+Modify your old functions to fit the specification:
+1) Validate number input:
++ Input is not a number -> return -1.
++ Input is a number but 0 -> return 0.
++ Input is valid -> return input.
+2) Validate name input:
++ Empty string for name -> return "-".
++ Print error message "Name cannot be empty." in a new line.
+3) Validate BMI input:
++ Height and/or weight being less or equal 0 -> return -1.
++ Print error messages:
+  - "Failed calculating BMI. Reason:"
+  - "Height cannot be equal or less than zero, but was X.", where X is the console input (X <= 0)
+  - "Weight cannot be equal or less than zero, but was X.", where X is the console input (X <= 0)
++ If height and weight are invalid print both messages, one in a new line each.
+  - The error message of height does **NOT!!!!** contain **"equal or "** then!
 
+## Tests Summary
+The test results should be as pointed out below.
 
+A stands for a valid value.
+X, Y stand for invalid values.
+R stands for valid value but not in the wanted range.
+E stand for empty input string. (Just pressing enter when facing prompt.)
+M stands for string message.
 
- 
+Format:
+* Input -> return value
+  * Output on same line as input.
+* ~> User/Test input being A if valid, X if invalid.
+* Output2 on new line.
+  * Output3 on same line as Output2.
 
- 
+Checks.CalculateBmi(A, X) -> -1
+* "Failed calculating BMI. Reason:"
+* "Height cannot be equal or less than zero, but was X."
+* ""
 
+Checks.CalculateBmi(X, A) -> -1
+* "Failed calculating BMI. Reason:"
+* "Weight cannot be equal or less than zero, but was X."
+* ""
+
+Checks.CalculateBmi(X, Y) -> -1
+* "Failed calculating BMI. Reason:"
+* "Height cannot be less than zero, but was X."
+* "Weight cannot be equal or less than zero, but was Y."
+* ""
+
+Checks.PromptString(M) -> "-"
+* M
+* ~> E
+  * "Name cannot be empty."
+
+Checks.PromptInt(M) -> 0
+* M
+* ~> E
+
+Checks.PromptInt(M) -> -1
+* M
+* ~> A
+  * "\\"A\\" is not a valid number."
+
+Checks.PromptInt(M) -> -1
+* M
+* ~> R
+
+Checks.PromptFloat(M) -> 0
+* M
+* ~> E
+
+Checks.PromptFloat(M) -> -1
+* M
+* ~> A
+  * "\\"A\\" is not a valid number."
+
+Checks.PromptFloat(M) -> -1
+* M
+* ~> R
