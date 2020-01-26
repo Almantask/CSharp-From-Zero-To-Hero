@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
         private static string GetValidStringOrErrorCode()
         {
             var userInput = Console.ReadLine();
-            if (ReportTrueIfUserInputIsEmpty(userInput))
+            if(string.IsNullOrEmpty(userInput))
             {
                 Console.Write($"Name cannot be empty.");
                 return "-";
@@ -45,7 +45,7 @@ namespace BootCamp.Chapter
         {
             Console.Write($"{prompt}{Environment.NewLine}");
             var userInput = Console.ReadLine();
-            if (ReportTrueIfUserInputIsEmpty(userInput))
+            if (string.IsNullOrEmpty(userInput))
             {
                 return 0;
             }
@@ -66,7 +66,7 @@ namespace BootCamp.Chapter
         {
             Console.Write($"{prompt}{Environment.NewLine}");
             var userInput = Console.ReadLine();
-            if (ReportTrueIfUserInputIsEmpty(userInput))
+            if (string.IsNullOrEmpty(userInput))
             {
                 return 0;
             }
@@ -82,10 +82,7 @@ namespace BootCamp.Chapter
             }
             return number;
         }
-        public static bool ReportTrueIfUserInputIsEmpty(string input)
-        {
-            return string.IsNullOrEmpty(input);
-        }
+        
         public static void ReportBasicInfo(string firstName, string surname, int age, double weight, double height)
         {
             Console.WriteLine();
