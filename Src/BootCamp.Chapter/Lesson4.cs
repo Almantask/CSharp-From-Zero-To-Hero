@@ -39,7 +39,7 @@ namespace BootCamp.Chapter
         {
             return !PromptTryParse(message, out int parsingResult, out string input)
                 ? InvalidInput(input)
-                : RangeCheck(parsingResult);
+                : FixRange(parsingResult);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace BootCamp.Chapter
         {
             return !PromptTryParse(message, out float parsingResult, out string input)
                 ? InvalidInput(input)
-                : RangeCheck(parsingResult);
+                : FixRange(parsingResult);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
         /// <returns>The user input.</returns>
         public static string PromptString(string message)
         {
-            return IsValidName(PromptInput(message));
+            return FixName(PromptInput(message));
         }
 
         /// <summary>
@@ -151,11 +151,11 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Checks if the given value is in a valid range.
+        /// Checks the validity of the value and returns the (fixed) value accordingly.
         /// </summary>
         /// <param name="value">The value to check.</param>
         /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
-        private static int RangeCheck(int value)
+        private static int FixRange(int value)
         {
             return value > 0
                 ? value
@@ -163,11 +163,11 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Checks if the given value is in a valid range.
+        /// Checks the validity of the value and returns the (fixed) value accordingly.
         /// </summary>
         /// <param name="value">The value to check.</param>
         /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
-        private static float RangeCheck(float value)
+        private static float FixRange(float value)
         {
             return value > 0
                 ? value
@@ -175,11 +175,11 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Checks if the given name is valid.
+        /// Checks the validity of the name and returns the (fixed) name accordingly.
         /// </summary>
         /// <param name="name">The name to check.</param>
         /// <returns>Returns the given name if it is not empty or null, <see cref="EmptyName"/> otherwise.</returns>
-        private static string IsValidName(string name)
+        private static string FixName(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
