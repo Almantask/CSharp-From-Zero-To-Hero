@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
+using System.Xml;
 
 namespace BootCamp.Chapter
 {
@@ -17,6 +19,18 @@ namespace BootCamp.Chapter
 
                 PromptNewPerson(i);
             }
+        }
+
+        private static string newLine(int count)
+        {
+            string newLines = Environment.NewLine;
+
+            for (int i = 1; i < count; i++)
+            {
+                newLines += Environment.NewLine;
+            }
+
+            return newLines;
         }
 
         static void RegisterNewPersonData(int entry)
@@ -38,7 +52,7 @@ namespace BootCamp.Chapter
 
         public static string RegisterStringValue(string message)
         {
-            Console.Write($"{message}{Environment.NewLine}");
+            Console.Write($"{message}{newLine(1)}");
 
             string stringValue = Console.ReadLine();
 
@@ -53,7 +67,7 @@ namespace BootCamp.Chapter
 
         public static int RegisterIntValue(string message)
         {
-            Console.Write($"{message}{Environment.NewLine}");
+            Console.Write($"{message}{newLine(1)}");
 
             string userInput = Console.ReadLine();
 
@@ -85,7 +99,7 @@ namespace BootCamp.Chapter
 
             if (!float.TryParse(userInput, NumberStyles.Any, CultureInfo.InvariantCulture, out float floatValue))
             {
-                Console.Write($"{Environment.NewLine}\"{userInput}\" is not a valid number.");
+                Console.Write($"{newLine(1)}\"{userInput}\" is not a valid number.");
                 return -1;
             }
 
@@ -96,9 +110,9 @@ namespace BootCamp.Chapter
 
         public static void Summarize(string firstName, string lastName, int age, float weight, float height, float bmi)
         {
-            Console.WriteLine($"\n{firstName} {lastName} is {age} years old and his weight is {weight} and his height is {height} \n \n");
+            Console.WriteLine($"{newLine(1)}{firstName} {lastName} is {age} years old and his weight is {weight} and his height is {height} \n \n");
 
-            Console.WriteLine($"He/she has a BMI of {bmi} \n \n \n");
+            Console.WriteLine($"He/she has a BMI of {bmi} {newLine(3)}");
         }
 
         public static void PromptNewPerson(int entry)
