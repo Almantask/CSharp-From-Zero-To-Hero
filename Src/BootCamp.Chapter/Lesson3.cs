@@ -22,18 +22,18 @@ namespace BootCamp.Chapter
             if (weight <= 0 && height <=0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight);
-                Console.WriteLine("Height cannot be equal or less than zero, but was " + height);
+                Console.WriteLine("Weight cannot be less than zero, but was " + weight + ".");
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
             }
             else if (weight <=0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight);
+                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
             }
             else if (height <=0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Height cannot be equal or less than zero, but was " + height);
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
             }  
                 
             float bmi = weight / (height * height);
