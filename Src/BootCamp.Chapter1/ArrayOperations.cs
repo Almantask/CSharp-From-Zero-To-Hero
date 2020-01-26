@@ -17,7 +17,11 @@
 
         public static void Sort(int[] array)
         {
-            if (array != null && array.Length != 0)
+            if (array == null)
+            {
+                return;
+            }
+            if (array.Length != 0)
             {
                 for (var i = 0; i < array.Length; i++)
                 {
@@ -36,7 +40,8 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array != null && array.Length != 0)
+            if (array == null) return;
+            if (array.Length != 0)
             {
                 for (int i = 0; i < array.Length / 2; i++)
                 {
@@ -54,7 +59,8 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array != null && array.Length != 0)
+            if (array == null) return array;
+            if (array.Length != 0)
             {
                 return RemoveAt(array, array.Length - 1);
             }
@@ -79,11 +85,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null)
-            {
-                return array;
-            }
-            else if (index < 0 || index >= array.Length)
+            if (array == null || index < 0 || index >= array.Length)
             {
                 return array;
             }
