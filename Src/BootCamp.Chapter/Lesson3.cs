@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -21,14 +22,14 @@ namespace BootCamp.Chapter
 
         private static string WriteNewLine(int count)
         {
-            string newLines = Environment.NewLine;
+            StringBuilder newLines = new StringBuilder(Environment.NewLine);
 
             for (int i = 1; i < count; i++)
             {
-                newLines += Environment.NewLine;
+                newLines.Append(Environment.NewLine);
             }
 
-            return newLines;
+            return newLines.ToString();
         }
 
         static void RegisterNewPersonData(int entry)
