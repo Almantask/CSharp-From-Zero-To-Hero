@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
             else if (weight <=0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+                Console.WriteLine("Weight cannot be less than zero, but was " + weight + ".");
             }
             else if (height <=0)
             {
