@@ -20,24 +20,18 @@ namespace BootCamp.Chapter
                 //Calc and return BMI
                 CalcBmi(weight, height);
 
-                if (CalcBmi(weight, height) <= 0)
-                {
-                    Console.WriteLine("Failed calculating BMI");
-                }
-                else
-                {
-                    //Display output to user
-                    Console.WriteLine(firstname + " " + secondname + "is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm ");
-                    Console.WriteLine("Your BMI is " + CalcBmi(weight, height));
+                //Display output to user
+                Console.WriteLine(firstname + " " + secondname + "is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm ");
+                Console.WriteLine("Your BMI is " + CalcBmi(weight, height));
 
-                    //Continue
-                    Console.WriteLine("Would you like to do another person Y/N?");
-                    var option = Console.ReadLine();
-                    if ((option) == "N" || (option) == "n")
+                //Continue
+                Console.WriteLine("Would you like to do another person Y/N?");
+                var option = Console.ReadLine();
+                if ((option) == "N" || (option) == "n")
                     {
                         backtotop = false;
                     }
-                }
+                
             }
         }
         public static string MessageString(string message)
@@ -123,7 +117,7 @@ namespace BootCamp.Chapter
             }
             if ((bmi) <= 0 || bmi >= 100)
             {
-                Console.WriteLine("BMI is invalid");
+                Console.WriteLine("Failed calculating BMI");
                 return -1;
             }
             return bmi;
