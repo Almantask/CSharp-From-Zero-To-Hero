@@ -54,12 +54,7 @@
         {
             if (array != null && array.Length != 0)
             {
-                var tempArray = new int[array.Length - 1];
-                for (int i = 0; i < tempArray.Length; i++)
-                {
-                    tempArray[i] = array[i];
-                }
-                return tempArray;
+                return RemoveAt(array, array.Length - 1);
             }
 
             return array;
@@ -71,16 +66,8 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array != null && array.Length != 0)
-            {
-                var tempArray = new int[array.Length - 1];
-                for (int i = 0; i < tempArray.Length; i++)
-                {
-                    tempArray[i] = array[i + 1];
-                }
-                return tempArray;
-            }
-            return array;
+            if (array == null || array.Length == 0) return array;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -127,19 +114,11 @@
         {
             if (array == null)
             {
-                var nullableArray = new int[1];
-                nullableArray[0] = number;
-                return nullableArray;
+                return NullArrayHelper(number);
             }
             else
             {
-                var tempArray = new int[array.Length + 1];
-                tempArray[0] = number;
-                for (int i = 0; i < array.Length; i++)
-                {
-                    tempArray[i + 1] = array[i];
-                }
-                return tempArray;
+                return InsertAt(array, number, 0);
             }
         }
 
@@ -153,9 +132,7 @@
         {
             if (array == null)
             {
-                var nullableArray = new int[1];
-                nullableArray[0] = number;
-                return nullableArray;
+                return NullArrayHelper(number);
             }
             else
             {
@@ -174,9 +151,7 @@
         {
             if (array == null || index == 0)
             {
-                var nullableArray = new int[1];
-                nullableArray[0] = number;
-                return nullableArray;
+                return NullArrayHelper(number);
             }
             else if (array.Length == 0)
             {
@@ -198,6 +173,13 @@
                 }
             }
             return tempArray;
+        }
+
+        private static int[] NullArrayHelper(int number)
+        {
+            var nullableArray = new int[1];
+            nullableArray[0] = number;
+            return nullableArray;
         }
     }
 }
