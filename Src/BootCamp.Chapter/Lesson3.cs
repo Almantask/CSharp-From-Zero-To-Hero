@@ -1,51 +1,59 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Homework_3
+namespace BootCamp.Chapter
 {
-    class Program
+    class Lesson3
     {
-        static void Main(string[] args)
+        public static void Demo()
         {
-            Name();
-            Age();
-            Stats();
-            Calculate();
+            string name = Name();
+            string surname = Surname();
+            int age = Age();
+            float height = Height();
+            float weight = Weight();
+            float bmi = Calculate(height, weight);
 
             //Printout
             Console.WriteLine($" Dear {name} {surname}, you are {age} years old. Your weight is {weight} kg and your height is {height} cms. This means that your BMI is {Math.Round(bmi, 2)}.");
         }
-
-        public static (string, string) Name()
+        public static string Name()
         {
-            //Collect name
             Console.WriteLine("Please enter your first name:");
             string name = (Console.ReadLine());
+            return name;
+        }
+        public static string Surname()
+        {
             Console.WriteLine("Please Enter your surname:");
             string surname = (Console.ReadLine());
-            return (name, surname);
+            return surname;
         }
 
         public static int Age()
         {
-            //Collect age
             Console.WriteLine("Please enter your age:");
             int age = Convert.ToInt32(Console.ReadLine());
             return age;
         }
 
-        public static (float, float) Stats()
+        public static float Height()
         {
-            //Collect weight and height
             Console.WriteLine("Please enter your height in cm:");
             float height = Convert.ToSingle(Console.ReadLine());
-            Console.WriteLine("Please enter your weight in kg:");
-            float weight = Convert.ToSingle(Console.ReadLine());
-            return (height, weight);
+            return height;
         }
 
-        static float Calculate(float weight, float height)
+        public static float Weight()
         {
-            //Work out BMI
+            Console.WriteLine("Please enter your weight in kg:");
+            float weight = Convert.ToSingle(Console.ReadLine());
+            return weight;
+        }
+
+        static float Calculate(float height, float weight)
+        {
             float bmi = weight / ((height / 100) * (height / 100));
             return bmi;
         }
