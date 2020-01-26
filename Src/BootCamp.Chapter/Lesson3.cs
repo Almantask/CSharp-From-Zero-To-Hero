@@ -6,13 +6,7 @@ namespace BootCamp.Chapter
     {
         public static float CalculateBmi(float height, float weight)
         {
-            // Calculate BMI
-            // Formula: weight (kg) / [height (m)]**2
-
-            //float heightM = height / 100;  // calculate height in meters
-
             float BMI = weight / (height * height);
-
             return BMI;
         }
 
