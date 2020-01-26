@@ -58,27 +58,34 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if ((array != null) || (array.Length!=0))
+            if (array == null) { return array; }
+            if (array.Length != 0)
             {
-
                 int[] shortenedArray = new int[array.Length - 1];
                 for (int i = 0; i < shortenedArray.Length; i++)
                 {
                     shortenedArray[i] = array[i];
                 }
                 array = shortenedArray;
-                
             }
             return array;
         }
-
         /// <summary>
         /// Remove first element in array.
         /// </summary>
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
+            if (array == null) { return array; }
+            if (array.Length != 0)
+            {
+                int[] shortenedArray = new int[array.Length - 1];
+                for (int i = 0; i < shortenedArray.Length; i++)
+                {
+                    shortenedArray[i] = array[i+1];
+                }
+                array = shortenedArray;
+            }
             return array;
         }
 
