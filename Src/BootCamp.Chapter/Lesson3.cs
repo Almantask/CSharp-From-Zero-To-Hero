@@ -37,9 +37,10 @@ namespace BootCamp.Chapter
             return value;
         }
 
-        public static void Demo()
+
+        private static void PersonData(int number)
         {
-            
+            Console.WriteLine("*** Person " + number + " ***");
             string name = ReadInputString("Name: ");
             string surname = ReadInputString("Surname: ");
             int age = ReadInputInt("Age: ");
@@ -52,6 +53,13 @@ namespace BootCamp.Chapter
 
             float BMI = CalculateBmi(height, weight);
             Console.WriteLine("His BMI is: " + BMI);
+        }
+        public static void Demo()
+        {
+
+            PersonData(1);
+            // repeat for a second person 
+            PersonData(2);
         }
     }
 }
