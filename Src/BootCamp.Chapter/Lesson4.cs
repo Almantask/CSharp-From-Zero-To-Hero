@@ -79,7 +79,7 @@ namespace BootCamp.Chapter
         /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
         private static int RangeCheck(int value)
         {
-            return IsValidInt(value, 0)
+            return IsValidInt(value)
                 ? value
                 : InvalidNumberInput;
         }
@@ -91,7 +91,7 @@ namespace BootCamp.Chapter
         /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
         private static float RangeCheck(float value)
         {
-            return IsValidFloat(value, 0)
+            return IsValidFloat(value)
                 ? value
                 : InvalidNumberInput;
         }
@@ -202,28 +202,20 @@ namespace BootCamp.Chapter
         /// Checks if the given value is valid.
         /// </summary>
         /// <param name="value">The value to check.</param>
-        /// <param name="infimum">The exclusive infimum. Use flaot.MaxValue to set no lower limit.</param>
-        /// <param name="supremum">The exclusive maximum. Use flaot.MaxValue to set no upper limit.</param>
         /// <returns></returns>
-        private static bool IsValidInt(int value, int infimum = int.MaxValue, int supremum = int.MinValue)
+        private static bool IsValidInt(int value)
         {
-            bool hasNoLowerLimit = infimum == int.MaxValue;
-            bool hasNoUpperLimit = supremum == int.MinValue;
-            return (hasNoLowerLimit || value > infimum) && (hasNoUpperLimit || value < supremum);
+            return value > 0;
         }
 
         /// <summary>
         /// Checks if the given value is valid.
         /// </summary>
         /// <param name="value">The value to check.</param>
-        /// <param name="infimum">The exclusive infimum. Use flaot.MaxValue to set no lower limit.</param>
-        /// <param name="supremum">The exclusive maximum. Use flaot.MaxValue to set no upper limit.</param>
         /// <returns>True if the value is valid, false otherwise.</returns>
-        private static bool IsValidFloat(float value, float infimum = float.MaxValue, float supremum = float.MinValue)
+        private static bool IsValidFloat(float value)
         {
-            bool hasNoLowerLimit = infimum == float.MaxValue;
-            bool hasNoUpperLimit = supremum == float.MinValue;
-            return (hasNoLowerLimit || value > infimum) && (hasNoUpperLimit || value < supremum);
+            return value > 0;
         }
 
         /// <summary>
