@@ -39,10 +39,11 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(input))
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write(Environment.NewLine + "Name cannot be empty.");
                 return "-";
             }
 
+            Console.Write(Environment.NewLine);
             return input;
         }
 
@@ -53,14 +54,17 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(input))
             {
+                Console.Write(Environment.NewLine);
                 return 0;
             }
 
             if(!int.TryParse(input, out int output))
             {
-                Console.WriteLine("\"" + input + "\" is not a valid number.");
+                Console.Write(Environment.NewLine + "\"" + input + "\" is not a valid number.");
                 return -1;
             }
+
+            Console.Write(Environment.NewLine);
             return output;
         }
 
@@ -71,15 +75,17 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(input))
             {
+                Console.Write(Environment.NewLine);
                 return 0;
             }
 
             if (!float.TryParse(input, out float output))
             {
-                Console.WriteLine("\"" + input + "\" is not a valid number.");
+                Console.Write(Environment.NewLine + "\"" + input + "\" is not a valid number.");
                 return -1;
             }
 
+            Console.Write(Environment.NewLine);
             return output;
         }
 
@@ -105,13 +111,13 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
                 return -1;
             }
-            else if (weight >= height)
-            {
-                Console.WriteLine(failedCalc);
-                Console.WriteLine("Weight cannot be more or equal to height.");
-                Console.WriteLine(" Height= " + height + ", Weight= " + weight + ".");
-                return -1;
-            }
+            //else if (weight >= height)
+            //{
+            //    Console.WriteLine(failedCalc);
+            //    Console.WriteLine("Weight cannot be more or equal to height.");
+            //    Console.WriteLine(" Height= " + height + ", Weight= " + weight + ".");
+            //    return -1;
+            //}
             else
             {
                 return weight / (height * height);
