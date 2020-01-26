@@ -80,6 +80,11 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             var intInput = Console.ReadLine();
+            if (!float.TryParse(intInput, out float number))
+            {
+                Console.WriteLine(intInput + " is not a valid number.");
+                return -1;
+            }
             return int.Parse(intInput);
         }
     }
