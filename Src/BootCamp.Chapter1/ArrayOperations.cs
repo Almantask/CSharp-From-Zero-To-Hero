@@ -7,24 +7,26 @@
         /// If array empty or null- don't do anything.
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
+        ///
+        private static void ExchangeData(int[] array, int i, int j)
+        {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+
         public static void Sort(int[] array)
         {
-            //if (array != null && array.Length != 0)
-            //{
-            //    int temp;
-            //    for (int i = 0; i <= array.Length - 1; i++)
-            //    {
-            //        for (int j = i + 1; j < array.Length; j++)
-            //        {
-            //            if (array[i] > array[j])
-            //            {
-            //                temp = array[i];
-            //                array[i] = array[j];
-            //                array[j] = temp;
-            //            }
-            //        }
-            //    }
-            //}
+            if (array != null && array.Length != 0)
+            {
+                for (var i = 0; i < array.Length; i++)
+                {
+                    for (var j = i; j > 0 && array[j] < array[j - 1]; j--)
+                    {
+                        ExchangeData(array, j, j - 1);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -90,7 +92,14 @@
                 var tempArray = new int[array.Length - 1];
                 for (int i = 0; i < tempArray.Length; i++)
                 {
-                    tempArray[i] = i < index ? array[i] : array[i + 1];
+                    if (i < index)
+                    {
+                        tempArray[i] = array[i];
+                    }
+                    else
+                    {
+                        tempArray[i] = array[i + 1];
+                    }
                 }
                 return tempArray;
             }
