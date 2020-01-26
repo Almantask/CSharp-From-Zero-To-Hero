@@ -16,7 +16,7 @@
 
             if (array == null)
             {
-                numLength = 1; 
+                return;  
             }
             else
             {
@@ -51,7 +51,7 @@
 
             if (array == null)
             {
-                stop = -1; 
+                return; 
             }
             else
             {
@@ -60,11 +60,11 @@
              
                       
             for (var i = 0; i < stop; i++)
-			{
+            {
                 var temp = array[i]; 
                 array[i] = array[array.Length - i - 1] ;
                 array[array.Length -i - 1] = temp; 
-			}
+            }
         }
         
         /// <summary>
