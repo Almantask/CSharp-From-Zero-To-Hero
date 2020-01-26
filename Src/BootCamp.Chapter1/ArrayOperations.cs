@@ -30,7 +30,9 @@
                         position++;
                     }
                 }
+                newArray[position] = array[i];
             }
+            array = newArray;
         }
 
         /// <summary>
