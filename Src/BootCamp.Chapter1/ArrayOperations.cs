@@ -159,15 +159,7 @@
             }
             else
             {
-                var tempArray = new int[array.Length + 1];
-
-                for (int i = 0; i < array.Length; i++)
-                {
-                    tempArray[i] = array[i];
-                }
-                tempArray[^1] = number;
-
-                return tempArray;
+                return InsertAt(array, number, array.Length);
             }
         }
 
