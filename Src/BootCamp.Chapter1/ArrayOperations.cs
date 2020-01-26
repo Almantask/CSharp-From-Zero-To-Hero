@@ -9,7 +9,35 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+
+            var flag = true;  
+            var temp = 0 ;
+            var numLength = 0; 
+
+            if (array == null)
+            {
+                numLength = 1; 
+            }
+            else
+            {
+                numLength = array.Length; 
+            }
+
+           //sorting an array  
+            for (var i = 1; (i <= (numLength - 1)) && flag; i++)  
+            {  
+                flag = false;  
+                for (var j = 0; j < (numLength - 1); j++)  
+                {  
+                    if (array[j + 1] < array[j])  
+                    {  
+                        temp = array[j];  
+                        array[j] = array[j + 1];  
+                        array[j + 1] = temp;  
+                        flag = true;  
+                    }  
+                }  
+            }  
         }
 
         /// <summary>
@@ -19,9 +47,26 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
-        }
+            var stop = 0; 
 
+            if (array == null)
+            {
+                stop = -1; 
+            }
+            else
+            {
+                stop = array.Length / 2;
+            }
+             
+                      
+            for (var i = 0; i < stop; i++)
+			{
+                var temp = array[i]; 
+                array[i] = array[array.Length - i - 1] ;
+                array[array.Length -i - 1] = temp; 
+			}
+        }
+        
         /// <summary>
         /// Remove last element in array.
         /// </summary>
