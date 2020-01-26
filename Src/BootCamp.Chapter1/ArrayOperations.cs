@@ -60,7 +60,7 @@
         /// </summary>
         /// <param name="array">Input array.</param>
         /// <param name="number">Number to be added.</param>
-        /// <returns>A new array with element added at a given index. If an array is empty or null, returns input array.</returns>
+        /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
             // ToDo: implement.
@@ -72,7 +72,7 @@
         /// </summary>
         /// <param name="array">Input array.</param>
         /// <param name="number">Number to be added.</param>
-        /// <returns>A new array with element added in the end of array. If an array is empty or null, returns input array.</returns>
+        /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
             // ToDo: implement.
@@ -85,7 +85,7 @@
         /// <param name="array">Input array.</param>
         /// <param name="number">Number to be added.</param>
         /// <param name="index">Index at which array element should be added.</param>
-        /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns input array.</returns>
+        /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
