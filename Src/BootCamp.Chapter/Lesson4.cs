@@ -105,15 +105,18 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
                 return -1;
             }
-            else if (weight >= height)
+            //else if (weight >= height)
+            //{
+            //    Console.WriteLine(failedCalc);
+            //    Console.WriteLine("Weight cannot be more or equal to height.");
+            //    Console.WriteLine(" Height= " + height + ", Weight= " + weight + ".");
+            //    return -1;
+            //}
+            else
             {
-                Console.WriteLine(failedCalc);
-                Console.WriteLine("Weight cannot be more or equal to height.");
-                Console.WriteLine(" Height= " + height + ", Weight= " + weight + ".");
-                return -1;
+                return weight / (height * height);
             }
-
-            return weight / (height * height);
+            
         }
 
         public static void WeightType(float BMI)
