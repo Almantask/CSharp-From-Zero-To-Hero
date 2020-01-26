@@ -20,16 +20,23 @@ namespace BootCamp.Chapter
                 //Calc and return BMI
                 CalcBmi(weight, height);
 
-                //Display output to user
-                Console.WriteLine(firstname + " " + secondname + "is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm ");
-                Console.WriteLine("Your BMI is " + CalcBmi(weight, height));
-
-                //Continue
-                Console.WriteLine("Would you like to do another person Y/N?");
-                var option = Console.ReadLine();
-                if ((option) == "N" || (option) == "n")
+                if (CalcBmi(weight, height) <= 0)
                 {
-                    backtotop = false;
+                    Console.WriteLine("Failed calculating BMI");
+                }
+                else
+                {
+                    //Display output to user
+                    Console.WriteLine(firstname + " " + secondname + "is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm ");
+                    Console.WriteLine("Your BMI is " + CalcBmi(weight, height));
+
+                    //Continue
+                    Console.WriteLine("Would you like to do another person Y/N?");
+                    var option = Console.ReadLine();
+                    if ((option) == "N" || (option) == "n")
+                    {
+                        backtotop = false;
+                    }
                 }
             }
         }
@@ -40,6 +47,7 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(input) || (input == "-")) 
             {
                 Console.WriteLine("- Name cannot be empty");
+                return "-";
             }
             bool Isitnumber = int.TryParse(input, out var number);
             if (Isitnumber)
@@ -57,7 +65,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine(input + " Height/Weight cannot be Null or Empty ");
                 return -0;
             }
-            bool Isitnumber = int.TryParse(input, out var number);
+            bool Isitnumber = float.TryParse(input, out var number);
             if (!Isitnumber)
             {
                 Console.WriteLine(number + " This doesn't look like a number ");
@@ -73,7 +81,7 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(input))
             {
                 Console.WriteLine(input + " Age cannot be Null or Empty ");
-                return -1;
+                return -0;
             }
             bool Isitnumber = int.TryParse(input, out var number);
             if (!Isitnumber)
@@ -101,18 +109,22 @@ namespace BootCamp.Chapter
             if (weight <=0 && height <=0)
             {
                 Console.WriteLine("Weight and Height invalid");
+                return -1;
             }
             if (weight <= 0)
             {
                 Console.WriteLine("Is not a valid weight");
+                return -1;
             }
             if (height <= 0)
             {
                 Console.WriteLine("Is not a valid height");
+                return -1;
             }
-            if (bmi <= 0)
+            if ((bmi) <= 0 || bmi >= 100)
             {
                 Console.WriteLine("BMI is invalid");
+                return -1;
             }
             return bmi;
         }
