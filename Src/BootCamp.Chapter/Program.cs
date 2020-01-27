@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
     {
         public static void PerformInteractions()
         {
-            var _person = new Person
+            var person = new Person
             {
                 Name = Prompter("What is your full name?"),
                 Age = int.Parse(Prompter("What is your age?")),
@@ -30,9 +30,9 @@ namespace BootCamp.Chapter
                 Height = double.Parse(Prompter("What is your height in cm?"))
             };
 
-            Console.WriteLine($"{_person.Name} is {_person.Age} years old, his weight is {_person.Weight} kg and his height is {_person.Height} cm.");
+            Console.WriteLine($"{person.Name} is {person.Age} years old, his weight is {person.Weight} kg and his height is {person.Height} cm.");
 
-            Console.WriteLine($"{_person.Name} has a BMI of {_person.BMI}");
+            Console.WriteLine($"{person.Name} has a BMI of {person.BMI}");
         }
 
         public static string Prompter(string question)
