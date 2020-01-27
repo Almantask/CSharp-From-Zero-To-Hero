@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace BootCamp.Chapter
 {
@@ -29,20 +28,60 @@ namespace BootCamp.Chapter
         {
             Console.Write(checkString);
             string returnString = Console.ReadLine();
-            return returnString;
+            if (returnString != "")
+            {
+                return returnString;
+            }
+            else
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
         }
 
         public static int PromptInt(string checkString)
         {
             Console.Write(checkString);
-            int returnInt = int.Parse(Console.ReadLine());
-            return returnInt;
+            string returnString = Console.ReadLine();
+            if (returnString == "")
+            {
+                return 0;
+            }
+            else
+            {
+                bool isNumber = int.TryParse(returnString, out int returnInt);
+                if (!isNumber)
+                {
+                    Console.WriteLine(returnString + " is not a valid number.");
+                    return -1;
+                }
+                else
+                {
+                    return returnInt;
+                }
+            }
         }
         public static float PromptFloat(string checkString)
         {
             Console.Write(checkString);
-            float returnFloat = float.Parse(Console.ReadLine());
-            return returnFloat;
+            string returnString = Console.ReadLine();
+            if (returnString == "")
+            {
+                return 0;
+            }
+            else
+            {
+                bool isNumber = float.TryParse(returnString, out float returnFloat);
+                if (!isNumber)
+                {
+                    Console.WriteLine(returnString + " is not a valid number.");
+                    return -1;
+                }
+                else
+                {
+                    return returnFloat;
+                }
+            }
         }
 
         public static float CalculateBodyMassIndex(float weight, float height)
