@@ -20,24 +20,16 @@ namespace BootCamp.Chapter
 
     public static class InteractionManager
     {
-        static string _name;
-        static int _age;
-        static double _weight;
-        static double _height;
-        static double _bmi;
-
         public static void PerformInteractions()
         {
-            _name = Prompter("What is your full name?");
-            _age = int.Parse(Prompter("What is your age?"));
-            _weight = double.Parse(Prompter("What is your weight in kg?"));
-            _height = double.Parse(Prompter("What is your height in cm?"));
+            var name = Prompter("What is your full name?");
+            var age = int.Parse(Prompter("What is your age?"));
+            var weight = double.Parse(Prompter("What is your weight in kg?"));
+            var height = double.Parse(Prompter("What is your height in cm?"));
+            var bmi = CalculateBmi(height, weight);
 
-            Console.WriteLine($"{_name} is {_age} years old, his weight is {_weight} kg and his height is {_height} cm.");
-
-            _bmi = CalculateBmi();
-
-            Console.WriteLine($"{_name} has a BMI of {_bmi}");
+            Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
+            Console.WriteLine($"{name} has a BMI of {bmi}");
         }
 
         private static string Prompter(string question)
@@ -46,12 +38,12 @@ namespace BootCamp.Chapter
             return Console.ReadLine();
         }
 
-        private static double CalculateBmi()
+        private static double CalculateBmi(double height, double weight)
         {
-            if (_weight > 0 && _height > 0)
+            if (weight > 0 && height > 0)
             {
-                var heightInMeters = _height / 100;
-                return _weight / (heightInMeters * heightInMeters);
+                var heightInMeters = height / 100;
+                return weight / (heightInMeters * heightInMeters);
             }
 
             return 0;
