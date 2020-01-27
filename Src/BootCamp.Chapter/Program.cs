@@ -6,10 +6,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var interactionManger = new InteractionManager();
 
         StartOver:
-            interactionManger.PerformInteractions();
+            InteractionManager.PerformInteractions();
 
             Console.WriteLine("Whould you like to start again?");
             var answer = Console.ReadLine();
@@ -19,13 +18,11 @@ namespace BootCamp.Chapter
 
 
 
-    public class InteractionManager
+    public static class InteractionManager
     {
-        private Person _person;
-
-        public void PerformInteractions()
+        public static void PerformInteractions()
         {
-            _person = new Person
+            var _person = new Person
             {
                 Name = Prompter("What is your full name?"),
                 Age = int.Parse(Prompter("What is your age?")),
@@ -38,7 +35,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{_person.Name} has a BMI of {_person.BMI}");
         }
 
-        public string Prompter(string question)
+        public static string Prompter(string question)
         {
             Console.WriteLine(question);
             return Console.ReadLine();
