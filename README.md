@@ -52,7 +52,7 @@
     * Prompt for input and converting it to int (print message for request, read console input and return converted input to int), 
     * Prompt for input and converting it to string (print message for request, read console input and return input),
     * Prompt for input and converting it to float (print message for request, read console input and return converted input to float).
-7 Call Lesson3.X(y) functions from the Checks.cs file.
+7) Call "Lesson3.X(y)" functions from the Checks.cs file.
   * X is the name of your function.
   * y are the parameters of your function. If you do not have parameters then there is no y.
 8) Run tests, make sure you pass all the tests.
