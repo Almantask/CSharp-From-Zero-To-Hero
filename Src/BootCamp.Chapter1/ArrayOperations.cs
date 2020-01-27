@@ -74,8 +74,13 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return array;
+            }
+
+            var newArray = RemoveAt(array, array.Length -1 );
+            return newArray; 
         }
 
         /// <summary>
@@ -84,8 +89,13 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return array;
+            }
+
+            var newArray = RemoveAt(array,0) ; 
+            return newArray;
         }
 
         /// <summary>
@@ -96,8 +106,40 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return array; 
+            }
+
+            var lengthOldArray = array.Length; 
+            
+            if (index < 0 || index == array.Length || array.Length == 0)
+            {
+                return array; 
+            }
+
+            var newArray = new int[lengthOldArray - 1];
+
+            for (int i = 0; i <= array.Length - 1 ; i++)
+			{
+                if(i < index)
+                {
+                    // copy the orginal content
+                    newArray[i] = array[i]; 
+                } else  if  (i == index) 
+                {
+                    // because we want to delete that one we do not copy it 
+                    continue ; 
+                }
+                else 
+                {
+                    //  because the index is now 1 to high for the new index , we copy it to a index 1 lower
+                    newArray[i - 1 ] = array[i] ; 
+                }
+			}
+
+
+            return newArray;
         }
 
         /// <summary>
