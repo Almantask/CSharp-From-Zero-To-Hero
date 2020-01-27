@@ -91,15 +91,13 @@
             {
                 return array;
             }
-            else
+
+            var tempArray = new int[array.Length - 1];
+            for (int i = 0; i < tempArray.Length; i++)
             {
-                var tempArray = new int[array.Length - 1];
-                for (int i = 0; i < tempArray.Length; i++)
-                {
-                    tempArray[i] = i < index ? array[i] : array[i + 1];
-                }
-                return tempArray;
+                tempArray[i] = i < index ? array[i] : array[i + 1];
             }
+            return tempArray;
         }
 
         /// <summary>
