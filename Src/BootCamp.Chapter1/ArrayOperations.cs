@@ -17,7 +17,7 @@
 
             var flag = true;
             var temp = 0;
-            var numLength = 0;
+            int numLength = array.Length; 
 
             //sorting an array  
             for (var i = 1; (i <= (numLength - 1)) && flag; i++)
@@ -113,9 +113,14 @@
 
         private static bool IsValidCase(int[] array, int index)
         {
-            if (array == null || index < 0 || index == array.Length || array.Length == 0 || index > array.Length)
+            if (array == null) 
             {
                 return false;
+            }
+
+            if (index < 0 || index == array.Length || array.Length == 0 || index > array.Length)
+            {
+                return false; 
             }
 
             return true;
