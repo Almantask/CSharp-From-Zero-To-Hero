@@ -121,22 +121,17 @@
             var newArray = new int[lengthOldArray - 1];
 
             for (int i = 0; i <= array.Length - 1 ; i++)
-			{
+            {
                 if(i < index)
                 {
                     // copy the orginal content
                     newArray[i] = array[i]; 
-                } else  if  (i == index) 
-                {
-                    // because we want to delete that one we do not copy it 
-                    continue ; 
-                }
-                else 
+                } else if (i > index)  
                 {
                     //  because the index is now 1 to high for the new index , we copy it to a index 1 lower
                     newArray[i - 1 ] = array[i] ; 
                 }
-			}
+            }
 
 
             return newArray;
