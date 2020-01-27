@@ -199,11 +199,11 @@
                 return array;
             }
 
-            if (!isValidCaseForInsertForNullOrEmpty(array, number, index)  )
+            if (! IsValidCaseForInsertForNullOrEmpty(array, number, index)  )
             {
                 if (index == 0)
                 {
-                    return new int[] { number };
+                    return new [] { number };
                 }
                 return array; 
             }
@@ -228,7 +228,7 @@
         
             
 
-        public static bool isValidCaseForInsertForNullOrEmpty(int[] array, int number, int index)
+        public static bool  IsValidCaseForInsertForNullOrEmpty(int[] array, int number, int index)
         {
             if (array == null || array.Length == 0)
             {
