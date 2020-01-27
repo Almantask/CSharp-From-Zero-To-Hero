@@ -17,7 +17,7 @@
 
             var flag = true;
             var temp = 0;
-            int numLength = array.Length; 
+            int numLength = array.Length;
 
             //sorting an array  
             for (var i = 1; (i <= (numLength - 1)) && flag; i++)
@@ -49,9 +49,9 @@
             {
                 return;
             }
-            
+
             stop = array.Length / 2;
-            
+
             for (var i = 0; i < stop; i++)
             {
                 var temp = array[i];
@@ -69,9 +69,9 @@
         {
             if (array == null)
             {
-                return array; 
+                return array;
             }
-            var newArray = ProcessArray(array, array.Length - 1);
+            var newArray = RemoveAt(array, array.Length - 1);
             return newArray;
         }
 
@@ -81,7 +81,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            var newArray = ProcessArray(array, 0);
+            var newArray = RemoveAt(array, 0);
             return newArray;
 
         }
@@ -94,40 +94,22 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            var newArray = ProcessArray(array, index);
-            return newArray;
-        }
 
-        private static int[] ProcessArray(int[] array, int index)
-        {
-            var isValid = IsValidCase(array, index);
-
-            if (!isValid)
+            // check if a array is null 
+            if (array == null)
             {
                 return array;
             }
 
-            array = Remove(array, index);
-            return array;
-        }
 
-        private static bool IsValidCase(int[] array, int index)
-        {
-            if (array == null) 
-            {
-                return false;
-            }
-
+            // Check if a array or a index has a invalid content 
             if (index < 0 || index == array.Length || array.Length == 0 || index > array.Length)
             {
-                return false; 
+                return array;
             }
 
-            return true;
-        }
-
-        private static int[] Remove(int[] array, int index)
-        {
+            // new array to set the new data in , which lenght is 1 smaller because 
+            // we only need to remove 1 item.
             var newArray = new int[array.Length - 1];
 
             for (int i = 0; i <= array.Length - 1; i++)
@@ -136,7 +118,8 @@
                 {
                     // copy the orginal content
                     newArray[i] = array[i];
-                } else if (i > index)
+                }
+                else if (i > index)
                 {
                     //  because the index is now 1 to high for the new index , we copy it to a index 1 lower
                     newArray[i - 1] = array[i];
@@ -146,6 +129,8 @@
             return newArray;
         }
 
+
+
         /// <summary>
         /// Inserts a new array element at the start.
         /// </summary>
@@ -154,9 +139,10 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
+
             if (array == null)
             {
-                return new [] { number };
+                return new[] { number };
             }
 
             var newArray = InsertAt(array, number, 0);
@@ -171,13 +157,13 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns input array.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array == null)
+            if (array == null || array.Length == 0)
             {
-               return new [] { number };
+                return new[] { number };
             }
 
-            var newArray = InsertAt(array, number, array.Length) ;
-            newArray[newArray.Length - 1] = number; 
+            var newArray = InsertAt(array, number, array.Length);
+            newArray[newArray.Length - 1] = number;
             return newArray;
         }
 
@@ -191,53 +177,26 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
 
-            if (!IsValidCaseForInsertForInValidIndex(array, index))
+            // check for a invalid index             
+            if (index >= 0)
             {
                 return array;
             }
 
-            if (! IsValidCaseForInsertForNullOrEmpty(array, number, index)  )
+            // check for a invalid array 
+            if (array == null || array.Length == 0)
             {
                 if (index == 0)
                 {
-                    return new [] { number };
+                    return new[] { number };
                 }
-                return array; 
+                return array;
             }
 
-           
+            //  a new array that holds the new data with the new item 
+            var newArray = new int[array.Length + 1];
             
-            var newArray = Insert(array, number, index);
-
-            return newArray;
-
-        }
-
-        public static bool IsValidCaseForInsertForInValidIndex(int[] array, int index)
-        {
-            if (index >= 0)
-            {
-                return true;  
-            }
-            return false; 
-        } 
-           
-        
-            
-
-        public static bool  IsValidCaseForInsertForNullOrEmpty(int[] array, int number, int index)
-        {
-            if (array == null || array.Length == 0)
-            {
-                return false; 
-            }
-
-            return true; 
-        }
-
-        public static int[] Insert(int[] array,  int number, int index)
-        {
-            var newArray = new int[array.Length + 1]; 
+            // The actual copy and insert data into the new array 
             for (int i = 0; i <= array.Length - 1; i++)
             {
                 if (i < index)
@@ -257,7 +216,9 @@
                 }
             }
 
-            return newArray; 
+            return newArray;
+
         }
+
     }
 }
