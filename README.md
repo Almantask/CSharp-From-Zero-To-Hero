@@ -4,11 +4,11 @@
 
 ## Hints
 * The tasks require you to have already created an account on GitHub. Do that first!
-* Be very careful where to place your NewLine's and where not!
-* Do use [CultureInfo.InvariantCulture](https://docs.microsoft.com/de-de/dotnet/api/system.globalization.cultureinfo.invariantculture?view=netcore-3.1) when reading in float numbers. (Due to differences in parsing numbers with '.' and ',' character.
-* The better your design, the easier it will be to find and fix errors!
-* Be careful when it comes to the BMI. You have to use cm and m for the height.
-* Do not hesitate to ask mentors for advice. This homework IS puzzling.
+* If you do not understand something or need help:
+  * Ask questions in the channel bc-discussion in Discord.
+  * Check the wiki of this repository (work in progress!).
+  * Check the bc-materials channel for reference material.
+  * Check the bc-announcements channel for related stuff.
 
 ## Task
 * Fork https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter1/Homework/1And2
