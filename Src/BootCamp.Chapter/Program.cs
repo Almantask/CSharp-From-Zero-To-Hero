@@ -20,42 +20,38 @@ namespace BootCamp.Chapter
 
     public static class InteractionManager
     {
+        static string _name;
+        static int _age;
+        static double _weight;
+        static double _height;
+        static double _bmi;
+
         public static void PerformInteractions()
         {
-            var person = new Person
-            {
-                Name = Prompter("What is your full name?"),
-                Age = int.Parse(Prompter("What is your age?")),
-                Weight = double.Parse(Prompter("What is your weight in kg?")),
-                Height = double.Parse(Prompter("What is your height in cm?"))
-            };
+            _name = Prompter("What is your full name?");
+            _age = int.Parse(Prompter("What is your age?"));
+            _weight = double.Parse(Prompter("What is your weight in kg?"));
+            _height = double.Parse(Prompter("What is your height in cm?"));
 
-            Console.WriteLine($"{person.Name} is {person.Age} years old, his weight is {person.Weight} kg and his height is {person.Height} cm.");
+            Console.WriteLine($"{_name} is {_age} years old, his weight is {_weight} kg and his height is {_height} cm.");
 
-            Console.WriteLine($"{person.Name} has a BMI of {person.BMI}");
+            _bmi = CalculateBmi();
+
+            Console.WriteLine($"{_name} has a BMI of {_bmi}");
         }
 
-        public static string Prompter(string question)
+        private static string Prompter(string question)
         {
             Console.WriteLine(question);
             return Console.ReadLine();
         }
-    }
 
-    public class Person
-    {
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public double Weight { get; set; }
-        public double Height { get; set; }
-        public double BMI { get { return CalculateBmi(); } }
-
-        private double CalculateBmi()
+        private static double CalculateBmi()
         {
-            if (Weight > 0 && Height > 0)
+            if (_weight > 0 && _height > 0)
             {
-                var heightInMeters = Height / 100;
-                return Weight / (heightInMeters * heightInMeters);
+                var heightInMeters = _height / 100;
+                return _weight / (heightInMeters * heightInMeters);
             }
 
             return 0;
