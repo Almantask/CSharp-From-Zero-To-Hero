@@ -110,8 +110,6 @@ namespace BootCamp.Chapter
                 return 0;
             }
 
-
-            //return float.Parse(Console.ReadLine());
         }
 
         public static float CalculateBmi(float weight, float height)
