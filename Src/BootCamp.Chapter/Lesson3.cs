@@ -6,8 +6,8 @@ namespace BootCamp.Chapter
     {
         public static float CalculateBmi(float height, float weight)
         {
-            float BMI = weight / (height * height);
-            return BMI;
+            float bmi = weight / (height * height);
+            return bmi;
         }
 
         public static string ReadInputString(string message)
@@ -39,10 +39,10 @@ namespace BootCamp.Chapter
             string surname = ReadInputString("Surname: ");
             int age = ReadInputInt("Age: ");
             float weight = ReadInputFloat("Weight (in kg): ");
-            float height = ReadInputFloat("Height(in m): ");
+            float height = ReadInputFloat("Height (in m): ");
 
             // Print all the info
-            string message = name + " " + surname + " is " + age + " years old, his weight is " + weight + "Kg and his height is " + height + "cm.";
+            string message = name + " " + surname + " is " + age + " years old, his weight is " + weight + "Kg and his height is " + height + "m.";
             Console.WriteLine(message);
 
             float BMI = CalculateBmi(height, weight);
