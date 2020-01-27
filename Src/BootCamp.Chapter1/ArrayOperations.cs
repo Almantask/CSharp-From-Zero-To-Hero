@@ -10,18 +10,16 @@
         ///
         public static void Sort(int[] array)
         {
-            if (array == null)
+            if (array == null || array.Length == 0)
             {
                 return;
             }
-            if (array.Length != 0)
+
+            for (var i = 0; i < array.Length; i++)
             {
-                for (var i = 0; i < array.Length; i++)
+                for (var j = i; j > 0 && array[j] < array[j - 1]; j--)
                 {
-                    for (var j = i; j > 0 && array[j] < array[j - 1]; j--)
-                    {
-                        SwapElements(array, j, j - 1);
-                    }
+                    SwapElements(array, j, j - 1);
                 }
             }
         }
