@@ -53,9 +53,9 @@ namespace BootCamp.Chapter
         public int Age { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
-        public double BMI { get { return CalculateBMI(); } }
+        public double BMI { get { return CalculateBmi(); } }
 
-        private double CalculateBMI()
+        private double CalculateBmi()
         {
             if (Weight > 0 && Height > 0)
             {
