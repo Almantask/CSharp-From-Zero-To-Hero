@@ -178,7 +178,7 @@
         {
 
             // check for a invalid index             
-            if (index >= 0)
+            if (index < 0)
             {
                 return array;
             }
