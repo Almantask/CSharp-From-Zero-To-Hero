@@ -176,7 +176,7 @@
         {
             if (array == null)
             {
-               return new int[] { number };
+               return new [] { number };
             }
 
             var newArray = InsertAt(array, number, array.Length) ;
@@ -194,7 +194,7 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
 
-            if (!isValidCaseForInvalidIndex(array, index))
+            if (!IsValidCaseForInsertForNullOrEmpty(array, index))
             {
                 return array;
             }
@@ -216,7 +216,7 @@
 
         }
 
-        public static bool isValidCaseForInvalidIndex(int[] array, int index)
+        public static bool IsValidCaseForInsertForNullOrEmpty(int[] array, int index)
         {
             if (index >= 0)
             {
