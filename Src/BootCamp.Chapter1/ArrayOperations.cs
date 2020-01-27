@@ -2,6 +2,18 @@
 {
     public static class ArrayOperations
     {
+
+        static bool IsArraySorted(int[] array)
+        {
+            for (int i = 0; i < array.Length + 1; i++)
+            {
+                //This to stop IndexOutOfRangeException
+                if (i + 1 >= array.Length) break;
+
+                if (array[i] > array[i + 1]) return false;
+            }
+            return true;
+        }
         /// <summary>
         /// Sort the array in ascending order.
         /// If array empty or null- don't do anything.
@@ -9,7 +21,23 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0) return;
+
+            while (!IsArraySorted(array))
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    //This to stop IndexOutOfRangeException
+                    if (i + 1 >= array.Length) break;
+
+                    if (array[i] > array[i + 1])
+                    {
+                        var smaller = array[i + 1];
+                        array[i + 1] = array[i];
+                        array[i] = smaller;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -19,8 +47,37 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0) return;
+
+            while (!IsArrayReverse(array))
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    //This to stop IndexOutOfRangeException
+                    if (i + 1 >= array.Length) break;
+
+                    if (array[i] > array[i + 1])
+                    {
+                        var smaller = array[i + 1];
+                        array[i + 1] = array[i];
+                        array[i] = smaller;
+                    }
+                }
+            }
         }
+
+        static bool IsArrayReverse(int[] array)
+        {
+            for (int i = 0; i < array.Length + 1; i++)
+            {
+                //This to stop IndexOutOfRangeException
+                if (i + 1 >= array.Length) break;
+
+                if (array[i] < array[i + 1]) return false;
+            }
+            return true;
+        }
+
 
         /// <summary>
         /// Remove last element in array.
@@ -29,8 +86,14 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0) return array;
+
+            var arrayWithLastRemoved = new int[array.Length - 1];
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                arrayWithLastRemoved[i] = array[i];
+            }
+            return arrayWithLastRemoved;
         }
 
         /// <summary>
@@ -39,8 +102,14 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0) return array;
+
+            var arrayWithFirstRemoved = new int[array.Length - 1];
+            for (int i = 1; i < array.Length; i++)
+            {
+                arrayWithFirstRemoved[i - 1] = array[i];
+            }
+            return arrayWithFirstRemoved;
         }
 
         /// <summary>
