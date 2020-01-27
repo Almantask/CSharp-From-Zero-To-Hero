@@ -8,13 +8,6 @@
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
         ///
-        private static void ExchangeData(int[] array, int i, int j)
-        {
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-
         public static void Sort(int[] array)
         {
             if (array == null)
@@ -27,10 +20,17 @@
                 {
                     for (var j = i; j > 0 && array[j] < array[j - 1]; j--)
                     {
-                        ExchangeData(array, j, j - 1);
+                        SwapElements(array, j, j - 1);
                     }
                 }
             }
+        }
+
+        private static void SwapElements(int[] array, int i, int j)
+        {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
         }
 
         /// <summary>
