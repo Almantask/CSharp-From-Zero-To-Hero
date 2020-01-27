@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
             {
                 PromptUserForStats();
 
-            } while (PromptCalculateNewBmi());
+            } while (PromptCalculateBmi());
         }
         private static void WelcomePrompt()
         {
@@ -23,8 +23,8 @@ namespace BootCamp.Chapter
             Console.WriteLine("|                              |");
             Console.WriteLine("+------------------------------+");
         }
-        
-        public static bool PromptCalculateNewBmi()
+
+        public static bool PromptCalculateBmi()
         {
             Console.WriteLine("Do you wish to calculate another person? Y/N ");
             string response = Console.ReadLine();
@@ -43,9 +43,7 @@ namespace BootCamp.Chapter
 
             if (isHeightAndWeightValid)
             {
-                float calculatedBMI = GetBmi(weight, height);
-                Console.WriteLine($"{name} is {age} years old, weight is {weight} kg with a height of {height} meters.");
-                Console.WriteLine($"The calculated BMI  is: {calculatedBMI:F}");
+                ProcessUserStats(name, age, weight, height);
             }
             else
             {
@@ -54,7 +52,13 @@ namespace BootCamp.Chapter
 
         }
 
-        // Validation Functions
+        public static void ProcessUserStats(string name, int age, float weight, float height)
+        {
+            float calculatedBMI = GetBmi(weight, height);
+            Console.WriteLine($"{name} is {age} years old, weight is {weight} kg with a height of {height} meters.");
+            Console.WriteLine($"The calculated BMI  is: {calculatedBMI:F}");
+        }
+
         public static string PromptNameInput(string promptMessage)
         {
             Console.WriteLine(promptMessage);
@@ -74,8 +78,8 @@ namespace BootCamp.Chapter
         public static int PromptAgeInput(string promptMessage)
         {
             Console.WriteLine(promptMessage);
-            var age = Console.ReadLine();
-            if (IsNumber(age) && IsPositive(float.Parse(age)))
+            string age = Console.ReadLine();
+            if (IsNumber(age) && IsPositive(age))
             {
                 return int.Parse(age);             
             }
@@ -95,7 +99,7 @@ namespace BootCamp.Chapter
             Console.WriteLine(promptMessage);
 
             var value = Console.ReadLine();
-            if (IsNumber(value) && IsPositive(float.Parse(value)))
+            if (IsNumber(value) && IsPositive(value))
             {
                 return float.Parse(value);
             }
@@ -112,8 +116,8 @@ namespace BootCamp.Chapter
        
         public static bool ValidateHeightAndWeight(float weight, float height)
         {
-            bool isValidWeight = IsPositive(weight);
-            bool isValidHeight = IsPositive(height);
+            bool isValidWeight = weight > 0;
+            bool isValidHeight = height > 0;
             return ((isValidHeight && isValidWeight) && (weight > height));
         }
 
@@ -128,11 +132,11 @@ namespace BootCamp.Chapter
             }
             else
             {
-                if (!IsPositive(weight) && !IsPositive(height))
+                if (weight <= 0 && height <= 0)
                 {
                     DisplayErrorMessageForNumbers($"Weight cannot be equal or less than zero, but was {weight}.{Environment.NewLine}Height cannot be less than zero, but was {height}.");
                 }
-                else if (!IsPositive(height))
+                else if (height <= 0)
                 {
                     DisplayErrorMessageForNumbers($"Height cannot be equal or less than zero, but was {height}.");
                 }else if(weight >= height)
@@ -146,8 +150,8 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static bool IsPositive(float number) {
-           return number > 0;
+        public static bool IsPositive(string number) {
+           return int.Parse(number) > 0;
         }
         
         public static bool IsNumber(string value) => float.TryParse(value, out _);
