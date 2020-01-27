@@ -74,7 +74,11 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            var newArray = ProcessArray(array, array.Length - 1); 
+            if (array == null)
+            {
+                return array;
+            }
+            var newArray = ProcessArray(array, array.Length - 1);
             return newArray;
         }
 
@@ -85,8 +89,8 @@
         public static int[] RemoveFirst(int[] array)
         {
             var newArray = ProcessArray(array, 0);
-            return newArray; 
-            
+            return newArray;
+
         }
 
         /// <summary>
@@ -98,25 +102,30 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             var newArray = ProcessArray(array, index);
-            return newArray; 
+            return newArray;
         }
 
         private static int[] ProcessArray(int[] array, int index)
         {
-            var newArray = CheckForInValidCases(array, index);
-            newArray = Remove(newArray, index);
-            return newArray;
-        }
+            var isValid = IsValidCase(array, index);
 
-        private static int[] CheckForInValidCases(int[] array, int index)
-        {
-            if (array == null || index < 0 || index == array.Length || array.Length == 0)
+            if (!isValid)
             {
                 return array;
             }
 
-            var newArray = ProcessArray(array, index);
-            return newArray; 
+            array = Remove(array, index);
+            return array;
+        }
+
+        private static bool IsValidCase(int[] array, int index)
+        {
+            if (array == null || index < 0 || index == array.Length || array.Length == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private static int[] Remove(int[] array, int index)
@@ -124,20 +133,20 @@
             var lengthOldArray = array.Length;
             var newArray = new int[lengthOldArray - 1];
 
-            for (int i = 0; i <= array.Length - 1 ; i++)
+            for (int i = 0; i <= array.Length - 1; i++)
             {
-                if(i < index)
+                if (i < index)
                 {
                     // copy the orginal content
-                    newArray[i] = array[i]; 
-                } else if (i > index)  
+                    newArray[i] = array[i];
+                } else if (i > index)
                 {
                     //  because the index is now 1 to high for the new index , we copy it to a index 1 lower
-                    newArray[i - 1 ] = array[i] ; 
+                    newArray[i - 1] = array[i];
                 }
             }
 
-            return newArray; 
+            return newArray;
         }
 
         /// <summary>
@@ -148,8 +157,13 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return new int[] { number };
+            }
+
+            var newArray = InsertAt(array, number, 0);
+            return newArray;
         }
 
         /// <summary>
@@ -160,8 +174,14 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns input array.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+               return new int[] { number };
+            }
+
+            var newArray = InsertAt(array, number, array.Length) ;
+            newArray[newArray.Length - 1] = number; 
+            return newArray;
         }
 
         /// <summary>
@@ -173,8 +193,74 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+
+            if (!isValidCaseForInvalidIndex(array, index))
+            {
+                return array;
+            }
+
+            if (!isValidCaseForInsertForNullOrEmpty(array, number, index)  )
+            {
+                if (index == 0)
+                {
+                    return new int[] { number };
+                }
+                return array; 
+            }
+
+           
+            
+            var newArray = Insert(array, number, index);
+
+            return newArray;
+
+        }
+
+        public static bool isValidCaseForInvalidIndex(int[] array, int index)
+        {
+            if (index >= 0)
+            {
+                return true;  
+            }
+            return false; 
+        } 
+           
+        
+            
+
+        public static bool isValidCaseForInsertForNullOrEmpty(int[] array, int number, int index)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return false; 
+            }
+
+            return true; 
+        }
+
+        public static int[] Insert(int[] array,  int number, int index)
+        {
+            var newArray = new int[array.Length + 1]; 
+            for (int i = 0; i <= array.Length - 1; i++)
+            {
+                if (i < index)
+                {
+                    // copy the orginal content
+                    newArray[i] = array[i];
+                }
+                else if (i > index)
+                {
+                    //  because the index is now 1 to high for the new index , we copy it to a index 1 higher
+                    newArray[i + 1] = array[i];
+                }
+                else
+                {
+                    //we have the new element
+                    newArray[i] = number;
+                }
+            }
+
+            return newArray; 
         }
     }
 }
