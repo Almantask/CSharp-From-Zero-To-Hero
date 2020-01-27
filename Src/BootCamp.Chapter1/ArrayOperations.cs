@@ -87,7 +87,9 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null || index < 0 || index >= array.Length)
+            bool ArgumentsAreNotValid = array == null || index < 0 || index >= array.Length;
+
+            if (ArgumentsAreNotValid)
             {
                 return array;
             }
