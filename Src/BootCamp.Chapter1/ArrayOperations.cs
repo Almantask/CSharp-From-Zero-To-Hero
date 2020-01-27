@@ -14,6 +14,8 @@
                 return;
             }
 
+            // Im using a bubble sort I found on the net. 
+
             var temp = 0;
             int numLength = array.Length;
 
@@ -27,7 +29,7 @@
                         temp = array[j];
                         array[j] = array[j + 1];
                         array[j + 1] = temp;
-                        break;        
+                        break;  // array is sorted now so the loop can be leaved.       
                     }
                 }
             }
@@ -48,6 +50,21 @@
             }
 
             stop = array.Length / 2;
+
+            // Here I take a element and put it into temp. 
+            // So I can put there the element of the other half of the arrau
+            // and put that on that place. After that I can take the contents of
+            // temp and put it on the new place 
+
+            // Example lets say we have this {1,2,3,4,5} 
+            // then temp will be the 1 
+            // then I put the 5 in the place of the 1 so we get {5,2,3,4,5} 
+            // then I put the contents of temp on the place on the index the number is placed. 
+            // so we get {5,2,3,4,1} 
+            // then we goto the next number 2 , that is placed in temp 
+            // and the 4 is placed in the place where the 2 was 
+            // so we get {5,4,3,4,1} 
+            // then we place the 2 on the place where the 4 was so we get {5,4,,2,1} 
 
             for (var i = 0; i < stop; i++)
             {
