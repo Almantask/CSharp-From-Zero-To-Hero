@@ -8,63 +8,55 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            string name = Name();
-            string surname = Surname();
-            int age = Age();
-            float height = Height();
-            float weight = Weight();
-            float bmi = Calculate(height, weight);
+            string name = PromptName("Please enter your name: ");
+            int age = PromptAge("Please enter your age: ");
+            float height = PromptHeight();
+            float weight = PromptWeight();
+            float bmi = CalculateBmi(height, weight);
 
             //Printout
-            Console.WriteLine($" Dear {name} {surname}, you are {age} years old. Your weight is {weight} kg and your height is {height} cms. This means that your BMI is {Math.Round(bmi, 2)}.");
+            Console.WriteLine($" Dear {name}, you are {age} years old. Your weight is {weight} kg and your height is {height} cms. This means that your BMI is {Math.Round(bmi, 2)}.");
         }
 
-        public static string Name()
+        public static string PromptName(string message)
         {
-            Console.WriteLine("Please enter your first name:");
-            string name = (Console.ReadLine());
+            Console.WriteLine(message);
+            string name = Console.ReadLine();
             return name;
         }
 
-        public static string Surname()
+        public static int PromptAge(string message)
         {
-            Console.WriteLine("Please Enter your surname:");
-            string surname = (Console.ReadLine());
-            return surname;
-        }
-
-        public static int Age()
-        {
-            Console.WriteLine("Please enter your age:");
+            Console.WriteLine(message);
             int age = Convert.ToInt32(Console.ReadLine());
             return age;
         }
 
-        public static float Height()
+        public static float PromptHeight()
         {
-            Console.WriteLine("Please enter your height in cm:");
+            Console.WriteLine("Please enter your height in m:");
             float height = Convert.ToSingle(Console.ReadLine());
             return height;
         }
 
-        public static float Weight()
+        public static float PromptWeight()
         {
             Console.WriteLine("Please enter your weight in kg:");
             float weight = Convert.ToSingle(Console.ReadLine());
             return weight;
         }
 
-        public static float Calculate(float height, float weight)
+        public static float CalculateBmi(float height, float weight)
         {
-            float bmi = weight / ((height / 100) * (height / 100));
+            float bmi = weight / (height* height);
             return bmi;
         }
 
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            float answerOfB= Convert.ToSingle(Console.ReadLine());
-            return answerOfB;
+            float number= Convert.ToSingle(Console.ReadLine());
+            return number;
         }
     }
 }
