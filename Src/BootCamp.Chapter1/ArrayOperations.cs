@@ -10,18 +10,14 @@
         public static void Sort(int[] array)
         {
 
-            var flag = true;
-            var temp = 0;
-            var numLength = 0;
-
             if (array == null)
             {
                 return;
             }
-            else
-            {
-                numLength = array.Length;
-            }
+
+            var flag = true;
+            var temp = 0;
+            var numLength = 0;
 
             //sorting an array  
             for (var i = 1; (i <= (numLength - 1)) && flag; i++)
@@ -53,12 +49,9 @@
             {
                 return;
             }
-            else
-            {
-                stop = array.Length / 2;
-            }
-
-
+            
+            stop = array.Length / 2;
+            
             for (var i = 0; i < stop; i++)
             {
                 var temp = array[i];
@@ -76,7 +69,7 @@
         {
             if (array == null)
             {
-                return array;
+                return array; 
             }
             var newArray = ProcessArray(array, array.Length - 1);
             return newArray;
@@ -120,7 +113,7 @@
 
         private static bool IsValidCase(int[] array, int index)
         {
-            if (array == null || index < 0 || index == array.Length || array.Length == 0)
+            if (array == null || index < 0 || index == array.Length || array.Length == 0 || index > array.Length)
             {
                 return false;
             }
@@ -130,8 +123,7 @@
 
         private static int[] Remove(int[] array, int index)
         {
-            var lengthOldArray = array.Length;
-            var newArray = new int[lengthOldArray - 1];
+            var newArray = new int[array.Length - 1];
 
             for (int i = 0; i <= array.Length - 1; i++)
             {
@@ -194,7 +186,7 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
 
-            if (!IsValidCaseForInsertForNullOrEmpty(array, index))
+            if (!IsValidCaseForInsertForInValidIndex(array, index))
             {
                 return array;
             }
@@ -216,7 +208,7 @@
 
         }
 
-        public static bool IsValidCaseForInsertForNullOrEmpty(int[] array, int index)
+        public static bool IsValidCaseForInsertForInValidIndex(int[] array, int index)
         {
             if (index >= 0)
             {
