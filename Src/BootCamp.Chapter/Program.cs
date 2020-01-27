@@ -5,7 +5,6 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        List<Person> _people = new List<Person>();
         static void Main(string[] args)
         {
             var interactionManger = new InteractionManager();
