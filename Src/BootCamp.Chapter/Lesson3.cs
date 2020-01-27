@@ -1,3 +1,5 @@
+using System;
+
 namespace BootCamp.Chapter
 {
     class Lesson3
@@ -7,15 +9,15 @@ namespace BootCamp.Chapter
             Console.WriteLine("Person 1:");
 
             //get input from user about name, age, height, weight, and calculate bmi
-            string firstName = Program.getString("Enter your First Name: ");
+            string firstName = Program.GetString("Enter your First Name: ");
 
-            string lastName = Program.getString("Enter your Last Name: ");
+            string lastName = Program.GetString("Enter your Last Name: ");
 
-            int age = Program.getInt("Enter your Age: ");
+            int age = Program.GetInt("Enter your Age: ");
 
-            float weight = Program.getFloat("Enter your Weight(kg): ");
+            float weight = Program.GetFloat("Enter your Weight(kg): ");
 
-            float height = Program.getFloat("Enter your Height(cm): ");
+            float height = Program.GetFloat("Enter your Height(cm): ");
 
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old,\n" +
                 "his weight is " + weight + " kg and his\n" +
@@ -28,15 +30,15 @@ namespace BootCamp.Chapter
             //do the same for another person
             Console.WriteLine("Person 2:");
 
-            firstName = Program.getString("Enter your First Name: ");
+            firstName = Program.GetString("Enter your First Name: ");
 
-            lastName = Program.getString("Enter your Last Name: ");
+            lastName = Program.GetString("Enter your Last Name: ");
 
-            age = Program.getInt("Enter your Age: ");
+            age = Program.GetInt("Enter your Age: ");
 
-            weight = Program.getFloat("Enter your Weight(kg): ");
+            weight = Program.GetFloat("Enter your Weight(kg): ");
 
-            height = Program.getFloat("Enter your Height(cm): ");
+            height = Program.GetFloat("Enter your Height(cm): ");
 
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old,\n" +
                 "his weight is " + weight + " kg and his\n" +
