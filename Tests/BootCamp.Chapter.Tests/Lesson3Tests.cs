@@ -13,7 +13,6 @@ namespace BootCamp.Chapter.Tests
         [Theory]
         [InlineData(100, -100, "Height cannot be equal or less than zero, but was -100.")]
         [InlineData(100, 0, "Height cannot be equal or less than zero, but was 0.")]
-        [InlineData(50, 50, "Weight cannot be more or equal to height. Height= 50, Weight= 50.")]
         [InlineData(0, 50, "Weight cannot be equal or less than zero, but was 0.")]
         [InlineData(-100, 50, "Weight cannot be equal or less than zero, but was -100.")]
         [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0.Height cannot be less than zero, but was 0.")]
