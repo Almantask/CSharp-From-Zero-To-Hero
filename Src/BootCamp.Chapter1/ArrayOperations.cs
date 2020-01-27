@@ -10,34 +10,34 @@
         public static void Sort(int[] array)
         {
 
-            var flag = true;  
-            var temp = 0 ;
-            var numLength = 0; 
+            var flag = true;
+            var temp = 0;
+            var numLength = 0;
 
             if (array == null)
             {
-                return;  
+                return;
             }
             else
             {
-                numLength = array.Length; 
+                numLength = array.Length;
             }
 
-           //sorting an array  
-            for (var i = 1; (i <= (numLength - 1)) && flag; i++)  
-            {  
-                flag = false;  
-                for (var j = 0; j < (numLength - 1); j++)  
-                {  
-                    if (array[j + 1] < array[j])  
-                    {  
-                        temp = array[j];  
-                        array[j] = array[j + 1];  
-                        array[j + 1] = temp;  
-                        flag = true;  
-                    }  
-                }  
-            }  
+            //sorting an array  
+            for (var i = 1; (i <= (numLength - 1)) && flag; i++)
+            {
+                flag = false;
+                for (var j = 0; j < (numLength - 1); j++)
+                {
+                    if (array[j + 1] < array[j])
+                    {
+                        temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                        flag = true;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -47,26 +47,26 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            var stop = 0; 
+            var stop = 0;
 
             if (array == null)
             {
-                return; 
+                return;
             }
             else
             {
                 stop = array.Length / 2;
             }
-             
-                      
+
+
             for (var i = 0; i < stop; i++)
             {
-                var temp = array[i]; 
-                array[i] = array[array.Length - i - 1] ;
-                array[array.Length -i - 1] = temp; 
+                var temp = array[i];
+                array[i] = array[array.Length - i - 1];
+                array[array.Length - i - 1] = temp;
             }
         }
-        
+
         /// <summary>
         /// Remove last element in array.
         /// </summary>
@@ -74,13 +74,8 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null)
-            {
-                return array;
-            }
-
-            var newArray = RemoveAt(array, array.Length -1 );
-            return newArray; 
+            var newArray = ProcessArray(array, array.Length - 1); 
+            return newArray;
         }
 
         /// <summary>
@@ -89,13 +84,9 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null)
-            {
-                return array;
-            }
-
-            var newArray = RemoveAt(array,0) ; 
-            return newArray;
+            var newArray = ProcessArray(array, 0);
+            return newArray; 
+            
         }
 
         /// <summary>
@@ -106,18 +97,31 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null)
+            var newArray = ProcessArray(array, index);
+            return newArray; 
+        }
+
+        private static int[] ProcessArray(int[] array, int index)
+        {
+            var newArray = CheckForInValidCases(array, index);
+            newArray = Remove(array, index);
+            return newArray;
+        }
+
+        private static int[] CheckForInValidCases(int[] array, int index)
+        {
+            if (array == null || index < 0 || index == array.Length || array.Length == 0 || array == null)
             {
-                return array; 
+                return array;
             }
 
-            var lengthOldArray = array.Length; 
-            
-            if (index < 0 || index == array.Length || array.Length == 0)
-            {
-                return array; 
-            }
+            var newArray = ProcessArray(array, index);
+            return newArray; 
+        }
 
+        private static int[] Remove(int[] array, int index)
+        {
+            var lengthOldArray = array.Length;
             var newArray = new int[lengthOldArray - 1];
 
             for (int i = 0; i <= array.Length - 1 ; i++)
@@ -133,8 +137,7 @@
                 }
             }
 
-
-            return newArray;
+            return newArray; 
         }
 
         /// <summary>
