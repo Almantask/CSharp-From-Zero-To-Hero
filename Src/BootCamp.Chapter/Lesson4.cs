@@ -86,7 +86,42 @@ namespace BootCamp.Chapter
 
         public static float CalculateBodyMassIndex(float weight, float height)
         {
-            return weight / (height * height);
+            bool isWeightValid = true;
+            bool isHeightValid = true;
+
+            if (weight == 0 || weight == -1)
+            {
+                isWeightValid = false;
+            }
+
+            if (height == 0 || height == -1)
+            {
+                isHeightValid = false;
+            }
+
+            if (!isWeightValid || !isHeightValid)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+            }
+
+            if (!isWeightValid)
+            {
+                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+            }
+
+            if (!isHeightValid)
+            {
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+            }
+
+            if (!isWeightValid || !isHeightValid)
+            {
+                return -1;
+            }
+            else
+            {
+                return weight / (height * height);
+            }
         }
     }
 }
