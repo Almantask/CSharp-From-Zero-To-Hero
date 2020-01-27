@@ -18,12 +18,14 @@ namespace BootCamp.Chapter
             //Printout
             Console.WriteLine($" Dear {name} {surname}, you are {age} years old. Your weight is {weight} kg and your height is {height} cms. This means that your BMI is {Math.Round(bmi, 2)}.");
         }
+
         public static string Name()
         {
             Console.WriteLine("Please enter your first name:");
             string name = (Console.ReadLine());
             return name;
         }
+
         public static string Surname()
         {
             Console.WriteLine("Please Enter your surname:");
