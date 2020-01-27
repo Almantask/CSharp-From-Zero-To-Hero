@@ -32,15 +32,15 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             // To do: call your implementation.
-            Lesson3.BMI();
+            Lesson3.Height();
+            Lesson3.Weight();
             return 0;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation.
-            Lesson3.Height();
-            Lesson3.Weight();
+            Lesson3.Calculate(height, weight);
             return 0;
         }
     }

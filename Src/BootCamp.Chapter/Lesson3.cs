@@ -54,7 +54,7 @@ namespace BootCamp.Chapter
             return weight;
         }
 
-        static float Calculate(float height, float weight)
+        public static float Calculate(float height, float weight)
         {
             float bmi = weight / ((height / 100) * (height / 100));
             return bmi;
