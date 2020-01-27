@@ -45,17 +45,17 @@
         }
     }
   ```
-5) Refactor/edit Lesson3.Demo() by using functions.
+6) Refactor/edit Lesson3.Demo() by using functions.
   * There should be as little duplicate code as possible
   * There should be functions for:
     * Calculating BMI (weight comes in kg, height comes in meters),
     * Prompt for input and converting it to int (print message for request, read console input and return converted input to int), 
     * Prompt for input and converting it to string (print message for request, read console input and return input),
     * Prompt for input and converting it to float (print message for request, read console input and return converted input to float).
-6) Call Lesson3.X(y) functions from the Checks.cs file.
+7 Call Lesson3.X(y) functions from the Checks.cs file.
   * X is the name of your function.
   * y are the parameters of your function. If you do not have parameters then there is no y.
-7) Run tests, make sure you pass all the tests.
+8) Run tests, make sure you pass all the tests.
   * Open the Tests folder of the solution.
   * Rightclick BootCamp.Chapter.Tests.
   * Choose execute tests.
