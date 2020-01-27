@@ -9,20 +9,17 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-
             if (array == null)
             {
                 return;
             }
 
-            var flag = true;
             var temp = 0;
             int numLength = array.Length;
 
             //sorting an array  
-            for (var i = 1; (i <= (numLength - 1)) && flag; i++)
+            for (var i = 1; i < numLength; i++)
             {
-                flag = false;
                 for (var j = 0; j < (numLength - 1); j++)
                 {
                     if (array[j + 1] < array[j])
@@ -30,7 +27,7 @@
                         temp = array[j];
                         array[j] = array[j + 1];
                         array[j + 1] = temp;
-                        flag = true;
+                        break;        
                     }
                 }
             }
