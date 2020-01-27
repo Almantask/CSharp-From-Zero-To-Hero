@@ -60,9 +60,11 @@ namespace BootCamp.Chapter
             return bmi;
         }
 
-        public static float PromptFloat()
+        public static float PromptFloat(string message)
         {
-
+            Console.WriteLine(message);
+            float answerOfB= Convert.ToSingle(Console.ReadLine());
+            return answerOfB;
         }
     }
 }
