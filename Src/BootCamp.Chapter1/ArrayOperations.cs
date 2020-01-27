@@ -159,7 +159,7 @@
         {
             if (array == null)
             {
-                return new int[] { number };
+                return new [] { number };
             }
 
             var newArray = InsertAt(array, number, 0);
