@@ -14,8 +14,7 @@ namespace BootCamp.Chapter
 
             Console.WriteLine("Whould you like to start again?");
             var answer = Console.ReadLine();
-            if (answer.ToLower() == "y")
-                goto StartOver;
+            if (answer.ToLower() == "y") goto StartOver;
         }
     }
 
