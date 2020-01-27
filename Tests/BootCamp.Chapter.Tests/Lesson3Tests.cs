@@ -8,12 +8,11 @@ namespace BootCamp.Chapter.Tests
     // You don't have to be here for a long time.
     public class Lesson3Tests: ConsoleTests
     {
-        private const string PromptMessage = "Testing";
+        private readonly string _promptMessage = $"Testing";
 
         [Theory]
         [InlineData(100, -100, "Height cannot be equal or less than zero, but was -100.")]
         [InlineData(100, 0, "Height cannot be equal or less than zero, but was 0.")]
-        [InlineData(50, 50, "Weight cannot be more or equal to height. Height= 50, Weight= 50.")]
         [InlineData(0, 50, "Weight cannot be equal or less than zero, but was 0.")]
         [InlineData(-100, 50, "Weight cannot be equal or less than zero, but was -100.")]
         [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0.Height cannot be less than zero, but was 0.")]
@@ -45,9 +44,9 @@ namespace BootCamp.Chapter.Tests
         {
             ConsoleInput = input;
 
-            var convertedInput = Checks.PromptString(PromptMessage);
+            var convertedInput = Checks.PromptString(_promptMessage);
 
-            ConsoleOutput.Should().Be(PromptMessage);
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}");
             convertedInput.Should().Be(input);
         }
 
@@ -56,9 +55,9 @@ namespace BootCamp.Chapter.Tests
         {
             ConsoleInput = "";
             
-            var convertedInput = Checks.PromptString(PromptMessage);
+            var convertedInput = Checks.PromptString(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{PromptMessage}{Environment.NewLine}Name cannot be empty.");
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}Name cannot be empty.");
             const string invalid = "-";
             convertedInput.Should().Be(invalid);
         }
@@ -71,9 +70,9 @@ namespace BootCamp.Chapter.Tests
         {
             ConsoleInput = input;
 
-            var convertedInput = Checks.PromptInt(PromptMessage);
+            var convertedInput = Checks.PromptInt(_promptMessage);
 
-            ConsoleOutput.Should().Be(PromptMessage);
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}");
             convertedInput.Should().Be(expectedConvertedInput);
         }
 
@@ -84,9 +83,9 @@ namespace BootCamp.Chapter.Tests
         {
             ConsoleInput = input;
 
-            var convertedInput = Checks.PromptInt(PromptMessage);
+            var convertedInput = Checks.PromptInt(_promptMessage);
 
-            ConsoleOutput.Should().Be(PromptMessage + errorMessage);
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}");
             const int invalid = -1;
             convertedInput.Should().Be(invalid);
         }
@@ -99,9 +98,9 @@ namespace BootCamp.Chapter.Tests
         {
             ConsoleInput = input;
 
-            var convertedInput = Checks.PromptFloat(PromptMessage);
+            var convertedInput = Checks.PromptFloat(_promptMessage);
 
-            ConsoleOutput.Should().Be(PromptMessage);
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}");
             convertedInput.Should().Be(expectedConvertedInput);
         }
 
@@ -112,9 +111,9 @@ namespace BootCamp.Chapter.Tests
         {
             ConsoleInput = input;
 
-            var convertedInput = Checks.PromptFloat(PromptMessage);
+            var convertedInput = Checks.PromptFloat(_promptMessage);
 
-            ConsoleOutput.Should().Be(PromptMessage + errorMessage);
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}");
             const float invalid = -1;
             convertedInput.Should().Be(invalid);
         }
