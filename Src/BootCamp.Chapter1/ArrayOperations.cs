@@ -104,13 +104,13 @@
         private static int[] ProcessArray(int[] array, int index)
         {
             var newArray = CheckForInValidCases(array, index);
-            newArray = Remove(array, index);
+            newArray = Remove(newArray, index);
             return newArray;
         }
 
         private static int[] CheckForInValidCases(int[] array, int index)
         {
-            if (array == null || index < 0 || index == array.Length || array.Length == 0 || array == null)
+            if (array == null || index < 0 || index == array.Length || array.Length == 0)
             {
                 return array;
             }
