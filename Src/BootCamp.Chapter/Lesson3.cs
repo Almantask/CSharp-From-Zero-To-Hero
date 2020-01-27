@@ -1,4 +1,8 @@
-﻿using System;
+﻿
+
+
+
+using System;
 namespace BootCamp.Chapter
 {
     public class Lesson3
@@ -38,19 +42,56 @@ namespace BootCamp.Chapter
             Console.WriteLine();
         }
 
+
         public static string PromptUserString(string message)
+            // Empty string for name -> return "-".
+            // Print error message "Name cannot be empty." in a new line.
         {
             Console.WriteLine(message);
             string name = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(name))
+            {
+                
+                Console.Write("Name cannot be empty.");
+                return "-";
+            }
+
             return name;
         }
 
         public static int PromptUserInt(string message)
-        {
+        { 
+            //Input is not a number -> return -1.
+            // Input is a number but 0 -> return 0.
+            // Input is valid -> return input.
             Console.WriteLine(message);
             int num = int.Parse(Console.ReadLine());
+
+            //if (num != Int32.TryParse())
+            //{
+            //    return -1;
+            //}
+            //else if (num == 0)
+            //{
+            //    return 0;
+            //}
+            //else
+            //{
+            //    return num;
+            //}
+
+
+            //if (num == 0)
+            //{
+            //    return 0;
+            //}
+
             return num;
         }
+
+        
+
 
         public static float PromptUserFloat(string message)
         {
