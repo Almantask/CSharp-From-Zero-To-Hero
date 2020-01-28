@@ -133,6 +133,10 @@ namespace BootCamp.Chapter1
             int[] lengthenedArray = new[] { number };
             return lengthenedArray;
         }
+        public static int[] MakeALongerArray(int[] array)
+        {
+            int[] lengthenedArray = new int[array.Length + 1];
+        }
 
         /// <summary>
         /// Inserts a new array element at the start.
@@ -146,9 +150,11 @@ namespace BootCamp.Chapter1
             {
                 return MakeArrayNonNull(number);
             }
-           
-            int[] lengthenedArray = new int [array.Length + 1];
+
+            var lengthenedArray = MakeALongerArray(array);
+
             lengthenedArray[0] = number;
+
             for (int i = 1; i < lengthenedArray.Length; i++)
             {
                 lengthenedArray[i] = array[i-1];
@@ -169,9 +175,9 @@ namespace BootCamp.Chapter1
             {
                 return MakeArrayNonNull(number);
             }
-            
-            int[] lengthenedArray = new int[array.Length + 1];
-            lengthenedArray[lengthenedArray.Length-1] = number;
+
+            var lengthenedArray = MakeALongerArray(array);
+                                   
             for (int i = 1; i < lengthenedArray.Length-1; i++)
             {
                 lengthenedArray[i] = array[i];
@@ -197,8 +203,10 @@ namespace BootCamp.Chapter1
             { 
                 return array; 
             }
-            int[] lengthenedArray = new int[array.Length + 1];
+            var lengthenedArray = MakeALongerArray(array);
+
             lengthenedArray[index] = number;
+
             for (int i = 0; i < lengthenedArray.Length-1; i++)
             {
                 if (i>=index)
