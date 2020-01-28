@@ -43,7 +43,10 @@
             var temp = 0;
             for (var i = 0; i < array.Length; i++)
             {
-                if (i == array.Length / 2) break;
+                if (i == array.Length / 2)
+                {
+                    break;
+                }
                 temp = array[i];
                 array[i] = array[array.Length - 1 - i];
                 array[array.Length - 1 - i] = temp;
@@ -145,7 +148,7 @@
         {
             if (array == null || array.Length == 0)
             {
-                return new int[] { number };
+                return new [] { number };
             }
 
             var newArray = new int[array.Length + 1];
@@ -168,7 +171,7 @@
         {
             if (array == null || array.Length == 0)
             {
-                return new int[] { number };
+                return new [] { number };
             }
 
             var newArray = new int[array.Length + 1];
@@ -192,12 +195,12 @@
         {
             if (array == null)
             {
-                return new int[] { number };
+                return new [] { number };
             }
 
             if (array.Length == 0 && index == 0)
             {
-                return new int[] { number };
+                return new [] { number };
             }
 
             if (array.Length == 0)
