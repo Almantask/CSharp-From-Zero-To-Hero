@@ -117,15 +117,11 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null)
-            {
-                return array;
-            }
-            if ((index >= array.Length) || (index < 0))
-            {
-                return array;
-            }
-            if (array.Length != 0)
+            if (array == null) { }
+
+            else if (CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)) { }
+            
+            else if (array.Length != 0)
             {
                 var shortenedArray = MakeAShorterArray(array);
 
@@ -219,9 +215,20 @@ namespace BootCamp.Chapter1
             lengthenedArray[index] = number;
         }
 
-        private static bool CheckIfDesiredIndexPlacementIsWithinTheRangeOfTheArray(int[] array, int index)
+        private static bool CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(int[] array, string action, int index)
         {
-            return (index > array.Length) || (index < 0) ? true : false;
+            switch (action)
+            {
+                case "Remove":
+                    return (index >= array.Length) || (index < 0);
+                    
+
+                case "Insert":
+                    return (index > array.Length) || (index < 0);
+
+                default:
+                    return false;
+            }
         }
 
         /// <summary>
@@ -237,7 +244,7 @@ namespace BootCamp.Chapter1
             {
                 return AddOneNumberToNullArray(number);
             }
-            if (CheckIfDesiredIndexPlacementIsWithinTheRangeOfTheArray(array, index)) 
+            if (CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Insert", index)) 
             { 
                 return array; 
             }
