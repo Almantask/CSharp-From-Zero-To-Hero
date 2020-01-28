@@ -49,35 +49,16 @@
         {
             if (array == null || array.Length == 0) return;
 
-            while (!IsArrayReverse(array))
-            {
-                for (int i = 0; i < array.Length; i++)
-                {
-                    //This to stop IndexOutOfRangeException
-                    if (i + 1 >= array.Length) break;
-
-                    if (array[i] > array[i + 1])
-                    {
-                        var smaller = array[i + 1];
-                        array[i + 1] = array[i];
-                        array[i] = smaller;
-                    }
-                }
-            }
-        }
-
-        static bool IsArrayReverse(int[] array)
-        {
-            for (int i = 0; i < array.Length + 1; i++)
+            for (int i = 0; i < array.Length / 2; i++)
             {
                 //This to stop IndexOutOfRangeException
                 if (i + 1 >= array.Length) break;
 
-                if (array[i] < array[i + 1]) return false;
+                var foo = array[i];
+                array[i] = array[array.Length - 1 - i];
+                array[array.Length - 1 - i] = foo;
             }
-            return true;
         }
-
 
         /// <summary>
         /// Remove last element in array.
@@ -120,8 +101,18 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0) return array;
+            if (index >= array.Length || index < 0) return array;
+
+            var amendedArray = new int[array.Length - 1];
+            for (int i = 0, j = 0; j < array.Length; i++, j++)
+            {
+                if (j + 1 >= array.Length) break;
+                if (i == index) i++;
+
+                amendedArray[j] = array[i];
+            }
+            return amendedArray;
         }
 
         /// <summary>
@@ -131,9 +122,20 @@
         /// <param name="number">Number to be added.</param>
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
-        {
-            // ToDo: implement.
-            return array;
+        {            
+            if (array == null || array.Length == 0)
+            {
+                var newArray = new int[] { 10 };
+                return newArray;
+            }
+
+            var amendedArray = new int[array.Length + 1];
+            amendedArray[0] = number;
+            for (int i = 1; i < amendedArray.Length; i++)
+            {
+                amendedArray[i] = array[i - 1];
+            }
+            return amendedArray;
         }
 
         /// <summary>
@@ -144,8 +146,18 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                var newArray = new int[] { 10 };
+                return newArray;
+            }
+            var amendedArray = new int[array.Length + 1];
+            for (int i = 0; i < array.Length; i++)
+            {
+                amendedArray[i] = array[i];
+            }
+            amendedArray[amendedArray.Length - 1] = number;
+            return amendedArray;
         }
 
         /// <summary>
@@ -157,8 +169,28 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+
+            if (array == null  || index == 0)
+            {
+                var newArray = new int[] { 10 };
+                return newArray;
+            }
+
+            if (index < 0 || index > array.Length) return array;
+
+            var amendedArray = new int[array.Length + 1];
+
+            for (int i = 0, j = 0; i < array.Length; i++, j++)
+            {
+                amendedArray[i] = array[i];
+                if (j == index)
+                {
+                    j++;
+                    amendedArray[i] = number;
+                }
+                if (j > i) amendedArray[j] = array[i];
+            }
+            return amendedArray;
         }
     }
 }
