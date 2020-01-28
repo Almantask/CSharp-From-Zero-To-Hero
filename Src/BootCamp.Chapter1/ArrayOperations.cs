@@ -80,6 +80,12 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
+        public static int[] MakeAShorterArray(int[] array)
+        {
+            int[] shortenedArray = new int[array.Length - 1];
+            return shortenedArray;
+        }
+        
         /// <summary>
         /// Remove first element in array.
         /// </summary>
@@ -91,7 +97,8 @@ namespace BootCamp.Chapter1
         {
             if (ValidateArrayForManipulation(array))
             {
-                int[] shortenedArray = new int[array.Length - 1];
+                var shortenedArray = MakeAShorterArray(array);
+                
                 for (int i = 0; i < shortenedArray.Length; i++)
                 {
                     shortenedArray[i] = array[i+1];
@@ -119,7 +126,7 @@ namespace BootCamp.Chapter1
             }
             if (array.Length != 0)
             {
-                int[] shortenedArray = new int[array.Length - 1];
+                var shortenedArray = MakeAShorterArray(array);
                 for (int i = 0; i < shortenedArray.Length; i++)
                 {
                 shortenedArray[i] = i >= index ? array[i + 1] : array[i];
@@ -154,7 +161,8 @@ namespace BootCamp.Chapter1
 
             var lengthenedArray = MakeALongerArray(array);
 
-            lengthenedArray[0] = number;
+            PlaceTheNewNumberAtTheAppropriateIndexPosition(lengthenedArray, "First", number);
+            
 
             for (int i = 1; i < lengthenedArray.Length; i++)
             {
@@ -178,14 +186,38 @@ namespace BootCamp.Chapter1
             }
 
             var lengthenedArray = MakeALongerArray(array);
-            lengthenedArray[lengthenedArray.Length - 1] = number;
-                                   
+            //place the new number at the end of the new, long array
+            
+            PlaceTheNewNumberAtTheAppropriateIndexPosition(lengthenedArray, "Last", number);
+            //repopulate the rest of the numbers at their same index in the longer array
             for (int i = 1; i < lengthenedArray.Length-1; i++)
             {
                 lengthenedArray[i] = array[i];
             }
             return lengthenedArray;
             
+        }
+
+        private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, string position, int number)
+        {
+            switch (position)
+            {
+                case "Last":
+                    lengthenedArray[lengthenedArray.Length - 1] = number;
+                    break;
+            
+                case "First":
+                    lengthenedArray[0] = number;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public static bool CheckIfDesiredIndexPlacementIsWithinTheRangeOfTheArray(int[] array, int index)
+        {
+            return (index > array.Length) || (index < 0) ? true : false;
         }
 
         /// <summary>
@@ -201,14 +233,17 @@ namespace BootCamp.Chapter1
             {
                 return AddOneNumberToNullArray(number);
             }
-            if ((index > array.Length) || (index < 0)) 
+            if (CheckIfDesiredIndexPlacementIsWithinTheRangeOfTheArray(array, index)) 
             { 
                 return array; 
             }
+
             var lengthenedArray = MakeALongerArray(array);
 
-            lengthenedArray[index] = number;
-
+            //place the new number at the desired index
+           
+            PlaceTheNewNumberAtTheAppropriateIndexPosition(lengthenedArray, index, number);
+            // place all the beginning array numbers, offsetting their old position by one when we reach the newly placed int
             for (int i = 0; i < lengthenedArray.Length-1; i++)
             {
                 if (i>=index)
@@ -221,6 +256,11 @@ namespace BootCamp.Chapter1
                 }
             }
             return lengthenedArray;
+        }
+
+        private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, int index, int number)
+        {
+            lengthenedArray[index] = number;
         }
     }
 }
