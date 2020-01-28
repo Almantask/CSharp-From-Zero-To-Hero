@@ -6,17 +6,16 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-        StartOver:
-            InteractionManager.PerformInteractions();
-            if (InteractionManager.Prompter("Whould you like to start again?").ToLower() == "y")
+            while (InteractiosnManager.ContinueRunningProgram)
             {
-                goto StartOver;
+                InteractiosnManager.PerformInteractions();
             }
         }
     }
 
-    public static class InteractionManager
+    public static class InteractiosnManager
     {
+        public static bool ContinueRunningProgram = true;
         public static void PerformInteractions()
         {
             var name = Prompter("What is your full name?");
@@ -27,6 +26,9 @@ namespace BootCamp.Chapter
 
             Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
             Console.WriteLine($"{name} has a BMI of {bmi}");
+
+            var response = Prompter("Would you like to run the program again? (y/n)");
+            ContinueRunningProgram = response.ToLower() == "y" ? true : false;
         }
 
         public static string Prompter(string question)
