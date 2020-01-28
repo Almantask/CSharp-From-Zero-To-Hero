@@ -24,9 +24,9 @@ namespace BootCamp.Chapter
 
             float weight = PromptFloat("Enter wight in kg:");
 
-            float height = PromptFloat("Enter height in cm:");
+            float height = PromptFloat("Enter height in meters:");
 
-            Console.WriteLine($"{fName} {lName} is {age} years old, their weight is {weight} kg and their height is {height} cm.");
+            Console.WriteLine($"{fName} {lName} is {age} years old, their weight is {weight} kg and their height is {height} m.");
 
             Console.WriteLine($"{fName} {lName}'s BMI is " + CalculateBmi(weight, height));
         }
@@ -54,7 +54,7 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            return weight / ((height / 100) * (height / 100));
+            return weight / (height * height);
         }
     }
 }
