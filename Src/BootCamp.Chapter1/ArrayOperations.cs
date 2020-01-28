@@ -8,7 +8,10 @@
             for (int i = 0; i < array.Length + 1; i++)
             {
                 //This to stop IndexOutOfRangeException
-                if (i + 1 >= array.Length) break;
+                if (i + 1 >= array.Length)
+                {
+                    break;
+                }
 
                 if (array[i] > array[i + 1])
                 {
@@ -133,9 +136,15 @@
             var amendedArray = new int[array.Length - 1];
             for (int i = 0, j = 0; i < array.Length; i++, j++)
             {
-                if (i + 1 >= array.Length) break;
-                if (i == index) j++;
+                if (i + 1 >= array.Length)
+                {
+                    break;
+                }
 
+                if (i == index)
+                {
+                    j++;
+                }
                 amendedArray[i] = array[j];
             }
             return amendedArray;
@@ -197,7 +206,7 @@
         {
             if (array == null  || index == 0)
             {
-                var newArray = new int[] { 10 };
+                int[] newArray = { 10 };
                 return newArray;
             }
 
@@ -216,7 +225,10 @@
                     j++;
                     amendedArray[i] = number;
                 }
-                if (j > i) amendedArray[j] = array[i];
+                if (j > i)
+                {
+                    amendedArray[j] = array[i];
+                }
             }
             return amendedArray;
         }
