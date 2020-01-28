@@ -128,6 +128,11 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
+        public static int[] MakeArrayNonNull(int number)
+        {
+            int[] lengthenedArray = new[] { number };
+            return lengthenedArray;
+        }
 
         /// <summary>
         /// Inserts a new array element at the start.
@@ -137,21 +142,18 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-           if (array == null) 
-           { 
-                int[] lengthenedArray = new [] {number};
-                return lengthenedArray;
-           }
-           else
-           {
-                int[] lengthenedArray = new int [array.Length + 1];
-                lengthenedArray[0] = number;
-                for (int i = 1; i < lengthenedArray.Length; i++)
-                {
-                    lengthenedArray[i] = array[i-1];
-                }
-                array = lengthenedArray;
-           }
+            if (array == null)
+            {
+                return MakeArrayNonNull(number);
+            }
+           
+            int[] lengthenedArray = new int [array.Length + 1];
+            lengthenedArray[0] = number;
+            for (int i = 1; i < lengthenedArray.Length; i++)
+            {
+                lengthenedArray[i] = array[i-1];
+            }
+            array = lengthenedArray;
             return array;
         }
 
@@ -165,20 +167,17 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                int[] lengthenedArray = new [] {number };
-                return lengthenedArray;
+                return MakeArrayNonNull(number);
             }
-            else
+            
+            int[] lengthenedArray = new int[array.Length + 1];
+            lengthenedArray[lengthenedArray.Length-1] = number;
+            for (int i = 1; i < lengthenedArray.Length-1; i++)
             {
-                int[] lengthenedArray = new int[array.Length + 1];
-                lengthenedArray[lengthenedArray.Length-1] = number;
-                for (int i = 1; i < lengthenedArray.Length-1; i++)
-                {
-                    lengthenedArray[i] = array[i];
-                }
-                array = lengthenedArray;
+                lengthenedArray[i] = array[i];
             }
-            return array;
+            return lengthenedArray;
+            
         }
 
         /// <summary>
@@ -192,10 +191,12 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                int[] tempArray = new [] {number };
-                return tempArray;
+                return MakeArrayNonNull(number);
             }
-            if ((index > array.Length) || (index < 0)) { return array; }
+            if ((index > array.Length) || (index < 0)) 
+            { 
+                return array; 
+            }
             int[] lengthenedArray = new int[array.Length + 1];
             lengthenedArray[index] = number;
             for (int i = 0; i < lengthenedArray.Length-1; i++)
