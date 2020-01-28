@@ -8,7 +8,10 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            NewPerson();
+            for(int i = 0; i < 2; i++)
+            {
+                NewPerson();
+            }
         }
 
         public static void NewPerson()
