@@ -6,17 +6,14 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-
         StartOver:
             InteractionManager.PerformInteractions();
-
-            Console.WriteLine("Whould you like to start again?");
-            var answer = Console.ReadLine();
-            if (answer.ToLower() == "y") goto StartOver;
+            if (InteractionManager.Prompter("Whould you like to start again?").ToLower() == "y")
+            {
+                goto StartOver;
+            }
         }
     }
-
-
 
     public static class InteractionManager
     {
@@ -32,7 +29,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{name} has a BMI of {bmi}");
         }
 
-        private static string Prompter(string question)
+        public static string Prompter(string question)
         {
             Console.WriteLine(question);
             return Console.ReadLine();
