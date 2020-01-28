@@ -8,28 +8,50 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            for (int i = 0; i < 2; i++)
-            {
-                Console.WriteLine("Enter person " + (i + 1) + " first name:");
-                string fName = Console.ReadLine();
+            NewPerson();
+        }
 
-                Console.WriteLine("Enter " + fName + "'s last name:");
-                string lName = Console.ReadLine();
+        public static void NewPerson()
+        {
+            string fName = PromptString("Enter first name:");
 
-                Console.WriteLine("Enter " + fName + " " + lName + "'s age:");
-                int age = Convert.ToInt32(Console.ReadLine());
+            string lName = PromptString("Enter last name:");
 
-                Console.WriteLine("Enter " + fName + " " + lName + "'s weight in kg:");
-                float weight = float.Parse(Console.ReadLine());
+            int age = PromptInt("Enter age:");
 
-                Console.WriteLine("Enter " + fName + " " + lName + "'s height in cm:");
-                float height = float.Parse(Console.ReadLine());
+            float weight = PromptFloat("Enter wight in kg:");
 
-                Console.WriteLine(fName + " " + lName + "is " + age + " years old, their weight is " + weight + " kg and their height is " + height + " cm.");
+            float height = PromptFloat("Enter height in cm:");
 
-                float bmi = weight / ((height / 100) * (height / 100));
+            Console.WriteLine($"{fName} {lName} is {age} years old, their weight is {weight} kg and their height is {height} cm.");
 
-                Console.WriteLine(fName + " " + lName + "'s BMI is " + bmi);
-            }
+            Console.WriteLine($"{fName} {lName}'s BMI is " + BMIConversion(weight, height));
+        }
+
+        public static string PromptString(string message)
+        {
+            Console.WriteLine(message);
+
+            return Console.ReadLine();
+        }
+
+        public static int PromptInt(string message)
+        {
+            Console.WriteLine(message);
+
+            return int.Parse(Console.ReadLine());
+        }
+
+        public static float PromptFloat(string message)
+        {
+            Console.WriteLine(message);
+
+            return float.Parse(Console.ReadLine());
+        }
+
+        public static float BMIConversion(float weight, float height)
+        {
+            return weight / ((height / 100) * (height / 100));
+        }
     }
 }
