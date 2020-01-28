@@ -51,20 +51,7 @@
 
             stop = array.Length / 2;
 
-            // Here I take a element and put it into temp. 
-            // So I can put there the element of the other half of the arrau
-            // and put that on that place. After that I can take the contents of
-            // temp and put it on the new place 
-
-            // Example lets say we have this {1,2,3,4,5} 
-            // then temp will be the 1 
-            // then I put the 5 in the place of the 1 so we get {5,2,3,4,5} 
-            // then I put the contents of temp on the place on the index the number is placed. 
-            // so we get {5,2,3,4,1} 
-            // then we goto the next number 2 , that is placed in temp 
-            // and the 4 is placed in the place where the 2 was 
-            // so we get {5,4,3,4,1} 
-            // then we place the 2 on the place where the 4 was so we get {5,4,,2,1} 
+            // swap equally distant items from the middle by using a temp variable so I do not loose contents. 
 
             for (var i = 0; i < stop; i++)
             {
@@ -207,7 +194,7 @@
                 return array;
             }
 
-            //  a new array that holds the new data with the new item 
+            //  a array that holds the data with the new item 
             var newArray = new int[array.Length + 1];
             
             // The actual copy and insert data into the new array 
