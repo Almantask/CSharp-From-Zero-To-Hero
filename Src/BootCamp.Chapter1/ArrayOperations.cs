@@ -128,7 +128,7 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
-        public static int[] MakeArrayNonNull(int number)
+        public static int[] AddOneNumberToNullArray(int number)
         {
             int[] lengthenedArray = new[] { number };
             return lengthenedArray;
@@ -136,6 +136,7 @@ namespace BootCamp.Chapter1
         public static int[] MakeALongerArray(int[] array)
         {
             int[] lengthenedArray = new int[array.Length + 1];
+            return lengthenedArray;
         }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                return MakeArrayNonNull(number);
+                return AddOneNumberToNullArray(number);
             }
 
             var lengthenedArray = MakeALongerArray(array);
@@ -173,10 +174,11 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                return MakeArrayNonNull(number);
+                return AddOneNumberToNullArray(number);
             }
 
             var lengthenedArray = MakeALongerArray(array);
+            lengthenedArray[lengthenedArray.Length - 1] = number;
                                    
             for (int i = 1; i < lengthenedArray.Length-1; i++)
             {
@@ -197,7 +199,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                return MakeArrayNonNull(number);
+                return AddOneNumberToNullArray(number);
             }
             if ((index > array.Length) || (index < 0)) 
             { 
