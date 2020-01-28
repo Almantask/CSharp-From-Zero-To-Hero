@@ -17,9 +17,6 @@ namespace BootCamp.Chapter
                 var weight = MessageFloat("What is your weight in kg?");
                 var height = MessageFloat("What is your height in Meters?");
 
-                //Calc and return BMI
-                CalculateBmi(weight, height);
-
                 //Display output to user
                 Console.WriteLine(firstname + " " + secondname + "is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " Meters ");
                 Console.WriteLine("Your BMI is " + CalculateBmi(weight, height));
