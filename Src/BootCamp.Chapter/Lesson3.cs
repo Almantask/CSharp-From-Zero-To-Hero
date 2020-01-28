@@ -31,6 +31,7 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string name = Console.ReadLine();
+
             if (string.IsNullOrEmpty(name))
             {
                 Console.Write("Name cannot be empty.\n");
@@ -38,13 +39,20 @@ namespace BootCamp.Chapter
             }
 
             return name;
+
         }
 
-        public static int PromptUserInt(string message)
+         public static int PromptUserInt(string message)
         { 
             // Input is not a number -> return -1.
             Console.WriteLine(message);
             int num = int.Parse(Console.ReadLine());
+
+            if (!int.TryParse(message, out num))
+                {
+                    return -1;
+                }
+
             if (num == 0)
                 {
                     return 0;
@@ -57,34 +65,36 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             float measurments = float.Parse(Console.ReadLine());
-            if (measurments >= 0)
-                {
-                    return -1;
-                }
 
+            if (measurments <= 0) 
+            {
+                return -1; 
+            }
+  
             return measurments;
+            
         }
 
         public static float CalcBmi(float weight, float height)
         {
-            
+
             if (weight <= 0)
-                {
-                    Console.Write("Failed calculating BMI. Reason:\n");
-                    Console.Write("Weight cannot be equal or less than zero, but was" + weight + "\n");
-               
-                }
-
-            if (height <= 0)
-                {
-                    Console.Write("Failed calculating BMI. Reason:\n");
-                    Console.Write("Height cannot be equal or less than zero, but was" + height + "\n");
-               
-                }
-
-            float bmi = weight / (height * height);
-            return bmi;
+            {
+                Console.Write("Failed calculating BMI. Reason:\n");
+                Console.Write("Weight cannot be equal or less than zero, but was" + weight + "\n");
 
             }
+
+            if (height <= 0)
+            {
+                Console.Write("Failed calculating BMI. Reason:\n");
+                Console.Write("Height cannot be equal or less than zero, but was" + height + "\n");
+               
+            }
+
+            float bmi = (height * height) / weight;
+            return bmi;
+
         }
     }
+}
