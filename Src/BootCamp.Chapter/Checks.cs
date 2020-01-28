@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     /// <summary>
     /// Test class is used to test your implementation.
@@ -16,25 +12,21 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
             return Lesson4.PromptInt(message);
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
             return Lesson4.PromptString(message);
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
             return Lesson4.PromptFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
             return Lesson4.CalculateBmi(weight, height);
         }
     }

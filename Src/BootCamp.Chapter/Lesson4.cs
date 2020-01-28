@@ -32,15 +32,6 @@ namespace BootCamp.Chapter
             float bmi = CalculateBmi(weight, mHeight);
             if (bmi < 0)
             {
-                Console.WriteLine("Falied to calculate BMI. Reasons:");
-                if (mHeight <= 0)
-                {
-                    Console.WriteLine($"Height cannot be equal or less than zero, but was {cmHeight}cm.");
-                }
-                if (weight <= 0)
-                {
-                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
-                }
                 return;
             }
             Console.WriteLine($"Their bmi is {bmi}");
@@ -52,6 +43,18 @@ namespace BootCamp.Chapter
             //  if these are negative zero calculate error code based on which ones don't work
             if ((weight <= 0) || (height <= 0))
             {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (weight <= 0 && height <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                    Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+                } else if (weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                } else
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
                 return -1f;
             }
             return weight / (height * height);
