@@ -7,11 +7,17 @@ namespace BootCamp.Chapter1
         public static bool ValidateArrayForManipulation(int[] array)
         {
             if (array == null)
+            {
                 return false;
+            }
             if (array.Length == 0)
+            {
                 return false;
+            }
             else
+            {
                 return true;
+            }
         }
         /// <summary>
         /// Sort the array in ascending order.
