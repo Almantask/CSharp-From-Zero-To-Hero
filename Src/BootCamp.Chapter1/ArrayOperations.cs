@@ -3,6 +3,16 @@ namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
+
+        public static bool ValidateArrayForManipulation(int[] array)
+        {
+            if (array == null)
+                return false;
+            if (array.Length == 0)
+                return false;
+            else
+                return true;
+        }
         /// <summary>
         /// Sort the array in ascending order.
         /// If array empty or null- don't do anything.
@@ -10,7 +20,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if (array != null)
+            if (ValidateArrayForManipulation(array))
             // insertion sort
             {
                 for (int i = 1; i < array.Length; i++)
@@ -32,7 +42,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array != null)
+            if (ValidateArrayForManipulation(array))
             {
                 int[] tempArray = new int[array.Length];
                 for (int i = 0; i < array.Length; i++)
@@ -53,8 +63,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null) {return array; }
-            if (array.Length != 0)
+            if (ValidateArrayForManipulation(array)) 
             {
                 int[] shortenedArray = new int[array.Length - 1];
                 for (int i = 0; i < shortenedArray.Length; i++)
@@ -69,10 +78,12 @@ namespace BootCamp.Chapter1
         /// Remove first element in array.
         /// </summary>
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
+        /// 
+
+      
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null) {return array; }
-            if (array.Length != 0)
+            if (ValidateArrayForManipulation(array))
             {
                 int[] shortenedArray = new int[array.Length - 1];
                 for (int i = 0; i < shortenedArray.Length; i++)
