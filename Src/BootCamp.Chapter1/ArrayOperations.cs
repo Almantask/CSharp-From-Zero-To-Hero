@@ -211,9 +211,6 @@ namespace BootCamp.Chapter1
                 case "First":
                     lengthenedArray[0] = number;
                     break;
-
-                default:
-                    break;
             }
         }
         
