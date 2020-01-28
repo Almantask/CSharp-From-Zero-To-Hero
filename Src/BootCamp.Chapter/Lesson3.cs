@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
 
             Console.WriteLine($"{fName} {lName} is {age} years old, their weight is {weight} kg and their height is {height} cm.");
 
-            Console.WriteLine($"{fName} {lName}'s BMI is " + BMIConversion(weight, height));
+            Console.WriteLine($"{fName} {lName}'s BMI is " + CalculateBmi(weight, height));
         }
 
         public static string PromptString(string message)
@@ -52,7 +52,7 @@ namespace BootCamp.Chapter
             return float.Parse(Console.ReadLine());
         }
 
-        public static float BMIConversion(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             return weight / ((height / 100) * (height / 100));
         }
