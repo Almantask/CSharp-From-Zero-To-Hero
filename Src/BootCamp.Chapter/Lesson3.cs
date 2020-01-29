@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
             int age = Lesson3.PromptUserInt("Age: ");
             float height = Lesson3.PromptUserFloat("Height (in m): ");
             float weight = Lesson3.PromptUserFloat("Weight (in kg): ");                      
-            float bmi = Lesson3.CalcBmi(weight, height);
+            float bmi = Lesson3.CalculateBmi(weight, height);
 
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, their weight is " + weight + "kg and their height is " + height + "m. Their BMI is " + bmi + ".");
             Console.WriteLine();
@@ -75,7 +75,7 @@ namespace BootCamp.Chapter
             
         }
 
-        public static float CalcBmi(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
 
             if (weight <= 0)
