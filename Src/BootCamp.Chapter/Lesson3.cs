@@ -7,12 +7,12 @@ namespace BootCamp.Chapter
         public static void Demo()
         {
             Console.WriteLine("Person 1:");
-            getPersonData();
+            GetPersonData();
             Console.WriteLine("Person 2:");
-            getPersonData();
+            GetPersonData();
 
         }
-        public static void getPersonData()
+        public static void GetPersonData()
         {
             string firstName = Program.GetString("Enter your First Name: ");
 
