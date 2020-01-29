@@ -179,14 +179,7 @@
             var j = 0;
             for (var i = 0; i < newArray.Length; i++)
             {
-                if (i == index)
-                {
-                    newArray[i] = number;
-                }
-                else
-                {
-                    newArray[i] = array[j++];
-                }
+                newArray[i] = (i == index) ? number : array[j++];
             }
 
             return newArray;
