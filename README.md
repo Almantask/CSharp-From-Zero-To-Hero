@@ -17,7 +17,7 @@
 ## Task
 1) Open Program.cs.
 2) Add one or more breakpoints to your code.
-  * Rightclick a line of code (line 24: `Console.WriteLine();` for example.
+  * Rightclick a line of code (`Console.WriteLine();` for example.
   * Search for **Breakpoint** menu option.
   * Click **Add Breakpoint** in the submenu.
   * Look to the left. A red circle should have appeard.
