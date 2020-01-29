@@ -6,7 +6,7 @@ namespace BootCamp.Chapter1
 
         private static bool ValidateArrayForManipulation(int[] array)
         {
-            return !((array == null) || (array.Length == 0));
+            return ((array != null) && (array.Length != 0));
         }
         /// <summary>
         /// Sort the array in ascending order.
@@ -66,14 +66,13 @@ namespace BootCamp.Chapter1
                 {
                     shortenedArray[i] = array[i];
                 }
-                array = shortenedArray;
+                return shortenedArray;
             }
             return array;
         }
         private static int[] MakeAShorterArray(int[] array)
         {
-            int[] shortenedArray = new int[array.Length - 1];
-            return shortenedArray;
+            return new int[array.Length - 1];
         }
         
         /// <summary>
@@ -91,7 +90,7 @@ namespace BootCamp.Chapter1
                 {
                     shortenedArray[i] = array[i+1];
                 }
-                array = shortenedArray;
+                return shortenedArray;
             }
             return array;
         }
@@ -104,11 +103,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-           //if (array == null) { }
-
-           // else if (CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)) { }
-            
-            if ((ValidateArrayForManipulation(array)) && (CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)))
+          
+            if ((ValidateArrayForManipulation(array)) && (ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)))
             {
                 var shortenedArray = MakeAShorterArray(array);
 
@@ -122,13 +118,11 @@ namespace BootCamp.Chapter1
         }
         private static int[] AddOneNumberToNullArray(int number)
         {
-            int[] lengthenedArray = new[] { number };
-            return lengthenedArray;
+            return new[] { number };
         }
         private static int[] MakeALongerArray(int[] array)
         {
-            int[] lengthenedArray = new int[array.Length + 1];
-            return lengthenedArray;
+            return new int[array.Length + 1];
         }
 
         /// <summary>
@@ -180,7 +174,6 @@ namespace BootCamp.Chapter1
                 lengthenedArray[i] = array[i];
             }
             return lengthenedArray;
-            
         }
 
         private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, string position, int number)
@@ -202,19 +195,9 @@ namespace BootCamp.Chapter1
             lengthenedArray[index] = number;
         }
 
-        private static bool CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(int[] array, string action, int index)
+        private static bool ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(int[] array, string action, int index)
         {
-            switch (action)
-            {
-                case "Remove":
-                    return ((index < array.Length) && (index >= 0));
-                    
-                case "Insert":
-                    return ((index >= array.Length) && (index > 0));
-
-                default:
-                    return false;
-            }
+            return (action == "Remove") ? ((index < array.Length) && (index >= 0)) : ((index <= array.Length) && (index >= 0));
         }
 
         /// <summary>
@@ -230,31 +213,30 @@ namespace BootCamp.Chapter1
             {
                 return AddOneNumberToNullArray(number);
             }
-            if (!(CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Insert", index)) )
-            { 
-                return array; 
-            }
-
-            var lengthenedArray = MakeALongerArray(array);
-
-            //place the new number at the desired index
-           
-            PlaceTheNewNumberAtTheAppropriateIndexPosition(lengthenedArray, index, number);
-            
-            // place all the original array numbers in their original position. 
-            //when we get to the new index placement, offsetting position of the old array positions by one
-            for (int i = 0; i < lengthenedArray.Length-1; i++)
+            if ((ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Insert", index)))
             {
-                if (i>=index)
-                { 
-                    lengthenedArray[i+1] = array[i]; 
+                var lengthenedArray = MakeALongerArray(array);
+
+                //place the new number at the desired index
+
+                PlaceTheNewNumberAtTheAppropriateIndexPosition(lengthenedArray, index, number);
+
+                // place all the original array numbers in their original position. 
+                //when we get to the new index placement, offsetting position of the old array positions by one
+                for (int i = 0; i < lengthenedArray.Length - 1; i++)
+                {
+                    if (i >= index)
+                    {
+                        lengthenedArray[i + 1] = array[i];
+                    }
+                    else
+                    {
+                        lengthenedArray[i] = array[i];
+                    }
                 }
-                else 
-                { 
-                    lengthenedArray[i] = array[i]; 
-                }
+                return lengthenedArray;
             }
-            return lengthenedArray;
+            return array;
         }
 
     }
