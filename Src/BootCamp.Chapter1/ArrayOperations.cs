@@ -60,6 +60,9 @@ namespace BootCamp.Chapter1
                 case "First":
                     lengthenedArray[0] = number;
                     break;
+
+                default:
+                    break;
             }
         }
 
@@ -82,7 +85,6 @@ namespace BootCamp.Chapter1
         {
             return (action == "Remove") ? ((index < array.Length) && (index >= 0)) : ((index <= array.Length) && (index >= 0));
         }
-
 
         //public array operations
 
@@ -108,6 +110,7 @@ namespace BootCamp.Chapter1
                 }
             }
         }
+
         /// <summary>
         /// Reverse the array elements, first being last and so on.
         /// If array empty or null- don't do anything.
@@ -148,7 +151,6 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
-       
         
         /// <summary>
         /// Remove first element in array.
@@ -191,7 +193,6 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
-      
 
         /// <summary>
         /// Inserts a new array element at the start.
@@ -224,6 +225,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array.</param>
         /// <param name="number">Number to be added.</param>
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
+        
         public static int[] InsertLast(int[] array, int number)
         {
             if (array == null)
@@ -243,9 +245,6 @@ namespace BootCamp.Chapter1
             }
             return lengthenedArray;
         }
-
-      
-     
 
         /// <summary>
         /// Inserts a new array element at the specified index.
