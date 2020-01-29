@@ -14,6 +14,7 @@ namespace BootCamp.Chapter
             for (var index = 0; index < 14; index++)
             {
                 Aysnchromaguss.Mumble();
+                await Task.Delay(10);
             }
 
             await Task.Delay(1000);

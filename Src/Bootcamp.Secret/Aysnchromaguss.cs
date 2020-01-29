@@ -31,15 +31,18 @@ namespace Bootcamp.Secret
 
         public static void CheckPassphrase(string guess)
         {
-            const string passphrase = "a minore ad maius" +
-                                      "A solis ortu usque" +
+            const string passphrase = "A minore ad maius " +
+                                      "a solis ortu usque " +
                                       "ad occasum ab uno disce omnes";
 
-            if (passphrase == guess)
+            if (passphrase.Equals(guess))
             {
-                Console.WriteLine("from the smaller to the greater");
-                Console.WriteLine("from sunrise to sunset");
-                Console.WriteLine("from one, learn all");
+                Console.WriteLine("YOU MAY PROCEED!");
+                Console.WriteLine("--------------------------------");
+                Console.WriteLine("From the smaller to the greater,");
+                Console.WriteLine("From sunrise to sunset,");
+                Console.WriteLine("From one, learn all.");
+                Console.WriteLine("--------------------------------");
             }
         }
     }
