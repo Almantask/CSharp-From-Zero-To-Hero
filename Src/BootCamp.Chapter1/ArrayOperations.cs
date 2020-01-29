@@ -5,19 +5,12 @@
 
         static bool IsArraySorted(int[] array)
         {
-            for (int i = 0; i < array.Length + 1; i++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                //This to stop IndexOutOfRangeException
-                if (i + 1 >= array.Length)
-                {
-                    break;
-                }
-
                 if (array[i] > array[i + 1])
                 {
                     return false;
                 }
-
             }
             return true;
         }
@@ -28,22 +21,15 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-
-            if (array == null || array.Length == 0)
+            if (IsArrayNullOrEmpty(array))
             {
                 return;
             }
 
             while (!IsArraySorted(array))
             {
-                for (int i = 0; i < array.Length; i++)
+                for (int i = 0; i < array.Length - 1; i++)
                 {
-                    //This to stop IndexOutOfRangeException
-                    if (i + 1 >= array.Length)
-                    {
-                        break;
-                    }
-
                     if (array[i] > array[i + 1])
                     {
                         var smaller = array[i + 1];
@@ -61,16 +47,13 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (IsArrayNullOrEmpty(array))
             {
                 return;
             }
 
-            for (int i = 0; i < array.Length / 2; i++)
+            for (int i = 0; i < array.Length / 2 ; i++)
             {
-                //This to stop IndexOutOfRangeException
-                if (i + 1 >= array.Length) break;
-
                 var foo = array[i];
                 array[i] = array[array.Length - 1 - i];
                 array[array.Length - 1 - i] = foo;
@@ -84,7 +67,7 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (IsArrayNullOrEmpty(array))
             {
                 return array;
             }
@@ -103,7 +86,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (IsArrayNullOrEmpty(array))
             {
                 return array;
             }
@@ -124,7 +107,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null || array.Length == 0)
+            if (IsArrayNullOrEmpty(array))
             {
                 return array;
             }
@@ -134,18 +117,14 @@
             }
 
             var amendedArray = new int[array.Length - 1];
-            for (int i = 0, j = 0; i < array.Length; i++, j++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                if (i + 1 >= array.Length)
+                if (i >= index)
                 {
-                    break;
+                    amendedArray[i] = array[i + 1];
+                    continue;
                 }
-
-                if (i == index)
-                {
-                    j++;
-                }
-                amendedArray[i] = array[j];
+                amendedArray[i] = array[i];
             }
             return amendedArray;
         }
@@ -158,7 +137,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {            
-            if (array == null || array.Length == 0)
+            if (IsArrayNullOrEmpty(array))
             {
                 var newArray = new int[] { 10 };
                 return newArray;
@@ -181,7 +160,7 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array == null || array.Length == 0)
+            if (IsArrayNullOrEmpty(array))
             {
                 var newArray = new int[] { 10 };
                 return newArray;
@@ -217,20 +196,26 @@
 
             var amendedArray = new int[array.Length + 1];
 
-            for (int i = 0, j = 0; i < array.Length; i++, j++)
+            for (int i = 0, j = 0; i < amendedArray.Length; i++, j++)
             {
+                if (i == index)
+                {
+                    amendedArray[index] = number;
+                    continue;
+                }
+                if (i > index)
+                {
+                    amendedArray[i] = array[i - 1];
+                    continue;
+                }
                 amendedArray[i] = array[i];
-                if (j == index)
-                {
-                    j++;
-                    amendedArray[i] = number;
-                }
-                if (j > i)
-                {
-                    amendedArray[j] = array[i];
-                }
             }
             return amendedArray;
+        }
+
+        public static bool IsArrayNullOrEmpty(int [] array)
+        {
+            return array == null || array.Length == 0;
         }
     }
 }
