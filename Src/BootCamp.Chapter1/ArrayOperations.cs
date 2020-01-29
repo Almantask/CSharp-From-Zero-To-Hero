@@ -9,11 +9,12 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (ArrayIsNullOrEmpty(array))
             {
                 return;
             }
 
+            //Bubble Sort (Ascending)
             for (var i = 0; i <= array.Length - 2; i++)
             {
                 for (var j = 0; j <= array.Length - 2; j++)
@@ -35,7 +36,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if(ArrayIsNullOrEmpty(array))
             {
                 return;
             }
@@ -60,20 +61,12 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if(ArrayIsNullOrEmpty(array))
             {
                 return array;
             }
 
-            var newArray = new int[array.Length - 1];
-
-            for (var i = 0; i < array.Length - 1; i++)
-            {
-                newArray[i] = array[i];
-            }
-
-            return newArray;
-
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -82,19 +75,12 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if(ArrayIsNullOrEmpty(array))
             {
                 return array;
             }
-
-            var newArray = new int[array.Length - 1];
-
-            for (var i = 1; i < array.Length; i++)
-            {
-                newArray[i - 1] = array[i];
-            }
-
-            return newArray;
+            
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -105,17 +91,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null)
-            {
-                return array;
-            }
-
-            if (array.Length == 0 && index == 0)
-            {
-                return new int[0];
-            }
-
-            if (array.Length == 0)
+            if (ArrayIsNullOrEmpty(array))
             {
                 return array;
             }
@@ -146,19 +122,12 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (array == null || array.Length == 0)
+            if(ArrayIsNullOrEmpty(array))
             {
                 return new [] { number };
             }
 
-            var newArray = new int[array.Length + 1];
-            newArray[0] = number;
-            for (var i = 0; i < array.Length; i++)
-            {
-                newArray[i + 1] = array[i];
-            }
-
-            return newArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -169,19 +138,12 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array == null || array.Length == 0)
+            if(ArrayIsNullOrEmpty(array))
             {
                 return new [] { number };
             }
-
-            var newArray = new int[array.Length + 1];
-            for (var i = 0; i < array.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-            newArray[array.Length] = number;
-
-            return newArray;
+            
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -193,33 +155,51 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
+            //For handling when array is null.
+            //If array is null then return number in array.
             if (array == null)
             {
                 return new [] { number };
             }
 
-            if (array.Length == 0 && index == 0)
-            {
-                return new [] { number };
-            }
-
+            //For handling when array is empty.
+            //If array is empty then there are two situations in test cases.
+            //One situation happens if also index is 0 then return number in array.
+            //Another situation happens if index is other than 0 then return empty array.
             if (array.Length == 0)
             {
+                if (index == 0)
+                {
+                    return new[] { number };
+                }
                 return new int[0];
             }
 
             var newArray = new int[array.Length + 1];
             var j = 0;
-            for (var i = 0; i < array.Length; i++)
+            for (var i = 0; i < newArray.Length; i++)
             {
                 if (i == index)
                 {
-                    newArray[j++] = number;
+                    newArray[i] = number;
                 }
-                newArray[j++] = array[i];
+                else
+                {
+                    newArray[i] = array[j++];
+                }
             }
 
             return newArray;
         }
+
+        private static bool ArrayIsNullOrEmpty(int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }
