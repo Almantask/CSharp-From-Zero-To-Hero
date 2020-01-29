@@ -9,6 +9,9 @@
     <Reference Include="Bootcamp.Secret">
       <HintPath>..\..\SecretSource\Bootcamp.Secret.dll</HintPath>
     </Reference>
+    <Reference Include="Bootcamp.SecretP1">
+      <HintPath>..\..\SecretSource\Bootcamp.SecretP1.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

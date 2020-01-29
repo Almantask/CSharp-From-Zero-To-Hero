@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bootcamp.Secret;
+using Bootcamp.SecretP1;
 
 namespace BootCamp.Chapter
 {
@@ -9,6 +10,26 @@ namespace BootCamp.Chapter
     {
         static async Task Main(string[] args)
         {
+            Console.WriteLine("Debug this correctly to move on to part 2 of this homework.");
+            Console.WriteLine();
+            Console.WriteLine();
+
+            foreach (string question in Prompter.Instance)
+            {
+                var value = Prompter.Instance.DebugValue(question);
+
+                do
+                {
+                    Console.WriteLine(question);
+                } while (!Prompter.Instance.IsCorrectAnswer(Console.ReadLine()));
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Welcome to part 2.");
+            Console.WriteLine();
+            Console.WriteLine();
+
             var mumbles = new List<Task>();
 
             // A hidden message is up there
