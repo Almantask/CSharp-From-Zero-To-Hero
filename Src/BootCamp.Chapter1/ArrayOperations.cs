@@ -81,8 +81,6 @@ namespace BootCamp.Chapter1
         /// </summary>
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         /// 
-
-      
         public static int[] RemoveFirst(int[] array)
         {
             if (ValidateArrayForManipulation(array))
