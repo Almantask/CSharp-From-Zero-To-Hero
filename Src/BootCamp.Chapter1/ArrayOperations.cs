@@ -43,16 +43,7 @@ namespace BootCamp.Chapter1
             return new int[array.Length + 1];
         }
 
-        /// <summary>
-        /// set a new value at the specified index point
-        /// </summary>
-        /// <returns>array that has one value replaced at specified index
-        ///  
-        private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, int index, int number)
-        {
-            lengthenedArray[index] = number;
-        }
-
+        
         /// <summary>
         /// Confirm thar the index to be modified exists.
         /// </summary>
@@ -200,8 +191,7 @@ namespace BootCamp.Chapter1
                 var lengthenedArray = MakeALongerArray(array);
 
                 //place the new number at the desired index
-
-                PlaceTheNewNumberAtTheAppropriateIndexPosition(lengthenedArray, index, number);
+                 lengthenedArray[index] = number; 
 
                 // place all the original array numbers in their original position. 
                 //when we get to the new index placement, offsetting position of the old array positions by one
