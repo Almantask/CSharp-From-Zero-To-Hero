@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -19,7 +17,7 @@ namespace BootCamp.Chapter
             StuffThatExistTwice();
             StuffThatExistTwice();
         }
-        static void StuffThatExistTwice()
+        static void StuffThatExistTwice() //lack of creativity yess!
         {
             string name = Name();
             double age = Age();
@@ -29,31 +27,31 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{name} is {age} old, their weight is {weight}kg and their height is {height}cm\n Their BMI index is {BMI}");//their is used instead of his/her.
 
         }
-        static void Text(string text)
+        static void ShorterWriteLine(string text)
         {
             Console.WriteLine(text);
         }
         static double Weight()
         {
-            Text("Please give me your weight in kg");
+            ShorterWriteLine("Please give me your weight in kg");
             double age = double.Parse(Console.ReadLine());
             return age;
         }
         static string Name()
         {
-            Text("Please give me your name");
+            ShorterWriteLine("Please give me your name");
             string Name = Console.ReadLine();
             return Name;
         }
         static double Age()
         {
-            Text("Please give me your age");
+            ShorterWriteLine("Please give me your age");
             double weight = double.Parse(Console.ReadLine());
             return weight;
         }
         static double Height()
         {
-            Text("Please give me your height");
+            ShorterWriteLine("Please give me your height");
             double height = double.Parse(Console.ReadLine());
             return height;
         }
