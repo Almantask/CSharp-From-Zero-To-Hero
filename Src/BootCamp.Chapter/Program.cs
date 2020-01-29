@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Bootcamp.Secret;
 using Bootcamp.SecretP1;
+using Bootcamp.SecretP2;
 
 namespace BootCamp.Chapter
 {
