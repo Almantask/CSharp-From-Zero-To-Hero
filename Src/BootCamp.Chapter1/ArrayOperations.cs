@@ -51,19 +51,8 @@ namespace BootCamp.Chapter1
 
         private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, string position, int number)
         {
-            switch (position)
-            {
-                case "Last":
-                    lengthenedArray[lengthenedArray.Length - 1] = number;
-                    break;
-
-                case "First":
-                    lengthenedArray[0] = number;
-                    break;
-
-                default:
-                    break;
-            }
+            lengthenedArray[^1] = (position == "Last") ? number : lengthenedArray[^1];
+            lengthenedArray[0] = (position == "First") ? number : lengthenedArray[0];
         }
 
         /// <summary>
