@@ -9,7 +9,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            
         }
 
         /// <summary>
