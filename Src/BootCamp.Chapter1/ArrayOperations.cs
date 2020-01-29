@@ -104,11 +104,11 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null) { }
+           //if (array == null) { }
 
-            else if (CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)) { }
+           // else if (CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)) { }
             
-            else if (array.Length != 0)
+            if ((ValidateArrayForManipulation(array)) && (CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)))
             {
                 var shortenedArray = MakeAShorterArray(array);
 
@@ -207,7 +207,7 @@ namespace BootCamp.Chapter1
             switch (action)
             {
                 case "Remove":
-                    return (index >= array.Length) || (index < 0);
+                    return !((index >= array.Length) || (index < 0));
                     
 
                 case "Insert":
