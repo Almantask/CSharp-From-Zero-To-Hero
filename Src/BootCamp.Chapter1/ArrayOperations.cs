@@ -191,6 +191,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
+            return InsertAt(array, number, 0);
+           /*
             if (array == null)
             {
                 return AddOneNumberToNullArray(number);
@@ -206,6 +208,7 @@ namespace BootCamp.Chapter1
             }
             array = lengthenedArray;
             return array;
+            */
         }
 
         /// <summary>
@@ -217,6 +220,12 @@ namespace BootCamp.Chapter1
         
         public static int[] InsertLast(int[] array, int number)
         {
+            if (array == null)
+            {
+                return AddOneNumberToNullArray(number);
+            }
+            return InsertAt(array, number, array.Length);
+            /*
             if (array == null)
             {
                 return AddOneNumberToNullArray(number);
@@ -233,6 +242,7 @@ namespace BootCamp.Chapter1
                 lengthenedArray[i] = array[i];
             }
             return lengthenedArray;
+            */
         }
 
         /// <summary>
