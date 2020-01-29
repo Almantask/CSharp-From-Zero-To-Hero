@@ -3,12 +3,90 @@ namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
-
+        // *************private helpers**********
+        /// <summary>
+        /// Test that Array is neither null or empty.
+        /// </summary>
+        /// <returns>True if array can be manipulated by standard functions.</returns>
+        /// 
         private static bool ValidateArrayForManipulation(int[] array)
         {
             return ((array != null) && (array.Length != 0));
         }
+
         /// <summary>
+        /// Makes the array one index item shorter.
+        /// </summary>
+        /// <returns>A new array with (original length - 1)</returns>
+        /// 
+        private static int[] MakeAShorterArray(int[] array)
+        {
+            return new int[array.Length - 1];
+        }
+
+        /// <summary>
+        /// Makes a new array with one index with an int
+        /// </summary>
+        /// <returns>A new array with a single index with value {number}>
+        /// 
+        private static int[] AddOneNumberToNullArray(int number)
+        {
+            return new[] { number };
+        }
+
+         /// <summary>
+        /// Makes the array one index item longer.
+        /// </summary>
+        /// <returns>A new array with (original length+ 1)</returns>
+        private static int[] MakeALongerArray(int[] array)
+        {
+            return new int[array.Length + 1];
+        }
+
+        /// <summary>
+        /// set a new value at either the very first or very last index point
+        /// </summary>
+        /// <returns>array that has one value replaced at specified index
+        /// 
+
+        private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, string position, int number)
+        {
+            switch (position)
+            {
+                case "Last":
+                    lengthenedArray[lengthenedArray.Length - 1] = number;
+                    break;
+
+                case "First":
+                    lengthenedArray[0] = number;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// set a new value at the specified index point
+        /// </summary>
+        /// <returns>array that has one value replaced at specified index
+        ///  
+        private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, int index, int number)
+        {
+            lengthenedArray[index] = number;
+        }
+
+        /// <summary>
+        /// Confirm thar the index to be modified exists.
+        /// </summary>
+        /// <returns>True if index is valid
+        /// 
+        private static bool ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(int[] array, string action, int index)
+        {
+            return (action == "Remove") ? ((index < array.Length) && (index >= 0)) : ((index <= array.Length) && (index >= 0));
+        }
+
+
+        //public array operations
+
+         /// <summary>
         /// Sort the array in ascending order.
         /// If array empty or null- don't do anything.
         /// </summary>
@@ -70,10 +148,7 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
-        private static int[] MakeAShorterArray(int[] array)
-        {
-            return new int[array.Length - 1];
-        }
+       
         
         /// <summary>
         /// Remove first element in array.
@@ -116,14 +191,7 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
-        private static int[] AddOneNumberToNullArray(int number)
-        {
-            return new[] { number };
-        }
-        private static int[] MakeALongerArray(int[] array)
-        {
-            return new int[array.Length + 1];
-        }
+      
 
         /// <summary>
         /// Inserts a new array element at the start.
@@ -176,29 +244,8 @@ namespace BootCamp.Chapter1
             return lengthenedArray;
         }
 
-        private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, string position, int number)
-        {
-            switch (position)
-            {
-                case "Last":
-                    lengthenedArray[lengthenedArray.Length - 1] = number;
-                    break;
-            
-                case "First":
-                    lengthenedArray[0] = number;
-                    break;
-            }
-        }
-        
-        private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, int index, int number)
-        {
-            lengthenedArray[index] = number;
-        }
-
-        private static bool ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(int[] array, string action, int index)
-        {
-            return (action == "Remove") ? ((index < array.Length) && (index >= 0)) : ((index <= array.Length) && (index >= 0));
-        }
+      
+     
 
         /// <summary>
         /// Inserts a new array element at the specified index.
@@ -238,6 +285,5 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
-
     }
 }
