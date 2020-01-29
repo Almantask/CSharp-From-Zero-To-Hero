@@ -207,11 +207,10 @@ namespace BootCamp.Chapter1
             switch (action)
             {
                 case "Remove":
-                    return !((index >= array.Length) || (index < 0));
+                    return ((index < array.Length) && (index >= 0));
                     
-
                 case "Insert":
-                    return (index > array.Length) || (index < 0);
+                    return ((index >= array.Length) && (index > 0));
 
                 default:
                     return false;
@@ -231,7 +230,7 @@ namespace BootCamp.Chapter1
             {
                 return AddOneNumberToNullArray(number);
             }
-            if (CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Insert", index)) 
+            if (!(CheckIfTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Insert", index)) )
             { 
                 return array; 
             }
