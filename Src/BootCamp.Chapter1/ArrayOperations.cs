@@ -128,17 +128,11 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (ValidateArrayForManipulation(array)) 
+            if (array == null)
             {
-                var shortenedArray = MakeAShorterArray(array);
-
-                for (int i = 0; i < shortenedArray.Length; i++)
-                {
-                    shortenedArray[i] = array[i];
-                }
-                return shortenedArray;
+                return array;
             }
-            return array;
+            return RemoveAt(array, array.Length - 1);
         }
         
         /// <summary>
@@ -148,17 +142,7 @@ namespace BootCamp.Chapter1
         /// 
         public static int[] RemoveFirst(int[] array)
         {
-            if (ValidateArrayForManipulation(array))
-            {
-                var shortenedArray = MakeAShorterArray(array);
-                
-                for (int i = 0; i < shortenedArray.Length; i++)
-                {
-                    shortenedArray[i] = array[i+1];
-                }
-                return shortenedArray;
-            }
-            return array;
+            return RemoveAt(array, 0);       
         }
 
         /// <summary>
@@ -169,7 +153,6 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-          
             if ((ValidateArrayForManipulation(array)) && (ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)))
             {
                 var shortenedArray = MakeAShorterArray(array);
@@ -192,23 +175,7 @@ namespace BootCamp.Chapter1
         public static int[] InsertFirst(int[] array, int number)
         {
             return InsertAt(array, number, 0);
-           /*
-            if (array == null)
-            {
-                return AddOneNumberToNullArray(number);
-            }
-
-            var lengthenedArray = MakeALongerArray(array);
-
-            PlaceTheNewNumberAtTheAppropriateIndexPosition(lengthenedArray, "First", number);
-            
-            for (int i = 1; i < lengthenedArray.Length; i++)
-            {
-                lengthenedArray[i] = array[i-1];
-            }
-            array = lengthenedArray;
-            return array;
-            */
+          
         }
 
         /// <summary>
@@ -225,25 +192,7 @@ namespace BootCamp.Chapter1
                 return AddOneNumberToNullArray(number);
             }
             return InsertAt(array, number, array.Length);
-            /*
-            if (array == null)
-            {
-                return AddOneNumberToNullArray(number);
             }
-
-            var lengthenedArray = MakeALongerArray(array);
-            
-            //place the new number at the end of the new, long array
-            PlaceTheNewNumberAtTheAppropriateIndexPosition(lengthenedArray, "Last", number);
-            
-            //repopulate the rest of the numbers at their same index in the longer array
-            for (int i = 1; i < lengthenedArray.Length-1; i++)
-            {
-                lengthenedArray[i] = array[i];
-            }
-            return lengthenedArray;
-            */
-        }
 
         /// <summary>
         /// Inserts a new array element at the specified index.
