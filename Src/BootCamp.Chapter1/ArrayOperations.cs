@@ -44,18 +44,6 @@ namespace BootCamp.Chapter1
         }
 
         /// <summary>
-        /// set a new value at either the very first or very last index point
-        /// </summary>
-        /// <returns>array that has one value replaced at specified index
-        /// 
-
-        private static void PlaceTheNewNumberAtTheAppropriateIndexPosition(int[] lengthenedArray, string position, int number)
-        {
-            lengthenedArray[^1] = (position == "Last") ? number : lengthenedArray[^1];
-            lengthenedArray[0] = (position == "First") ? number : lengthenedArray[0];
-        }
-
-        /// <summary>
         /// set a new value at the specified index point
         /// </summary>
         /// <returns>array that has one value replaced at specified index
