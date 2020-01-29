@@ -11,6 +11,9 @@ namespace BootCamp.Chapter
         {
             var mumbles = new List<Task>();
 
+            // A hidden message is up there
+            // Debug may help,
+            // Or mix with your despair.
             for (var index = 0; index < 14; index++)
             {
                 Aysnchromaguss.Mumble();

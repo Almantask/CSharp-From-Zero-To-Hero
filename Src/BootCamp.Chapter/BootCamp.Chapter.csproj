@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bootcamp.Secret\Bootcamp.Secret.csproj" />
+    <Reference Include="Bootcamp.Secret">
+      <HintPath>..\..\SecretSource\Bootcamp.Secret.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
