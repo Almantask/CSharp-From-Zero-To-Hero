@@ -33,7 +33,7 @@ namespace BootCamp.Chapter
             else if (height <=0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
             }  
                 
             float bmi = weight / (height * height);
