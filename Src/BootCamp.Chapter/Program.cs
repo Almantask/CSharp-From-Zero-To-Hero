@@ -32,6 +32,28 @@ namespace BootCamp.Chapter
 
             Console.WriteLine("{0} {1} is {2} years old, his weight is {3} kg and his height is {4} cm.", firstName, lastName, age, weight, height);
             Console.WriteLine("His BMI is {0}.", bmi);
+
+            // 2nd Person
+            Console.WriteLine("Now, let's add another person.");
+            Console.Write("Enter your first name: ");
+            string firstName2 = Console.ReadLine();
+
+            Console.Write("Enter your last name: ");
+            string lastName2 = Console.ReadLine();
+
+            Console.Write("Enter your age: ");
+            string age2 = Console.ReadLine();
+
+            Console.Write("Enter your weight (in kg): ");
+            float weight2 = float.Parse(Console.ReadLine());
+
+            Console.Write("Enter your height (in cm): ");
+            float height2 = float.Parse(Console.ReadLine());
+
+            float bmi2 = (weight2 / ((height2 * height2) / 100)) * 100;
+
+            Console.WriteLine("{0} {1} is {2} years old, his weight is {3} kg and his height is {4} cm.", firstName2, lastName2, age2, weight2, height2);
+            Console.WriteLine("His BMI is {0}.", bmi2);
         }
     }
 }
