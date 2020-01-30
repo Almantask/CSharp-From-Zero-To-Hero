@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
 
             foreach (string question in Prompter.Instance)
             {
-                var value = Prompter.Instance.DebugValue(question);
+                var value = Prompter.Instance.DebugValue(question); // set a breakpoint here. Did  F5 and then step into till I see the value and then continue to enter the value.
 
                 do
                 {
