@@ -48,7 +48,7 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             var GrabString = Console.ReadLine();
             var StringCheck = string.IsNullOrWhiteSpace(GrabString);
-            if (StringCheck == true)
+            if (StringCheck)
             {
                 Console.WriteLine("Name cannot be empty");
                 return "-";
@@ -66,10 +66,10 @@ namespace BootCamp.Chapter
             //Checks if input of age is empty or not
             var IntNumberCheck = string.IsNullOrWhiteSpace(GrabInt);
             //Checks if input is a valid number or not
-            if (IntNumberCheck != true)
+            if (!IntNumberCheck)
             {
                 bool CheckValidNumber = int.TryParse(GrabInt, out int age);
-                if (CheckValidNumber == true)
+                if (CheckValidNumber)
                 {
                     return age;
                 }
@@ -92,10 +92,10 @@ namespace BootCamp.Chapter
             //Checks if input of age is empty or not
             var FloatNumberCheck = string.IsNullOrWhiteSpace(GrabFloat);
             //Checks if input is a valid number or not
-            if (FloatNumberCheck != true)
+            if (!FloatNumberCheck)
             {
                 bool CheckValidNumber = int.TryParse(GrabFloat, out int measurement);
-                if (CheckValidNumber == true)
+                if (CheckValidNumber)
                 {
                     return measurement;
                 }
