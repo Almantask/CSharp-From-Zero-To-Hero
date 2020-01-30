@@ -24,16 +24,19 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
                 Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
+                return -1;
             }
             else if (weight <=0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+                return -1;
             }
             else if (height <=0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+                return -1;
             }  
                 
             float bmi = weight / (height * height);
@@ -42,7 +45,7 @@ namespace BootCamp.Chapter
 
         public static float GetFloatInput(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             var floatInput = Console.ReadLine();
             if (string.IsNullOrEmpty(floatInput))
             {
@@ -63,7 +66,7 @@ namespace BootCamp.Chapter
 
         public static string GetStringInput(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             var stringInput = Console.ReadLine();
             if (string.IsNullOrEmpty(stringInput))
             {
@@ -78,7 +81,7 @@ namespace BootCamp.Chapter
 
         public static int GetIntInput(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             var intInput = Console.ReadLine();
             if (!float.TryParse(intInput, out float number))
             {
