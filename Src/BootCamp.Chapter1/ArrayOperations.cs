@@ -72,12 +72,7 @@
                 return array;
             }
 
-            var arrayWithLastRemoved = new int[array.Length - 1];
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                arrayWithLastRemoved[i] = array[i];
-            }
-            return arrayWithLastRemoved;
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -91,12 +86,7 @@
                 return array;
             }
 
-            var arrayWithFirstRemoved = new int[array.Length - 1];
-            for (int i = 1; i < array.Length; i++)
-            {
-                arrayWithFirstRemoved[i - 1] = array[i];
-            }
-            return arrayWithFirstRemoved;
+            return RemoveAt(array,0);
         }
 
         /// <summary>
@@ -139,17 +129,11 @@
         {            
             if (IsArrayNullOrEmpty(array))
             {
-                var newArray = new int[] { 10 };
+                int[] newArray = { number };
                 return newArray;
             }
 
-            var amendedArray = new int[array.Length + 1];
-            amendedArray[0] = number;
-            for (int i = 1; i < amendedArray.Length; i++)
-            {
-                amendedArray[i] = array[i - 1];
-            }
-            return amendedArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -162,16 +146,11 @@
         {
             if (IsArrayNullOrEmpty(array))
             {
-                var newArray = new int[] { 10 };
+                int[] newArray = { number };
                 return newArray;
             }
-            var amendedArray = new int[array.Length + 1];
-            for (int i = 0; i < array.Length; i++)
-            {
-                amendedArray[i] = array[i];
-            }
-            amendedArray[amendedArray.Length - 1] = number;
-            return amendedArray;
+
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -183,9 +162,9 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array == null  || index == 0)
+            if (array == null)
             {
-                int[] newArray = { 10 };
+                int[] newArray = { number };
                 return newArray;
             }
 
@@ -196,7 +175,7 @@
 
             var amendedArray = new int[array.Length + 1];
 
-            for (int i = 0, j = 0; i < amendedArray.Length; i++, j++)
+            for (int i = 0; i < amendedArray.Length; i++)
             {
                 if (i == index)
                 {
