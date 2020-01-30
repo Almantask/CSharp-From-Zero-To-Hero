@@ -102,8 +102,7 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-           const int index = 0;
-            return RemoveAt(array, index);
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
