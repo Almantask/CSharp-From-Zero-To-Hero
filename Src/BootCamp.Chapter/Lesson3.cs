@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -55,7 +56,7 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(input))
                 result = 0;
             else
-                if (!float.TryParse(input, out result))
+                if (!float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
                 result = -1;
             return result;
         }
@@ -72,7 +73,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 if (weight <= 0)
                     Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
-                if (height == 0 && weight == 0)  // this 2 are separated because the tests fails if not. o.O
+                if (height == 0 && weight == 0)  
                     Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
                 else if (height <= 0)
                     Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
