@@ -54,7 +54,7 @@ namespace BootCamp.Chapter
 
         public static void ProcessUserStats(string name, int age, float weight, float height)
         {
-            float calculatedBMI = GetBmi(weight, height);
+            float calculatedBMI = CalculateBmi(weight, height);
             Console.WriteLine($"{name} is {age} years old, weight is {weight} kg with a height of {height} meters.");
             Console.WriteLine($"The calculated BMI  is: {calculatedBMI:F}");
         }
@@ -79,13 +79,14 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(promptMessage);
             string age = Console.ReadLine();
-            if (IsNumber(age) && IsPositive(age))
-            {
-                return int.Parse(age);             
-            }
-            else if (string.IsNullOrEmpty(age))
+
+            if (string.IsNullOrEmpty(age))
             {
                 return 0;
+            }
+            else if (IsValidPositiveNumber(age))
+            {
+                return int.Parse(age);             
             }
             else
             {
@@ -93,6 +94,8 @@ namespace BootCamp.Chapter
                 return -1;
             }
         }
+
+        internal static bool IsValidPositiveNumber(string value) => IsNumber(value) && IsPositive(value);
 
         public static float PromptFloatInput(string promptMessage)
         {
@@ -116,12 +119,12 @@ namespace BootCamp.Chapter
        
         public static bool ValidateHeightAndWeight(float weight, float height)
         {
-            bool isValidWeight = weight > 0;
-            bool isValidHeight = height > 0;
+            bool isValidWeight = weight > 0, isValidHeight = height > 0;
+
             return ((isValidHeight && isValidWeight) && (weight > height));
         }
 
-        public static float GetBmi(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
 
             bool isHeightAndWeightValid = ValidateHeightAndWeight(weight, height);
@@ -150,9 +153,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static bool IsPositive(string number) {
-           return int.Parse(number) > 0;
-        }
+        public static bool IsPositive(string number) => int.Parse(number) > 0;
         
         public static bool IsNumber(string value) => float.TryParse(value, out _);
 
