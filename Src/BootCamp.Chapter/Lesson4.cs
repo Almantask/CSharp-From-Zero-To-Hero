@@ -153,7 +153,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static bool IsPositive(string number) => int.Parse(number) > 0;
+        public static bool IsPositive(string number) => decimal.Parse(number) > 0;
         
         public static bool IsNumber(string value) => float.TryParse(value, out _);
 
