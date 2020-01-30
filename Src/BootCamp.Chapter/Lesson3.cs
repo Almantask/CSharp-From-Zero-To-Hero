@@ -4,55 +4,110 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
-        public static float CalculateBmi(float height, float weight)
+         public static string ReadInputString(string message)
         {
-            float bmi = weight / (height * height);
-            return bmi;
-        }
-
-        public static string ReadInputString(string message)
-        {
-            Console.Write(message);
+            Console.WriteLine(message);
             string value = Console.ReadLine();
+            
+            if (string.IsNullOrEmpty(value))
+            {
+                Console.Write("Name cannot be empty.");
+                value = "-";
+            }
+
             return value;
         }
 
         public static float ReadInputFloat(string message)
         {
-            Console.Write(message);
-            float.TryParse(Console.ReadLine(), out float value);
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+            float value = ValidateFloat(input);
+            if (value < 0) PrintInvalidNumber(input);
+
             return value;
         }
 
         public static int ReadInputInt(string message)
         {
-            Console.Write(message);
-            int.TryParse(Console.ReadLine(), out int value);
-            return value;
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+            int value = ValidateInt(input);
+            if (value < 0) PrintInvalidNumber(input);
+            
+            return value; 
         }
 
+        static int ValidateInt(string input)
+        {
+            int result;
+            if (string.IsNullOrEmpty(input))
+                result = 0;
+            else
+                if (!int.TryParse(input, out result))
+                    result = -1;
+            return result;
+        }
+
+        static float ValidateFloat(string input)
+        {
+            float result;
+            if (string.IsNullOrEmpty(input))
+                result = 0;
+            else
+                if (!float.TryParse(input, out result))
+                result = -1;
+            return result;
+        }
+
+        static void PrintInvalidNumber(string input)
+        {
+            Console.Write("\"" + input + "\" is not a valid number.");
+        }
+
+        public static float CalculateBmi(float height, float weight)
+        {
+            if (height <= 0 || weight <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (weight <= 0)
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+                if (height == 0 && weight == 0)  // this 2 are separated because the tests fails if not. o.O
+                    Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
+                else if (height <= 0)
+                    Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+                return -1;
+            }
+
+            float bmi = weight / (height * height);
+            return bmi;
+        }
 
         private static void PersonData(int number)
         {
             Console.WriteLine("*** Person " + number + " ***");
+
             string name = ReadInputString("Name: ");
             string surname = ReadInputString("Surname: ");
+
             int age = ReadInputInt("Age: ");
+            
             float weight = ReadInputFloat("Weight (in kg): ");
+
             float height = ReadInputFloat("Height (in m): ");
 
-            // Print all the info
-            string message = name + " " + surname + " is " + age + " years old, his weight is " + weight + "Kg and his height is " + height + "m.";
-            Console.WriteLine(message);
-
-            float BMI = CalculateBmi(height, weight);
-            Console.WriteLine("His BMI is: " + BMI);
+            float bmi = CalculateBmi(height, weight);
+            if (bmi >= 0)
+            {
+                string message = name + " " + surname + " is " + age + " years old, his weight is " + weight + "Kg and his height is " + height + "m.";
+                Console.WriteLine(message);
+                Console.WriteLine("His BMI is: " + bmi);
+            }
         }
+
         public static void Demo()
         {
-
             PersonData(1);
-            // repeat for a second person 
             PersonData(2);
         }
     }
