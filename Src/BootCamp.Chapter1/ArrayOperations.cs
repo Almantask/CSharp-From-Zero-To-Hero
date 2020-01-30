@@ -9,9 +9,9 @@ namespace BootCamp.Chapter1
         /// </summary>
         /// <returns>True if array can be manipulated by standard functions.</returns>
         /// 
-        private static bool ValidateArrayForManipulation(int[] array)
+        private static bool IsNullOrEmpty(int[] array)
         {
-            return ((array != null) && (array.Length != 0));
+            return (array == null) || (array.Length == 0);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace BootCamp.Chapter1
         /// </summary>
         /// <returns>True if index is valid
         /// 
-        private static bool ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(int[] array, string action, int index)
+        private static bool IsIndexIsWithinRange(int[] array, string action, int index)
         {
             return (action == "Remove") ? ((index < array.Length) && (index >= 0)) : ((index <= array.Length) && (index >= 0));
         }
@@ -63,20 +63,23 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if (ValidateArrayForManipulation(array))
-            // insertion sort
-            {
-                for (int i = 1; i < array.Length; i++)
-                {
-                    int index = array[i]; int j = i;
-                    while (j > 0 && array[j - 1] > index)
-                    {
-                        array[j] = array[j - 1];
-                        j--;
-                    }
-                    array[j] = index;
-                }
+            if (IsNullOrEmpty(array))
+            { 
+                return; 
             }
+            // insertion sort
+            
+            for (int i = 1; i < array.Length; i++)
+            {
+                int index = array[i]; int j = i;
+                while (j > 0 && array[j - 1] > index)
+                {
+                    array[j] = array[j - 1];
+                    j--;
+                }
+                array[j] = index;
+            }
+            
         }
 
         /// <summary>
@@ -86,16 +89,13 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (ValidateArrayForManipulation(array))
+            if (!IsNullOrEmpty(array))
             {
-                int[] tempArray = new int[array.Length];
-                for (int i = 0; i < array.Length; i++)
+                for (int i = 0; i < array.Length/2; i++)
                 {
-                    tempArray[i] = array[i];
-                }
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array[i] = tempArray[array.Length - 1 - i];
+                    int tempHolder = array[i];
+                    array[i] = array[array.Length - 1 - i];
+                    array[array.Length - 1 - i] = tempHolder;
                 }
             }
         }
@@ -132,7 +132,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if ((ValidateArrayForManipulation(array)) && (ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Remove", index)))
+            if ((!IsNullOrEmpty(array)) && (IsIndexIsWithinRange(array, "Remove", index)))
             {
                 var shortenedArray = MakeAShorterArray(array);
 
@@ -186,7 +186,7 @@ namespace BootCamp.Chapter1
             {
                 return AddOneNumberToNullArray(number);
             }
-            if ((ConfirmThatTargetIndexToManipulateIsWithinTheRangeOfTheArray(array, "Insert", index)))
+            if ((IsIndexIsWithinRange(array, "Insert", index)))
             {
                 var lengthenedArray = MakeALongerArray(array);
 
