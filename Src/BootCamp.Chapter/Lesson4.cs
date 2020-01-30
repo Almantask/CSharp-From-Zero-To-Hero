@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -71,7 +72,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                bool isNumber = float.TryParse(returnString, out float returnFloat);
+                bool isNumber = float.TryParse(returnString, NumberStyles.Float, CultureInfo.InvariantCulture, out float returnFloat);
                 if (!isNumber)
                 {
                     Console.WriteLine(returnString + " is not a valid number.");
@@ -101,8 +102,18 @@ namespace BootCamp.Chapter
 
             if (!isWeightValid || !isHeightValid)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
+                return InvalidBMI(isWeightValid, isHeightValid, weight, height);
             }
+
+            else
+            {
+                return weight / (height * height);
+            }
+        }
+
+        public static float InvalidBMI(bool isWeightValid, bool isHeightValid, float weight, float height)
+        {
+            Console.WriteLine("Failed calculating BMI. Reason:");
 
             if (!isWeightValid)
             {
@@ -114,14 +125,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
             }
 
-            if (!isWeightValid || !isHeightValid)
-            {
-                return -1;
-            }
-            else
-            {
-                return weight / (height * height);
-            }
+            return -1;
         }
     }
 }
