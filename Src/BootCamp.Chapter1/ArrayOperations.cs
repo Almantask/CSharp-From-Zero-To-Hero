@@ -15,16 +15,6 @@ namespace BootCamp.Chapter1
         }
 
         /// <summary>
-        /// Makes the array one index item shorter.
-        /// </summary>
-        /// <returns>A new array with (original length - 1)</returns>
-        /// 
-        private static int[] MakeAShorterArray(int[] array)
-        {
-            return new int[array.Length - 1];
-        }
-
-        /// <summary>
         /// Makes a new array with one index with an int
         /// </summary>
         /// <returns>A new array with a single index with value {number}>
@@ -33,17 +23,7 @@ namespace BootCamp.Chapter1
         {
             return new[] { number };
         }
-
-         /// <summary>
-        /// Makes the array one index item longer.
-        /// </summary>
-        /// <returns>A new array with (original length+ 1)</returns>
-        private static int[] MakeALongerArray(int[] array)
-        {
-            return new int[array.Length + 1];
-        }
-
-        
+                     
         /// <summary>
         /// Confirm thar the index to be modified exists.
         /// </summary>
@@ -134,7 +114,7 @@ namespace BootCamp.Chapter1
         {
             if ((!IsNullOrEmpty(array)) && (IsIndexIsWithinRange(array, "Remove", index)))
             {
-                var shortenedArray = MakeAShorterArray(array);
+                var shortenedArray = new int[array.Length - 1]; ;
 
                 for (int i = 0; i < shortenedArray.Length; i++)
                 {
@@ -188,10 +168,10 @@ namespace BootCamp.Chapter1
             }
             if ((IsIndexIsWithinRange(array, "Insert", index)))
             {
-                var lengthenedArray = MakeALongerArray(array);
+                var lengthenedArray = new int[array.Length + 1];
 
                 //place the new number at the desired index
-                 lengthenedArray[index] = number; 
+                lengthenedArray[index] = number; 
 
                 // place all the original array numbers in their original position. 
                 //when we get to the new index placement, offsetting position of the old array positions by one
