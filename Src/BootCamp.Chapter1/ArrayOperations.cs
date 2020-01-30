@@ -44,16 +44,8 @@ namespace BootCamp.Chapter1
                         //position of j+1 
                         array[j + 1] = temp;
                     }
-
                 }
-
             }
-
-            foreach (int number in array)
-            {
-                Console.Write("[" + number + "]");
-            }
-           
         }
 
         /// <summary>
@@ -67,16 +59,6 @@ namespace BootCamp.Chapter1
             {
                 return;
             }
-
-
-            Console.Write("Before reverse:");
-
-            foreach (int number in array)
-            {
-                Console.Write("[" + number + "]");
-            }
-            Console.WriteLine();
-            
             //Only have to go half way of the array because after swap of half the entire array is swap, if kept going 
             //will put back to what it was
             for(int i = 0; i < array.Length / 2; i++)
@@ -91,15 +73,6 @@ namespace BootCamp.Chapter1
                 array[array.Length -1 - i] = temp;
             }
 
-            Console.Write("After reverse: ");
-            foreach (int number in array)
-            {
-                Console.Write("[" + number + "]");
-            }
-            Console.WriteLine();
-
-            
-           
         }
 
         /// <summary>
@@ -114,29 +87,8 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            Console.Write("Before removing last element: ");
-            foreach (int number in array)
-            {
-                Console.Write("[" + number + "]");
-            }
-            Console.WriteLine();
-
-          // declare int[] with the length of old array - the last index 
-            int[] removedLastElement = new int[array.Length - 1];
-
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                removedLastElement[i] = array[i];
-            }
-
-            Console.Write("After removing last element:  ");
-            foreach (int number in removedLastElement)
-            {
-                Console.Write("[" + number + "]");
-            }
-            Console.WriteLine();
-
-            return removedLastElement;
+            int index = array.Length-1;
+            return RemoveAt(array, index);
         }
 
         /// <summary>
@@ -150,32 +102,8 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            Console.Write("Before removing first element:");
-            foreach (int number in array)
-            {
-                Console.Write("[" + number + "]");
-            }
-            Console.WriteLine();
-
-            //declare new int array and give it the length of incoming array -1 spot
-            int[] removeFirstElement = new int[array.Length-1];
-
-            //start at 2nd position of array index and go through entire array length and add
-            //the rest of the array into the new declared array.
-            for(int i = 1; i < array.Length; i++)
-            {
-                //take ith position and -1 to place it into first index of array
-                removeFirstElement[i-1] = array[i];
-            }
-
-            Console.Write("After removing first element:    ");
-            foreach (int number in removeFirstElement)
-            {
-                Console.Write("[" + number + "]");
-            }
-            Console.WriteLine();
-
-            return removeFirstElement;
+            int index = 0;
+            return RemoveAt(array, index); ;
         }
 
         /// <summary>
@@ -194,13 +122,6 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            Console.Write("Before removing at index: ");
-            foreach (int number in array)
-            {
-                Console.Write("[" + number + "]");
-            }
-            Console.WriteLine();
-
             //declare variable with length of -1 because this method removed only 1 index
             int[] modifiedArray = new int[array.Length -1];
 
@@ -211,7 +132,7 @@ namespace BootCamp.Chapter1
             for (int i = 0; i < array.Length -1; i++)
             {
                 //check if the index passed in matches an index in the array
-                if(array[index] == array[i])
+                if(i == index)
                 {
                     //if it does increase count by 1 so that it knows to skip that index
                     count++;
@@ -220,14 +141,6 @@ namespace BootCamp.Chapter1
                 modifiedArray[i] = array[count];
                 count++;
             }
-
-            Console.Write("After removing at index:  ");
-            foreach (int number in modifiedArray)
-            {
-                Console.Write("[" + number + "]");
-            }
-            Console.WriteLine();
-
             return modifiedArray;
         }
 
@@ -239,36 +152,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-                if (array == null || array.Length == 0)
-                {
-                    int[] newArray = new int[1];
-                    newArray[0] = number;
-                    return newArray;
-                }
-
-            int[] addedNumberArray = new int[array.Length + 1];
-
-            Console.Write("Before adding new number: ");
-            foreach (int num in array)
-            {
-                Console.Write("[" + num + "]");
-            }
-            Console.WriteLine();
-
-            addedNumberArray[0] = number;
-            for (int i = 0; i < addedNumberArray.Length-1; i++)
-            {
-                addedNumberArray[i+1] = array[i];
-            }
-
-            Console.Write("After adding new number:  ");
-            foreach (int num in addedNumberArray)
-            {
-                Console.Write("[" + num + "]");
-            }
-            Console.WriteLine();
-
-            return addedNumberArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -286,34 +170,8 @@ namespace BootCamp.Chapter1
                 return newArray;
             }
 
-            Console.Write("Before adding Last number: ");
-            foreach (int num in array)
-            {
-                Console.Write("[" + num + "]");
-            }
-            Console.WriteLine();
-
-            int[] insertLastNum = new int[array.Length + 1];
-
-
-            //put all values of array into new array called insertLastNum
-            for(int i = 0; i < insertLastNum.Length - 1; i++)
-            {
-                insertLastNum[i] = array[i];
-            }
-
-            //add the insert value called number to end of the array
-            insertLastNum[insertLastNum.Length -1] = number;
-
-            Console.Write("After adding Last number:  ");
-            foreach (int num in insertLastNum)
-            {
-                Console.Write("[" + num + "]");
-            }
-            Console.WriteLine();
-
-
-            return insertLastNum;
+            int index = array.Length +1;
+            return InsertAt(array, number, index);
         }
 
         /// <summary>
@@ -332,7 +190,13 @@ namespace BootCamp.Chapter1
                 newArray[0] = number;
                 return newArray;
             }
-            if(array.Length == 0 && index == 0)
+
+            if (array.Length == 0 && index > 0)
+            {
+                return array;
+            }
+
+            if (array.Length == 0 && index == 0)
             {
                 int[] newArray = new int[1];
                 newArray[0] = number;
@@ -343,41 +207,28 @@ namespace BootCamp.Chapter1
             {
                 return array;
             }
-           
-            if(index > array.Length -1)
-            {
-                return array;
-            }
 
-            Console.Write("Before InsertingAt new number: ");
-            foreach (int num in array)
-            {
-                Console.Write("[" + num + "]");
-            }
-            Console.WriteLine();
 
             int[] insertNumAtIndex = new int[array.Length + 1];
             int count = 0;
 
-            for(int i = 0; i < insertNumAtIndex.Length -1; i++)
+
+            if(insertNumAtIndex.Length == index)
+            {
+                insertNumAtIndex[insertNumAtIndex.Length - 1] = number;
+            }
+
+            for(int i = 0; i < insertNumAtIndex.Length-1; i++)
             {
                 if(i == index)
                 {
                     insertNumAtIndex[i] = number;
                     count++;
                 }
-
+                
                 insertNumAtIndex[count] = array[i];
                 count++;
             }
-
-
-            Console.Write("After InsertingAt new number:  ");
-            foreach (int num in insertNumAtIndex)
-            {
-                Console.Write("[" + num + "]");
-            }
-            Console.WriteLine();
 
             return insertNumAtIndex;
         }
