@@ -102,8 +102,8 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            int index = 0;
-            return RemoveAt(array, index); ;
+           const int index = 0;
+            return RemoveAt(array, index);
         }
 
         /// <summary>
@@ -208,6 +208,12 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
+            Console.Write("Before: ");
+            foreach (int num in array)
+            {
+                Console.Write("[" + num + "]");
+            }
+            Console.WriteLine();
 
             int[] insertNumAtIndex = new int[array.Length + 1];
             int count = 0;
@@ -217,7 +223,7 @@ namespace BootCamp.Chapter1
             {
                 insertNumAtIndex[insertNumAtIndex.Length - 1] = number;
             }
-
+            Console.Write($"index:  ");
             for(int i = 0; i < insertNumAtIndex.Length-1; i++)
             {
                 if(i == index)
@@ -225,10 +231,17 @@ namespace BootCamp.Chapter1
                     insertNumAtIndex[i] = number;
                     count++;
                 }
-                
+                Console.Write($"[{i}]");
                 insertNumAtIndex[count] = array[i];
                 count++;
             }
+            Console.WriteLine();
+            Console.Write("After:  ");
+            foreach (int num in insertNumAtIndex)
+            {
+                Console.Write("[" + num + "]");
+            }
+            Console.WriteLine();
 
             return insertNumAtIndex;
         }
