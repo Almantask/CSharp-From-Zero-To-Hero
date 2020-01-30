@@ -14,16 +14,7 @@ namespace BootCamp.Chapter1
             return (array == null) || (array.Length == 0);
         }
 
-        /// <summary>
-        /// Makes a new array with one index with an int
-        /// </summary>
-        /// <returns>A new array with a single index with value {number}>
-        /// 
-        private static int[] AddOneNumberToNullArray(int number)
-        {
-            return new[] { number };
-        }
-                     
+          
         /// <summary>
         /// Confirm thar the index to be modified exists.
         /// </summary>
@@ -148,7 +139,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                return AddOneNumberToNullArray(number);
+                return new[] { number };
             }
             return InsertAt(array, number, array.Length);
             }
@@ -164,7 +155,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null)
             {
-                return AddOneNumberToNullArray(number);
+                return new[] { number };
             }
             if ((IsIndexIsWithinRange(array, "Insert", index)))
             {
