@@ -11,9 +11,8 @@ namespace BootCamp.Chapter1
         /// 
         private static bool IsNullOrEmpty(int[] array)
         {
-            return (array == null) || (array.Length == 0);
+            return array == null || array.Length == 0;
         }
-
           
         /// <summary>
         /// Confirm thar the index to be modified exists.
@@ -22,12 +21,12 @@ namespace BootCamp.Chapter1
         /// 
         private static bool IsIndexIsWithinRange(int[] array, string action, int index)
         {
-            return (action == "Remove") ? ((index < array.Length) && (index >= 0)) : ((index <= array.Length) && (index >= 0));
+            return action == "Remove" ? index < array.Length && index >= 0 : index <= array.Length && index >= 0;
         }
 
-        //public array operations
+        //*************public array operations*************
 
-         /// <summary>
+        /// <summary>
         /// Sort the array in ascending order.
         /// If array empty or null- don't do anything.
         /// </summary>
@@ -50,7 +49,6 @@ namespace BootCamp.Chapter1
                 }
                 array[j] = index;
             }
-            
         }
 
         /// <summary>
@@ -103,7 +101,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if ((!IsNullOrEmpty(array)) && (IsIndexIsWithinRange(array, "Remove", index)))
+            if (!IsNullOrEmpty(array) && IsIndexIsWithinRange(array, "Remove", index))
             {
                 var shortenedArray = new int[array.Length - 1]; ;
 
@@ -125,7 +123,6 @@ namespace BootCamp.Chapter1
         public static int[] InsertFirst(int[] array, int number)
         {
             return InsertAt(array, number, 0);
-          
         }
 
         /// <summary>
@@ -157,7 +154,7 @@ namespace BootCamp.Chapter1
             {
                 return new[] { number };
             }
-            if ((IsIndexIsWithinRange(array, "Insert", index)))
+            if (IsIndexIsWithinRange(array, "Insert", index))
             {
                 var lengthenedArray = new int[array.Length + 1];
 
