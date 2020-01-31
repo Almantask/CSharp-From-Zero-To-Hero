@@ -195,6 +195,11 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
+            if (index < 0 || index > array.Length)
+                return array;
+            if (array == null || array.Length == 0)
+                return new int[] { number };
+
             int[] newArray = new int[array.Length + 1];
 
             newArray[index] = number;
