@@ -13,25 +13,25 @@
         public static int PromptInt(string message)
         {
             Lesson4.PromptInt(message);
-            return 0;
+            return Lesson4.PromptInt(message);
         }
 
         public static string PromptString(string message)
         {
             Lesson4.PromptString(message);
-            return "";
+            return Lesson4.PromptString(message);
         }
 
         public static float PromptFloat(string message)
         {
             Lesson4.PromptFloat(message);
-            return 0;
+            return Lesson4.PromptFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
             Lesson4.CalculateBmi(weight, height);
-            return 0;
+            return Lesson4.CalculateBmi(weight, height);
         }
     }
 }
