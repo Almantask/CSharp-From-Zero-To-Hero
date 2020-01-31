@@ -171,10 +171,12 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            
+            if (array == null)
+                return new int[] { number };
+
             int[] newArray = new int[array.Length + 1];
 
-            newArray[array.Length - 1] = number;
+            newArray[array.Length] = number;
 
             for (int i = 0; i < array.Length; i++)
             {
