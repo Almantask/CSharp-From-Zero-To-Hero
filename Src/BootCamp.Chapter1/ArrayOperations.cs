@@ -116,7 +116,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null || array.Length == 0)
+            if (array == null || array.Length == 0 || index < 0 || index > array.Length-1)
                 return array;
 
             int[] newArray = new int[array.Length - 1];
