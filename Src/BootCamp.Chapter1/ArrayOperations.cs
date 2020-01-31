@@ -103,11 +103,11 @@ namespace BootCamp.Chapter1
         {
             if (!IsNullOrEmpty(array) && IsIndexIsWithinRange(array, "Remove", index))
             {
-                var shortenedArray = new int[array.Length - 1]; ;
+                var shortenedArray = new int[array.Length - 1];
 
                 for (int i = 0; i < shortenedArray.Length; i++)
                 {
-                shortenedArray[i] = i >= index ? array[i + 1] : array[i];
+                shortenedArray[i] = (i >= index) ? array[i + 1] : array[i];
                 }
                 return shortenedArray;
             }
