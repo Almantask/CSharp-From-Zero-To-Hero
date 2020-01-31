@@ -52,19 +52,22 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-                if (array.Length == 0)
+                if (array == null || array.Length == 0)
                     return;
 
                 int[] newArray = new int[array.Length];
 
                 for (int i = 0; i < array.Length; i++)
                 {
-                    newArray[i] = array[array.Length - i];
+                    newArray[i] = array[array.Length -1 - i];
                 }
 
-                array = newArray;
-
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                array[i] = newArray[i];
             }
+
+        }
 
         /// <summary>
         /// Remove last element in array.
@@ -73,7 +76,7 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array.Length == 0)
+            if (array == null || array.Length == 0)
                 return array;
 
             int[] newArray = new int[array.Length -1];
@@ -92,7 +95,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array.Length == 0)
+            if (array == null || array.Length == 0)
                 return array;
 
             int[] newArray = new int[array.Length - 1];
@@ -113,7 +116,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array.Length == 0)
+            if (array == null || array.Length == 0)
                 return array;
 
             int[] newArray = new int[array.Length - 1];
@@ -145,6 +148,8 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
+            if (array == null)
+                return new int[] { number };
 
             int[] newArray = new int[array.Length + 1];
 
@@ -166,6 +171,7 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
+            
             int[] newArray = new int[array.Length + 1];
 
             newArray[array.Length - 1] = number;
