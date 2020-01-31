@@ -46,36 +46,36 @@ namespace BootCamp.Chapter
         public static string PromptString(string message)
         {
             Console.WriteLine(message);
-            var GrabString = Console.ReadLine();
-            var StringCheck = string.IsNullOrWhiteSpace(GrabString);
-            if (StringCheck)
+            var grabString = Console.ReadLine();
+            var stringCheck = string.IsNullOrWhiteSpace(grabString);
+            if (stringCheck)
             {
                 Console.WriteLine("Name cannot be empty");
                 return "-";
             }
             else
             {
-                return GrabString;
+                return grabString;
             }
         }
 
         public static int PromptInt(string message)
         {
             Console.WriteLine(message);
-            var GrabInt = Console.ReadLine();
+            var grabInt = Console.ReadLine();
             //Checks if input of age is empty or not
-            var IntNumberCheck = string.IsNullOrWhiteSpace(GrabInt);
+            var intNumberCheck = string.IsNullOrWhiteSpace(grabInt);
             //Checks if input is a valid number or not
-            if (!IntNumberCheck)
+            if (!intNumberCheck)
             {
-                bool CheckValidNumber = int.TryParse(GrabInt, out int age);
-                if (CheckValidNumber)
+                bool checkValidNumber = int.TryParse(grabInt, out int age);
+                if (checkValidNumber)
                 {
                     return age;
                 }
                 else
                 {
-                    Console.WriteLine(GrabInt + " is not a valid number");
+                    Console.WriteLine(grabInt + " is not a valid number");
                     return -1;
                 }
             }
@@ -88,20 +88,20 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            var GrabFloat = Console.ReadLine();
+            var grabFloat = Console.ReadLine();
             //Checks if input of age is empty or not
-            var FloatNumberCheck = string.IsNullOrWhiteSpace(GrabFloat);
+            var floatNumberCheck = string.IsNullOrWhiteSpace(grabFloat);
             //Checks if input is a valid number or not
-            if (!FloatNumberCheck)
+            if (!floatNumberCheck)
             {
-                bool CheckValidNumber = int.TryParse(GrabFloat, out int measurement);
-                if (CheckValidNumber)
+                bool checkValidNumber = int.TryParse(grabFloat, out int measurement);
+                if (checkValidNumber)
                 {
                     return measurement;
                 }
                 else
                 {
-                    Console.WriteLine(GrabFloat + " is not a valid number");
+                    Console.WriteLine(grabFloat + " is not a valid number");
                     return -1;
                 }
             }
