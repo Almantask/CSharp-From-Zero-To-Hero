@@ -10,7 +10,7 @@
         public static void Sort(int[] array)
         {
             
-            if (array.Length == 0)
+            if (array == null || array.Length == 0)
                 return;
 
             int[] newArray = new int[array.Length];
@@ -20,19 +20,29 @@
                 int position = 0;
                 for (int k = 0; k < array.Length; k++)
                 {
-
                     if (array[i] > array[k])
                     {
                         position++;
                     }
-                    if (array[i] == newArray[k])
-                    {
+                }
+                bool isSameNumberCheck = true;
+
+                while (isSameNumberCheck)
+                {
+                    if (array[i] == 0)
+                        isSameNumberCheck = false;
+                    else if (array[i] == newArray[position])
                         position++;
-                    }
+                    else
+                        isSameNumberCheck = false;
                 }
                 newArray[position] = array[i];
             }
-            array = newArray;
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                array[i] = newArray[i];
+            }
+
         }
 
         /// <summary>
