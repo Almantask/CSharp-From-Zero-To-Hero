@@ -9,7 +9,7 @@ namespace BootCamp.Chapter1
             arr[0] = 2;
             arr[1] = 0;
             arr[2] = 1;
-            ArrayOperations.Reverse(arr);
+            ArrayOperations.RemoveFirst(arr);
             foreach(var i in arr)
             {
                 Console.WriteLine(i);

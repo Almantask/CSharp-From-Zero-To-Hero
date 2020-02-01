@@ -44,21 +44,11 @@
                 return;
             }
 
-            int temp;
-            // traverse = to array length
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int i = 0; i < array.Length / 2; i++)
             {
-                // traverse i + 1 to array length
-                for (int j = i + 1; j < array.Length; j++)
-                {
-                    // compare array element with all next element
-                    if (array[i] < array[j])
-                    {
-                        temp = array[i];
-                        array[i] = array[j];
-                        array[j] = temp;
-                    }
-                }
+                int temp = array[i];
+                array[i] = array[array.Length - i - 1];
+                array[array.Length - i - 1] = temp;
             }
         }
 
@@ -74,8 +64,7 @@
                 return array;
             }
 
-            // ToDo: implement.
-            return array;
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -89,8 +78,7 @@
                 return array;
             }
 
-            // ToDo: implement.
-            return array;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -106,8 +94,24 @@
                 return array;
             }
 
-            // ToDo: implement.
-            return array;
+            if (index > array.Length - 1 || index < 0)
+            {
+                return array;
+            }
+
+            var newArray = new int[array.Length - 1];
+            int j = 0;
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (i == index)
+                {
+                    j++;
+                }
+
+                newArray[i] = array[j];
+                j++;
+            }
+            return newArray;
         }
 
         /// <summary>
