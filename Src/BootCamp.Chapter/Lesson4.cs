@@ -89,7 +89,7 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             var grabFloat = Console.ReadLine();
-            //Checks if input of age is empty or not
+            //Checks if input is empty or not
             var floatNumberCheck = string.IsNullOrWhiteSpace(grabFloat);
             //Checks if input is a valid number or not
             if (!floatNumberCheck)
