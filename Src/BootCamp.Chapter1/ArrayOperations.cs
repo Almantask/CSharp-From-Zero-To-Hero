@@ -122,8 +122,14 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                var newArrayOneElement = new int[1];
+                newArrayOneElement[0] = number;
+                return newArrayOneElement;
+            }
+
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -134,8 +140,14 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                var newArrayOneElement = new int[1];
+                newArrayOneElement[0] = number;
+                return newArrayOneElement;
+            }
+
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -147,8 +159,42 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                var newArrayOneElement = new int[1];
+                newArrayOneElement[0] = number;
+                return newArrayOneElement;
+            }
+
+            if ( array.Length == 0 && index == 0)
+            {
+                var newArrayOneElement = new int[1];
+                newArrayOneElement[0] = number;
+                return newArrayOneElement;
+            }
+
+            if (array.Length == 0 && index > 0 || index > array.Length - 1 || index < 0)
+            {
+                return array;
+            }
+
+            var newArray = new int[array.Length + 1];
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                if (i < index)
+                {
+                    newArray[i] = array[i];
+                }
+                else if (i == index)
+                {
+                    newArray[i] = number;
+                }
+                else
+                {
+                    newArray[i] = array[i - 1];
+                }
+            }
+            return newArray;
         }
     }
 }
