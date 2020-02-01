@@ -59,11 +59,13 @@ namespace BootCamp.Chapter
             bool isFloat = float.TryParse(input, out float number);
             if (isFloat) return number;
 
+            string inputNotNumber = "\"" + input + "\"" + " is not a valid number!";
+            Console.WriteLine(inputNotNumber);
+
             if (message.Equals(WeightMessage)) consoleInputWeight = input;
             if (message.Equals(HeightMessage)) consoleInputHeight = input;
 
-            bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));
-            Console.WriteLine("\"" + input + "\"" + " is not a valid number!");
+            bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));            
             return (gotInput) ? -1 : 0;            
         }
 
