@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="Bootcamp.Optional">
+      <HintPath>..\..\SecretSource\Bootcamp.Optional.dll</HintPath>
+    </Reference>
     <Reference Include="Bootcamp.SecretP1">
       <HintPath>..\..\SecretSource\Bootcamp.SecretP1.dll</HintPath>
     </Reference>
