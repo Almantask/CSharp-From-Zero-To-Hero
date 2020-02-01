@@ -9,9 +9,11 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            
+
             if (array == null || array.Length == 0)
+            {
                 return;
+            }
 
             int[] newArray = new int[array.Length];
 
@@ -30,13 +32,21 @@
                 while (isSameNumberCheck)
                 {
                     if (array[i] == 0)
+                    {
                         isSameNumberCheck = false;
+                    }
                     else if (array[i] == newArray[position])
+                    {
                         position++;
+                    }
                     else
+                    {
                         isSameNumberCheck = false;
+                    }
                 }
+
                 newArray[position] = array[i];
+
             }
             for (int i = 0; i < newArray.Length; i++)
             {
@@ -52,15 +62,17 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-                if (array == null || array.Length == 0)
-                    return;
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
 
-                int[] newArray = new int[array.Length];
+            int[] newArray = new int[array.Length];
 
-                for (int i = 0; i < array.Length; i++)
-                {
-                    newArray[i] = array[array.Length -1 - i];
-                }
+            for (int i = 0; i < array.Length; i++)
+            {
+                newArray[i] = array[array.Length - 1 - i];
+            }
 
             for (int i = 0; i < newArray.Length; i++)
             {
@@ -77,11 +89,13 @@
         public static int[] RemoveLast(int[] array)
         {
             if (array == null || array.Length == 0)
+            {
                 return array;
+            }
 
-            int[] newArray = new int[array.Length -1];
+            int[] newArray = new int[array.Length - 1];
 
-            for (int i = 0; i < array.Length-1; i++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
                 newArray[i] = array[i];
             }
@@ -96,13 +110,15 @@
         public static int[] RemoveFirst(int[] array)
         {
             if (array == null || array.Length == 0)
+            {
                 return array;
+            }
 
             int[] newArray = new int[array.Length - 1];
 
             for (int i = 0; i < array.Length - 1; i++)
             {
-                newArray[i] = array[i+1];
+                newArray[i] = array[i + 1];
             }
 
             return newArray;
@@ -116,8 +132,10 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null || array.Length == 0 || index < 0 || index > array.Length-1)
+            if (array == null || array.Length == 0 || index < 0 || index > array.Length - 1)
+            {
                 return array;
+            }
 
             int[] newArray = new int[array.Length - 1];
             bool isAfterIndex = false;
@@ -125,7 +143,9 @@
             for (int i = 0; i < array.Length - 1; i++)
             {
                 if (i == index)
+                {
                     isAfterIndex = true;
+                }
 
                 if (!isAfterIndex)
                 {
@@ -149,7 +169,9 @@
         public static int[] InsertFirst(int[] array, int number)
         {
             if (array == null)
+            {
                 return new int[] { number };
+            }
 
             int[] newArray = new int[array.Length + 1];
 
@@ -172,7 +194,9 @@
         public static int[] InsertLast(int[] array, int number)
         {
             if (array == null)
+            {
                 return new int[] { number };
+            }
 
             int[] newArray = new int[array.Length + 1];
 
@@ -195,10 +219,27 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
+            if (array == null)
+            {
+                if (index == 0)
+                {
+                    return new int[] { number };
+                }
+                else
+                {
+                    return array;
+                }
+            }
+
             if (index < 0 || index > array.Length)
+            {
                 return array;
-            if (array == null || array.Length == 0)
+            }
+                
+            if (array.Length == 0)
+            {
                 return new int[] { number };
+            }
 
             int[] newArray = new int[array.Length + 1];
 
@@ -206,10 +247,12 @@
 
             bool isAfterIndex = false;
 
-            for (int i = 0; i < array.Length ; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 if (i == index)
+                {
                     isAfterIndex = true;
+                }
 
                 if (!isAfterIndex)
                 {
@@ -217,7 +260,7 @@
                 }
                 else
                 {
-                    newArray[i+1] = array[i];
+                    newArray[i + 1] = array[i];
                 }
             }
 
