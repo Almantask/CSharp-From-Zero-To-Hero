@@ -39,7 +39,27 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
+
+            int temp;
+            // traverse = to array length
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                // traverse i + 1 to array length
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    // compare array element with all next element
+                    if (array[i] < array[j])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -49,6 +69,11 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
             // ToDo: implement.
             return array;
         }
@@ -59,6 +84,11 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
             // ToDo: implement.
             return array;
         }
@@ -71,6 +101,11 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
             // ToDo: implement.
             return array;
         }
