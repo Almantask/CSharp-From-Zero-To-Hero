@@ -22,8 +22,8 @@ namespace BootCamp.Chapter
             float height = PromptFloat(HeightMessage);
             float bmi = CalculateBmi(weight, height);
 
-            const string Response = "{0} {1} is {2} years old, he has a BMI of {3} with a weight of {4} kg and a height of {5} meters.";
-            if (bmi > 0) { Console.WriteLine(Response, firstName, lastName, age, bmi, weight, height); }
+            const string response = "{0} {1} is {2} years old, he has a BMI of {3} with a weight of {4} kg and a height of {5} meters.";
+            if (bmi > 0) { Console.WriteLine(response, firstName, lastName, age, bmi, weight, height); }
         }
 
         public static int PromptInt(string message)
@@ -35,8 +35,7 @@ namespace BootCamp.Chapter
             if (isInteger) { return number; }
 
             Console.WriteLine("\"" + input + "\"" + " is not a valid number.");
-            bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));            
-            return (gotInput) ? -1 : 0;
+            return (GotInput(input)) ? -1 : 0;
         }
 
         public static string PromptString(string message)
@@ -63,8 +62,7 @@ namespace BootCamp.Chapter
             if (isFloat) { return number; }
 
             Console.WriteLine("\"" + input + "\"" + " is not a valid number.");
-            bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));           
-            return (gotInput) ? -1 : 0;            
+            return (GotInput(input)) ? -1 : 0;            
         }
 
         public static float CalculateBmi(float weight, float height)
@@ -77,6 +75,11 @@ namespace BootCamp.Chapter
                 return 0;
             }
             return weight / (height * height);
+        }
+
+        public static bool GotInput(string input)
+        {
+            return !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));
         }
     }
 }
