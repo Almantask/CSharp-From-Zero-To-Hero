@@ -9,7 +9,27 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
+
+            int temp;
+            // traverse = to array length
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                // traverse i + 1 to array length
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    // compare array element with all next element
+                    if (array[j] < array[i])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
         }
 
         /// <summary>
