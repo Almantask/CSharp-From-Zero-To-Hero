@@ -14,7 +14,7 @@ namespace BootCamp.Chapter
         static string consoleInputHeight;
 
         public static void Demo()
-        {            
+        {
             string firstName = PromptString(FirstNameMessage);
             string lastName = PromptString(LastNameMessage);
             int age = PromptInt(AgeMessage);
@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
             float bmi = CalculateBmi(weight, height);
 
             const string Response = "{0} {1} is {2} years old, he has a BMI of {3} with a weight of {4} kg and a height of {5} meters.";
-            if (bmi > 0) Console.WriteLine(Response, firstName, lastName, age, bmi, weight, height);
+            if (bmi > 0) { Console.WriteLine(Response, firstName, lastName, age, bmi, weight, height); }
         }
 
         public static int PromptInt(string message)
@@ -32,10 +32,10 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
 
             bool isInteger = int.TryParse(input, out int number);
-            if (isInteger) return number;
+            if (isInteger) { return number; }
 
-            bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));
-            Console.WriteLine("\"" + input + "\"" + " is not a valid number!");
+            Console.WriteLine("\"" + input + "\"" + " is not a valid number.");
+            bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));            
             return (gotInput) ? -1 : 0;
         }
 
@@ -45,9 +45,9 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
             
             bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));
-            if (gotInput) return input;
-
+            if (gotInput) { return input; }
             Console.WriteLine("Name cannot be empty.");
+
             return "-";
         }
 
@@ -56,16 +56,14 @@ namespace BootCamp.Chapter
             Console.Write(message);
             string input = Console.ReadLine();
 
+            if (message.Equals(WeightMessage)) { consoleInputWeight = input; }
+            if (message.Equals(HeightMessage)) { consoleInputHeight = input; }
+
             bool isFloat = float.TryParse(input, out float number);
-            if (isFloat) return number;
+            if (isFloat) { return number; }
 
-            string inputNotNumber = "\"" + input + "\"" + " is not a valid number!";
-            Console.WriteLine(inputNotNumber);
-
-            if (message.Equals(WeightMessage)) consoleInputWeight = input;
-            if (message.Equals(HeightMessage)) consoleInputHeight = input;
-
-            bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));            
+            Console.WriteLine("\"" + input + "\"" + " is not a valid number.");
+            bool gotInput = !(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input));           
             return (gotInput) ? -1 : 0;            
         }
 
@@ -74,8 +72,8 @@ namespace BootCamp.Chapter
             if (height <= 0 || weight <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                if (height <= 0) Console.WriteLine("Height cannot be less than zero, but was \"{0}\".", consoleInputHeight);
-                if (weight <= 0) Console.WriteLine("Weight cannot be less than zero, but was \"{0}\".", consoleInputWeight);
+                if (height <= 0) { Console.WriteLine("Height cannot be less than zero, but was {0}.", consoleInputHeight); }
+                if (weight <= 0) { Console.WriteLine("Weight cannot be less than zero, but was {0}.", consoleInputWeight); }
                 return 0;
             }
             return weight / (height * height);
