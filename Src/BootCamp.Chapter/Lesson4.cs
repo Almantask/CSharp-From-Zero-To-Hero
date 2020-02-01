@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
             float height = PromptFloat(HeightMessage);
             float bmi = CalculateBmi(weight, height);
 
-            string response = "{0} {1} is {2} years old, he has a BMI of {3} with a weight of {4} kg and a height of {5} meters.";
+            const string response = "{0} {1} is {2} years old, he has a BMI of {3} with a weight of {4} kg and a height of {5} meters.";
             if (bmi > 0) Console.WriteLine(response, firstName, lastName, age, bmi, weight, height);
         }
 
