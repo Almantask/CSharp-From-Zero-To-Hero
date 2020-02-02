@@ -31,3 +31,17 @@
   * The line of the breakpoint will **not** execute until you press the green button "Continue" again. (Simplified)
     * This means that said `Console.WriteLine();` will not print a new line before you did click "Continue".
     * Remember this very well! Otherwise this will lead to confusion in later homeworks - most likely.
+
+##Solution
+Part 1
+Step into Part1And2() function. Set breakpoint on first foreach loop line 48, variable 'value' have the answers
+"Debugger!" 51 79 77
+
+Part 2
+Set breakpoint at for loop line 69. It prints out spassphrase but first time it is incorrect. After dragging yellow line back to
+for loop start, and running code again passphrase is different. Doing this few times gives correct passphrase.
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+
+
+
+
