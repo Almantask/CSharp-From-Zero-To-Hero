@@ -17,7 +17,7 @@ namespace BootCamp.Chapter.Tests
                                           $"|Hello |{Environment.NewLine}" +
                                           $"|World!|{Environment.NewLine}" +
                                           $"+------+{Environment.NewLine}";
-            yield return new object[] { $"Hello{Environment.NewLine}World!", 0, expectedResult0 };
+            yield return new object[] { $"Hello{Environment.NewLine}World!", 0, expectedResultMultiline };
 
             var expectedResult1 = $"+-------+{Environment.NewLine}" +
                                   $"|       |{Environment.NewLine}" +
