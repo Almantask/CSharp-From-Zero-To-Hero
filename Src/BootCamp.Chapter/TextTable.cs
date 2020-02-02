@@ -38,7 +38,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string Build(string message, int padding)
         {
-            if (string.IsNullOrEmpty(message) && padding == 0)
+            if (string.IsNullOrEmpty(message))
             {
                 return "";
             }
@@ -54,12 +54,15 @@ namespace BootCamp.Chapter
             var sb = new StringBuilder();
 
             sb.Append(newHorizontalBorder);
+
             for (var i = 0; i < padding; i++)
             {
                 sb.Append(newEmptyLine);
             }
 
-            foreach (var word in message.Split(dividerChar))
+            var wordsInMessage = message.Split(dividerChar);
+
+            foreach (var word in wordsInMessage)
             {
                 sb.Append(verticalWallChar);
                 sb.Append(' ', padding);
