@@ -17,7 +17,7 @@
 
         public static string PromptString(string message)
         {
-            return Lesson4.PromptString(message);
+            return Lesson4.PromptName(message);
         }
 
         public static float PromptFloat(string message)

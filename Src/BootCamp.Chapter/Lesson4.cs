@@ -71,6 +71,18 @@ namespace BootCamp.Chapter
             return input;
         }
 
+        public static string PromptName(string message)
+        {
+            string input = PromptString(message);
+            Console.Write(Environment.NewLine);
+
+            if ("-".Equals(input))
+            {
+                Console.Write("Name cannot be empty.");
+            }
+            return input;
+        }
+
         public static int RecursivePromptInt(string message)
         {
             int input = PromptInt(message);
@@ -95,7 +107,7 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             string input = Console.ReadLine();
-
+            Console.Write(Environment.NewLine);
             //return 0 with empty string
             if (String.IsNullOrEmpty(input))
             {
@@ -107,7 +119,7 @@ namespace BootCamp.Chapter
 
             if (!isInt)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 result = -1;
             }
             return result;
@@ -117,7 +129,7 @@ namespace BootCamp.Chapter
         {
             Console.Write(message);
             string input = Console.ReadLine();
-
+            Console.Write(Environment.NewLine);
             //return 0 with empty string
             if (String.IsNullOrEmpty(input))
             {
@@ -129,7 +141,7 @@ namespace BootCamp.Chapter
 
             if (!isFloat)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 result = -1;
             }
             return result;
