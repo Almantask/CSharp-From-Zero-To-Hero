@@ -103,7 +103,7 @@ namespace BootCamp.Chapter
                 table += "|";
                 table += $"{ String.Empty.PadRight(longestWord.Length + 2 * padding, ' ')}";
                 table += "|";
-                table += $"{Environment.NewLine}";
+                table += $"{Environment.NewLine} ";
             }
 
             // print bottom 
