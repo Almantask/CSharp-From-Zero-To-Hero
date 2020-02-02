@@ -17,10 +17,10 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string[] Balances => new[]
         {
-            "Tom, 15.5, 200, 500, 600, 200, 0, 1000",
-            "Katherine, 85, 0, -500, 0, 500, 900, 1500.99",
+            "Tom, 15.5, 200, 500, 600, 200, 500, 1000",
+            "Katherine, 85, 0, -500, 0, 500, 10000, 1500.99",
             "Bill, 99999, , 99970, 99900",
-            "Catie, 0, 0, 990, 3000"
+            "Catie, 0, 500, 990, 1300"
         };
     }
 }

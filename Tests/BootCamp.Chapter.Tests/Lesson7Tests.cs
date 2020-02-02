@@ -20,31 +20,33 @@ namespace BootCamp.Chapter.Tests
             result.Should().Be(expectation);
         }
 
-        // TODO: finish tests.
-        //[Theory]
-        //[]
-        //public void FindHighestBalanceEver(string[] peopleAndBalances)
-        //{
 
-        //}
+        [Theory]
+        [ClassData(typeof(TableMessageInput))]
+        public void FindHighestBalanceEver(string[] peopleAndBalances)
+        {
 
-        //[Theory]
-        //public void FindPersonWithBiggestLoss(string[] peopleAndBalances)
-        //{
-            
-        //}
+        }
 
-        //[Theory]
-        //[Fact]
-        //public void FindRichestPerson(string[] peopleAndBalances)
-        //{
+        [Theory]
+        [ClassData(typeof(TableMessageInput))]
+        public void FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        {
 
-        //}
+        }
 
-        //[Theory]
-        //public void FindMostPoorPerson(string[] peopleAndBalances)
-        //{
+        [Theory]
+        [ClassData(typeof(TableMessageInput))]
+        public void FindRichestPerson(string[] peopleAndBalances)
+        {
 
-        //}
+        }
+
+        [Theory]
+        [ClassData(typeof(TableMessageInput))]
+        public void FindMostPoorPerson(string[] peopleAndBalances)
+        {
+
+        }
     }
 }
