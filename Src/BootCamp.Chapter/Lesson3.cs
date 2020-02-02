@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -37,22 +35,19 @@ namespace BootCamp.Chapter
         public static string PromptString(string message)
         {
             Console.Write(message);
-            string value = Console.ReadLine();
-            return value;
+            return Console.ReadLine();
         }
 
         public static int PromptInt(string message)
         {
             Console.Write(message);
-            int value = Int32.Parse(Console.ReadLine());
-            return value;
+            return Int32.Parse(Console.ReadLine());
         }
 
         public static float PromptFloat(string message)
         {
             Console.Write(message);
-            float value = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            return value;
+            return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
         }
 
         public static float CalculateBmi(float weightKg, float heightM)
