@@ -43,7 +43,6 @@ namespace BootCamp.Chapter
                 return "";
             }
 
-            // created variable to no
             var longestWordInMessageSize = LongestWordInMessageSize(message);
 
             var newHorizontalBorder = new StringBuilder();
@@ -55,14 +54,12 @@ namespace BootCamp.Chapter
             var sb = new StringBuilder();
 
             sb.Append(newHorizontalBorder);
-
-            var wordsInMessage = message.Split(dividerChar);
             for (var i = 0; i < padding; i++)
             {
                 sb.Append(newEmptyLine);
             }
 
-            foreach (var word in wordsInMessage)
+            foreach (var word in message.Split(dividerChar))
             {
                 sb.Append(verticalWallChar);
                 sb.Append(' ', padding);
