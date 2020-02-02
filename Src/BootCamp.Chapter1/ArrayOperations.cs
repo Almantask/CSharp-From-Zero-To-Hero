@@ -97,15 +97,7 @@
             {
                 return array;
             }
-
-            int[] newArray = new int[array.Length - 1];
-
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                newArray[i] = array[i];
-            }
-
-            return newArray;
+            return RemoveAt(array, array.Length -1);
         }
 
         /// <summary>
@@ -118,15 +110,7 @@
             {
                 return array;
             }
-
-            int[] newArray = new int[array.Length - 1];
-
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                newArray[i] = array[i + 1];
-            }
-
-            return newArray;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -173,21 +157,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (array == null)
-            {
-                return new int[] { number };
-            }
-
-            int[] newArray = new int[array.Length + 1];
-
-            newArray[0] = number;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                newArray[i + 1] = array[i];
-            }
-
-            return newArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -198,21 +168,11 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array == null)
+            if (CheckForNullORZeroLength(array))
             {
                 return new int[] { number };
             }
-
-            int[] newArray = new int[array.Length + 1];
-
-            newArray[array.Length] = number;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-
-            return newArray;
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
