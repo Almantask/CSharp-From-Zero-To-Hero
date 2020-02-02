@@ -46,10 +46,10 @@ namespace BootCamp.Chapter
             var longestWordInMessageSize = LongestWordInMessageSize(message);
 
             var newHorizontalBorder = new StringBuilder();
-            newHorizontalBorder.Append(cornerChar).Append(horizontalWallChar, longestWordInMessageSize + (padding * 2)).Append(cornerChar).Append(Environment.NewLine);
+            newHorizontalBorder.Append(cornerChar).Append(horizontalBorderChar, longestWordInMessageSize + (padding * 2)).Append(cornerChar).Append(Environment.NewLine);
 
             var newEmptyLine = new StringBuilder();
-            newEmptyLine.Append(verticalWallChar).Append(' ', longestWordInMessageSize + (padding * 2)).Append(verticalWallChar).Append(Environment.NewLine);
+            newEmptyLine.Append(verticalBorderChar).Append(' ', longestWordInMessageSize + (padding * 2)).Append(verticalBorderChar).Append(Environment.NewLine);
 
             var sb = new StringBuilder();
 
@@ -64,14 +64,15 @@ namespace BootCamp.Chapter
 
             foreach (var word in wordsInMessage)
             {
-                sb.Append(verticalWallChar);
+                sb.Append(verticalBorderChar);
                 sb.Append(' ', padding);
                 sb.Append(word);
                 sb.Append(' ', longestWordInMessageSize - word.Length);
                 sb.Append(' ', padding);
-                sb.Append(verticalWallChar);
+                sb.Append(verticalBorderChar);
                 sb.Append(Environment.NewLine);
             }
+
             for (var i = 0; i < padding; i++)
             {
                 sb.Append(newEmptyLine);
@@ -84,8 +85,8 @@ namespace BootCamp.Chapter
 
         private const string dividerChar = "\r\n";
         private const char cornerChar = '+';
-        private const char horizontalWallChar = '-';
-        private const char verticalWallChar = '|';
+        private const char horizontalBorderChar = '-';
+        private const char verticalBorderChar = '|';
 
         private static int LongestWordInMessageSize(string message)
         {
