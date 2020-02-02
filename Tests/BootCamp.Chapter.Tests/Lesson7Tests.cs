@@ -1,8 +1,4 @@
-using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+using BootCamp.Chapter.Tests.Input;
 using FluentAssertions;
 using Xunit;
 
@@ -20,33 +16,40 @@ namespace BootCamp.Chapter.Tests
             result.Should().Be(expectation);
         }
 
-
         [Theory]
-        [ClassData(typeof(TableMessageInput))]
-        public void FindHighestBalanceEver(string[] peopleAndBalances)
+        [ClassData(typeof(HighestHistoricBalanceExpectations))]
+        public void FindHighestBalanceEver_With_ArrayOf_People_And_Balances_Returns_HighestHistoricBalance_Or_Balances(string[] peopleAndBalances, string expectedHighestBalance)
         {
+            var highestHistoricBalance = BalanceStats.FindHighestBalanceEver(peopleAndBalances);
 
+            highestHistoricBalance.Should().Be(expectedHighestBalance);
         }
 
         [Theory]
-        [ClassData(typeof(TableMessageInput))]
-        public void FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        [ClassData(typeof(PersonWithBiggestLossExpectations))]
+        public void FindPersonWithBiggestLoss_With_ArrayOf_People_And_Balances_Returns_Person_Or_People_With_BiggestLoss(string[] peopleAndBalances, string expectedBiggestLoss)
         {
+            var personWithBiggestLoss = BalanceStats.FindPersonWithBiggestLoss(peopleAndBalances);
 
+            personWithBiggestLoss.Should().Be(expectedBiggestLoss);
         }
 
         [Theory]
-        [ClassData(typeof(TableMessageInput))]
-        public void FindRichestPerson(string[] peopleAndBalances)
+        [ClassData(typeof(RichestPersonExpectations))]
+        public void FindRichestPerson_With_ArrayOf_People_And_Balances_Returns_Richest_Person_Or_People_And_Their_Balance(string[] peopleAndBalances, string expectedRichestPerson)
         {
+            var richestPerson = BalanceStats.FindRichestPerson(peopleAndBalances);
 
+            richestPerson.Should().Be(expectedRichestPerson);
         }
 
         [Theory]
-        [ClassData(typeof(TableMessageInput))]
-        public void FindMostPoorPerson(string[] peopleAndBalances)
+        [ClassData(typeof(MostPoorPersonExpectations))]
+        public void FindMostPoorPerson_With_ArrayOf_People_And_Balances_Returns_MostPoor_Person_Or_People_And_Their_Blaance(string[] peopleAndBalances, string expectedMostPoorPerson)
         {
+            var mostPoorPerson = BalanceStats.FindMostPoorPerson(peopleAndBalances);
 
+            mostPoorPerson.Should().Be(expectedMostPoorPerson);
         }
     }
 }
