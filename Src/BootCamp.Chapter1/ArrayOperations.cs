@@ -10,13 +10,15 @@
         public static void Sort(int[] array)
         {
 
-            if (array == null || array.Length == 0)
+            if (CheckForNullORZeroLength(array))
             {
                 return;
             }
 
             int[] newArray = new int[array.Length];
 
+            // this loop goes through the whole array checking each number in array for which POSITION it should be in the newArray (i > k = +1).
+            // then it checks if the number (IsSameNumberCheck) is already in the newArray (multiple times) and places it after those.
             for (int i = 0; i < array.Length; i++)
             {
                 int position = 0;
@@ -55,6 +57,15 @@
 
         }
 
+        private static bool CheckForNullORZeroLength(int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Reverse the array elements, first being last and so on.
         /// If array empty or null- don't do anything.
@@ -62,7 +73,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (CheckForNullORZeroLength(array))
             {
                 return;
             }
@@ -82,7 +93,7 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (CheckForNullORZeroLength(array))
             {
                 return array;
             }
@@ -103,7 +114,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (CheckForNullORZeroLength(array))
             {
                 return array;
             }
