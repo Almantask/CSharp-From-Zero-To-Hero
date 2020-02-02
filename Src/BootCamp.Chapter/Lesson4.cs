@@ -37,9 +37,14 @@ namespace BootCamp.Chapter
         /// <returns>The parsed integer if the input was valid, 0 when empty and -1 when invalid.</returns>
         public static int PromptInt(string message)
         {
-            return !PromptTryParse(message, out int parsingResult, out string input)
-                ? InvalidInput(input)
-                : FixRange(parsingResult);
+            if (PromptTryParse(message, out int parsingResult, out string input))
+            {
+                return FixRange(parsingResult);
+            }
+            else
+            {
+                return InvalidInput(input);
+            }
         }
 
         /// <summary>
@@ -49,9 +54,14 @@ namespace BootCamp.Chapter
         /// <returns>The parsed float if the input was valid, 0 when empty and -1 when invalid.
         public static float PromptFloat(string message)
         {
-            return !PromptTryParse(message, out float parsingResult, out string input)
-                ? InvalidInput(input)
-                : FixRange(parsingResult);
+            if (PromptTryParse(message, out float parsingResult, out string input))
+            {
+                return FixRange(parsingResult);
+            }
+            else
+            {
+                return InvalidInput(input);
+            }
         }
 
         /// <summary>
@@ -123,8 +133,7 @@ namespace BootCamp.Chapter
         private static bool PromptTryParse(string message, out float result, out string input)
         {
             input = PromptInput(message);
-            return float.TryParse(input, NumberStyles.Float,
-                CultureInfo.InvariantCulture, out result);
+            return float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out result);
         }
 
         /// <summary>
@@ -145,9 +154,14 @@ namespace BootCamp.Chapter
         /// <returns>An integer indicating the error.</returns>
         private static int InvalidInput(string input)
         {
-            return string.IsNullOrEmpty(input)
-                ? EmptyNumberInput
-                : PrintInvalidNumber(input);
+            if (string.IsNullOrEmpty(input))
+            {
+                return EmptyNumberInput;
+            }
+            else
+            {
+                return PrintInvalidNumber(input);
+            }
         }
 
         /// <summary>
@@ -157,9 +171,14 @@ namespace BootCamp.Chapter
         /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
         private static int FixRange(int value)
         {
-            return value > 0
-                ? value
-                : InvalidNumberInput;
+            if (value > 0)
+            {
+                return value;
+            }
+            else
+            {
+                return InvalidNumberInput;
+            }
         }
 
         /// <summary>
@@ -169,9 +188,14 @@ namespace BootCamp.Chapter
         /// <returns>Returns the value if it is in range or a value indicating the opposite.</returns>
         private static float FixRange(float value)
         {
-            return value > 0
-                ? value
-                : InvalidNumberInput;
+            if (value > 0)
+            {
+                return value;
+            }
+            else
+            {
+                return InvalidNumberInput;
+            }
         }
 
         /// <summary>
@@ -202,11 +226,13 @@ namespace BootCamp.Chapter
         {
             string equal = printEqual ? "equal or " : "";
             string errorMessage2 = $"{name} cannot be {equal}less than zero, but was {value}.";
+
             if (value <= 0)
             {
                 errorMessage += $"{Environment.NewLine}{errorMessage2}";
                 return true;
             }
+
             return false;
         }
 
