@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
 
         }
 
-        private static StringBuilder AddTextToTable(int padding, string[] arrayOfLines, int lengthLongestWord, StringBuilder table)
+        private static void AddTextToTable(int padding, string[] arrayOfLines, int lengthLongestWord, StringBuilder table)
         {
             foreach (var word in arrayOfLines)
             {
@@ -74,7 +74,6 @@ namespace BootCamp.Chapter
 
             }
 
-            return table; 
         }
 
         private static int GetLongestWordLength(string[] arrayOfLines)
@@ -91,7 +90,7 @@ namespace BootCamp.Chapter
             return lengthLongestWord; 
         }
 
-        private static StringBuilder AddEmptyLinesToTable(int padding, int lengthLongestWord, StringBuilder table)
+        private static void AddEmptyLinesToTable(int padding, int lengthLongestWord, StringBuilder table)
         {
             for (int i = 0; i < padding; i++)
             {
@@ -101,16 +100,14 @@ namespace BootCamp.Chapter
                 table.Append($"{Environment.NewLine}");
             }
 
-            return table;
         }
 
-        private static StringBuilder AddTopOrBottomLineToTable(int padding, int lengthLongestWord, StringBuilder table)
+        private static void AddTopOrBottomLineToTable(int padding, int lengthLongestWord, StringBuilder table)
         {
             table.Append( "+");
             table.Append($"{String.Empty.PadRight(lengthLongestWord + 2 * padding, '-')}");
             table.Append("+");
             table.Append($"{Environment.NewLine}");
-            return table;
         }
     }
 }
