@@ -40,82 +40,85 @@ namespace BootCamp.Chapter
         {
             if (message.Length == 0)
             {
-                return ""; 
+                return "";
             }
             // make a array so I can find the longest word. 
 
-            var arrayOfWords = message.Split(Environment.NewLine);
+            var arrayOfLines = message.Split(Environment.NewLine);
 
             // Find length of longest word 
-           var longestWord = ""; 
+            var lengthLongestWord = 0;
 
-            if (arrayOfWords.Length == 1)
+            if (arrayOfLines.Length == 1)
             {
-                longestWord = arrayOfWords[0]; 
+                lengthLongestWord = arrayOfLines[0].Length;
             }
             else
             {
-                switch (arrayOfWords[0].CompareTo(arrayOfWords[1]))
+                foreach (var word in arrayOfLines)
                 {
-                    case -1:
-                        longestWord = arrayOfWords[1]; 
-                        break;
-                    default:
-                        longestWord = arrayOfWords[0]; 
-                        break;
+                    if (word.Length > lengthLongestWord)
+                    {
+                        lengthLongestWord = word.Length;
+                    }
                 }
             }
 
             // print table 
 
+            var table = new StringBuilder() ; 
             // print header
-            var table = "+"; 
-            table += $"{String.Empty.PadRight(longestWord.Length + 2 * padding , '-')}"; 
-            table += "+"; 
-            table +=$"{Environment.NewLine}";
+            table = DisplayTopOrBottomLine(padding, lengthLongestWord, table);
 
             // print empty lines
-            for (int i = 0; i < padding; i++)
-            {
-                table += "|"; 
-                table += $"{ String.Empty.PadRight(longestWord.Length + 2 * padding, ' ')}";
-                table += "|"; 
-                table += $"{Environment.NewLine}";
-            }
+            table = DisplayEmptyLines(padding, lengthLongestWord, table);
 
             // print text 
 
-            foreach (var word in arrayOfWords)
+            foreach (var word in arrayOfLines)
             {
-                table += "|";
-                table += String.Empty.PadRight(padding, ' ');
-                table += word;  
-                table += String.Empty.PadRight(longestWord.Length - word.Length + padding, ' ');
-                table += "|";
-                table += Environment.NewLine; 
+                table.Append( "|");
+                table.Append (String.Empty.PadRight(padding, ' '));
+                table.Append(word);
+                table.Append(String.Empty.PadRight(lengthLongestWord - word.Length + padding, ' '));
+                table.Append("|");
+                table.Append(Environment.NewLine);
 
             }
 
             // print empty lines 
 
-            for (int i = 0; i < padding; i++)
-            {
-                table += "|";
-                table += $"{ String.Empty.PadRight(longestWord.Length + 2 * padding, ' ')}";
-                table += "|";
-                table += $"{Environment.NewLine} ";
-            }
+            table = DisplayEmptyLines(padding, lengthLongestWord, table);
 
             // print bottom 
 
-            table += "+";
-            table += $"{String.Empty.PadRight(longestWord.Length + 2 * padding, '-')}";
-            table += "+";
-            table += $"{Environment.NewLine}";
+            table = DisplayTopOrBottomLine(padding, lengthLongestWord, table) ;
 
 
-            return table; 
+            return table.ToString();
 
+        }
+
+        private static StringBuilder DisplayEmptyLines(int padding, int lengthLongestWord, StringBuilder table)
+        {
+            for (int i = 0; i < padding; i++)
+            {
+                table.Append("|");
+                table.Append($"{ String.Empty.PadRight(lengthLongestWord + 2 * padding, ' ')}");
+                table.Append( "|");
+                table.Append($"{Environment.NewLine}");
+            }
+
+            return table;
+        }
+
+        private static StringBuilder DisplayTopOrBottomLine(int padding, int lengthLongestWord, StringBuilder table)
+        {
+            table.Append( "+");
+            table.Append($"{String.Empty.PadRight(lengthLongestWord + 2 * padding, '-')}");
+            table.Append("+");
+            table.Append($"{Environment.NewLine}");
+            return table;
         }
     }
 }
