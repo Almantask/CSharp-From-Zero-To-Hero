@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
 
                 Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " m.");
 
-                float bmi = CalculateBodyMassIndex(weight, height);
+                float bmi = CalculateBMI(weight, height);
                 Console.WriteLine(firstName + " " + lastName + " has a BMI of " + bmi + ".");
             }
         }
@@ -82,7 +82,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static float CalculateBodyMassIndex(float weight, float height)
+        public static float CalculateBMI(float weight, float height)
         {
             bool isWeightValid = true;
             bool isHeightValid = true;
