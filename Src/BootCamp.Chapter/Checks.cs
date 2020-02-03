@@ -16,22 +16,22 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            return Lesson3.PromptInt(message);
+            return Lesson4.ParseInt(message);
         }
 
         public static string PromptString(string message)
         {
-            return Lesson3.PromptString(message);
+            return Lesson4.ParseString(message);
         }
 
         public static float PromptFloat(string message)
         {
-            return Lesson3.PromptFloat(message);
+            return Lesson4.ParseFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            return Lesson3.CalculateBmi(weight, height);
+            return Lesson4.CalculateBmi(weight, height);
         }
     }
 }
