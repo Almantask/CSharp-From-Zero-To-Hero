@@ -29,7 +29,10 @@
                         {
                             highestBalance = balance;
                             highestBalanceHolder = currentBalanceHolder;
-
+                        }
+                        if (balance == highestBalance && highestBalanceHolder != currentBalanceHolder)
+                        {
+                            highestBallanc
                         }
                     }
                 }
