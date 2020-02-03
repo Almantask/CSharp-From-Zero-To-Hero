@@ -9,6 +9,11 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class TextTable
     {
+        private static readonly string divider = Environment.NewLine;
+        private const char cornerChar = '+';
+        private const char horizontalBorderChar = '-';
+        private const char verticalBorderChar = '|';
+
         /*
 
          Input: "Hello", 0
@@ -60,7 +65,7 @@ namespace BootCamp.Chapter
                 sb.Append(newEmptyLine);
             }
 
-            var wordsInMessage = message.Split(dividerChar);
+            var wordsInMessage = message.Split(divider);
 
             foreach (var word in wordsInMessage)
             {
@@ -83,15 +88,10 @@ namespace BootCamp.Chapter
             return sb.ToString();
         }
 
-        private const string dividerChar = "\r\n";
-        private const char cornerChar = '+';
-        private const char horizontalBorderChar = '-';
-        private const char verticalBorderChar = '|';
-
         private static int LongestWordInMessageSize(string message)
         {
             int size = 0;
-            foreach (var word in message.Split(dividerChar))
+            foreach (var word in message.Split(divider))
             {
                 if (word.Length > size)
                 {

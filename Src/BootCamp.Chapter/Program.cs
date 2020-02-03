@@ -6,7 +6,6 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
-            Console.Write(TextTable.Build($"Good evening,{Environment.NewLine}how are you today?", 4));
         }
     }
 }
