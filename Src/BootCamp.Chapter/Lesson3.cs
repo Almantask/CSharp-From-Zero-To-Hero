@@ -32,10 +32,10 @@ namespace BootCamp.Chapter
             WriteLine(message);
             return float.Parse(Console.ReadLine());
         }
-        static float PromptInt(string message)
+        static int PromptInt(string message)
         {
             WriteLine(message);
-            return float.Parse(Console.ReadLine());
+            return int.Parse(Console.ReadLine());
         }
         static string PromptString(string message)
         {
