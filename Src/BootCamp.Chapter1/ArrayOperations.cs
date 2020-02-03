@@ -31,7 +31,9 @@ namespace BootCamp.Chapter1
 
             }
             foreach (int sort in array)
-            Console.Write("{0} ", sort);
+            {
+                Console.Write("{0} ", sort);
+            }
         }
 
         /// <summary>
@@ -45,10 +47,10 @@ namespace BootCamp.Chapter1
 
             // traverse 0 to array length 
             for (int i = 0; i < array.Length - 1; i++)
-
+            {
                 // traverse i+1 to array length 
                 for (int j = i + 1; j < array.Length; j++)
-
+                {
                     // compare array element with  
                     // all next element 
                     if (array[i] < array[j])
@@ -58,7 +60,8 @@ namespace BootCamp.Chapter1
                         array[i] = array[j];
                         array[j] = temp;
                     }
-
+                }
+            }
             // print all element of array 
             foreach (int value in array)
             {
