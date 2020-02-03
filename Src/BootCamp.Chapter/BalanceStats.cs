@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
@@ -7,6 +9,11 @@
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
+            if (peopleAndBalances==null || peopleAndBalances.Length == 0)
+            {
+                return "N/A.";
+            }
+
             float highestBalance = 0f;
             string currentBalanceHolder = "";
             string highestBalanceHolder = "";
@@ -49,7 +56,7 @@
                 }
             }
             string stringHighestBalance = highestBalance.ToString();
-            return ($"{highestBalanceHolder} has the most money ever. ¤{stringHighestBalance}.");
+            return ($"{highestBalanceHolder} had the most money ever. ¤{stringHighestBalance}.");
         }
 
         /// <summary>
