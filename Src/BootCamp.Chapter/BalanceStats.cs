@@ -19,7 +19,7 @@ namespace BootCamp.Chapter
             var PersonWithHighestBalance = new StringBuilder() ; 
 
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
-			{
+            {
                 var currentPersonData = peopleAndBalances[i].Split(',') ; 
                 var highestAmountOfPerson = decimal.Parse(currentPersonData[1 ..].Max());
 
