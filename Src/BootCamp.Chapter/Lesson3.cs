@@ -21,6 +21,11 @@ namespace BootCamp.Chapter
             float height = PromptFloat("Enter height: ");
 
             // output
+            PrintPersonDataAndCalculateBmi(firstName, lastName, age, weight, height);
+        }
+
+        private static void PrintPersonDataAndCalculateBmi(string firstName, string lastName, int age, float weight, float height)
+        {
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his/her weight is " + weight + " kg and his/her height is " + height + " cm.");
             float bmi = CalculateBmi(weight, height / 100);
             Console.WriteLine(firstName + " " + lastName + "'s BMI: " + Math.Round(bmi, 2));
