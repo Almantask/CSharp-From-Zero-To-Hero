@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -23,7 +25,7 @@ namespace BootCamp.Chapter
             int age = PromptInt("Please give me your age");
             float weight = PromptFloat("Please give me your weight in kg");
             float height = PromptFloat("please give me your height in cm");
-            float BMI = Math.Round(weight / Math.Pow(height/100,2),2);
+            float BMI = CalcBMI(height, weight);
             Console.WriteLine($"{name} is {age} old, their weight is {weight}kg and their height is {height}cm\n Their BMI index is {BMI}");//their is used instead of his/her.
 
         }
@@ -41,6 +43,10 @@ namespace BootCamp.Chapter
         {
             WriteLine(message);
             return (Console.ReadLine());
+        }
+        static float CalcBMI(float height, float weight)
+        {
+            return Math.Round(weight / Math.Pow(height/100,2),2);
         }
         static void WriteLine(string text)
         {

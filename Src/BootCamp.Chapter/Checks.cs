@@ -30,9 +30,8 @@ namespace BootCamp.Chapter
         }
 
         public static float CalculateBmi(float weight, float height)
-        {
-            // To do: call your implementation. // I dont have a method for this.
-            return 0;
+        {   
+            return Lesson3.CalcBMI(weight, height);
         }
     }
 }
