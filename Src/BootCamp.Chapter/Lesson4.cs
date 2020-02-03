@@ -84,22 +84,9 @@ namespace BootCamp.Chapter
 
         public static float CalculateBMI(float weight, float height)
         {
-            bool isWeightValid = true;
-            bool isHeightValid = true;
-
-            if (weight <= 0)
+            if (weight <= 0 || height <= 0)
             {
-                isWeightValid = false;
-            }
-
-            if (height <= 0)
-            {
-                isHeightValid = false;
-            }
-
-            if (!isWeightValid || !isHeightValid)
-            {
-                return InvalidBMI(isWeightValid, isHeightValid, weight, height);
+                return InvalidBMI(weight, height);
             }
 
             else
@@ -108,16 +95,16 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static float InvalidBMI(bool isWeightValid, bool isHeightValid, float weight, float height)
+        public static float InvalidBMI(float weight, float height)
         {
             Console.WriteLine("Failed calculating BMI. Reason:");
 
-            if (!isWeightValid)
+            if (weight <= 0)
             {
                 Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
             }
 
-            if (!isHeightValid)
+            if (height <= 0)
             {
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
             }
