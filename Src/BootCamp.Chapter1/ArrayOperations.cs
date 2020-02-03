@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -23,12 +25,7 @@
         /// <param name="array">Input array.</param>
         private static bool ArrayIsNullOrEmpty(int[] array)
         {
-            if (array == null)
-            {
-                return true;
-            }
-
-            if (array.Length == 0)
+            if (array == null || array.Length == 0)
             {
                 return true;
             }
@@ -47,11 +44,11 @@
                 bool isSwapped = false;
                 for (int j = 0; j < array.Length - 1; j++)
                 {
-                    if (array[j] > array[j+1])
+                    if (array[j] > array[j + 1])
                     {
                         int temp = array[j];
-                        array[j] = array[j+1];
-                        array[j+1] = temp;
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
                         isSwapped = true;
                     }
                 }
@@ -120,11 +117,8 @@
             {
                 return array;
             }
-
-            int[] auxArray = new int[array.Length - 1];
-            CopyToArray(array, auxArray, 0, array.Length - 1);
-      
-            return auxArray;
+          
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -138,9 +132,7 @@
                 return array;
             }
 
-            int[] auxArray = new int[array.Length - 1];
-            CopyToArray(array, auxArray, 1, array.Length);
-            return auxArray;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -151,12 +143,11 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (index < 0 || index >= array?.Length)
+            if (ArrayIsNullOrEmpty(array))
             {
                 return array;
             }
-
-            if (ArrayIsNullOrEmpty(array))
+            if (index < 0 || index >= array.Length)
             {
                 return array;
             }
@@ -187,7 +178,7 @@
         {
             if (ArrayIsNullOrEmpty(array))
             {
-                return  new int[] { number };
+                return new [] { number };
             }
 
             int[] auxArray = new int[array.Length + 1];
@@ -210,7 +201,7 @@
         {
             if (ArrayIsNullOrEmpty(array))
             {
-                return new int[] { number };
+                return new [] { number };
             }
 
             int[] auxArray = new int[array.Length + 1];
@@ -229,15 +220,15 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (index < 0 || index > array?.Length)
-            {
-                return array;
-            }
             if (ArrayIsNullOrEmpty(array))
             {
-                return new int[] { number };
+                if (index != 0)
+                {
+                    return array;
+                }
+                return new [] { number };
             }
-            
+
             if (index == 0)
             {
                 return InsertFirst(array, number);
@@ -248,8 +239,10 @@
             }
 
             int[] auxArray = new int[array.Length + 1];
+            int j = 0;
+            int k = 0;
 
-            for (int i = 0, j = 0, k = 0; i < auxArray.Length; i++)
+            for (int i = 0; i < auxArray.Length; i++)
             {
                 if (j == index)
                 {
@@ -264,6 +257,25 @@
 
 
             return auxArray;
+        }
+
+        /// <summary>
+        /// Print an array to console. if it is null or empty, it prints Empty.
+        /// </summary>
+        /// <param name="array"></param>
+        public static void PrintArray(int[] array)
+        {
+            if (ArrayIsNullOrEmpty(array))
+            {
+                System.Console.WriteLine("Empty");
+                return;
+            }
+
+            foreach (var item in array)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine("");
         }
     }
 }
