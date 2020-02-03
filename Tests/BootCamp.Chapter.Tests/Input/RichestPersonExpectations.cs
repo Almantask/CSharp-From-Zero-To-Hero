@@ -15,7 +15,7 @@ namespace BootCamp.Chapter.Tests.Input
                 new object[]{Person1Balance2, "Tom is the richest person. ¤0." },
                 new object[]{Person2Balance1, "Tom is the richest person. ¤1." },
                 new object[]{Person3Balance3, "Thor is the richest person. ¤1002." },
-                new object[]{Person3Same, "Tom, Agnes and Thor are the richest people. ¤1." }
+                new object[]{Person3Same, "Tom, Gillie and Agnes are the richest people. ¤1." }
             };
         }
     }
