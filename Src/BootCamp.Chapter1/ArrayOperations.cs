@@ -188,6 +188,7 @@ namespace BootCamp.Chapter1
             {
                 auxArray[i + 1] = array[i];
             }
+
             return auxArray;
         }
 
@@ -208,6 +209,7 @@ namespace BootCamp.Chapter1
             auxArray[auxArray.Length - 1] = number;
 
             CopyToArray(array, auxArray, 0, array.Length);
+
             return auxArray;
         }
 
