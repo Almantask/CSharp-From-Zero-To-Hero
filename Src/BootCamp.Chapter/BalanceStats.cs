@@ -10,6 +10,7 @@
             float highestBalance = 0f;
             string currentBalanceHolder = "";
             string highestBalanceHolder = "";
+            int holderCount = 0;
             foreach (string entry in peopleAndBalances)
             {
                 string[] userHistory = entry.Split(',');
@@ -32,7 +33,17 @@
                         }
                         if (balance == highestBalance && highestBalanceHolder != currentBalanceHolder)
                         {
-                            highestBallanc
+                            if (holderCount == 1)
+                            {
+
+                                highestBalanceHolder += ($" and {currentBalanceHolder}");
+
+                            }
+                            else
+                            {
+                                highestBalanceHolder += ($", {currentBalanceHolder}");
+                                holderCount++;
+                            }
                         }
                     }
                 }
