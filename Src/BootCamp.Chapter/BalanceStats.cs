@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Linq;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
@@ -7,7 +10,56 @@
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
+                return "N/A."; 
+            }
+
+            var HighestBalanceEver = decimal.MinValue; 
+            var PersonWithHighestBalance = new StringBuilder() ; 
+
+            for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
+			{
+                var currentPersonData = peopleAndBalances[i].Split(',') ; 
+                var highestAmountOfPerson = decimal.Parse(currentPersonData[1 ..].Max());
+
+                if (highestAmountOfPerson > HighestBalanceEver)
+                {
+                    HighestBalanceEver = highestAmountOfPerson;
+                    var currentOne = PersonWithHighestBalance.ToString();
+                    
+                    if (string.IsNullOrEmpty(currentOne))
+                    {
+                        PersonWithHighestBalance.Append(currentPersonData[0]);
+                    }
+                    else
+                    {
+                        PersonWithHighestBalance.Replace(currentOne, currentPersonData[0]);
+                    }
+
+
+                } else if (highestAmountOfPerson == HighestBalanceEver)
+                {
+                    if (i == peopleAndBalances.Length -1)
+                    {
+                        PersonWithHighestBalance.Append(" and ");
+                    }
+                    else
+                    {
+                        PersonWithHighestBalance.Append(", ");
+                    }
+                    
+                    PersonWithHighestBalance.Append(currentPersonData[0]);
+                }
+
+
+            }
+
+            var answer = $"{PersonWithHighestBalance.ToString()} had the most money ever. ¤{HighestBalanceEver}.";
+
+            TextTable.Build(answer, 3); 
+
+            return answer; 
         }
 
         /// <summary>

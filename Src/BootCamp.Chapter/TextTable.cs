@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
