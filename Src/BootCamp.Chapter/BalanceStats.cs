@@ -67,7 +67,46 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
+                return "N/A.";
+            }
+
+            var HighestLossEver = decimal.MinValue;
+            var PersonWithHighestLoss = "";
+
+            for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
+            {
+                var currentPersonData = peopleAndBalances[i].Split(',');
+                var allAmounts = currentPersonData[1..];
+
+                // calculateLoss
+                
+                if (allAmounts.Length <= 1)
+                {
+                    return "N/A."; 
+                }
+
+                var lossForCurrentPerson = 0M; 
+
+                for (int j = 0; j < allAmounts.Length - 1 ; j++)
+                {
+                    var amount1 = decimal.Parse(allAmounts[j]);
+                    var amount2 = decimal.Parse(allAmounts[j + 1]);
+                    lossForCurrentPerson = amount1 - amount2; 
+                }
+                                
+
+                //check if loss is greater then the current highest loss 
+                if (lossForCurrentPerson > HighestLossEver)
+                {
+                    HighestLossEver = lossForCurrentPerson;
+                    PersonWithHighestLoss = currentPersonData[0]; 
+                }
+
+            }
+
+            return $"{PersonWithHighestLoss} lost the most money. -¤{HighestLossEver}.";  
         }
 
         /// <summary>
