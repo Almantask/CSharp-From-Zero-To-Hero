@@ -7,7 +7,35 @@
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            float highestBalance = 0f;
+            string currentBalanceHolder = "";
+            string highestBalanceHolder = "";
+            foreach (string entry in peopleAndBalances)
+            {
+                string[] userHistory = entry.Split(',');
+
+                foreach (string userEntry in userHistory)
+                {
+                    bool isFloat = float.TryParse(userEntry, out float result);
+                    if (!isFloat)
+                    {
+                        currentBalanceHolder = userEntry;
+                    }
+
+                    else
+                    {
+                        float balance = float.Parse(userEntry);
+                        if (balance > highestBalance)
+                        {
+                            highestBalance = balance;
+                            highestBalanceHolder = currentBalanceHolder;
+
+                        }
+                    }
+                }
+            }
+            string stringHighestBalance = highestBalance.ToString();
+            return ($"{highestBalanceHolder} has the most money ever. ¤{stringHighestBalance}.");
         }
 
         /// <summary>
@@ -33,5 +61,6 @@
         {
             return "";
         }
+        
     }
 }
