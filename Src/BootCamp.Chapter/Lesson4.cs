@@ -7,7 +7,6 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            //run twice
             for (int i = 0; i < 2; i++)
             {
                 string firstName = PromptString("Input First Name: ");
@@ -16,10 +15,8 @@ namespace BootCamp.Chapter
                 float weight = PromptFloat("Input weight (in kg): ");
                 float height = PromptFloat("Input height (in m): ");
 
-                //print info
                 Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " m.");
 
-                //calculate and print bmi
                 float bmi = CalculateBodyMassIndex(weight, height);
                 Console.WriteLine(firstName + " " + lastName + " has a BMI of " + bmi + ".");
             }
@@ -90,12 +87,12 @@ namespace BootCamp.Chapter
             bool isWeightValid = true;
             bool isHeightValid = true;
 
-            if (weight == 0 || weight == -1)
+            if (weight <= 0)
             {
                 isWeightValid = false;
             }
 
-            if (height == 0 || height == -1)
+            if (height <= 0)
             {
                 isHeightValid = false;
             }
