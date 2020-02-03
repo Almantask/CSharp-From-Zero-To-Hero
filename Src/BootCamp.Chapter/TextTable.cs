@@ -34,7 +34,7 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
-            if (message.Length == 0)
+            if (string.IsNullOrEmpty(message)) 
             {
                 return "";
             }
