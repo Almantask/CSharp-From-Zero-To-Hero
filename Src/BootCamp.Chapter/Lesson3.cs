@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
     {
         private static void CheckAndResetWindowSize() // my consol is bugged, that is the only reason why this stuff exist.
         {
-            if (Console.WindowHeight != 300 || Console.WindowWidth != 500)
+            if ((Console.WindowHeight != 300) || (Console.WindowWidth != 500))
             {
                 Console.SetWindowSize(120, 40);
             }
@@ -14,46 +14,37 @@ namespace BootCamp.Chapter
         public static void Demo()
         {
             CheckAndResetWindowSize();
-            StuffThatExistTwice();
-            StuffThatExistTwice();
+            WriteOutInfo();
+            WriteOutInfo();
         }
-        static void StuffThatExistTwice() //lack of creativity yess!
+        static void WriteOutInfo()
         {
-            string name = Name();
-            double age = Age();
-            double weight = Weight();
-            double height = Height();
-            double BMI = Math.Round(weight / Math.Pow(height/100,2),2);
+            string name = PromptString("Please give me your full name");
+            int age = PromptInt("Please give me your age");
+            float weight = PromptFloat("Please give me your weight in kg");
+            float height = PromptFloat("please give me your height in cm");
+            float BMI = Math.Round(weight / Math.Pow(height/100,2),2);
             Console.WriteLine($"{name} is {age} old, their weight is {weight}kg and their height is {height}cm\n Their BMI index is {BMI}");//their is used instead of his/her.
 
         }
-        static void ShorterWriteLine(string text)
+        static float PromptFloat(string message)
+        {
+            WriteLine(message);
+            return float.Parse(Console.ReadLine());
+        }
+        static float PromptInt(string message)
+        {
+            WriteLine(message);
+            return float.Parse(Console.ReadLine());
+        }
+        static string PromptString(string message)
+        {
+            WriteLine(message);
+            return (Console.ReadLine());
+        }
+        static void WriteLine(string text)
         {
             Console.WriteLine(text);
-        }
-        static double Weight()
-        {
-            ShorterWriteLine("Please give me your weight in kg");
-            double age = double.Parse(Console.ReadLine());
-            return age;
-        }
-        static string Name()
-        {
-            ShorterWriteLine("Please give me your name");
-            string Name = Console.ReadLine();
-            return Name;
-        }
-        static double Age()
-        {
-            ShorterWriteLine("Please give me your age");
-            double weight = double.Parse(Console.ReadLine());
-            return weight;
-        }
-        static double Height()
-        {
-            ShorterWriteLine("Please give me your height");
-            double height = double.Parse(Console.ReadLine());
-            return height;
         }
     }
 }
