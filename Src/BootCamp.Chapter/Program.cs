@@ -12,8 +12,6 @@ namespace BootCamp.Chapter
             // - FindRichestPerson
             // - FindMostPoorPerson
 
-            var result = TextTable.Build($"How{Environment.NewLine}About{Environment.NewLine}This?{Environment.NewLine}", 5);
-            Console.WriteLine(result);
         }
     }
 }

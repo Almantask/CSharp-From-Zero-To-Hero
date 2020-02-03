@@ -130,7 +130,6 @@ namespace BootCamp.Chapter
                 sb.Append(space);
             }
             sb.Append(message.PadLeft(padding));
-            message.PadLeft(padding);
             for (int i = 0; i < padding; i++)
             {
                 sb.Append(space);
