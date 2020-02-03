@@ -35,7 +35,7 @@ namespace BootCamp.Chapter
         /// Padding means how many spaces will a message be wrapped with.
         /// Table itself is made of: "+-" symbols. 
         /// </summary>
-        public const string topAndBottomBorder = "-";
+        public const string edgeForTopAndBottom = "-";
         public const string corner = "+";
         public const string space = " ";
         public const string sideBorder = "|";
@@ -60,45 +60,34 @@ namespace BootCamp.Chapter
             }
             else
             {
-
                 stringLength = message.Length;
             }
             var sb = new StringBuilder();
             sb.Append(PrintTopOrBottomBorder(padding, stringLength));
-            sb.Append($"{Environment.NewLine}");
             for (int i = 0; i < padding; i++)
             {
                 sb.Append(PrintVerticalPaddingRow(padding, stringLength));
-                sb.Append($"{Environment.NewLine}");
             }
             if (messageArray!=null)
             {
                 for (int i = 0; i < messageArray.Length; i++)
                 {
-                    sb.Append(PrintMessageInTable(messageArray[0], padding));
-                    sb.Append($"{Environment.NewLine}");
+                    sb.Append(PrintMessageInTable(messageArray[i], padding));
                 }
             }
             else
             {
                 sb.Append(PrintMessageInTable(message, padding));
             }
-            sb.Append($"{Environment.NewLine}");
             for (int i = 0; i < padding; i++)
             {
                 sb.Append(PrintVerticalPaddingRow(padding, stringLength));
-                sb.Append($"{Environment.NewLine}");
             }
             sb.Append(PrintTopOrBottomBorder(padding, stringLength));
-            sb.Append($"{Environment.NewLine}");
 
             string result = sb.ToString();
             return result;
             }
-
-
-        
-    
 
         public static string PrintVerticalPaddingRow(int padding, int stringLength)
         {
@@ -109,8 +98,8 @@ namespace BootCamp.Chapter
                 sb.Append(space);
             }
             sb.Append(sideBorder);
+            sb.Append($"{Environment.NewLine}");
             string verticalPaddingRow = sb.ToString();
-            Console.WriteLine(verticalPaddingRow);
             return verticalPaddingRow;
         }
         public static string PrintMessageInTable(string message, int padding)
@@ -128,10 +117,9 @@ namespace BootCamp.Chapter
                 sb.Append(space);
             }
             sb.Append(sideBorder);
-
+            sb.Append($"{Environment.NewLine}");
 
             string messageInTable = sb.ToString();
-            Console.WriteLine(messageInTable);
             return messageInTable;
         }
         public static string PrintTopOrBottomBorder(int padding, int stringLength)
@@ -140,11 +128,13 @@ namespace BootCamp.Chapter
             sb.Append(corner);
             for (int i = 0; i < padding * 2 + stringLength; i++)
             {
-                sb.Append(topAndBottomBorder);
+                sb.Append(edgeForTopAndBottom);
             }
             sb.Append(corner);
+            sb.Append($"{Environment.NewLine}");
+
             string topOrBottomLine = sb.ToString();
-            Console.WriteLine(topOrBottomLine);
+
             return topOrBottomLine;
         }
 
