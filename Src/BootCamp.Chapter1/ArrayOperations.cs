@@ -10,7 +10,7 @@
         public static void Sort(int[] array)
         {
             // ToDo: implement.
-            if(array.Length > 1 || array != null)
+            if(array != null || array.Length >= 1)
             {
                 for (int i = 0; i < array.Length - 1; ++i)
                 {
@@ -18,7 +18,9 @@
                     for(int j = i; j < array.Length; ++j)
                     {
                         if (array[j] < array[mindex])
+                        {
                             mindex = j;
+                        }    
                     }
 
                     int temp = array[mindex];
@@ -59,7 +61,9 @@
             {
                 int[] newArr = new int[array.Length-1];
                 for (int i = 0; i < array.Length - 1; ++i)
+                {
                     newArr[i] = array[i];
+                }
                 return newArr;
             }
             return array;
@@ -72,7 +76,7 @@
         public static int[] RemoveFirst(int[] array)
         {
             // ToDo: implement.
-            if (array != null || array.Length > 0)
+            if (array != null || array.Length >= 1)
             {
                 int[] newArr = new int[array.Length - 1];
                 for (int i = 1; i < array.Length; ++i)
@@ -81,7 +85,11 @@
                 }
                 return newArr;
             }
-            return array;
+            else
+            {
+                return array;
+            }
+            
         }
 
         /// <summary>
@@ -170,10 +178,9 @@
                 int[] newArr = new int[array.Length + 1];
                 newArr[index] = number;
                 for (int i = 0; i < array.Length; ++i)
-                    if (i < index)
-                        newArr[i] = array[i];
-                    else
-                        newArr[i] = array[i + 1];
+                {
+                    newArr[i] = (i < index) ? array[i] : array[i + 1];
+                }
                 return newArr;
             }
             else
