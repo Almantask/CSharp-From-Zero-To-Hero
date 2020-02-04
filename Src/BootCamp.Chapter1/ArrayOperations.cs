@@ -76,18 +76,19 @@
         public static int[] RemoveFirst(int[] array)
         {
             // ToDo: implement.
-            if (array != null || array.Length >= 1)
+            if (array == null || array.Length > 0)
             {
+                return array;
+            }
+            else
+            {
+                
                 int[] newArr = new int[array.Length - 1];
                 for (int i = 1; i < array.Length; ++i)
                 {
                     newArr[i] = array[i];
                 }
                 return newArr;
-            }
-            else
-            {
-                return array;
             }
             
         }
