@@ -10,23 +10,23 @@
         public static void Sort(int[] array)
         {
             // ToDo: implement.
-            if(array != null || array.Length >= 1)
+            if(array == null || array.Length < 2)
             {
-                for (int i = 0; i < array.Length - 1; ++i)
+                return;
+            }
+            for (int i = 0; i < array.Length - 1; ++i)
+            {
+                int mindex = i;
+                for (int j = i; j < array.Length; ++j)
                 {
-                    int mindex = i;
-                    for(int j = i; j < array.Length; ++j)
+                    if (array[j] < array[mindex])
                     {
-                        if (array[j] < array[mindex])
-                        {
-                            mindex = j;
-                        }    
+                        mindex = j;
                     }
-
-                    int temp = array[mindex];
-                    array[mindex] = array[i];
-                    array[i] = temp;
                 }
+                int temp = array[mindex];
+                array[mindex] = array[i];
+                array[i] = temp;
             }
         }
 
@@ -101,16 +101,16 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             // ToDo: implement.
-            if(array != null || array.Length > 0)
+            if(array == null || array.Length < 1)
             {
-                int[] newArr = new int[array.Length - 1];
-                for (int i = 0; i < array.Length; ++i)
-                {
-                    newArr[i] = (i < index) ? array[i]:array[i+1];
-                }
-                return newArr;
+                return array;
             }
-            return array;
+            int[] newArr = new int[array.Length - 1];
+            for (int i = 0; i < array.Length; ++i)
+            {
+                newArr[i] = (i < index) ? array[i] : array[i + 1];
+            }
+            return newArr;
         }
 
         /// <summary>
