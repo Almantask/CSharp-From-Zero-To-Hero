@@ -76,7 +76,9 @@
             {
                 int[] newArr = new int[array.Length - 1];
                 for (int i = 1; i < array.Length; ++i)
+                {
                     newArr[i] = array[i];
+                }
                 return newArr;
             }
             return array;
@@ -95,10 +97,9 @@
             {
                 int[] newArr = new int[array.Length - 1];
                 for (int i = 0; i < array.Length; ++i)
-                    if (i < index)
-                        newArr[i] = array[i];
-                    else
-                        newArr[i] = array[i + 1];
+                {
+                    newArr[i] = (i < index) ? array[i]:array[i+1];
+                }
                 return newArr;
             }
             return array;
@@ -118,10 +119,15 @@
                 int[] newArr = new int[array.Length + 1];
                 newArr[0] = number;
                 for (int i = 0; i < array.Length; ++i)
-                    newArr[i+1] = array[i];
+                {
+                    newArr[i + 1] = array[i];
+                }
                 return newArr;
             }
-            return array;
+            else
+            {
+                return new[] { number };
+            }
         }
 
         /// <summary>
@@ -137,11 +143,16 @@
             {
                 int[] newArr = new int[array.Length + 1];
                 for (int i = 0; i < array.Length; ++i)
+                {
                     newArr[i] = array[i];
+                }
                 newArr[array.Length] = number;
                 return newArr;
             }
-            return array;
+            else
+            {
+                return new[] { number };
+            }
         }
 
         /// <summary>
@@ -166,7 +177,10 @@
                 return newArr;
             }
             else
+            {
                 return new[] { number };
+            }
+               
         }
     }
 }
