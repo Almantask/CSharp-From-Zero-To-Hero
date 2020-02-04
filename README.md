@@ -39,8 +39,14 @@ Step into Part1And2() function. Set breakpoint on first foreach loop line 48, va
 
 Part 2
 Set breakpoint at for loop line 69. It prints out spassphrase but first time it is incorrect. After dragging yellow line back to
-for loop start, and running code again passphrase is different. Doing this few times gives correct passphrase.
-A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+for loop start, and running code again passphrase is different. Doing this few times gives passphrase:
+"A minore ad maius a solis ortu usque ad occasum ab uno disce omnes" by entering this passphrase out put is 
+YOU MAY PROCEED!
+--------------------------------
+From the smaller to the greater,
+From sunrise to sunset,
+From one, learn all.
+--------------------------------
 
 
 
