@@ -13,7 +13,6 @@ namespace BootCamp.Chapter
             {
                 return "N/A.";
             }
-
             float highestBalance = 0f;
             string currentBalanceHolder = "";
             string highestBalanceHolder = "";
@@ -64,7 +63,70 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            float biggestLoss = 0f;
+            string currentBalanceHolder = "";
+            float balance = 0f;
+            float nextBalance = 0f;
+            string biggestLoser = "";
+            int holderCount = 0;
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
+                return "N/A.";
+            }
+            foreach (string entry in peopleAndBalances)
+            {
+                string[] userHistory = entry.Split(',');
+                if (userHistory.Length <= 2)
+                    return "N/A.";
+
+
+                for (int i = 0; i < userHistory.Length - 1; i++)
+                {
+                    bool isFloat = float.TryParse(userHistory[i], out float result);
+                    if (!isFloat)
+                    {
+                        currentBalanceHolder = userHistory[i];
+                    }
+
+                    else
+                    {
+                        balance = float.Parse(userHistory[i]);
+                        nextBalance = float.Parse(userHistory[i + 1]);
+
+                        biggestLoss = ((nextBalance - balance) < biggestLoss) ? (nextBalance - balance) : biggestLoss;
+
+                        //biggestLoser = biggestLoss == nextBalance - balance ? currentBalanceHolder : biggestLoser;
+
+
+                        if (biggestLoss == nextBalance - balance && biggestLoser != currentBalanceHolder)
+                        {
+                            switch (holderCount)
+                            {
+                                case 0:
+                                    {
+                                        biggestLoser = currentBalanceHolder;
+                                        holderCount++;
+                                        break;
+                                    }
+
+                                case 1:
+                                    {
+                                        biggestLoser += ($", {currentBalanceHolder}");
+                                        holderCount++;
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        biggestLoser += ($" and {currentBalanceHolder}");
+                                        break;
+                                    }
+                            }
+                        }
+                    }
+                }
+            }
+            string stringBiggestLoss = biggestLoss.ToString();
+            return ($"{biggestLoser} lost the most money. ¤{stringBiggestLoss}.");
         }
 
         /// <summary>
