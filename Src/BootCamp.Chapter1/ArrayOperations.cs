@@ -10,6 +10,22 @@
         public static void Sort(int[] array)
         {
             // ToDo: implement.
+            if(array.Length > 1 || array != null)
+            {
+                for (int i = 0; i < array.Length - 1; ++i)
+                {
+                    int mindex = i;
+                    for(int j = i; j < array.Length; ++j)
+                    {
+                        if (array[j] < array[mindex])
+                            mindex = j;
+                    }
+
+                    int temp = array[mindex];
+                    array[mindex] = array[i];
+                    array[i] = temp;
+                }
+            }
         }
 
         /// <summary>
@@ -20,6 +36,15 @@
         public static void Reverse(int[] array)
         {
             // ToDo: implement.
+            if(array.Length > 0)
+            {
+                for (int i = 0; i < array.Length / 2; ++i)
+                {
+                    int temp = array[i];
+                    array[i] = array[^i];
+                    array[^i] = temp;
+                }
+            }
         }
 
         /// <summary>
@@ -30,6 +55,13 @@
         public static int[] RemoveLast(int[] array)
         {
             // ToDo: implement.
+            if(array != null)
+            {
+                int[] newArr = new int[array.Length-1];
+                for (int i = 0; i < array.Length - 1; ++i)
+                    newArr[i] = array[i];
+                return newArr;
+            }
             return array;
         }
 
@@ -40,6 +72,13 @@
         public static int[] RemoveFirst(int[] array)
         {
             // ToDo: implement.
+            if (array != null || array.Length > 0)
+            {
+                int[] newArr = new int[array.Length - 1];
+                for (int i = 1; i < array.Length; ++i)
+                    newArr[i] = array[i];
+                return newArr;
+            }
             return array;
         }
 
@@ -52,6 +91,16 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             // ToDo: implement.
+            if(array != null || array.Length > 0)
+            {
+                int[] newArr = new int[array.Length - 1];
+                for (int i = 0; i < array.Length; ++i)
+                    if (i < index)
+                        newArr[i] = array[i];
+                    else
+                        newArr[i] = array[i + 1];
+                return newArr;
+            }
             return array;
         }
 
@@ -64,6 +113,14 @@
         public static int[] InsertFirst(int[] array, int number)
         {
             // ToDo: implement.
+            if (array != null)
+            {
+                int[] newArr = new int[array.Length + 1];
+                newArr[0] = number;
+                for (int i = 0; i < array.Length; ++i)
+                    newArr[i+1] = array[i];
+                return newArr;
+            }
             return array;
         }
 
@@ -76,6 +133,14 @@
         public static int[] InsertLast(int[] array, int number)
         {
             // ToDo: implement.
+            if (array != null)
+            {
+                int[] newArr = new int[array.Length + 1];
+                for (int i = 0; i < array.Length; ++i)
+                    newArr[i] = array[i];
+                newArr[array.Length] = number;
+                return newArr;
+            }
             return array;
         }
 
@@ -89,7 +154,19 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
-            return array;
+            if (array != null)
+            {
+                int[] newArr = new int[array.Length + 1];
+                newArr[index] = number;
+                for (int i = 0; i < array.Length; ++i)
+                    if (i < index)
+                        newArr[i] = array[i];
+                    else
+                        newArr[i] = array[i + 1];
+                return newArr;
+            }
+            else
+                return new[] { number };
         }
     }
 }
