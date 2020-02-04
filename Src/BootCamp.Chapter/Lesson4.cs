@@ -41,8 +41,14 @@ namespace BootCamp.Chapter
                     Console.WriteLine("Weight cannot be equal or less than zero, but was " + weightKg + ".");
                     Console.WriteLine("Height cannot be less than zero, but was " + heightM + ".");
                 } else {
-                    if (heightM <= 0) Console.WriteLine("Height cannot be equal or less than zero, but was " + heightM + ".");
-                    if (weightKg <= 0) Console.WriteLine("Weight cannot be equal or less than zero, but was " + weightKg + ".");
+                    if (heightM <= 0)
+                    {
+                        Console.WriteLine("Height cannot be equal or less than zero, but was " + heightM + ".");
+                    }
+                    if (weightKg <= 0)
+                    {
+                        Console.WriteLine("Weight cannot be equal or less than zero, but was " + weightKg + ".");
+                    }
                 }
                 return -1;
             }
