@@ -196,7 +196,7 @@ namespace BootCamp.Chapter
                     return "N/A.";
                 }
                 int holderCount = 0;
-                float lowestLastBalance = 0f;
+                float lowestLastBalance = 3000000;
                 string currentBalanceHolder = "";
                 string lowestLastBalanceHolder = "";
                 bool isNegativeBalance = false;
@@ -208,7 +208,8 @@ namespace BootCamp.Chapter
                     currentBalanceHolder = userHistory[0];
 
                     float finalBalance = float.Parse(userHistory[^1]);
-
+                    
+                    // this isn't liking a final balance of 1 when the lowest last balance is 0
                     lowestLastBalance = lowestLastBalance > finalBalance ? finalBalance : lowestLastBalance;
 
                     if (lowestLastBalance == finalBalance && lowestLastBalanceHolder != currentBalanceHolder)
