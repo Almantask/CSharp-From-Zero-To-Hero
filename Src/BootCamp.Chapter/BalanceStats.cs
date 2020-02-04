@@ -138,7 +138,51 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
+                return "N/A.";
+            }
+            int holderCount = 0;
+            float highestLastBalance = 0f;
+            string currentBalanceHolder = "";
+            string highestLastBalanceHolder = "";
+            foreach (string entry in peopleAndBalances)
+            {
+                string[] userHistory = entry.Split(',');
+
+                currentBalanceHolder = userHistory[0];
+                    
+                float finalBalance = float.Parse(userHistory[^1]);
+
+                highestLastBalance = highestLastBalance < finalBalance ? finalBalance : highestLastBalance;
+
+                if (highestLastBalance == finalBalance && highestLastBalanceHolder != currentBalanceHolder)
+                {                   
+                        switch (holderCount)
+                        {
+                            case 0:
+                                {
+                                    highestLastBalanceHolder = currentBalanceHolder;
+                                    holderCount++;
+                                    break;
+                                }
+
+                            case 1:
+                                {
+                                    highestLastBalanceHolder += ($", {currentBalanceHolder}");
+                                    holderCount++;
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    highestLastBalanceHolder += ($" and {currentBalanceHolder}");
+                                    break;
+                                }
+                        }
+                    }
+                }
+            string stringHighesLasttBalance = highestLastBalance.ToString();
+            return holderCount == 0 ? ($"{highestLastBalanceHolder} is the richest person. ¤{stringHighesLasttBalance}.") : ($"{highestLastBalanceHolder} are the richest people. ¤{stringHighesLasttBalance}.");
         }
 
         /// <summary>
