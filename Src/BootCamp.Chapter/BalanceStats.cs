@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
+
 
 namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -125,8 +129,8 @@ namespace BootCamp.Chapter
                     }
                 }
             }
-            string stringBiggestLoss = biggestLoss.ToString();
-            return ($"{biggestLoser} lost the most money. ¤{stringBiggestLoss}.");
+            string stringBiggestLoss = Math.Abs(biggestLoss).ToString();
+            return ($"{biggestLoser} lost the most money. -¤{stringBiggestLoss}.");
         }
 
         /// <summary>
