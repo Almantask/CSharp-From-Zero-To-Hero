@@ -200,6 +200,7 @@ namespace BootCamp.Chapter
                 string currentBalanceHolder = "";
                 string lowestLastBalanceHolder = "";
                 bool isNegativeBalance = false;
+                bool isShared = false;
 
                 foreach (string entry in peopleAndBalances)
                 {
@@ -208,21 +209,17 @@ namespace BootCamp.Chapter
                     currentBalanceHolder = userHistory[0];
 
                     float finalBalance = float.Parse(userHistory[^1]);
-                    
-                    // this isn't liking a final balance of 1 when the lowest last balance is 0
-                    lowestLastBalance = lowestLastBalance > finalBalance ? finalBalance : lowestLastBalance;
 
-                    if (lowestLastBalance == finalBalance && lowestLastBalanceHolder != currentBalanceHolder)
+                    if (lowestLastBalance> finalBalance)
+                    {
+                        lowestLastBalanceHolder = currentBalanceHolder;
+                        holderCount = 1;
+                    }
+
+                    if (lowestLastBalance == finalBalance && lowestLastBalanceHolder != currentBalanceHolder && isShared)
                     {
                         switch (holderCount)
                         {
-                            case 0:
-                                {
-                                    lowestLastBalanceHolder = currentBalanceHolder;
-                                    holderCount++;
-                                    break;
-                                }
-
                             case 1:
                                 {
                                     lowestLastBalanceHolder += ($", {currentBalanceHolder}");
@@ -235,8 +232,11 @@ namespace BootCamp.Chapter
                                     break;
                                 }
                         }
-                        isNegativeBalance = (lowestLastBalance < 0);
                     }
+                    lowestLastBalance = lowestLastBalance > finalBalance ? finalBalance : lowestLastBalance;
+
+                    isNegativeBalance = (lowestLastBalance < 0);
+                    
                 }
                 string stringHighesLasttBalance = Math.Abs(lowestLastBalance).ToString();
                 if (isNegativeBalance)
