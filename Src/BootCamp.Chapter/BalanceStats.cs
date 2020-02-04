@@ -190,7 +190,60 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            {
+                if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+                {
+                    return "N/A.";
+                }
+                int holderCount = 0;
+                float lowestLastBalance = 0f;
+                string currentBalanceHolder = "";
+                string lowestLastBalanceHolder = "";
+                bool isNegativeBalance = false;
+
+                foreach (string entry in peopleAndBalances)
+                {
+                    string[] userHistory = entry.Split(',');
+
+                    currentBalanceHolder = userHistory[0];
+
+                    float finalBalance = float.Parse(userHistory[^1]);
+
+                    lowestLastBalance = lowestLastBalance > finalBalance ? finalBalance : lowestLastBalance;
+
+                    if (lowestLastBalance == finalBalance && lowestLastBalanceHolder != currentBalanceHolder)
+                    {
+                        switch (holderCount)
+                        {
+                            case 0:
+                                {
+                                    lowestLastBalanceHolder = currentBalanceHolder;
+                                    holderCount++;
+                                    break;
+                                }
+
+                            case 1:
+                                {
+                                    lowestLastBalanceHolder += ($", {currentBalanceHolder}");
+                                    holderCount++;
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    lowestLastBalanceHolder += ($" and {currentBalanceHolder}");
+                                    break;
+                                }
+                        }
+                        isNegativeBalance = (lowestLastBalance < 0);
+                    }
+                }
+                string stringHighesLasttBalance = Math.Abs(lowestLastBalance).ToString();
+                if (isNegativeBalance)
+                {
+                    return holderCount == 1 ? ($"{lowestLastBalanceHolder} has the least money. -¤{stringHighesLasttBalance}.") : ($"{lowestLastBalanceHolder} have the least money. -¤{stringHighesLasttBalance}.");
+                }
+                return holderCount == 1 ? ($"{lowestLastBalanceHolder} has the least money. ¤{stringHighesLasttBalance}.") : ($"{lowestLastBalanceHolder} have the least money. ¤{stringHighesLasttBalance}.");
+            }
         }
         
     }
