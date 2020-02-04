@@ -14,11 +14,11 @@ namespace BootCamp.Chapter
         private static void PromptPersonData()
         {
             // input
-            string firstName = ParseString("Enter first name: ");
-            string lastName = ParseString("Enter last name: ");
-            int age = ParseInt("Enter age: ");
-            float weight = ParseFloat("Enter weight: ");
-            float height = ParseFloat("Enter height: ");
+            string firstName = PromptString("Enter first name: ");
+            string lastName = PromptString("Enter last name: ");
+            int age = PromptInt("Enter age: ");
+            float weight = PromptFloat("Enter weight: ");
+            float height = PromptFloat("Enter height: ");
 
             // output
             PrintPersonDataAndCalculateBmi(firstName, lastName, age, weight, height);
@@ -33,59 +33,78 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weightKg, float heightM)
         {
+            if (weightKg <= 0 || heightM <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (weightKg <= 0 && heightM <= 0)
+                {
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was " + weightKg + ".");
+                    Console.WriteLine("Height cannot be less than zero, but was " + heightM + ".");
+                } else {
+                    if (heightM <= 0) Console.WriteLine("Height cannot be equal or less than zero, but was " + heightM + ".");
+                    if (weightKg <= 0) Console.WriteLine("Weight cannot be equal or less than zero, but was " + weightKg + ".");
+                }
+                return -1;
+            }
             return weightKg / heightM / heightM;
         }
 
-        public static string ParseString(string message)
+        public static string PromptString(string message)
         {
             Console.WriteLine(message);
-            string input = Console.ReadLine();
-            var value = ValidateString(input);
-            if (value.Equals("-"))
-                Console.WriteLine("Name cannot be empty.");
-            return value;
+            return ValidateString(Console.ReadLine());
         }
 
         private static string ValidateString(string input)
         {
-            if (string.IsNullOrEmpty(input)) return "-";
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.Write("Name cannot be empty.");
+                return "-";
+            }
             return input;
         }
 
-        public static int ParseInt(string message)
+        public static int PromptInt(string message)
         {
             Console.WriteLine(message);
-            var input = Console.ReadLine();
-            var value = ValidateInt(input);
-            if (value.Equals(-1))
-                Console.WriteLine("\"" + value + "\" is not a valid number.");
-            return value;
+            return ValidateInt(Console.ReadLine());
         }
 
         private static int ValidateInt(string input)
         {
-            if (string.IsNullOrEmpty(input)) return 0;
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
             var isNumber = int.TryParse(input, out var value);
-            if (!isNumber) return -1;
+            if (!isNumber)
+            {
+                Console.Write("\"" + input + "\" is not a valid number.");
+                return -1;
+            }
             return value;
         }
 
-        public static float ParseFloat(string message)
+        public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            return ValidateFloat(Console.ReadLine());
         }
 
-        private static bool isValidName(string name)
+        private static float ValidateFloat(string input)
         {
-            if (name.Equals("-")) return false;
-            return true;
-        }
-
-        private static int isValidWeightOrHeight(float value)
-        {
-            if (value <= 0) return -1;
-            return 1;
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+            var isNumber = float.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out var value);
+            if (!isNumber)
+            {
+                Console.Write("\"" + input + "\" is not a valid number.");
+                return -1;
+            }
+            return value;
         }
     }
 }
