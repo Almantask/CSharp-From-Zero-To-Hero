@@ -105,6 +105,14 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
+            if (array == null)
+            {
+                return new int[] { number };
+            }
+            if (array.Length == 0)
+            {
+                return new int[] { number };
+            }
             return InsertAt(array,number,0);
         }
 
@@ -116,7 +124,15 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            return InsertAt(array,number,array.Length-1);
+            if (array == null)
+            {
+                return new int[] { number };
+            }
+            if (array.Length == 0)
+            {
+                return new int[] { number };
+            }
+            return InsertAt(array,number,array.Length);
         }
 
         /// <summary>
@@ -138,7 +154,7 @@
             }
 
             int[] newArr = new int[array.Length+1];
-            for (int i = 0; i < newArr.Length-1; i++)
+            for (int i = 0; i < newArr.Length; i++)
             {
                 if (i < index)
                 {
@@ -150,7 +166,7 @@
                 }
                 if (i > index)
                 {
-                    newArr[i+1] = array[i];
+                    newArr[i] = array[i-1];
                 }
             }
             return newArr;
