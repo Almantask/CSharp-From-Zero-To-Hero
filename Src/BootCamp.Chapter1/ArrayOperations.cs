@@ -77,7 +77,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if(array == null || array.Length < 1)
+            if(array == null || array.Length < 1 || index < 0 || index > array.Length-1)
             {
                 return array;
             }
@@ -124,7 +124,7 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array != null)
+            if (array != null && index >= 0 && index <= array.Length - 1)
             {
                 int[] newArr = new int[array.Length + 1];
                 newArr[index] = number;
@@ -139,6 +139,10 @@
                     }
                 }
                 return newArr;
+            }
+            if (index < 0 || index > array.Length - 1)
+            {
+                return array;
             }
             else
             {
