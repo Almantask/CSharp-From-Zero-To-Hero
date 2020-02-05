@@ -38,7 +38,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if(array.Length > 0)
+            if(array != null && array.Length > 0)
             {
                 for (int i = 0; i < array.Length / 2; ++i)
                 {
@@ -56,6 +56,10 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
+            if (array == null)
+            {
+                return array;
+            }
             return RemoveAt(array, array.Length - 1);
         }
 
@@ -124,31 +128,32 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array != null && index >= 0 && index <= array.Length - 1)
-            {
-                int[] newArr = new int[array.Length + 1];
-                newArr[index] = number;
-                for (int i = 0; i < array.Length; ++i)
-                {
-                    if (i < index)
-                    {
-                        newArr[i] = array[i];
-                    }
-                    else {
-                        newArr[i + 1] = array[i];
-                    }
-                }
-                return newArr;
-            }
-            else if (index < 0 || index > array.Length - 1)
+            if (index < 0 || index > array.Length - 1)
             {
                 return array;
             }
-            else
+            if (array == null || array.Length == 0)
             {
-                return new[] { number };
+                return new int[] {number};
             }
-               
+
+            int[] newArr = new int[array.Length+1];
+            for (int i = 0; i < newArr.Length; i++)
+            {
+                if (i < index)
+                {
+                    newArr[i] = array[i];
+                }
+                if (i == index)
+                {
+                    newArr[i] = number;
+                }
+                if (i > index)
+                {
+                    newArr[i] = array[i - 1];
+                }
+            }
+            return newArr;
         }
     }
 }
