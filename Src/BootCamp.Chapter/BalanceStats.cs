@@ -89,28 +89,6 @@ namespace BootCamp.Chapter
             return highest; 
         }
 
-        private static decimal CheckIfMorePeopleHaveTheSameAmount(decimal highestBalanceEver, StringBuilder personWithHighestBalance, string[] currentPersonData, decimal highestCurrentPersonBalance)
-        {
-            if (highestCurrentPersonBalance > highestBalanceEver)
-            {
-                highestBalanceEver = highestCurrentPersonBalance;
-                var currentOne = personWithHighestBalance.ToString();
-
-                if (string.IsNullOrEmpty(currentOne))
-                {
-                    personWithHighestBalance.Append(currentPersonData[0]);
-                }
-                else
-                {
-                    personWithHighestBalance.Replace(currentOne, currentPersonData[0]);
-                }
-
-
-            }
-
-            return highestBalanceEver;
-        }
-
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
         /// </summary>
@@ -155,9 +133,9 @@ namespace BootCamp.Chapter
 
             for (int j = 0; j < data.Length - 1; j++)
             {
-                var isVallid = decimal.TryParse(data[j], out decimal amount1);
+                var isValid = decimal.TryParse(data[j], out decimal amount1);
                 
-                var isValid = decimal.TryParse(data[j + 1], out decimal amount2);
+                isValid = decimal.TryParse(data[j + 1], out decimal amount2);
                 lossForCurrentPerson = amount1 - amount2;
             }
 
@@ -233,45 +211,7 @@ namespace BootCamp.Chapter
             return HighestBalance;
         }
 
-        private static void FindMorePeopleWhicAreEvenPoor(string[] peopleAndBalances, decimal HighestBalance, StringBuilder RichestPerson, int i, string[] currentPersonData, decimal highestAmountOfPerson)
-        {
-            if (highestAmountOfPerson == HighestBalance)
-            {
-                if (i == peopleAndBalances.Length - 1)
-                {
-                    RichestPerson.Append(" and ");
-                }
-                else
-                {
-                    RichestPerson.Append(", ");
-                }
-
-                RichestPerson.Append(currentPersonData[0]);
-            }
-        }
-
-        private static decimal FindRichestPerson(decimal HighestBalance, StringBuilder RichestPerson, string[] currentPersonData, decimal highestAmountOfPerson)
-        {
-            if (highestAmountOfPerson > HighestBalance)
-            {
-                HighestBalance = highestAmountOfPerson;
-                var currentOne = RichestPerson.ToString();
-
-                if (string.IsNullOrEmpty(currentOne))
-                {
-                    RichestPerson.Append(currentPersonData[0]);
-                }
-                else
-                {
-                    RichestPerson.Clear();
-                    RichestPerson.Append(currentPersonData[0]);
-                }
-
-
-            }
-
-            return HighestBalance;
-        }
+        
 
         /// <summary>
         /// Return name and current money of the most poor person.
