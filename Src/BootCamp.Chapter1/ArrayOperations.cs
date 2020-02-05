@@ -107,11 +107,11 @@
         {
             if (array == null)
             {
-                return new int[] { number };
+                return new[] { number };
             }
             if (array.Length == 0)
             {
-                return new int[] { number };
+                return new[] { number };
             }
             return InsertAt(array,number,0);
         }
@@ -126,11 +126,11 @@
         {
             if (array == null)
             {
-                return new int[] { number };
+                return new[] { number };
             }
             if (array.Length == 0)
             {
-                return new int[] { number };
+                return new[] { number };
             }
             return InsertAt(array,number,array.Length);
         }
@@ -150,7 +150,7 @@
             }
             if (array == null || array.Length == 0)
             {
-                return new int[] {number};
+                return new[] {number};
             }
 
             int[] newArr = new int[array.Length+1];
