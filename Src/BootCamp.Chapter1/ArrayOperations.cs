@@ -138,7 +138,7 @@
             }
 
             int[] newArr = new int[array.Length+1];
-            for (int i = 0; i < newArr.Length; i++)
+            for (int i = 0; i < newArr.Length-1; i++)
             {
                 if (i < index)
                 {
@@ -150,7 +150,7 @@
                 }
                 if (i > index)
                 {
-                    newArr[i] = array[i - 1];
+                    newArr[i+1] = array[i];
                 }
             }
             return newArr;
