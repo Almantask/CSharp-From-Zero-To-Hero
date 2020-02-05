@@ -140,7 +140,7 @@
                 }
                 return newArr;
             }
-            if (index < 0 || index > array.Length - 1)
+            else if (index < 0 || index > array.Length - 1)
             {
                 return array;
             }
