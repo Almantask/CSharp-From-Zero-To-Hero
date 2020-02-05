@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
             {
                 return "N/A.";
             }
-            float highestBalance = 0f;
+            float highestBalance = float.MinValue;
             string currentBalanceHolder = "";
             string highestBalanceHolder = "";
             int holderCount = 0;
@@ -68,9 +68,8 @@ namespace BootCamp.Chapter
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
             float biggestLoss = 0f;
-            string currentBalanceHolder = "";
-            float balance = 0f;
-            float nextBalance = 0f;
+            float balance;
+            float nextBalance;
             string biggestLoser = "";
             int holderCount = 0;
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
@@ -81,50 +80,44 @@ namespace BootCamp.Chapter
             {
                 string[] userHistory = entry.Split(',');
                 if (userHistory.Length <= 2)
-                    return "N/A.";
-
-
-                for (int i = 0; i < userHistory.Length - 1; i++)
                 {
-                    bool isFloat = float.TryParse(userHistory[i], out float result);
-                    if (!isFloat)
+                    return "N/A.";
+                }
+                string currentBalanceHolder = userHistory[0];
+
+                for (int i = 1; i < userHistory.Length - 1; i++)
+                {
+                  
+                    balance = float.TryParse(userHistory[i], out float result) ? float.Parse(userHistory[i]) : float.NaN;
+
+                    nextBalance = float.TryParse(userHistory[i + 1], out float nextResult) ? float.Parse(userHistory[i + 1]) : float.NaN;
+
+                    biggestLoss = ((nextBalance - balance) < biggestLoss) ? (nextBalance - balance) : biggestLoss;
+
+
+
+                    if (biggestLoss == nextBalance - balance && biggestLoser != currentBalanceHolder)
                     {
-                        currentBalanceHolder = userHistory[i];
-                    }
-
-                    else
-                    {
-                        balance = float.Parse(userHistory[i]);
-                        nextBalance = float.Parse(userHistory[i + 1]);
-
-                        biggestLoss = ((nextBalance - balance) < biggestLoss) ? (nextBalance - balance) : biggestLoss;
-
-                        //biggestLoser = biggestLoss == nextBalance - balance ? currentBalanceHolder : biggestLoser;
-
-
-                        if (biggestLoss == nextBalance - balance && biggestLoser != currentBalanceHolder)
+                        switch (holderCount)
                         {
-                            switch (holderCount)
-                            {
-                                case 0:
-                                    {
-                                        biggestLoser = currentBalanceHolder;
-                                        holderCount++;
-                                        break;
-                                    }
+                            case 0:
+                                {
+                                    biggestLoser = currentBalanceHolder;
+                                    holderCount++;
+                                    break;
+                                }
 
-                                case 1:
-                                    {
-                                        biggestLoser += ($", {currentBalanceHolder}");
-                                        holderCount++;
-                                        break;
-                                    }
-                                case 3:
-                                    {
-                                        biggestLoser += ($" and {currentBalanceHolder}");
-                                        break;
-                                    }
-                            }
+                            case 1:
+                                {
+                                    biggestLoser += ($", {currentBalanceHolder}");
+                                    holderCount++;
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    biggestLoser += ($" and {currentBalanceHolder}");
+                                    break;
+                                }
                         }
                     }
                 }
@@ -143,8 +136,8 @@ namespace BootCamp.Chapter
                 return "N/A.";
             }
             int holderCount = 0;
-            float highestLastBalance = -300000f;
-            string currentBalanceHolder = "";
+            float highestLastBalance = float.MinValue;
+            string currentBalanceHolder;
             string highestLastBalanceHolder = "";
             foreach (string entry in peopleAndBalances)
             {
@@ -196,8 +189,8 @@ namespace BootCamp.Chapter
                     return "N/A.";
                 }
                 int holderCount = 0;
-                float lowestLastBalance = 3000000;
-                string currentBalanceHolder = "";
+                float lowestLastBalance = float.MaxValue;
+                string currentBalanceHolder;
                 string lowestLastBalanceHolder = "";
                 bool isNegativeBalance = false;
 
