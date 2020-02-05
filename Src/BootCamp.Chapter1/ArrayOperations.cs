@@ -153,7 +153,13 @@
                 newArr[index] = number;
                 for (int i = 0; i < array.Length; ++i)
                 {
-                    newArr[i] = (i < index) ? array[i] : array[i + 1];
+                    if (i < index)
+                    {
+                        newArr[i] = array[i];
+                    }
+                    else {
+                        newArr[i + 1] = array[i];
+                    }
                 }
                 return newArr;
             }
