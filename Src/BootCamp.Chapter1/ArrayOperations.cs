@@ -56,11 +56,7 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if(array != null)
-            {
-                return RemoveAt(array, array.Length-1);
-            }
-            return array;
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -69,15 +65,8 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array != null)
-            {
-                return RemoveAt(array, 0);
-            }
-            else
-            {
-                return array;
-            }
-            
+            return RemoveAt(array, 0);
+
         }
 
         /// <summary>
@@ -112,14 +101,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (array != null)
-            {
-                return InsertAt(array,number,0);
-            }
-            else
-            {
-                return new[] { number };
-            }
+            return InsertAt(array,number,0);
         }
 
         /// <summary>
@@ -130,15 +112,7 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-
-            if (array != null)
-            {
-                return InsertAt(array,number,array.Length-1);
-            }
-            else
-            {
-                return new[] { number };
-            }
+            return InsertAt(array,number,array.Length-1);
         }
 
         /// <summary>
