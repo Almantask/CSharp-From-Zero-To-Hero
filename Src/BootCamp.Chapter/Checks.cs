@@ -24,7 +24,7 @@ namespace BootCamp.Chapter
             return Lesson3.PromptString(message);
         }
 
-        public static float PromptFloat(string message) //Tell me if its a problem that I changed this to a double
+        public static float PromptFloat(string message)
         {
             return Lesson3.PromptFloat(message);
         }

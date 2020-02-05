@@ -19,7 +19,7 @@ namespace BootCamp.Chapter
             WriteOutInfo();
             WriteOutInfo();
         }
-        static void WriteOutInfo()
+        public static void WriteOutInfo()
         {
             string name = PromptString("Please give me your full name");
             int age = PromptInt("Please give me your age");
@@ -29,26 +29,26 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{name} is {age} old, their weight is {weight}kg and their height is {height}cm\n Their BMI index is {BMI}");//their is used instead of his/her.
 
         }
-        static float PromptFloat(string message)
+        public static float PromptFloat(string message)
         {
             WriteLine(message);
             return float.Parse(Console.ReadLine());
         }
-        static int PromptInt(string message)
+        public static int PromptInt(string message)
         {
             WriteLine(message);
             return int.Parse(Console.ReadLine());
         }
-        static string PromptString(string message)
+        public static string PromptString(string message)
         {
             WriteLine(message);
             return (Console.ReadLine());
         }
-        static float CalcBMI(float height, float weight)
+        public static float CalcBMI(float height, float weight)
         {
-            return Math.Round(weight / Math.Pow(height/100,2),2);
+            return weight / (((height / 100) * (height / 100)));
         }
-        static void WriteLine(string text)
+        public static void WriteLine(string text)
         {
             Console.WriteLine(text);
         }
