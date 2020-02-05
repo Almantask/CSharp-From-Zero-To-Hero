@@ -95,7 +95,7 @@
                 return new int[] { };
             }
             int[] newArr = new int[array.Length - 1];
-            for (int i = 0; i < array.Length; ++i)
+            for (int i = 0; i < array.Length-1; ++i)
             {
                 newArr[i] = (i < index) ? array[i] : array[i + 1];
             }
@@ -112,7 +112,7 @@
         {
             if (array != null)
             {
-                return InsertAt(array, number, 0);
+                return InsertAt(array,number,0);
             }
             else
             {
