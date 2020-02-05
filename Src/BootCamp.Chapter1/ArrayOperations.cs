@@ -9,7 +9,9 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if(array == null || array.Length < 2)
+            //sorts array using selection sort
+            //takes i and swaps with lowest j that is found
+            if (array == null || array.Length < 2)
             {
                 return;
             }
@@ -27,7 +29,7 @@
                 array[mindex] = array[i];
                 array[i] = temp;
             }
-            //selection sort
+            
 
         }
 
