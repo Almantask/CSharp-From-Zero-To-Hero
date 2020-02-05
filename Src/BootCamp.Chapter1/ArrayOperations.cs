@@ -27,6 +27,8 @@
                 array[mindex] = array[i];
                 array[i] = temp;
             }
+            //selection sort
+
         }
 
         /// <summary>
@@ -67,13 +69,13 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length > 0)
+            if (array != null)
             {
-                return array;
+                return RemoveAt(array, 0);
             }
             else
             {
-                return RemoveAt(array,0);
+                return array;
             }
             
         }
@@ -128,6 +130,7 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
+
             if (array != null)
             {
                 return InsertAt(array,number,array.Length-1);
