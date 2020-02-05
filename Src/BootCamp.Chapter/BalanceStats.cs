@@ -133,9 +133,15 @@ namespace BootCamp.Chapter
 
             for (int j = 0; j < data.Length - 1; j++)
             {
-                var isValid = decimal.TryParse(data[j], out decimal amount1);
-                
-                isValid = decimal.TryParse(data[j + 1], out decimal amount2);
+                if(!decimal.TryParse(data[j], out decimal amount1))
+                {
+                    break; 
+                }
+
+                if (!decimal.TryParse(data[j + 1], out decimal amount2))
+                {
+                    break;
+                }
                 lossForCurrentPerson = amount1 - amount2;
             }
 
@@ -158,9 +164,8 @@ namespace BootCamp.Chapter
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
                 var currentPersonData = peopleAndBalances[i].Split(',');
-                var isValid = decimal.TryParse(currentPersonData[currentPersonData.Length - 1], out decimal highestAmountOfPerson);
-
-                if (!isValid)
+               
+                if (!decimal.TryParse(currentPersonData[currentPersonData.Length - 1], out decimal highestAmountOfPerson))
                 {
                     return "N/A.";
                 }
@@ -230,9 +235,7 @@ namespace BootCamp.Chapter
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
                 var currentPersonData = peopleAndBalances[i].Split(',');
-                var isValid = int.TryParse(currentPersonData[currentPersonData.Length - 1], out int highestAmountOfPerson);
-
-                if (!isValid)
+                if (!int.TryParse(currentPersonData[currentPersonData.Length - 1], out int highestAmountOfPerson))
                 {
                     return "N/A.";
                 }
@@ -248,9 +251,7 @@ namespace BootCamp.Chapter
 
             var answer = $"{poorestPerson} has the least money. {lowestBalanceString}.";
 
-            TextTable.Build(answer, 3);
-
-            return answer;
+           return answer;
 
 
         }
@@ -270,7 +271,8 @@ namespace BootCamp.Chapter
                 }
                 else
                 {
-                    poorestPerson.Replace(currentOne, currentPersonData[0]);
+                    poorestPerson.Clear();  
+                    poorestPerson.Append(currentPersonData[0]);
                 }
 
 
