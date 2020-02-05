@@ -148,9 +148,13 @@
             {
                 return array;
             }
-            if (array == null || array.Length == 0)
+            if (array == null || (array.Length == 0 && index == 0))
             {
                 return new[] {number};
+            }
+            if (index > array.Length)
+            {
+                return array;
             }
 
             int[] newArr = new int[array.Length+1];
