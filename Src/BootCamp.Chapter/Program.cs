@@ -15,9 +15,9 @@ namespace BootCamp.Chapter
 
             // - FindPersonWithBiggestLoss
 
-            //Console.WriteLine("The person with the biggest loss was  : ");
-            //answer = BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances);
-            //Console.WriteLine(TextTable.Build(answer, 3));
+            Console.WriteLine("The person with the biggest loss was  : ");
+            answer = BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances);
+            Console.WriteLine(TextTable.Build(answer, 3));
 
             // - FindRichestPerson
 

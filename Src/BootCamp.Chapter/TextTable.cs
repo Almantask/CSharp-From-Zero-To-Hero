@@ -70,9 +70,7 @@ namespace BootCamp.Chapter
                 table.Append(String.Empty.PadRight(lengthLongestWord - word.Length + padding, ' '));
                 table.Append("|");
                 table.Append(Environment.NewLine);
-
             }
-
         }
 
         private static int GetLongestWordLength(string[] arrayOfLines)
