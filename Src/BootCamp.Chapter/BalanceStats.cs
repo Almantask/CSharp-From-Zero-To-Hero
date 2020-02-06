@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -39,7 +40,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var maxBalanceNoComma = RemoveComma($"{maxBalance:C0}");
             return $"{ReplaceLastComma(name.ToString())} had the most money ever. {maxBalanceNoComma}.";
         }
@@ -97,7 +98,7 @@ namespace BootCamp.Chapter
                 return "N/A.";
             }
 
-            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var biggestLossEverNoComma = RemoveComma($"{biggestLossEver:C0}").Replace("(", "-").Replace(")", "");
             return $"{name} lost the most money. {biggestLossEverNoComma}.";
         }
@@ -170,7 +171,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var maxBalanceNoComma = RemoveComma($"{maxBalance:C0}");
             var word1 = name.ToString().Contains(", ") ? "are" : "is";
             var word2 = name.ToString().Contains(", ") ? "people" : "person";
@@ -211,7 +212,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var word = name.ToString().Contains(", ") ? "have" : "has";
             var minBalanceNoComma = RemoveComma($"{minBalance:C0}").Replace("(", "-").Replace(")", "");
             if (minBalance < 0)
