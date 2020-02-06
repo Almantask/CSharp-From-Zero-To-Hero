@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -40,7 +39,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             var maxBalanceNoComma = RemoveComma($"{maxBalance:C0}");
             return $"{ReplaceLastComma(name.ToString())} had the most money ever. {maxBalanceNoComma}.";
         }
@@ -98,7 +97,7 @@ namespace BootCamp.Chapter
                 return "N/A.";
             }
 
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             var biggestLossEverNoComma = RemoveComma($"{biggestLossEver:C0}").Replace("(", "-").Replace(")", "");
             return $"{name} lost the most money. {biggestLossEverNoComma}.";
         }
@@ -127,12 +126,14 @@ namespace BootCamp.Chapter
         private static decimal GetLoss(decimal biggestLoss, decimal beginAmount, decimal endAmount)
         {
             var loss = endAmount - beginAmount;
-            if (loss < biggestLoss)
+            var bigLoss = biggestLoss;
+
+            if (loss < bigLoss)
             {
-                biggestLoss = loss;
+                bigLoss = loss;
             }
 
-            return biggestLoss;
+            return bigLoss;
         }
 
         /// <summary>
@@ -169,7 +170,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             var maxBalanceNoComma = RemoveComma($"{maxBalance:C0}");
             var word1 = name.ToString().Contains(", ") ? "are" : "is";
             var word2 = name.ToString().Contains(", ") ? "people" : "person";
@@ -210,7 +211,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
             var word = name.ToString().Contains(", ") ? "have" : "has";
             var minBalanceNoComma = RemoveComma($"{minBalance:C0}").Replace("(", "-").Replace(")", "");
             if (minBalance < 0)

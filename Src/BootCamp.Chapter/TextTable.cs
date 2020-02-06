@@ -77,7 +77,8 @@ namespace BootCamp.Chapter
                 if (message[i] == '\r' && message[i + 1] == '\n')
                 {
                     endPos = i - 1;
-                    messageLine[messageCount++] = message.Substring(beginPos, endPos - beginPos + 1);
+                    messageLine[messageCount] = message.Substring(beginPos, endPos - beginPos + 1);
+                    messageCount++;
                     beginPos = i + 2;
                 }
             }
