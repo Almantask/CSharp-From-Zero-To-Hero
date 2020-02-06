@@ -89,7 +89,7 @@ namespace BootCamp.Chapter
 
             if (endPos <= message.Length)
             {
-                messageLine[messageCount++] = message.Substring(beginPos, message.Length - beginPos);
+                messageLine[messageCount] = message.Substring(beginPos, message.Length - beginPos);
             }
 
             return messageLine;
