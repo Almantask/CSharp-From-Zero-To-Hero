@@ -8,7 +8,6 @@ namespace BootCamp.Chapter1
             var arr = new int[3];
             arr[0] = 3;
             arr[1] = 1;
-            //arr[2] = 1;
             ArrayOperations.InsertLast(arr, 222);
             foreach(var i in arr)
             {
