@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -16,7 +17,7 @@ namespace BootCamp.Chapter
             }
 
             var maxBalance = 0m;
-            var name = "";
+            var name = new StringBuilder();
 
             for (var i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -27,21 +28,21 @@ namespace BootCamp.Chapter
                 {
                     if (balance > maxBalance)
                     {
-                        name = "";
+                        name = new StringBuilder();
                     }
-                    if (name != "")
+                    if (name.Length != 0)
                     {
-                        name += ", ";
+                        name.Append(", ");
                     }
-                    name += peopleBalances[0];
+                    name.Append(peopleBalances[0]);
 
                     maxBalance = balance;
                 }
             }
 
-            SetMoneyFormat();
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var maxBalanceNoComma = RemoveComma($"{maxBalance:C0}");
-            return $"{ReplaceLastComma(name)} had the most money ever. {maxBalanceNoComma}.";
+            return $"{ReplaceLastComma(name.ToString())} had the most money ever. {maxBalanceNoComma}.";
         }
 
         private static decimal GetLargestBalance(string[] peopleBalances)
@@ -97,8 +98,8 @@ namespace BootCamp.Chapter
                 return "N/A.";
             }
 
-            SetMoneyFormat();
-            var biggestLossEverNoComma = RemoveComma($"{biggestLossEver:C0}").Replace("(", "-").Replace(")", ""); ;
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            var biggestLossEverNoComma = RemoveComma($"{biggestLossEver:C0}").Replace("(", "-").Replace(")", "");
             return $"{name} lost the most money. {biggestLossEverNoComma}.";
         }
 
@@ -115,13 +116,20 @@ namespace BootCamp.Chapter
 
                     if (isBeforeBalanceValid && isAfterBalanceValid)
                     {
-                        var loss = endAmount - beginAmount;
-                        if (loss < biggestLoss)
-                        {
-                            biggestLoss = loss;
-                        }
+                        biggestLoss = GetLoss(biggestLoss, beginAmount, endAmount);
                     }
                 }
+            }
+
+            return biggestLoss;
+        }
+
+        private static decimal GetLoss(decimal biggestLoss, decimal beginAmount, decimal endAmount)
+        {
+            var loss = endAmount - beginAmount;
+            if (loss < biggestLoss)
+            {
+                biggestLoss = loss;
             }
 
             return biggestLoss;
@@ -138,7 +146,7 @@ namespace BootCamp.Chapter
             }
 
             var maxBalance = 0m;
-            var name = "";
+            var name = new StringBuilder();
 
             for (var i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -149,23 +157,23 @@ namespace BootCamp.Chapter
                 {
                     if (balance > maxBalance)
                     {
-                        name = "";
+                        name = new StringBuilder();
                     }
-                    if (name != "")
+                    if (name.Length != 0)
                     {
-                        name += ", ";
+                        name.Append(", ");
                     }
-                    name += peopleBalances[0];
+                    name.Append(peopleBalances[0]);
 
                     maxBalance = balance;
                 }
             }
 
-            SetMoneyFormat();
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var maxBalanceNoComma = RemoveComma($"{maxBalance:C0}");
-            var word = name.Contains(", ") ? "are" : "is";
-            var word2 = name.Contains(", ") ? "people" : "person";
-            return $"{ReplaceLastComma(name)} {word} the richest {word2}. {maxBalanceNoComma}.";
+            var word1 = name.ToString().Contains(", ") ? "are" : "is";
+            var word2 = name.ToString().Contains(", ") ? "people" : "person";
+            return $"{ReplaceLastComma(name.ToString())} {word1} the richest {word2}. {maxBalanceNoComma}.";
         }
 
         /// <summary>
@@ -179,7 +187,7 @@ namespace BootCamp.Chapter
             }
 
             var minBalance = decimal.MaxValue;
-            var name = "";
+            var name = new StringBuilder();
 
             for (var i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -190,31 +198,31 @@ namespace BootCamp.Chapter
                 {
                     if (balance < minBalance)
                     {
-                        name = "";
+                        name = new StringBuilder();
                     }
-                    if (name != "")
+                    if (name.Length != 0)
                     {
-                        name += ", ";
+                        name.Append(", ");
                     }
-                    name += peopleBalances[0];
+                    name.Append(peopleBalances[0]);
 
                     minBalance = balance;
                 }
             }
 
-            var word = name.Contains(", ") ? "have" : "has";
-            SetMoneyFormat();
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            var word = name.ToString().Contains(", ") ? "have" : "has";
             var minBalanceNoComma = RemoveComma($"{minBalance:C0}").Replace("(", "-").Replace(")", "");
             if (minBalance < 0)
             {
                 minBalanceNoComma = $"{minBalanceNoComma}";
             }
-            return $"{ReplaceLastComma(name)} {word} the least money. {minBalanceNoComma}.";
+            return $"{ReplaceLastComma(name.ToString())} {word} the least money. {minBalanceNoComma}.";
         }
 
         private static string ReplaceLastComma(string name)
         {
-            var lastComma = name.LastIndexOf(", ");
+            var lastComma = name.LastIndexOf(", ", StringComparison.InvariantCulture);
             if (lastComma > 0)
             {
                 name = name.Remove(lastComma, 2).Insert(lastComma, " and ");
@@ -230,11 +238,6 @@ namespace BootCamp.Chapter
                 return true;
             }
             return false;
-        }
-
-        private static void SetMoneyFormat()
-        {
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
         }
 
         private static string RemoveComma(string data)

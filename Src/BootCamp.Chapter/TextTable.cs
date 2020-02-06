@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -112,61 +113,61 @@ namespace BootCamp.Chapter
         private static string BuildTable(string[] messageLine, int maxLength, int padding)
         {
             var tableLine = BuildBorderLine(maxLength, padding, "+", "-");
-            var table = tableLine + Environment.NewLine;
+            var table = new StringBuilder(tableLine + Environment.NewLine);
 
             for (var i = 0; i < padding; i++)
             {
                 tableLine = BuildBorderLine(maxLength, padding, "|", " ");
-                table += tableLine + Environment.NewLine;
+                table.Append(tableLine + Environment.NewLine);
             }
 
             for (var i = 0; i < messageLine.Length; i++)
             {
                 tableLine = BuildMessageLine(maxLength, padding, "|", messageLine[i]);              
-                table += tableLine + Environment.NewLine;
+                table.Append(tableLine + Environment.NewLine);
             }
 
             for (var i = 0; i < padding; i++)
             {
                 tableLine = BuildBorderLine(maxLength, padding, "|", " ");
-                table += tableLine + Environment.NewLine;
+                table.Append(tableLine + Environment.NewLine);
             }
 
             tableLine = BuildBorderLine(maxLength, padding, "+", "-");
-            table += tableLine + Environment.NewLine;
+            table.Append(tableLine + Environment.NewLine);
 
-            return table;
+            return table.ToString();
         }
 
         private static string BuildBorderLine(int maxLength, int padding, string sideBorder, string edgeBorder)
         {
-            var line = sideBorder;
+            var line = new StringBuilder(sideBorder);
             for (var i = 0; i < maxLength + 2 * padding; i++)
             {
-                line += edgeBorder;
+                line.Append(edgeBorder);
             }
-            line += sideBorder;
+            line.Append(sideBorder);
 
-            return line;
+            return line.ToString();
         }
 
         private static string BuildMessageLine(int maxLength, int padding, string sideBorder, string messageLine)
         {
-            var line = sideBorder;
+            var line = new StringBuilder(sideBorder);
             for (var i = 0; i < (maxLength - messageLine.Length) / 2 + padding; i++)
             {
-                line += " ";
+                line.Append(" ");
             }
 
-            line += messageLine;
+            line.Append(messageLine);
 
             for (var i = 0; i < (maxLength - messageLine.Length) / 2 + padding + ((maxLength - messageLine.Length) % 2); i++)
             {
-                line += " ";
+                line.Append(" ");
             }
-            line += sideBorder;
+            line.Append(sideBorder);
 
-            return line;
+            return line.ToString();
         }
     }
 }
