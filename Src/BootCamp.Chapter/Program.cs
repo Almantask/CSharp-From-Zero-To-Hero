@@ -24,7 +24,7 @@ namespace BootCamp.Chapter
 
 
             // Uncomment the next line to run your tests only.
-            // runTests = true;
+            runTests = true;
 
             if (runTests)
             {
