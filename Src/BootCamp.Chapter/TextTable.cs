@@ -72,26 +72,24 @@ namespace BootCamp.Chapter
             var beginPos = 0;
             var endPos = 0;
 
-            for (var i = 0; i < message.Length - 1; i++)
-            {
-                if (message[i] == '\r' && message[i + 1] == '\n')
-                {
-                    endPos = i - 1;
-                    messageLine[messageCount] = message.Substring(beginPos, endPos - beginPos + 1);
-                    messageCount++;
-                    beginPos = i + 2;
-                }
-            }
-
             if (numOfMessageLines == 0 && message.Length > 0)
             {
                 messageLine[0] = message;
             }
 
+            for (var i = 0; i < message.Length - 1; i++)
+            {
+                if (message[i] == '\r' && message[i + 1] == '\n')
+                {
+                    endPos = i - 1;
+                    messageLine[messageCount++] = message.Substring(beginPos, endPos - beginPos + 1);
+                    beginPos = i + 2;
+                }
+            }
+
             if (endPos <= message.Length)
             {
-                messageLine[messageCount] = message.Substring(beginPos, message.Length - beginPos);
-                messageCount++;
+                messageLine[messageCount++] = message.Substring(beginPos, message.Length - beginPos);
             }
 
             return messageLine;
