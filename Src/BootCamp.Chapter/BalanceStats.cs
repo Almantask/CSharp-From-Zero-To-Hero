@@ -78,7 +78,10 @@ namespace BootCamp.Chapter
             var allAmounts = currentPersonData[1..]; 
             foreach (var amountString in allAmounts)
             {
-                var isValid = decimal.TryParse(amountString, out decimal amount); 
+                if (!decimal.TryParse(amountString, out decimal amount))
+                {
+                    break; 
+                }; 
                 if (amount > highest)
                     
                 {
@@ -164,13 +167,27 @@ namespace BootCamp.Chapter
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
                 var currentPersonData = peopleAndBalances[i].Split(',');
-               
+
                 if (!decimal.TryParse(currentPersonData[currentPersonData.Length - 1], out decimal highestAmountOfPerson))
                 {
                     return "N/A.";
                 }
 
-                HighestBalance = FindRichestPerson(peopleAndBalances, HighestBalance, RichestPerson, i, currentPersonData, highestAmountOfPerson);
+                if (highestAmountOfPerson == HighestBalance)
+                {
+                    if (i == peopleAndBalances.Length - 1)
+                    {
+                        RichestPerson.Append(" and ");
+                    }
+                    else
+                    {
+                        RichestPerson.Append(", ");
+                    }
+
+                    RichestPerson.Append(currentPersonData[0]);
+                }
+
+                HighestBalance = FindMorePeopleWithSameAmount(HighestBalance, RichestPerson, currentPersonData, highestAmountOfPerson);
 
             }
 
@@ -181,7 +198,7 @@ namespace BootCamp.Chapter
 
         }
 
-        private static decimal FindRichestPerson(string[] peopleAndBalances, decimal HighestBalance, StringBuilder RichestPerson, int i, string[] currentPersonData, decimal highestAmountOfPerson)
+        private static decimal FindMorePeopleWithSameAmount(decimal HighestBalance, StringBuilder RichestPerson, string[] currentPersonData, decimal highestAmountOfPerson)
         {
             if (highestAmountOfPerson > HighestBalance)
             {
@@ -199,24 +216,9 @@ namespace BootCamp.Chapter
 
 
             }
-            else if (highestAmountOfPerson == HighestBalance)
-            {
-                if (i == peopleAndBalances.Length - 1)
-                {
-                    RichestPerson.Append(" and ");
-                }
-                else
-                {
-                    RichestPerson.Append(", ");
-                }
-
-                RichestPerson.Append(currentPersonData[0]);
-            }
 
             return HighestBalance;
         }
-
-        
 
         /// <summary>
         /// Return name and current money of the most poor person.
@@ -240,7 +242,21 @@ namespace BootCamp.Chapter
                     return "N/A.";
                 }
 
-                lowestBalance = FindPoorestPerson(peopleAndBalances, lowestBalance, poorestPerson, i, currentPersonData, highestAmountOfPerson);
+                if (highestAmountOfPerson == lowestBalance)
+                {
+                    if (i == peopleAndBalances.Length - 1)
+                    {
+                        poorestPerson.Append(" and ");
+                    }
+                    else
+                    {
+                        poorestPerson.Append(", ");
+                    }
+
+                    poorestPerson.Append(currentPersonData[0]);
+                }
+
+                lowestBalance = FindMorePoorPeople(lowestBalance, poorestPerson, currentPersonData, highestAmountOfPerson);
 
             }
 
@@ -256,7 +272,7 @@ namespace BootCamp.Chapter
 
         }
 
-        private static int FindPoorestPerson(string[] peopleAndBalances, int lowestBalance, StringBuilder poorestPerson, int i, string[] currentPersonData, int highestAmountOfPerson)
+        private static int FindMorePoorPeople(int lowestBalance, StringBuilder poorestPerson, string[] currentPersonData, int highestAmountOfPerson)
         {
             if (highestAmountOfPerson < lowestBalance)
             {
@@ -271,27 +287,15 @@ namespace BootCamp.Chapter
                 }
                 else
                 {
-                    poorestPerson.Clear();  
+                    poorestPerson.Clear();
                     poorestPerson.Append(currentPersonData[0]);
                 }
 
 
             }
-            else if (highestAmountOfPerson == lowestBalance)
-            {
-                if (i == peopleAndBalances.Length - 1)
-                {
-                    poorestPerson.Append(" and ");
-                }
-                else
-                {
-                    poorestPerson.Append(", ");
-                }
-
-                poorestPerson.Append(currentPersonData[0]);
-            }
 
             return lowestBalance;
         }
+
     }
 }
