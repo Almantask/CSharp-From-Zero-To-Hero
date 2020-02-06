@@ -6,10 +6,10 @@ namespace BootCamp.Chapter1
         static void Main(string[] args)
         {
             var arr = new int[3];
-            arr[0] = 2;
-            arr[1] = 0;
-            arr[2] = 1;
-            ArrayOperations.RemoveFirst(arr);
+            arr[0] = 3;
+            arr[1] = 1;
+            //arr[2] = 1;
+            ArrayOperations.InsertLast(arr, 222);
             foreach(var i in arr)
             {
                 Console.WriteLine(i);
