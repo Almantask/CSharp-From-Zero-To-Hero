@@ -7,12 +7,12 @@ I set a break point at line 51 of Program.cs, started the debugger, and stepped 
 I kept on stepping into the code to see the values of the variables in the Locals window. 
 That is how I figured the answers to the questions and the passphrase.
 
-*Answers:
-*Debugger!
-*51
-*79
-*77
-*A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+## Answers:
+* Debugger!
+* 51
+* 79
+* 77
+* A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
 
 
 ## Hints
