@@ -13,6 +13,8 @@ namespace BootCamp.Chapter
         {
             var maxBalanceSp = BalanceStats.HighestBalanceForSinglePerson(PeoplesBalances.Balances[2]);
             Console.WriteLine(maxBalanceSp);
+            var totalBalanceSp = BalanceStats.TotalBalanceForSinglePerson(PeoplesBalances.Balances[2]);
+            Console.WriteLine(totalBalanceSp);
         }
     }
 }

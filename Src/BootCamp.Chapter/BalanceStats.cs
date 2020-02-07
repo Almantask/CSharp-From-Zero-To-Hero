@@ -28,6 +28,17 @@ namespace BootCamp.Chapter
             return maxBalance;
         }
 
+        public static decimal TotalBalanceForSinglePerson(string personAndBalance)
+        {
+            var balanceList = personAndBalance.Split(',');
+            decimal totalBalance = decimal.Zero;
+            for (int i = 1; i < balanceList.Length; i++)
+            {
+                totalBalance += ConvertStringToDecimal(balanceList[i]);
+            }
+            return totalBalance;
+        }
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
