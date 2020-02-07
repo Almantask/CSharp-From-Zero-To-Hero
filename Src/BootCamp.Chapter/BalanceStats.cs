@@ -61,6 +61,13 @@ namespace BootCamp.Chapter
             return lastBalance;
         }
 
+        public static string ReturnNameForSingleBalance(string personAndBalance)
+        {
+            var balanceList = personAndBalance.Split(',');
+            string personName = balanceList[0];
+            return personName;
+        }
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>

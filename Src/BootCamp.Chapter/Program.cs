@@ -11,6 +11,8 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
+            var personNameSb = BalanceStats.ReturnNameForSingleBalance(PeoplesBalances.Balances[1]);
+            Console.WriteLine(personNameSb);
             var maxBalanceSp = BalanceStats.HighestBalanceForSinglePerson(PeoplesBalances.Balances[1]);
             Console.WriteLine(maxBalanceSp);
             var totalBalanceSp = BalanceStats.TotalBalanceForSinglePerson(PeoplesBalances.Balances[1]);
