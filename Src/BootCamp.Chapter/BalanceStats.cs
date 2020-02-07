@@ -95,7 +95,7 @@ namespace BootCamp.Chapter
         public static bool ArrayElementsAreEqual(decimal[] decimalArray)
         {
             decimal firstElement = decimalArray[0];
-            for (int i = 1; i < decimalArray.Length; i++)
+            for (int i = 0; i < decimalArray.Length; i++)
             {
                 if (decimalArray[i] != firstElement)
                 {
@@ -130,8 +130,9 @@ namespace BootCamp.Chapter
         {
             if (!IsArrayValid(peopleAndBalances)) return invalidMessage;
 
+            const string peopleMessage = " had the most money ever.";
+            const string singlePersonMessage = " had the most money ever.";
             var resultMessage = new StringBuilder();
-
             var peopleList = new string[peopleAndBalances.Length];
             var highestList = new decimal[peopleAndBalances.Length];
 
@@ -139,30 +140,31 @@ namespace BootCamp.Chapter
             {
                 highestList[i] = HighestBalanceForSinglePerson(peopleAndBalances[i]);
             }
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                peopleList[i] = ReturnNameForSingleBalance(peopleAndBalances[i]);
+            }
+
+            var highestBalance = highestList[0];
+            var personWithHighestBalance = peopleList[0];
+
+            for (int i = 1; i < highestList.Length; i++)
+            {
+                if (highestList[i] > highestBalance)
+                {
+                    highestBalance = highestList[i];
+                    personWithHighestBalance = peopleList[i];
+                }
+            }
 
             if (ArrayElementsAreEqual(highestList))
             {
-                for (int i = 0; i < highestList.Length; i++)
-                {
-                    peopleList[i] = ReturnNameForSingleBalance(peopleAndBalances[i]);
-                }
-
-                return FormatStringAndCommas(peopleList);
+                resultMessage.Append(FormatStringAndCommas(peopleList)).Append(peopleMessage).Append(" ¤").Append(highestBalance).Append(".");
+                return resultMessage.ToString();
             }
-
-            var highestBalanceEver = HighestBalanceForSinglePerson(peopleAndBalances[0]);
-            var nameOfPersonHighestBalance = ReturnNameForSingleBalance(peopleAndBalances[0]);
-
-            for (int i = 1; i < peopleAndBalances.Length; i++)
-            {
-                if (HighestBalanceForSinglePerson(peopleAndBalances[i]) > highestBalanceEver)
-                {
-                    highestBalanceEver = HighestBalanceForSinglePerson(peopleAndBalances[i]);
-                    nameOfPersonHighestBalance = ReturnNameForSingleBalance(peopleAndBalances[i]);
-                }
-            }
-
-            return "";
+            resultMessage.Clear();
+            resultMessage.Append(personWithHighestBalance).Append(singlePersonMessage).Append(" ¤").Append(highestBalance).Append(".");
+            return resultMessage.ToString();
         }
 
         /// <summary>

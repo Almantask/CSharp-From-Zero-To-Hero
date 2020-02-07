@@ -26,6 +26,9 @@ namespace BootCamp.Chapter
             Console.WriteLine(lowestBalanceSp);
             var formatedText = BalanceStats.FormatStringAndCommas(names);
             Console.WriteLine(formatedText);
+
+            Console.WriteLine();
+            Console.WriteLine(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances));
         }
     }
 }
