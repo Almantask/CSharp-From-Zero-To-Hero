@@ -6,8 +6,9 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
+        public static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
         private const string invalidMessage = "N/A.";
+        private const string currencySymbol = " ¤";
 
         private static decimal ConvertStringToDecimal(string input)
         {
@@ -74,14 +75,7 @@ namespace BootCamp.Chapter
             return totalBalance;
         }
 
-        public static decimal LastBalanceForSinglePerson(string personAndBalance)
-        {
-            var balanceList = personAndBalance.Split(',');
-            decimal lastBalance = ConvertStringToDecimal(balanceList[balanceList.Length - 1]);
-            return lastBalance;
-        }
-
-        public static string ReturnNameForSingleBalance(string personAndBalance)
+        public static string ReturnNameForSinglePerson(string personAndBalance)
         {
             var balanceList = personAndBalance.Split(',');
 
@@ -90,6 +84,20 @@ namespace BootCamp.Chapter
                 return balanceList[0];
             }
             return invalidMessage;
+        }
+
+        public static decimal CalculateLossForSinglePerson(string personAndBalance)
+        {
+            var balanceList = personAndBalance.Split(',');
+
+            decimal previousBalance = ConvertStringToDecimal(balanceList[1]);
+            decimal currentBalance = ConvertStringToDecimal(balanceList[^1]);
+
+            for (int i = 2; i < balanceList.Length - 1; i++)
+            {
+                previousBalance += ConvertStringToDecimal(balanceList[i]);
+            }
+            return currentBalance - previousBalance;
         }
 
         public static bool ArrayElementsAreEqual(decimal[] decimalArray)
@@ -142,7 +150,7 @@ namespace BootCamp.Chapter
             }
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                peopleList[i] = ReturnNameForSingleBalance(peopleAndBalances[i]);
+                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
 
             var highestBalance = highestList[0];
@@ -159,11 +167,23 @@ namespace BootCamp.Chapter
 
             if (ArrayElementsAreEqual(highestList))
             {
-                resultMessage.Append(FormatStringAndCommas(peopleList)).Append(peopleMessage).Append(" ¤").Append(highestBalance).Append(".");
+                resultMessage
+                    .Append(FormatStringAndCommas(peopleList))
+                    .Append(peopleMessage)
+                    .Append(currencySymbol)
+                    .Append(highestBalance)
+                    .Append(".");
                 return resultMessage.ToString();
             }
             resultMessage.Clear();
-            resultMessage.Append(personWithHighestBalance).Append(singlePersonMessage).Append(" ¤").Append(highestBalance).Append(".");
+
+            resultMessage
+                .Append(personWithHighestBalance)
+                .Append(singlePersonMessage)
+                .Append(currencySymbol)
+                .Append(highestBalance)
+                .Append(".");
+
             return resultMessage.ToString();
         }
 
@@ -172,7 +192,45 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            if (!IsArrayValid(peopleAndBalances)) return invalidMessage;
+
+            const string peopleMessage = " lost the most money.";
+            const string singlePersonMessage = " lost the most money.";
+            var resultMessage = new StringBuilder();
+            var peopleList = new string[peopleAndBalances.Length];
+            var lowestList = new decimal[peopleAndBalances.Length];
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                lowestList[i] = CalculateLossForSinglePerson(peopleAndBalances[i]);
+                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
+            }
+
+            var initialBalance = lowestList[0];
+            var personWithLowestBalance = peopleList[0];
+
+            for (int i = 1; i < lowestList.Length; i++)
+            {
+                if (lowestList[i] < initialBalance)
+                {
+                    initialBalance = lowestList[i];
+                    personWithLowestBalance = peopleList[i];
+                }
+            }
+
+            if (ArrayElementsAreEqual(lowestList) || lowestList.Length < 2)
+            {
+                resultMessage.Append(invalidMessage);
+                return resultMessage.ToString();
+            }
+            resultMessage.Clear();
+
+            resultMessage.Append(personWithLowestBalance)
+                         .Append(singlePersonMessage)
+                         .Append(currencySymbol)
+                         .Append(initialBalance)
+                         .Append(".");
+            return resultMessage.ToString();
         }
 
         /// <summary>

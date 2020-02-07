@@ -14,14 +14,14 @@ namespace BootCamp.Chapter
             var names = new[] { "Mihail", "Goku" };
             var arrayElements = new decimal[] { 1, 1, 2 };
             Console.WriteLine(BalanceStats.ArrayElementsAreEqual(arrayElements));
-            var personNameSb = BalanceStats.ReturnNameForSingleBalance(PeoplesBalances.Balances[1]);
+            var personNameSb = BalanceStats.ReturnNameForSinglePerson(PeoplesBalances.Balances[1]);
             Console.WriteLine(personNameSb);
             var maxBalanceSp = BalanceStats.HighestBalanceForSinglePerson(PeoplesBalances.Balances[1]);
             Console.WriteLine(maxBalanceSp);
             var totalBalanceSp = BalanceStats.TotalBalanceForSinglePerson(PeoplesBalances.Balances[1]);
             Console.WriteLine(totalBalanceSp);
-            var lastBalanceSp = BalanceStats.LastBalanceForSinglePerson(PeoplesBalances.Balances[1]);
-            Console.WriteLine(lastBalanceSp);
+            //var lastBalanceSp = BalanceStats.LastBalanceForSinglePerson(PeoplesBalances.Balances[1]);
+            //Console.WriteLine(lastBalanceSp);
             var lowestBalanceSp = BalanceStats.LowestBalanceForSinglePerson(PeoplesBalances.Balances[1]);
             Console.WriteLine(lowestBalanceSp);
             var formatedText = BalanceStats.FormatStringAndCommas(names);
@@ -29,6 +29,12 @@ namespace BootCamp.Chapter
 
             Console.WriteLine();
             Console.WriteLine(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances));
+
+            Console.WriteLine();
+            Console.WriteLine(BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances));
+
+            Console.WriteLine();
+            Console.WriteLine(BalanceStats.CalculateLossForSinglePerson(PeoplesBalances.Balances[1]).ToString(BalanceStats.numberFormatInfo));
         }
     }
 }
