@@ -11,6 +11,7 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
+            var names = new[] { "Mihail", "Goku" };
             var personNameSb = BalanceStats.ReturnNameForSingleBalance(PeoplesBalances.Balances[1]);
             Console.WriteLine(personNameSb);
             var maxBalanceSp = BalanceStats.HighestBalanceForSinglePerson(PeoplesBalances.Balances[1]);
@@ -21,6 +22,8 @@ namespace BootCamp.Chapter
             Console.WriteLine(lastBalanceSp);
             var lowestBalanceSp = BalanceStats.LowestBalanceForSinglePerson(PeoplesBalances.Balances[1]);
             Console.WriteLine(lowestBalanceSp);
+            var formatedText = BalanceStats.FormatStringAndCommas(names);
+            Console.WriteLine(formatedText);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -11,6 +13,15 @@ namespace BootCamp.Chapter
         {
             decimal.TryParse(input, NumberStyles.Any, numberFormatInfo, out decimal value);
             return value;
+        }
+
+        private static bool IsArrayValid(string[] inputArray)
+        {
+            if (inputArray == null || inputArray.Length == 0)
+            {
+                return false;
+            }
+            return true;
         }
 
         public static decimal HighestBalanceForSinglePerson(string personAndBalance)
@@ -68,11 +79,31 @@ namespace BootCamp.Chapter
             return personName;
         }
 
+        public static string FormatStringAndCommas(string[] validPeople)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < validPeople.Length; i++)
+            {
+                sb.Append(validPeople[i]);
+                if (i + 2 < validPeople.Length)
+                {
+                    sb.Append(", ");
+                }
+                else if (i + 1 < validPeople.Length)
+                {
+                    sb.Append(" and ");
+                }
+            }
+            return sb.ToString();
+        }
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
+            if (!IsArrayValid(peopleAndBalances)) return invalidMessage;
+
             return "";
         }
 
