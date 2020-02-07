@@ -12,6 +12,8 @@ namespace BootCamp.Chapter
         private static void Main(string[] args)
         {
             var names = new[] { "Mihail", "Goku" };
+            var arrayElements = new decimal[] { 1, 1, 2 };
+            Console.WriteLine(BalanceStats.ArrayElementsAreEqual(arrayElements));
             var personNameSb = BalanceStats.ReturnNameForSingleBalance(PeoplesBalances.Balances[1]);
             Console.WriteLine(personNameSb);
             var maxBalanceSp = BalanceStats.HighestBalanceForSinglePerson(PeoplesBalances.Balances[1]);

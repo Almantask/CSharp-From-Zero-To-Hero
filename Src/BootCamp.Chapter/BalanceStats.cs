@@ -24,6 +24,15 @@ namespace BootCamp.Chapter
             return true;
         }
 
+        private static bool IsInputStringValid(string inputString)
+        {
+            if (string.IsNullOrEmpty(inputString) || string.IsNullOrWhiteSpace(inputString))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static decimal HighestBalanceForSinglePerson(string personAndBalance)
         {
             var balanceList = personAndBalance.Split(',');
@@ -75,8 +84,25 @@ namespace BootCamp.Chapter
         public static string ReturnNameForSingleBalance(string personAndBalance)
         {
             var balanceList = personAndBalance.Split(',');
-            string personName = balanceList[0];
-            return personName;
+
+            if (IsInputStringValid(balanceList[0]))
+            {
+                return balanceList[0];
+            }
+            return invalidMessage;
+        }
+
+        public static bool ArrayElementsAreEqual(decimal[] decimalArray)
+        {
+            decimal firstElement = decimalArray[0];
+            for (int i = 1; i < decimalArray.Length; i++)
+            {
+                if (decimalArray[i] != firstElement)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static string FormatStringAndCommas(string[] validPeople)
@@ -103,6 +129,38 @@ namespace BootCamp.Chapter
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             if (!IsArrayValid(peopleAndBalances)) return invalidMessage;
+
+            var resultMessage = new StringBuilder();
+
+            var peopleList = new string[peopleAndBalances.Length];
+            var highestList = new decimal[peopleAndBalances.Length];
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                highestList[i] = HighestBalanceForSinglePerson(peopleAndBalances[i]);
+            }
+
+            if (ArrayElementsAreEqual(highestList))
+            {
+                for (int i = 0; i < highestList.Length; i++)
+                {
+                    peopleList[i] = ReturnNameForSingleBalance(peopleAndBalances[i]);
+                }
+
+                return FormatStringAndCommas(peopleList);
+            }
+
+            var highestBalanceEver = HighestBalanceForSinglePerson(peopleAndBalances[0]);
+            var nameOfPersonHighestBalance = ReturnNameForSingleBalance(peopleAndBalances[0]);
+
+            for (int i = 1; i < peopleAndBalances.Length; i++)
+            {
+                if (HighestBalanceForSinglePerson(peopleAndBalances[i]) > highestBalanceEver)
+                {
+                    highestBalanceEver = HighestBalanceForSinglePerson(peopleAndBalances[i]);
+                    nameOfPersonHighestBalance = ReturnNameForSingleBalance(peopleAndBalances[i]);
+                }
+            }
 
             return "";
         }
