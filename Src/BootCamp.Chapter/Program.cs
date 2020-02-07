@@ -7,14 +7,18 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class Program
+    public static class Program
     {
         private static void Main(string[] args)
         {
-            var maxBalanceSp = BalanceStats.HighestBalanceForSinglePerson(PeoplesBalances.Balances[2]);
+            var maxBalanceSp = BalanceStats.HighestBalanceForSinglePerson(PeoplesBalances.Balances[1]);
             Console.WriteLine(maxBalanceSp);
-            var totalBalanceSp = BalanceStats.TotalBalanceForSinglePerson(PeoplesBalances.Balances[2]);
+            var totalBalanceSp = BalanceStats.TotalBalanceForSinglePerson(PeoplesBalances.Balances[1]);
             Console.WriteLine(totalBalanceSp);
+            var lastBalanceSp = BalanceStats.LastBalanceForSinglePerson(PeoplesBalances.Balances[1]);
+            Console.WriteLine(lastBalanceSp);
+            var lowestBalanceSp = BalanceStats.LowestBalanceForSinglePerson(PeoplesBalances.Balances[1]);
+            Console.WriteLine(lowestBalanceSp);
         }
     }
 }

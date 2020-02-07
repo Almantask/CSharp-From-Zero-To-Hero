@@ -16,16 +16,31 @@ namespace BootCamp.Chapter
         public static decimal HighestBalanceForSinglePerson(string personAndBalance)
         {
             var balanceList = personAndBalance.Split(',');
-            decimal maxBalance = ConvertStringToDecimal(balanceList[1]);
+            decimal highestBalance = ConvertStringToDecimal(balanceList[1]);
 
             for (int i = 1; i < balanceList.Length; i++)
             {
-                if (ConvertStringToDecimal(balanceList[i]) > maxBalance)
+                if (ConvertStringToDecimal(balanceList[i]) > highestBalance)
                 {
-                    maxBalance = ConvertStringToDecimal(balanceList[i]);
+                    highestBalance = ConvertStringToDecimal(balanceList[i]);
                 }
             }
-            return maxBalance;
+            return highestBalance;
+        }
+
+        public static decimal LowestBalanceForSinglePerson(string personAndBalance)
+        {
+            var balanceList = personAndBalance.Split(',');
+            decimal lowestBalance = ConvertStringToDecimal(balanceList[1]);
+
+            for (int i = 1; i < balanceList.Length; i++)
+            {
+                if (ConvertStringToDecimal(balanceList[i]) < lowestBalance)
+                {
+                    lowestBalance = ConvertStringToDecimal(balanceList[i]);
+                }
+            }
+            return lowestBalance;
         }
 
         public static decimal TotalBalanceForSinglePerson(string personAndBalance)
@@ -37,6 +52,13 @@ namespace BootCamp.Chapter
                 totalBalance += ConvertStringToDecimal(balanceList[i]);
             }
             return totalBalance;
+        }
+
+        public static decimal LastBalanceForSinglePerson(string personAndBalance)
+        {
+            var balanceList = personAndBalance.Split(',');
+            decimal lastBalance = ConvertStringToDecimal(balanceList[balanceList.Length - 1]);
+            return lastBalance;
         }
 
         /// <summary>
