@@ -1,7 +1,33 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Globalization;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
+        private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
+        private const string invalidMessage = "N/A.";
+
+        private static decimal ConvertStringToDecimal(string input)
+        {
+            decimal.TryParse(input, NumberStyles.Any, numberFormatInfo, out decimal value);
+            return value;
+        }
+
+        public static decimal HighestBalanceForSinglePerson(string personAndBalance)
+        {
+            var balanceList = personAndBalance.Split(',');
+            decimal maxBalance = ConvertStringToDecimal(balanceList[1]);
+
+            for (int i = 1; i < balanceList.Length; i++)
+            {
+                if (ConvertStringToDecimal(balanceList[i]) > maxBalance)
+                {
+                    maxBalance = ConvertStringToDecimal(balanceList[i]);
+                }
+            }
+            return maxBalance;
+        }
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>

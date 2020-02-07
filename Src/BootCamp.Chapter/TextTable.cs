@@ -1,23 +1,32 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
     /// </summary>
     public static class TextTable
     {
+        private static readonly string divider = Environment.NewLine;
+        private const char cornerChar = '+';
+        private const char horizontalBorderChar = '-';
+        private const char verticalBorderChar = '|';
+
         /*
 
          Input: "Hello", 0
            +-----+
            |Hello|
            +-----+
-           
+
          Input: $"Hello{Environment.NewLine}World!", 0
            +------+
            |Hello |
            |World!|
            +------+
-           
+
          Input: "Hello", 1
            +-------+
            |       |
@@ -30,11 +39,66 @@
         /// <summary>
         /// Build a table for given message with given padding.
         /// Padding means how many spaces will a message be wrapped with.
-        /// Table itself is made of: "+-" symbols. 
+        /// Table itself is made of: "+-" symbols.
         /// </summary>
         public static string Build(string message, int padding)
         {
-            return "";
+            if (string.IsNullOrEmpty(message))
+            {
+                return "";
+            }
+
+            var longestWordInMessageSize = LongestWordInMessageSize(message);
+
+            var sb = new StringBuilder();
+
+            var emptyLine = new StringBuilder();
+            emptyLine.Append(verticalBorderChar).Append(' ', longestWordInMessageSize + (padding * 2)).Append(verticalBorderChar).Append(Environment.NewLine);
+
+            var horizontalBorder = new StringBuilder();
+            horizontalBorder.Append(cornerChar).Append(horizontalBorderChar, longestWordInMessageSize + (padding * 2)).Append(cornerChar).Append(Environment.NewLine);
+
+            sb.Append(horizontalBorder);
+
+            for (var i = 0; i < padding; i++)
+            {
+                sb.Append(emptyLine);
+            }
+
+            var wordsInMessage = message.Split(divider);
+
+            foreach (var word in wordsInMessage)
+            {
+                sb.Append(verticalBorderChar);
+                sb.Append(' ', padding);
+                sb.Append(word);
+                sb.Append(' ', longestWordInMessageSize - word.Length);
+                sb.Append(' ', padding);
+                sb.Append(verticalBorderChar);
+                sb.Append(Environment.NewLine);
+            }
+
+            for (var i = 0; i < padding; i++)
+            {
+                sb.Append(emptyLine);
+            }
+
+            sb.Append(horizontalBorder);
+
+            return sb.ToString();
+        }
+
+        private static int LongestWordInMessageSize(string message)
+        {
+            int size = 0;
+            foreach (var word in message.Split(divider))
+            {
+                if (word.Length > size)
+                {
+                    size = word.Length;
+                }
+            }
+            return size;
         }
     }
 }
