@@ -6,7 +6,8 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        const string InValidOutput = "N/A."; 
+        private const string InValidOutput = "N/A.";
+
         public static bool IsInValidValidInput(string[] input) => input == null || input.Length == 0;
 
         /// <summary>
@@ -19,77 +20,52 @@ namespace BootCamp.Chapter
                 return InValidOutput;
             }
 
+            var personWithHighestBalance = new StringBuilder();
+            var highestBalanceEver = FindHighestBalance(peopleAndBalances, personWithHighestBalance);
+
+            return $"{personWithHighestBalance.ToString()} had the most money ever. ¤{highestBalanceEver}.";
+        }
+
+        private static decimal FindHighestBalance(string[] peopleAndBalances, StringBuilder PersonWithHighestBalance)
+        {
             var HighestBalanceEver = decimal.MinValue;
-            var PersonWithHighestBalance = new StringBuilder();
 
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
-                HighestBalanceEver = FindHighestBalance(peopleAndBalances, HighestBalanceEver, PersonWithHighestBalance, i);
+                var currentPersonData = peopleAndBalances[i].Split(',');
+                var highestAmountOfPerson = decimal.Parse(currentPersonData[1..].Max());
 
-            }
-
-            var answer = $"{PersonWithHighestBalance.ToString()} had the most money ever. ¤{HighestBalanceEver}.";
-
-            return answer;
-        }
-
-        private static decimal FindHighestBalance(string[] peopleAndBalances, decimal HighestBalanceEver, StringBuilder PersonWithHighestBalance, int i)
-        {
-            var currentPersonData = peopleAndBalances[i].Split(',');
-            var highestAmountOfPerson = FindHighestBalanceOfPerson(currentPersonData);
-
-            if (highestAmountOfPerson > HighestBalanceEver)
-            {
-                HighestBalanceEver = highestAmountOfPerson;
-                var currentOne = PersonWithHighestBalance.ToString();
-
-                if (string.IsNullOrEmpty(currentOne))
+                if (highestAmountOfPerson == HighestBalanceEver)
                 {
-                    PersonWithHighestBalance.Append(currentPersonData[0]);
-                }
-                else
-                {
-                    PersonWithHighestBalance.Clear();
+                    if (i == peopleAndBalances.Length - 1)
+                    {
+                        PersonWithHighestBalance.Append(" and ");
+                    }
+                    else
+                    {
+                        PersonWithHighestBalance.Append(", ");
+                    }
+
                     PersonWithHighestBalance.Append(currentPersonData[0]);
                 }
 
-
-            }
-            else if (highestAmountOfPerson == HighestBalanceEver)
-            {
-                if (i == peopleAndBalances.Length - 1)
+                if (highestAmountOfPerson > HighestBalanceEver)
                 {
-                    PersonWithHighestBalance.Append(" and ");
-                }
-                else
-                {
-                    PersonWithHighestBalance.Append(", ");
-                }
+                    HighestBalanceEver = highestAmountOfPerson;
+                    var currentOne = PersonWithHighestBalance.ToString();
 
-                PersonWithHighestBalance.Append(currentPersonData[0]);
-            }
-
-            return HighestBalanceEver; 
-        }
-
-        public static decimal FindHighestBalanceOfPerson(string[] currentPersonData)
-        {
-            var highest = decimal.MinValue; 
-            var allAmounts = currentPersonData[1..]; 
-            foreach (var amountString in allAmounts)
-            {
-                if (!decimal.TryParse(amountString, out decimal amount))
-                {
-                    break; 
-                }; 
-                if (amount > highest)
-                    
-                {
-                    highest = amount; 
+                    if (string.IsNullOrEmpty(currentOne))
+                    {
+                        PersonWithHighestBalance.Append(currentPersonData[0]);
+                    }
+                    else
+                    {
+                        PersonWithHighestBalance.Replace(currentOne, currentPersonData[0]);
+                    }
                 }
             }
 
-            return highest; 
+            return HighestBalanceEver;
         }
 
         /// <summary>
@@ -110,13 +86,30 @@ namespace BootCamp.Chapter
                 var currentPersonData = peopleAndBalances[i].Split(',');
                 var allAmounts = currentPersonData[1..];
 
+                // calculateLoss
+
                 if (allAmounts.Length <= 1)
                 {
-                    return "N/A.";
+                    return InValidOutput;
                 }
 
-                var lossForCurrentPerson  =  CalculateLossForPerson(allAmounts);
+                var lossForCurrentPerson = 0M;
 
+                for (int j = 0; j < allAmounts.Length - 1; j++)
+                {
+                    if (!decimal.TryParse(allAmounts[j], out decimal amount1))
+                    {
+                        break;
+                    }
+
+                    if (!decimal.TryParse(allAmounts[j + 1], out decimal amount2))
+                    {
+                        break;
+                    }
+                    lossForCurrentPerson = amount1 - amount2;
+                }
+
+                //check if loss is greater then the current highest loss
                 if (lossForCurrentPerson > HighestLossEver)
                 {
                     HighestLossEver = lossForCurrentPerson;
@@ -124,31 +117,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            var answer = $"{PersonWithHighestLoss} lost the most money. -¤{HighestLossEver}.";
-
-            return answer;
-
-        }
-
-        public static decimal CalculateLossForPerson(string [] data) 
-        {
-            var lossForCurrentPerson = 0M;
-
-            for (int j = 0; j < data.Length - 1; j++)
-            {
-                if(!decimal.TryParse(data[j], out decimal amount1))
-                {
-                    break; 
-                }
-
-                if (!decimal.TryParse(data[j + 1], out decimal amount2))
-                {
-                    break;
-                }
-                lossForCurrentPerson = amount1 - amount2;
-            }
-
-            return lossForCurrentPerson; 
+            return $"{PersonWithHighestLoss} lost the most money. -¤{HighestLossEver}.";
         }
 
         /// <summary>
@@ -161,17 +130,28 @@ namespace BootCamp.Chapter
                 return InValidOutput;
             }
 
-            var HighestBalance = decimal.MinValue;
-            var RichestPerson = new StringBuilder();
+            var richestPerson = new StringBuilder();
+            var highestBalance = FindRichest(peopleAndBalances, richestPerson);
 
+            var persons = richestPerson.ToString();
+
+            if (persons.Contains(','))
+            {
+                return $"{persons} are the richest people. ¤{highestBalance}.";
+            }
+            else
+            {
+                return $"{persons} is the richest person. ¤{highestBalance}.";
+            }
+        }
+
+        private static decimal FindRichest(string[] peopleAndBalances, StringBuilder RichestPerson)
+        {
+            var HighestBalance = decimal.MinValue;
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
                 var currentPersonData = peopleAndBalances[i].Split(',');
-
-                if (!decimal.TryParse(currentPersonData[currentPersonData.Length - 1], out decimal highestAmountOfPerson))
-                {
-                    return "N/A.";
-                }
+                var highestAmountOfPerson = decimal.Parse(currentPersonData[currentPersonData.Length - 1]);
 
                 if (highestAmountOfPerson == HighestBalance)
                 {
@@ -187,34 +167,21 @@ namespace BootCamp.Chapter
                     RichestPerson.Append(currentPersonData[0]);
                 }
 
-                HighestBalance = FindMorePeopleWithSameAmount(HighestBalance, RichestPerson, currentPersonData, highestAmountOfPerson);
-
-            }
-
-            var answer = $"{RichestPerson.ToString()} is the richest person. ¤{HighestBalance}.";
-
-            return answer;
-
-
-        }
-
-        private static decimal FindMorePeopleWithSameAmount(decimal HighestBalance, StringBuilder RichestPerson, string[] currentPersonData, decimal highestAmountOfPerson)
-        {
-            if (highestAmountOfPerson > HighestBalance)
-            {
-                HighestBalance = highestAmountOfPerson;
-                var currentOne = RichestPerson.ToString();
-
-                if (string.IsNullOrEmpty(currentOne))
+                if (highestAmountOfPerson > HighestBalance)
                 {
-                    RichestPerson.Append(currentPersonData[0]);
-                }
-                else
-                {
-                    RichestPerson.Replace(currentOne, currentPersonData[0]);
-                }
+                    HighestBalance = highestAmountOfPerson;
+                    var currentOne = RichestPerson.ToString();
 
-
+                    if (string.IsNullOrEmpty(currentOne))
+                    {
+                        RichestPerson.Append(currentPersonData[0]);
+                    }
+                    else
+                    {
+                        RichestPerson.Clear();
+                        RichestPerson.Append(currentPersonData[0]);
+                    }
+                }
             }
 
             return HighestBalance;
@@ -230,17 +197,34 @@ namespace BootCamp.Chapter
                 return InValidOutput;
             }
 
-            var lowestBalance = int.MaxValue;
             var poorestPerson = new StringBuilder();
+            var lowestBalance = FindPoorest(peopleAndBalances, poorestPerson);
 
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            NumberFormatInfo noParens = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+            noParens.CurrencyNegativePattern = 1;
+            var lowestBalanceString = lowestBalance.ToString("C0", noParens);
+
+            var persons = poorestPerson.ToString();
+
+            if (persons.Contains(','))
+            {
+                return $"{poorestPerson.ToString()} have the least money. {lowestBalanceString}.";
+            }
+            else
+            {
+                return $"{poorestPerson.ToString()} has the least money. {lowestBalanceString}.";
+            }
+        }
+
+        private static decimal FindPoorest(string[] peopleAndBalances, StringBuilder poorestPerson)
+        {
+            var lowestBalance = decimal.MaxValue;
 
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
                 var currentPersonData = peopleAndBalances[i].Split(',');
-                if (!int.TryParse(currentPersonData[currentPersonData.Length - 1], out int highestAmountOfPerson))
-                {
-                    return "N/A.";
-                }
+                var highestAmountOfPerson = decimal.Parse(currentPersonData[currentPersonData.Length - 1]);
 
                 if (highestAmountOfPerson == lowestBalance)
                 {
@@ -256,46 +240,23 @@ namespace BootCamp.Chapter
                     poorestPerson.Append(currentPersonData[0]);
                 }
 
-                lowestBalance = FindMorePoorPeople(lowestBalance, poorestPerson, currentPersonData, highestAmountOfPerson);
-
-            }
-
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            NumberFormatInfo noParens = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
-            noParens.CurrencyNegativePattern = 1; 
-            var lowestBalanceString = lowestBalance.ToString("C0", noParens);
-
-            var answer = $"{poorestPerson} has the least money. {lowestBalanceString}.";
-
-           return answer;
-
-
-        }
-
-        private static int FindMorePoorPeople(int lowestBalance, StringBuilder poorestPerson, string[] currentPersonData, int highestAmountOfPerson)
-        {
-            if (highestAmountOfPerson < lowestBalance)
-            {
-                lowestBalance = highestAmountOfPerson;
-                var currentOne = poorestPerson.ToString();
-
-
-                if (string.IsNullOrEmpty(currentOne))
+                if (highestAmountOfPerson < lowestBalance)
                 {
-                    poorestPerson.Append(currentPersonData[0]);
+                    lowestBalance = highestAmountOfPerson;
+                    var currentOne = poorestPerson.ToString();
 
+                    if (string.IsNullOrEmpty(currentOne))
+                    {
+                        poorestPerson.Append(currentPersonData[0]);
+                    }
+                    else
+                    {
+                        poorestPerson.Replace(currentOne, currentPersonData[0]);
+                    }
                 }
-                else
-                {
-                    poorestPerson.Clear();
-                    poorestPerson.Append(currentPersonData[0]);
-                }
-
-
             }
 
             return lowestBalance;
         }
-
     }
 }
