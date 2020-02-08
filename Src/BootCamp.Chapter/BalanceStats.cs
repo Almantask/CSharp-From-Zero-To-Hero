@@ -54,7 +54,7 @@ namespace BootCamp.Chapter
                 {
                     individualPersonAndBalance = GetHighestBalanceFor(peopleAndBalances[i]);
                 }
-                if (individualPersonAndBalance == balance)
+                if (individualPersonAndBalance.Equals(balance))
                 {
                     sb.Append($"{person[0]}, ");
                 }
