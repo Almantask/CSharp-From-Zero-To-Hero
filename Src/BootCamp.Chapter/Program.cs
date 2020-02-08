@@ -56,14 +56,17 @@ namespace BootCamp.Chapter
 
         private static void DisplayStasticalData(string[] peopleBalances)
         {
-            //Find richest and print the statistical output using Text Table with padding 3.
+            // Using FindHighestBalanceEver, print the statistical output using Text Table with padding 3.
+            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(peopleBalances), 3));
+
+            // Using FindPersonWithBiggestLoss, print the statistical output using Text Table with padding 3.
+            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(peopleBalances), 3));
+
+            // Using FindRichestPerson, print the statistical output using Text Table with padding 3.
             Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(peopleBalances), 3));
 
-            //Find poorest and print the statistical output using Text Table with padding 3.
+            // Using FindMostPoorPerson, print the statistical output using Text Table with padding 3.
             Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(peopleBalances), 3));
-
-            //Find historic losses and print the statistical output using Text Table with padding 3.
-            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(peopleBalances), 3));
         }
     }
 
