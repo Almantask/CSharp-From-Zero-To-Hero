@@ -170,7 +170,7 @@
                 return newArrayOneElement;
             }
 
-            if (array.Length == 0 && index > 0 || index < array.Length - 1 || index < 0)
+            if (array.Length == 0 && index > 0 || index < 0)
             {
                 return array;
             }
