@@ -15,13 +15,10 @@
             }
 
             int temp;
-            // traverse = to array length
             for (int i = 0; i < array.Length - 1; i++)
             {
-                // traverse i + 1 to array length
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    // compare array element with all next element
                     if (array[j] < array[i])
                     {
                         temp = array[i];
@@ -173,7 +170,7 @@
                 return newArrayOneElement;
             }
 
-            if (array.Length == 0 && index > 0 || index > array.Length - 1 || index < 0)
+            if (array.Length == 0 && index > 0 || index < array.Length - 1 || index < 0)
             {
                 return array;
             }
