@@ -16,12 +16,12 @@ namespace BootCamp.Chapter
             }
             var highestBalanceEver = GetHighestBalanceEver(peopleAndBalances);
 
-            var peopleWithHighestBalance = GetPeopleNamesWithSameBalance(peopleAndBalances, highestBalanceEver, "highest");
-            var formatedPeople = GetFormatedPeople(peopleWithHighestBalance);
+            var peopleNamesWithHighestBalance = GetPeopleNamesWithSameBalance(peopleAndBalances, highestBalanceEver, "highest");
+            var formatedPeopleNames = GetFormatedPeople(peopleNamesWithHighestBalance);
 
             // this passes the tests, but it returns highest balance not current balance as requested
             // if it returns current balance one of the tests fails. 
-            return $"{formatedPeople} had the most money ever. ¤{highestBalanceEver}.";
+            return $"{formatedPeopleNames} had the most money ever. ¤{highestBalanceEver}.";
         }        
 
         public static string GetFormatedPeople(string[] peopleAndBalances)
@@ -64,22 +64,6 @@ namespace BootCamp.Chapter
             return ConvertToArray(peopleWithSameBalance);
         }
 
-        public static string[] GetNamesForPeopleWithHighestBalance(string[] peopleAndBalances)
-        {
-            var highestBalance = GetHighestBalanceEver(peopleAndBalances);
-            var sb = new StringBuilder();
-            for (int i = 0; i < peopleAndBalances.Length; i++)
-            {
-                var individualPersonAndBalance = ConvertToArray(peopleAndBalances[i]);
-                if (highestBalance == GetHighestBalanceFor(peopleAndBalances[i]))
-                {
-                    sb.Append($"{individualPersonAndBalance[0]}, ");
-                }
-            }
-            // To remove comma at the end.
-            var peopleWithHighestBalance = sb.ToString().Remove(sb.ToString().Length - 2);
-            return ConvertToArray(peopleWithHighestBalance);
-        }
         public static float GetHighestBalanceEver(string[] peopleAndBalances)
         {
             var highestBalance = GetHighestBalanceFor(peopleAndBalances[0]);
@@ -106,20 +90,7 @@ namespace BootCamp.Chapter
             return highestBalance;
         }
 
-        public static float GetLowestBalanceFor(string personAndBalance)
-        {
-            var balance = ConvertToBalanceArray(personAndBalance);
-            var lowestBalance = balance[0];
-            for (int i = 0; i < balance.Length; i++)
-            {
-                if (lowestBalance > balance[i])
-                {
-                    lowestBalance = balance[i];
-                }
-            }
-            return lowestBalance;
-        }
-
+        // using float because it is currency
         public static float[] ConvertToBalanceArray(string personAndBalance)
         {
             string[] personAndBalanceArray = ConvertToArray(personAndBalance);
@@ -130,7 +101,7 @@ namespace BootCamp.Chapter
             {
                 // in this case not using try parse, becase it is known 
                 // that array have only numbers 
-                // using float because it is currency
+                
                 balance[i - 1] = float.Parse(personAndBalanceArray[i]);
             }
             return balance;
@@ -262,22 +233,6 @@ namespace BootCamp.Chapter
             return peopleAndBalances == null || peopleAndBalances.Length == 0;
         }
 
-        //public static string[] GetRichestPeopleNames(string[] peopleAndBalances, float richestPersonsBalance)
-        //{
-        //    var sb = new StringBuilder();
-        //    for (int i = 0; i < peopleAndBalances.Length; i++)
-        //    {
-        //        var richestPerson = ConvertToArray(peopleAndBalances[i]);
-        //        var individualPersonAndBalance = GetCurrentBalancefor(peopleAndBalances[i]);
-        //        if (individualPersonAndBalance == richestPersonsBalance)
-        //        {
-        //            sb.Append($"{richestPerson[0]}, ");
-        //        }
-        //    }
-        //    // To remove comma at the end.
-        //    var richestPeople = sb.ToString().Remove(sb.ToString().Length - 2);
-        //    return ConvertToArray(richestPeople);
-        //}
 
         /// <summary>
         /// Return name and current money of the most poor person.
