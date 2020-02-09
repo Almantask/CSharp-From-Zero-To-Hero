@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -52,14 +51,18 @@ namespace BootCamp.Chapter
 
             var sb = new StringBuilder();
 
+            // create a padded line
             var emptyLine = new StringBuilder();
             emptyLine.Append(verticalBorderChar).Append(' ', longestWordInMessageSize + (padding * 2)).Append(verticalBorderChar).Append(Environment.NewLine);
 
+            // create horizontal border
             var horizontalBorder = new StringBuilder();
             horizontalBorder.Append(cornerChar).Append(horizontalBorderChar, longestWordInMessageSize + (padding * 2)).Append(cornerChar).Append(Environment.NewLine);
 
+            // append top horizontal border
             sb.Append(horizontalBorder);
 
+            // append padded line
             for (var i = 0; i < padding; i++)
             {
                 sb.Append(emptyLine);
@@ -67,6 +70,7 @@ namespace BootCamp.Chapter
 
             var wordsInMessage = message.Split(divider);
 
+            // creating and printing text message
             foreach (var word in wordsInMessage)
             {
                 sb.Append(verticalBorderChar);
@@ -78,16 +82,21 @@ namespace BootCamp.Chapter
                 sb.Append(Environment.NewLine);
             }
 
+            // printing padded line
             for (var i = 0; i < padding; i++)
             {
                 sb.Append(emptyLine);
             }
-
+            // printing bottom horizontal border
             sb.Append(horizontalBorder);
 
             return sb.ToString();
         }
 
+        ///<summary>
+        ///Helper method for finding longest word in message.
+        ///This helps printing appropriate size text, border and padded lines.
+        ///</summary>
         private static int LongestWordInMessageSize(string message)
         {
             int size = 0;
