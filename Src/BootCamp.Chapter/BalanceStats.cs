@@ -74,25 +74,25 @@ namespace BootCamp.Chapter
             const string singlePersonMessage = " has the least money. ";
 
             var resultMessage = new StringBuilder();
-            var balanceList = new decimal[peopleAndBalances.Length];
-            var peopleList = new string[peopleAndBalances.Length];
+            var mostPoorBalanceList = new decimal[peopleAndBalances.Length];
+            var mostPoorPeopleList = new string[peopleAndBalances.Length];
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                balanceList[i] = CurrentBalanceForSinglePerson(peopleAndBalances[i]);
-                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
+                mostPoorBalanceList[i] = CurrentBalanceForSinglePerson(peopleAndBalances[i]);
+                mostPoorPeopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
 
-            var poorestPersonIndex = FindDecimalArrayMin(balanceList);
-            var poorestPerson = peopleList[poorestPersonIndex];
-            var poorestPersonMoney = balanceList[poorestPersonIndex];
+            var mostPoorPersonsIndex = FindDecimalArrayMin(mostPoorBalanceList);
+            var mostPoortPerson = mostPoorPeopleList[mostPoorPersonsIndex];
+            var mostPoorPersonsMoney = mostPoorBalanceList[mostPoorPersonsIndex];
 
-            if (balanceList.Length > 2 && ArrayElementsAreEqual(balanceList))
+            if (mostPoorBalanceList.Length > 2 && ArrayElementsAreEqual(mostPoorBalanceList))
             {
                 resultMessage
-                    .Append(FormatStringAndCommas(peopleList))
+                    .Append(FormatStringAndCommas(mostPoorPeopleList))
                     .Append(peopleMessage)
-                    .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
+                    .Append(FormatCurrency(mostPoorPersonsMoney, currencySymbol))
                     .Append(messageEnd);
                 return resultMessage.ToString();
             }
@@ -100,9 +100,9 @@ namespace BootCamp.Chapter
             resultMessage.Clear();
 
             resultMessage
-                .Append(poorestPerson)
+                .Append(mostPoortPerson)
                 .Append(singlePersonMessage)
-                .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
+                .Append(FormatCurrency(mostPoorPersonsMoney, currencySymbol))
                 .Append(messageEnd);
 
             return resultMessage.ToString();
@@ -173,23 +173,23 @@ namespace BootCamp.Chapter
             const string peopleMessage = " are the richest people. ";
 
             var resultMessage = new StringBuilder();
-            var balanceList = new decimal[peopleAndBalances.Length];
-            var peopleList = new string[peopleAndBalances.Length];
+            var richPeopleBalanceList = new decimal[peopleAndBalances.Length];
+            var richPeopleList = new string[peopleAndBalances.Length];
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                balanceList[i] = CurrentBalanceForSinglePerson(peopleAndBalances[i]);
-                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
+                richPeopleBalanceList[i] = CurrentBalanceForSinglePerson(peopleAndBalances[i]);
+                richPeopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
 
-            var richestPersonIndex = FindDecimalArrayMax(balanceList);
-            var richestPerson = peopleList[richestPersonIndex];
-            var richestPersonMoney = balanceList[richestPersonIndex];
+            var richestPersonIndex = FindDecimalArrayMax(richPeopleBalanceList);
+            var richestPerson = richPeopleList[richestPersonIndex];
+            var richestPersonMoney = richPeopleBalanceList[richestPersonIndex];
 
-            if (balanceList.Length > 2 && ArrayElementsAreEqual(balanceList))
+            if (richPeopleBalanceList.Length > 2 && ArrayElementsAreEqual(richPeopleBalanceList))
             {
                 resultMessage
-                    .Append(FormatStringAndCommas(peopleList))
+                    .Append(FormatStringAndCommas(richPeopleList))
                     .Append(peopleMessage)
                     .Append(FormatCurrency(richestPersonMoney, currencySymbol))
                     .Append(messageEnd);
