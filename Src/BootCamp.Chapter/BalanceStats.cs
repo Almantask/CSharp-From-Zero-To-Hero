@@ -9,8 +9,8 @@ namespace BootCamp.Chapter
     {
         private const string invalidMessage = "N/A.";
         private const string currencySymbol = "¤";
-
-        private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = "." };
+        private const string messageEnd = ".";
+        private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = messageEnd };
 
         /// <summary>
         /// Tries to convert a string to decimal.
@@ -229,7 +229,7 @@ namespace BootCamp.Chapter
                     .Append(FormatStringAndCommas(peopleList))
                     .Append(peopleMessage)
                     .Append(FormatCurrency(highestBalance, currencySymbol))
-                    .Append(".");
+                    .Append(messageEnd);
                 return resultMessage.ToString();
             }
             else
@@ -240,7 +240,7 @@ namespace BootCamp.Chapter
                     .Append(personWithHighestBalance)
                     .Append(singlePersonMessage)
                     .Append(FormatCurrency(highestBalance, currencySymbol))
-                    .Append(".");
+                    .Append(messageEnd);
 
                 return resultMessage.ToString();
             }
@@ -308,7 +308,7 @@ namespace BootCamp.Chapter
                 .Append(personWithBiggestLoss)
                 .Append(singlePersonMessage)
                 .Append(FormatCurrency(biggestLoss, currencySymbol))
-                .Append(".");
+                .Append(messageEnd);
 
             return resultMessage.ToString();
         }
@@ -361,7 +361,7 @@ namespace BootCamp.Chapter
                     .Append(FormatStringAndCommas(peopleList))
                     .Append(peopleMessage)
                     .Append(FormatCurrency(richestPersonMoney, currencySymbol))
-                    .Append(".");
+                    .Append(messageEnd);
                 return resultMessage.ToString();
             }
 
@@ -371,7 +371,7 @@ namespace BootCamp.Chapter
                 .Append(richestPerson)
                 .Append(singlePersonMessage)
                 .Append(FormatCurrency(richestPersonMoney, currencySymbol))
-                .Append(".");
+                .Append(messageEnd);
 
             return resultMessage.ToString();
         }
@@ -406,7 +406,7 @@ namespace BootCamp.Chapter
                     .Append(FormatStringAndCommas(peopleList))
                     .Append(peopleMessage)
                     .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
-                    .Append(".");
+                    .Append(messageEnd);
                 return resultMessage.ToString();
             }
 
@@ -416,7 +416,7 @@ namespace BootCamp.Chapter
                 .Append(poorestPerson)
                 .Append(singlePersonMessage)
                 .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
-                .Append(".");
+                .Append(messageEnd);
 
             return resultMessage.ToString();
         }
