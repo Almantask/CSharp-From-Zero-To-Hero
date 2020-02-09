@@ -15,7 +15,10 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
+            if (!ArrayIsValid(peopleAndBalances))
+            {
+                return invalidMessage;
+            }
 
             const string peopleMessage = " had the most money ever. ";
             const string singlePersonMessage = " had the most money ever. ";
