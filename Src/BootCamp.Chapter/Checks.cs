@@ -31,7 +31,7 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            return CalculateBmi(weight,height);
+            return Lesson4.CalculateBmi(weight,height);
         }
     }
 }

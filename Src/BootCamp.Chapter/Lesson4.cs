@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
 
             float heightInMeters = height / 100;
             float Bmi = CalculateBmi(weight, heightInMeters);
-            Console.WriteLine($"His/her BMI = {Bmi:N} {Environment.NewLine}");
+            Console.WriteLine($"His/her BMI = {Bmi:N}");
 
             Console.WriteLine("Do you want to add another person (Y/y = Yes, everything else = No)?");
             string decision = Console.ReadLine();
@@ -45,7 +45,7 @@ namespace BootCamp.Chapter
 
             if (String.IsNullOrWhiteSpace(name))
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write("Name cannot be empty.");
                 return "-";
             }
             else
@@ -63,11 +63,11 @@ namespace BootCamp.Chapter
             else
             {
                 if (height <= 0 && weight <= 0)
-                    DisplayErrorBmi($"Height cannot be less than zero, but was {height}.{Environment.NewLine}Weight cannot be equal or less than zero, but was {weight}.");
+                    DisplayErrorBmi($"Weight cannot be equal or less than zero, but was {weight}.{Environment.NewLine}Height cannot be less than zero, but was {height}.");
                 else if(height <= 0)
-                    DisplayErrorBmi($"Height cannot be less than zero, but was {height}.{Environment.NewLine}");
+                    DisplayErrorBmi($"Height cannot be equal or less than zero, but was {height}.");
                 else
-                    DisplayErrorBmi($"Weight cannot be equal or less than zero, but was {weight}.{Environment.NewLine}");
+                    DisplayErrorBmi($"Weight cannot be equal or less than zero, but was {weight}.");
                 return -1;
             }
         }
@@ -93,7 +93,7 @@ namespace BootCamp.Chapter
 
         public static float DisplayError(string input)
         {
-            Console.WriteLine($"{input} is not a valid number.");
+            Console.Write($"\"{input}\" is not a valid number.");
             return -1;
         }
 
