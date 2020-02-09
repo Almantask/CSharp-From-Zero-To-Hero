@@ -8,6 +8,7 @@ namespace BootCamp.Chapter
         private const string currencySymbol = "¤";
         private const string invalidMessage = "N/A.";
         private const string messageEnd = ".";
+        private const int arrayBreakLength = 2;
         private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = messageEnd };
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace BootCamp.Chapter
             var mostPoortPerson = mostPoorPeopleList[mostPoorPersonsIndex];
             var mostPoorPersonsMoney = mostPoorBalanceList[mostPoorPersonsIndex];
 
-            if (mostPoorBalanceList.Length > 2 && ArrayElementsAreEqual(mostPoorBalanceList))
+            if (mostPoorBalanceList.Length > arrayBreakLength && ArrayElementsAreEqual(mostPoorBalanceList))
             {
                 resultMessage
                     .Append(FormatStringAndCommas(mostPoorPeopleList))
@@ -137,7 +138,7 @@ namespace BootCamp.Chapter
                 peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
 
-            if (biggestLossList.Length > 2 && ArrayElementsAreEqual(biggestLossList))
+            if (biggestLossList.Length > arrayBreakLength && ArrayElementsAreEqual(biggestLossList))
             {
                 resultMessage
                     .Append(invalidMessage);
@@ -186,7 +187,7 @@ namespace BootCamp.Chapter
             var richestPerson = richPeopleList[richestPersonIndex];
             var richestPersonMoney = richPeopleBalanceList[richestPersonIndex];
 
-            if (richPeopleBalanceList.Length > 2 && ArrayElementsAreEqual(richPeopleBalanceList))
+            if (richPeopleBalanceList.Length > arrayBreakLength && ArrayElementsAreEqual(richPeopleBalanceList))
             {
                 resultMessage
                     .Append(FormatStringAndCommas(richPeopleList))
@@ -327,7 +328,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Returns an formated output of currency (ex. -¤1, ¤4, ¤1002, -¤1001).
         /// </summary>
-        private static string FormatCurrency(decimal currency, string currencySymbol, int currencySymbolLocation = 1)
+        private static string FormatCurrency(decimal currency, string currencySymbol)
         {
             const char negativeSymbol = '-';
 
