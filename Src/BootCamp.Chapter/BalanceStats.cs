@@ -327,7 +327,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Returns an formated output of currency (ex. -¤1, ¤4, ¤1002, -¤1001).
         /// </summary>
-        private static string FormatCurrency(decimal currency, string currencySymbol)
+        private static string FormatCurrency(decimal currency, string currencySymbol, int currencySymbolLocation = 1)
         {
             const char negativeSymbol = '-';
 
