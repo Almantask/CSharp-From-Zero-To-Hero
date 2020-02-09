@@ -38,7 +38,10 @@ namespace BootCamp.Chapter
             return !string.IsNullOrEmpty(inputString) && !string.IsNullOrWhiteSpace(inputString);
         }
 
-        private static decimal[] ConvertToArray(string personAndBalance)
+        /// <summary>
+        /// Converts the numbers split by comma part of the string to an array.
+        /// </summary>
+        private static decimal[] ConvertStringToDecimalArray(string personAndBalance)
         {
             if (!InputStringIsValid(personAndBalance))
             {
@@ -46,11 +49,11 @@ namespace BootCamp.Chapter
             }
 
             var array = personAndBalance.Split(',');
-            var newArray = new decimal[array.Length];
+            var newArray = new decimal[array.Length - 1];
 
             for (int i = 1; i < array.Length; i++)
             {
-                newArray[i] = ConvertStringToDecimal(array[i]);
+                newArray[i - 1] = ConvertStringToDecimal(array[i]);
             }
 
             return newArray;
@@ -61,7 +64,7 @@ namespace BootCamp.Chapter
         /// </summary>
         private static decimal HighestBalanceForSinglePerson(string personAndBalance)
         {
-            var balanceList = ConvertToArray(personAndBalance);
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
             var highestBalanceIndex = FindDecimalArrayMax(balanceList);
             var highestBalance = balanceList[highestBalanceIndex];
 
@@ -73,7 +76,7 @@ namespace BootCamp.Chapter
         /// </summary>
         private static decimal LowestBalanceForSinglePerson(string personAndBalance)
         {
-            var balanceList = ConvertToArray(personAndBalance);
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
             var lowestBalanceIndex = FindDecimalArrayMin(balanceList);
             var lowestBalance = balanceList[lowestBalanceIndex];
 
@@ -85,7 +88,7 @@ namespace BootCamp.Chapter
         /// </summary>
         private static decimal TotalBalanceForSinglePerson(string personAndBalance)
         {
-            var balanceList = ConvertToArray(personAndBalance);
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
             decimal totalBalance = decimal.Zero;
 
             for (int i = 0; i < balanceList.Length; i++)
@@ -116,7 +119,7 @@ namespace BootCamp.Chapter
         /// </summary>
         private static decimal CurrentBalanceForSinglePerson(string personAndBalance)
         {
-            var balanceList = ConvertToArray(personAndBalance);
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
             decimal currentBalance = balanceList[^1];
 
             return currentBalance;
@@ -127,7 +130,7 @@ namespace BootCamp.Chapter
         /// </summary>
         private static decimal CalculateLossForSinglePerson(string personAndBalance)
         {
-            var balanceList = ConvertToArray(personAndBalance);
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
 
             decimal previousBallance = balanceList[^2];
             decimal currentBalance = balanceList[^1];
@@ -248,8 +251,8 @@ namespace BootCamp.Chapter
         /// </summary>
         private static int FindDecimalArrayMax(decimal[] inputArray, int startIndex = 0)
         {
-            var max = inputArray[0];
-            var index = 0;
+            var max = inputArray[startIndex];
+            var index = startIndex;
             for (int i = startIndex; i < inputArray.Length; i++)
             {
                 if (inputArray[i] > max)
@@ -315,8 +318,8 @@ namespace BootCamp.Chapter
         /// </summary>
         private static int FindDecimalArrayMin(decimal[] inputArray, int startIndex = 0)
         {
-            var min = inputArray[0];
-            var index = 0;
+            var min = inputArray[startIndex];
+            var index = startIndex;
             for (int i = startIndex; i < inputArray.Length; i++)
             {
                 if (inputArray[i] < min)
@@ -393,7 +396,29 @@ namespace BootCamp.Chapter
                 peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
 
-            return "";
+            var poorestPersonIndex = FindDecimalArrayMin(balanceList);
+            var poorestPerson = peopleList[poorestPersonIndex];
+            var poorestPersonMoney = balanceList[poorestPersonIndex];
+
+            if (balanceList.Length > 2 && ArrayElementsAreEqual(balanceList))
+            {
+                resultMessage
+                    .Append(FormatStringAndCommas(peopleList))
+                    .Append(peopleMessage)
+                    .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
+                    .Append(".");
+                return resultMessage.ToString();
+            }
+
+            resultMessage.Clear();
+
+            resultMessage
+                .Append(poorestPerson)
+                .Append(singlePersonMessage)
+                .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
+                .Append(".");
+
+            return resultMessage.ToString();
         }
     }
 }
