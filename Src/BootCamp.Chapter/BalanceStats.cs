@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         private const string currencySymbol = "¤";
         private const string invalidMessage = "N/A.";
         private const string messageEnd = ".";
-        private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = messageEnd };
+        private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = messageEnd };
 
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
@@ -62,7 +62,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
+            if (!ArrayIsValid(peopleAndBalances)) { return invalidMessage; }
 
             const string peopleMessage = " have the least money. ";
             const string singlePersonMessage = " has the least money. ";
@@ -109,7 +109,6 @@ namespace BootCamp.Chapter
         {
             if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
 
-            //const string peopleMessage = " lost the most money. ";
             const string singlePersonMessage = " lost the most money. ";
             var resultMessage = new StringBuilder();
             var peopleList = new string[peopleAndBalances.Length];
@@ -374,18 +373,6 @@ namespace BootCamp.Chapter
         private static bool InputStringIsValid(string inputString)
         {
             return !string.IsNullOrEmpty(inputString) && !string.IsNullOrWhiteSpace(inputString);
-        }
-
-        /// <summary>
-        /// Finds lowest balance for a single person.
-        /// </summary>
-        private static decimal LowestBalanceForSinglePerson(string personAndBalance)
-        {
-            var balanceList = ConvertStringToDecimalArray(personAndBalance);
-            var lowestBalanceIndex = FindDecimalArrayMin(balanceList);
-            var lowestBalance = balanceList[lowestBalanceIndex];
-
-            return lowestBalance;
         }
 
         /// <summary>
