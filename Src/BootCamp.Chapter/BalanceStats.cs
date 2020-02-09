@@ -213,9 +213,6 @@ namespace BootCamp.Chapter
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 highestBalanceList[i] = HighestBalanceForSinglePerson(peopleAndBalances[i]);
-            }
-            for (int i = 0; i < peopleAndBalances.Length; i++)
-            {
                 peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
 
@@ -288,6 +285,7 @@ namespace BootCamp.Chapter
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 biggestLossList[i] = CalculateLossForSinglePerson(peopleAndBalances[i]);
+                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
 
             if (biggestLossList.Length > 2 && ArrayElementsAreEqual(biggestLossList))
@@ -295,11 +293,6 @@ namespace BootCamp.Chapter
                 resultMessage
                     .Append(invalidMessage);
                 return resultMessage.ToString();
-            }
-
-            for (int i = 0; i < peopleAndBalances.Length; i++)
-            {
-                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
 
             var biggestLossIndex = FindDecimalArrayMin(biggestLossList);
@@ -342,7 +335,42 @@ namespace BootCamp.Chapter
         {
             if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
 
-            return "";
+            const string singlePersonMessage = " is the richest person. ";
+            const string peopleMessage = " are the richest people. ";
+
+            var resultMessage = new StringBuilder();
+            var balanceList = new decimal[peopleAndBalances.Length];
+            var peopleList = new string[peopleAndBalances.Length];
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                balanceList[i] = CurrentBalanceForSinglePerson(peopleAndBalances[i]);
+                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
+            }
+
+            var richestPersonIndex = FindDecimalArrayMax(balanceList);
+            var richestPerson = peopleList[richestPersonIndex];
+            var richestPersonMoney = balanceList[richestPersonIndex];
+
+            if (balanceList.Length > 2 && ArrayElementsAreEqual(balanceList))
+            {
+                resultMessage
+                    .Append(FormatStringAndCommas(peopleList))
+                    .Append(peopleMessage)
+                    .Append(FormatCurrency(richestPersonMoney, currencySymbol))
+                    .Append(".");
+                return resultMessage.ToString();
+            }
+
+            resultMessage.Clear();
+
+            resultMessage
+                .Append(richestPerson)
+                .Append(singlePersonMessage)
+                .Append(FormatCurrency(richestPersonMoney, currencySymbol))
+                .Append(".");
+
+            return resultMessage.ToString();
         }
 
         /// <summary>
@@ -352,11 +380,18 @@ namespace BootCamp.Chapter
         {
             if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
 
-            const string peopleMessage = " are the richest person. ";
-            const string singlePersonMessage = " is the richest person. ";
+            const string peopleMessage = " have the least money. ";
+            const string singlePersonMessage = " has the least money. ";
 
             var resultMessage = new StringBuilder();
+            var balanceList = new decimal[peopleAndBalances.Length];
             var peopleList = new string[peopleAndBalances.Length];
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                balanceList[i] = CurrentBalanceForSinglePerson(peopleAndBalances[i]);
+                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
+            }
 
             return "";
         }
