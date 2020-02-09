@@ -15,7 +15,10 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
+            if (!ArrayIsValid(peopleAndBalances))
+            {
+                return invalidMessage;
+            }
 
             const string peopleMessage = " had the most money ever. ";
             const string singlePersonMessage = " had the most money ever. ";
@@ -62,7 +65,10 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            if (!ArrayIsValid(peopleAndBalances)) { return invalidMessage; }
+            if (!ArrayIsValid(peopleAndBalances))
+            {
+                return invalidMessage;
+            }
 
             const string peopleMessage = " have the least money. ";
             const string singlePersonMessage = " has the least money. ";
@@ -107,7 +113,10 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
+            if (!ArrayIsValid(peopleAndBalances))
+            {
+                return invalidMessage;
+            }
 
             const string singlePersonMessage = " lost the most money. ";
             var resultMessage = new StringBuilder();
@@ -155,7 +164,10 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
+            if (!ArrayIsValid(peopleAndBalances))
+            {
+                return invalidMessage;
+            }
 
             const string singlePersonMessage = " is the richest person. ";
             const string peopleMessage = " are the richest people. ";
