@@ -1,203 +1,14 @@
 ﻿using System.Globalization;
-
-using System;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        private const string invalidMessage = "N/A.";
         private const string currencySymbol = "¤";
+        private const string invalidMessage = "N/A.";
         private const string messageEnd = ".";
         private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo() { NumberDecimalSeparator = messageEnd };
-
-        /// <summary>
-        /// Tries to convert a string to decimal.
-        /// </summary>
-        private static decimal ConvertStringToDecimal(string input)
-        {
-            decimal.TryParse(input, NumberStyles.Currency, numberFormatInfo, out decimal value);
-
-            return value;
-        }
-
-        /// <summary>
-        /// Verifies if array is valid.
-        /// </summary>
-        private static bool ArrayIsValid(string[] inputArray)
-        {
-            return inputArray != null && inputArray.Length != 0;
-        }
-
-        /// <summary>
-        /// Verifies if string is valid.
-        /// </summary>
-        private static bool InputStringIsValid(string inputString)
-        {
-            return !string.IsNullOrEmpty(inputString) && !string.IsNullOrWhiteSpace(inputString);
-        }
-
-        /// <summary>
-        /// Converts the numbers split by comma part of the string to an array.
-        /// </summary>
-        private static decimal[] ConvertStringToDecimalArray(string personAndBalance)
-        {
-            if (!InputStringIsValid(personAndBalance))
-            {
-                return default;
-            }
-
-            var array = personAndBalance.Split(',');
-            var newArray = new decimal[array.Length - 1];
-
-            for (int i = 1; i < array.Length; i++)
-            {
-                newArray[i - 1] = ConvertStringToDecimal(array[i]);
-            }
-
-            return newArray;
-        }
-
-        /// <summary>
-        /// Finds highest balance for a single person.
-        /// </summary>
-        private static decimal HighestBalanceForSinglePerson(string personAndBalance)
-        {
-            var balanceList = ConvertStringToDecimalArray(personAndBalance);
-            var highestBalanceIndex = FindDecimalArrayMax(balanceList);
-            var highestBalance = balanceList[highestBalanceIndex];
-
-            return highestBalance;
-        }
-
-        /// <summary>
-        /// Finds lowest balance for a single person.
-        /// </summary>
-        private static decimal LowestBalanceForSinglePerson(string personAndBalance)
-        {
-            var balanceList = ConvertStringToDecimalArray(personAndBalance);
-            var lowestBalanceIndex = FindDecimalArrayMin(balanceList);
-            var lowestBalance = balanceList[lowestBalanceIndex];
-
-            return lowestBalance;
-        }
-
-        /// <summary>
-        /// Finds total balance for a single person.
-        /// </summary>
-        private static decimal TotalBalanceForSinglePerson(string personAndBalance)
-        {
-            var balanceList = ConvertStringToDecimalArray(personAndBalance);
-            decimal totalBalance = decimal.Zero;
-
-            for (int i = 0; i < balanceList.Length; i++)
-            {
-                totalBalance += balanceList[i];
-            }
-
-            return totalBalance;
-        }
-
-        /// <summary>
-        /// Finds the name of a single person in array.
-        /// </summary>
-        private static string ReturnNameForSinglePerson(string personAndBalance)
-        {
-            var balanceList = personAndBalance.Split(',');
-
-            if (InputStringIsValid(balanceList[0]))
-            {
-                return balanceList[0];
-            }
-
-            return invalidMessage;
-        }
-
-        /// <summary>
-        /// Finds the current balance of a single person in array.
-        /// </summary>
-        private static decimal CurrentBalanceForSinglePerson(string personAndBalance)
-        {
-            var balanceList = ConvertStringToDecimalArray(personAndBalance);
-            decimal currentBalance = balanceList[^1];
-
-            return currentBalance;
-        }
-
-        /// <summary>
-        /// Calculates the loss for a single person in array.
-        /// </summary>
-        private static decimal CalculateLossForSinglePerson(string personAndBalance)
-        {
-            var balanceList = ConvertStringToDecimalArray(personAndBalance);
-
-            decimal previousBallance = balanceList[^2];
-            decimal currentBalance = balanceList[^1];
-            var loss = currentBalance - previousBallance;
-
-            return loss;
-        }
-
-        /// <summary>
-        /// Checks all elements of the array for equality.
-        /// </summary>
-        private static bool ArrayElementsAreEqual(decimal[] decimalArray)
-        {
-            decimal firstElement = decimalArray[0];
-            for (int i = 0; i < decimalArray.Length; i++)
-            {
-                if (decimalArray[i] != firstElement)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Return formated output for multiple names in array (Kai, EarLington and Mihail).
-        /// </summary>
-        private static string FormatStringAndCommas(string[] validPeople)
-        {
-            var sb = new StringBuilder();
-
-            for (int i = 0; i < validPeople.Length; i++)
-            {
-                sb.Append(validPeople[i]);
-                if (i + 2 < validPeople.Length)
-                {
-                    sb.Append(", ");
-                }
-                else if (i + 1 < validPeople.Length)
-                {
-                    sb.Append(" and ");
-                }
-            }
-
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns an formated output of currency (ex. -¤1, ¤4, ¤1002, -¤1001).
-        /// </summary>
-        private static string FormatCurrency(decimal currency, string currencySymbol)
-        {
-            const char negativeSymbol = '-';
-
-            var formatedCurrency = new StringBuilder();
-
-            if (currency < 0)
-            {
-                currency *= -1;
-                formatedCurrency.Append(negativeSymbol).Append(currencySymbol).Append(currency);
-                return formatedCurrency.ToString();
-            }
-
-            formatedCurrency.Append(currencySymbol).Append(currency);
-            return formatedCurrency.ToString();
-        }
 
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
@@ -247,21 +58,48 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Return index of Max value in decimal array.
+        /// Return name and current money of the most poor person.
         /// </summary>
-        private static int FindDecimalArrayMax(decimal[] inputArray, int startIndex = 0)
+        public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            var max = inputArray[startIndex];
-            var index = startIndex;
-            for (int i = startIndex; i < inputArray.Length; i++)
+            if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
+
+            const string peopleMessage = " have the least money. ";
+            const string singlePersonMessage = " has the least money. ";
+
+            var resultMessage = new StringBuilder();
+            var balanceList = new decimal[peopleAndBalances.Length];
+            var peopleList = new string[peopleAndBalances.Length];
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                if (inputArray[i] > max)
-                {
-                    max = inputArray[i];
-                    index = i;
-                }
+                balanceList[i] = CurrentBalanceForSinglePerson(peopleAndBalances[i]);
+                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
             }
-            return index;
+
+            var poorestPersonIndex = FindDecimalArrayMin(balanceList);
+            var poorestPerson = peopleList[poorestPersonIndex];
+            var poorestPersonMoney = balanceList[poorestPersonIndex];
+
+            if (balanceList.Length > 2 && ArrayElementsAreEqual(balanceList))
+            {
+                resultMessage
+                    .Append(FormatStringAndCommas(peopleList))
+                    .Append(peopleMessage)
+                    .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
+                    .Append(messageEnd);
+                return resultMessage.ToString();
+            }
+
+            resultMessage.Clear();
+
+            resultMessage
+                .Append(poorestPerson)
+                .Append(singlePersonMessage)
+                .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
+                .Append(messageEnd);
+
+            return resultMessage.ToString();
         }
 
         /// <summary>
@@ -314,24 +152,6 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Return index of Min value in decimal array.
-        /// </summary>
-        private static int FindDecimalArrayMin(decimal[] inputArray, int startIndex = 0)
-        {
-            var min = inputArray[startIndex];
-            var index = startIndex;
-            for (int i = startIndex; i < inputArray.Length; i++)
-            {
-                if (inputArray[i] < min)
-                {
-                    min = inputArray[i];
-                    index = i;
-                }
-            }
-            return index;
-        }
-
-        /// <summary>
         /// Return name and current money of the richest person.
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
@@ -377,48 +197,226 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Return name and current money of the most poor person.
+        /// Checks all elements of the array for equality.
         /// </summary>
-        public static string FindMostPoorPerson(string[] peopleAndBalances)
+        private static bool ArrayElementsAreEqual(decimal[] decimalArray)
         {
-            if (!ArrayIsValid(peopleAndBalances)) return invalidMessage;
-
-            const string peopleMessage = " have the least money. ";
-            const string singlePersonMessage = " has the least money. ";
-
-            var resultMessage = new StringBuilder();
-            var balanceList = new decimal[peopleAndBalances.Length];
-            var peopleList = new string[peopleAndBalances.Length];
-
-            for (int i = 0; i < peopleAndBalances.Length; i++)
+            decimal firstElement = decimalArray[0];
+            for (int i = 0; i < decimalArray.Length; i++)
             {
-                balanceList[i] = CurrentBalanceForSinglePerson(peopleAndBalances[i]);
-                peopleList[i] = ReturnNameForSinglePerson(peopleAndBalances[i]);
+                if (decimalArray[i] != firstElement)
+                {
+                    return false;
+                }
             }
 
-            var poorestPersonIndex = FindDecimalArrayMin(balanceList);
-            var poorestPerson = peopleList[poorestPersonIndex];
-            var poorestPersonMoney = balanceList[poorestPersonIndex];
+            return true;
+        }
 
-            if (balanceList.Length > 2 && ArrayElementsAreEqual(balanceList))
+        /// <summary>
+        /// Verifies if array is valid.
+        /// </summary>
+        private static bool ArrayIsValid(string[] inputArray)
+        {
+            return inputArray != null && inputArray.Length != 0;
+        }
+
+        /// <summary>
+        /// Calculates the loss for a single person in array.
+        /// </summary>
+        private static decimal CalculateLossForSinglePerson(string personAndBalance)
+        {
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
+
+            decimal previousBallance = balanceList[^2];
+            decimal currentBalance = balanceList[^1];
+            var loss = currentBalance - previousBallance;
+
+            return loss;
+        }
+
+        /// <summary>
+        /// Tries to convert a string to decimal.
+        /// </summary>
+        private static decimal ConvertStringToDecimal(string input)
+        {
+            decimal.TryParse(input, NumberStyles.Currency, numberFormatInfo, out decimal value);
+
+            return value;
+        }
+
+        /// <summary>
+        /// Converts the numbers split by comma part of the string to an array.
+        /// </summary>
+        private static decimal[] ConvertStringToDecimalArray(string personAndBalance)
+        {
+            if (!InputStringIsValid(personAndBalance))
             {
-                resultMessage
-                    .Append(FormatStringAndCommas(peopleList))
-                    .Append(peopleMessage)
-                    .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
-                    .Append(messageEnd);
-                return resultMessage.ToString();
+                return default;
             }
 
-            resultMessage.Clear();
+            var array = personAndBalance.Split(',');
+            var newArray = new decimal[array.Length - 1];
 
-            resultMessage
-                .Append(poorestPerson)
-                .Append(singlePersonMessage)
-                .Append(FormatCurrency(poorestPersonMoney, currencySymbol))
-                .Append(messageEnd);
+            for (int i = 1; i < array.Length; i++)
+            {
+                newArray[i - 1] = ConvertStringToDecimal(array[i]);
+            }
 
-            return resultMessage.ToString();
+            return newArray;
+        }
+
+        /// <summary>
+        /// Finds the current balance of a single person in array.
+        /// </summary>
+        private static decimal CurrentBalanceForSinglePerson(string personAndBalance)
+        {
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
+            decimal currentBalance = balanceList[^1];
+
+            return currentBalance;
+        }
+
+        /// <summary>
+        /// Return index of Max value in decimal array.
+        /// </summary>
+        private static int FindDecimalArrayMax(decimal[] inputArray, int startIndex = 0)
+        {
+            var max = inputArray[startIndex];
+            var index = startIndex;
+            for (int i = startIndex; i < inputArray.Length; i++)
+            {
+                if (inputArray[i] > max)
+                {
+                    max = inputArray[i];
+                    index = i;
+                }
+            }
+            return index;
+        }
+
+        /// <summary>
+        /// Return index of Min value in decimal array.
+        /// </summary>
+        private static int FindDecimalArrayMin(decimal[] inputArray, int startIndex = 0)
+        {
+            var min = inputArray[startIndex];
+            var index = startIndex;
+            for (int i = startIndex; i < inputArray.Length; i++)
+            {
+                if (inputArray[i] < min)
+                {
+                    min = inputArray[i];
+                    index = i;
+                }
+            }
+            return index;
+        }
+
+        /// <summary>
+        /// Returns an formated output of currency (ex. -¤1, ¤4, ¤1002, -¤1001).
+        /// </summary>
+        private static string FormatCurrency(decimal currency, string currencySymbol)
+        {
+            const char negativeSymbol = '-';
+
+            var formatedCurrency = new StringBuilder();
+
+            if (currency < 0)
+            {
+                currency *= -1;
+                formatedCurrency.Append(negativeSymbol).Append(currencySymbol).Append(currency);
+                return formatedCurrency.ToString();
+            }
+
+            formatedCurrency.Append(currencySymbol).Append(currency);
+            return formatedCurrency.ToString();
+        }
+
+        /// <summary>
+        /// Return formated output for multiple names in array (Kai, EarLington and Mihail).
+        /// </summary>
+        private static string FormatStringAndCommas(string[] validPeople)
+        {
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < validPeople.Length; i++)
+            {
+                sb.Append(validPeople[i]);
+                if (i + 2 < validPeople.Length)
+                {
+                    sb.Append(", ");
+                }
+                else if (i + 1 < validPeople.Length)
+                {
+                    sb.Append(" and ");
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Finds highest balance for a single person.
+        /// </summary>
+        private static decimal HighestBalanceForSinglePerson(string personAndBalance)
+        {
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
+            var highestBalanceIndex = FindDecimalArrayMax(balanceList);
+            var highestBalance = balanceList[highestBalanceIndex];
+
+            return highestBalance;
+        }
+
+        /// <summary>
+        /// Verifies if string is valid.
+        /// </summary>
+        private static bool InputStringIsValid(string inputString)
+        {
+            return !string.IsNullOrEmpty(inputString) && !string.IsNullOrWhiteSpace(inputString);
+        }
+
+        /// <summary>
+        /// Finds lowest balance for a single person.
+        /// </summary>
+        private static decimal LowestBalanceForSinglePerson(string personAndBalance)
+        {
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
+            var lowestBalanceIndex = FindDecimalArrayMin(balanceList);
+            var lowestBalance = balanceList[lowestBalanceIndex];
+
+            return lowestBalance;
+        }
+
+        /// <summary>
+        /// Finds the name of a single person in array.
+        /// </summary>
+        private static string ReturnNameForSinglePerson(string personAndBalance)
+        {
+            var balanceList = personAndBalance.Split(',');
+
+            if (InputStringIsValid(balanceList[0]))
+            {
+                return balanceList[0];
+            }
+
+            return invalidMessage;
+        }
+
+        /// <summary>
+        /// Finds total balance for a single person.
+        /// </summary>
+        private static decimal TotalBalanceForSinglePerson(string personAndBalance)
+        {
+            var balanceList = ConvertStringToDecimalArray(personAndBalance);
+            decimal totalBalance = decimal.Zero;
+
+            for (int i = 0; i < balanceList.Length; i++)
+            {
+                totalBalance += balanceList[i];
+            }
+
+            return totalBalance;
         }
     }
 }
