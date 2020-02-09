@@ -19,11 +19,11 @@ namespace BootCamp.Chapter
                 repairedText += Environment.NewLine;
                 if (i == 0)
                 {
-                    File.WriteAllText(@"C:\Users\roelof\source\repos\RoelofWobben\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances2.txt", repairedText);
+                    File.WriteAllText(@"C:\Users\roelof\source\repos\RoelofWobben\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.txt", repairedText);
                 }
                 else
                 {
-                    File.AppendAllText(@"C:\Users\roelof\source\repos\RoelofWobben\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances2.txt", repairedText);
+                    File.AppendAllText(@"C:\Users\roelof\source\repos\RoelofWobben\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.txt", repairedText);
                 }
                 
             }
@@ -54,9 +54,9 @@ namespace BootCamp.Chapter
 
             // - FindMostPoorPerson
 
-            Console.WriteLine("The poorest person at this moment is : ");
-            answer = BalanceStats.FindMostPoorPerson(contents);
-            Console.WriteLine(TextTable.Build(answer, 3));
+            //Console.WriteLine("The poorest person at this moment is : ");
+            //answer = BalanceStats.FindMostPoorPerson(contents);
+            //Console.WriteLine(TextTable.Build(answer, 3));
 
 
         }
@@ -65,10 +65,4 @@ namespace BootCamp.Chapter
 
 
 
-/* 
 
-Mirabelle Quinnell,€ 73,44,€ 220,32,€ -36,72,€ 293,76,€ -76,50,€ -284,58
-Mirabelle Quinnell,€ 99,66,€ -81,54,€ 223,48,€ -108,72,€ -72,48,€ -87,58,
-
- 
-*/
