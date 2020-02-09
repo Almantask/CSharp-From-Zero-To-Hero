@@ -8,11 +8,11 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class TextTable
     {
-        private static readonly string divider = Environment.NewLine;
         private const char cornerChar = '+';
         private const char horizontalBorderChar = '-';
+        private const char horizontalPaddingChar = ' ';
         private const char verticalBorderChar = '|';
-
+        private static readonly string divider = Environment.NewLine;
         /*
 
          Input: "Hello", 0
@@ -47,17 +47,24 @@ namespace BootCamp.Chapter
                 return "";
             }
 
+            // store size in a variable so we don't call the same method so many times
             var longestWordInMessageSize = LongestWordInMessageSize(message);
 
             var sb = new StringBuilder();
 
             // create a padded line
             var emptyLine = new StringBuilder();
-            emptyLine.Append(verticalBorderChar).Append(' ', longestWordInMessageSize + (padding * 2)).Append(verticalBorderChar).Append(Environment.NewLine);
+            emptyLine.Append(verticalBorderChar)
+                .Append(horizontalPaddingChar, longestWordInMessageSize + (padding * 2))
+                .Append(verticalBorderChar)
+                .Append(Environment.NewLine);
 
             // create horizontal border
             var horizontalBorder = new StringBuilder();
-            horizontalBorder.Append(cornerChar).Append(horizontalBorderChar, longestWordInMessageSize + (padding * 2)).Append(cornerChar).Append(Environment.NewLine);
+            horizontalBorder.Append(cornerChar)
+                .Append(horizontalBorderChar, longestWordInMessageSize + (padding * 2))
+                .Append(cornerChar)
+                .Append(Environment.NewLine);
 
             // append top horizontal border
             sb.Append(horizontalBorder);
@@ -73,11 +80,11 @@ namespace BootCamp.Chapter
             // creating and printing text message
             foreach (var word in wordsInMessage)
             {
-                sb.Append(verticalBorderChar);
-                sb.Append(' ', padding);
+                sb.Append(verticalBorderChar); 
+                sb.Append(horizontalPaddingChar, padding);
                 sb.Append(word);
-                sb.Append(' ', longestWordInMessageSize - word.Length);
-                sb.Append(' ', padding);
+                sb.Append(horizontalPaddingChar, longestWordInMessageSize - word.Length);
+                sb.Append(horizontalPaddingChar, padding);
                 sb.Append(verticalBorderChar);
                 sb.Append(Environment.NewLine);
             }
