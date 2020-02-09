@@ -54,9 +54,9 @@ namespace BootCamp.Chapter
 
             // - FindMostPoorPerson
 
-            //Console.WriteLine("The poorest person at this moment is : ");
-            //answer = BalanceStats.FindMostPoorPerson(contents);
-            //Console.WriteLine(TextTable.Build(answer, 3));
+            Console.WriteLine("The poorest person at this moment is : ");
+            answer = BalanceStats.FindMostPoorPerson(contents);
+            Console.WriteLine(TextTable.Build(answer, 3));
 
 
         }

@@ -284,6 +284,7 @@ namespace BootCamp.Chapter
                 catch (FormatException)
                 {
                     Console.WriteLine("There was a person with no balance in the file");
+                    break; 
                 }
 
                 
