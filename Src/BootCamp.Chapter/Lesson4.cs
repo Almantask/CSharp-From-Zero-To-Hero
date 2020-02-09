@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace BootCamp.Chapter
 {
     class Lesson4
@@ -63,11 +60,17 @@ namespace BootCamp.Chapter
             else
             {
                 if (height <= 0 && weight <= 0)
+                {
                     DisplayErrorBmi($"Weight cannot be equal or less than zero, but was {weight}.{Environment.NewLine}Height cannot be less than zero, but was {height}.");
-                else if(height <= 0)
+                }
+                else if (height <= 0)
+                {
                     DisplayErrorBmi($"Height cannot be equal or less than zero, but was {height}.");
+                }
                 else
+                {
                     DisplayErrorBmi($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
                 return -1;
             }
         }
@@ -84,11 +87,17 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
 
             if (IsValidNumber(input))
+            {
                 return float.Parse(input);
+            }
             else if (String.IsNullOrEmpty(input))
+            {
                 return 0;
+            }
             else
+            {
                 return DisplayError(input);
+            }
         }
 
         public static float DisplayError(string input)
@@ -107,7 +116,7 @@ namespace BootCamp.Chapter
         }
         public static bool IsPositive(string input)
         {
-            return (float.Parse(input) > 0) ? true : false;
+            return float.Parse(input) > 0;
         }
     }
 }
