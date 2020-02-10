@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Globalization;
-using System.Threading;
 
 
 namespace BootCamp.Chapter
@@ -18,7 +16,7 @@ namespace BootCamp.Chapter
                 return "N/A.";
             }
 
-            float highestBalance = float.MinValue;
+            double highestBalance = double.MinValue;
             string highestBalanceHolder = "";
             int holderCount = 0;
 
@@ -29,10 +27,10 @@ namespace BootCamp.Chapter
 
                 for (int i = 1; i < userNameAndBalanceHistory.Length; i++)
                 {
-                    float balance;
+                    double balance;
                     try
                     {
-                        balance = float.Parse(userNameAndBalanceHistory[i]);
+                        balance = double.Parse(userNameAndBalanceHistory[i]);
                     }
                     catch
                     {
@@ -67,9 +65,9 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            float biggestLoss = 0f;
-            float balance;
-            float nextBalance;
+            double biggestLoss = 0f;
+            double balance;
+            double nextBalance;
             string biggestLoser = "";
             int holderCount = 0;
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
@@ -87,11 +85,11 @@ namespace BootCamp.Chapter
 
                 for (int i = 1; i < userHistory.Length - 1; i++)
                 {
-                    balance = float.TryParse(userHistory[i], out float result) ?
-                        float.Parse(userHistory[i]) : float.NaN;
+                    balance = double.TryParse(userHistory[i], out double result) ?
+                        double.Parse(userHistory[i]) : double.NaN;
 
-                    nextBalance = float.TryParse(userHistory[i + 1], out float nextResult) ?
-                        float.Parse(userHistory[i + 1]) : float.NaN;
+                    nextBalance = double.TryParse(userHistory[i + 1], out double nextResult) ?
+                        double.Parse(userHistory[i + 1]) : double.NaN;
 
                     if ((nextBalance - balance) < biggestLoss)
                     {
@@ -129,7 +127,7 @@ namespace BootCamp.Chapter
                 return "N/A.";
             }
             int holderCount = 0;
-            float highestLastBalance = float.MinValue;
+            double highestLastBalance = double.MinValue;
             string currentBalanceHolder;
             string highestLastBalanceHolder = "";
             foreach (string entry in peopleAndBalances)
@@ -138,7 +136,7 @@ namespace BootCamp.Chapter
 
                 currentBalanceHolder = userHistory[0];
 
-                float currentBalanceHolderFinalBalance = float.Parse(userHistory[^1]);
+                double currentBalanceHolderFinalBalance = double.Parse(userHistory[^1]);
 
                 if (highestLastBalance < currentBalanceHolderFinalBalance)
                 {
@@ -180,7 +178,7 @@ namespace BootCamp.Chapter
                     return "N/A.";
                 }
                 int holderCount = 0;
-                float overallLowestLastBalance = float.MaxValue;
+                double overallLowestLastBalance = double.MaxValue;
                 string currentBalanceHolder;
                 string overallLowestLastBalanceHolder = "";
                 bool isNegativeBalance = false;
@@ -191,7 +189,7 @@ namespace BootCamp.Chapter
 
                     currentBalanceHolder = userHistory[0];
 
-                    float currentBalanceHolderFinalBalance = float.Parse(userHistory[^1]);
+                    double currentBalanceHolderFinalBalance = double.Parse(userHistory[^1]);
 
                     if (overallLowestLastBalance > currentBalanceHolderFinalBalance)
                     {
