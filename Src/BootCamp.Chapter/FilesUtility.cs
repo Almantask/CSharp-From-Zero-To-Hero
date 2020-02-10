@@ -49,8 +49,8 @@ namespace BootCamp.Chapter
 
         public static void RepairPeopleAndBalances(string coruptedFilePath, string repairedFilePath)
         {
-            var sb = ReadCoruptFile(coruptedFilePath);
-            WriteRepairedFile(repairedFilePath, sb);
+            var sb = ReadAndRemoveCoruptionFromFile(coruptedFilePath);
+            WriteRepairedBalancesToFile(repairedFilePath, sb);
             Console.WriteLine($"Corrupted file: {coruptedFilePath}");
             Console.WriteLine($"Repaired file: {repairedFilePath}");
         }
@@ -62,7 +62,7 @@ namespace BootCamp.Chapter
         /// <param name="coruptedFilePath">
         /// Corrupted balances file.
         /// </param>
-        private static StringBuilder ReadCoruptFile(string coruptedFilePath)
+        private static StringBuilder ReadAndRemoveCoruptionFromFile(string coruptedFilePath)
         {
             string line;
             var sb = new StringBuilder();
@@ -89,12 +89,12 @@ namespace BootCamp.Chapter
         /// Writes to a new file StringBuilder constructor received from ReadCorupteFile method.
         /// </summary>
         /// <param name="repairedFilePath">
-        /// Ouput for repaired balances file.
+        /// Output for repaired balances file.
         /// </param>
         /// <param name="sb">
         /// Input StringBuilder from ReadCorupteFile method.
         /// </param>
-        private static void WriteRepairedFile(string repairedFilePath, StringBuilder sb)
+        private static void WriteRepairedBalancesToFile(string repairedFilePath, StringBuilder sb)
         {
             try
             {

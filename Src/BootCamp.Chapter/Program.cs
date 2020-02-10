@@ -15,6 +15,9 @@ namespace BootCamp.Chapter
 
         private static void Demo()
         {
+            defaultCurrencySymbol = "€";
+            defaultCurrencyLocation = 1;
+
             const int padding = 3;
             OutputEncoding = Encoding.UTF8;
 

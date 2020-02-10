@@ -7,11 +7,12 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        private const string currencySymbol = "¤";
+        public static string defaultCurrencySymbol = "¤";
+        public static int defaultCurrencyLocation = 0;
         private const string invalidMessage = "N/A.";
         private const string messageEnd = ".";
         private const int arrayBreakLength = 2;
-        private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = messageEnd };
+        private static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = "." };
 
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
@@ -45,7 +46,7 @@ namespace BootCamp.Chapter
                 resultMessage
                     .Append(FormatStringAndCommas(peopleList))
                     .Append(peopleMessage)
-                    .Append(FormatCurrency(highestBalance, currencySymbol))
+                    .Append(FormatCurrency(highestBalance))
                     .Append(messageEnd);
                 return resultMessage.ToString();
             }
@@ -56,7 +57,7 @@ namespace BootCamp.Chapter
                 resultMessage
                     .Append(personWithHighestBalance)
                     .Append(singlePersonMessage)
-                    .Append(FormatCurrency(highestBalance, currencySymbol))
+                    .Append(FormatCurrency(highestBalance))
                     .Append(messageEnd);
 
                 return resultMessage.ToString();
@@ -95,7 +96,7 @@ namespace BootCamp.Chapter
                 resultMessage
                     .Append(FormatStringAndCommas(mostPoorPeopleList))
                     .Append(peopleMessage)
-                    .Append(FormatCurrency(mostPoorPersonsMoney, currencySymbol))
+                    .Append(FormatCurrency(mostPoorPersonsMoney))
                     .Append(messageEnd);
                 return resultMessage.ToString();
             }
@@ -105,7 +106,7 @@ namespace BootCamp.Chapter
             resultMessage
                 .Append(mostPoortPerson)
                 .Append(singlePersonMessage)
-                .Append(FormatCurrency(mostPoorPersonsMoney, currencySymbol))
+                .Append(FormatCurrency(mostPoorPersonsMoney))
                 .Append(messageEnd);
 
             return resultMessage.ToString();
@@ -156,7 +157,7 @@ namespace BootCamp.Chapter
             resultMessage
                 .Append(personWithBiggestLoss)
                 .Append(singlePersonMessage)
-                .Append(FormatCurrency(biggestLoss, currencySymbol))
+                .Append(FormatCurrency(biggestLoss))
                 .Append(messageEnd);
 
             return resultMessage.ToString();
@@ -194,7 +195,7 @@ namespace BootCamp.Chapter
                 resultMessage
                     .Append(FormatStringAndCommas(richPeopleList))
                     .Append(peopleMessage)
-                    .Append(FormatCurrency(richestPersonMoney, currencySymbol))
+                    .Append(FormatCurrency(richestPersonMoney))
                     .Append(messageEnd);
                 return resultMessage.ToString();
             }
@@ -204,7 +205,7 @@ namespace BootCamp.Chapter
             resultMessage
                 .Append(richestPerson)
                 .Append(singlePersonMessage)
-                .Append(FormatCurrency(richestPersonMoney, currencySymbol))
+                .Append(FormatCurrency(richestPersonMoney))
                 .Append(messageEnd);
 
             return resultMessage.ToString();
@@ -363,7 +364,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Returns an formated output of currency (ex. -¤1, ¤4, ¤1002, -¤1001).
         /// </summary>
-        private static string FormatCurrency(decimal currency, string currencySymbol)
+        private static string FormatCurrency(decimal currency)
         {
             const char negativeSymbol = '-';
 
@@ -372,11 +373,17 @@ namespace BootCamp.Chapter
             if (currency < 0)
             {
                 currency *= -1;
-                formatedCurrency.Append(negativeSymbol).Append(currencySymbol).Append(currency);
+                if (defaultCurrencyLocation == 0)
+                    formatedCurrency.Append(negativeSymbol).Append(defaultCurrencySymbol).Append(currency);
+                if (defaultCurrencyLocation == 1)
+                    formatedCurrency.Append(defaultCurrencySymbol).Append(" ").Append(negativeSymbol).Append(currency);
                 return formatedCurrency.ToString();
             }
 
-            formatedCurrency.Append(currencySymbol).Append(currency);
+            if (defaultCurrencyLocation == 0)
+                formatedCurrency.Append(defaultCurrencySymbol).Append(currency);
+            if (defaultCurrencyLocation == 1)
+                formatedCurrency.Append(defaultCurrencySymbol).Append(" ").Append(currency);
             return formatedCurrency.ToString();
         }
 
