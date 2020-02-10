@@ -13,22 +13,21 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (peopleAndBalances==null || peopleAndBalances.Length == 0)
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
                 return "N/A.";
             }
 
             float highestBalance = float.MinValue;
-            string currentBalanceHolder = "";
             string highestBalanceHolder = "";
             int holderCount = 0;
-            
+
             foreach (string entry in peopleAndBalances)
             {
                 string[] userNameAndBalanceHistory = entry.Split(',');
-                currentBalanceHolder = userNameAndBalanceHistory[0];
+                string currentBalanceHolder = userNameAndBalanceHistory[0];
 
-                for (int i=1; i<userNameAndBalanceHistory.Length;i++)
+                for (int i = 1; i < userNameAndBalanceHistory.Length; i++)
                 {
                     float balance;
                     try
@@ -41,21 +40,22 @@ namespace BootCamp.Chapter
                     }
                     if (balance > highestBalance)
                     {
-                        highestBalance = balance;
                         highestBalanceHolder = currentBalanceHolder;
+                        holderCount = 1;
                     }
-                    if (balance == highestBalance && highestBalanceHolder != currentBalanceHolder)
+                    if (balance == highestBalance)
                     {
-                        if (holderCount == 1)
+                        if (holderCount == 2)
                         {
                             highestBalanceHolder += ($" and {currentBalanceHolder}");
                         }
-                        else
+                        if (holderCount == 1)
                         {
                             highestBalanceHolder += ($", {currentBalanceHolder}");
                             holderCount++;
                         }
                     }
+                    highestBalance = highestBalance < balance ? balance : highestBalance;
                 }
             }
             string stringHighestBalance = highestBalance.ToString();
@@ -87,45 +87,38 @@ namespace BootCamp.Chapter
 
                 for (int i = 1; i < userHistory.Length - 1; i++)
                 {
-                  
-                    balance = float.TryParse(userHistory[i], out float result) ? float.Parse(userHistory[i]) : float.NaN;
+                    balance = float.TryParse(userHistory[i], out float result) ?
+                        float.Parse(userHistory[i]) : float.NaN;
 
-                    nextBalance = float.TryParse(userHistory[i + 1], out float nextResult) ? float.Parse(userHistory[i + 1]) : float.NaN;
+                    nextBalance = float.TryParse(userHistory[i + 1], out float nextResult) ?
+                        float.Parse(userHistory[i + 1]) : float.NaN;
 
-                    biggestLoss = ((nextBalance - balance) < biggestLoss) ? (nextBalance - balance) : biggestLoss;
-
-
-
-                    if (biggestLoss == nextBalance - balance && biggestLoser != currentBalanceHolder)
+                    if ((nextBalance - balance) < biggestLoss)
                     {
-                        switch (holderCount)
+                        biggestLoser = currentBalanceHolder;
+                        holderCount = 1;
+                    }
+                    if (biggestLoss == nextBalance - balance)
+                    {
+                        if (holderCount == 1)
                         {
-                            case 0:
-                                {
-                                    biggestLoser = currentBalanceHolder;
-                                    holderCount++;
-                                    break;
-                                }
-
-                            case 1:
-                                {
-                                    biggestLoser += ($", {currentBalanceHolder}");
-                                    holderCount++;
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    biggestLoser += ($" and {currentBalanceHolder}");
-                                    break;
-                                }
+                            biggestLoser += ($", {currentBalanceHolder}");
+                            holderCount++;
+                        }
+                        if (biggestLoss == nextBalance - balance &&
+                            biggestLoser != currentBalanceHolder &&
+                            holderCount > 1)
+                        {
+                            biggestLoser += ($" and {currentBalanceHolder}");
                         }
                     }
+                    biggestLoss = ((nextBalance - balance) < biggestLoss) ?
+                        (nextBalance - balance) : biggestLoss;
                 }
             }
             string stringBiggestLoss = Math.Abs(biggestLoss).ToString();
             return ($"{biggestLoser} lost the most money. -¤{stringBiggestLoss}.");
         }
-
         /// <summary>
         /// Return name and current money of the richest person.
         /// </summary>
@@ -144,7 +137,7 @@ namespace BootCamp.Chapter
                 string[] userHistory = entry.Split(',');
 
                 currentBalanceHolder = userHistory[0];
-                    
+
                 float currentBalanceHolderFinalBalance = float.Parse(userHistory[^1]);
 
                 if (highestLastBalance < currentBalanceHolderFinalBalance)
@@ -153,27 +146,27 @@ namespace BootCamp.Chapter
                     holderCount = 1;
                 }
 
-                if (highestLastBalance == currentBalanceHolderFinalBalance && highestLastBalanceHolder != currentBalanceHolder)
-                {                   
-                        switch (holderCount)
-                        {
-                            case 1:
-                                {
-                                    highestLastBalanceHolder += ($", {currentBalanceHolder}");
-                                    holderCount++;
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    highestLastBalanceHolder += ($" and {currentBalanceHolder}");
-                                    break;
-                                }
-                        }
-                    }
-                highestLastBalance = currentBalanceHolderFinalBalance > highestLastBalance  ? currentBalanceHolderFinalBalance : highestLastBalance;
+                if (highestLastBalance == currentBalanceHolderFinalBalance &&
+                    highestLastBalanceHolder != currentBalanceHolder &&
+                    holderCount == 2)
+                {
+                    highestLastBalanceHolder += ($" and {currentBalanceHolder}");
+                }
+                if (highestLastBalance == currentBalanceHolderFinalBalance &&
+                   highestLastBalanceHolder != currentBalanceHolder &&
+                   holderCount == 1)
+                {
+                    highestLastBalanceHolder += ($", {currentBalanceHolder}");
+                    holderCount++;
+                }
+                highestLastBalance = currentBalanceHolderFinalBalance > highestLastBalance ?
+                    currentBalanceHolderFinalBalance : highestLastBalance;
             }
             string stringHighesLasttBalance = highestLastBalance.ToString();
-            return holderCount == 1 ? ($"{highestLastBalanceHolder} is the richest person. ¤{stringHighesLasttBalance}.") : ($"{highestLastBalanceHolder} are the richest people. ¤{stringHighesLasttBalance}.");
+
+            return holderCount == 1 ?
+                ($"{highestLastBalanceHolder} " + $"is the richest person. ¤{stringHighesLasttBalance}.") :
+                ($"{highestLastBalanceHolder} are the richest people. ¤{stringHighesLasttBalance}.");
         }
 
         /// <summary>
@@ -206,36 +199,36 @@ namespace BootCamp.Chapter
                         holderCount = 1;
                     }
 
-                    if (overallLowestLastBalance == currentBalanceHolderFinalBalance && overallLowestLastBalanceHolder != currentBalanceHolder)
+                    if (overallLowestLastBalance == currentBalanceHolderFinalBalance &&
+                        overallLowestLastBalanceHolder != currentBalanceHolder &&
+                        holderCount == 2)
                     {
-                        switch (holderCount)
-                        {
-                            case 1:
-                                {
-                                    overallLowestLastBalanceHolder += ($", {currentBalanceHolder}");
-                                    holderCount++;
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    overallLowestLastBalanceHolder += ($" and {currentBalanceHolder}");
-                                    break;
-                                }
-                        }
+                        overallLowestLastBalanceHolder += ($" and {currentBalanceHolder}");
                     }
-                    overallLowestLastBalance = overallLowestLastBalance > currentBalanceHolderFinalBalance ? currentBalanceHolderFinalBalance : overallLowestLastBalance;
+                    if (overallLowestLastBalance == currentBalanceHolderFinalBalance &&
+                        overallLowestLastBalanceHolder != currentBalanceHolder &&
+                        holderCount == 1)
+                    {
+                        overallLowestLastBalanceHolder += ($", {currentBalanceHolder}");
+                        holderCount++;
+                    }
+
+                    overallLowestLastBalance = overallLowestLastBalance > currentBalanceHolderFinalBalance ? 
+                        currentBalanceHolderFinalBalance : overallLowestLastBalance;
 
                     isNegativeBalance = (overallLowestLastBalance < 0);
-                    
                 }
                 string stringHighesLasttBalance = Math.Abs(overallLowestLastBalance).ToString();
                 if (isNegativeBalance)
                 {
-                    return holderCount == 1 ? ($"{overallLowestLastBalanceHolder} has the least money. -¤{stringHighesLasttBalance}.") : ($"{overallLowestLastBalanceHolder} have the least money. -¤{stringHighesLasttBalance}.");
+                    return holderCount == 1 ? 
+                        ($"{overallLowestLastBalanceHolder} has the least money. -¤{stringHighesLasttBalance}.") : 
+                        ($"{overallLowestLastBalanceHolder} have the least money. -¤{stringHighesLasttBalance}.");
                 }
-                return holderCount == 1 ? ($"{overallLowestLastBalanceHolder} has the least money. ¤{stringHighesLasttBalance}.") : ($"{overallLowestLastBalanceHolder} have the least money. ¤{stringHighesLasttBalance}.");
+                return holderCount == 1 ? 
+                    ($"{overallLowestLastBalanceHolder} has the least money. ¤{stringHighesLasttBalance}.") : 
+                    ($"{overallLowestLastBalanceHolder} have the least money. ¤{stringHighesLasttBalance}.");
             }
         }
-        
     }
 }
