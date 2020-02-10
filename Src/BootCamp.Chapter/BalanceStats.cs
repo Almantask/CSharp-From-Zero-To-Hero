@@ -6,6 +6,8 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
+        private const string NotAvailable = "N/A";
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -13,7 +15,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             var maxBalance = 0m;
@@ -23,26 +25,13 @@ namespace BootCamp.Chapter
             {
                 var peopleBalances = peopleAndBalances[i].Split(",");
                 var balance = GetLargestBalance(peopleBalances);
-
-                if (balance >= maxBalance)
-                {
-                    if (balance > maxBalance)
-                    {
-                        name = new StringBuilder();
-                    }
-                    if (name.Length != 0)
-                    {
-                        name.Append(", ");
-                    }
-                    name.Append(peopleBalances[0]);
-
-                    maxBalance = balance;
-                }
+                SetNames(ref name, ref maxBalance, peopleBalances, balance);
             }
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
             var maxBalanceNoComma = RemoveComma($"{maxBalance:C0}");
-            return $"{ReplaceLastComma(name.ToString())} had the most money ever. {maxBalanceNoComma}.";
+            return $"{FixPlural(name.ToString())} had the most money ever. {maxBalanceNoComma}.";
         }
 
         private static decimal GetLargestBalance(string[] peopleBalances)
@@ -62,6 +51,25 @@ namespace BootCamp.Chapter
             return maxBalance;
         }
 
+        private static void SetNames(ref StringBuilder name, ref decimal maxBalance, string[] peopleBalances, decimal balance)
+        {
+            if (balance >= maxBalance)
+            {
+                if (balance > maxBalance)
+                {
+                    name = new StringBuilder();
+                }
+
+                if (name.Length != 0)
+                {
+                    name.Append(", ");
+                }
+
+                name.Append(peopleBalances[0]); //Builds list of names with highest balance
+                maxBalance = balance;
+            }
+        }
+
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
         /// </summary>
@@ -69,7 +77,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             var biggestLossEver = decimal.MaxValue;
@@ -95,10 +103,11 @@ namespace BootCamp.Chapter
 
             if (name == "")
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
             var biggestLossEverNoComma = RemoveComma($"{biggestLossEver:C0}").Replace("(", "-").Replace(")", "");
             return $"{name} lost the most money. {biggestLossEverNoComma}.";
         }
@@ -116,7 +125,7 @@ namespace BootCamp.Chapter
 
                     if (isBeforeBalanceValid && isAfterBalanceValid)
                     {
-                        biggestLoss = GetLoss(biggestLoss, beginAmount, endAmount);
+                        biggestLoss = GetBiggestLoss(biggestLoss, beginAmount, endAmount);
                     }
                 }
             }
@@ -124,7 +133,7 @@ namespace BootCamp.Chapter
             return biggestLoss;
         }
 
-        private static decimal GetLoss(decimal biggestLoss, decimal beginAmount, decimal endAmount)
+        private static decimal GetBiggestLoss(decimal biggestLoss, decimal beginAmount, decimal endAmount)
         {
             var loss = endAmount - beginAmount;
             var bigLoss = biggestLoss;
@@ -144,7 +153,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             var maxBalance = 0m;
@@ -154,28 +163,19 @@ namespace BootCamp.Chapter
             {
                 var peopleBalances = peopleAndBalances[i].Split(",");
                 var isBalanceValid = decimal.TryParse(peopleBalances[peopleBalances.Length - 1], out var balance);
-                
-                if (isBalanceValid && balance >= maxBalance)
-                {
-                    if (balance > maxBalance)
-                    {
-                        name = new StringBuilder();
-                    }
-                    if (name.Length != 0)
-                    {
-                        name.Append(", ");
-                    }
-                    name.Append(peopleBalances[0]);
 
-                    maxBalance = balance;
+                if (isBalanceValid)
+                {
+                    SetNames(ref name, ref maxBalance, peopleBalances, balance);
                 }
             }
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
             var maxBalanceNoComma = RemoveComma($"{maxBalance:C0}");
             var word1 = name.ToString().Contains(", ") ? "are" : "is";
             var word2 = name.ToString().Contains(", ") ? "people" : "person";
-            return $"{ReplaceLastComma(name.ToString())} {word1} the richest {word2}. {maxBalanceNoComma}.";
+            return $"{FixPlural(name.ToString())} {word1} the richest {word2}. {maxBalanceNoComma}.";
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             var minBalance = decimal.MaxValue;
@@ -196,35 +196,42 @@ namespace BootCamp.Chapter
                 var peopleBalances = peopleAndBalances[i].Split(",");
                 var isBalanceValid = decimal.TryParse(peopleBalances[peopleBalances.Length - 1], out var balance);
 
-                if (isBalanceValid && balance <= minBalance)
+                if (isBalanceValid)
                 {
-                    if (balance < minBalance)
-                    {
-                        name = new StringBuilder();
-                    }
-                    if (name.Length != 0)
-                    {
-                        name.Append(", ");
-                    }
-                    name.Append(peopleBalances[0]);
-
-                    minBalance = balance;
+                    GetPoorest(ref name, ref minBalance, peopleBalances, balance);
                 }
             }
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            var word = name.ToString().Contains(", ") ? "have" : "has";
+
             var minBalanceNoComma = RemoveComma($"{minBalance:C0}").Replace("(", "-").Replace(")", "");
-            if (minBalance < 0)
-            {
-                minBalanceNoComma = $"{minBalanceNoComma}";
-            }
-            return $"{ReplaceLastComma(name.ToString())} {word} the least money. {minBalanceNoComma}.";
+            var word = name.ToString().Contains(", ") ? "have" : "has";
+            return $"{FixPlural(name.ToString())} {word} the least money. {minBalanceNoComma}.";
         }
 
-        private static string ReplaceLastComma(string name)
+        private static void GetPoorest(ref StringBuilder mostPoorPerson, ref decimal minBalance, string[] peopleBalances, decimal balance)
+        {
+            if (balance <= minBalance)
+            {
+                if (balance < minBalance)
+                {
+                    mostPoorPerson = new StringBuilder();
+                }
+
+                if (mostPoorPerson.Length != 0)
+                {
+                    mostPoorPerson.Append(", ");
+                }
+
+                mostPoorPerson.Append(peopleBalances[0]);
+                minBalance = balance;
+            }
+        }
+
+        private static string FixPlural(string name)
         {
             var lastComma = name.LastIndexOf(", ", StringComparison.InvariantCulture);
+
             if (lastComma > 0)
             {
                 name = name.Remove(lastComma, 2).Insert(lastComma, " and ");
@@ -239,6 +246,7 @@ namespace BootCamp.Chapter
             {
                 return true;
             }
+
             return false;
         }
 
