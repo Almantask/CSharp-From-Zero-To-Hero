@@ -1,5 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Text;
+using static BootCamp.Chapter.TextTable;
+using static BootCamp.Chapter.BalanceStats;
+using static BootCamp.Chapter.FilesUtility;
+using static System.Console;
 
 namespace BootCamp.Chapter
 {
@@ -7,49 +12,25 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
-            // Print each of the statistical output using Text Table with padding 3:
-            // - FindHighestBalanceEver
-            // - FindPersonWithBiggestLoss
-            // - FindRichestPerson
-            // - FindMostPoorPerson
-
-            //const int padding = 3;
-
-            //var highestBalanceEver = TextTable.Build(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances), padding);
-            //Console.WriteLine(highestBalanceEver);
-
-            //var personWithBiggestLoss = TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances), padding);
-            //Console.WriteLine(personWithBiggestLoss);
-
-            //var richestperson = TextTable.Build(BalanceStats.FindRichestPerson(PeoplesBalances.Balances), padding);
-            //Console.WriteLine(richestperson);
-
-            //var poorestPerson = TextTable.Build(BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances), padding);
-            //Console.WriteLine(poorestPerson);
-
-            PrintFileToConsole();
+            Demo();
         }
 
-        private static void PrintFileToConsole()
+        private static void Demo()
         {
-            const string fileLocation = @"\Input\Balances.corrupted";
-            string rootPath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
-            string filePath = rootPath + fileLocation;
+            const int padding = 3;
+            OutputEncoding = Encoding.UTF8;
 
-            Console.WriteLine(filePath);
+            var repairedPeopeAndBalances = MakeBalancesParsable();
 
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                var contents = reader.ReadToEnd();
-                var poorestPerson = TextTable.Build(BalanceStats.FindMostPoorPerson(new string[] { contents }), 3);
-                var richestPerson = TextTable.Build(BalanceStats.FindRichestPerson(new string[] { contents }), 3);
-                var persontWithBigestLoss = TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(new string[] { contents }), 3);
-                var highestBalanceEver = TextTable.Build(BalanceStats.FindHighestBalanceEver(new string[] { contents }), 3);
-                Console.WriteLine(poorestPerson);
-                Console.WriteLine(richestPerson);
-                Console.WriteLine(persontWithBigestLoss);
-                Console.WriteLine(highestBalanceEver);
-            }
+            WriteLine(Build(FindHighestBalanceEver(repairedPeopeAndBalances), padding));
+
+            WriteLine(Build(FindMostPoorPerson(repairedPeopeAndBalances), padding));
+
+            WriteLine(Build(FindPersonWithBiggestLoss(repairedPeopeAndBalances), padding));
+
+            WriteLine(Build(FindRichestPerson(repairedPeopeAndBalances), padding));
+
+            RepairPeopleAndBalances(coruptedFile, repairedFile);
         }
     }
 }

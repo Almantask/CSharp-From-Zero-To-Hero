@@ -1,5 +1,7 @@
 ﻿using System.Globalization;
 using System.Text;
+using System;
+using System.Diagnostics;
 
 namespace BootCamp.Chapter
 {
@@ -126,7 +128,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                if (TotalBalanceForSinglePerson(peopleAndBalances[i]) == CurrentBalanceForSinglePerson(peopleAndBalances[i]))
+                if (i < arrayBreakLength && TotalBalanceForSinglePerson(peopleAndBalances[i]) == CurrentBalanceForSinglePerson(peopleAndBalances[i]))
                 {
                     return invalidMessage;
                 }
@@ -240,11 +242,19 @@ namespace BootCamp.Chapter
         {
             var balanceList = ConvertStringToDecimalArray(personAndBalance);
 
-            decimal previousBallance = balanceList[^2];
-            decimal currentBalance = balanceList[^1];
-            var loss = currentBalance - previousBallance;
+            try
+            {
+                decimal previousBallance = balanceList[^2];
+                decimal currentBalance = balanceList[^1];
+                var loss = currentBalance - previousBallance;
 
-            return loss;
+                return loss;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            return default;
         }
 
         /// <summary>
@@ -284,19 +294,35 @@ namespace BootCamp.Chapter
         private static decimal CurrentBalanceForSinglePerson(string personAndBalance)
         {
             var balanceList = ConvertStringToDecimalArray(personAndBalance);
-            decimal currentBalance = balanceList[^1];
+            try
+            {
+                decimal currentBalance = balanceList[^1];
 
-            return currentBalance;
+                return currentBalance;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            return default;
         }
 
         /// <summary>
         /// Return index of Max value in decimal array.
         /// </summary>
-        private static int FindDecimalArrayMax(decimal[] inputArray, int startIndex = 0)
+        private static int FindDecimalArrayMax(decimal[] inputArray)
         {
-            var max = inputArray[startIndex];
-            var index = startIndex;
-            for (int i = startIndex; i < inputArray.Length; i++)
+            var max = decimal.Zero;
+            try
+            {
+                max = inputArray[0];
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            var index = 0;
+            for (int i = index; i < inputArray.Length; i++)
             {
                 if (inputArray[i] > max)
                 {
@@ -310,11 +336,20 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return index of Min value in decimal array.
         /// </summary>
-        private static int FindDecimalArrayMin(decimal[] inputArray, int startIndex = 0)
+        private static int FindDecimalArrayMin(decimal[] inputArray)
         {
-            var min = inputArray[startIndex];
-            var index = startIndex;
-            for (int i = startIndex; i < inputArray.Length; i++)
+            var min = decimal.Zero;
+
+            try
+            {
+                min = inputArray[0];
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            var index = 0;
+            for (int i = 0; i < inputArray.Length; i++)
             {
                 if (inputArray[i] < min)
                 {
@@ -375,9 +410,17 @@ namespace BootCamp.Chapter
         {
             var balanceList = ConvertStringToDecimalArray(personAndBalance);
             var highestBalanceIndex = FindDecimalArrayMax(balanceList);
-            var highestBalance = balanceList[highestBalanceIndex];
 
-            return highestBalance;
+            try
+            {
+                var highestBalance = balanceList[highestBalanceIndex];
+                return highestBalance;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            return default;
         }
 
         /// <summary>
