@@ -12,18 +12,18 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             // part1 
-            var contents = File.ReadAllLines(@"C:\Users\roelof\source\repos\RoelofWobben\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input/Balances.corrupted");
+            var contents = File.ReadAllLines(@"Input\Balances.corrupted");
             for (int i = 0; i < contents.Length; i++)
             {
-                var repairedText = contents[i].ToString().Replace("_", "");
+                var repairedText = contents[i].Replace("_", "");
                 repairedText += Environment.NewLine;
                 if (i == 0)
                 {
-                    File.WriteAllText(@"C:\Users\roelof\source\repos\RoelofWobben\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.txt", repairedText);
+                    File.WriteAllText(@"Input\Balances.txt", repairedText);
                 }
                 else
                 {
-                    File.AppendAllText(@"C:\Users\roelof\source\repos\RoelofWobben\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.txt", repairedText);
+                    File.AppendAllText(@"Input\Balances.txt", repairedText);
                 }
                 
             }
@@ -31,7 +31,7 @@ namespace BootCamp.Chapter
 
             // part2
 
-            contents = File.ReadAllLines(@"C:\Users\roelof\source\repos\RoelofWobben\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input/Balances.txt");
+            contents = File.ReadAllLines(@"Input\Balances.txt");
 
             // Print each of the statistical output using Text Table with padding 3:
             // - FindHighestBalanceEver
