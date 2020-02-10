@@ -26,21 +26,21 @@ namespace BootCamp.Chapter
 
             if (personWithHighestBalance.ToString().Contains(", "))
             {
-                personWithHighestBalance = ReplaceCommaWithAnd(personWithHighestBalance); 
+               ReplaceCommaWithAnd(personWithHighestBalance); 
             }
 
             return $"{personWithHighestBalance.ToString()} had the most money ever. ¤{highestBalanceEver}.";
         }
 
-        private static StringBuilder ReplaceCommaWithAnd(StringBuilder message)
+        private static void ReplaceCommaWithAnd(StringBuilder message)
         {
             var index = message.ToString().LastIndexOf(", ");
-            return message.Remove(index, 2).Insert(index, " and "); 
+            message.Remove(index, 2).Insert(index, " and "); 
         }
 
         private static decimal FindHighestBalance(string[] peopleAndBalances, StringBuilder PersonWithHighestBalance)
         {
-            var HighestBalanceEver = decimal.MinValue;
+            var highestBalanceEver = decimal.MinValue;
 
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
@@ -48,29 +48,19 @@ namespace BootCamp.Chapter
                 try
                 {
                     var highestAmountOfPerson = decimal.Parse(currentPersonData[1..].Max());
-                    
-                    
-                    if (highestAmountOfPerson == HighestBalanceEver)
+
+                    if (highestAmountOfPerson > highestBalanceEver)
                     {
-                        PersonWithHighestBalance.Append(", ");
-                        PersonWithHighestBalance.Append(currentPersonData[0]);
+                        highestBalanceEver = highestAmountOfPerson;
+                        PersonWithHighestBalance.Clear();
+
                     }
 
-                    if (highestAmountOfPerson > HighestBalanceEver)
+                    if (highestAmountOfPerson >= highestBalanceEver)
                     {
-                        HighestBalanceEver = highestAmountOfPerson;
-                        var currentOne = PersonWithHighestBalance.ToString();
-
-                        if (string.IsNullOrEmpty(currentOne))
-                        {
-                            PersonWithHighestBalance.Append(currentPersonData[0]);
-                        }
-                        else
-                        {
-                            PersonWithHighestBalance.Clear(); 
-                            PersonWithHighestBalance.Append(currentPersonData[0]);
-                        }
+                        AddPerson(currentPersonData[0], PersonWithHighestBalance);
                     }
+
                 }
                 catch (ArgumentNullException)
                 {
@@ -79,7 +69,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return HighestBalanceEver;
+            return highestBalanceEver;
         }
 
         /// <summary>
@@ -141,7 +131,7 @@ namespace BootCamp.Chapter
 
             if (PersonWithHighestLoss.ToString().Contains(','))
             {
-                PersonWithHighestLoss = ReplaceCommaWithAnd(PersonWithHighestLoss);
+               ReplaceCommaWithAnd(PersonWithHighestLoss);
             }
 
 
