@@ -49,7 +49,7 @@ namespace BootCamp.Chapter
             }
             int stringLength;
             var messageArray = (message.Contains(Environment.NewLine)) ? message.Split(Environment.NewLine) : null;
-            bool isMultiline = messageArray == null ? false : true;
+            bool isMultiline = !(messageArray == null);
 
             //find longest message
             stringLength = DetermineMessageWidth(message, messageArray, isMultiline);
