@@ -1,14 +1,15 @@
 ﻿using System.Globalization;
 using System.Text;
 using System;
-using System.Diagnostics;
 
 namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        public static string defaultCurrencySymbol = "¤";
-        public static int defaultCurrencyLocation = 0;
+        public static string DefaultCurrencySymbol { get; set; } = "¤";
+
+        public static int DefaultCurrencyLocation { get; set; }
+
         private const string invalidMessage = "N/A.";
         private const string messageEnd = ".";
         private const int arrayBreakLength = 2;
@@ -251,9 +252,8 @@ namespace BootCamp.Chapter
 
                 return loss;
             }
-            catch (IndexOutOfRangeException ex)
+            catch (IndexOutOfRangeException)
             {
-                Debug.WriteLine(ex);
             }
             return default;
         }
@@ -301,9 +301,8 @@ namespace BootCamp.Chapter
 
                 return currentBalance;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Debug.WriteLine(ex.Message);
             }
             return default;
         }
@@ -318,9 +317,8 @@ namespace BootCamp.Chapter
             {
                 max = inputArray[0];
             }
-            catch (IndexOutOfRangeException ex)
+            catch (IndexOutOfRangeException)
             {
-                Debug.WriteLine(ex.Message);
             }
             var index = 0;
             for (int i = index; i < inputArray.Length; i++)
@@ -345,9 +343,8 @@ namespace BootCamp.Chapter
             {
                 min = inputArray[0];
             }
-            catch (IndexOutOfRangeException ex)
+            catch (IndexOutOfRangeException)
             {
-                Debug.WriteLine(ex.Message);
             }
             var index = 0;
             for (int i = 0; i < inputArray.Length; i++)
@@ -373,17 +370,23 @@ namespace BootCamp.Chapter
             if (currency < 0)
             {
                 currency *= -1;
-                if (defaultCurrencyLocation == 0)
-                    formatedCurrency.Append(negativeSymbol).Append(defaultCurrencySymbol).Append(currency);
-                if (defaultCurrencyLocation == 1)
-                    formatedCurrency.Append(defaultCurrencySymbol).Append(" ").Append(negativeSymbol).Append(currency);
+                if (DefaultCurrencyLocation == 0)
+                    formatedCurrency.Append(negativeSymbol).Append(DefaultCurrencySymbol).Append(currency);
+                if (DefaultCurrencyLocation == 1)
+                    formatedCurrency.Append(DefaultCurrencySymbol).Append(" ").Append(negativeSymbol).Append(currency);
                 return formatedCurrency.ToString();
             }
 
-            if (defaultCurrencyLocation == 0)
-                formatedCurrency.Append(defaultCurrencySymbol).Append(currency);
-            if (defaultCurrencyLocation == 1)
-                formatedCurrency.Append(defaultCurrencySymbol).Append(" ").Append(currency);
+            if (DefaultCurrencyLocation == 0)
+            {
+                formatedCurrency.Append(DefaultCurrencySymbol).Append(currency);
+            }
+
+            if (DefaultCurrencyLocation == 1)
+            {
+                formatedCurrency.Append(DefaultCurrencySymbol).Append(" ").Append(currency);
+            }
+
             return formatedCurrency.ToString();
         }
 
@@ -423,9 +426,8 @@ namespace BootCamp.Chapter
                 var highestBalance = balanceList[highestBalanceIndex];
                 return highestBalance;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Debug.WriteLine(ex.Message);
             }
             return default;
         }

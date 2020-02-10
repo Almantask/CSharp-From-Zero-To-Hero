@@ -8,9 +8,9 @@ namespace BootCamp.Chapter
     public static class FilesUtility
     {
         private static readonly string rootPath = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-        public static readonly string coruptedFile = rootPath + @"\Input\Balances.corrupted";
-        public static readonly string repairedFile = rootPath + @"\Output\Balances.repaired";
-        public static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = "." };
+
+        public static string CoruptedFile { get; set; } = rootPath + @"\Input\Balances.corrupted";
+        public static string RepairedFile { get; set; } = rootPath + @"\Output\Balances.repaired";
 
         private const string coruption = "_";
         private const string splitByString = ",€";
@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
             string[] corruptedLines = default;
             try
             {
-                corruptedLines = File.ReadAllLines(coruptedFile);
+                corruptedLines = File.ReadAllLines(CoruptedFile);
             }
             catch (Exception ex)
             {

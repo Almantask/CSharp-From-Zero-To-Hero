@@ -15,11 +15,13 @@ namespace BootCamp.Chapter
 
         private static void Demo()
         {
-            defaultCurrencySymbol = "€";
-            defaultCurrencyLocation = 1;
+            DefaultCurrencySymbol = "€";
+            DefaultCurrencyLocation = 1;
 
             const int padding = 3;
             OutputEncoding = Encoding.UTF8;
+
+            // runs statistics methods on Ballances.corrupted
 
             var repairedPeopeAndBalances = MakeBalancesParsable();
 
@@ -31,7 +33,8 @@ namespace BootCamp.Chapter
 
             WriteLine(Build(FindRichestPerson(repairedPeopeAndBalances), padding));
 
-            RepairPeopleAndBalances(coruptedFile, repairedFile);
+            // Creates Balances.repaired
+            RepairPeopleAndBalances(CoruptedFile, RepairedFile);
         }
     }
 }
