@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
+using static System.FormattableString;
 
 
 namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-
+        
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -57,7 +60,7 @@ namespace BootCamp.Chapter
                 }
             }
             string stringHighestBalance = highestBalance.ToString();
-            return ($"{highestBalanceHolder} had the most money ever. ¤{stringHighestBalance}.");
+            return Invariant($"{highestBalanceHolder} had the most money ever. ¤{stringHighestBalance}.");
         }
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            double biggestLoss = 0f;
+            double biggestLoss = 0;
             double balance;
             double nextBalance;
             string biggestLoser = "";
@@ -77,10 +80,12 @@ namespace BootCamp.Chapter
             foreach (string entry in peopleAndBalances)
             {
                 string[] userHistory = entry.Split(',');
+
                 if (userHistory.Length <= 2)
                 {
                     return "N/A.";
                 }
+
                 string currentBalanceHolder = userHistory[0];
 
                 for (int i = 1; i < userHistory.Length - 1; i++)
@@ -96,18 +101,17 @@ namespace BootCamp.Chapter
                         biggestLoser = currentBalanceHolder;
                         holderCount = 1;
                     }
+
                     if (biggestLoss == nextBalance - balance)
                     {
+                        if ( holderCount > 1)
+                        {
+                            biggestLoser += ($" and {currentBalanceHolder}");
+                        }
                         if (holderCount == 1)
                         {
                             biggestLoser += ($", {currentBalanceHolder}");
                             holderCount++;
-                        }
-                        if (biggestLoss == nextBalance - balance &&
-                            biggestLoser != currentBalanceHolder &&
-                            holderCount > 1)
-                        {
-                            biggestLoser += ($" and {currentBalanceHolder}");
                         }
                     }
                     biggestLoss = ((nextBalance - balance) < biggestLoss) ?
@@ -115,7 +119,7 @@ namespace BootCamp.Chapter
                 }
             }
             string stringBiggestLoss = Math.Abs(biggestLoss).ToString();
-            return ($"{biggestLoser} lost the most money. -¤{stringBiggestLoss}.");
+            return Invariant($"{biggestLoser} lost the most money. -¤{stringBiggestLoss}.");
         }
         /// <summary>
         /// Return name and current money of the richest person.
@@ -162,9 +166,9 @@ namespace BootCamp.Chapter
             }
             string stringHighesLasttBalance = highestLastBalance.ToString();
 
-            return holderCount == 1 ?
-                ($"{highestLastBalanceHolder} " + $"is the richest person. ¤{stringHighesLasttBalance}.") :
-                ($"{highestLastBalanceHolder} are the richest people. ¤{stringHighesLasttBalance}.");
+            return holderCount == 1 ? 
+                Invariant($"{highestLastBalanceHolder} is the richest person. ¤{stringHighesLasttBalance}.") :
+                Invariant($"{highestLastBalanceHolder} are the richest people. ¤{stringHighesLasttBalance}.");
         }
 
         /// <summary>
@@ -219,13 +223,13 @@ namespace BootCamp.Chapter
                 string stringHighesLasttBalance = Math.Abs(overallLowestLastBalance).ToString();
                 if (isNegativeBalance)
                 {
-                    return holderCount == 1 ? 
-                        ($"{overallLowestLastBalanceHolder} has the least money. -¤{stringHighesLasttBalance}.") : 
-                        ($"{overallLowestLastBalanceHolder} have the least money. -¤{stringHighesLasttBalance}.");
+                    return holderCount == 1 ?
+                        Invariant($"{overallLowestLastBalanceHolder} has the least money. -¤{stringHighesLasttBalance}.") :
+                        Invariant($"{overallLowestLastBalanceHolder} have the least money. -¤{stringHighesLasttBalance}.");
                 }
-                return holderCount == 1 ? 
-                    ($"{overallLowestLastBalanceHolder} has the least money. ¤{stringHighesLasttBalance}.") : 
-                    ($"{overallLowestLastBalanceHolder} have the least money. ¤{stringHighesLasttBalance}.");
+                return holderCount == 1 ?
+                    Invariant($"{overallLowestLastBalanceHolder} has the least money. ¤{stringHighesLasttBalance}.") :
+                    Invariant($"{overallLowestLastBalanceHolder} have the least money. ¤{stringHighesLasttBalance}.");
             }
         }
     }
