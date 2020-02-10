@@ -19,11 +19,11 @@ namespace BootCamp.Chapter
                 repairedText += Environment.NewLine;
                 if (i == 0)
                 {
-                    File.WriteAllText(@"Input\Balances.txt", repairedText);
+                    File.WriteAllText(@"Input\Balances2.txt", repairedText);
                 }
                 else
                 {
-                    File.AppendAllText(@"Input\Balances.txt", repairedText);
+                    File.AppendAllText(@"Input\Balances2.txt", repairedText);
                 }
                 
             }
