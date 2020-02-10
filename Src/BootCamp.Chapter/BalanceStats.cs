@@ -6,6 +6,8 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
+        private const string NotAvailable = "N/A";
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -13,7 +15,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             var maxBalance = 0m;
@@ -23,7 +25,7 @@ namespace BootCamp.Chapter
             {
                 var peopleBalances = peopleAndBalances[i].Split(",");
                 var balance = GetLargestBalance(peopleBalances);
-                GetNamesWithHighestBalance(ref name, ref maxBalance, peopleBalances, balance);
+                SetNames(ref name, ref maxBalance, peopleBalances, balance);
             }
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
@@ -49,7 +51,7 @@ namespace BootCamp.Chapter
             return maxBalance;
         }
 
-        private static void GetNamesWithHighestBalance(ref StringBuilder name, ref decimal maxBalance, string[] peopleBalances, decimal balance)
+        private static void SetNames(ref StringBuilder name, ref decimal maxBalance, string[] peopleBalances, decimal balance)
         {
             if (balance >= maxBalance)
             {
@@ -75,7 +77,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             var biggestLossEver = decimal.MaxValue;
@@ -101,7 +103,7 @@ namespace BootCamp.Chapter
 
             if (name == "")
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
@@ -151,7 +153,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             var maxBalance = 0m;
@@ -164,7 +166,7 @@ namespace BootCamp.Chapter
 
                 if (isBalanceValid)
                 {
-                    GetNamesWithHighestBalance(ref name, ref maxBalance, peopleBalances, balance);
+                    SetNames(ref name, ref maxBalance, peopleBalances, balance);
                 }
             }
 
@@ -183,7 +185,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return "N/A.";
+                return NotAvailable + ".";
             }
 
             var minBalance = decimal.MaxValue;
