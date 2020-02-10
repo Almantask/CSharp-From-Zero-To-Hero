@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using static BootCamp.Chapter.TextTable;
+﻿using System.Text;
 using static BootCamp.Chapter.BalanceStats;
 using static BootCamp.Chapter.FilesUtility;
+using static BootCamp.Chapter.TextTable;
 using static System.Console;
 
 namespace BootCamp.Chapter
