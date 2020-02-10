@@ -26,36 +26,34 @@ namespace BootCamp.Chapter
             foreach (string entry in peopleAndBalances)
             {
                 string[] userNameAndBalanceHistory = entry.Split(',');
+                currentBalanceHolder = userNameAndBalanceHistory[0];
 
-                foreach (string userEntry in userNameAndBalanceHistory)
+                for (int i=1; i<userNameAndBalanceHistory.Length;i++)
                 {
-                    bool isFloat = float.TryParse(userEntry, out float result);
-                    if (!isFloat)
+                    float balance;
+                    try
                     {
-                        currentBalanceHolder = userEntry;
+                        balance = float.Parse(userNameAndBalanceHistory[i]);
                     }
-
-                    else
+                    catch
                     {
-                        float balance = float.Parse(userEntry);
-                        if (balance > highestBalance)
+                        balance = 0;
+                    }
+                    if (balance > highestBalance)
+                    {
+                        highestBalance = balance;
+                        highestBalanceHolder = currentBalanceHolder;
+                    }
+                    if (balance == highestBalance && highestBalanceHolder != currentBalanceHolder)
+                    {
+                        if (holderCount == 1)
                         {
-                            highestBalance = balance;
-                            highestBalanceHolder = currentBalanceHolder;
+                            highestBalanceHolder += ($" and {currentBalanceHolder}");
                         }
-                        if (balance == highestBalance && highestBalanceHolder != currentBalanceHolder)
+                        else
                         {
-                            if (holderCount == 1)
-                            {
-
-                                highestBalanceHolder += ($" and {currentBalanceHolder}");
-
-                            }
-                            else
-                            {
-                                highestBalanceHolder += ($", {currentBalanceHolder}");
-                                holderCount++;
-                            }
+                            highestBalanceHolder += ($", {currentBalanceHolder}");
+                            holderCount++;
                         }
                     }
                 }
