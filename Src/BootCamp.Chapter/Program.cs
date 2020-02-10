@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
             int age = PromptInt("age");
             int weight = PromptInt("weight");
             double height = PromptFloat("height");
-            double bmi = CalculateBMI(weight,height);
+            double bmi = CalculateBmi(weight,height);
 
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {bmi}.");
         }
@@ -32,7 +32,7 @@ namespace BootCamp.Chapter
             return Convert.ToSingle(Console.ReadLine());
         }
 
-        public static double CalculateBMI(double weight, double height)
+        public static double CalculateBmi(double weight, double height)
         {
             return weight/ height*height;
         }
