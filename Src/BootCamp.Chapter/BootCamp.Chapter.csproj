@@ -12,7 +12,7 @@
     <None Update="Input\Balances.in">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Balances.txt">
+    <None Update="Input\Balances.clean">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
