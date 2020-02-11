@@ -79,10 +79,9 @@ namespace BootCamp.Chapter
             Console.WriteLine("(1) Convert Decimal to Binary");
             Console.WriteLine("(2) Convert Binary to Decimal");
 
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape)
+            var pressedKey = Console.ReadKey(true).Key;
+            while (pressedKey != ConsoleKey.Escape)
             {
-                ConsoleKey pressedKey = Console.ReadKey(true).Key;
-
                 if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
                 {
                     DecToBinOption();
@@ -101,8 +100,10 @@ namespace BootCamp.Chapter
         {
             Console.CursorVisible = true;
             Console.Write("Enter a number: ");
-            string input;
-            while (!string.IsNullOrEmpty(input = Console.ReadLine()) || Console.ReadKey(true).Key != ConsoleKey.Escape)
+
+            string input = Console.ReadLine();
+            var pressedKey = Console.ReadKey(true).Key;
+            while (!string.IsNullOrEmpty(input) && pressedKey != ConsoleKey.Escape)
             {
                 if (IsNumber(input))
                 {
@@ -124,8 +125,9 @@ namespace BootCamp.Chapter
         {
             Console.CursorVisible = true;
             Console.Write("Enter a binary number: ");
-            string input;
-            while (!string.IsNullOrEmpty(input = Console.ReadLine()) || Console.ReadKey(true).Key != ConsoleKey.Escape)
+            string input = Console.ReadLine();
+            var pressedKey = Console.ReadKey(true).Key;
+            while (!string.IsNullOrEmpty(input) && pressedKey != ConsoleKey.Escape)
             {
                 if (IsBinary(input))
                 {
