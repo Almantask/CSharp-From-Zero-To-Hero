@@ -21,9 +21,16 @@ namespace BootCamp.Chapter
             Console.WriteLine("(1) Conversion =>");
             Console.WriteLine("(2) Play with WASD arrows.");
 
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape)
+            while (true)
             {
                 ConsoleKey pressedKey = Console.ReadKey(true).Key;
+
+                if (pressedKey == ConsoleKey.Escape)
+                {
+                    Console.WriteLine("Escaped Pressed! Program exited!" +
+                        "");
+                    return;
+                }
                 if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
                 {
                     ConversionMenu();
@@ -48,9 +55,15 @@ namespace BootCamp.Chapter
             Console.Clear();
             Console.WriteLine("Play with WASD keys");
 
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape)
+            while (true)
             {
-                ConsoleKey pressedKey = Console.ReadKey(true).Key; // giving ReadKey argument to not show key press echo
+                // giving ReadKey argument to not show key press echo
+                ConsoleKey pressedKey = Console.ReadKey(true).Key;
+
+                if (pressedKey == ConsoleKey.Escape)
+                {
+                    return;
+                }
 
                 if (pressedKey == ConsoleKey.W)
                 {
@@ -79,9 +92,14 @@ namespace BootCamp.Chapter
             Console.WriteLine("(1) Convert Decimal to Binary");
             Console.WriteLine("(2) Convert Binary to Decimal");
 
-            var pressedKey = Console.ReadKey(true).Key;
-            while (pressedKey != ConsoleKey.Escape)
+            while (true)
             {
+                ConsoleKey pressedKey = Console.ReadKey(true).Key;
+
+                if (pressedKey == ConsoleKey.Escape)
+                {
+                    return;
+                }
                 if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
                 {
                     DecToBinOption();
@@ -92,7 +110,6 @@ namespace BootCamp.Chapter
                     BinToDecOption();
                     break;
                 }
-                return;
             }
         }
 
@@ -102,9 +119,15 @@ namespace BootCamp.Chapter
             Console.Write("Enter a number: ");
 
             string input = Console.ReadLine();
-            var pressedKey = Console.ReadKey(true).Key;
-            while (!string.IsNullOrEmpty(input) && pressedKey != ConsoleKey.Escape)
+
+            while (!string.IsNullOrEmpty(input))
             {
+                ConsoleKey pressedKey = Console.ReadKey(true).Key;
+
+                if (pressedKey == ConsoleKey.Escape)
+                {
+                    return;
+                }
                 if (IsNumber(input))
                 {
                     int dec = StringToInt(input);
@@ -116,8 +139,6 @@ namespace BootCamp.Chapter
                     Console.WriteLine("Not a valid binary number!");
                     DecToBinOption();
                 }
-
-                return;
             }
         }
 
