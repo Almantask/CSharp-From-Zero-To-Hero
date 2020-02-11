@@ -253,7 +253,6 @@ namespace BootCamp.Chapter
             }
             catch (IndexOutOfRangeException)
             {
-                // Console.WriteLine(ex.Message);
                 // commented it out to keep clean screen
             }
             return default;
@@ -304,7 +303,6 @@ namespace BootCamp.Chapter
             }
             catch (IndexOutOfRangeException)
             {
-                // Console.WriteLine(ex.Message);
                 // commented it out to keep clean screen
             }
             return default;
@@ -315,7 +313,6 @@ namespace BootCamp.Chapter
         /// </summary>
         private static int FindDecimalArrayMax(decimal[] inputArray)
         {
-            //var max = decimal.Zero;
             try
             {
                 var max = inputArray[0];
@@ -332,7 +329,6 @@ namespace BootCamp.Chapter
             }
             catch (IndexOutOfRangeException)
             {
-                // Console.WriteLine(ex.Message);
                 // commented it out to keep clean screen
             }
             return default;
@@ -360,7 +356,6 @@ namespace BootCamp.Chapter
             }
             catch (IndexOutOfRangeException)
             {
-                // Console.WriteLine(ex.Message);
                 // commented it out to keep clean screen
             }
             return default;
@@ -440,7 +435,6 @@ namespace BootCamp.Chapter
             }
             catch (IndexOutOfRangeException)
             {
-                // Console.WriteLine(ex.Message);
                 // commented it out to keep clean screen
             }
             return default;
