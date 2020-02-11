@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
     {
         public static string DefaultCurrencySymbol { get; set; } = "¤";
 
-        public static int DefaultCurrencyLocation { get; set; }
+        public static int DefaultCurrencySymbolPosition { get; set; }
 
         private const string invalidMessage = "N/A.";
         private const string messageEnd = ".";
@@ -378,23 +378,23 @@ namespace BootCamp.Chapter
             if (currency < 0)
             {
                 currency *= -1;
-                if (DefaultCurrencyLocation == 0)
+                if (DefaultCurrencySymbolPosition == 0)
                 {
                     formatedCurrency.Append(negativeSymbol).Append(DefaultCurrencySymbol).Append(currency);
                 }
-                if (DefaultCurrencyLocation == 1)
+                if (DefaultCurrencySymbolPosition == 1)
                 {
                     formatedCurrency.Append(DefaultCurrencySymbol).Append(" ").Append(negativeSymbol).Append(currency);
                 }
                 return formatedCurrency.ToString();
             }
 
-            if (DefaultCurrencyLocation == 0)
+            if (DefaultCurrencySymbolPosition == 0)
             {
                 formatedCurrency.Append(DefaultCurrencySymbol).Append(currency);
             }
 
-            if (DefaultCurrencyLocation == 1)
+            if (DefaultCurrencySymbolPosition == 1)
             {
                 formatedCurrency.Append(DefaultCurrencySymbol).Append(" ").Append(currency);
             }
