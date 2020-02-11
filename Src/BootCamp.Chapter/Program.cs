@@ -14,21 +14,22 @@ namespace BootCamp.Chapter
         private static void MainMenu()
         {
             Console.Clear();
+            Console.CursorVisible = false;
             Console.WriteLine("Main menu");
+            Console.WriteLine("Choose where you want to go: ");
+
             Console.WriteLine("(1) Conversion =>");
             Console.WriteLine("(2) Play with WASD arrows.");
 
-            string response;
-            Console.Write("Choose where you want to go: ");
-
-            while (!string.IsNullOrEmpty(response = Console.ReadLine()))
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape)
             {
-                if (response == "1")
+                ConsoleKey pressedKey = Console.ReadKey(true).Key;
+                if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
                 {
                     ConversionMenu();
                     break;
                 }
-                if (response == "2")
+                if (pressedKey == ConsoleKey.D2 || pressedKey == ConsoleKey.NumPad2)
                 {
                     PlayWithArrows();
                     break;
@@ -68,40 +69,40 @@ namespace BootCamp.Chapter
                     Console.Write(arrowRight);
                 }
             }
-            MainMenu();
         }
 
         private static void ConversionMenu()
         {
             Console.Clear();
-            Console.WriteLine("Conversions:");
+            Console.WriteLine("Conversions");
+            Console.WriteLine("Select conversion type: ");
             Console.WriteLine("(1) Convert Decimal to Binary");
             Console.WriteLine("(2) Convert Binary to Decimal");
-            Console.Write("Select conversion type: ");
 
-            string response;
-            while (!string.IsNullOrEmpty(response = Console.ReadLine()))
+            while (Console.ReadKey(true).Key != ConsoleKey.Escape)
             {
-                if (response == "1")
+                ConsoleKey pressedKey = Console.ReadKey(true).Key;
+
+                if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
                 {
                     DecToBinOption();
                     break;
                 }
-                if (response == "2")
+                if (pressedKey == ConsoleKey.D2 || pressedKey == ConsoleKey.NumPad2)
                 {
                     BinToDecOption();
                     break;
                 }
-                ConversionMenu();
+                return;
             }
         }
 
         private static void DecToBinOption()
         {
-            Console.WriteLine("You selected Decimal to Binary!");
+            Console.CursorVisible = true;
             Console.Write("Enter a number: ");
             string input;
-            while (!string.IsNullOrEmpty(input = Console.ReadLine()))
+            while (!string.IsNullOrEmpty(input = Console.ReadLine()) || Console.ReadKey(true).Key != ConsoleKey.Escape)
             {
                 if (IsNumber(input))
                 {
@@ -114,20 +115,21 @@ namespace BootCamp.Chapter
                     Console.WriteLine("Not a valid binary number!");
                     DecToBinOption();
                 }
-            }
 
-            DecToBinOption();
+                return;
+            }
         }
 
         private static void BinToDecOption()
         {
+            Console.CursorVisible = true;
             Console.Write("Enter a binary number: ");
             string input;
-            while (!string.IsNullOrEmpty(input = Console.ReadLine()))
+            while (!string.IsNullOrEmpty(input = Console.ReadLine()) || Console.ReadKey(true).Key != ConsoleKey.Escape)
             {
                 if (IsBinary(input))
                 {
-                    Console.WriteLine($"Converted to decimal result: {ConvertBinToDec(input)}");
+                    Console.WriteLine($"Converted from binary to decimal result: {ConvertBinToDec(input)}");
                     BinToDecOption();
                 }
                 else
@@ -135,33 +137,29 @@ namespace BootCamp.Chapter
                     Console.WriteLine("Not a valid binary number!");
                     BinToDecOption();
                 }
-            }
 
-            BinToDecOption();
+                return;
+            }
         }
 
         private static string ConvertDecToBin(int input)
         {
-            string output;
-
             if (IsNumber(input.ToString()))
             {
-                output = Convert.ToString(input, 2);
+                string output = Convert.ToString(input, 2);
                 return output;
             }
-            throw new Exception("Not a valid number");
+            return default;
         }
 
         private static decimal ConvertBinToDec(string input)
         {
-            decimal value;
             if (IsBinary(input))
             {
-                value = Convert.ToInt64(input, 2);
+                decimal value = Convert.ToInt64(input, 2);
                 return value;
             }
-
-            throw new Exception("Not a valid binary number");
+            return default;
         }
 
         private static int StringToInt(string input)
