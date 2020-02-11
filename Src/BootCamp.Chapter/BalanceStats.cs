@@ -243,7 +243,6 @@ namespace BootCamp.Chapter
         private static decimal CalculateLossForSinglePerson(string personAndBalance)
         {
             var balanceList = ConvertStringToDecimalArray(personAndBalance);
-
             try
             {
                 decimal previousBallance = balanceList[^2];
@@ -254,6 +253,8 @@ namespace BootCamp.Chapter
             }
             catch (IndexOutOfRangeException)
             {
+                // Console.WriteLine(ex.Message);
+                // commented it out to keep clean screen
             }
             return default;
         }
@@ -301,8 +302,10 @@ namespace BootCamp.Chapter
 
                 return currentBalance;
             }
-            catch (Exception)
+            catch (IndexOutOfRangeException)
             {
+                // Console.WriteLine(ex.Message);
+                // commented it out to keep clean screen
             }
             return default;
         }
@@ -312,24 +315,27 @@ namespace BootCamp.Chapter
         /// </summary>
         private static int FindDecimalArrayMax(decimal[] inputArray)
         {
-            var max = decimal.Zero;
+            //var max = decimal.Zero;
             try
             {
-                max = inputArray[0];
+                var max = inputArray[0];
+                var index = 0;
+                for (int i = index; i < inputArray.Length; i++)
+                {
+                    if (inputArray[i] > max)
+                    {
+                        max = inputArray[i];
+                        index = i;
+                    }
+                }
+                return index;
             }
             catch (IndexOutOfRangeException)
             {
+                // Console.WriteLine(ex.Message);
+                // commented it out to keep clean screen
             }
-            var index = 0;
-            for (int i = index; i < inputArray.Length; i++)
-            {
-                if (inputArray[i] > max)
-                {
-                    max = inputArray[i];
-                    index = i;
-                }
-            }
-            return index;
+            return default;
         }
 
         /// <summary>
@@ -337,25 +343,27 @@ namespace BootCamp.Chapter
         /// </summary>
         private static int FindDecimalArrayMin(decimal[] inputArray)
         {
-            var min = decimal.Zero;
-
             try
             {
-                min = inputArray[0];
+                var min = inputArray[0];
+                var index = 0;
+
+                for (int i = 0; i < inputArray.Length; i++)
+                {
+                    if (inputArray[i] < min)
+                    {
+                        min = inputArray[i];
+                        index = i;
+                    }
+                }
+                return index;
             }
             catch (IndexOutOfRangeException)
             {
+                // Console.WriteLine(ex.Message);
+                // commented it out to keep clean screen
             }
-            var index = 0;
-            for (int i = 0; i < inputArray.Length; i++)
-            {
-                if (inputArray[i] < min)
-                {
-                    min = inputArray[i];
-                    index = i;
-                }
-            }
-            return index;
+            return default;
         }
 
         /// <summary>
@@ -371,9 +379,13 @@ namespace BootCamp.Chapter
             {
                 currency *= -1;
                 if (DefaultCurrencyLocation == 0)
+                {
                     formatedCurrency.Append(negativeSymbol).Append(DefaultCurrencySymbol).Append(currency);
+                }
                 if (DefaultCurrencyLocation == 1)
+                {
                     formatedCurrency.Append(DefaultCurrencySymbol).Append(" ").Append(negativeSymbol).Append(currency);
+                }
                 return formatedCurrency.ToString();
             }
 
@@ -426,8 +438,10 @@ namespace BootCamp.Chapter
                 var highestBalance = balanceList[highestBalanceIndex];
                 return highestBalance;
             }
-            catch (Exception)
+            catch (IndexOutOfRangeException)
             {
+                // Console.WriteLine(ex.Message);
+                // commented it out to keep clean screen
             }
             return default;
         }
