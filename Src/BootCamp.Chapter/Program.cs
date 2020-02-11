@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
     public static class Program
     {
         /// <summary>
-        /// In introduced Thread.Sleep() to help with the program functionality
+        /// In introduced Thread.Sleep() to help with program functionality
         /// </summary>
         private const int displayTimeout = 3000;
 
@@ -33,11 +33,10 @@ namespace BootCamp.Chapter
             // hide typing cursor and clear previous screen
             Console.Clear();
             Console.CursorVisible = false;
-            Console.WriteLine("Main menu");
-            Console.WriteLine("Press <1> or <2> to make selection:");
-
-            Console.WriteLine("(1) Conversion =>");
-            Console.WriteLine("(2) Play with WASD arrows.");
+            Console.WriteLine("Main Menu");
+            Console.WriteLine("  (1) Conversion =>");
+            Console.WriteLine("  (2) Play with WASD arrows.");
+            Console.WriteLine("(Esc) Quit!");
 
             while (true)
             {
@@ -68,8 +67,8 @@ namespace BootCamp.Chapter
             Console.CursorVisible = false;
             Console.Clear();
 
-            Console.WriteLine("Play with WASD keys");
-
+            Console.WriteLine("(Esc) Back to Main Menu!");
+            Console.WriteLine("Press WASD to play");
             // if W, A, S, D is pressed will print corresponding character on screen
             // until Escape is pressed then will return the user to the main menu
             while (true)
@@ -109,9 +108,9 @@ namespace BootCamp.Chapter
 
             Console.Clear();
             Console.WriteLine("Conversions");
-            Console.WriteLine("Press <1> or <2> to make selection:");
-            Console.WriteLine("(1) Convert Decimal to Binary");
-            Console.WriteLine("(2) Convert Binary to Decimal");
+            Console.WriteLine("  (1) Conversion =>");
+            Console.WriteLine("  (2) Play with WASD arrows.");
+            Console.WriteLine("(Esc) Back to Main Menu!");
 
             while (true)
             {
