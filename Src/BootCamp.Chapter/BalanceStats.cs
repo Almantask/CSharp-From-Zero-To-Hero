@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        private const string NotAvailable = "N/A";
+        private const string NotAvailable = "N/A.";
 
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return NotAvailable + ".";
+                return NotAvailable;
             }
 
             var maxBalance = 0m;
@@ -77,7 +77,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return NotAvailable + ".";
+                return NotAvailable;
             }
 
             var biggestLossEver = decimal.MaxValue;
@@ -103,7 +103,7 @@ namespace BootCamp.Chapter
 
             if (name == "")
             {
-                return NotAvailable + ".";
+                return NotAvailable;
             }
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
@@ -153,7 +153,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return NotAvailable + ".";
+                return NotAvailable;
             }
 
             var maxBalance = 0m;
@@ -185,7 +185,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
-                return NotAvailable + ".";
+                return NotAvailable;
             }
 
             var minBalance = decimal.MaxValue;
