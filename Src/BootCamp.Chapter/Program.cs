@@ -56,7 +56,7 @@ namespace BootCamp.Chapter
 
                 while (binaryNumber > 0)
                 {
-                    int reminder = binaryNumber % 10;
+                    int reminder = binaryNumber % 10 ;
                     binaryNumber = binaryNumber / 10;
                     decimalValue += reminder * base1;
                     base1 = base1 * 2;
