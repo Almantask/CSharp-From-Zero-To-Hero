@@ -24,8 +24,8 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
 
             float heightInMeters = height / 100;
-            float Bmi = CalculateBmi(weight, heightInMeters);
-            Console.WriteLine($"His/her BMI = {Bmi:N}");
+            float bmi = CalculateBmi(weight, heightInMeters);
+            Console.WriteLine($"His/her BMI = {bmi:N}");
 
             Console.WriteLine("Do you want to add another person (Y/y = Yes, everything else = No)?");
             string decision = Console.ReadLine();
