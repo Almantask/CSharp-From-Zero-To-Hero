@@ -54,7 +54,9 @@ namespace BootCamp.Chapter
         public static float CalculateBmi(float weight, float height)
         {
             bool isValidHeightAndWeight = height > 0 && weight > 0;
-
+            string heightError = "Height cannot be equal or less than zero, but was ";
+            string heightErrorForNegative = "Height cannot be less than zero, but was ";
+            string weightError = "Weight cannot be equal or less than zero, but was ";
             if (isValidHeightAndWeight)
             {
                 return weight / (float)Math.Pow(height, 2);
@@ -63,15 +65,15 @@ namespace BootCamp.Chapter
             {
                 if (height <= 0 && weight <= 0)
                 {
-                    DisplayErrorBmi($"Weight cannot be equal or less than zero, but was {weight}.{Environment.NewLine}Height cannot be less than zero, but was {height}.");
+                    DisplayErrorBmi($"{weightError}{weight}.{Environment.NewLine}{heightErrorForNegative}{height}.");
                 }
                 else if (height <= 0)
                 {
-                    DisplayErrorBmi($"Height cannot be equal or less than zero, but was {height}.");
+                    DisplayErrorBmi($"{heightError}{height}.");
                 }
                 else
                 {
-                    DisplayErrorBmi($"Weight cannot be equal or less than zero, but was {weight}.");
+                    DisplayErrorBmi($"{weightError}{weight}.");
                 }
                 return -1;
             }
