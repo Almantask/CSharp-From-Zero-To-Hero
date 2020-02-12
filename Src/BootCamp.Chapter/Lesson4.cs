@@ -132,9 +132,8 @@ namespace BootCamp.Chapter
 
         public static bool IsValidFloat(string input)
         {
-            bool isNumber = float.TryParse(input, out float number);
-            bool isPositive = number > 0;
-            return isNumber && isPositive;
+            bool isValidNumber = float.TryParse(input, out float number) && (number > 0);
+            return isValidNumber;
         }
         public static bool IsValidInt(string input)
         {
