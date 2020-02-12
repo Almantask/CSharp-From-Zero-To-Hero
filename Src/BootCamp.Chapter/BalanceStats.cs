@@ -9,14 +9,14 @@ namespace BootCamp.Chapter
     {
         private const string InValidOutput = "N/A.";
 
-        public static bool IsInValidValidInput(string[] input) => input == null || input.Length == 0;
+        public static bool IsInValidInput(string[] input) => input == null || input.Length == 0;
 
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (IsInValidValidInput(peopleAndBalances))
+            if (IsInValidInput(peopleAndBalances))
             {
                 return InValidOutput;
             }
@@ -26,7 +26,7 @@ namespace BootCamp.Chapter
 
             if (personWithHighestBalance.ToString().Contains(", "))
             {
-               ReplaceCommaWithAnd(personWithHighestBalance); 
+                ReplaceCommaWithAnd(personWithHighestBalance);
             }
 
             return $"{personWithHighestBalance.ToString()} had the most money ever. ¤{highestBalanceEver}.";
@@ -35,11 +35,12 @@ namespace BootCamp.Chapter
         private static void ReplaceCommaWithAnd(StringBuilder message)
         {
             var index = message.ToString().LastIndexOf(", ");
-            message.Remove(index, 2).Insert(index, " and "); 
+            message.Remove(index, 2).Insert(index, " and ");
         }
 
-        private static decimal FindHighestBalance(string[] peopleAndBalances, StringBuilder PersonWithHighestBalance)
+        private static decimal FindHighestBalance(string[] peopleAndBalances, StringBuilder personWithHighestBalance)
         {
+            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
             var highestBalanceEver = decimal.MinValue;
 
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
@@ -47,20 +48,18 @@ namespace BootCamp.Chapter
                 var currentPersonData = peopleAndBalances[i].Split(',');
                 try
                 {
-                    var highestAmountOfPerson = decimal.Parse(currentPersonData[1..].Max());
+                    var highestAmountOfPerson = decimal.Parse(currentPersonData[1..].Max(), NumberStyles.Currency);
 
                     if (highestAmountOfPerson > highestBalanceEver)
                     {
                         highestBalanceEver = highestAmountOfPerson;
-                        PersonWithHighestBalance.Clear();
-
+                        personWithHighestBalance.Clear();
                     }
 
                     if (highestAmountOfPerson >= highestBalanceEver)
                     {
-                        AddPerson(currentPersonData[0], PersonWithHighestBalance);
+                        AddPerson(currentPersonData[0], personWithHighestBalance);
                     }
-
                 }
                 catch (ArgumentNullException)
                 {
@@ -77,13 +76,13 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            if (IsInValidValidInput(peopleAndBalances))
+            if (IsInValidInput(peopleAndBalances))
             {
                 return InValidOutput;
             }
 
-            var HighestLossEver = decimal.MinValue;
-            var PersonWithHighestLoss = new StringBuilder();
+            var highestLossEver = decimal.MinValue;
+            var personWithHighestLoss = new StringBuilder();
 
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
@@ -102,41 +101,31 @@ namespace BootCamp.Chapter
                     try
                     {
                         var amount1 = decimal.Parse(allAmounts[j], NumberStyles.Currency | NumberStyles.Number);
-                        try
-                        {
-                            var amount2 = decimal.Parse(allAmounts[j + 1], NumberStyles.Currency | NumberStyles.Number);
-                            var lossForCurrentPerson = amount1 - amount2;
+                        var amount2 = decimal.Parse(allAmounts[j + 1], NumberStyles.Currency | NumberStyles.Number);
+                        var lossForCurrentPerson = amount1 - amount2;
 
-                            //check if loss is greater then the current highest loss
-                            if (lossForCurrentPerson > HighestLossEver)
-                            {
-                                HighestLossEver = lossForCurrentPerson;
-                                PersonWithHighestLoss.Clear(); 
-                                PersonWithHighestLoss.Append(currentPersonData[0]);
-                            }
-                        }
-                        catch (FormatException)
+                        //check if loss is greater then the current highest loss
+                        if (lossForCurrentPerson > highestLossEver)
                         {
-                            Console.WriteLine($"{allAmounts[j + 1]} is not a  valid number");
-                            break;
+                            highestLossEver = lossForCurrentPerson;
+                            personWithHighestLoss.Clear();
+                            personWithHighestLoss.Append(currentPersonData[0]);
                         }
                     }
-                    catch (FormatException)
+                    catch (FormatException ex)
                     {
-                        Console.WriteLine($"{allAmounts[j]} is not a valid number");
+                        Console.WriteLine($"there is not a valid character in the database. Reason{ex}");
                         break;
                     }
                 }
             }
 
-            if (PersonWithHighestLoss.ToString().Contains(','))
+            if (personWithHighestLoss.ToString().Contains(','))
             {
-               ReplaceCommaWithAnd(PersonWithHighestLoss);
+                ReplaceCommaWithAnd(personWithHighestLoss);
             }
 
-
-
-            return $"{PersonWithHighestLoss} lost the most money. -¤{HighestLossEver}.";
+            return $"{personWithHighestLoss} lost the most money. -¤{highestLossEver}.";
         }
 
         /// <summary>
@@ -144,7 +133,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            if (IsInValidValidInput(peopleAndBalances))
+            if (IsInValidInput(peopleAndBalances))
             {
                 return InValidOutput;
             }
@@ -154,7 +143,7 @@ namespace BootCamp.Chapter
 
             if (richestPerson.ToString().Contains(", "))
             {
-                ReplaceCommaWithAnd(richestPerson); 
+                ReplaceCommaWithAnd(richestPerson);
                 return $"{richestPerson.ToString()} are the richest people. ¤{highestBalance}.";
             }
             else
@@ -165,27 +154,25 @@ namespace BootCamp.Chapter
 
         private static decimal FindRichest(string[] peopleAndBalances, StringBuilder richestPerson)
         {
+            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
             var highestBalance = decimal.MinValue;
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
                 var currentPersonData = peopleAndBalances[i].Split(',');
                 try
                 {
-                    var highestAmountOfPerson = decimal.Parse(currentPersonData[^1]);
+                    var highestAmountOfPerson = decimal.Parse(currentPersonData[^1], NumberStyles.Currency);
 
                     if (highestAmountOfPerson > highestBalance)
                     {
                         highestBalance = highestAmountOfPerson;
-                        richestPerson.Clear(); 
-                        
+                        richestPerson.Clear();
                     }
 
                     if (highestAmountOfPerson >= highestBalance)
                     {
                         AddPerson(currentPersonData[0], richestPerson);
                     }
-                    
-                    
                 }
                 catch (FormatException)
                 {
@@ -197,7 +184,7 @@ namespace BootCamp.Chapter
             return highestBalance;
         }
 
-        private static StringBuilder AddPerson(string person, StringBuilder sb)
+        private static void AddPerson(string person, StringBuilder sb)
         {
             if (sb.Length == 0)
             {
@@ -207,8 +194,6 @@ namespace BootCamp.Chapter
             {
                 sb.Append(", " + person);
             }
-
-            return sb; 
         }
 
         /// <summary>
@@ -216,7 +201,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            if (IsInValidValidInput(peopleAndBalances))
+            if (IsInValidInput(peopleAndBalances))
             {
                 return InValidOutput;
             }
@@ -247,36 +232,27 @@ namespace BootCamp.Chapter
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
                 var currentPersonData = peopleAndBalances[i].Split(',');
-               
 
                 try
                 {
-                    var lowestAmountOfPerson = decimal.Parse(currentPersonData[^1]);
+                    var lowestAmountOfPerson = decimal.Parse(currentPersonData[^1], NumberStyles.Currency);
 
                     if (lowestAmountOfPerson < lowestBalance)
                     {
                         lowestBalance = lowestAmountOfPerson;
-                        poorestPerson.Clear(); 
-
-                        
+                        poorestPerson.Clear();
                     }
 
                     if (lowestAmountOfPerson <= lowestBalance)
                     {
-                        AddPerson(currentPersonData[0], poorestPerson);  
+                        AddPerson(currentPersonData[0], poorestPerson);
                     }
-
-                       
-
-                    
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("There was a person with no balance in the file ");
-                    break; 
+                    break;
                 }
-
-                
             }
             return lowestBalance;
         }

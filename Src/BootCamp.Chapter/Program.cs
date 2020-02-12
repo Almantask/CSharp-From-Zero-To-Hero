@@ -1,39 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            // part1 
-            var contents = File.ReadAllLines(@"Input\Balances.corrupted");
-            for (int i = 0; i < contents.Length; i++)
-            {
-                var repairedText = contents[i].Replace("_", "");
-                repairedText += Environment.NewLine;
-                if (i == 0)
-                {
-                    File.WriteAllText(@"Input\Balances2.txt", repairedText);
-                }
-                else
-                {
-                    File.AppendAllText(@"Input\Balances2.txt", repairedText);
-                }
-                
-            }
-            
+            // part1
+            RepairCorruptedFile();
 
             // part2
 
-            contents = File.ReadAllLines(@"Input\Balances.txt");
+            FindStaticalData();
+        }
+
+        private static void FindStaticalData()
+        {
+            string[] contents = File.ReadAllLines(@"Input\Balances.clean");
 
             // Print each of the statistical output using Text Table with padding 3:
+            
             // - FindHighestBalanceEver
 
             Console.WriteLine("The richest person ever was : ");
@@ -57,12 +44,27 @@ namespace BootCamp.Chapter
             Console.WriteLine("The poorest person at this moment is : ");
             answer = BalanceStats.FindMostPoorPerson(contents);
             Console.WriteLine(TextTable.Build(answer, 3));
+            
+        }
 
+        private static void RepairCorruptedFile()
+        {
+            var contents = File.ReadAllLines(@"Input\Balances.corrupted");
+            for (int i = 0; i < contents.Length; i++)
+            {
+                var repairedText = contents[i].Replace("_", "");
+                repairedText += Environment.NewLine;
+                if (i == 0)
+                {
+                    File.WriteAllText(@"Input\Balances.clean", repairedText);
+                }
+                else
+                {
+                    File.AppendAllText(@"Input\Balances.clean", repairedText);
+                }
+            }
 
+           
         }
     }
 }
-
-
-
-
