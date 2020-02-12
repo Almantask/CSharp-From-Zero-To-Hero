@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            return (int)Lesson4.PromptFloat(message);
+            return Lesson4.PromptInt(message);
         }
 
         public static string PromptString(string message)

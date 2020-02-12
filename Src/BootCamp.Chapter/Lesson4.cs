@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
         public static string AddNewPerson()
         {
             string name = PromptNameString("What is your name?");
-            float age = PromptFloat("How old are you?");
+            float age = PromptInt("How old are you?");
             float weight = PromptFloat("What is your weight (in kg)?");
             float height = PromptFloat("What is your height (in cm)?");
 
@@ -90,7 +90,7 @@ namespace BootCamp.Chapter
 
             string input = Console.ReadLine();
 
-            if (IsValidNumber(input))
+            if (IsValidFloat(input))
             {
                 return float.Parse(input);
             }
@@ -104,23 +104,43 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static float DisplayError(string input)
+        public static int PromptInt(string message)
+        {
+            Console.WriteLine(message);
+
+            string input = Console.ReadLine();
+
+            if (IsValidInt(input))
+            {
+                return int.Parse(input);
+            }
+            else if (String.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+            else
+            {
+                return DisplayError(input);
+            }
+        }
+
+        public static int DisplayError(string input)
         {
             Console.Write($"\"{input}\" is not a valid number.");
             return -1;
         }
 
-        public static bool IsValidNumber(string input)
+        public static bool IsValidFloat(string input)
         {
-            return IsNumber(input) && IsPositive(input);
+            bool isNumber = float.TryParse(input, out float number);
+            bool isPositive = (number > 0) ? true : false;
+            return isNumber && isPositive;
         }
-        public static bool IsNumber(string input)
+        public static bool IsValidInt(string input)
         {
-            return float.TryParse(input, out float number);
-        }
-        public static bool IsPositive(string input)
-        {
-            return float.Parse(input) > 0;
+            bool isNumber = int.TryParse(input, out int number);
+            bool isPositive = (number > 0) ? true : false;
+            return isNumber && isPositive;
         }
     }
 }
