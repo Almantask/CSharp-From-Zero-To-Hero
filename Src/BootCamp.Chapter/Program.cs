@@ -1,14 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Console = System.Console;
 
 namespace BootCamp.Chapter
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            string name = PromptString("name");
+            string surname = PromptString("surname");
+            int age = PromptInt("age");
+            int weight = PromptInt("weight");
+            double height = PromptFloat("height");
+            double bmi = CalculateBmi(weight, height);
+
+            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {bmi}.");
+        }
+        public static string PromptString(string attribute)
+        {
+            Console.Write($"What is your {attribute}? ");
+            return Console.ReadLine();
+        }
+        public static int PromptInt(string attribute)
+        {
+            Console.Write($"What is your {attribute}? ");
+            int intnum;
+            var input = Console.ReadLine();
+            bool isInt = int.TryParse(input, out intnum);
+            if (!isInt)
+            {
+                Console.WriteLine($"{input} is not a valid entry.");
+                return -1;
+            }
+            else
+            {
+                return intnum;
+            }
+        }
+
+        public static double PromptFloat(string attribute)
+        {
+            Console.Write($"What is your {attribute}? ");
+            double doubnum;
+            string input = Console.ReadLine();
+            bool isDoub = double.TryParse(input, out doubnum);
+            if (!isDoub)
+            {
+                Console.WriteLine($"{input} is not a valid entry.");
+                return -1;
+            }
+            else
+            {
+                return doubnum;
+            }
+        }
+
+        public static double CalculateBmi(double weight, double height)
+        {
+            return weight / height * height;
         }
     }
 }
