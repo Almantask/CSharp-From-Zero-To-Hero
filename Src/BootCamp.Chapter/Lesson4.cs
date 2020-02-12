@@ -137,9 +137,8 @@ namespace BootCamp.Chapter
         }
         public static bool IsValidInt(string input)
         {
-            bool isNumber = int.TryParse(input, out int number);
-            bool isPositive = (number > 0) ? true : false;
-            return isNumber && isPositive;
+            bool isValidNumber = int.TryParse(input, out int number) && (number > 0);
+            return isValidNumber;
         }
     }
 }
