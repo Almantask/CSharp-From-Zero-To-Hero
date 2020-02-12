@@ -9,9 +9,9 @@ namespace BootCamp.Chapter
             string name = PromptString("name");
             string surname = PromptString("surname");
             int age = PromptInt("age");
-            int weight = PromptInt("weight");
-            double height = PromptFloat("height");
-            double bmi = CalculateBmi(weight,height);
+            float weight = PromptFloat("weight");
+            float height = PromptFloat("height");
+            float bmi = CalculateBmi(weight,height);
 
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {bmi}.");
         }
@@ -26,13 +26,13 @@ namespace BootCamp.Chapter
             return Convert.ToInt32(Console.ReadLine());
         }
 
-        public static double PromptFloat(string attribute)
+        public static float PromptFloat(string attribute)
         {
             Console.Write($"What is your {attribute}? ");
             return Convert.ToSingle(Console.ReadLine());
         }
 
-        public static double CalculateBmi(double weight, double height)
+        public static float CalculateBmi(float weight, float height)
         {
             return weight/ height*height;
         }
