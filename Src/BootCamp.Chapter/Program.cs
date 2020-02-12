@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.WriteLine("Give a a W, A, S or D");
-            var input = Console.ReadLine();
+            var input = Console.ReadLine().ToUpper();
             var output = ""; 
             switch (input)
             {
