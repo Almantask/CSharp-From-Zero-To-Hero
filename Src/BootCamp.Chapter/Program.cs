@@ -2,11 +2,18 @@
 
 namespace BootCamp.Chapter
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private const int cipherKey = 10;
+        private const string message = "Good evening, Infidel!";
+
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var encryptedMessage = CaesarCipher.Encrypt(message, cipherKey);
+            Console.WriteLine(encryptedMessage);
+
+            var decryptedMessage = CaesarCipher.Decrypt(encryptedMessage, cipherKey);
+            Console.WriteLine(decryptedMessage);
         }
     }
 }
