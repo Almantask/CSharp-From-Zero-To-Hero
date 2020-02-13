@@ -13,12 +13,25 @@ namespace BootCamp.Chapter
             double height = PromptFloat("height");
             double bmi = CalculateBmi(weight, height);
 
-            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {bmi}.");
+            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
+            if (bmi > 0)
+            {
+                Console.WriteLine($"His BMI is {bmi}.");
+            }
         }
         public static string PromptString(string attribute)
         {
             Console.Write($"What is your {attribute}? ");
-            return Console.ReadLine();
+            string input = Console.ReadLine();
+            if (input == "")
+            {
+                Console.WriteLine("Name cannot be empty.");
+                    return "-";
+            }
+            else
+            {
+                return input;
+            }
         }
         public static int PromptInt(string attribute)
         {
@@ -30,6 +43,10 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine($"{input} is not a valid entry.");
                 return -1;
+            }
+            else if (input == "")
+            {
+                return 0;
             }
             else
             {
@@ -56,7 +73,20 @@ namespace BootCamp.Chapter
 
         public static double CalculateBmi(double weight, double height)
         {
-            return weight / height * height;
+            if (height <=0)
+                {
+                    Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+                    return 0;
+                }
+            if (weight <= 0)
+                {
+                    Console.WriteLine($"Height cannot be less than zero, but was {weight}.");
+                    return 0;
+                }
+            else
+                {
+                    return weight / height * height;
+                }
         }
     }
 }
