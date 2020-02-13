@@ -4,8 +4,8 @@ namespace BootCamp.Chapter
 {
     internal static class Program
     {
-        private const int cipherKey = 10;
-        private const string message = "Good evening, Infidel!";
+        private const int cipherKey = 20;
+        private const string message = "Good evening, Infidels! Hahahaha!";
 
         private static void Main(string[] args)
         {
@@ -14,6 +14,8 @@ namespace BootCamp.Chapter
 
             var decryptedMessage = CaesarCipher.Decrypt(encryptedMessage, cipherKey);
             Console.WriteLine(decryptedMessage);
+
+            CaesarCipher.AnalyseFrequency(encryptedMessage);
         }
     }
 }
