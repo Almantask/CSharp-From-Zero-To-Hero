@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -15,7 +16,7 @@ namespace BootCamp.Chapter
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.WriteLine("Give a a W, A, S or D");
-            var input = Console.ReadLine().ToUpper();
+            var input = Console.ReadLine().ToUpper(new CultureInfo("en-US", false));
             var output = ""; 
             switch (input)
             {
