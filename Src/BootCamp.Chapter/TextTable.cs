@@ -9,7 +9,6 @@ namespace BootCamp.Chapter
     public static class TextTable
     {
         /*
-
          Input: "Hello", 0
            +-----+
            |Hello|
@@ -19,12 +18,10 @@ namespace BootCamp.Chapter
         public static string Build(string message, int padding)
         {
             var sb = new StringBuilder();
-            Console.WriteLine(sb.Append($"+-----+{Environment.NewLine}|{ message}|{Environment.NewLine}+-----+"));
-            //Console.WriteLine(sb.Append($"|{message}|"));
-            //Console.WriteLine($"+-----+");
+            sb.Append($"+-----+{Environment.NewLine}|{ message}|{Environment.NewLine}+-----+");
+            Console.WriteLine(sb.ToString());
             return sb.ToString();
         }
-
 
         /*
          Input: $"Hello{Environment.NewLine}World!", 0
@@ -33,11 +30,15 @@ namespace BootCamp.Chapter
            |World!|
            +------+
          */
+
         public static string Build1(string message, int padding)
         {
             var sb = new StringBuilder();
-            //Console.WriteLine(sb.Append($"+-----+{Environment.NewLine}|{message}|{Environment.NewLine}+-----+"));
-            Console.WriteLine($"|{message}|");
+            sb.AppendLine($"+------+");
+            sb.AppendLine($"|{message.Substring(0, 5).PadRight(6)}|");
+            sb.AppendLine($"|{message.Substring(6, 7).Trim()}|");
+            sb.AppendLine($"+------+");
+            Console.WriteLine(sb.ToString());
             return sb.ToString();
         }
 
@@ -49,11 +50,18 @@ namespace BootCamp.Chapter
            | Hello |
            |       |
            +-------+
-
          */
+
         public static string Build2(string message, int padding)
         {
-            return "";
+            var sb = new StringBuilder();
+            sb.AppendLine($"+-------+");
+            sb.AppendLine($"|       |");
+            sb.AppendLine($"| {message.Substring(0, 5).PadRight(6)}|");
+            sb.AppendLine($"|       |");
+            sb.AppendLine($"+-------+");
+            Console.WriteLine(sb.ToString());
+            return sb.ToString();
         }
 
         /// <summary>
