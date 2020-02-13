@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
                     decimalValue += reminder * base1;
                     base1 = base1 * 2;
                 }
-                Console.WriteLine($"{realNumber} is {decimalValue} in decimal.");
+                Console.WriteLine($"{realNumber} is {decimalValue} in decimal. ");
             }
             catch
             {
