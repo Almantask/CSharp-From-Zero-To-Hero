@@ -6,9 +6,17 @@ namespace BootCamp.Chapter.Tests
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void UserSelectSizeAndDirection_ShouldReturnInt()
         {
-            Assert.True(true);
+            //Arrange
+            string userInput = "8";
+            int expected = 8;
+            //Act
+            
+            
+            
+            // Assert
+         Assert.True(true);
         }
     }
 }
