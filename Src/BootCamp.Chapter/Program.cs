@@ -73,10 +73,13 @@ namespace BootCamp.Chapter
 
         public static double CalculateBmi(double weight, double height)
         {
-            if (height <=0)
+            if (height <= 0)
                 {
                     Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+                if (weight > 0)
+                {
                     return 0;
+                }
                 }
             if (weight <= 0)
                 {
