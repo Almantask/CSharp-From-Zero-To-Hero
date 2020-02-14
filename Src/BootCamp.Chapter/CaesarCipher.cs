@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
 {
     public static class CaesarCipher
     {
-        private const int cipherShift = 26;
+        private const int cipherShift = 224;
 
         public static string Encrypt(string plainMessage, int cipherKey)
         {
@@ -35,16 +35,38 @@ namespace BootCamp.Chapter
             return decryptedMessage;
         }
 
-        private static char EncodeCharacter(char inputCharacter, int cipherKey)
+        private static bool IsPrintableChar(char inputCharacter)
         {
-            if (!char.IsLetter(inputCharacter))
+            // printable characters are int are in the 32-255 range and not 127(DEL)
+            if (inputCharacter < 32 && inputCharacter > 255 && inputCharacter != 127)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        // this method exists because sometimes dividend % divers returns negative number
+        private static int Mod(int dividend, int divisor)
+        {
+            int remainder = dividend % divisor;
+            if (remainder < 0)
+            {
+                return remainder + divisor;
+            }
+            return remainder;
+        }
+
+        private static char EncodeCharacter(char inputCharacter, int shift)
+        {
+            // printable characters are in the 32-255 range and not 127(DEL)
+            if (!IsPrintableChar(inputCharacter))
             {
                 return inputCharacter;
             }
 
-            char offset = (char.IsUpper(inputCharacter)) ? 'A' : 'a';
+            const int offset = 32;
 
-            var output = (char)((((inputCharacter + cipherKey) - offset) % cipherShift) + offset);
+            var output = (char)(Mod(inputCharacter + shift - offset, cipherShift) + offset);
             return output;
         }
 
@@ -60,11 +82,11 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Input is not a valid string");
             }
 
-            int[] letters = new int[char.MaxValue];
+            int[] characters = new int[char.MaxValue];
 
             foreach (char item in encryptedMessage)
             {
-                letters[item]++;
+                characters[item]++;
             }
 
             int[] numberOfOccurrences = new int[0];
@@ -72,14 +94,15 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < char.MaxValue; i++)
             {
-                if (letters[i] > 0 && char.IsLetter((char)i))
+                if (characters[i] > 0 && char.IsLetter((char)i))
                 {
-                    numberOfOccurrences = ArrayOps.InsertLast(numberOfOccurrences, letters[i]);
+                    numberOfOccurrences = ArrayOps.InsertLast(numberOfOccurrences, characters[i]);
                     lettersOccurred = ArrayOps.InsertLast(lettersOccurred, i);
                 }
             }
 
-            var highestOccurrences = ArrayOps.FindMaxValue(numberOfOccurrences);
+            var highestOccurrence = ArrayOps.FindMaxValue(numberOfOccurrences);
+            // letter E is the most common
             const int lowerE = 101;
             const int upperE = 69;
             var possibleKeys = new int[0];
@@ -87,7 +110,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < lettersOccurred.Length; i++)
             {
-                if (numberOfOccurrences[i] > highestOccurrences - keyTollerance)
+                if (numberOfOccurrences[i] > highestOccurrence - keyTollerance)
                 {
                     if (char.IsUpper((char)lettersOccurred[i]))
                     {
@@ -96,8 +119,6 @@ namespace BootCamp.Chapter
                     }
                     currentKey = lettersOccurred[i] - lowerE;
                     possibleKeys = ArrayOps.InsertLast(possibleKeys, currentKey);
-
-                    //Console.WriteLine($"Possible key found: {currentKey}");
                 }
             }
             return possibleKeys;
