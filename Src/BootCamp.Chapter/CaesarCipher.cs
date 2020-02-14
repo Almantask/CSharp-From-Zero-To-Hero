@@ -19,7 +19,7 @@ namespace BootCamp.Chapter
             var output = new StringBuilder();
             foreach (var inputChar in plainMessage)
             {
-                output.Append(EncodeLetter(inputChar, cipherKey));
+                output.Append(EncodeCharacter(inputChar, cipherKey));
             }
             return output.ToString();
         }
@@ -35,7 +35,7 @@ namespace BootCamp.Chapter
             return decryptedMessage;
         }
 
-        private static char EncodeLetter(char inputCharacter, int cipherKey)
+        private static char EncodeCharacter(char inputCharacter, int cipherKey)
         {
             if (!char.IsLetter(inputCharacter))
             {
@@ -53,11 +53,11 @@ namespace BootCamp.Chapter
             return !string.IsNullOrEmpty(input) || !string.IsNullOrEmpty(input);
         }
 
-        public static void AnalyseFrequency(string encryptedMessage)
+        public static int[] AnalyseFrequency(string encryptedMessage, int keyTollerance = 2)
         {
             if (!IsStringValid(encryptedMessage))
             {
-                Console.WriteLine("Input string is not valid");
+                Console.WriteLine("Input is not a valid string");
             }
 
             int[] letters = new int[char.MaxValue];
@@ -67,13 +67,40 @@ namespace BootCamp.Chapter
                 letters[item]++;
             }
 
+            int[] numberOfOccurrences = new int[0];
+            int[] lettersOccurred = new int[0];
+
             for (int i = 0; i < char.MaxValue; i++)
             {
                 if (letters[i] > 0 && char.IsLetter((char)i))
                 {
-                    Console.WriteLine($"Frequency {i} - {letters[i]}");
+                    numberOfOccurrences = ArrayOps.InsertLast(numberOfOccurrences, letters[i]);
+                    lettersOccurred = ArrayOps.InsertLast(lettersOccurred, i);
                 }
             }
+
+            var highestOccurrences = ArrayOps.FindMaxValue(numberOfOccurrences);
+            const int lowerE = 101;
+            const int upperE = 69;
+            var possibleKeys = new int[0];
+            int currentKey;
+
+            for (int i = 0; i < lettersOccurred.Length; i++)
+            {
+                if (numberOfOccurrences[i] > highestOccurrences - keyTollerance)
+                {
+                    if (char.IsUpper((char)lettersOccurred[i]))
+                    {
+                        currentKey = (lettersOccurred[i] - upperE);
+                        possibleKeys = ArrayOps.InsertLast(possibleKeys, currentKey);
+                    }
+                    currentKey = lettersOccurred[i] - lowerE;
+                    possibleKeys = ArrayOps.InsertLast(possibleKeys, currentKey);
+
+                    //Console.WriteLine($"Possible key found: {currentKey}");
+                }
+            }
+            return possibleKeys;
         }
     }
 }
