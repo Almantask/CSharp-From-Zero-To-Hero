@@ -8,14 +8,7 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void UserSelectSizeAndDirection_ShouldReturnInt()
         {
-            //Arrange
-            string userInput = "8";
-            int expected = 8;
-            //Act
-            
-            
-            
-            // Assert
+           
          Assert.True(true);
         }
     }

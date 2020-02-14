@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -14,11 +13,11 @@ namespace BootCamp.Chapter
                 int shift = UserSelectSizeAndDirectionOfShift();
                 string forOperation = RequestInput();
                 ConvertString(shift, forOperation);
-                isContinue = askIfRepeating();
+                isContinue = UserSelectsContinue();
             }
         }
       
-            private static bool askIfRepeating()
+            private static bool UserSelectsContinue()
         {
             Console.WriteLine("Please enter \"c\" to continue, any other key to exit");
             string response = Console.ReadLine();
@@ -70,7 +69,7 @@ namespace BootCamp.Chapter
                 char d = char.IsUpper(letter) ? 'A' : 'a';
                 if (char.IsLetter(letter))
                 {
-                    char newChar = (int)letter + shift < (int)d ? (char)(((int)letter + shift + 26)) : (char)((((letter + shift) - d) % 26) + d);
+                    char newChar = (int)letter + shift < (int)d ? (char)((int)letter + shift + 26) : (char)((((letter + shift) - d) % 26) + d);
                     sb.Append(newChar);
                 }
                 else
