@@ -189,6 +189,51 @@
             return index;
         }
 
+        /// <summary>
+        /// Combines two one dimension int arrays of same length to one bi-dimensional array.
+        /// </summary>
+        /// <param name="array1">First int one dimension input array.</param>
+        /// <param name="array2">Second int one dimension input array.</param>
+        /// <returns>A new Bi-dimensional int array created from array1 and array2.</returns>
+        private static int[][] Construct2dArray(int[] array1, int[] array2)
+        {
+            int[][] newBiDiArr = new int[array1.Length][];
+            for (int i = 0; i < array1.Length; i++)
+            {
+                newBiDiArr[i][0] = array1[i];
+            }
+            for (int i = 0; i < array2.Length; i++)
+            {
+                newBiDiArr[i][0] = array2[i];
+            }
+
+            return newBiDiArr;
+        }
+
+        private static int[] Deconstruct2dArray(int[][] inputArray, int arrayNumber)
+        {
+        }
+
+        /// <summary>
+        /// Prints the elements of an int array to the console and displays a message with it.
+        /// </summary>
+        /// <param name="array">Array to be printed.</param>
+        /// <param name="message">Message to be displayed.</param>
+        public static void PrintIntArray(int[] array, string message)
+        {
+            if (array == null || array.Length == 0)
+            {
+                System.Console.WriteLine("Input array is not valid!");
+                return;
+            }
+            System.Console.WriteLine(message);
+            foreach (var item in array)
+            {
+                System.Console.Write(item + "\t");
+            }
+            System.Console.WriteLine();
+        }
+
         private static int[] NullArrayHelper(int number)
         {
             var nullableArray = new int[1];
