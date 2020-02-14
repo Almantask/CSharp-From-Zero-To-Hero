@@ -6,7 +6,15 @@ namespace BootCamp.Chapter
 {
     public static class CaesarCipher
     {
+        // total number of ASCII printable characters
         private const int cipherShift = 224;
+
+        // letter E is the most used letter in English texts
+        public static int LowerLetter { get; set; } = 101; // lower case character
+
+        public static int UpperLetter { get; set; } = 69; // upper case character
+
+        public static int KeyAccuracy { get; set; } = 1;
 
         public static string Encrypt(string plainMessage, int cipherKey)
         {
@@ -75,7 +83,7 @@ namespace BootCamp.Chapter
             return !string.IsNullOrEmpty(input) || !string.IsNullOrEmpty(input);
         }
 
-        public static int[] AnalyseFrequency(string encryptedMessage, int keyTollerance = 2)
+        public static int[] AnalyseFrequency(string encryptedMessage, int keyAccuracy = 1)
         {
             if (!IsStringValid(encryptedMessage))
             {
@@ -89,35 +97,39 @@ namespace BootCamp.Chapter
                 characters[item]++;
             }
 
+            int[] repeatedCharacters = new int[0];
             int[] numberOfOccurrences = new int[0];
-            int[] lettersOccurred = new int[0];
 
             for (int i = 0; i < char.MaxValue; i++)
             {
-                if (characters[i] > 0 && char.IsLetter((char)i))
+                if (characters[i] > 0 && IsPrintableChar((char)i))
                 {
+                    repeatedCharacters = ArrayOps.InsertLast(repeatedCharacters, i);
                     numberOfOccurrences = ArrayOps.InsertLast(numberOfOccurrences, characters[i]);
-                    lettersOccurred = ArrayOps.InsertLast(lettersOccurred, i);
                 }
             }
 
+            return FindPosibleKeys(repeatedCharacters, numberOfOccurrences);
+        }
+
+        // bad method design but at the moment I don't know how to return two arrays
+        private static int[] FindPosibleKeys(int[] repeatedCharacters, int[] numberOfOccurrences)
+        {
             var highestOccurrence = ArrayOps.FindMaxValue(numberOfOccurrences);
-            // letter E is the most common
-            const int lowerE = 101;
-            const int upperE = 69;
+
             var possibleKeys = new int[0];
             int currentKey;
 
-            for (int i = 0; i < lettersOccurred.Length; i++)
+            for (int i = 0; i < repeatedCharacters.Length; i++)
             {
-                if (numberOfOccurrences[i] > highestOccurrence - keyTollerance)
+                if (numberOfOccurrences[i] >= highestOccurrence - KeyAccuracy)
                 {
-                    if (char.IsUpper((char)lettersOccurred[i]))
+                    if (char.IsUpper((char)repeatedCharacters[i]))
                     {
-                        currentKey = (lettersOccurred[i] - upperE);
+                        currentKey = (repeatedCharacters[i] - UpperLetter);
                         possibleKeys = ArrayOps.InsertLast(possibleKeys, currentKey);
                     }
-                    currentKey = lettersOccurred[i] - lowerE;
+                    currentKey = repeatedCharacters[i] - LowerLetter;
                     possibleKeys = ArrayOps.InsertLast(possibleKeys, currentKey);
                 }
             }
