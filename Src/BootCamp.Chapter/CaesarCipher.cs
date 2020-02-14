@@ -17,12 +17,12 @@ namespace BootCamp.Chapter
                 isContinue = askIfRepeating();
             }
         }
-
-        private static bool askIfRepeating()
+      
+            private static bool askIfRepeating()
         {
             Console.WriteLine("Please enter \"c\" to continue, any other key to exit");
             string response = Console.ReadLine();
-             return ((response == "c") || (response == "C"));
+            return ((response == "c") || (response == "C"));
          }
 
         private static int UserSelectSizeAndDirectionOfShift()
@@ -42,7 +42,6 @@ namespace BootCamp.Chapter
             catch (Exception e)
             {
                 Console.WriteLine("That is not a valid input.");
-                Console.WriteLine(e);
                 return UserSelectSizeAndDirectionOfShift();
             }
             
@@ -54,13 +53,12 @@ namespace BootCamp.Chapter
 
             try
             {
-                return Console.ReadLine();
+               return Console.ReadLine();
             }
             catch (Exception e)
             {
                 Console.WriteLine("That is not a valid text for the caesar cipher program you got FREE OF CHARGE.");
 
-                Console.WriteLine(e);
                 return RequestInput();
             }
         }
@@ -70,8 +68,15 @@ namespace BootCamp.Chapter
             foreach (var letter in input)
             {
                 char d = char.IsUpper(letter) ? 'A' : 'a';
-                char newChar = (char)((((letter + shift) - d) % 26) + d);
-                sb.Append (newChar);
+                if (char.IsLetter(letter))
+                {
+                    char newChar = (int)letter + shift < (int)d ? (char)(((int)letter + shift + 26)) : (char)((((letter + shift) - d) % 26) + d);
+                    sb.Append(newChar);
+                }
+                else
+                {
+                    sb.Append(letter);
+                }
             }
             Console.WriteLine($"A key of {shift} results in this text: {sb.ToString()}");
         }
