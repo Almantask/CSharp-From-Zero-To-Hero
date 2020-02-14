@@ -197,6 +197,12 @@
         /// <returns>A new Bi-dimensional int array created from array1 and array2.</returns>
         private static int[][] Construct2dArray(int[] array1, int[] array2)
         {
+            if (!IsValidArray(array1) && !IsValidArray(array2))
+            {
+                System.Console.WriteLine("Input arrays are not valid!");
+                return default;
+            }
+
             int[][] newBiDiArr = new int[array1.Length][];
             for (int i = 0; i < array1.Length; i++)
             {
@@ -212,6 +218,7 @@
 
         private static int[] Deconstruct2dArray(int[][] inputArray, int arrayNumber)
         {
+            return default;
         }
 
         /// <summary>
@@ -221,7 +228,7 @@
         /// <param name="message">Message to be displayed.</param>
         public static void PrintIntArray(int[] array, string message)
         {
-            if (array == null || array.Length == 0)
+            if (IsValidArray(array))
             {
                 System.Console.WriteLine("Input array is not valid!");
                 return;
@@ -232,6 +239,11 @@
                 System.Console.Write(item + "\t");
             }
             System.Console.WriteLine();
+        }
+
+        private static bool IsValidArray(int[] array)
+        {
+            return array == null || array.Length == 0;
         }
 
         private static int[] NullArrayHelper(int number)
