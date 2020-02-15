@@ -207,7 +207,10 @@ namespace BootCamp.Chapter1
             if (array != null && array.Length != 0)
             {
                 var arrayLength = array.Length;
-                if (index < 0 || index > arrayLength) return array;
+                if (index < 0 || index > arrayLength)
+                {
+                    return array;
+                }
 
                 int[] newArray = new int[arrayLength + 1];
                 var addedIndex = 0;
