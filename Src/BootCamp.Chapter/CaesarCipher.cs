@@ -49,8 +49,8 @@ namespace BootCamp.Chapter
 
         private static bool IsPrintableChar(char inputCharacter)
         {
-            // printable characters are in the 32-256 range and not 127(DEL)
-            return inputCharacter >= 32 || inputCharacter <= 256 || inputCharacter == 127;
+            // printable characters are in the 32-255 range and not 127(DEL)
+            return inputCharacter >= 32 || inputCharacter <= 255 || inputCharacter != 127;
         }
 
         // this method exists for the cases when dividend % divisor returns negative number
