@@ -24,10 +24,34 @@ namespace BootCamp1.Chapter
         public static bool Play(int lives, string wordsFile, int difficulty)
         {
             var wordToGuess = WordsBank.PickRandomWord(@$"Words/{wordsFile}", difficulty);
-            // ToDo: finish the game!
-            var playersGuess = GuessCharacter();
+            var anymousWord = ConvertWordSoUserCannotReadit(wordToGuess);
+
+            Console.WriteLine("Let's play hangman");
+            Console.WriteLine($"Word to guess: { anymousWord} {Environment.NewLine}");
+
+            Console.Write("Give me a guess of a character: ");
+            var isValid =  char.TryParse(Console.ReadLine(), out char input);
+            if (!isValid)
+            {
+                Console.WriteLine("You only have to enter 1 character");
+                return false;
+            }
+
+            
 
             return false;
+        }
+
+        private static string ConvertWordSoUserCannotReadit(string wordToGuess)
+        {
+            var output = "";
+            foreach (var character in wordToGuess)
+            {
+                output += GuessCharacter(); 
+            }
+
+            return output; 
+             
         }
 
         private static char GuessCharacter()
