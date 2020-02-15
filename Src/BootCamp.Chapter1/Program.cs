@@ -37,7 +37,7 @@ namespace BootCamp.Chapter1
 
         private static void PrintDatasetResult(string resultType, int[] array)
         {
-            Console.Write("Start result: ");
+            Console.Write(resultType);
             foreach (var number in array)
             {
                 Console.Write(number + " ");
