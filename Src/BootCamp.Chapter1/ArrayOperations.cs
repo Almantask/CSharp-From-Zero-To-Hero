@@ -228,7 +228,10 @@ namespace BootCamp.Chapter1
             } else
             {
                 // if array is null or 0, declare new array with the number at position 0
-                if (array == null || index < 0 || index > array.Length) return array;
+                if (array == null || index < 0 || index > array.Length)
+                {
+                    return array;
+                }
 
                 var newArray = new[] { number };
                 return newArray;
