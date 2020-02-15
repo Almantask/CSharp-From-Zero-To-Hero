@@ -148,5 +148,18 @@ namespace BootCamp.Chapter
             }
             return possibleKeys;
         }
+
+        public static void TestDecrytionKeys(string encryptedMessage, int[] posibleKeys)
+        {
+            Console.WriteLine($"{posibleKeys.Length} possible key found.{Environment.NewLine}");
+            Console.WriteLine($"Decryption results: {Environment.NewLine}");
+            foreach (var key in posibleKeys)
+            {
+                var crackedMessage = CaesarCipher.Decrypt(encryptedMessage, key);
+
+                Console.WriteLine($"Key = {key} - {crackedMessage}");
+                Console.WriteLine();
+            }
+        }
     }
 }
