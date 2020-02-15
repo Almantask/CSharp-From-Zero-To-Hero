@@ -157,12 +157,12 @@ namespace BootCamp.Chapter1
                 {
                     newArray[i+1] = array[i];
                 }
-                array = newArray;
+                return newArray;
             }
             else
             {
                 var newArray = new[] { number };
-                array = newArray;
+                return newArray;
             }
             return array;
         }
@@ -185,12 +185,12 @@ namespace BootCamp.Chapter1
                     newArray[i] = array[i];
                 }
                 newArray[arrayLength] = number;
-                array = newArray;
+                return newArray;
             }
             else
             {
                 var newArray = new[] { number };
-                array = newArray;
+                return newArray;
             }
             return array;
         }
@@ -221,14 +221,14 @@ namespace BootCamp.Chapter1
                     }
                     newArray[i + addedIndex] = array[i];
                 }
-                array = newArray;
+                return newArray;
             } else
             {
                 // if array is null or 0, declare new array with the number at position 0
                 if (array != null || index < 0 || index > array.Length) return array;
 
                 var newArray = new[] { number };
-                array = newArray;
+                return newArray;
             }
             return array;
         }
