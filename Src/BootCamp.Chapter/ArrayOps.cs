@@ -10,7 +10,7 @@
         ///
         public static void Sort(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (IsNullOrEmpty(array))
             {
                 return;
             }
@@ -56,7 +56,7 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null)
+            if (IsNullOrEmpty(array))
             {
                 return array;
             }
@@ -131,7 +131,7 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array == null)
+            if (IsNullOrEmpty(array))
             {
                 return NullArrayHelper(number);
             }
@@ -159,6 +159,10 @@
 
         public static int FindMaxValue(int[] inputArray)
         {
+            if (IsNullOrEmpty(inputArray))
+            {
+                return default;
+            }
             int max = inputArray[0];
             for (int i = 0; i < inputArray.Length; i++)
             {
@@ -172,7 +176,7 @@
 
         public static int FindIndexOfMaxValue(int[] inputArray)
         {
-            if (inputArray == null)
+            if (IsNullOrEmpty(inputArray))
             {
                 return default;
             }
@@ -190,35 +194,53 @@
         }
 
         /// <summary>
-        /// Combines two one dimension int arrays of same length to one bi-dimensional array.
+        /// Transfers the contents of two one dimension arrays to one bi-dimensional array.
         /// </summary>
         /// <param name="array1">First int one dimension input array.</param>
         /// <param name="array2">Second int one dimension input array.</param>
         /// <returns>A new Bi-dimensional int array created from array1 and array2.</returns>
-        private static int[][] Construct2dArray(int[] array1, int[] array2)
+        public static int[][] Construct2dArray(int[] array1, int[] array2)
         {
-            if (!IsValidArray(array1) && !IsValidArray(array2))
+            if (IsNullOrEmpty(array1) || IsNullOrEmpty(array2))
             {
                 System.Console.WriteLine("Input arrays are not valid!");
                 return default;
             }
 
-            int[][] newBiDiArr = new int[array1.Length][];
+            int[][] newBiDiArr = new int[2][] { array1, array2 };
             for (int i = 0; i < array1.Length; i++)
             {
-                newBiDiArr[i][0] = array1[i];
+                newBiDiArr[0][i] = array1[i];
             }
             for (int i = 0; i < array2.Length; i++)
             {
-                newBiDiArr[i][0] = array2[i];
+                newBiDiArr[1][i] = array2[i];
             }
 
             return newBiDiArr;
         }
 
-        private static int[] Deconstruct2dArray(int[][] inputArray, int arrayNumber)
+        /// <summary>
+        /// Transfers the elements from one of the arrays in the bi-dimensional array to one dimension array.
+        /// </summary>
+        /// <param name="inputArray">The array from witch the transfer</param>
+        /// <param name="arrayNumber"></param>
+        /// <returns>One dimension array based on argument 0 or 1</returns>
+        public static int[] Deconstruct2dArray(int[][] inputArray, int arrayNumber)
         {
-            return default;
+            bool argumentsAreNotValid = (inputArray == null || inputArray.Length == 0) && (arrayNumber < 0 || arrayNumber > 1);
+            if (argumentsAreNotValid)
+            {
+                System.Console.WriteLine("Arguments are not valid!");
+                return default;
+            }
+
+            var newArray = new int[inputArray[arrayNumber].Length];
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                newArray[i] = inputArray[arrayNumber][i];
+            }
+            return newArray;
         }
 
         /// <summary>
@@ -228,7 +250,7 @@
         /// <param name="message">Message to be displayed.</param>
         public static void PrintIntArray(int[] array, string message)
         {
-            if (IsValidArray(array))
+            if (!IsNullOrEmpty(array))
             {
                 System.Console.WriteLine("Input array is not valid!");
                 return;
@@ -241,7 +263,7 @@
             System.Console.WriteLine();
         }
 
-        private static bool IsValidArray(int[] array)
+        private static bool IsNullOrEmpty(int[] array)
         {
             return array == null || array.Length == 0;
         }
