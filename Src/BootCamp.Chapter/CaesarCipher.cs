@@ -6,18 +6,16 @@ namespace BootCamp.Chapter
 {
     public static class CaesarCipher
     {
-        // total number of ASCII printable characters
+        // total number of ASCII extended printable characters
         private const int totalCharacters = 224;
 
         // letters E and A are the most used letters in English texts
-        // but I found that space character also works the longer the message is.
+        // but I found that space character is better the longer the message is.
+        public static int BaseCharacter { get; set; } = 32;
 
-        // lower case E character
-        public static int LowerLetter { get; set; } = 101;
-
-        // upper case E character
-        public static int UpperLetter { get; set; } = 69;
-
+        // 0 - use only the highest repeated char
+        // 1 - use the top 2 highest repeated chars
+        // n - use top n highest repeated chars
         public static int KeyAccuracy { get; set; } = 1;
 
         public static string Encrypt(string plainMessage, int cipherKey)
@@ -113,8 +111,8 @@ namespace BootCamp.Chapter
                     numberOfOccurrences = ArrayOps.InsertLast(numberOfOccurrences, characters[i]);
                 }
             }
-
-            return ArrayOps.Construct2dArray(repeatedCharacters, numberOfOccurrences);
+            var analysisResult = ArrayOps.Construct2dArray(repeatedCharacters, numberOfOccurrences);
+            return analysisResult;
         }
 
         /// <summary>
@@ -137,25 +135,21 @@ namespace BootCamp.Chapter
             {
                 if (numberOfOccurrences[i] >= highestOccurrence - KeyAccuracy)
                 {
-                    if (char.IsUpper((char)repeatedCharacters[i]))
-                    {
-                        currentKey = (repeatedCharacters[i] - UpperLetter);
-                        possibleKeys = ArrayOps.InsertLast(possibleKeys, currentKey);
-                    }
-                    currentKey = repeatedCharacters[i] - LowerLetter;
+                    currentKey = repeatedCharacters[i] - BaseCharacter;
                     possibleKeys = ArrayOps.InsertLast(possibleKeys, currentKey);
                 }
             }
             return possibleKeys;
         }
 
-        public static void TestDecrytionKeys(string encryptedMessage, int[] posibleKeys)
+        public static void PrintDecyptedVariants(string encryptedMessage, int[] posibleKeys)
         {
             Console.WriteLine($"{posibleKeys.Length} possible key found.{Environment.NewLine}");
+            Console.WriteLine($"Adjust KeyAccuracy: {KeyAccuracy} and BaseCharacter: {BaseCharacter} for better results!{Environment.NewLine}");
             Console.WriteLine($"Decryption results: {Environment.NewLine}");
             foreach (var key in posibleKeys)
             {
-                var crackedMessage = CaesarCipher.Decrypt(encryptedMessage, key);
+                var crackedMessage = Decrypt(encryptedMessage, key);
 
                 Console.WriteLine($"Key = {key} - {crackedMessage}");
                 Console.WriteLine();
