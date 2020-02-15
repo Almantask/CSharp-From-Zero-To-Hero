@@ -12,13 +12,11 @@
                 return "N/A.";
             }
 
-            
-
             var firstAccount = peopleAndBalances[0].Split(", ");
             var firstBalance = Lesson7.StringArrayToFloatArray(firstAccount[1..]);
 
-            var names = new string[] {firstAccount[0]};
-            var highestBalance = Lesson7.MaxFloat(firstBalance);
+            var names = new [] {firstAccount[0]};
+            var highestBalance = Lesson7.Max(firstBalance);
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
             {
@@ -26,33 +24,24 @@
                 var currentBalance = Lesson7.StringArrayToFloatArray(currentAccount[1..]);
 
                 var currentName = currentAccount[0];
-                var currentHighest = Lesson7.MaxFloat(currentBalance);
+                var currentHighest = Lesson7.Max(currentBalance);
 
                 // if same as others add it to the list
-                if (currentHighest == highestBalance)
+                if (Lesson7.EqualFloats(currentHighest, highestBalance))
                 {
                     names = Lesson7.AppendString(names, currentName);
                 }
 
                 if (currentHighest > highestBalance)
                 {
-                    names = new string[] {currentName};
+                    names = new [] {currentName};
                     highestBalance = currentHighest;
                 }
             }
 
-            string returnNames;
-            if (names.Length == 1)
-            {
-                returnNames = names[0];
-            }
-            else
-            {
-                returnNames = string.Join(", ", names[..^1]);
-                returnNames += $" and {names[^1]}";
-            }
+            var formatedName = Lesson7.FormatArrayToString(names);
 
-            return $"{returnNames} had the most money ever. ¤{highestBalance}.";
+            return $"{formatedName} had the most money ever. ¤{highestBalance}.";
         }
 
         /// <summary>
@@ -67,49 +56,49 @@
             string[] firstAccount;
             float[] firstBalance;
             int firstIndex = 0;
+            bool accountIsInvalid;
             do
             {
                 firstAccount = peopleAndBalances[firstIndex].Split(", ");
                 firstBalance = Lesson7.StringArrayToFloatArray(firstAccount[1..]);
                 firstIndex++;
-            } while (firstBalance.Length < 2 && firstIndex < peopleAndBalances.Length);
 
+                // it can't check for a loss if it doesn't have at least two transactions.
+                // And it should stop if went trough all the accounts given
+                accountIsInvalid = (firstBalance.Length < 2 && firstIndex < peopleAndBalances.Length);
+            } while (accountIsInvalid);
 
+            // If it went trough all of the accounds and the last one doesn't have two 
+            // transactions, it can't check for biggest loss and returns "N/A"
             if (firstIndex == peopleAndBalances.Length && firstBalance.Length < 2)
             {
                 return "N/A.";
             }
 
-
-            string[] names = new string[] { firstAccount[0] };
-            float biggestLoss = Lesson7.MaxFloat(firstBalance) - Lesson7.MinFloat(firstBalance);
+            var names = new [] { firstAccount[0] };
+            float biggestLoss = Lesson7.Max(firstBalance) - Lesson7.Min(firstBalance);
 
             for (int i = firstIndex; i < peopleAndBalances.Length; i++)
             {
-                string[] currentAccount = peopleAndBalances[i].Split(", ");
-                float[] currentBalance = Lesson7.StringArrayToFloatArray(currentAccount[1..]);
-                float currentLoss = Lesson7.MaxFloat(currentBalance) - Lesson7.MinFloat(currentBalance);
-                string currentName = currentAccount[0];
+                var currentAccount = peopleAndBalances[i].Split(", ");
+                var currentBalance = Lesson7.StringArrayToFloatArray(currentAccount[1..]);
+                var currentLoss = Lesson7.Max(currentBalance) - Lesson7.Min(currentBalance);
+                var currentName = currentAccount[0];
 
                 if (currentLoss > biggestLoss)
                 {
-                    names = new string[] { currentName };
+                    names = new [] { currentName };
                     biggestLoss = currentLoss;
                 }
-                if (currentLoss == biggestLoss)
+                if (Lesson7.EqualFloats(currentLoss, biggestLoss))
                 {
                     names = Lesson7.AppendString(names, currentName);
                 }
             }
 
-            if (names.Length == 1)
-            {
-                return $"{names[0]} lost the most money. -¤{biggestLoss}.";
-            }
-            string returnNames = string.Join(", ", names[..^1]);
-            returnNames += $" and {names[^1]}";
-
-            return $"{returnNames} have lost the most money. -¤{biggestLoss}.";
+            var formatedNames = Lesson7.FormatArrayToString(names);
+            
+             return $"{formatedNames} lost the most money. -¤{biggestLoss}.";
         }
 
         /// <summary>
@@ -125,7 +114,7 @@
             var firstAccount = peopleAndBalances[0].Split(", ");
             var firstBalance = Lesson7.StringArrayToFloatArray(firstAccount[1..]);
 
-            var names = new string[] { firstAccount[0] };
+            var names = new [] { firstAccount[0] };
             var highestBalance = firstBalance[^1];
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
@@ -137,30 +126,25 @@
                 var currentHighest = currentBalance[^1];
 
                 // if same as others add it to the list
-                if (currentHighest == highestBalance)
+                if (Lesson7.EqualFloats(currentHighest, highestBalance))
                 {
                     names = Lesson7.AppendString(names, currentName);
                 }
 
                 if (currentHighest > highestBalance)
                 {
-                    names = new string[] { currentName };
+                    names = new [] { currentName };
                     highestBalance = currentHighest;
                 }
             }
 
-            string returnNames;
+            string formatedNames = Lesson7.FormatArrayToString(names);
             
             if (names.Length == 1)
             {
-                returnNames = names[0];
-                return $"{returnNames} is the richest person. ¤{highestBalance}.";
+                return $"{formatedNames} is the richest person. ¤{highestBalance}.";
             }
-            
-            returnNames = string.Join(", ", names[..^1]);
-            returnNames += $" and {names[^1]}";
-            
-            return $"{returnNames} are the richest people. ¤{highestBalance}.";
+            return $"{formatedNames} are the richest people. ¤{highestBalance}.";
         }
 
         /// <summary>
@@ -188,7 +172,7 @@
                 var currentLowest = currentBalance[^1];
 
                 // if same as others add it to the list
-                if (currentLowest == lowestBalance)
+                if (Lesson7.EqualFloats(currentLowest, lowestBalance))
                 {
                     names = Lesson7.AppendString(names, currentName);
                 }
@@ -200,7 +184,7 @@
                 }
             }
 
-            string returnNames;
+            var formatedNames = Lesson7.FormatArrayToString(names);
 
             var returnBalance = $"¤{ lowestBalance }";
             if (lowestBalance < 0)
@@ -210,14 +194,10 @@
 
             if (names.Length == 1)
             {
-                returnNames = names[0];
-                return $"{returnNames} has the least money. {returnBalance}.";
+                return $"{formatedNames} has the least money. {returnBalance}.";
             }
-
-            returnNames = string.Join(", ", names[..^1]);
-            returnNames += $" and {names[^1]}";
             
-            return $"{returnNames} have the least money. {returnBalance}.";
+            return $"{formatedNames} have the least money. {returnBalance}.";
         }
     }
 }

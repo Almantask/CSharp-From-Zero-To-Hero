@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     class Lesson7
     {
@@ -7,7 +9,7 @@
         /// </summary>
         /// <param name="array">Array of floats.</param>
         /// <returns>Highest float in the array.</returns>
-        public static float MaxFloat(float[] array)
+        public static float Max(float[] array)
         {
             float highestAsFar = array[0];
             for (int i = 1; i < array.Length; i++)
@@ -27,7 +29,7 @@
         /// </summary>
         /// <param name="array">Array of floats.</param>
         /// <returns>Lowest float in the array.</returns>
-        public static float MinFloat(float[] array)
+        public static float Min(float[] array)
         {
             float lowestAsFar = array[0];
             for (int i = 1; i < array.Length; i++)
@@ -53,14 +55,7 @@
             for (int i = 0; i < array.Length; i++)
             {
                 float parsed;
-                if (float.TryParse(array[i], out parsed))
-                {
-                    returnArray[i] = parsed;
-                }
-                else
-                {
-                    returnArray[i] = 0f;
-                }
+                returnArray[i] = float.TryParse(array[i], out parsed) ? parsed : 0f;
             }
 
             return returnArray;
@@ -83,5 +78,32 @@
             return returnArray;
         }
 
+        /// <summary>
+        /// Takes an array of strings and joins them by comma and "and" for the last one
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        public static string FormatArrayToString(string[] array)
+        {
+            if (array.Length == 1)
+            {
+                return array[0];
+            }
+
+            var returnString = string.Join(", ", array[..^1]);
+            returnString += $" and {array[^1]}";
+            return returnString;
+        }
+
+        /// <summary>
+        /// Check if two floats are equal by comparing the distance between them to float.Epsilon
+        /// </summary>
+        /// <param name="number1"></param>
+        /// <param name="number2"></param>
+        /// <returns></returns>
+        public static bool EqualFloats(float number1, float number2)
+        {
+            return Math.Abs(number1 - number2) < float.Epsilon;
+        }
     }
 }
