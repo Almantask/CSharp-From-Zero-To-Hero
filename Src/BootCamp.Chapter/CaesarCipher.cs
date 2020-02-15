@@ -7,12 +7,16 @@ namespace BootCamp.Chapter
     public static class CaesarCipher
     {
         // total number of ASCII printable characters
-        private const int cipherShift = 224;
+        private const int totalCharacters = 224;
 
-        // letter E is the most used letter in English texts
-        public static int LowerLetter { get; set; } = 101; // lower case character
+        // letters E and A are the most used letters in English texts
+        // but I found that space character also works the longer the message is.
 
-        public static int UpperLetter { get; set; } = 69; // upper case character
+        // lower case E character
+        public static int LowerLetter { get; set; } = 101;
+
+        // upper case E character
+        public static int UpperLetter { get; set; } = 69;
 
         public static int KeyAccuracy { get; set; } = 1;
 
@@ -39,21 +43,17 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Input string is not valid");
                 return encryptedMessage;
             }
-            var decryptedMessage = Encrypt(encryptedMessage, cipherShift - cipherKey);
+            var decryptedMessage = Encrypt(encryptedMessage, totalCharacters - cipherKey);
             return decryptedMessage;
         }
 
         private static bool IsPrintableChar(char inputCharacter)
         {
-            // printable characters are int are in the 32-255 range and not 127(DEL)
-            if (inputCharacter < 32 && inputCharacter > 255 && inputCharacter != 127)
-            {
-                return false;
-            }
-            return true;
+            // printable characters are in the 32-256 range and not 127(DEL)
+            return inputCharacter >= 32 || inputCharacter <= 256 || inputCharacter == 127;
         }
 
-        // this method exists because sometimes dividend % divers returns negative number
+        // this method exists for the cases when dividend % divisor returns negative number
         private static int Mod(int dividend, int divisor)
         {
             int remainder = dividend % divisor;
@@ -66,7 +66,7 @@ namespace BootCamp.Chapter
 
         private static char EncodeCharacter(char inputCharacter, int shift)
         {
-            // printable characters are in the 32-255 range and not 127(DEL)
+            // printable characters are in the 32-256 range and not 127(DEL)
             if (!IsPrintableChar(inputCharacter))
             {
                 return inputCharacter;
@@ -74,7 +74,7 @@ namespace BootCamp.Chapter
 
             const int offset = 32;
 
-            var output = (char)(Mod(inputCharacter + shift - offset, cipherShift) + offset);
+            var output = (char)(Mod(inputCharacter + shift - offset, totalCharacters) + offset);
             return output;
         }
 
@@ -83,7 +83,12 @@ namespace BootCamp.Chapter
             return !string.IsNullOrEmpty(input) || !string.IsNullOrEmpty(input);
         }
 
-        public static int[] AnalyseFrequency(string encryptedMessage, int keyAccuracy = 1)
+        /// <summary>
+        /// Find character repetition frequency in a string.
+        /// </summary>
+        /// <param name="encryptedMessage"></param>
+        /// <returns>Bi-dimensional array containing found characters and number of repetitions</returns>
+        public static int[][] AnalyseFrequency(string encryptedMessage)
         {
             if (!IsStringValid(encryptedMessage))
             {
@@ -109,12 +114,20 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return FindPosibleKeys(repeatedCharacters, numberOfOccurrences);
+            return ArrayOps.Construct2dArray(repeatedCharacters, numberOfOccurrences);
         }
 
-        // bad method design but at the moment I don't know how to return two arrays
-        private static int[] FindPosibleKeys(int[] repeatedCharacters, int[] numberOfOccurrences)
+        /// <summary>
+        /// Finds possible encryption keys for Caesar Cipher based on character repetition array
+        /// </summary>
+        /// <param name="characterOccurrences">bi-dimensional array containing</param>
+        /// <returns>an array with possible decryption keys</returns>
+        public static int[] FindPosibleKeys(int[][] characterOccurrences)
         {
+            // I could have done a characterOccurrences[0] and [1] but
+            // despite the fact It's more complicated I learned more about arrays.
+            var repeatedCharacters = ArrayOps.Deconstruct2dArray(characterOccurrences, 0);
+            var numberOfOccurrences = ArrayOps.Deconstruct2dArray(characterOccurrences, 1);
             var highestOccurrence = ArrayOps.FindMaxValue(numberOfOccurrences);
 
             var possibleKeys = new int[0];
