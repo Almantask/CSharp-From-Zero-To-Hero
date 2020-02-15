@@ -160,7 +160,7 @@
             var firstAccount = peopleAndBalances[0].Split(", ");
             var firstBalance = Lesson7.StringArrayToFloatArray(firstAccount[1..]);
 
-            var names = new string[] { firstAccount[0] };
+            var names = new [] { firstAccount[0] };
             var lowestBalance = firstBalance[^1];
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
@@ -179,7 +179,7 @@
 
                 if (currentLowest < lowestBalance)
                 {
-                    names = new string[] { currentName };
+                    names = new [] { currentName };
                     lowestBalance = currentLowest;
                 }
             }
