@@ -7,62 +7,53 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
-            ConvertFromDecimalToBinary();
-            ConvertFromBinaryToDecimal();
-            PrintEmicon();
+
+            Console.Write("Which decimal do you want to convert to binary: ");
+            var input = Console.ReadLine();
+            ConvertFromDecimalToBinary(input);
+
+
+            Console.Write("Which binary do you want to convert to decimal: ");
+            input = Console.ReadLine();
+            ConvertFromBinaryToDecimal(input);
+
+            Console.WriteLine("Give a a W, A, S or D");
+            input = Console.ReadLine().ToUpper(new CultureInfo("en-US", false));
+            PrintEmicon(input);
         }
 
-        private static void PrintEmicon()
+        private static void PrintEmicon(string input)
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
-            Console.WriteLine("Give a a W, A, S or D");
-            var input = Console.ReadLine().ToUpper(new CultureInfo("en-US", false));
-            var output = ""; 
-            switch (input)
+            string output = input switch
             {
-                case "W":
-                    output = "↥";
-                    break;
-
-                case "A":
-                    output = "↤";
-                    break;
-
-                case "S":
-                    output = "↧";
-                    break;
-
-                case "D":
-                    output = "↦";
-                    break;
-
-                default:
-                    output = "This is not a valid character. YOu must choose between w,a,s or d";
-                    break; 
-            }
-
+                "W" => "↥",
+                "A" => "↤",
+                "S" => "↧",
+                "D" => "↦",
+                _ => "This is not a valid character. You must choose between w,a,s or d",
+            };
             Console.WriteLine(output);
         }
 
-        private static void ConvertFromBinaryToDecimal()
+        private static void ConvertFromBinaryToDecimal(string input)
         {
-            Console.Write("Which  do you want to convert to binary: ");
-            var input = Console.ReadLine();
+            
             try
             {
-                var binaryNumber = int.Parse(input);
-                var realNumber = binaryNumber;
-                int decimalValue = 0;
+                var number = int.Parse(input);
+                var copyOfNumber = number;
+                int convertedNumber = 0;
                 int base1 = 1;
 
-                while (binaryNumber > 0)
+                while (number > 0)
                 {
-                    int reminder = binaryNumber % 10 ;
-                    binaryNumber = binaryNumber / 10;
-                    decimalValue += reminder * base1;
-                    base1 = base1 * 2;
+                    int remainder = number % 10 ;
+                    number /= 10;
+                    convertedNumber += remainder * base1;
+                    base1 *= 2;
                 }
-                Console.WriteLine($"{realNumber} is {decimalValue} in decimal.");
+                Console.WriteLine($"{copyOfNumber} is {convertedNumber} in decimal.");
             }
             catch
             {
@@ -70,10 +61,9 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static void ConvertFromDecimalToBinary()
+        private static void ConvertFromDecimalToBinary(string input)
         {
-            Console.Write("Which integer do you want to convert to binary: ");
-            var input = Console.ReadLine();
+            
             try
             {
                 var decimalNumber = int.Parse(input);
