@@ -71,7 +71,7 @@ namespace BootCamp.Chapter
             UpdateKeyAccuracy();
             UpdateBaseCharacter();
 
-            Console.WriteLine("Settings updated");
+            Console.WriteLine("Settings updated.");
             Wait();
         }
 

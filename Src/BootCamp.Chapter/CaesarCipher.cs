@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
         // 0 - use only the highest repeated char
         // 1 - use the top 2 highest repeated chars
         // n - use top n highest repeated chars
-        public static int KeyAccuracy { get; set; } = 0;
+        public static int KeyAccuracy { get; set; }
 
         public static string Encrypt(string plainMessage, int cipherKey)
         {
