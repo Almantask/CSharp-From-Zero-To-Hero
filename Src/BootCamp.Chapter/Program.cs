@@ -4,9 +4,10 @@
     {
         private static void Main(string[] args)
         {
-            DecimalConversion.Conversion();
-            BinaryConversion.Conversion();
-            PrintEmonicons.Print();
+            BinaryConverter.ConversionToBinary();
+            BinaryConverter.ConversionToInteger(); 
+            ArrowMovement.Print();
         }
     }
 }
+
