@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
     public static class CaesarCipher
     {
-        // total number of ASCII extended printable characters
-        private const int totalCharacters = 224;
+        public static int TopCharacter { get; set; } = 127;
 
-        // letters E and A are the most used letters in English texts
-        // but I found that space character is better the longer the message is.
         public static int BaseCharacter { get; set; } = 32;
 
         // 0 - use only the highest repeated char
@@ -41,14 +37,14 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Input string is not valid");
                 return encryptedMessage;
             }
-            var decryptedMessage = Encrypt(encryptedMessage, totalCharacters - cipherKey);
+            var decryptedMessage = Encrypt(encryptedMessage, TopCharacter - BaseCharacter + 1 - cipherKey);
             return decryptedMessage;
         }
 
         private static bool IsPrintableChar(char inputCharacter)
         {
             // printable characters are in the 32-255 range and not 127(DEL)
-            return inputCharacter >= 32 || inputCharacter <= 255 || inputCharacter != 127;
+            return inputCharacter >= BaseCharacter || inputCharacter < TopCharacter;
         }
 
         // this method exists for the cases when dividend % divisor returns negative number
@@ -64,7 +60,6 @@ namespace BootCamp.Chapter
 
         private static char EncodeCharacter(char inputCharacter, int shift)
         {
-            // printable characters are in the 32-255 range and not 127(DEL)
             if (!IsPrintableChar(inputCharacter))
             {
                 return inputCharacter;
@@ -72,7 +67,7 @@ namespace BootCamp.Chapter
 
             const int offset = 32;
 
-            var output = (char)(Mod(inputCharacter + shift - offset, totalCharacters) + offset);
+            var output = (char)(Mod(inputCharacter + shift - offset, TopCharacter - BaseCharacter + 1) + offset);
             return output;
         }
 

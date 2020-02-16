@@ -56,6 +56,7 @@ namespace BootCamp.Chapter
 
             Console.WriteLine($"Key accuracy: {CaesarCipher.KeyAccuracy}");
             Console.WriteLine($"Base character: {CaesarCipher.BaseCharacter}");
+            Console.WriteLine($"Top character: {CaesarCipher.TopCharacter}");
 
             Console.WriteLine();
 
@@ -68,6 +69,7 @@ namespace BootCamp.Chapter
 
             UpdateKeyAccuracy();
             UpdateBaseCharacter();
+            UpdateTopCharacter();
 
             Console.WriteLine("Settings updated.");
             Wait();
@@ -82,6 +84,17 @@ namespace BootCamp.Chapter
                 return;
             }
             CaesarCipher.BaseCharacter = Utils.ConvertToInt(baseCharacter);
+        }
+
+        private static void UpdateTopCharacter()
+        {
+            Console.Write("Input top character: ");
+            var topCharacter = Console.ReadLine();
+            if (!Utils.IsNumeric(topCharacter))
+            {
+                return;
+            }
+            CaesarCipher.TopCharacter = Utils.ConvertToInt(topCharacter);
         }
 
         private static void UpdateKeyAccuracy()
