@@ -263,7 +263,7 @@
             System.Console.WriteLine();
         }
 
-        private static bool IsNullOrEmpty(int[] array)
+        public static bool IsNullOrEmpty(int[] array)
         {
             return array == null || array.Length == 0;
         }
