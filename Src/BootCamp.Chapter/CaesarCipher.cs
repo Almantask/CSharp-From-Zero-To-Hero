@@ -43,7 +43,7 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="encryptedMessage">Message to be decrypted</param>
         /// <param name="cipherKey">character cipher (shift)</param>
-        /// <returns>Encrypted message using Caesar Cipher algorithm</returns>
+        /// <returns>decrypted message using reverse shift for Encrypt method</returns>
         public static string Decrypt(string encryptedMessage, int cipherKey)
         {
             if (!Utils.IsStringValid(encryptedMessage))
