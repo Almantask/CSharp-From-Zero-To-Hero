@@ -66,12 +66,8 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            int arrayLength;
-            if (array == null || array.Length == 0)
-            {
-                arrayLength = 0;
-            }
-            else
+            int arrayLength = 0;
+            if (array != null && array.Length != 0)
             {
                 arrayLength = array.Length-1;
             }
