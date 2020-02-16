@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using BootCamp.Chapter.Tests.Input;
 using FluentAssertions;
 using Xunit;
@@ -7,6 +9,63 @@ namespace BootCamp.Chapter.Tests
     // You don't have to be here for a long time.
     public class Lesson7Tests
     {
+        [Theory]
+        [InlineData("", "")]
+        [InlineData("", "a")]
+        [InlineData("a", "")]
+        [InlineData(null, "a")]
+        [InlineData("a", null)]
+        [InlineData(null, null)]
+        public void FileCleaner_Clean_Given_Invalid_Parameters_Throws_ArgumentException(string dirtyFile, string cleanFile)
+        {
+            Action action = () => FileCleaner.Clean(dirtyFile, cleanFile);
+
+            action.Should().Throw<ArgumentException>();
+        }
+
+
+        [Theory]
+        [InlineData(@"Input/Files/In/BalancesCharBalance.Invalid")]
+        [InlineData(@"Input/Files/In/BalancesNotAName1.Invalid")]
+        [InlineData(@"Input/Files/In/BalancesNotAName2y.Invalid")]
+        public void FileCleaner_Clean_Given_Invalid_Balances_Throws_InvalidBalances_Exception(string file)
+        {
+            Action action = () => FileCleaner.Clean(file, "AnyFile");
+
+            action.Should().Throw<InvalidBalancesException>();
+        }
+
+        [Theory]
+        [InlineData(@"Input/Files/In/Balances.corrupted", @"Input/Files/Expected/Balances.clean")]
+        [InlineData(@"Input/Files/In/Balances1.corrupted", @"Input/Files/Expected/Balances1.clean")]
+        [InlineData(@"Input/Files/In/Balances2.corrupted", @"Input/Files/Expected/Balances2.clean")]
+        public void FileCleaner_Clean_Given_Corrupted_File_Creates_Clean_File(string dirtyFile, string expectedCleanFile)
+        {
+            string cleanFile = $@"Balances{Guid.NewGuid()}.clean";
+            FileCleaner.Clean(dirtyFile, cleanFile);
+
+            var expectedCleanContents = File.ReadAllText(expectedCleanFile);
+            var actualCleanContents = File.ReadAllText(cleanFile);
+            actualCleanContents.Should().Be(expectedCleanContents);
+
+            File.Delete(cleanFile);
+        }
+
+        [Theory]
+        [InlineData(@"Input/Files/Balances.clean")]
+        [InlineData(@"Input/Files/Balances.empty")]
+        public void FileCleaner_Clean_Given_Empty_Or_Clean_File_Duplicates_File(string file)
+        {
+            string outputFile = $@"Balances{Guid.NewGuid()}.clean";
+            FileCleaner.Clean(file, outputFile);
+
+            var dirtyContents = File.ReadAllText(file);
+            var cleanContents = File.ReadAllText(outputFile);
+            cleanContents.Should().Be(dirtyContents, "The file has no corruption- there is nothing to clean up.");
+            
+            File.Delete(outputFile);
+        }
+
         [Theory]
         [ClassData(typeof(TableMessageInput))]
         public void BuildTabledMessage_With_Message_Hello_AndPadding_0_Returns_Message_In_Table(string message, int padding, string expectation)

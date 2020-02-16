@@ -18,4 +18,40 @@
     <ProjectReference Include="..\..\Src\BootCamp.Chapter\BootCamp.Chapter.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Input\Files\Expected\Balances2.clean">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\Expected\Balances1.clean">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\In\BalancesNotAName2y.Invalid">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\In\BalancesNotAName1.Invalid">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\In\BalancesCharBalance.Invalid">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\In\Balances2.corrupted">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\In\Balances.clean">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\Expected\Balances.clean">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\In\Balances.Empty">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\In\Balances.corrupted">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\In\Balances1.corrupted">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
