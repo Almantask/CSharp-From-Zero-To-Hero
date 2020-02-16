@@ -1,4 +1,11 @@
-# CSharp-From-Zero-To-Hero
-[![Build Status](https://dev.azure.com/almantusk/From-Zero-To-Hero/_apis/build/status/Almantask.CSharp-From-Zero-To-Hero?branchName=master)](https://dev.azure.com/almantusk/From-Zero-To-Hero/_build/latest?definitionId=5&branchName=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a358adf21c2442cd91a4827a50213ff1)](https://www.codacy.com/manual/Almantask/CSharp-From-Zero-To-Hero?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Almantask/CSharp-From-Zero-To-Hero&amp;utm_campaign=Badge_Grade)  
-C# boot camp
+# Homework 10: Caeasar Cipher
+
+Implement Caesar cipher:  
+https://en.wikipedia.org/wiki/Caesar_cipher  
+It needs to support both encryption and decryption  
+Create 2 functions:  
+```
+string Encrypt(string message, byte shift)
+string Decrypt(string message, byte shift)
+```
+The cipher should support all the ASCII symbols.
