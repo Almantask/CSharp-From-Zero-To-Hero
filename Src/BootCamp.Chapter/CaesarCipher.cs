@@ -11,26 +11,28 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
-            var output = ""; 
+            
 
             if (String.IsNullOrEmpty(message))
             {
                 return message; 
             }
 
-
+            var sb = new StringBuilder(); 
             foreach (char ch in message)
             {
-                output += DecryptOneChar(ch, shift); 
+                sb.Append(DecryptOneChar(ch, shift)); 
             }
 
-            return output; 
+            return sb.ToString(); 
         }
 
         private static char DecryptOneChar(char ch, byte shift)
         {
             if (!char.IsLetter(ch))
+            {
                 return ch;
+            }
 
             char offset = char.IsUpper(ch) ? 'A' : 'a';
             return (char)((((ch + shift) - offset) % 26) + offset);
