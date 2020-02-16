@@ -15,7 +15,7 @@
 
         public static bool IsStringValid(string inputString)
         {
-            return !string.IsNullOrEmpty(inputString) || !string.IsNullOrWhiteSpace(inputString);
+            return !(string.IsNullOrWhiteSpace(inputString) && string.IsNullOrEmpty(inputString));
         }
     }
 }

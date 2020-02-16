@@ -14,9 +14,10 @@ namespace BootCamp.Chapter
         // n - use top n highest repeated chars
         public static int KeyAccuracy { get; set; }
 
+        // TODO: add comment
         public static string Encrypt(string plainMessage, int cipherKey)
         {
-            if (!IsStringValid(plainMessage))
+            if (!Utils.IsStringValid(plainMessage))
             {
                 Console.WriteLine("Input string is not valid");
                 return plainMessage;
@@ -32,7 +33,7 @@ namespace BootCamp.Chapter
 
         public static string Decrypt(string encryptedMessage, int cipherKey)
         {
-            if (!IsStringValid(encryptedMessage))
+            if (!Utils.IsStringValid(encryptedMessage))
             {
                 Console.WriteLine("Input string is not valid");
                 return encryptedMessage;
@@ -41,9 +42,9 @@ namespace BootCamp.Chapter
             return decryptedMessage;
         }
 
+        // TODO: add comment
         private static bool IsPrintableChar(char inputCharacter)
         {
-            // printable characters are in the 32-255 range and not 127(DEL)
             return inputCharacter >= BaseCharacter || inputCharacter < TopCharacter;
         }
 
@@ -58,6 +59,7 @@ namespace BootCamp.Chapter
             return remainder;
         }
 
+        // TODO: add comment
         private static char EncodeCharacter(char inputCharacter, int shift)
         {
             if (!IsPrintableChar(inputCharacter))
@@ -65,15 +67,8 @@ namespace BootCamp.Chapter
                 return inputCharacter;
             }
 
-            const int offset = 32;
-
-            var output = (char)(Mod(inputCharacter + shift - offset, TopCharacter - BaseCharacter + 1) + offset);
+            var output = (char)(Mod(inputCharacter + shift - BaseCharacter, TopCharacter - BaseCharacter + 1) + BaseCharacter);
             return output;
-        }
-
-        private static bool IsStringValid(string input)
-        {
-            return !string.IsNullOrEmpty(input) || !string.IsNullOrWhiteSpace(input);
         }
 
         /// <summary>
@@ -83,7 +78,7 @@ namespace BootCamp.Chapter
         /// <returns>Bi-dimensional array containing found characters and number of repetitions</returns>
         public static int[][] AnalyseFrequency(string encryptedMessage)
         {
-            if (!IsStringValid(encryptedMessage))
+            if (!Utils.IsStringValid(encryptedMessage))
             {
                 Console.WriteLine("Input is not a valid string");
             }
@@ -137,6 +132,7 @@ namespace BootCamp.Chapter
             return possibleKeys;
         }
 
+        // TODO: add comment
         public static void PrintDecryptedVariants(string encryptedMessage, int[] posibleKeys)
         {
             Console.WriteLine($"{posibleKeys.Length} possible key found.{Environment.NewLine}");
