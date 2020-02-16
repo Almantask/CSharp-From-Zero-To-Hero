@@ -1,4 +1,9 @@
 ﻿using System;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+using System.Text;
+>>>>>>> 3ccdb32e75cfac3de3437700b11d80795480c7f2
 using System.Text.RegularExpressions;
 
 namespace BootCamp.Chapter
@@ -17,24 +22,39 @@ namespace BootCamp.Chapter
         private static void ConvertDecimalToBinary()
         {
             int i;
+<<<<<<< HEAD
             int[] binaryHolder = new int[40];
+=======
+            int[] a = new int[40];
+>>>>>>> 3ccdb32e75cfac3de3437700b11d80795480c7f2
             Console.Write("Enter the number to convert: ");
             if (!int.TryParse(Console.ReadLine(), out int decimalNumber))
             {
                 Console.WriteLine("That wasn't a decimal number. Please try again");
                 ConvertDecimalToBinary();
             }
+<<<<<<< HEAD
             i = 0;
             while (decimalNumber>0)
             {
                 binaryHolder[i] = decimalNumber % 2;
                 decimalNumber = decimalNumber / 2;
                 i++;
+=======
+            for (i = 0; decimalNumber > 0; i++)
+            {
+                a[i] = decimalNumber % 2;
+                decimalNumber = decimalNumber / 2;
+>>>>>>> 3ccdb32e75cfac3de3437700b11d80795480c7f2
             }
             Console.Write("Binary of the given number= ");
             for (i = i - 1; i >= 0; i--)
             {
+<<<<<<< HEAD
                 Console.Write(binaryHolder[i]);
+=======
+                Console.Write(a[i]);
+>>>>>>> 3ccdb32e75cfac3de3437700b11d80795480c7f2
             }
         }
 
