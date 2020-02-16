@@ -64,7 +64,7 @@ namespace BootCamp.Chapter
 
         private static char EncodeCharacter(char inputCharacter, int shift)
         {
-            // printable characters are in the 32-256 range and not 127(DEL)
+            // printable characters are in the 32-255 range and not 127(DEL)
             if (!IsPrintableChar(inputCharacter))
             {
                 return inputCharacter;
