@@ -1,6 +1,4 @@
-﻿//using System;
-
-namespace BootCamp.Chapter1
+﻿namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -68,18 +66,18 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array != null && array.Length != 0)
+            int arrayLength;
+            if (array == null || array.Length == 0)
             {
-                var arrayLength = array.Length;
-                int[] newArray = new int[arrayLength - 1];
-                // make a copy of array by value (not reference) and skip last
-                for (var i = 0; i < newArray.Length; i++)
-                {
-                        newArray[i] = array[i];
-                }
-                return newArray;
+                arrayLength = 0;
             }
-            return array;
+            else
+            {
+                arrayLength = array.Length-1;
+            }
+
+            var resultArray = RemoveElementInArray(array, arrayLength);
+            return resultArray;
         }
 
         /// <summary>
@@ -88,18 +86,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array != null && array.Length != 0)
-            {
-                var arrayLength = array.Length;
-                int[] newArray = new int[arrayLength - 1];
-                // make a copy of array by value (not reference) and skip first
-                for (var i = 0; i < newArray.Length; i++)
-                {
-                    newArray[i] = array[i+1];
-                }
-                return newArray;
-            }
-            return array;
+            var resultArray = RemoveElementInArray(array, 0);
+            return resultArray;
         }
 
         /// <summary>
@@ -110,29 +98,38 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array != null && array.Length != 0)
-            {
-                var arrayLength = array.Length;
-                if (index < 0 || index >= arrayLength)
-                {
-                    return array;
-                }
-
-                int[] newArray = new int[arrayLength - 1];
-                var removedIndex = 0;
-                // make a copy of array by value (not reference) and count/add if index is removed
-                for (var i = 0; i < newArray.Length; i++)
-                {
-                    if (i == index)
-                    {
-                        removedIndex = 1;
-                    }
-                    newArray[i] = array[i+removedIndex];
-                }
-                return newArray;
-            }
-            return array;
+            var resultArray = RemoveElementInArray(array, index);
+            return resultArray;
         }
+
+        private static int[] RemoveElementInArray(int[] array, int index)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+            var arrayLength = array.Length;
+            if (index < 0 || index >= arrayLength)
+            {
+                return array;
+            }
+
+            int[] newArray = new int[arrayLength - 1];
+            var removedIndex = 0;
+            // make a copy of array by value (not reference) and count/add if index is removed
+            for (var i = 0; i < newArray.Length; i++)
+            {
+                if (i == index)
+                {
+                    removedIndex = 1;
+                }
+                newArray[i] = array[i + removedIndex];
+            }
+            return newArray;
+        }
+
+
 
         /// <summary>
         /// Inserts a new array element at the start.
@@ -142,24 +139,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (array != null && array.Length != 0)
-            {
-                var arrayLength = array.Length;
-                int[] newArray = new int[arrayLength + 1];
-                // insert first element manually and copy existing elements
-                newArray[0] = number;
-                for (var i = 0; i < arrayLength; i++)
-                {
-                    newArray[i+1] = array[i];
-                }
-                return newArray;
-            }
-            else
-            {
-                var newArray = new[] { number };
-                return newArray;
-            }
-            return array;
+            var resultArray = InsertElementInArray(array, number, 0);
+            return resultArray;
         }
 
         /// <summary>
@@ -170,24 +151,18 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array != null && array.Length != 0)
+            int arrayLength;
+            if (array == null || array.Length == 0)
             {
-                var arrayLength = array.Length;
-                int[] newArray = new int[arrayLength + 1];
-                // copy existing elements and add last element
-                for (var i = 0; i < arrayLength; i++)
-                {
-                    newArray[i] = array[i];
-                }
-                newArray[arrayLength] = number;
-                return newArray;
+                arrayLength = 0;
             }
             else
             {
-                var newArray = new[] { number };
-                return newArray;
+                arrayLength = array.Length;
             }
-            return array;
+
+            var resultArray = InsertElementInArray(array, number, arrayLength);
+            return resultArray;
         }
 
         /// <summary>
@@ -199,37 +174,43 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array != null && array.Length != 0)
-            {
-                var arrayLength = array.Length;
-                if (index < 0 || index > arrayLength)
-                {
-                    return array;
-                }
+            var resultArray = InsertElementInArray(array, number, index);
+            return resultArray;
+        }
 
-                int[] newArray = new int[arrayLength + 1];
-                var addedIndex = 0;
-                // make a copy of array by value (not reference) and count/add if index added
-                for (var i = 0; i < arrayLength; i++)
-                {
-                    if (i == index)
-                    {
-                        newArray[i] = number;
-                        addedIndex = 1;
-                    }
-                    newArray[i + addedIndex] = array[i];
-                }
-                return newArray;
-            } else
+        private static int[] InsertElementInArray(int[] array, int number, int index)
+        {
+            if (array == null || array.Length == 0)
             {
-                // if array is null or 0 and index is 0, declare new array with the number at position 0
                 if (index == 0)
                 {
-                    var newArray = new[] { number };
-                    return newArray;
+                    var newArrayNumber = new[] { number };
+                    return newArrayNumber;
                 }
             }
-            return array;
+
+            var arrayLength = array.Length;
+            if (index < 0 || index > arrayLength)
+            {
+                return array;
+            }
+            
+            int[] newArray = new int[arrayLength + 1];
+            var addedIndex = 0;
+            // make a copy of array by value (not reference) and count/add if index added
+            for (var i = 0; i < newArray.Length; i++)
+            {
+                if (i == index)
+                {
+                    newArray[i] = number;
+                    addedIndex = 1;
+                } 
+                else
+                {
+                    newArray[i] = array[i - addedIndex];
+                }
+            }
+            return newArray;
         }
     }
 }
