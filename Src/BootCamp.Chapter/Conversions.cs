@@ -31,17 +31,11 @@ namespace BootCamp.Chapter
                 binaryHolder[i] = decimalNumber % 2;
                 decimalNumber = decimalNumber / 2;
                 i++;
-                for (i = 0; decimalNumber > 0; i++)
-                {
-                    a[i] = decimalNumber % 2;
-                    decimalNumber = decimalNumber / 2;
-                }
-                Console.Write("Binary of the given number= ");
-                for (i = i - 1; i >= 0; i--)
-                {
-                    Console.Write(binaryHolder[i]);
-                    Console.Write(a[i]);
-                }
+            }
+            Console.Write("Binary of the given number= ");
+            for (i = i - 1; i >= 0; i--)
+            {
+                Console.Write(binaryHolder[i]);
             }
         }
 
