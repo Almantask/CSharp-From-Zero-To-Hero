@@ -24,7 +24,7 @@ namespace BootCamp.Chapter
             ConsoleKey pressedKey = Console.ReadKey(true).Key;
             if (pressedKey == ConsoleKey.D0)
             {
-                Environment.Exit(0);
+                return;
             }
             else if (pressedKey == ConsoleKey.D1)
             {
