@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     internal static class Program
     {
