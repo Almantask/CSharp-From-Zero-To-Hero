@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace BootCamp.Chapter
@@ -19,22 +17,24 @@ namespace BootCamp.Chapter
         private static void ConvertDecimalToBinary()
         {
             int i;
-            int[] a = new int[40];
+            int[] binaryHolder = new int[40];
             Console.Write("Enter the number to convert: ");
             if (!int.TryParse(Console.ReadLine(), out int decimalNumber))
             {
                 Console.WriteLine("That wasn't a decimal number. Please try again");
                 ConvertDecimalToBinary();
             }
-            for (i = 0; decimalNumber > 0; i++)
+            i = 0;
+            while (decimalNumber>0)
             {
-                a[i] = decimalNumber % 2;
+                binaryHolder[i] = decimalNumber % 2;
                 decimalNumber = decimalNumber / 2;
+                i++;
             }
             Console.Write("Binary of the given number= ");
             for (i = i - 1; i >= 0; i--)
             {
-                Console.Write(a[i]);
+                Console.Write(binaryHolder[i]);
             }
         }
 
