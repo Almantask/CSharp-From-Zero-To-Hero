@@ -12,12 +12,27 @@ namespace BootCamp.Chapter
             {
                 int shift = UserSelectSizeAndDirectionOfShift();
                 string forOperation = RequestInput();
-                ConvertString(shift, forOperation);
+                if (shift == 99)
+                {
+                    GenerateAllShiftIterations(forOperation);
+                }
+                else
+                {
+                    ConvertString(shift, forOperation);
+                }
                 isContinue = UserSelectsContinue();
             }
         }
-      
-            private static bool UserSelectsContinue()
+
+        private static void GenerateAllShiftIterations(string forOperation)
+        {
+            for (int i = 1; i <= 25; i++)
+            {
+                ConvertString(i, forOperation);
+            }
+        }
+
+        private static bool UserSelectsContinue()
         {
             Console.WriteLine("Please enter \"c\" to continue, any other key to exit");
             string response = Console.ReadLine();
@@ -26,11 +41,14 @@ namespace BootCamp.Chapter
 
         private static int UserSelectSizeAndDirectionOfShift()
         {
-            Console.WriteLine("Please indicate how many letters your cipher shifts (the key). This should be a range from -25 (the the left) to 25 (to the right)");
+            Console.WriteLine("Please indicate how many letters your cipher shifts (the key). " +
+                "This should be a range from -25 (the the left) to 25 (to the right) \r\n" +
+                "If you wish to decrypt a cipher with an unknown key, enter 99.");
             
             try
             {
                 int shift = int.Parse(Console.ReadLine());
+                if (shift == 99) { return shift; }
                 if (Math.Abs(shift) > 25)
                 {
                     Console.WriteLine($"Your cipher key, {shift} is greater than 25 and will cycle completely through the alphabet and result in a shift of {shift % 26}.");
