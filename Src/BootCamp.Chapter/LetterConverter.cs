@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -16,7 +14,6 @@ namespace BootCamp.Chapter
                 keyStroke = RequestKeyStroke();
             }
             Console.WriteLine("You pressed an incorrect key. Keep practicing!");
-
         }
 
         private static char RequestKeyStroke()
@@ -31,7 +28,9 @@ namespace BootCamp.Chapter
             foreach (char letter in expectedKeys)
             {
                 if (keyStroke == letter)
+                {
                     return true;
+                }
             }
             return false;
 
@@ -39,13 +38,21 @@ namespace BootCamp.Chapter
         private static char ConvertKeyToArrow (char keyStroke)
         {
             if (char.ToUpper(keyStroke) == 'W')
+            {
                 return '\u2191';
+            }
             if (char.ToUpper(keyStroke) == 'S')
+            {
                 return '\u2193';
+            }
             if (char.ToUpper(keyStroke) == 'A')
+            {
                 return '\u2190';
+            }
             if (char.ToUpper(keyStroke) == 'D')
+            {
                 return '\u2192';
+            }
             return 'E';
         }
         private static void DisplayResult(char newImage)
