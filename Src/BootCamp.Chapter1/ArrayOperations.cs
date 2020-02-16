@@ -29,14 +29,6 @@ namespace BootCamp.Chapter1
                         var tmp = array[i];
                         array[i] = array[j];
                         array[j] = tmp;
-
-                        //Console.WriteLine("Swapping: " + array[j] + " and " + array[i]);
-                        //Console.Write("Changed result: ");
-                        //foreach (var number in array)
-                        //{
-                        //    Console.Write(number + " ");
-                        //}
-                        //Console.Write(Environment.NewLine);
                     }
                 }
             }
@@ -65,7 +57,6 @@ namespace BootCamp.Chapter1
             // reverse current index with last index reduced with current index
             for (var i = 0; i < arrayLength; i++)
             {
-                //Console.WriteLine("Swapping: " + array[i] + " and " + tmp[arrayLength - i-1]);
                 array[i] = tmp[arrayLength - i-1];
             }
         }
@@ -231,7 +222,7 @@ namespace BootCamp.Chapter1
                 return newArray;
             } else
             {
-                // if array is null or 0, declare new array with the number at position 0
+                // if array is null or 0 and index is 0, declare new array with the number at position 0
                 if (index == 0)
                 {
                     var newArray = new[] { number };
