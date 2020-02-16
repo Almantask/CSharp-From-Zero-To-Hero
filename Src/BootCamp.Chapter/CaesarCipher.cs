@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
         // 0 - use only the highest repeated char
         // 1 - use the top 2 highest repeated chars
         // n - use top n highest repeated chars
-        public static int KeyAccuracy { get; set; } = 1;
+        public static int KeyAccuracy { get; set; } = 0;
 
         public static string Encrypt(string plainMessage, int cipherKey)
         {
@@ -142,7 +142,7 @@ namespace BootCamp.Chapter
             return possibleKeys;
         }
 
-        public static void PrintDecyptedVariants(string encryptedMessage, int[] posibleKeys)
+        public static void PrintDecryptedVariants(string encryptedMessage, int[] posibleKeys)
         {
             Console.WriteLine($"{posibleKeys.Length} possible key found.{Environment.NewLine}");
             Console.WriteLine($"Adjust KeyAccuracy: {KeyAccuracy} and BaseCharacter: {BaseCharacter} for better results!{Environment.NewLine}");

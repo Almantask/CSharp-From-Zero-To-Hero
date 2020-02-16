@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
 
             Console.WriteLine();
 
-            Console.Write("Do you want to change? Y/N");
+            Console.Write("Do you want to change? (Y/N) ");
             var response = Console.ReadLine();
             if (response != "Y" || response == "N")
             {
@@ -70,6 +70,9 @@ namespace BootCamp.Chapter
 
             UpdateKeyAccuracy();
             UpdateBaseCharacter();
+
+            Console.WriteLine("Settings updated");
+            Wait();
         }
 
         private static void UpdateBaseCharacter()
@@ -111,7 +114,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"Testing frequency attack...{Environment.NewLine}");
             var characterOccurrences = CaesarCipher.AnalyseFrequency(encryptedMessage);
             var posibleKeys = CaesarCipher.FindPosibleKeys(characterOccurrences);
-            CaesarCipher.PrintDecyptedVariants(encryptedMessage, posibleKeys);
+            CaesarCipher.PrintDecryptedVariants(encryptedMessage, posibleKeys);
 
             Wait();
         }
