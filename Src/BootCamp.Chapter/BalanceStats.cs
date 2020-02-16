@@ -229,7 +229,6 @@ namespace BootCamp.Chapter
             var richestPersonsBalance = GetCurrentBalancefor(peopleAndBalances[0]);
             for (int i = 0; i < peopleAndBalances.Length - 1; i++)
             {
-          //      richestPersonsBalance = GetCurrentBalancefor(peopleAndBalances[i]);
                 if (richestPersonsBalance < GetCurrentBalancefor(peopleAndBalances[i + 1]))
                 {
                     richestPersonsBalance = GetCurrentBalancefor(peopleAndBalances[i + 1]);

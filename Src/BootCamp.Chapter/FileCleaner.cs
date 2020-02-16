@@ -53,7 +53,7 @@ namespace BootCamp.Chapter
             {
                 if (!Char.IsLetter(letter) && !letter.Equals(' '))
                 {
-                    throw new Exception();
+                    throw new ArgumentException("Name contains invalid characters!");
                 }                    
             }
         }

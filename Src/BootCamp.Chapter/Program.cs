@@ -18,7 +18,6 @@ namespace BootCamp.Chapter
             var fileContent = File.ReadAllText(@"Input\Balances.clean");
             var peopleAndBalances = fileContent.Split(Environment.NewLine);
 
-            //    BalanceStats.ConvertToBalanceArray(peopleAndBalances[0]);
             Console.WriteLine(BalanceStats.FindHighestBalanceEver(peopleAndBalances));
             Console.WriteLine(BalanceStats.FindPersonWithBiggestLoss(peopleAndBalances));
             Console.WriteLine(BalanceStats.FindRichestPerson(peopleAndBalances));
