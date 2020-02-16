@@ -11,30 +11,32 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if(array != null && array.Length != 0)
+            if (array == null || array.Length == 0)
             {
-                var arrayLength = array.Length;
-                // loop through all elements
-                for (var i = 0; i < arrayLength; i++)
-                {
-                    // compare element on current index to all next elements
-                    for (var j = i + 1; j < arrayLength; j++)
-                    {
-                        // keep swapping till lowest is found
-                        if (array[i] > array[j])
-                        {
-                            var tmp = array[i];
-                            array[i] = array[j];
-                            array[j] = tmp;
+                return;
+            }
 
-                            //Console.WriteLine("Swapping: " + array[j] + " and " + array[i]);
-                            //Console.Write("Changed result: ");
-                            //foreach (var number in array)
-                            //{
-                            //    Console.Write(number + " ");
-                            //}
-                            //Console.Write(Environment.NewLine);
-                        }
+            var arrayLength = array.Length;
+            // loop through all elements
+            for (var i = 0; i < arrayLength; i++)
+            {
+                // compare element on current index to all next elements
+                for (var j = i + 1; j < arrayLength; j++)
+                {
+                    // keep swapping till lowest is found
+                    if (array[i] > array[j])
+                    {
+                        var tmp = array[i];
+                        array[i] = array[j];
+                        array[j] = tmp;
+
+                        //Console.WriteLine("Swapping: " + array[j] + " and " + array[i]);
+                        //Console.Write("Changed result: ");
+                        //foreach (var number in array)
+                        //{
+                        //    Console.Write(number + " ");
+                        //}
+                        //Console.Write(Environment.NewLine);
                     }
                 }
             }
@@ -47,22 +49,24 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array != null && array.Length != 0)
+            if (array == null || array.Length == 0)
             {
-                var arrayLength = array.Length;
-                // make a copy of array by value (not reference)
-                int[] tmp = new int[128];
-                for (var i = 0; i < arrayLength; i++)
-                {
-                    tmp[i] = array[i];
-                }
+                return;
+            }
 
-                // reverse current index with last index reduced with current index
-                for (var i = 0; i < arrayLength; i++)
-                {
-                    //Console.WriteLine("Swapping: " + array[i] + " and " + tmp[arrayLength - i-1]);
-                    array[i] = tmp[arrayLength - i-1];
-                }
+            var arrayLength = array.Length;
+            // make a copy of array by value (not reference)
+            int[] tmp = new int[128];
+            for (var i = 0; i < arrayLength; i++)
+            {
+                tmp[i] = array[i];
+            }
+
+            // reverse current index with last index reduced with current index
+            for (var i = 0; i < arrayLength; i++)
+            {
+                //Console.WriteLine("Swapping: " + array[i] + " and " + tmp[arrayLength - i-1]);
+                array[i] = tmp[arrayLength - i-1];
             }
         }
 
