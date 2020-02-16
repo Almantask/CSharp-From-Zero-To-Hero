@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp1.Chapter
 {
@@ -29,15 +27,17 @@ namespace BootCamp1.Chapter
             Console.WriteLine("Let's play hangman");
             Console.WriteLine($"Word to guess: { anymousWord} {Environment.NewLine}");
 
-            Console.Write("Give me a guess of a character: ");
-            var isValid =  char.TryParse(Console.ReadLine(), out char input);
-            if (!isValid)
+            do
             {
-                Console.WriteLine("You only have to enter 1 character");
-                return false;
-            }
-
-            
+                Console.Write("Give me a guess of a character: ");
+                var isValid = char.TryParse(Console.ReadLine(), out char input);
+                while (!isValid)
+                {
+                    Console.WriteLine("You only have to enter 1 character");
+                    Console.Write("Give me a guess of a character: ");
+                    isValid = char.TryParse(Console.ReadLine(), out input);
+                }
+            } while (lives != 0 || !anymousWord.Contains('_'));
 
             return false;
         }
@@ -47,11 +47,10 @@ namespace BootCamp1.Chapter
             var output = "";
             foreach (var character in wordToGuess)
             {
-                output += GuessCharacter(); 
+                output += GuessCharacter();
             }
 
-            return output; 
-             
+            return output;
         }
 
         private static char GuessCharacter()
