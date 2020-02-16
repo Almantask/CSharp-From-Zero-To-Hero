@@ -78,7 +78,7 @@ namespace BootCamp.Chapter
 
         private static bool IsStringValid(string input)
         {
-            return !string.IsNullOrEmpty(input) || !string.IsNullOrEmpty(input);
+            return !string.IsNullOrEmpty(input) || !string.IsNullOrWhiteSpace(input);
         }
 
         /// <summary>
