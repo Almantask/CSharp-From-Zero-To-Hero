@@ -207,7 +207,7 @@
                 return default;
             }
 
-            int[][] newBiDiArr = new int[2][] { array1, array2 };
+            int[][] newBiDiArr = new int[][] { array1, array2 };
             for (int i = 0; i < array1.Length; i++)
             {
                 newBiDiArr[0][i] = array1[i];
