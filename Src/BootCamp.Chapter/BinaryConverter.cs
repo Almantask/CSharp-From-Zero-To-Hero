@@ -32,8 +32,12 @@ namespace BootCamp.Chapter
         public static bool IsBin(string s)
         {
             foreach (var c in s)
+            {
                 if (c != '0' && c != '1')
+                {
                     return false;
+                }
+            }
             return true;
         }
 
@@ -41,7 +45,6 @@ namespace BootCamp.Chapter
         {
             try
             {
-                var realNumber = number;
                 long remainder;
                 string result = string.Empty;
                 if (number == 0)
