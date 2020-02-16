@@ -5,7 +5,7 @@ namespace BootCamp.Chapter
 {
     public static class CaesarCipher
     {
-        public static int TopCharacter { get; set; } = 127;
+        public static int TopCharacter { get; set; } = 255;
 
         public static int BaseCharacter { get; set; } = 32;
 
