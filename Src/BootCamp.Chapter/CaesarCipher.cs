@@ -126,7 +126,7 @@ namespace BootCamp.Chapter
                     numberOfOccurrences = ArrayOps.InsertLast(numberOfOccurrences, characters[i]);
                 }
             }
-            var analysisResult = Construct2dArray(repeatedCharacters, numberOfOccurrences);
+            var analysisResult = Construct2DArray(repeatedCharacters, numberOfOccurrences);
             return analysisResult;
         }
 
@@ -139,8 +139,8 @@ namespace BootCamp.Chapter
         {
             // I could have done a characterOccurrences[0] and [1] but
             // despite the fact It's more complicated I learned more about arrays.
-            var repeatedCharacters = Deconstruct2dArray(characterOccurrences, 0);
-            var numberOfOccurrences = Deconstruct2dArray(characterOccurrences, 1);
+            var repeatedCharacters = Deconstruct2DArray(characterOccurrences, 0);
+            var numberOfOccurrences = Deconstruct2DArray(characterOccurrences, 1);
             var highestOccurrence = ArrayOps.FindMaxValue(numberOfOccurrences);
 
             var possibleKeys = new int[0];
@@ -196,7 +196,7 @@ namespace BootCamp.Chapter
         /// <param name="array1">First int one dimension input array.</param>
         /// <param name="array2">Second int one dimension input array.</param>
         /// <returns>A new Bi-dimensional int array created from array1 and array2.</returns>
-        private static int[][] Construct2dArray(int[] array1, int[] array2)
+        private static int[][] Construct2DArray(int[] array1, int[] array2)
         {
             if (ArrayOps.IsNullOrEmpty(array1) || ArrayOps.IsNullOrEmpty(array2))
             {
@@ -223,7 +223,7 @@ namespace BootCamp.Chapter
         /// <param name="inputArray">The array from witch the transfer</param>
         /// <param name="arrayNumber"></param>
         /// <returns>One dimension array based on argument 0 or 1</returns>
-        private static int[] Deconstruct2dArray(int[][] inputArray, int arrayNumber)
+        private static int[] Deconstruct2DArray(int[][] inputArray, int arrayNumber)
         {
             bool argumentsAreNotValid = (inputArray == null || inputArray.Length == 0) && (arrayNumber < 0 || arrayNumber > 1);
             if (argumentsAreNotValid)
