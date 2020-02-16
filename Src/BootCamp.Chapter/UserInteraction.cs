@@ -21,31 +21,28 @@ namespace BootCamp.Chapter
 
         private static void ChooseMenu()
         {
-            while (true)
+            ConsoleKey pressedKey = Console.ReadKey(true).Key;
+            if (pressedKey == ConsoleKey.D0 || pressedKey == ConsoleKey.NumPad0)
             {
-                ConsoleKey pressedKey = Console.ReadKey(true).Key;
-                if (pressedKey == ConsoleKey.D0 || pressedKey == ConsoleKey.NumPad0)
-                {
-                    Environment.Exit(0);
-                }
-                else if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
-                {
-                    EncryptMessage();
-                }
-                else if (pressedKey == ConsoleKey.D2 || pressedKey == ConsoleKey.NumPad2)
-                {
-                    DecryptMessage();
-                }
-                else if (pressedKey == ConsoleKey.D3 || pressedKey == ConsoleKey.NumPad3)
-                {
-                    CrackMessage();
-                }
-                else if (pressedKey == ConsoleKey.D9 || pressedKey == ConsoleKey.NumPad9)
-                {
-                    ChangeSettings();
-                }
-                DisplayMenu();
+                Environment.Exit(0);
             }
+            if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
+            {
+                EncryptMessage();
+            }
+            if (pressedKey == ConsoleKey.D2 || pressedKey == ConsoleKey.NumPad2)
+            {
+                DecryptMessage();
+            }
+            if (pressedKey == ConsoleKey.D3 || pressedKey == ConsoleKey.NumPad3)
+            {
+                CrackMessage();
+            }
+            if (pressedKey == ConsoleKey.D9 || pressedKey == ConsoleKey.NumPad9)
+            {
+                ChangeSettings();
+            }
+            DisplayMenu();
         }
 
         private static void ChangeSettings()
