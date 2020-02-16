@@ -126,7 +126,7 @@ namespace BootCamp.Chapter
                     numberOfOccurrences = ArrayOps.InsertLast(numberOfOccurrences, characters[i]);
                 }
             }
-            var analysisResult = ArrayOps.Construct2dArray(repeatedCharacters, numberOfOccurrences);
+            var analysisResult = Construct2dArray(repeatedCharacters, numberOfOccurrences);
             return analysisResult;
         }
 
@@ -139,8 +139,8 @@ namespace BootCamp.Chapter
         {
             // I could have done a characterOccurrences[0] and [1] but
             // despite the fact It's more complicated I learned more about arrays.
-            var repeatedCharacters = ArrayOps.Deconstruct2dArray(characterOccurrences, 0);
-            var numberOfOccurrences = ArrayOps.Deconstruct2dArray(characterOccurrences, 1);
+            var repeatedCharacters = Deconstruct2dArray(characterOccurrences, 0);
+            var numberOfOccurrences = Deconstruct2dArray(characterOccurrences, 1);
             var highestOccurrence = ArrayOps.FindMaxValue(numberOfOccurrences);
 
             var possibleKeys = new int[0];
@@ -188,6 +188,56 @@ namespace BootCamp.Chapter
                 Console.WriteLine($"Key = {key} - {crackedMessage}");
                 Console.WriteLine();
             }
+        }
+
+        /// <summary>
+        /// Transfers the contents of two one dimension arrays to one bi-dimensional array.
+        /// </summary>
+        /// <param name="array1">First int one dimension input array.</param>
+        /// <param name="array2">Second int one dimension input array.</param>
+        /// <returns>A new Bi-dimensional int array created from array1 and array2.</returns>
+        private static int[][] Construct2dArray(int[] array1, int[] array2)
+        {
+            if (ArrayOps.IsNullOrEmpty(array1) || ArrayOps.IsNullOrEmpty(array2))
+            {
+                System.Console.WriteLine("Input arrays are not valid!");
+                return default;
+            }
+
+            int[][] newBiDiArr = new int[][] { array1, array2 };
+            for (int i = 0; i < array1.Length; i++)
+            {
+                newBiDiArr[0][i] = array1[i];
+            }
+            for (int i = 0; i < array2.Length; i++)
+            {
+                newBiDiArr[1][i] = array2[i];
+            }
+
+            return newBiDiArr;
+        }
+
+        /// <summary>
+        /// Transfers the elements from one of the arrays in the bi-dimensional array to one dimension array.
+        /// </summary>
+        /// <param name="inputArray">The array from witch the transfer</param>
+        /// <param name="arrayNumber"></param>
+        /// <returns>One dimension array based on argument 0 or 1</returns>
+        private static int[] Deconstruct2dArray(int[][] inputArray, int arrayNumber)
+        {
+            bool argumentsAreNotValid = (inputArray == null || inputArray.Length == 0) && (arrayNumber < 0 || arrayNumber > 1);
+            if (argumentsAreNotValid)
+            {
+                System.Console.WriteLine("Arguments are not valid!");
+                return default;
+            }
+
+            var newArray = new int[inputArray[arrayNumber].Length];
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                newArray[i] = inputArray[arrayNumber][i];
+            }
+            return newArray;
         }
     }
 }
