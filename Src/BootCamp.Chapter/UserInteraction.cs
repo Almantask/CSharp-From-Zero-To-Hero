@@ -22,25 +22,31 @@ namespace BootCamp.Chapter
         private static void ChooseMenu()
         {
             ConsoleKey pressedKey = Console.ReadKey(true).Key;
-            if (pressedKey == ConsoleKey.D0 || pressedKey == ConsoleKey.NumPad0)
+            if (pressedKey == ConsoleKey.D0)
             {
                 Environment.Exit(0);
             }
-            if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
+            else if (pressedKey == ConsoleKey.D1)
             {
                 EncryptMessage();
             }
-            if (pressedKey == ConsoleKey.D2 || pressedKey == ConsoleKey.NumPad2)
+            else if (pressedKey == ConsoleKey.D2)
             {
                 DecryptMessage();
             }
-            if (pressedKey == ConsoleKey.D3 || pressedKey == ConsoleKey.NumPad3)
+            else if (pressedKey == ConsoleKey.D3)
             {
                 CrackMessage();
             }
-            if (pressedKey == ConsoleKey.D9 || pressedKey == ConsoleKey.NumPad9)
+            else if (pressedKey == ConsoleKey.D9)
             {
                 ChangeSettings();
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid option!");
+                Wait();
             }
             DisplayMenu();
         }
@@ -59,7 +65,7 @@ namespace BootCamp.Chapter
 
             Console.Write("Do you want to change? (Y/N) ");
             var response = Console.ReadLine();
-            if (response != "Y" || response == "N")
+            if (response != "Y")
             {
                 return;
             }

@@ -2,124 +2,40 @@
 {
     public static class ArrayOps
     {
-        /// <summary>
-        /// Sort the array in ascending order.
-        /// If array empty or null- don't do anything.
-        /// </summary>
-        /// <param name="array">Input array in a random order.</param>
-        ///
-        public static void Sort(int[] array)
+        public static int FindIndexOfMaxValue(int[] inputArray)
         {
-            if (IsNullOrEmpty(array))
+            if (IsNullOrEmpty(inputArray))
             {
-                return;
+                return default;
             }
-
-            for (var i = 0; i < array.Length; i++)
+            var maxValue = inputArray[0];
+            int index = 0;
+            for (int i = 0; i < inputArray.Length; i++)
             {
-                for (var j = i; j > 0 && array[j] < array[j - 1]; j--)
+                if (inputArray[i] > maxValue)
                 {
-                    SwapElements(array, j, j - 1);
+                    maxValue = inputArray[i];
+                    index = i;
                 }
             }
+            return index;
         }
 
-        private static void SwapElements(int[] array, int i, int j)
+        public static int FindMaxValue(int[] inputArray)
         {
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-
-        /// <summary>
-        /// Reverse the array elements, first being last and so on.
-        /// If array empty or null- don't do anything.
-        /// </summary>
-        /// <param name="array">Input array in a random order.</param>
-        public static void Reverse(int[] array)
-        {
-            if (array == null || array.Length == 0)
+            if (IsNullOrEmpty(inputArray))
             {
-                return;
+                return default;
             }
-
-            for (int i = 0; i < array.Length / 2; i++)
+            int max = inputArray[0];
+            for (int i = 0; i < inputArray.Length; i++)
             {
-                SwapElements(array, i, array.Length - i - 1);
+                if (inputArray[i] > max)
+                {
+                    max = inputArray[i];
+                }
             }
-        }
-
-        /// <summary>
-        /// Remove last element in array.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
-        public static int[] RemoveLast(int[] array)
-        {
-            if (IsNullOrEmpty(array))
-            {
-                return array;
-            }
-            if (array.Length != 0)
-            {
-                return RemoveAt(array, array.Length - 1);
-            }
-
-            return array;
-        }
-
-        /// <summary>
-        /// Remove first element in array.
-        /// </summary>
-        /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
-        public static int[] RemoveFirst(int[] array)
-        {
-            return array == null || array.Length == 0 ? array : RemoveAt(array, 0);
-        }
-
-        /// <summary>
-        /// Removes array element at given index.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="index">Index at which array element should be removed.</param>
-        /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
-        public static int[] RemoveAt(int[] array, int index)
-        {
-            bool ArgumentsAreNotValid = array == null || index < 0 || index >= array.Length;
-
-            if (ArgumentsAreNotValid)
-            {
-                return array;
-            }
-
-            var tempArray = new int[array.Length - 1];
-            for (int i = 0; i < tempArray.Length; i++)
-            {
-                tempArray[i] = i < index ? array[i] : array[i + 1];
-            }
-            return tempArray;
-        }
-
-        /// <summary>
-        /// Inserts a new array element at the start.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="number">Number to be added.</param>
-        /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
-        public static int[] InsertFirst(int[] array, int number)
-        {
-            return InsertAt(array, number, 0);
-        }
-
-        /// <summary>
-        /// Inserts a new array element at the end.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="number">Number to be added.</param>
-        /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
-        public static int[] InsertLast(int[] array, int number)
-        {
-            return array == null ? NullArrayHelper(number) : InsertAt(array, number, array.Length);
+            return max;
         }
 
         /// <summary>
@@ -157,40 +73,31 @@
             return tempArray;
         }
 
-        public static int FindMaxValue(int[] inputArray)
+        /// <summary>
+        /// Inserts a new array element at the start.
+        /// </summary>
+        /// <param name="array">Input array.</param>
+        /// <param name="number">Number to be added.</param>
+        /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
+        public static int[] InsertFirst(int[] array, int number)
         {
-            if (IsNullOrEmpty(inputArray))
-            {
-                return default;
-            }
-            int max = inputArray[0];
-            for (int i = 0; i < inputArray.Length; i++)
-            {
-                if (inputArray[i] > max)
-                {
-                    max = inputArray[i];
-                }
-            }
-            return max;
+            return InsertAt(array, number, 0);
         }
 
-        public static int FindIndexOfMaxValue(int[] inputArray)
+        /// <summary>
+        /// Inserts a new array element at the end.
+        /// </summary>
+        /// <param name="array">Input array.</param>
+        /// <param name="number">Number to be added.</param>
+        /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
+        public static int[] InsertLast(int[] array, int number)
         {
-            if (IsNullOrEmpty(inputArray))
-            {
-                return default;
-            }
-            var maxValue = inputArray[0];
-            int index = 0;
-            for (int i = 0; i < inputArray.Length; i++)
-            {
-                if (inputArray[i] > maxValue)
-                {
-                    maxValue = inputArray[i];
-                    index = i;
-                }
-            }
-            return index;
+            return array == null ? NullArrayHelper(number) : InsertAt(array, number, array.Length);
+        }
+
+        public static bool IsNullOrEmpty(int[] array)
+        {
+            return array == null || array.Length == 0;
         }
 
         /// <summary>
@@ -213,9 +120,94 @@
             System.Console.WriteLine();
         }
 
-        public static bool IsNullOrEmpty(int[] array)
+        /// <summary>
+        /// Removes array element at given index.
+        /// </summary>
+        /// <param name="array">Input array.</param>
+        /// <param name="index">Index at which array element should be removed.</param>
+        /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
+        public static int[] RemoveAt(int[] array, int index)
         {
-            return array == null || array.Length == 0;
+            bool ArgumentsAreNotValid = array == null || index < 0 || index >= array.Length;
+
+            if (ArgumentsAreNotValid)
+            {
+                return array;
+            }
+
+            var tempArray = new int[array.Length - 1];
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                tempArray[i] = i < index ? array[i] : array[i + 1];
+            }
+            return tempArray;
+        }
+
+        /// <summary>
+        /// Remove first element in array.
+        /// </summary>
+        /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
+        public static int[] RemoveFirst(int[] array)
+        {
+            return array == null || array.Length == 0 ? array : RemoveAt(array, 0);
+        }
+
+        /// <summary>
+        /// Remove last element in array.
+        /// </summary>
+        /// <param name="array">Input array.</param>
+        /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
+        public static int[] RemoveLast(int[] array)
+        {
+            if (IsNullOrEmpty(array))
+            {
+                return array;
+            }
+            if (array.Length != 0)
+            {
+                return RemoveAt(array, array.Length - 1);
+            }
+
+            return array;
+        }
+
+        /// <summary>
+        /// Reverse the array elements, first being last and so on.
+        /// If array empty or null- don't do anything.
+        /// </summary>
+        /// <param name="array">Input array in a random order.</param>
+        public static void Reverse(int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
+
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                SwapElements(array, i, array.Length - i - 1);
+            }
+        }
+
+        /// <summary>
+        /// Sort the array in ascending order.
+        /// If array empty or null- don't do anything.
+        /// </summary>
+        /// <param name="array">Input array in a random order.</param>
+        public static void Sort(int[] array)
+        {
+            if (IsNullOrEmpty(array))
+            {
+                return;
+            }
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                for (var j = i; j > 0 && array[j] < array[j - 1]; j--)
+                {
+                    SwapElements(array, j, j - 1);
+                }
+            }
         }
 
         private static int[] NullArrayHelper(int number)
@@ -223,6 +215,13 @@
             var nullableArray = new int[1];
             nullableArray[0] = number;
             return nullableArray;
+        }
+
+        private static void SwapElements(int[] array, int i, int j)
+        {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
         }
     }
 }
