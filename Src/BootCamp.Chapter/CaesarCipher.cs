@@ -14,7 +14,13 @@ namespace BootCamp.Chapter
         // n - use top n highest repeated chars
         public static int KeyAccuracy { get; set; }
 
-        // TODO: add comment
+        /// <summary>
+        /// Encrypts a message using Caesar Cipher single character shift
+        /// provided by EncodeCharacter method
+        /// </summary>
+        /// <param name="plainMessage">Message to be encrypted.</param>
+        /// <param name="cipherKey">character cipher (shift)</param>
+        /// <returns>Encrypted message using Caesar Cipher algorithm</returns>
         public static string Encrypt(string plainMessage, int cipherKey)
         {
             if (!Utils.IsStringValid(plainMessage))
@@ -31,6 +37,13 @@ namespace BootCamp.Chapter
             return output.ToString();
         }
 
+        /// <summary>
+        /// Decrypts a message previously encrypted using Caesar Cipher using a known key/shift
+        /// using reversed Encrypt method.
+        /// </summary>
+        /// <param name="encryptedMessage">Message to be decrypted</param>
+        /// <param name="cipherKey">character cipher (shift)</param>
+        /// <returns>Encrypted message using Caesar Cipher algorithm</returns>
         public static string Decrypt(string encryptedMessage, int cipherKey)
         {
             if (!Utils.IsStringValid(encryptedMessage))
@@ -42,7 +55,10 @@ namespace BootCamp.Chapter
             return decryptedMessage;
         }
 
-        // TODO: add comment
+        /// <summary>
+        /// Checks if a character is a printable character
+        /// </summary>
+        /// <param name="inputCharacter">character to be checked</param>
         private static bool IsPrintableChar(char inputCharacter)
         {
             return inputCharacter >= BaseCharacter || inputCharacter < TopCharacter;
@@ -51,6 +67,10 @@ namespace BootCamp.Chapter
         // this method exists for the cases when dividend % divisor returns negative number
         private static int Mod(int dividend, int divisor)
         {
+            if (divisor == 0)
+            {
+                return dividend;
+            }
             int remainder = dividend % divisor;
             if (remainder < 0)
             {
@@ -59,7 +79,12 @@ namespace BootCamp.Chapter
             return remainder;
         }
 
-        // TODO: add comment
+        /// <summary>
+        /// Implementation of Caesar Cipher character shift algorithm
+        /// </summary>
+        /// <param name="inputCharacter">character to be shifted</param>
+        /// <param name="shift">numbers of characters to be shifted</param>
+        /// <returns>resulting character after shift is performed</returns>
         private static char EncodeCharacter(char inputCharacter, int shift)
         {
             if (!IsPrintableChar(inputCharacter))
@@ -76,7 +101,7 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="encryptedMessage"></param>
         /// <returns>Bi-dimensional array containing found characters and number of repetitions</returns>
-        public static int[][] AnalyseFrequency(string encryptedMessage)
+        private static int[][] AnalyseFrequency(string encryptedMessage)
         {
             if (!Utils.IsStringValid(encryptedMessage))
             {
@@ -110,7 +135,7 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="characterOccurrences">bi-dimensional array containing</param>
         /// <returns>an array with possible decryption keys</returns>
-        public static int[] FindPosibleKeys(int[][] characterOccurrences)
+        private static int[] FindPossibleKeys(int[][] characterOccurrences)
         {
             // I could have done a characterOccurrences[0] and [1] but
             // despite the fact It's more complicated I learned more about arrays.
@@ -132,13 +157,31 @@ namespace BootCamp.Chapter
             return possibleKeys;
         }
 
-        // TODO: add comment
-        public static void PrintDecryptedVariants(string encryptedMessage, int[] posibleKeys)
+        /// <summary>
+        /// Prints decrypted messages for each possible key available in input array.
+        /// </summary>
+        /// <param name="encryptedMessage">Message to be decrypted</param>
+        public static void PrintDecryptedVariants(string encryptedMessage)
         {
-            Console.WriteLine($"{posibleKeys.Length} possible key found.{Environment.NewLine}");
-            Console.WriteLine($"Adjust KeyAccuracy: {KeyAccuracy} and BaseCharacter: {BaseCharacter} for better results!{Environment.NewLine}");
-            Console.WriteLine($"Decryption results: {Environment.NewLine}");
-            foreach (var key in posibleKeys)
+            bool arguementIsValid = Utils.IsStringValid(encryptedMessage);
+            if (!arguementIsValid)
+            {
+                Console.WriteLine("Argument is not valid");
+                return;
+            }
+
+            var characterOccurrences = AnalyseFrequency(encryptedMessage);
+            var possibleKeys = FindPossibleKeys(characterOccurrences);
+
+            Console.WriteLine($"{possibleKeys.Length} possible key(s) found.{Environment.NewLine}");
+            Console.WriteLine($"Adjust the bellow settings for better results!");
+            Console.WriteLine($"KeyAccuracy: {KeyAccuracy}");
+            Console.WriteLine($"Top Character: {TopCharacter}");
+            Console.WriteLine($"BaseCharacter: {BaseCharacter}");
+            Console.WriteLine();
+
+            Console.WriteLine($"Decryption results: ");
+            foreach (var key in possibleKeys)
             {
                 var crackedMessage = Decrypt(encryptedMessage, key);
 

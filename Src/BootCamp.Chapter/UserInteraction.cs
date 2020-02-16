@@ -123,9 +123,7 @@ namespace BootCamp.Chapter
             }
 
             Console.WriteLine($"Testing frequency attack...{Environment.NewLine}");
-            var characterOccurrences = CaesarCipher.AnalyseFrequency(encryptedMessage);
-            var posibleKeys = CaesarCipher.FindPosibleKeys(characterOccurrences);
-            CaesarCipher.PrintDecryptedVariants(encryptedMessage, posibleKeys);
+            CaesarCipher.PrintDecryptedVariants(encryptedMessage);
 
             Wait();
         }
