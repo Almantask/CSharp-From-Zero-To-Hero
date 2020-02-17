@@ -26,32 +26,69 @@ namespace BootCamp1.Chapter
             var anymousWord = ConvertWordSoUserCannotReadit(wordToGuess);
 
             Console.WriteLine($"Word to guess: { anymousWord} {Environment.NewLine}");
+            var alreadyUsedChars = "";
 
-            Console.WriteLine(wordToGuess);
-            
+            Console.WriteLine(wordToGuess); 
+
             do
             {
+                Console.WriteLine($"You have still {lives} live(s)");
+
                 char input = InputUser();
 
                 var sb = anymousWord.ToCharArray();
                 var counter = 0;
+
+
+
+                if (alreadyUsedChars.Contains(input.ToString().ToLower()))
+                {
+                    Console.WriteLine("You already used this char and loose a live");
+                    lives -= 1;
+                    Console.WriteLine($"You have still {lives} live(s)");
+                    continue;
+                }
+
+
                 for (int i = 0; i < sb.Length; i++)
                 {
                     if (String.Equals(input.ToString(), wordToGuess[i].ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         sb[i] = input;
                         counter += 1;
+                        alreadyUsedChars += input.ToString().ToLower();
 
                     }
                 }
 
                 anymousWord = new String(sb);
                 Console.WriteLine(anymousWord);
-                // message to the user if a word is in the word to guess and adapt lives;
+
+                lives = OutputIfCharacterIsInWord(lives, input, counter);
 
             } while (lives != 0 && anymousWord.Contains('-'));
 
+            if (!anymousWord.Contains('-'))
+            {
+                return true; 
+            }
             return false;
+        }
+
+        private static int OutputIfCharacterIsInWord(int lives, char input, int counter)
+        {
+            if (counter >= 1)
+            {
+                Console.WriteLine($"the character {input} is {counter} times in the word.{Environment.NewLine}");
+            }
+            else
+            {
+                Console.WriteLine($"The character is not in the word. You loose a live.{Environment.NewLine}");
+                lives -= 1;
+                Console.WriteLine($"You have still {lives} live(s)");
+            }
+
+            return lives;
         }
 
         private static char InputUser()

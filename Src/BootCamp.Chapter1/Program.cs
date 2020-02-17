@@ -7,7 +7,16 @@ namespace BootCamp1.Chapter
         static void Main(string[] args)
         {
             Console.WriteLine("Let's play Hangman!");
-            Hangman.Play(1, "Animals.txt", 5);
+            var outcome = Hangman.Play(1, "Animals.txt", 5);
+            if (outcome)
+            {
+                Console.WriteLine("You won this game. Congrats"); 
+            }
+            else
+            {
+                Console.WriteLine("Sorry , you lost");
+            }
+
         }
     }
 }
