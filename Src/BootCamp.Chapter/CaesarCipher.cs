@@ -131,7 +131,7 @@ namespace BootCamp.Chapter
         {
             if (ArrayOps.IsNullOrEmpty(array1) || ArrayOps.IsNullOrEmpty(array2))
             {
-                System.Console.WriteLine("Input arrays are not valid!");
+                Console.WriteLine("Input arrays are not valid!");
                 return default;
             }
 
@@ -159,7 +159,7 @@ namespace BootCamp.Chapter
             bool argumentsAreNotValid = (inputArray == null || inputArray.Length == 0) && (arrayNumber < 0 || arrayNumber > 1);
             if (argumentsAreNotValid)
             {
-                System.Console.WriteLine("Arguments are not valid!");
+                Console.WriteLine("Arguments are not valid!");
                 return default;
             }
 
@@ -201,7 +201,7 @@ namespace BootCamp.Chapter
             var numberOfOccurrences = Deconstruct2DArray(characterOccurrences, 1);
             var highestOccurrence = ArrayOps.FindMaxValue(numberOfOccurrences);
 
-            var possibleKeys = new int[0];
+            var possibleKeys = Array.Empty<int>();
             int currentKey;
 
             for (int i = 0; i < repeatedCharacters.Length; i++)
