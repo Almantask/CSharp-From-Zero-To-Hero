@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp1.Chapter
 {
@@ -24,22 +25,47 @@ namespace BootCamp1.Chapter
             var wordToGuess = WordsBank.PickRandomWord(@$"Words/{wordsFile}", difficulty);
             var anymousWord = ConvertWordSoUserCannotReadit(wordToGuess);
 
-            Console.WriteLine("Let's play hangman");
             Console.WriteLine($"Word to guess: { anymousWord} {Environment.NewLine}");
 
+            Console.WriteLine(wordToGuess);
+            
             do
             {
-                Console.Write("Give me a guess of a character: ");
-                var isValid = char.TryParse(Console.ReadLine(), out char input);
-                while (!isValid)
+                char input = InputUser();
+
+                var sb = anymousWord.ToCharArray();
+                var counter = 0;
+                for (int i = 0; i < sb.Length; i++)
                 {
-                    Console.WriteLine("You only have to enter 1 character");
-                    Console.Write("Give me a guess of a character: ");
-                    isValid = char.TryParse(Console.ReadLine(), out input);
+                    if (String.Equals(input.ToString(), wordToGuess[i].ToString(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        sb[i] = input;
+                        counter += 1;
+
+                    }
                 }
-            } while (lives != 0 || !anymousWord.Contains('_'));
+
+                anymousWord = new String(sb);
+                Console.WriteLine(anymousWord);
+                // message to the user if a word is in the word to guess and adapt lives;
+
+            } while (lives != 0 && anymousWord.Contains('-'));
 
             return false;
+        }
+
+        private static char InputUser()
+        {
+            Console.Write("Give me a guess of a character: ");
+            var isValid = char.TryParse(Console.ReadLine(), out char input);
+            while (!isValid)
+            {
+                Console.WriteLine("You only have to enter 1 character");
+                Console.Write("Give me a guess of a character: ");
+                isValid = char.TryParse(Console.ReadLine(), out input);
+            }
+
+            return input;
         }
 
         private static string ConvertWordSoUserCannotReadit(string wordToGuess)
