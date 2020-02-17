@@ -39,13 +39,11 @@ namespace BootCamp.Chapter
             {
                 return "";
             }
-
-            // Store it as variable because I will use it twice            
+  
             var topAndBottom = BuildTopAndBottom(message, padding);
             var emptyMiddleLines = BuildEmptyMiddleLines(message, padding);
 
             var sb = new StringBuilder();
-
             sb.Append(topAndBottom);
             sb.Append(emptyMiddleLines);
             sb.Append(BuildMiddleContainngText(message, padding));
@@ -60,8 +58,6 @@ namespace BootCamp.Chapter
             var lines = message.Split(Environment.NewLine);
             var middleSb = new StringBuilder();
 
-            // this appends middle line(s) with text, could do as seperate funtion, but it is only one loop, 
-            // not sure if its worth creating seperate function 
             for (int i = 0; i < lines.Length; i++)
             {
                 middleSb.Append($"|{AddBothSidePaddingTo(lines[i], message, padding)}|{Environment.NewLine}");
