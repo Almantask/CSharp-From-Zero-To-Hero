@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace BootCamp1.Chapter
 {
@@ -22,9 +21,9 @@ namespace BootCamp1.Chapter
         /// <returns>True if game was won or false if game was lost.</returns>
         public static bool Play(int lives, string wordsFile, int difficulty)
         {
-            if(difficulty < 3 || lives == 0)
+            if (difficulty < 3 || lives == 0)
             {
-                throw new Exception(); 
+                throw new Exception();
             }
 
             var wordToGuess = WordsBank.PickRandomWord(@$"Words/{wordsFile}", difficulty);
@@ -32,8 +31,6 @@ namespace BootCamp1.Chapter
 
             Console.WriteLine($"Word to guess: { anymousWord} {Environment.NewLine}");
             var alreadyUsedChars = "";
-
-            Console.WriteLine(wordToGuess); 
 
             do
             {
@@ -44,8 +41,6 @@ namespace BootCamp1.Chapter
                 var sb = anymousWord.ToCharArray();
                 var counter = 0;
 
-
-
                 if (alreadyUsedChars.Contains(input.ToString().ToLower()))
                 {
                     Console.WriteLine("You already used this char and loose a live");
@@ -54,7 +49,6 @@ namespace BootCamp1.Chapter
                     continue;
                 }
 
-
                 for (int i = 0; i < sb.Length; i++)
                 {
                     if (String.Equals(input.ToString(), wordToGuess[i].ToString(), StringComparison.OrdinalIgnoreCase))
@@ -62,7 +56,6 @@ namespace BootCamp1.Chapter
                         sb[i] = input;
                         counter += 1;
                         alreadyUsedChars += input.ToString().ToLower();
-
                     }
                 }
 
@@ -70,12 +63,11 @@ namespace BootCamp1.Chapter
                 Console.WriteLine(anymousWord);
 
                 lives = OutputIfCharacterIsInWord(lives, input, counter);
-
             } while (lives != 0 && anymousWord.Contains('-'));
 
             if (!anymousWord.Contains('-'))
             {
-                return true; 
+                return true;
             }
             return false;
         }
