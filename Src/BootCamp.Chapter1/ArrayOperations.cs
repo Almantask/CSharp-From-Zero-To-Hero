@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -45,17 +47,15 @@
             }
 
             var arrayLength = array.Length;
-            // make a copy of array by value (not reference)
-            int[] tmp = new int[128];
-            for (var i = 0; i < arrayLength; i++)
+            for (var i = 0; i < arrayLength/2; i++)
             {
-                tmp[i] = array[i];
-            }
-
-            // reverse current index with last index reduced with current index
-            for (var i = 0; i < arrayLength; i++)
-            {
-                array[i] = tmp[arrayLength - i-1];
+                // x = 0, y = 1
+                // x = x + y (1 = 0 + 1)
+                // y = x - y (0 = 1 - 1) final value
+                // x = x - y (1 =  1 - 0) final value
+                array[i] = array[i] + array[arrayLength - i - 1];
+                array[arrayLength - i-1] = array[i] - array[arrayLength - i - 1];
+                array[i] = array[i] - array[arrayLength - i - 1];
             }
         }
 
