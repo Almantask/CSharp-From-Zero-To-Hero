@@ -15,6 +15,11 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {            
+            if(String.IsNullOrEmpty(dirtyFile) || String.IsNullOrEmpty(cleanedFile))
+            {
+                throw new ArgumentException("File path is null or empty.");
+            }
+
             var corruptedFileContent = File.ReadAllText(dirtyFile);
             if (String.IsNullOrEmpty(corruptedFileContent))
             {
