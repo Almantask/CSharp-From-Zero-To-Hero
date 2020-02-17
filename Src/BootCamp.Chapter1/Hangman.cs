@@ -22,6 +22,11 @@ namespace BootCamp1.Chapter
         /// <returns>True if game was won or false if game was lost.</returns>
         public static bool Play(int lives, string wordsFile, int difficulty)
         {
+            if(difficulty < 3 || lives == 0)
+            {
+                throw new Exception(); 
+            }
+
             var wordToGuess = WordsBank.PickRandomWord(@$"Words/{wordsFile}", difficulty);
             var anymousWord = ConvertWordSoUserCannotReadit(wordToGuess);
 
