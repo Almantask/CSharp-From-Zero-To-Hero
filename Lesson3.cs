@@ -8,13 +8,20 @@ namespace Lesson3
 	    {
             static void Main(string[] args)
             {
+                Get_Attributes();
+                Print_Description();
+            }
+            static void Get_Attributes()
+            {
                 string name = PromptString("name");
                 string surname = PromptString("surname");
                 int age = PromptInt("age");
                 float weight = PromptFloat("weight");
                 float height = PromptFloat("height");
                 float bmi = CalculateBmi(weight, height);
-
+            }
+            static void Print_Description()
+            {
                 Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {bmi}.");
             }
             static string PromptString(string attribute)
