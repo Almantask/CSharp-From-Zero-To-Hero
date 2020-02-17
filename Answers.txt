@@ -1,0 +1,21 @@
+part 1:
+add Watch on "value" line 50 (or use Autos/Locals tab) and pause/continue to see current value
+Debugger!
+51
+79
+77
+
+part 2:
+breakpoint on 71 and step out
+
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+YOU MAY PROCEED!
+--------------------------------
+From the smaller to the greater,
+From sunrise to sunset,
+From one, learn all.
+--------------------------------
+
+part 3 - optional:
+smaller sunrise sunset
+in progress
