@@ -49,10 +49,6 @@ namespace BootCamp.Chapter1
             var arrayLength = array.Length;
             for (var i = 0; i < arrayLength/2; i++)
             {
-                // x = 0, y = 1
-                // x = x + y (1 = 0 + 1)
-                // y = x - y (0 = 1 - 1) final value
-                // x = x - y (1 =  1 - 0) final value
                 array[i] = array[i] + array[arrayLength - i - 1];
                 array[arrayLength - i-1] = array[i] - array[arrayLength - i - 1];
                 array[i] = array[i] - array[arrayLength - i - 1];
