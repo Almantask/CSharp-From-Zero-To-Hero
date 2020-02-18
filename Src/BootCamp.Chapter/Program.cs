@@ -6,12 +6,16 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
+            Get_And_Print_Attributes();
+        }
+        public static void Get_And_Print_Attributes()
+        {
             string name = PromptString("name");
             string surname = PromptString("surname");
             int age = PromptInt("age");
-            int weight = PromptInt("weight");
-            double height = PromptFloat("height");
-            double bmi = CalculateBmi(weight, height);
+            float weight = PromptFloat("weight");
+            float height = PromptFloat("height");
+            float bmi = CalculateBmi(weight, height);
 
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
             if (bmi > 0)
@@ -54,12 +58,12 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static double PromptFloat(string attribute)
+        public static float PromptFloat(string attribute)
         {
             Console.Write($"What is your {attribute}? ");
-            double doubnum;
+            float doubnum;
             string input = Console.ReadLine();
-            bool isDoub = double.TryParse(input, out doubnum);
+            bool isDoub = float.TryParse(input, out doubnum);
             if (!isDoub)
             {
                 Console.WriteLine($"{input} is not a valid entry.");
@@ -71,25 +75,32 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static double CalculateBmi(double weight, double height)
+        public static float CalculateBmi(float weight, float height)
         {
-            if (height <= 0)
-                {
-                    Console.WriteLine($"Height cannot be less than zero, but was {height}.");
-                if (weight > 0)
-                {
-                    return 0;
-                }
-                }
-            if (weight <= 0)
-                {
-                    Console.WriteLine($"Height cannot be less than zero, but was {weight}.");
-                    return 0;
-                }
+            if (weight <=0 || height <=0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+            }
+            if (weight <= 0 && height <= 0)
+            {
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+                return -1;
+            }
+            else if (weight <= 0)
+            {
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                return -1;
+            }
+            else if (height <= 0)
+            {
+                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                return -1;
+            }
             else
-                {
-                    return weight / height * height;
-                }
+            {
+                return weight / height * height;
+            }
         }
     }
 }
