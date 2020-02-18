@@ -21,7 +21,9 @@ namespace BootCamp1.Chapter
         /// <returns>True if game was won or false if game was lost.</returns>
         public static bool Play(int lives, string wordsFile, int difficulty)
         {
-            if (difficulty < 3 || lives == 0)
+            const int minLives = 3;
+
+            if (difficulty < minLives || lives == 0)
             {
                 throw new Exception();
             }
@@ -31,7 +33,17 @@ namespace BootCamp1.Chapter
 
             Console.WriteLine($"Word to guess: { anymousWord} {Environment.NewLine}");
             var alreadyUsedChars = "";
+            playGame( lives, wordToGuess, anymousWord, alreadyUsedChars);
 
+            if (!anymousWord.Contains('-'))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static void playGame(int lives, string wordToGuess, string anymousWord, string alreadyUsedChars)
+        {
             do
             {
                 Console.WriteLine($"You have still {lives} live(s)");
@@ -64,12 +76,6 @@ namespace BootCamp1.Chapter
 
                 lives = OutputIfCharacterIsInWord(lives, input, counter);
             } while (lives != 0 && anymousWord.Contains('-'));
-
-            if (!anymousWord.Contains('-'))
-            {
-                return true;
-            }
-            return false;
         }
 
         private static int OutputIfCharacterIsInWord(int lives, char input, int counter)
