@@ -9,7 +9,7 @@
                 return default;
             }
             int max = inputArray[0];
-            for (int i = 0; i < inputArray.Length; i++)
+            for (int i = 1; i < inputArray.Length; i++)
             {
                 if (inputArray[i] > max)
                 {
