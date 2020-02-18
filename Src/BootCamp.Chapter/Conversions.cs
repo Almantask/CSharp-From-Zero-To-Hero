@@ -5,6 +5,7 @@ namespace BootCamp.Chapter
 {
     class Conversions
     {
+        private const int BINARYARRAYLENGTH = 40;
         public static void Demo()
         {
             Console.WriteLine("Convert Decimal To Binary");
@@ -17,14 +18,8 @@ namespace BootCamp.Chapter
         private static void ConvertDecimalToBinary()
         {
             int i;
-            int[] binaryHolder = new int[40];
-            int[] a = new int[40];
-            Console.Write("Enter the number to convert: ");
-            if (!int.TryParse(Console.ReadLine(), out int decimalNumber))
-            {
-                Console.WriteLine("That wasn't a decimal number. Please try again");
-                ConvertDecimalToBinary();
-            }
+            int[] binaryHolder = new int[BINARYARRAYLENGTH];
+            int decimalNumber = GetDecimalInput();
             i = 0;
             while (decimalNumber > 0)
             {
@@ -39,32 +34,42 @@ namespace BootCamp.Chapter
             }
         }
 
-            private static void ConvertBinaryToDecimal()
+        private static int GetDecimalInput()
+        {
+            Console.Write("Enter the number to convert: ");
+            if (!int.TryParse(Console.ReadLine(), out int decimalNumber))
             {
-                int decimalValue = 0;
-                int[] a = new int[10];
-                Console.Write("Enter the binary number to convert: ");
-                string binary = Console.ReadLine();
-                if (!Regex.IsMatch(binary, @"^[0-1]+$"))
-                {
-                    Console.WriteLine("A binary number may only contain 1's and 0's. Please try your input again.");
-                    ConvertBinaryToDecimal();
-                }
-                char[] bits = binary.ToCharArray();
-                for (int j = 0; j <= bits.Length - 1; j++)
-                {
-                    if (bits[j].Equals('0') || bits[j].Equals('1'))
-                    {
-                        int currentBit = bits[j] - '0';
-                        decimalValue += (int)(currentBit * Math.Pow(2, (bits.Length - 1 - j)));
-                    }
-                    else
-                    {
-                        Console.WriteLine("The string provided must be onle 1's or 0's.");
-                        ConvertBinaryToDecimal();
-                    }
-                }
-                Console.WriteLine($"A binary string of {binary} is equivalent to a decimal value of {decimalValue}.");
+                Console.WriteLine("That wasn't a decimal number. Please try again");
+                return GetDecimalInput();
             }
+
+            return decimalNumber;
         }
+
+        private static void ConvertBinaryToDecimal()
+        {
+            int decimalValue = 0;
+            string binary = GetBinaryInput();
+            char[] bits = binary.ToCharArray();
+            for (int j = 0; j <= bits.Length - 1; j++)
+            {
+                int currentBit = bits[j] - '0';
+                decimalValue += (int)(currentBit * Math.Pow(2, (bits.Length - 1 - j)));
+            }
+            Console.WriteLine($"A binary string of {binary} is equivalent to a decimal value of {decimalValue}.");
+        }
+
+        private static string GetBinaryInput()
+        {
+            Console.Write("Enter the binary number to convert: ");
+            string binary = Console.ReadLine();
+            while (!Regex.IsMatch(binary, @"^[0-1]+$"))
+            {
+                Console.WriteLine("A binary number may only contain 1's and 0's. Please try your input again.");
+                binary = Console.ReadLine();
+            }
+
+            return binary;
+        }
+    }
     } 
