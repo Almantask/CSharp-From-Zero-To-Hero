@@ -43,7 +43,7 @@ namespace BootCamp.Chapter
 
         private static char GetNewLetter(char letter, int shift)
         {
-            if (!isLetter(letter))
+            if (!IsLetter(letter))
             {
                 return letter;
             }
@@ -59,7 +59,7 @@ namespace BootCamp.Chapter
             return IsUpper(letter) ? (char)(newLetterPosition + 'A') : (char)(newLetterPosition + 'a');
         }
 
-        private static bool isLetter(char letter)
+        private static bool IsLetter(char letter)
         {
             if ((letter >= 'a' && letter <= 'z') ||
                 (letter >= 'A' && letter <= 'Z'))
