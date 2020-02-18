@@ -48,14 +48,15 @@ namespace BootCamp.Chapter
             }
             int i = 0;
             long[] binaryHolder = new long[BINARYARRAYLENGTH];
+            StringBuilder sb = new StringBuilder();
+
             while (number > 0)
             {
                 binaryHolder[i] = number % 2;
-                number = number / 2;
+                number /= 2;
                 i++;
             }
-            StringBuilder sb = new StringBuilder();
-            for (i = i - 1; i >= 0; i--)
+            for (i -= 1; i >= 0; i--)
             {
                 sb.Append(binaryHolder[i]);
             }

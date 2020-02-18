@@ -3,10 +3,8 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            //Conversions.Demo();
-            //LetterConverter.Demo();
         }
     }
 }
