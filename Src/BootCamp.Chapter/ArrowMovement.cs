@@ -40,8 +40,9 @@ namespace BootCamp.Chapter
                     return '↦';
                 case 'd':
                     return '↦';
+                default:
+                    return '-';
             }
-            return symbol;
         }
     }
 }
