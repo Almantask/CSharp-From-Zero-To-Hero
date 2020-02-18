@@ -33,7 +33,7 @@ namespace BootCamp1.Chapter
 
             Console.WriteLine($"Word to guess: { anymousWord} {Environment.NewLine}");
             var alreadyUsedChars = "";
-            PlayGame( lives, wordToGuess, anymousWord, alreadyUsedChars);
+            anymousWord = PlayGame( lives, wordToGuess, anymousWord, alreadyUsedChars);
 
             if (!anymousWord.Contains('-'))
             {
@@ -42,7 +42,7 @@ namespace BootCamp1.Chapter
             return false;
         }
 
-        private static void PlayGame(int lives, string wordToGuess, string anymousWord, string alreadyUsedChars)
+        private static string PlayGame(int lives, string wordToGuess, string anymousWord, string alreadyUsedChars)
         {
             do
             {
@@ -76,6 +76,8 @@ namespace BootCamp1.Chapter
 
                 lives = OutputIfCharacterIsInWord(lives, input, counter);
             } while (lives != 0 && anymousWord.Contains('-'));
+
+            return anymousWord; 
         }
 
         private static int OutputIfCharacterIsInWord(int lives, char input, int counter)
