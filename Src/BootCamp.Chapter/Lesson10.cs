@@ -7,6 +7,12 @@ namespace BootCamp.Chapter
     {
         public static string EncryptCypher(string message, int shift)
         {
+            if (message == null)
+            {
+                return null;
+            }
+
+
             if (shift < 0)
             {
                 shift = Math.Abs(shift + 95);
