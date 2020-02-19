@@ -114,8 +114,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            return InsertItemToIndex(array, number, 0);
         }
 
         /// <summary>
@@ -126,8 +125,12 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            int arrayLength = 0;
+            if (array != null)
+            {
+                arrayLength = array.Length;
+            }
+            return InsertItemToIndex(array, number, arrayLength);
         }
 
         /// <summary>
@@ -139,8 +142,42 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            return InsertItemToIndex(array, number, index);
+        }
+
+        public static int[] InsertItemToIndex(int[] array, int number, int index)
+        {
+
+            if (array == null || array.Length == 0)
+            {
+                if (array != null && array.Length == 0 && index != 0)
+                {
+                    return array;
+                }
+                int[] newArrayWithOneItem = new int[1] { number };
+                return newArrayWithOneItem;
+            }
+
+            int arrayLength = array.Length;
+            if (index < 0 || index > arrayLength)
+            {
+                return array;
+            }
+            int[] newArray = new int[arrayLength + 1];
+            int newArrayLength = newArray.Length;
+            for (int i = 0, j = 0; i < newArrayLength; i++)
+            {
+                if (i == index)
+                {
+                    newArray[i] = number;
+                    j = 1;
+                }
+                else
+                {
+                    newArray[i] = array[i - j];
+                }
+            }
+            return newArray;
         }
     }
 }
