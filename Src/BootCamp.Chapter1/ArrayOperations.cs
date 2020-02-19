@@ -155,7 +155,7 @@
                 {
                     return array;
                 }
-                int[] newArrayWithOneItem = new int[] { number };
+                int[] newArrayWithOneItem = { number };
                 return newArrayWithOneItem;
             }
 
