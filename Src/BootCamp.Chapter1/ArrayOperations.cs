@@ -56,7 +56,10 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
+            if (array != null)
+            {
+                return RemoveItemFromIndex(array, array.Length - 1);
+            }
             return array;
         }
 
@@ -66,8 +69,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            return RemoveItemFromIndex(array, 0);
         }
 
         /// <summary>
@@ -78,8 +80,30 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            return RemoveItemFromIndex(array, index);
+        }
+        public static int[] RemoveItemFromIndex(int[] array, int index)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            if (index < 0 || index >= array.Length)
+            {
+                return array;
+            }
+
+            int arrayLength = array.Length - 1;
+            int[] newArray = new int[arrayLength];
+            for (int i = 0, j = 0; i < arrayLength; i++)
+            {
+                if (i == index)
+                {
+                    j = 1;
+                }
+                newArray[i] = array[i + j];
+            }
+            return newArray;
         }
 
         /// <summary>
