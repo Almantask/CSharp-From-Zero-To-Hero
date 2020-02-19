@@ -95,13 +95,14 @@
 
             int arrayLength = array.Length - 1;
             int[] newArray = new int[arrayLength];
-            for (int i = 0, j = 0; i < arrayLength; i++)
+            int removedIndex = 0;
+            for (int i = 0; i < arrayLength; i++)
             {
                 if (i == index)
                 {
-                    j = 1;
+                    removedIndex = 1;
                 }
-                newArray[i] = array[i + j];
+                newArray[i] = array[i + removedIndex];
             }
             return newArray;
         }
@@ -154,7 +155,7 @@
                 {
                     return array;
                 }
-                int[] newArrayWithOneItem = new int[1] { number };
+                int[] newArrayWithOneItem = new int[] { number };
                 return newArrayWithOneItem;
             }
 
@@ -165,16 +166,17 @@
             }
             int[] newArray = new int[arrayLength + 1];
             int newArrayLength = newArray.Length;
-            for (int i = 0, j = 0; i < newArrayLength; i++)
+            int additionalIndex = 0;
+            for (int i = 0; i < newArrayLength; i++)
             {
                 if (i == index)
                 {
                     newArray[i] = number;
-                    j = 1;
+                    additionalIndex = 1;
                 }
                 else
                 {
-                    newArray[i] = array[i - j];
+                    newArray[i] = array[i - additionalIndex];
                 }
             }
             return newArray;
