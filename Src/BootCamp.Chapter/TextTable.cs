@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
         private readonly char _emptySpace = ' ';
         private readonly string messageDivider = Environment.NewLine;
 
-        public TextTable(string message, int padding = 0)
+        public TextTable(string message, int padding)
         {
             if(string.IsNullOrEmpty(message))
             {
@@ -30,31 +30,29 @@ namespace BootCamp.Chapter
 
         public void Build()
         {
-            var result = string.Empty;
-            result += AddHorizontalBorder();
-            result += AddVerticalPadding(_padding);
+            var result = AddHorizontalBorder() + AddVerticalPadding();
             result += AddText();
-            result += AddVerticalPadding(_padding);
-            result += AddHorizontalBorder();
+            result += AddVerticalPadding() + AddHorizontalBorder();
             Console.WriteLine(result);
         }
 
         private string AddText()
         {
             string[] words = _message.Split(messageDivider);
-            string text = string.Empty;
+            StringBuilder text = new StringBuilder();
 
             foreach(string word in words)
             {
-                text += _verticalBorderChar;
-                text += new string(_emptySpace, _padding);
-                text += word;
-                text += new string(_emptySpace, _longestWordSize - word.Length);
-                text += new string(_emptySpace, _padding);
-                text += _verticalBorderChar;
-                text += Environment.NewLine;
+                text
+                    .Append(_verticalBorderChar)
+                    .Append(_emptySpace, _padding)
+                    .Append(word)
+                    .Append(_emptySpace, _longestWordSize - word.Length)
+                    .Append(_emptySpace, _padding)
+                    .Append(_verticalBorderChar)
+                    .Append(Environment.NewLine);
             }
-            return text;
+            return text.ToString();
         }
 
         private string AddHorizontalBorder()
@@ -85,6 +83,7 @@ namespace BootCamp.Chapter
                     size = word.Length;
                 }
             }
+
             return size;
         }
     }
