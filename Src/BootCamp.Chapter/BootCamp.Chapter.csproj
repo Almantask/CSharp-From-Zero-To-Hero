@@ -17,4 +17,7 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Output\" />
+  </ItemGroup>
 </Project>
