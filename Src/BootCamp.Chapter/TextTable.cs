@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -8,53 +9,82 @@ namespace BootCamp.Chapter
     public class TextTable
     {
         private readonly string _message;
-        private readonly string _padding;
+        private readonly int _padding;
+        private readonly int _longestWordSize;
+        private readonly char _cornerChar = '+';
+        private readonly char _horizontalBorderChar = '-';
+        private readonly char _verticalBorderChar = '|';
+        private readonly char _emptySpace = ' ';
+        private readonly string messageDivider = Environment.NewLine;
 
-        private readonly string divider = Environment.NewLine;
-
-        /*
-
-         Input: "Hello", 0
-           +-----+
-           |Hello|
-           +-----+
-           
-         Input: $"Hello{Environment.NewLine}World!", 0
-           +------+
-           |Hello |
-           |World!|
-           +------+
-           
-         Input: "Hello", 1
-           +-------+
-           |       |
-           | Hello |
-           |       |
-           +-------+
-
-         */
-
-        /// <summary>
-        /// Build a table for given message with given padding.
-        /// Padding means how many spaces will a message be wrapped with.
-        /// Table itself is made of: "+-" symbols. 
-        /// </summary>
-        public string Build(string message, int padding)
+        public TextTable(string message, int padding = 0)
         {
-            return "";
+            if(string.IsNullOrEmpty(message))
+            {
+                Console.WriteLine("Message can not be null or empty!");
+            }
+            _message = message;
+            _padding = padding;
+            _longestWordSize = FindLongestWord();
         }
 
-        private int FindLongestWord(string message)
+        public void Build()
+        {
+            var result = string.Empty;
+            result += AddHorizontalBorder();
+            result += AddVerticalPadding(_padding);
+            result += AddText();
+            result += AddVerticalPadding(_padding);
+            result += AddHorizontalBorder();
+            Console.WriteLine(result);
+        }
+
+        private string AddText()
+        {
+            string[] words = _message.Split(messageDivider);
+            string text = string.Empty;
+
+            foreach(string word in words)
+            {
+                text += _verticalBorderChar;
+                text += new string(_emptySpace, _padding);
+                text += word;
+                text += new string(_emptySpace, _longestWordSize - word.Length);
+                text += new string(_emptySpace, _padding);
+                text += _verticalBorderChar;
+                text += Environment.NewLine;
+            }
+            return text;
+        }
+
+        private string AddHorizontalBorder()
+        {
+            string spacePadding = new string(_horizontalBorderChar, _longestWordSize + (_padding * 2));
+            string horizontalBorder = $"{_cornerChar}{spacePadding}{_cornerChar}{Environment.NewLine}";
+            return horizontalBorder;
+        }
+
+        private string AddVerticalPadding(int linesNumber = 0)
+        {
+            string verticalPadding = string.Empty;
+            for (int i = 0; i < linesNumber; i++)
+            {
+                string spacePadding = new string(_emptySpace, _longestWordSize + (_padding * 2));
+                verticalPadding += $"{_verticalBorderChar}{spacePadding}{_verticalBorderChar}{Environment.NewLine}";
+            }
+            return verticalPadding;
+        }
+
+        private int FindLongestWord()
         {
             int size = 0;
-            foreach(string word in message.Split(divider))
+            foreach(string word in _message.Split(messageDivider))
             {
                 if(word.Length > size)
                 {
                     size = word.Length;
                 }
             }
-
             return size;
         }
     }
