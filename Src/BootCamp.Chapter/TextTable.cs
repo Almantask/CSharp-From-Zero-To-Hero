@@ -64,13 +64,17 @@ namespace BootCamp.Chapter
 
         private string AddVerticalPadding(int linesNumber = 0)
         {
-            string verticalPadding = string.Empty;
+            StringBuilder verticalPadding = new StringBuilder();
             for (int i = 0; i < linesNumber; i++)
             {
                 string spacePadding = new string(_emptySpace, _longestWordSize + (_padding * 2));
-                verticalPadding += $"{_verticalBorderChar}{spacePadding}{_verticalBorderChar}{Environment.NewLine}";
+                verticalPadding
+                    .Append(_verticalBorderChar)
+                    .Append(spacePadding)
+                    .Append(_verticalBorderChar)
+                    .Append(Environment.NewLine);
             }
-            return verticalPadding;
+            return verticalPadding.ToString();
         }
 
         private int FindLongestWord()
