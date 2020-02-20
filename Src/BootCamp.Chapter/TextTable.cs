@@ -28,12 +28,16 @@ namespace BootCamp.Chapter
             _longestWordSize = FindLongestWord();
         }
 
-        public void Build()
+        public string Build()
         {
-            var result = AddHorizontalBorder() + AddVerticalPadding();
+            var result = string.Empty;
+            result += AddHorizontalBorder();
+            result += AddVerticalPadding(_padding);
             result += AddText();
-            result += AddVerticalPadding() + AddHorizontalBorder();
-            Console.WriteLine(result);
+            result += AddVerticalPadding(_padding);
+            result += AddHorizontalBorder();
+
+            return result;
         }
 
         private string AddText()
@@ -62,7 +66,7 @@ namespace BootCamp.Chapter
             return horizontalBorder;
         }
 
-        private string AddVerticalPadding(int linesNumber = 0)
+        private string AddVerticalPadding(int linesNumber)
         {
             StringBuilder verticalPadding = new StringBuilder();
             for (int i = 0; i < linesNumber; i++)
