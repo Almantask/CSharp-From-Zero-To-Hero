@@ -39,14 +39,17 @@ namespace BootCamp.Chapter
                 {
                     writer.WriteLine(line.Replace(_corruptionChar, _emptyChar));
                 }
+
+                reader.Dispose();
+                writer.Dispose();
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine($"The file was not found: '{ex}'");
+                Console.WriteLine($"The file was not found: {ex}");
             }
             catch (IOException ex)
             {
-                Console.WriteLine($"The file could not be opened: '{ex}'");
+                Console.WriteLine($"The file could not be opened: {ex}");
             }
         }
     }
