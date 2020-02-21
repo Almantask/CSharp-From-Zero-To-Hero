@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            int personCount = 2;
+            const int personCount = 2;
 
             for (int i = 0; i < personCount; i++)
             {
