@@ -12,8 +12,8 @@ namespace BootCamp.Chapter
         /// </summary>
         internal static void OptionalTestCases()
         {
-            // int swapCount = 0;
-            // Sort(new int[0], ref swapCount);
+            int swapCount = 0;
+            Sort(new int[0], ref swapCount);
 
             // This will print your array like "3, 2, 4, 1".
             Utility.PrintArray(new int[] { 3, 2, 4, 1 });
@@ -27,19 +27,22 @@ namespace BootCamp.Chapter
         /// <returns>The sorted array.</returns>
         internal static int[] Sort(int[] array, ref int swapCount)
         {
-            if (array.Length > 2)
+            if (array != null && array.Length > 0)
             {
-                Split(array, out int[] array1, out int[] array2);
-                return Merge(Sort(array1, ref swapCount), Sort(array2, ref swapCount));
+                if (array.Length > 2)
+                {
+                    Split(array, out int[] array1, out int[] array2);
+                    return Merge(Sort(array1, ref swapCount), Sort(array2, ref swapCount));
+                }
+                if (array.Length == 1)
+                    return array;
+                if (array[0] > array[1])
+                {
+                    // You need to use my Swap function for solving the challange.
+                    // It does nothing else than just swapping the two elements of index1 and index2 of the array.
+                    Utility.Swap(array, 0, 1, ref swapCount);
+                }
             }
-
-            if (array[0] < array[1])
-            {
-                // You need to use my Swap function for solving the challange.
-                // It does nothing else than just swapping the two elements of index1 and index2 of the array.
-                Utility.Swap(array, 0, 1, ref swapCount);
-            }
-
             return array;
         }
 
@@ -51,12 +54,16 @@ namespace BootCamp.Chapter
         /// <param name="array2">The right side.</param>
         internal static void Split(int[] array, out int[] array1, out int[] array2)
         {
-            array1 = new int[array.Length / 2];
-            array2 = new int[array.Length / 2];
+            int arrayLength = (int)Math.Ceiling(array.Length / 2.0);
+            array1 = new int[array.Length - arrayLength];
+            array2 = new int[arrayLength];
 
             for (int i = 0; i < array1.Length; i++)
             {
-                array1[i] = array[i];
+                    array1[i] = array[i];
+            }
+            for (int i = 0; i < array2.Length; i++)
+            {
                 array2[i] = array[i + array1.Length];
             }
 
@@ -79,9 +86,22 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < array2.Length; i++)
             {
-                array[i + array2.Length] = array2[i];
+                array[i + array1.Length] = array2[i];
             }
-
+            // sort merging array
+            int arrayLength = array.Length;
+            for (int i = 0; i < arrayLength; i++)
+            {
+                for (int j = i + 1; j < arrayLength; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        int temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
             return array;
         }
     }
