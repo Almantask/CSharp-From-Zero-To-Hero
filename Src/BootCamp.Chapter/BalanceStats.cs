@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class BalanceStats
     {
@@ -34,17 +32,14 @@ namespace BootCamp.Chapter
                 }
             }
 
-            string result;
             if (AccountOps.AreAccountsBallancesEqual(accounts))
             {
-                result = $"{StringOps.FormatAndCommas(accounts)} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}";
+                return $"{StringOps.FormatAndCommas(accounts)} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}";
             }
             else
             {
-                result = $"{highestBalanceAccount.GetName()} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}.";
+                return $"{highestBalanceAccount.GetName()} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}.";
             }
-
-            return result;
         }
 
         /// <summary>
@@ -70,7 +65,5 @@ namespace BootCamp.Chapter
         {
             return "";
         }
-
-        
     }
 }

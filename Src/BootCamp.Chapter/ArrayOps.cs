@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -42,7 +40,6 @@ namespace BootCamp.Chapter
                     if (inputArray[i] < min)
                     {
                         min = inputArray[i];
-
                     }
                 }
                 return min;
@@ -68,5 +65,16 @@ namespace BootCamp.Chapter
             return true;
         }
 
+        public static bool AreArraysEqual(decimal[] array1, decimal[] array2)
+        {
+            for (int i = 0; i < array1.Length; i++)
+            {
+                if (array1[i] != array2[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

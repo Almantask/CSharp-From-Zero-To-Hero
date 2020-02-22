@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public static class AccountOps
     {
-        
         public static string GetNameForPerson(string personAndBalance)
         {
             var balanceList = personAndBalance.Split(',');
@@ -51,9 +46,9 @@ namespace BootCamp.Chapter
         public static bool AreAccountsBallancesEqual(Account[] accounts)
         {
             Account firstAccount = accounts[0];
-            for(int i = 1; i < accounts.Length; i++)
+            for (int i = 1; i < accounts.Length; i++)
             {
-                if(accounts[i] != firstAccount)
+                if (ArrayOps.AreArraysEqual(accounts[i].GetBalance(), firstAccount.GetBalance()))
                 {
                     return false;
                 }

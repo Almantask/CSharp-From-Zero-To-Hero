@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -18,6 +16,11 @@ namespace BootCamp.Chapter
         public string GetName()
         {
             return _name;
+        }
+
+        public decimal[] GetBalance()
+        {
+            return _balance;
         }
 
         public decimal GetHighestBalance()
@@ -69,7 +72,5 @@ namespace BootCamp.Chapter
 
             return totalBalance;
         }
-
-
     }
 }
