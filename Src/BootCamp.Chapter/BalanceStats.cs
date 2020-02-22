@@ -55,20 +55,20 @@ namespace BootCamp.Chapter
             }
 
             Account[] accounts = AccountOps.BuildAccountList(_peopleAndBalances);
-            Account biggestLossAccount = accounts[0];
-            for (int i = 0; i < accounts.Length; i++)
-            {
-                if (accounts[i].GetLoss() > biggestLossAccount.GetLoss())
-                {
-                    biggestLossAccount = accounts[i];
-                }
-            }
-
             for (int i = 0; i < accounts.Length; i++)
             {
                 if (i < arrayBreak && accounts[i].GetTotalBalance() == accounts[i].GetCurrentBalance())
                 {
                     return StringOps.InvalidMessage;
+                }
+            }
+
+            Account biggestLossAccount = accounts[0];
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                if (accounts[i].GetLoss() < biggestLossAccount.GetLoss())
+                {
+                    biggestLossAccount = accounts[i];
                 }
             }
 
@@ -78,7 +78,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                return $"{biggestLossAccount.GetName()} {StringOps.LostTheMostMoney}. {StringOps.FormatCurrency(biggestLossAccount.GetCurrentBalance(), currency)}.";
+                return $"{biggestLossAccount.GetName()} {StringOps.LostTheMostMoney}. {StringOps.FormatCurrency(biggestLossAccount.GetLoss(), currency)}.";
             }
         }
 

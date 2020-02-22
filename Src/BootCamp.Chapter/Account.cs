@@ -35,13 +35,16 @@ namespace BootCamp.Chapter
             {
                 decimal previousBallance = _balance[^2];
                 decimal currentBalance = _balance[^1];
-                var loss = currentBalance - previousBallance;
+                decimal loss = currentBalance - previousBallance;
 
                 return loss;
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
                 // commented it out to keep clean screen
+#if DEBUG
+                Console.WriteLine(ex.Message);
+#endif
             }
             return default;
         }
@@ -54,9 +57,12 @@ namespace BootCamp.Chapter
 
                 return currentBalance;
             }
-            catch (IndexOutOfRangeException)
+            catch (IndexOutOfRangeException ex)
             {
                 // commented it out to keep clean screen
+#if DEBUG
+                Console.WriteLine(ex.Message);
+#endif
             }
             return default;
         }
