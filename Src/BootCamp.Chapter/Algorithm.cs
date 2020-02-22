@@ -35,7 +35,9 @@ namespace BootCamp.Chapter
                     return Merge(Sort(array1, ref swapCount), Sort(array2, ref swapCount));
                 }
                 if (array.Length == 1)
+                {
                     return array;
+                }
                 if (array[0] > array[1])
                 {
                     // You need to use my Swap function for solving the challange.
@@ -60,7 +62,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < array1.Length; i++)
             {
-                    array1[i] = array[i];
+                array1[i] = array[i];
             }
             for (int i = 0; i < array2.Length; i++)
             {
