@@ -39,7 +39,7 @@ namespace BootCamp.Chapter
                 {
                     writer.WriteLine(line.Replace(_corruptionChar, _emptyChar));
                 }
-
+                // not sure if this is necessary inside a try catch block
                 reader.Dispose();
                 writer.Dispose();
             }
