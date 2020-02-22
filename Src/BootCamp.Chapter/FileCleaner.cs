@@ -12,23 +12,16 @@ namespace BootCamp.Chapter
 
         public FileCleaner(string dirtyFile, string cleanedFile)
         {
-            if (File.Exists(cleanedFile))
-            {
-                File.Delete(cleanedFile);
-            }
-            if (File.Exists(dirtyFile))
-            {
-                _dirtyFile = dirtyFile;
-                _cleanedFile = cleanedFile;
-            }
-            else
-            {
-                Console.WriteLine($"{dirtyFile} does not exist!");
-            }
+            _dirtyFile = dirtyFile;
+            _cleanedFile = cleanedFile;
         }
 
         public void Clean()
         {
+            if (Test.IsStringValid(_dirtyFile) || Test.IsStringValid(_cleanedFile))
+            {
+                throw new ArgumentException();
+            }
             string line;
 
             try
