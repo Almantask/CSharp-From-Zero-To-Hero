@@ -29,7 +29,7 @@ There are 3 files in input folder:
 - "Balances.clean"- example of how a clean file should look like  
 - "Balances.in"- the file which was used to generate the balances  
 
-You need to parse the balances and process them in the following ways:  
+After the file is fixed, you need to parse the balances and process them in the following ways:  
 - ***FindHighestBalanceEver***- return name and balance(current) of person who had the biggest historic balance.  
 - ***FindPersonWithBiggestLoss***- return name and loss of a person with a biggest loss (balance change negative).  
 - ***FindRichestPerson***- return name and current money of the richest person.  
