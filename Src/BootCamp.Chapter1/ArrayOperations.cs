@@ -58,7 +58,7 @@
         {
             if (array != null)
             {
-                return RemoveItemFromIndex(array, array.Length - 1);
+                return RemoveAt(array, array.Length - 1);
             }
             return array;
         }
@@ -69,7 +69,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            return RemoveItemFromIndex(array, 0);
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -79,10 +79,6 @@
         /// <param name="index">Index at which array element should be removed.</param>
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
-        {
-            return RemoveItemFromIndex(array, index);
-        }
-        public static int[] RemoveItemFromIndex(int[] array, int index)
         {
             if (array == null || array.Length == 0)
             {
@@ -115,7 +111,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            return InsertItemToIndex(array, number, 0);
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -131,7 +127,7 @@
             {
                 arrayLength = array.Length;
             }
-            return InsertItemToIndex(array, number, arrayLength);
+            return InsertAt(array, number, arrayLength);
         }
 
         /// <summary>
@@ -143,12 +139,6 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            return InsertItemToIndex(array, number, index);
-        }
-
-        public static int[] InsertItemToIndex(int[] array, int number, int index)
-        {
-
             if (array == null || array.Length == 0)
             {
                 if (array != null && array.Length == 0 && index != 0)
