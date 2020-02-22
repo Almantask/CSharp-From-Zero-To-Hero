@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter.Tests
 {
-    public class InvalidBalancesException : Exception
+    internal class InvalidBalancesException
     {
-        public InvalidBalancesException(string reason, Exception innerException)
-            : base(reason, innerException)
-        {
-
-        }
     }
 }

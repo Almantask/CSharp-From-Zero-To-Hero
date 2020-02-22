@@ -7,7 +7,7 @@ using Xunit;
 namespace BootCamp.Chapter.Tests
 {
     // You don't have to be here for a long time.
-    public class Lesson7Tests
+    public class Lesson1Tests
     {
         [Theory]
         [InlineData("", "")]
@@ -18,7 +18,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData(null, null)]
         public void FileCleaner_Clean_Given_Invalid_Parameters_Throws_ArgumentException(string dirtyFile, string cleanFile)
         {
-            Action action = () => FileCleaner.Clean(dirtyFile, cleanFile);
+            Action action = () => Checks.Clean(dirtyFile, cleanFile);
 
             action.Should().Throw<ArgumentException>();
         }
@@ -30,7 +30,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData(@"Input/Files/In/BalancesNotAName2y.Invalid")]
         public void FileCleaner_Clean_Given_Invalid_Balances_Throws_InvalidBalances_Exception(string file)
         {
-            Action action = () => FileCleaner.Clean(file, "AnyFile");
+            Action action = () => Checks.Clean(file, "AnyFile");
 
             action.Should().Throw<InvalidBalancesException>();
         }
@@ -42,7 +42,7 @@ namespace BootCamp.Chapter.Tests
         public void FileCleaner_Clean_Given_Corrupted_File_Creates_Clean_File(string dirtyFile, string expectedCleanFile)
         {
             string cleanFile = $@"Balances{Guid.NewGuid()}.clean";
-            FileCleaner.Clean(dirtyFile, cleanFile);
+            Checks.Clean(dirtyFile, cleanFile);
 
             var expectedCleanContents = File.ReadAllText(expectedCleanFile);
             var actualCleanContents = File.ReadAllText(cleanFile);
@@ -57,7 +57,7 @@ namespace BootCamp.Chapter.Tests
         public void FileCleaner_Clean_Given_Empty_Or_Clean_File_Duplicates_File(string file)
         {
             string outputFile = $@"Balances{Guid.NewGuid()}.clean";
-            FileCleaner.Clean(file, outputFile);
+            Checks.Clean(file, outputFile);
 
             var dirtyContents = File.ReadAllText(file);
             var cleanContents = File.ReadAllText(outputFile);
@@ -70,7 +70,7 @@ namespace BootCamp.Chapter.Tests
         [ClassData(typeof(TableMessageInput))]
         public void BuildTabledMessage_With_Message_Hello_AndPadding_0_Returns_Message_In_Table(string message, int padding, string expectation)
         {
-            var result = TextTable.Build(message, padding);
+            var result = Checks.Build(message, padding);
 
             result.Should().Be(expectation);
         }
@@ -79,7 +79,7 @@ namespace BootCamp.Chapter.Tests
         [ClassData(typeof(HighestHistoricBalanceExpectations))]
         public void FindHighestBalanceEver_With_ArrayOf_People_And_Balances_Returns_HighestHistoricBalance_Or_Balances(string[] peopleAndBalances, string expectedHighestBalance)
         {
-            var highestHistoricBalance = BalanceStats.FindHighestBalanceEver(peopleAndBalances);
+            var highestHistoricBalance = Checks.FindHighestBalanceEver(peopleAndBalances);
 
             highestHistoricBalance.Should().Be(expectedHighestBalance);
         }
@@ -88,7 +88,7 @@ namespace BootCamp.Chapter.Tests
         [ClassData(typeof(PersonWithBiggestLossExpectations))]
         public void FindPersonWithBiggestLoss_With_ArrayOf_People_And_Balances_Returns_Person_Or_People_With_BiggestLoss(string[] peopleAndBalances, string expectedBiggestLoss)
         {
-            var personWithBiggestLoss = BalanceStats.FindPersonWithBiggestLoss(peopleAndBalances);
+            var personWithBiggestLoss = Checks.FindPersonWithBiggestLoss(peopleAndBalances);
 
             personWithBiggestLoss.Should().Be(expectedBiggestLoss);
         }
@@ -97,7 +97,7 @@ namespace BootCamp.Chapter.Tests
         [ClassData(typeof(RichestPersonExpectations))]
         public void FindRichestPerson_With_ArrayOf_People_And_Balances_Returns_Richest_Person_Or_People_And_Their_Balance(string[] peopleAndBalances, string expectedRichestPerson)
         {
-            var richestPerson = BalanceStats.FindRichestPerson(peopleAndBalances);
+            var richestPerson = Checks.FindRichestPerson(peopleAndBalances);
 
             richestPerson.Should().Be(expectedRichestPerson);
         }
@@ -106,7 +106,7 @@ namespace BootCamp.Chapter.Tests
         [ClassData(typeof(MostPoorPersonExpectations))]
         public void FindMostPoorPerson_With_ArrayOf_People_And_Balances_Returns_MostPoor_Person_Or_People_And_Their_Blaance(string[] peopleAndBalances, string expectedMostPoorPerson)
         {
-            var mostPoorPerson = BalanceStats.FindMostPoorPerson(peopleAndBalances);
+            var mostPoorPerson = Checks.FindMostPoorPerson(peopleAndBalances);
 
             mostPoorPerson.Should().Be(expectedMostPoorPerson);
         }
