@@ -34,7 +34,7 @@
 
             if (AccountOps.AreAccountsBallancesEqual(accounts))
             {
-                return $"{StringOps.FormatAndCommas(accounts)} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}";
+                return $"{StringOps.FormatAndCommas(accounts)} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}.";
             }
             else
             {
