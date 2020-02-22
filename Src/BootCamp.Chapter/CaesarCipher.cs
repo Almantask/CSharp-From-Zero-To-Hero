@@ -11,38 +11,43 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
-            if (message == null)
-            {
-                return null;
-            }
-            byte[] bytes = Encoding.ASCII.GetBytes(message);
-            char[] chars = Encoding.ASCII.GetChars(bytes);
-
-            StringBuilder encryptedMessage = new StringBuilder();
-            for (int i = 0; i < chars.Length; i++)
-            {
-                var incrementedChar = chars[i] + shift;
-                encryptedMessage.Append((char)incrementedChar);
-            }
-            return encryptedMessage.ToString();
+            return EncryptOrDecrypt(message, shift, true);
         }
 
         public static string Decrypt(string message, byte shift)
+        {
+            return EncryptOrDecrypt(message, shift, false);
+        }
+
+        /// <summary>
+        /// Encrypt or decrypt given message
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="shift"></param>
+        /// <param name="encrypt"> 
+        /// true to encrypt, false to decrypt
+        /// </param>
+        /// <returns></returns>
+        public static string EncryptOrDecrypt (string message, byte shift, bool encrypt)
         {
             if (message == null)
             {
                 return null;
             }
-            byte[] bytes = Encoding.ASCII.GetBytes(message);
-            char[] chars = Encoding.ASCII.GetChars(bytes);
 
-            StringBuilder decryptedMessage = new StringBuilder();
-            for (int i = 0; i < chars.Length; i++)
+            StringBuilder changedMessage = new StringBuilder();
+            for (int i = 0; i < message.Length; i++)
             {
-                var decryptedChar = chars[i] - shift;
-                decryptedMessage.Append((char)decryptedChar);
+                if (encrypt)
+                {
+                    changedMessage.Append((char)(message[i] + shift));
+                }
+                else
+                {
+                    changedMessage.Append((char)(message[i] - shift));
+                }                           
             }
-            return decryptedMessage.ToString();
+            return changedMessage.ToString();
         }
     }
 }
