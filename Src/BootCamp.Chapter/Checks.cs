@@ -23,7 +23,9 @@ namespace BootCamp.Chapter
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+
+            return balanceStats.FindPersonWithBiggestLoss();
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)

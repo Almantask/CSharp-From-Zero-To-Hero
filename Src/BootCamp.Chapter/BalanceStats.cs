@@ -54,7 +54,32 @@ namespace BootCamp.Chapter
                 return StringOps.InvalidMessage;
             }
 
-            return "";
+            Account[] accounts = AccountOps.BuildAccountList(_peopleAndBalances);
+            Account biggestLossAccount = accounts[0];
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                if (accounts[i].GetLoss() > biggestLossAccount.GetLoss())
+                {
+                    biggestLossAccount = accounts[i];
+                }
+            }
+
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                if (i < arrayBreak && accounts[i].GetTotalBalance() == accounts[i].GetCurrentBalance())
+                {
+                    return StringOps.InvalidMessage;
+                }
+            }
+
+            if (accounts.Length > arrayBreak && AccountOps.AreAccountsBallancesEqual(accounts))
+            {
+                return $"{StringOps.InvalidMessage}";
+            }
+            else
+            {
+                return $"{biggestLossAccount.GetName()} {StringOps.LostTheMostMoney}. {StringOps.FormatCurrency(biggestLossAccount.GetCurrentBalance(), currency)}.";
+            }
         }
 
         /// <summary>
