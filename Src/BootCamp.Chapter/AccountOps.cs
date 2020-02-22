@@ -48,7 +48,7 @@
             Account firstAccount = accounts[0];
             for (int i = 1; i < accounts.Length; i++)
             {
-                if (ArrayOps.AreArraysEqual(accounts[i].GetBalance(), firstAccount.GetBalance()))
+                if (!ArrayOps.AreArraysEqual(accounts[i].GetBalance(), firstAccount.GetBalance()))
                 {
                     return false;
                 }
