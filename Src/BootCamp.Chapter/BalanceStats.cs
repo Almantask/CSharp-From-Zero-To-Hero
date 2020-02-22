@@ -1,13 +1,50 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
-    public static class BalanceStats
+    public class BalanceStats
     {
+        private readonly string[] _peopleAndBalances;
+        private const string currency = "\u00A4";
+        private const int arrayBreak = 2;
+
+        public BalanceStats(string[] peopleAndBalances)
+        {
+            _peopleAndBalances = peopleAndBalances;
+        }
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
-        public static string FindHighestBalanceEver(string[] peopleAndBalances)
+        public string FindHighestBalanceEver()
         {
-            return "";
+            if (!ArrayOps.IsArrayValid(_peopleAndBalances))
+            {
+                return StringOps.InvalidMessage;
+            }
+
+            Account[] accounts = AccountOps.BuildAccountList(_peopleAndBalances);
+
+            Account highestBalanceAccount = accounts[0];
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                if (accounts[i].GetHighestBalance() > highestBalanceAccount.GetHighestBalance())
+                {
+                    highestBalanceAccount = accounts[i];
+                }
+            }
+
+            string result;
+            if (AccountOps.AreAccountsBallancesEqual(accounts))
+            {
+                result = $"{StringOps.FormatAndCommas(accounts)} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}";
+            }
+            else
+            {
+                result = $"{highestBalanceAccount.GetName()} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}.";
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -33,5 +70,7 @@
         {
             return "";
         }
+
+        
     }
 }
