@@ -19,10 +19,6 @@ namespace BootCamp.Chapter
 
         public TextTable(string message, int padding)
         {
-            if(string.IsNullOrEmpty(message))
-            {
-                Console.WriteLine("Message can not be null or empty!");
-            }
             _message = message;
             _padding = padding;
             _longestWordSize = FindLongestWord();
@@ -30,6 +26,11 @@ namespace BootCamp.Chapter
 
         public string Build()
         {
+            if (!Test.IsStringValid(_message))
+            {
+                return string.Empty;
+            }
+
             var result = string.Empty;
             result += AddHorizontalBorder();
             result += AddVerticalPadding(_padding);
@@ -45,7 +46,7 @@ namespace BootCamp.Chapter
             string[] words = _message.Split(messageDivider);
             StringBuilder text = new StringBuilder();
 
-            foreach(string word in words)
+            foreach (string word in words)
             {
                 text
                     .Append(_verticalBorderChar)
@@ -84,9 +85,9 @@ namespace BootCamp.Chapter
         private int FindLongestWord()
         {
             int size = 0;
-            foreach(string word in _message.Split(messageDivider))
+            foreach (string word in _message.Split(messageDivider))
             {
-                if(word.Length > size)
+                if (word.Length > size)
                 {
                     size = word.Length;
                 }
