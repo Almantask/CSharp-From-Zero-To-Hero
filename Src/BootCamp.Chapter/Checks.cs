@@ -9,12 +9,12 @@ namespace BootCamp.Chapter
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
@@ -24,17 +24,16 @@ namespace BootCamp.Chapter
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static string Build(string message, in int padding)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static void Clean(string file, string outputFile)
         {
-            throw new NotImplementedException();
         }
     }
 }
