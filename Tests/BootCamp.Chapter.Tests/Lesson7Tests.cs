@@ -52,8 +52,8 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Theory]
-        [InlineData(@"Input/Files/Balances.clean")]
-        [InlineData(@"Input/Files/Balances.empty")]
+        [InlineData(@"Input/Files/In/Balances.clean")]
+        [InlineData(@"Input/Files/In/Balances.empty")]
         public void FileCleaner_Clean_Given_Empty_Or_Clean_File_Duplicates_File(string file)
         {
             string outputFile = $@"Balances{Guid.NewGuid()}.clean";
