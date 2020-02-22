@@ -1,12 +1,22 @@
 # CSharp-From-Zero-To-Hero
 ## Chapter 1. Homework 3: Functions
 ### Intro
+
+#### Functions
 Variables and functions is what makes every single program. 
 Understanding how to manage them, use and create your own functions is very important.
 Code is a story that we, developers write. 
 We start story from high level functions (title) and the more in depth we go, 
-the lower such detailed code (content) ends up.  
-## Task
+the lower such detailed code (content) ends up.
+
+#### Tests
+How do we know if code works?
+How do we define exactly what the code needs to do, under what conditions?
+How do we know when the code should succeed and when should it fail?  
+It's all  done through unit tests. 
+For now, you won't have to write tests, but you will have to pass them to see if your code works.
+So pay attention to what tests are red and fix them.
+### Task
 1) Open the Homework 3:
   * Choose the Chapter1/Homework/3 branch in the bottom right.
     * If it is not there already:
@@ -58,7 +68,8 @@ the lower such detailed code (content) ends up.
         * Input comes from the tests and gets passed as argument to the Checks.cs functions.
         * The Checks.cs functions should only include a "return Lesson3.X(y);" and execute no other code than that.
         * Your Lesson3.cs functions should return the right output for the transmitted input. Otherwise a test will fail!
-## Hints
+
+### Hints
 * This will make homework 4 much more easy:
   * Do use Environment.NewLine if you want to concanate a string with a newline command (or use WriteLine).
   * Do use [CultureInfo.InvariantCulture](https://docs.microsoft.com/de-de/dotnet/api/system.globalization.cultureinfo.invariantculture?view=netcore-3.1) when reading in float numbers. (Due to differences in parsing numbers with '.' and ',' character.
