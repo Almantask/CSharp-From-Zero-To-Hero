@@ -1,20 +1,11 @@
 # CSharp-From-Zero-To-Hero
+## Chapter 1. Homework 6: 
 
-# Homework 6
+### 
 
-## Hints
-* There are no tests to pass in this homework.
-* Make **sure** that you opened Bootcamp.sln!
-* This homework's task is to give you a playful experience with the debug mode.
-* This homework is very easy if you know what happens and what to do.
-* You don't have to change the code at all.
-* You are only supposed to set breakpoints and click the debug button.
-* To prevent you from cheating we had to go for stuff that is out of your current scope.
-  * To be exact this scope is not even present in the near future.
-  * Do not try to understand how everything is exactly working out. We will explain this when you're ready for this!
-* You are able to solve this by simply observing the console output. Nothing else is needed!
 
-## Task
+
+### Task
 1) Open Program.cs.
 2) Add one or more breakpoints to your code.
   * Rightclick a line of code (`Console.WriteLine();` for example.
@@ -31,3 +22,15 @@
   * The line of the breakpoint will **not** execute until you press the green button "Continue" again. (Simplified)
     * This means that said `Console.WriteLine();` will not print a new line before you did click "Continue".
     * Remember this very well! Otherwise this will lead to confusion in later homeworks - most likely.
+
+### Hints
+* There are no tests to pass in this homework.
+* Make **sure** that you opened Bootcamp.sln!
+* This homework's task is to give you a playful experience with the debug mode.
+* This homework is very easy if you know what happens and what to do.
+* You don't have to change the code at all.
+* You are only supposed to set breakpoints and click the debug button.
+* To prevent you from cheating we had to go for stuff that is out of your current scope.
+  * To be exact this scope is not even present in the near future.
+  * Do not try to understand how everything is exactly working out. We will explain this when you're ready for this!
+* You are able to solve this by simply observing the console output. Nothing else is needed!
