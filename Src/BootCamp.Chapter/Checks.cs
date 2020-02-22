@@ -24,16 +24,22 @@ namespace BootCamp.Chapter
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+
+            return balanceStats.FindHighestBalanceEver();
         }
 
         public static string Build(string message, in int padding)
         {
-            return "";
+            TextTable textTable = new TextTable(message, padding);
+
+            return textTable.Build();
         }
 
         public static void Clean(string file, string outputFile)
         {
+            FileCleaner fileCleaner = new FileCleaner(file, outputFile);
+            fileCleaner.Clean();
         }
     }
 }
