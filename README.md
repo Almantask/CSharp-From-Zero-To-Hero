@@ -1,8 +1,35 @@
 # CSharp-From-Zero-To-Hero
+## Chapter 1. Homework 1 and 2
+### Intro
+#### Variables
+Nearly every single program needs variables.
+A variable has a name, type and value. They are used to carry some small state (value) throughout the program.
+The whole point of variables is to be consumed.
+We consume variables by passing them into functions.
+#### Visual Studio
+IDE is an environment where all the programming is done. 
+It offers all the needed tools: 
+- Hints while writing code (Intellisence)
+- Run code
+- Debug code
+- Analyse code: see errors, warnings, code complexity...
+#### Open source and Github
+Open source code is how people all around the world, without knowing each other collaborate.
+Such way of collaborating needs to be learned early, if you want to do anything serious with programming.
+It's not very easy and intutive to learn it right away.
+Some might even consider it hard or too hard.
+Regardless of that, it's necessary if we want to ensure easy and convenient collaboration.  
 
-# Homework 1And2
+Github is an open source code host. It's the most popular and widely use host for git.
+Therefore we will be using it for all of our homework.
 
-## Hints
+### Pull Request
+Pull request is means of communicating to the owner of code, that you would like to introduce a change.
+It doesn't matter who asks to make a change, all that matters is that changes are relevant and adds value to the repository.  
+
+You will be learning all of the above throughout this homework.
+
+### Hints
 * The tasks require you to have already created an account on GitHub. Do that first!
 * If you do not understand something or need help:
   * Ask questions in the channel bc-discussion in Discord.
@@ -10,7 +37,7 @@
   * Check the bc-materials channel for reference material.
   * Check the bc-announcements channel for related stuff.
 
-## Task
+### Task
 * Fork https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter1/Homework/1And2
   * Open the link.
   * Click the fork button in the upper right.
