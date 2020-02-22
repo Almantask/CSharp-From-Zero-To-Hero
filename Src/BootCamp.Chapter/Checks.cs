@@ -19,7 +19,7 @@ namespace BootCamp.Chapter
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
