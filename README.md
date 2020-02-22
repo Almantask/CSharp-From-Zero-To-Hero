@@ -1,16 +1,10 @@
 # CSharp-From-Zero-To-Hero
+## Chapter 1. Homework 4: Logical flow
+### Introduction
+In so many cases, code is not linear. We have conditions, which determine which path our code takes.
+Such code multi-pathing is done using if statements.
 
-# Homework 4
-
-## Hints
-* Do use Environment.NewLine if you want to concanate a string with a newline command (or use WriteLine).
-* Be very careful where to place your NewLine's and where not!
-* Do use [CultureInfo.InvariantCulture](https://docs.microsoft.com/de-de/dotnet/api/system.globalization.cultureinfo.invariantculture?view=netcore-3.1) when reading in float numbers. (Due to differences in parsing numbers with '.' and ',' character.
-* The better your design, the easier it will be to find and fix errors!
-* Be careful when it comes to the BMI. You have to use cm and m for the height.
-* Do not hesitate to ask mentors for advice. This homework IS puzzling.
-
-## Task
+### Task
 Modify your old functions to fit the specification:
 1) Validate number input:
 + Input is not a number -> return -1.
@@ -28,7 +22,15 @@ Modify your old functions to fit the specification:
 + If height and weight are invalid print both messages, one in a new line each.
   - The error message of height does **NOT!!!!** contain **"equal or "** then!
 
-## Tests Summary
+### Hints
+* Do use Environment.NewLine if you want to concanate a string with a newline command (or use WriteLine).
+* Be very careful where to place your NewLine's and where not!
+* Do use [CultureInfo.InvariantCulture](https://docs.microsoft.com/de-de/dotnet/api/system.globalization.cultureinfo.invariantculture?view=netcore-3.1) when reading in float numbers. (Due to differences in parsing numbers with '.' and ',' character.
+* The better your design, the easier it will be to find and fix errors!
+* Be careful when it comes to the BMI. You have to use cm and m for the height.
+* Do not hesitate to ask mentors for advice. This homework IS puzzling.
+
+### Tests Summary
 The test results should be as pointed out below.
 
 A stands for a valid value.
