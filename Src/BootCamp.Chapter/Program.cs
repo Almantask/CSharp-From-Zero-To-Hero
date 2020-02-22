@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
         {
             // Put two // in front of the await to comment out Part1And2 once you solved it.
             // Make sure to note down the secret passcode before. You will need it!
-            //await Part1And2();
+            await Part1And2();
             OptionalPart();
         }
 
