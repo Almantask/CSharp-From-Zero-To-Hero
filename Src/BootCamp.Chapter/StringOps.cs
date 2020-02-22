@@ -7,13 +7,13 @@ namespace BootCamp.Chapter
 {
     public static class StringOps
     {
-        public const string InvalidMessage = "N/A.";
-        public const string IsTheRichestPerson = "is the richest person";
-        public const string AreTheRichestPeople = "are the richest people";
-        public const string HadTheMostMoneyEver = "had the most money ever";
-        public const string HaveTheLeastMoney = "have the least money";
-        public const string HasTheLeastMoney = "has the least money";
-        public const string LostTheMostMoney = "lost the most money";
+        public static readonly string InvalidMessage = "N/A.";
+        public static readonly string IsTheRichestPerson = "is the richest person";
+        public static readonly string AreTheRichestPeople = "are the richest people";
+        public static readonly string HadTheMostMoneyEver = "had the most money ever";
+        public static readonly string HaveTheLeastMoney = "have the least money";
+        public static readonly string HasTheLeastMoney = "has the least money";
+        public static readonly string LostTheMostMoney = "lost the most money";
 
         public static string FormatAndCommas(Account[] validPeople)
         {
