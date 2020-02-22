@@ -1,8 +1,21 @@
 # CSharp-From-Zero-To-Hero
 
-# Homework 5
+## Chapter 1. Homework 5: Loops and Array
+### Intro
+#### Array
+In programming, in so many cases we don't want just 1 variable, but many.
+This is achieved using array- a data structure to hold many variables of the same type.
+Array itself is a single variable and accessing elements in array is done through an index.
+Array size is immutable (you cannot shrink the same array or expand it) and you can only change the values of individual array element by index.
 
-## Task
+#### Loop
+In order to reduce redundant code to do something multiple times, we can use a loop.
+A loop, as the name implies, repeats itself. 
+
+For loop needs initial value; condition when the loop stops; and change of initial value;
+While loop needs just has a condition which determines when it should stop.
+
+### Task
 Implement the following operations with array:
 1) Sort array in ascending order
 2) Inverse array
@@ -13,7 +26,7 @@ Implement the following operations with array:
 7) Insert element at the end of array
 8) Insert element at specified index of array
 
-## Tests Summary
+### Tests Summary
 The test results should be as pointed out below.
 Note that except for null and empty these are only examples to visualize what happens!
 
