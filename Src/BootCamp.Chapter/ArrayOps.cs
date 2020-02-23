@@ -51,20 +51,6 @@ namespace BootCamp.Chapter
             return default;
         }
 
-        public static bool AreArrayElelementsEqual(decimal[] decimalArray)
-        {
-            decimal firstElement = decimalArray[0];
-            for (int i = 1; i < decimalArray.Length; i++)
-            {
-                if (decimalArray[i] != firstElement)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         public static bool AreArraysEqual(decimal[] array1, decimal[] array2)
         {
             for (int i = 0; i < array1.Length; i++)
