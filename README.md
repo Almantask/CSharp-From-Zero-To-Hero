@@ -1,7 +1,7 @@
-# CSharp-From-Zero-To-Hero
-
+# C#: From Zero To Hero
 ## Chapter 1. Homework 5: Loops and Array
 ### Intro
+
 #### Array
 In programming, in so many cases we don't want just 1 variable, but many.
 This is achieved using array- a data structure to hold many variables of the same type.
