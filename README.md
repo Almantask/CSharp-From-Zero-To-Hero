@@ -25,6 +25,9 @@ RemoveItem- shop can remove items from stock by their name
 AddItem- adds item to players inventory. Can have multiple items of the same name.
 RemoveItem0 removes item from players inventory. Does nothing if item is not found.
 
+Note: you have initial structure and objects, but there is a lot of redundant and incomplete pieces. 
+You need to fix that too. 
+
 ### Extra task: Equipment
 (no tests)  
 
