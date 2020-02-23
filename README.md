@@ -1,4 +1,4 @@
-# CSharp-From-Zero-To-Hero
+# C#: From Zero To Hero
 ## Chapter 1. Homework 3: Functions
 ### Intro
 
