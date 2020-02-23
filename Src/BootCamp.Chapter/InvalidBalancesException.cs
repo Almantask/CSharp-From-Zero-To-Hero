@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BootCamp.Chapter.Tests
+namespace BootCamp.Chapter
 {
     public class InvalidBalancesException : Exception
     {

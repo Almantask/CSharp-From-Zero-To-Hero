@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -44,7 +45,8 @@ namespace BootCamp.Chapter
 
         public static void Clean(string file, string outputFile)
         {
-            FileCleaner fileCleaner = new FileCleaner(file, outputFile);
+            CultureInfo cultureInfo = new CultureInfo("en-GB");
+            FileCleaner fileCleaner = new FileCleaner(file, outputFile, cultureInfo);
             fileCleaner.Clean();
         }
     }
