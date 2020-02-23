@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     /// <summary>
     /// Caesar cipher which supports all ASCII character (256 in total)
@@ -11,7 +7,7 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
-            return Lesson10.EncryptCypher(message, shift);
+            return Lesson10.Cypher(message, shift);
         }
 
         public static string Decrypt(string message, byte shift)
