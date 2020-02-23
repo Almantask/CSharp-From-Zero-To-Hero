@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (AccountOps.AreAccountsBallancesEqual(accounts))
+            if (AccountOps.AreBalancesEqual(accounts))
             {
                 return $"{StringOps.FormatAndCommas(accounts)} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}.";
             }
@@ -72,7 +72,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (accounts.Length > arrayBreak && AccountOps.AreAccountsBallancesEqual(accounts))
+            if (accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts))
             {
                 return $"{StringOps.InvalidMessage}";
             }
@@ -103,7 +103,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (accounts.Length > arrayBreak && AccountOps.AreAccountsBallancesEqual(accounts))
+            if (accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts))
             {
                 return $"{StringOps.FormatAndCommas(accounts)} {StringOps.AreTheRichestPeople}. {StringOps.FormatCurrency(richestBalanceAccount.GetCurrentBalance(), currency)}.";
             }
@@ -134,7 +134,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (accounts.Length > arrayBreak && AccountOps.AreAccountsBallancesEqual(accounts))
+            if (accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts))
             {
                 return $"{StringOps.FormatAndCommas(accounts)} {StringOps.HaveTheLeastMoney}. {StringOps.FormatCurrency(poorestBalanceAccount.GetCurrentBalance(), currency)}.";
             }

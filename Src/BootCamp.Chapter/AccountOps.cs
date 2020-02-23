@@ -13,7 +13,7 @@
             return accounts;
         }
 
-        public static bool AreBallancesEqual(Account[] accounts)
+        public static bool AreBalancesEqual(Account[] accounts)
         {
             Account firstAccount = accounts[0];
             for (int i = 1; i < accounts.Length; i++)
