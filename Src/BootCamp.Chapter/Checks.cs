@@ -29,7 +29,8 @@ namespace BootCamp.Chapter
 
         public static string Build(string message, in int padding)
         {
-            return "";
+            var table = new TextTable(message, padding);
+             return table.Build(); 
         }
 
         public static void Clean(string file, string outputFile)
