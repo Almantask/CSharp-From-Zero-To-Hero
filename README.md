@@ -1,5 +1,13 @@
 # CSharp-From-Zero-To-Hero  
-## Homework 7  
+## Chapter 1. Homework 7: String 
+
+### Intro
+String is the ultimate type for expressing text through code.
+In C#, you can do all sorts of things with string, such as splitting it, appending characters or other string or numbers to it, getting a number of characters and many more...
+However, there is also an alternative- a class optimized for working with string- StringBuilder.
+StringBuilder is a class which should be used when string is being interacted with within a loop.
+
+### Task
 You have an array of strings. Each element in array (a string) follows the same structure:  
 *Name1, balanceX1, balanceX2, balanceX3*...  
 *Name2, balanceY1, balanceY2, balanceY3*...  
