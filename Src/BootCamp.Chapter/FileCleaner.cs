@@ -6,8 +6,8 @@ namespace BootCamp.Chapter
 {
     public class FileCleaner
     {
-        private string _dirtyFile;
-        private string _cleanedFile;
+        private readonly string _dirtyFile;
+        private readonly string _cleanedFile;
 
         public FileCleaner(string dirtyFile, string cleanedFile)
         {
