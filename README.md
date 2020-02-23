@@ -1,7 +1,7 @@
 # CSharp-From-Zero-To-Hero
 # Homework 2: Inheritance
 ## Intro
-Inheritance is a swiss army knife of OOP. It is a powerful tool to form strong relations between our domain objects.
+Inheritance is a swiss army knife of OOP. It is a powerful tool to form strong relations between our **domain objects**.
 Using inheritance we can achieve generalization of other objects, reuse code and much more...
 However, with great power comes great responsibility. Inheritance should not be overused, exactly because it forms strong relations of our domain objects.
 It's hard to design clean inheritance, because it needs to be stable, purely additive and not too deep so we can maintain it easilly.
@@ -32,3 +32,7 @@ Player also has equipment. Equipement has different slots for armor and for weap
 Sum of defense value of all equipment equals to total defense of player.
 Attack value of weapon is player's total attack.
 Player cannot have more items in their inventory than total weight allowed. The total max weight player has is determined by their strength status (30 + strength * 10 (kg)).
+
+## Glossary
+**Domain**- is the area of interest that you are working on. For example if you are building rockets, rocket science would be your domain.
+Or if you are doing money related transaction processing, finances would be your domain.  
