@@ -6,23 +6,32 @@ namespace BootCamp.Chapter
 {
     public class FileCleaner
     {
+        private string _dirtyFile;
+        private string _cleanedFile;
+
+        public FileCleaner(string dirtyFile, string cleanedFile)
+        {
+            _dirtyFile = dirtyFile;
+            _cleanedFile = cleanedFile; 
+        }
+
         /// <summary>
         /// Cleans up dirtyFileName
         /// </summary>
         /// <param name="dirtyFile">Dirty file with "_" placed in random places.</param>
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
-        public static void Clean(string dirtyFile, string cleanedFile)
+        public void Clean()
         {
-            if (String.IsNullOrEmpty(dirtyFile) || String.IsNullOrEmpty(cleanedFile))
+            if (String.IsNullOrEmpty(_dirtyFile) || String.IsNullOrEmpty(_cleanedFile))
             {
                 throw new ArgumentException("File path is null or empty.");
             }
 
-            var contents = File.ReadAllLines(dirtyFile);
+            var contents = File.ReadAllLines(_dirtyFile);
 
             if (contents.Length == 0)
             {
-                File.WriteAllText(cleanedFile, "");
+                File.WriteAllText(_cleanedFile, "");
             }
 
             for (int i = 0; i < contents.Length; i++)
@@ -49,11 +58,11 @@ namespace BootCamp.Chapter
 
                 if (i == 0)
                 {
-                    File.WriteAllText(cleanedFile, repairedText);
+                    File.WriteAllText(_cleanedFile, repairedText);
                 }
                 else
                 {
-                    File.AppendAllText(cleanedFile, repairedText);
+                    File.AppendAllText(_cleanedFile, repairedText);
                 }
             }
         }
