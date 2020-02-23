@@ -9,8 +9,8 @@ namespace BootCamp.Chapter
 
         public Account(string balance)
         {
-            _name = AccountOps.GetNameForPerson(balance);
-            _balance = AccountOps.GetBalanceForPerson(balance);
+            _name = ArrayOps.GetNameForPerson(balance);
+            _balance = ArrayOps.GetBalanceForPerson(balance);
         }
 
         public string GetName()
@@ -26,45 +26,24 @@ namespace BootCamp.Chapter
         public decimal GetHighestBalance()
         {
             var highestBalance = ArrayOps.FindArrayMax(_balance);
+
             return highestBalance;
         }
 
         public decimal GetLoss()
         {
-            try
-            {
-                decimal previousBallance = _balance[^2];
-                decimal currentBalance = _balance[^1];
-                decimal loss = currentBalance - previousBallance;
+            decimal previousBallance = _balance[^2];
+            decimal currentBalance = _balance[^1];
+            decimal loss = currentBalance - previousBallance;
 
-                return loss;
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                // commented it out to keep clean screen
-#if DEBUG
-                Console.WriteLine(ex.Message);
-#endif
-            }
-            return default;
+            return loss;
         }
 
         public decimal GetCurrentBalance()
         {
-            try
-            {
-                decimal currentBalance = _balance[^1];
+            decimal currentBalance = _balance[^1];
 
-                return currentBalance;
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                // commented it out to keep clean screen
-#if DEBUG
-                Console.WriteLine(ex.Message);
-#endif
-            }
-            return default;
+            return currentBalance;
         }
 
         public decimal GetTotalBalance()
