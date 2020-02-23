@@ -24,7 +24,6 @@ namespace BootCamp.Chapter
             }
 
             Account[] accounts = AccountOps.BuildAccountList(_peopleAndBalances);
-
             Account highestBalanceAccount = accounts[0];
             for (int i = 1; i < accounts.Length; i++)
             {
@@ -34,14 +33,9 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (AccountOps.AreBalancesEqual(accounts))
-            {
-                return $"{StringOps.FormatAndCommas(accounts)} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}.";
-            }
-            else
-            {
-                return $"{highestBalanceAccount.GetName()} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}.";
-            }
+            return AccountOps.AreBalancesEqual(accounts)
+                ? $"{StringOps.FormatAndCommas(accounts)} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}."
+                : $"{highestBalanceAccount.GetName()} {StringOps.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), currency)}.";
         }
 
         /// <summary>
@@ -72,14 +66,9 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts))
-            {
-                return $"{StringOps.InvalidMessage}";
-            }
-            else
-            {
-                return $"{biggestLossAccount.GetName()} {StringOps.LostTheMostMoney}. {StringOps.FormatCurrency(biggestLossAccount.GetLoss(), currency)}.";
-            }
+            return accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts)
+                ? $"{StringOps.InvalidMessage}"
+                : $"{biggestLossAccount.GetName()} {StringOps.LostTheMostMoney}. {StringOps.FormatCurrency(biggestLossAccount.GetLoss(), currency)}.";
         }
 
         /// <summary>
@@ -93,7 +82,6 @@ namespace BootCamp.Chapter
             }
 
             Account[] accounts = AccountOps.BuildAccountList(_peopleAndBalances);
-
             Account richestBalanceAccount = accounts[0];
             for (int i = 1; i < accounts.Length; i++)
             {
@@ -103,14 +91,9 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts))
-            {
-                return $"{StringOps.FormatAndCommas(accounts)} {StringOps.AreTheRichestPeople}. {StringOps.FormatCurrency(richestBalanceAccount.GetCurrentBalance(), currency)}.";
-            }
-            else
-            {
-                return $"{richestBalanceAccount.GetName()} {StringOps.IsTheRichestPerson}. {StringOps.FormatCurrency(richestBalanceAccount.GetCurrentBalance(), currency)}.";
-            }
+            return accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts)
+                ? $"{StringOps.FormatAndCommas(accounts)} {StringOps.AreTheRichestPeople}. {StringOps.FormatCurrency(richestBalanceAccount.GetCurrentBalance(), currency)}."
+                : $"{richestBalanceAccount.GetName()} {StringOps.IsTheRichestPerson}. {StringOps.FormatCurrency(richestBalanceAccount.GetCurrentBalance(), currency)}.";
         }
 
         /// <summary>
@@ -124,7 +107,6 @@ namespace BootCamp.Chapter
             }
 
             Account[] accounts = AccountOps.BuildAccountList(_peopleAndBalances);
-
             Account poorestBalanceAccount = accounts[0];
             for (int i = 1; i < accounts.Length; i++)
             {
@@ -134,14 +116,9 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts))
-            {
-                return $"{StringOps.FormatAndCommas(accounts)} {StringOps.HaveTheLeastMoney}. {StringOps.FormatCurrency(poorestBalanceAccount.GetCurrentBalance(), currency)}.";
-            }
-            else
-            {
-                return $"{poorestBalanceAccount.GetName()} {StringOps.HasTheLeastMoney}. {StringOps.FormatCurrency(poorestBalanceAccount.GetCurrentBalance(), currency)}.";
-            }
+            return accounts.Length > arrayBreak && AccountOps.AreBalancesEqual(accounts)
+                ? $"{StringOps.FormatAndCommas(accounts)} {StringOps.HaveTheLeastMoney}. {StringOps.FormatCurrency(poorestBalanceAccount.GetCurrentBalance(), currency)}."
+                : $"{poorestBalanceAccount.GetName()} {StringOps.HasTheLeastMoney}. {StringOps.FormatCurrency(poorestBalanceAccount.GetCurrentBalance(), currency)}.";
         }
     }
 }
