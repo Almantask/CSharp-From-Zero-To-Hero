@@ -1,4 +1,4 @@
-# CSharp-From-Zero-To-Hero
+# C#: From Zero To Hero
 ## Chapter 1. Homework 4: Logical flow
 ### Introduction
 In so many cases, code is not linear. We have conditions, which determine which path our code takes.
