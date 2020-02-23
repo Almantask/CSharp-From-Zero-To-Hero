@@ -1,5 +1,5 @@
 # C#: From Zero To Hero  
-## Chapter 2 Homework 1  
+## Chapter 2. Homework 1: Encapsulation and intro to OOP  
 ### Intro
 Object Oriented Programming starts with encapsulation. 
 Encapsulation is 2 things really: 
