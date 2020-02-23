@@ -3,6 +3,8 @@
 ### Introduction
 In so many cases, code is not linear. We have conditions, which determine which path our code takes.
 Such code multi-pathing is done using if statements.
+If statements are especially useful when we need to validate the input.
+We aim to do the validation first and return as soon as we can, because that will allow us to care about the actual logic of a function.
 
 ### Task
 Modify your old functions to fit the specification:
