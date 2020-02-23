@@ -1,4 +1,4 @@
-# CSharp-From-Zero-To-Hero  
+# C#: From Zero To Hero
 ## Chapter 1. Homework 7: String 
 
 ### Intro
