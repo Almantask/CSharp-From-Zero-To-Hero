@@ -12,14 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="InvalidBalancesException.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="InvalidBalancesException.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Input\Balances.clean">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
