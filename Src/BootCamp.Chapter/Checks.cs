@@ -34,6 +34,8 @@ namespace BootCamp.Chapter
 
         public static void Clean(string file, string outputFile)
         {
+            var cleaner = new FileCleaner();
+            cleaner.Clean(file, outputFile); 
         }
     }
 }

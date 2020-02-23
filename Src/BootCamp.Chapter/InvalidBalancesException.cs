@@ -1,6 +1,8 @@
-﻿namespace BootCamp.Chapter.Tests
+﻿using System;
+
+namespace BootCamp.Chapter.Tests
 {
-    internal class InvalidBalancesException
+    internal class InvalidBalancesException 
     {
     }
 }
