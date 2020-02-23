@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BootCamp.Chapter.Tests
+namespace BootCamp.Chapter
 {
-    internal class InvalidBalancesException 
+    public class InvalidBalancesException : Exception
     {
     }
 }

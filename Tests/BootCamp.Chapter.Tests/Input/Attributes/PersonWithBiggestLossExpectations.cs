@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using static BootCamp.Chapter.Tests.Input.BalancesInput;
-namespace BootCamp.Chapter.Tests.Input
+using static BootCamp.Chapter.Tests.Input.Attributes.BalancesInput;
+namespace BootCamp.Chapter.Tests.Input.Attributes
 {
     class PersonWithBiggestLossExpectations : TestExpectations
     {
