@@ -1,4 +1,4 @@
-# CSharp-From-Zero-To-Hero  
+# C#: From Zero To Hero  
 ## Chapter 2 Homework 1  
 ### Intro
 Object Oriented Programming starts with encapsulation. 
