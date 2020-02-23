@@ -1,5 +1,5 @@
 # C#: From Zero To Hero
-## Homework 2: Inheritance
+## Chapter 2. Homework 2: Inheritance
 ### Intro
 Inheritance is a swiss army knife of OOP. It is a powerful tool to form strong relations between our **domain objects**.
 Using inheritance we can achieve generalization of other objects, reuse code and much more...
