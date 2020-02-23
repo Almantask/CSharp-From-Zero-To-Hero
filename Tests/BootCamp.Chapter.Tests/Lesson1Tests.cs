@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using BootCamp.Chapter.Tests.Input;
+using BootCamp.Chapter.Tests.Input.Attributes;
 using FluentAssertions;
 using Xunit;
 
