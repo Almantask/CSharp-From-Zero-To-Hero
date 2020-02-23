@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 namespace BootCamp.Chapter
 {
@@ -14,7 +11,9 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {
-            File.WriteAllText(cleanedFile, "a");
+            var fileContent = File.ReadAllText(dirtyFile);
+            fileContent = fileContent.Replace("_", "");
+            File.WriteAllText(cleanedFile, fileContent);
         }
     }
 }
