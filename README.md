@@ -1,9 +1,10 @@
 # CSharp-From-Zero-To-Hero
-## Chapter 1. Homework 6: 
+## Chapter 1. Homework 6: Debugging
 
-### 
-
-
+### Intro
+Debugging is a process of inspecting the state of a running program to figure out what is going on.
+We can pause, inspect or even makes changes in code during debugging.
+We need to know what's happening mostly when things aren't going as expected.
 
 ### Task
 1) Open Program.cs.
