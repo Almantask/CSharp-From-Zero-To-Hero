@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using static BootCamp.Chapter.Tests.Input.BalancesInput;
+using static BootCamp.Chapter.Tests.Input.Attributes.BalancesInput;
 
-namespace BootCamp.Chapter.Tests.Input
+namespace BootCamp.Chapter.Tests.Input.Attributes
 {
     public class MostPoorPersonExpectations : TestExpectations
     {

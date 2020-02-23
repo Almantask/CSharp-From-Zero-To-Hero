@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace BootCamp.Chapter.Tests
+namespace BootCamp.Chapter.Tests.Input.Attributes
 {
     public class TableMessageInput: IEnumerable<object[]>
     {

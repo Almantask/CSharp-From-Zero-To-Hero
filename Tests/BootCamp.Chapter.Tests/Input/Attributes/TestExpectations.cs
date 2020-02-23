@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace BootCamp.Chapter.Tests.Input
+namespace BootCamp.Chapter.Tests.Input.Attributes
 {
     public abstract class TestExpectations: IEnumerable<object[]>
     {

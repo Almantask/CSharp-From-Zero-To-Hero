@@ -1,4 +1,4 @@
-﻿namespace BootCamp.Chapter.Tests.Input
+﻿namespace BootCamp.Chapter.Tests.Input.Attributes
 {
     public static class BalancesInput
     {
