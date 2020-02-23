@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
     public class TextTable
     {
-        private string _message;
-        private int _padding;
+        private readonly string _message;
+        private readonly int _padding;
 
         public TextTable(string message, int padding)
         {
