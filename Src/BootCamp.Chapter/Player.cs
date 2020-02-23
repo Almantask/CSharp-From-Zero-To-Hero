@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BootCamp.Chapter.Items;
+﻿using BootCamp.Chapter.Items;
 
 namespace BootCamp.Chapter
 {

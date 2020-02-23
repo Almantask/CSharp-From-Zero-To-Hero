@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter.Items
+﻿namespace BootCamp.Chapter.Items
 {
     public class Weapon
     {

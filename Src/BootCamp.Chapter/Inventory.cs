@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class Inventory
     {
