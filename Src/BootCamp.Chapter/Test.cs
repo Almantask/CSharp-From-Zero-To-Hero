@@ -17,5 +17,26 @@ namespace BootCamp.Chapter
 
             return value;
         }
+
+        public static bool IsNumeric(string input)
+        {
+            return double.TryParse(input, out _);
+        }
+
+        public static bool IsName(string input)
+        {
+            string[] name = input.Split(' ');
+            foreach (string item in name)
+            {
+                foreach (char character in item)
+                {
+                    if (!char.IsLetter(character))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

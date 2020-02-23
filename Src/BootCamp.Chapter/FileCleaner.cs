@@ -22,28 +22,20 @@ namespace BootCamp.Chapter
             {
                 throw new ArgumentException();
             }
-            string line;
 
-            try
+            using StreamReader reader = new StreamReader(_dirtyFile);
+            using StreamWriter writer = new StreamWriter(_cleanedFile);
+
+            string line;
+            while ((line = reader.ReadLine()) != null)
             {
-                using StreamReader reader = new StreamReader(_dirtyFile);
-                using StreamWriter writer = new StreamWriter(_cleanedFile);
-                while ((line = reader.ReadLine()) != null)
-                {
-                    writer.WriteLine(line.Replace(_corruptionChar, _emptyChar));
-                }
-                // not sure if this is necessary inside a try catch block
-                reader.Dispose();
-                writer.Dispose();
+#if DEBUG
+                Console.WriteLine(line);
+#endif
+                writer.WriteLine(line.Replace(_corruptionChar, _emptyChar));
             }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"The file was not found: {ex}");
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine($"The file could not be opened: {ex}");
-            }
+            // not sure if this is necessary inside a try catch block
+            reader.Dispose();
         }
     }
 }
