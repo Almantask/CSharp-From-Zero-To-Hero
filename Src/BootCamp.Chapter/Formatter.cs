@@ -38,17 +38,17 @@ namespace BootCamp.Chapter
             var peopleWithSameBalance = sb.ToString().Remove(sb.ToString().Length - 2);
             return ConvertToArray(peopleWithSameBalance);
         }
-        private string FormatPeopleNames(string[] peopleAndBalances)
+        private string FormatPeopleNames(string[] peopleNames)
         {
-            switch (peopleAndBalances.Length)
+            switch (peopleNames.Length)
             {
                 case 1:
-                    return peopleAndBalances[0];
+                    return peopleNames[0];
                 case 2:
-                    return $"{peopleAndBalances[0]} and {peopleAndBalances[1]}";
+                    return $"{peopleNames[0]} and {peopleNames[1]}";
                 default:
                     // If need to this can be implemented to loop through the array, in any case only 3 different cases needed.
-                    return $"{peopleAndBalances[0]}, {peopleAndBalances[1]} and {peopleAndBalances[2]}";
+                    return $"{peopleNames[0]}, {peopleNames[1]} and {peopleNames[2]}";
             }
         }
 
