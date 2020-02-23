@@ -9,46 +9,59 @@ namespace BootCamp.Chapter
             return inputArray != null && inputArray.Length != 0;
         }
 
+        public static string GetNameForPerson(string personAndBalance)
+        {
+            var balanceList = personAndBalance.Split(',');
+
+            if (Test.IsStringValid(balanceList[0]))
+            {
+                return balanceList[0];
+            }
+
+            return StringOps.InvalidMessage;
+        }
+
+        public static decimal[] GetBalanceForPerson(string personAndBalance)
+        {
+            if (!Test.IsStringValid(personAndBalance))
+            {
+                return default;
+            }
+
+            var array = personAndBalance.Split(',');
+            var newArray = new decimal[array.Length - 1];
+            for (int i = 1; i < array.Length; i++)
+            {
+                newArray[i - 1] = Test.ConvertToDecimal(array[i]);
+            }
+
+            return newArray;
+        }
+
         public static decimal FindArrayMax(decimal[] inputArray)
         {
-            try
+            decimal max = inputArray[0];
+            for (int i = 1; i < inputArray.Length; i++)
             {
-                decimal max = inputArray[0];
-                for (int i = 1; i < inputArray.Length; i++)
+                if (inputArray[i] > max)
                 {
-                    if (inputArray[i] > max)
-                    {
-                        max = inputArray[i];
-                    }
+                    max = inputArray[i];
                 }
-                return max;
             }
-            catch (IndexOutOfRangeException)
-            {
-                // commented it out to keep clean screen
-            }
-            return default;
+            return max;
         }
 
         public static decimal FindArrayMin(decimal[] inputArray)
         {
-            try
+            var min = inputArray[0];
+            for (int i = 0; i < inputArray.Length; i++)
             {
-                var min = inputArray[0];
-                for (int i = 0; i < inputArray.Length; i++)
+                if (inputArray[i] < min)
                 {
-                    if (inputArray[i] < min)
-                    {
-                        min = inputArray[i];
-                    }
+                    min = inputArray[i];
                 }
-                return min;
             }
-            catch (IndexOutOfRangeException)
-            {
-                // commented it out to keep clean screen
-            }
-            return default;
+            return min;
         }
 
         public static bool AreArraysEqual(decimal[] array1, decimal[] array2)
