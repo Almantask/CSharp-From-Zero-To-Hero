@@ -45,7 +45,10 @@ namespace BootCamp.Chapter
         {
             foreach (var amount in balanace)
             {
-                return decimal.TryParse(amount, NumberStyles.Currency, culture, out _);
+                if (!decimal.TryParse(amount, NumberStyles.Currency, culture, out _))
+                {
+                    return false;
+                }
             }
             return true;
         }
