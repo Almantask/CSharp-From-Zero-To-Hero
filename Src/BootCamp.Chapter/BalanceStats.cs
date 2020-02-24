@@ -19,6 +19,11 @@ namespace BootCamp.Chapter
         /// </summary>
         public string FindHighestBalanceEver()
         {
+            if (_accounts is null)
+            {
+                return Messages.InvalidMessage;
+            }
+
             Account highestBalanceAccount;
             try
             {
@@ -30,10 +35,6 @@ namespace BootCamp.Chapter
                         highestBalanceAccount = _accounts[i];
                     }
                 }
-            }
-            catch (NullReferenceException)
-            {
-                return Messages.InvalidMessage;
             }
             catch (IndexOutOfRangeException)
             {
@@ -50,6 +51,11 @@ namespace BootCamp.Chapter
         /// </summary>
         public string FindPersonWithBiggestLoss()
         {
+            if (_accounts is null)
+            {
+                return Messages.InvalidMessage;
+            }
+
             Account biggestLossAccount;
             try
             {
@@ -61,10 +67,6 @@ namespace BootCamp.Chapter
                         biggestLossAccount = _accounts[i];
                     }
                 }
-            }
-            catch (NullReferenceException)
-            {
-                return Messages.InvalidMessage;
             }
             catch (IndexOutOfRangeException)
             {
@@ -81,6 +83,11 @@ namespace BootCamp.Chapter
         /// </summary>
         public string FindRichestPerson()
         {
+            if (_accounts is null)
+            {
+                return Messages.InvalidMessage;
+            }
+
             Account richestBalanceAccount;
             try
             {
@@ -92,10 +99,6 @@ namespace BootCamp.Chapter
                         richestBalanceAccount = _accounts[i];
                     }
                 }
-            }
-            catch (NullReferenceException)
-            {
-                return Messages.InvalidMessage;
             }
             catch (IndexOutOfRangeException)
             {
@@ -112,6 +115,11 @@ namespace BootCamp.Chapter
         /// </summary>
         public string FindMostPoorPerson()
         {
+            if (_accounts is null)
+            {
+                return Messages.InvalidMessage;
+            }
+
             Account poorestBalanceAccount;
             try
             {
@@ -123,10 +131,6 @@ namespace BootCamp.Chapter
                         poorestBalanceAccount = _accounts[i];
                     }
                 }
-            }
-            catch (NullReferenceException)
-            {
-                return Messages.InvalidMessage;
             }
             catch (IndexOutOfRangeException)
             {

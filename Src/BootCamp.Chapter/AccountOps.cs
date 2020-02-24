@@ -25,23 +25,16 @@ namespace BootCamp.Chapter
 
         public static Account[] BuildAccountList(string[] peopleAndBalances)
         {
-            Account[] accounts;
-            try
-            {
-                accounts = new Account[peopleAndBalances.Length];
-                for (int i = 0; i < accounts.Length; i++)
-                {
-                    accounts[i] = new Account(peopleAndBalances[i]);
-                }
-            }
-            catch (NullReferenceException)
+            if (peopleAndBalances is null || peopleAndBalances.Length == 0)
             {
                 return default;
             }
-            catch (IndexOutOfRangeException)
+            Account[] accounts = new Account[peopleAndBalances.Length];
+            for (int i = 0; i < accounts.Length; i++)
             {
-                return default;
+                accounts[i] = new Account(peopleAndBalances[i]);
             }
+
             return accounts;
         }
 
