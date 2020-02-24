@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
         {
             if (!Test.IsStringValid(_dirtyFile) || !Test.IsStringValid(_cleanedFile))
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Invalid file path!", _dirtyFile);
             }
 
             string dirtyData = File.ReadAllText(_dirtyFile);
