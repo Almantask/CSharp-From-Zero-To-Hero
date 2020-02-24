@@ -55,5 +55,26 @@ namespace BootCamp.Chapter
 
             return $"{answer.GetPersons()} lost the most money. -¤{answer.GetAmount()}.";
         }
+
+        public static string FindRichestPerson(string[] peopleAndBalances)
+        {
+            if (IsInValidInput(peopleAndBalances))
+            {
+                return InValidOutput;
+            }
+
+            var answer = BalanceParser.FindRichest(peopleAndBalances);
+
+            if (answer.GetPersons().ToString().Contains(", "))
+            {
+                BalanceParser.ReplaceCommaWithAnd(answer.GetPersons());
+                return $"{answer.GetPersons()} are the richest people. ¤{answer.GetAmount()}.";
+            }
+            else
+            {
+                return $"{answer.GetPersons()} is the richest person. ¤{answer.GetAmount()}.";
+            }
+
+        }
     }
 }

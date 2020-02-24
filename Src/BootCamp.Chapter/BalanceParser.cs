@@ -6,8 +6,6 @@ namespace BootCamp.Chapter
 {
     public class BalanceParser
     {
-        private const string InValidOutput = "N/A.";
-
         public static BalanceStats FindHighestBalance(string[] balances)
         {
             CultureInfo.CurrentCulture = new CultureInfo("en-GB");
@@ -52,7 +50,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static void ReplaceCommaWithAnd(StringBuilder message)
+        public static void ReplaceCommaWithAnd(StringBuilder message)
         {
             var index = message.ToString().LastIndexOf(", ");
             message.Remove(index, 2).Insert(index, " and ");
@@ -93,6 +91,32 @@ namespace BootCamp.Chapter
             return new BalanceStats(persons, personBiggestLoss.GetAmount());
         }
 
+        public static BalanceStats FindRichest(string[] peopleAndBalances)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
+            var persons = new StringBuilder();
+            var richestPerson = new Person("", decimal.MinValue);
+
+            for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
+            {
+                var currentPersonData = peopleAndBalances[i].Split(',');
+                var highestAmountOfPerson = decimal.Parse(currentPersonData[^1], NumberStyles.Currency);
+
+                if (highestAmountOfPerson > richestPerson.GetAmount())
+                {
+                    richestPerson = new Person(currentPersonData[0], highestAmountOfPerson);
+
+                    persons.Clear();
+                }
+
+                if (highestAmountOfPerson >= richestPerson.GetAmount())
+                {
+                    AddPerson(currentPersonData[0], persons);
+                }
+            }
+            return new BalanceStats(persons, richestPerson.GetAmount());
+        }
+
         private static decimal FindBiggestLossPerson(string[] allAmounts)
         {
             var biggestLossPerson = decimal.MinValue;
@@ -105,7 +129,7 @@ namespace BootCamp.Chapter
                 //check if loss is greater then the current highest loss
                 if (lossForCurrentPerson > biggestLossPerson)
                 {
-                    biggestLossPerson = lossForCurrentPerson ;
+                    biggestLossPerson = lossForCurrentPerson;
                 }
             }
 
