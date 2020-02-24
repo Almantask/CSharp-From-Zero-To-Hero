@@ -23,9 +23,13 @@ namespace BootCamp.Chapter
 
         public void Clean()
         {
-            if (!Test.IsStringValid(_dirtyFile) || !Test.IsStringValid(_cleanedFile))
+            if (!Test.IsStringValid(_dirtyFile))
             {
                 throw new ArgumentException("Invalid file path!", _dirtyFile);
+            }
+            if (!Test.IsStringValid(_cleanedFile))
+            {
+                throw new ArgumentException("Invalid file path!", _cleanedFile);
             }
 
             string dirtyData = File.ReadAllText(_dirtyFile);
@@ -34,32 +38,19 @@ namespace BootCamp.Chapter
                 File.WriteAllText(_cleanedFile, dirtyData);
             }
 
-            string cleandData = FiltherData(dirtyData);
-            File.WriteAllText(_cleanedFile, cleandData);
+            string cleanedData = dirtyData.Replace(_corruptionChar, _emptyChar);
+            string testedData = TestData(cleanedData);
+            File.WriteAllText(_cleanedFile, testedData);
         }
 
-        private string FiltherData(string dirtyData)
+        private string TestData(string cleanData)
         {
-            string cleanData = dirtyData.Replace(_corruptionChar, _emptyChar);
             string[] peopleAndBalance = cleanData.Split(Environment.NewLine);
-            if (!AreBalancesValid(peopleAndBalance))
+            if (!ArrayOps.AreBalancesValid(peopleAndBalance, _divider, _cultureInfo))
             {
                 throw new InvalidBalancesException();
             }
             return cleanData;
-        }
-
-        private bool AreBalancesValid(string[] peopleAndBalance)
-        {
-            foreach (string field in peopleAndBalance)
-            {
-                string[] account = ArrayOps.ConvertToAccountArray(field, _divider);
-                if (!Test.IsName(account[0]) || !Test.IsBalance(account[1..], _cultureInfo))
-                {
-                    return false;
-                }
-            }
-            return true;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -7,6 +8,19 @@ namespace BootCamp.Chapter
         public static bool IsArrayValid(string[] inputArray)
         {
             return inputArray != null && inputArray.Length != 0;
+        }
+
+        public static bool AreBalancesValid(string[] peopleAndBalance, char divider, CultureInfo cultureInfo)
+        {
+            foreach (string field in peopleAndBalance)
+            {
+                string[] account = ConvertToAccountArray(field, divider);
+                if (!Test.IsName(account[0]) || !Test.IsBalance(account[1..], cultureInfo))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static decimal FindArrayMax(decimal[] inputArray)
