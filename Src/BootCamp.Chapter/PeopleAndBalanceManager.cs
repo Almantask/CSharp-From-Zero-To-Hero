@@ -31,6 +31,10 @@ namespace BootCamp.Chapter
 
         public string GetPersonWithBiggestLossAnswer()
         {
+            if (!isValidForCheck())
+            {
+                return "N/A.";
+            }
             return _answerFormatter.GetFormattedAnswerForPersonWithBiggestLoss(FindPersonWithBiggestLoss());
         }
 
