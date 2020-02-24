@@ -1,16 +1,17 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Linq;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
-    internal class BalanceParser
+    public class BalanceParser
     {
-        public static BalanceStats FindHighestBalance(string [] balances)
+        private const string InValidOutput = "N/A.";
+
+        public static BalanceStats FindHighestBalance(string[] balances)
         {
             CultureInfo.CurrentCulture = new CultureInfo("en-GB");
-            var persons = new StringBuilder(); 
+            var persons = new StringBuilder();
             var personWithHighestBalance = new Person("", decimal.MinValue);
 
             for (int i = 0; i <= balances.Length - 1; i++)
@@ -57,41 +58,58 @@ namespace BootCamp.Chapter
             message.Remove(index, 2).Insert(index, " and ");
         }
 
-        //    public static BalanceStats FindBiggestLoss(BalanceStats data)
-        //    {
-        //        CultureInfo.CurrentCulture = new CultureInfo("en-GB");
-        //        var amounts = data.GetAmounts();
-        //        var persons = data.GetPersons();
-        //        var personWithBiggesrLoss = new Person("", 0);
+        public static BalanceStats FindBiggestLoss(string[] balances)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
+            var persons = new StringBuilder();
+            var personBiggestLoss = new Person("", decimal.MinValue);
 
-        //        for (int i = 0; i <= amounts.Length - 1; i++)
-        //        {
-        //            var currentPersonData = amounts[i].Split(',');
-        //            var allAmounts = currentPersonData[1..];
+            for (int i = 0; i <= balances.Length - 1; i++)
+            {
+                var currentPersonData = balances[i].Split(',');
+                var allAmounts = currentPersonData[1..];
 
-        //            // calculateLoss
+                // calculateLoss
 
-        //            if (allAmounts.Length <= 1)
-        //            {
-        //                return InValidOutput;
-        //            }
+                if (allAmounts.Length <= 1)
+                {
+                    return new BalanceStats(new StringBuilder(), 0);
+                }
 
-        //            for (int j = 0; j < allAmounts.Length - 1; j++)
-        //            {
-        //                var amount1 = decimal.Parse(allAmounts[j], NumberStyles.Currency | NumberStyles.Number);
-        //                var amount2 = decimal.Parse(allAmounts[j + 1], NumberStyles.Currency | NumberStyles.Number);
-        //                var lossForCurrentPerson = amount1 - amount2;
+                var biggestLossPerson = FindBiggestLossPerson(allAmounts);
 
-        //                //check if loss is greater then the current highest loss
-        //                if (lossForCurrentPerson > highestLossEver)
-        //                {
-        //                    highestLossEver = lossForCurrentPerson;
-        //                    personWithHighestLoss.Clear();
-        //                    personWithHighestLoss.Append(currentPersonData[0]);
-        //                }
+                if (biggestLossPerson > personBiggestLoss.GetAmount())
+                {
+                    personBiggestLoss = new Person(currentPersonData[0], biggestLossPerson);
+                    persons.Clear();
+                }
 
-        //            }
-        //        }
-        //    }
+                if (biggestLossPerson >= personBiggestLoss.GetAmount())
+                {
+                    AddPerson(currentPersonData[0], persons);
+                }
+            }
+
+            return new BalanceStats(persons, personBiggestLoss.GetAmount());
+        }
+
+        private static decimal FindBiggestLossPerson(string[] allAmounts)
+        {
+            var biggestLossPerson = decimal.MinValue;
+            for (int j = 0; j < allAmounts.Length - 1; j++)
+            {
+                var amount1 = decimal.Parse(allAmounts[j], NumberStyles.Currency | NumberStyles.Number);
+                var amount2 = decimal.Parse(allAmounts[j + 1], NumberStyles.Currency | NumberStyles.Number);
+                var lossForCurrentPerson = amount1 - amount2;
+
+                //check if loss is greater then the current highest loss
+                if (lossForCurrentPerson > biggestLossPerson)
+                {
+                    biggestLossPerson = lossForCurrentPerson;
+                }
+            }
+
+            return biggestLossPerson;
+        }
     }
 }

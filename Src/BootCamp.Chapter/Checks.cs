@@ -15,7 +15,7 @@
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            return BalanceStats.FindPersonWithBiggestLoss(peopleAndBalances); 
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)

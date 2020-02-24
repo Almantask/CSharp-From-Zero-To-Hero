@@ -1,12 +1,13 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
-    internal class BalanceStats
+    public class BalanceStats
     {
         private const string InValidOutput = "N/A.";
-        private StringBuilder _persons;
-        private decimal _amount;
+        private readonly StringBuilder _persons;
+        private readonly decimal _amount;
 
         public BalanceStats(StringBuilder persons, decimal amount)
         {
@@ -38,17 +39,21 @@ namespace BootCamp.Chapter
             return $"{answer.GetPersons()} had the most money ever. ¤{answer.GetAmount()}.";
         }
 
-        //public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
-        //{
-        //    if (IsInValidInput(peopleAndBalances))
-        //    {
-        //        return InValidOutput;
-        //    }
+        public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        {
+            if (IsInValidInput(peopleAndBalances))
+            {
+                return InValidOutput;
+            }
 
-        //    var balanceStat = new BalanceStats(new StringBuilder(), peopleAndBalances);
-        //    var answer = BalanceParser.FindBiggestLoss(balanceStat);
+            var answer = BalanceParser.FindBiggestLoss(peopleAndBalances);
 
-        //    return $"{answer.GetPersons()} lost the most money. -¤{answer.GetAmount()}.";
-        //}
+            if (String.IsNullOrEmpty(answer.GetPersons().ToString()))
+            {
+                return InValidOutput; 
+            }
+
+            return $"{answer.GetPersons()} lost the most money. -¤{answer.GetAmount()}.";
+        }
     }
 }
