@@ -34,7 +34,11 @@ namespace BootCamp.Chapter
                     accounts[i] = new Account(peopleAndBalances[i]);
                 }
             }
-            catch (Exception ex) when (ex is NullReferenceException || ex is IndexOutOfRangeException)
+            catch (NullReferenceException)
+            {
+                return default;
+            }
+            catch (IndexOutOfRangeException)
             {
                 return default;
             }
