@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         private static void Main(string[] args)
         {
             // part1
-            var contents = FileCleaner.Clean(@"Input\Balances.corrupted", @"Input\Balances.clean");
+            FileCleaner.Clean(@"Input\Balances.corrupted", @"Input\Balances.clean");
 
             // part2
 
