@@ -5,11 +5,6 @@ namespace BootCamp.Chapter
 {
     public static class ArrayOps
     {
-        public static bool IsArrayValid(string[] inputArray)
-        {
-            return inputArray != null && inputArray.Length != 0;
-        }
-
         public static bool AreBalancesValid(string[] peopleAndBalance, char divider, CultureInfo cultureInfo)
         {
             foreach (string field in peopleAndBalance)
@@ -21,6 +16,20 @@ namespace BootCamp.Chapter
                 }
             }
             return true;
+        }
+
+        public static string[] ConvertToAccountArray(string personAndBalance, char delimiter)
+        {
+            string[] newArray;
+            try
+            {
+                newArray = personAndBalance.Split(delimiter);
+            }
+            catch (Exception)
+            {
+                throw new InvalidBalancesException();
+            }
+            return newArray;
         }
 
         public static decimal FindArrayMax(decimal[] inputArray)
@@ -59,20 +68,6 @@ namespace BootCamp.Chapter
                 }
             }
             return true;
-        }
-
-        public static string[] ConvertToAccountArray(string personAndBalance, char delimiter)
-        {
-            string[] newArray;
-            try
-            {
-                newArray = personAndBalance.Split(delimiter);
-            }
-            catch (Exception)
-            {
-                throw new InvalidBalancesException();
-            }
-            return newArray;
         }
     }
 }
