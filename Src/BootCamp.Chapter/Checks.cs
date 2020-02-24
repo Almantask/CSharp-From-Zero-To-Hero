@@ -24,7 +24,7 @@ namespace BootCamp.Chapter
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            return BalanceStats.FindHighestBalanceEver(peopleAndBalances); 
         }
 
         public static string Build(string message, in int padding)
