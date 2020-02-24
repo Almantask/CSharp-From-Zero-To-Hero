@@ -8,30 +8,34 @@ namespace BootCamp.Chapter
     // This class is used to have a freedom of design, but with tests applied.
     public static class Checks
     {
+        private const string currency = "\u00A4";
+        private const char divider = ',';
+        private static readonly CultureInfo cultureInfo = new CultureInfo("en-GB");
+
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+            BalanceStats balanceStats = new BalanceStats(peopleAndBalances, currency);
 
             return balanceStats.FindMostPoorPerson();
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+            BalanceStats balanceStats = new BalanceStats(peopleAndBalances, currency);
 
             return balanceStats.FindRichestPerson();
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+            BalanceStats balanceStats = new BalanceStats(peopleAndBalances, currency);
 
             return balanceStats.FindPersonWithBiggestLoss();
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+            BalanceStats balanceStats = new BalanceStats(peopleAndBalances, currency);
 
             return balanceStats.FindHighestBalanceEver();
         }
@@ -45,8 +49,7 @@ namespace BootCamp.Chapter
 
         public static void Clean(string file, string outputFile)
         {
-            CultureInfo cultureInfo = new CultureInfo("en-GB");
-            FileCleaner fileCleaner = new FileCleaner(file, outputFile, cultureInfo);
+            FileCleaner fileCleaner = new FileCleaner(file, outputFile, cultureInfo, divider);
             fileCleaner.Clean();
         }
     }
