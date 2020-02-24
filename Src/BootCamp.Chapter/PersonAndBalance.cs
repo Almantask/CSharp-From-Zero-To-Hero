@@ -23,11 +23,15 @@ namespace BootCamp.Chapter
             return _personAndBalanceArray[0];
         }
 
-        public float[] GetBalance()
+        public float[] GetBalanceHistory()
         {
             return _balance;
         }
 
+        public float GetCurrentBalance()
+        {
+            return _balance[^1];
+        }
         public float GetHighestBalance()
         {
             var highestBalance = _balance[0];

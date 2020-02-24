@@ -11,17 +11,37 @@ namespace BootCamp.Chapter
 
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (IsArrayNullOrEmpty(peopleAndBalances))
+            {
+                return "N/A.";
+            }
+            var balanceStats = new PeopleAndBalanceManager(peopleAndBalances);
+            return balanceStats.GetPoorestPersonAnswer();
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (IsArrayNullOrEmpty(peopleAndBalances))
+            {
+                return "N/A.";
+            }
+            var balanceStats = new PeopleAndBalanceManager(peopleAndBalances);
+            return balanceStats.GetRichestPersonAnswer();
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            if (IsArrayNullOrEmpty(peopleAndBalances))
+            {
+                return "N/A.";
+            }
+
+            var balanceStats = new PeopleAndBalanceManager(peopleAndBalances);
+            if (!balanceStats.isValidForCheck())
+            {
+                return "N/A.";
+            }
+            return balanceStats.GetPersonWithBiggestLossAnswer();
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
@@ -31,7 +51,7 @@ namespace BootCamp.Chapter
                 return "N/A.";
             }
             var balanceStats = new PeopleAndBalanceManager(peopleAndBalances);
-            return balanceStats.FindHighestBalanceEver();
+            return balanceStats.GetHighestBalanceEverAnswer();
         }
 
         public static string Build(string message, in int padding)
@@ -47,5 +67,9 @@ namespace BootCamp.Chapter
         {
             return peopleAndBalances == null || peopleAndBalances.Length == 0;
         }
+
+
+
+
     }
 }
