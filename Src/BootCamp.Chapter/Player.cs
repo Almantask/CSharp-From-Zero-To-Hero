@@ -24,6 +24,10 @@ namespace BootCamp.Chapter
         /// Each point of strength allows extra 10 kg to carry.
         /// </summary>
         private int _strenght;
+        public int CarryLimit()
+        {
+            return baseCarryWeight + 10 * _strenght;
+        }
 
         /// <summary>
         /// Player items. There can be multiple of items with same name.
@@ -34,8 +38,19 @@ namespace BootCamp.Chapter
         /// </summary>
         private Equipment _equipment;
 
+        public Player(string name, int hp, int strength)
+        {
+            _name = name;
+            _hp = hp;
+            _strenght = strength;
+
+            _inventory = new Inventory();
+            _equipment = new Equipment();
+        }
         public Player()
         {
+            _inventory = new Inventory();
+            _equipment = new Equipment();
         }
 
         /// <summary>
@@ -43,7 +58,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public Item[] GetItems()
         {
-            return new Item[0];
+            return _inventory.GetItems();
         }
 
         /// <summary>
@@ -51,11 +66,12 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
@@ -64,7 +80,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
@@ -75,32 +91,46 @@ namespace BootCamp.Chapter
         // Implement equiping logic and total defense/attack calculation.
         public void Equip(Headpiece head)
         {
-
+            _equipment.SetHead(head);
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Chestpiece chest)
         {
-
+            _equipment.SetChest(chest);
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                _equipment.SetLeftShoulder(shoulder);
+            } 
+            else
+            {
+                _equipment.SetRightShoulder(shoulder);
+            }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Legspiece legs)
         {
-
+            _equipment.SetLeg(legs);
         }
 
-        public void Equip(Armpiece head, bool isLeft)
+        public void Equip(Armpiece arms, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                _equipment.SetLeftArmpiece(arms);
+            }
+            else
+            {
+                _equipment.SetRightArmiece(arms);
+            }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Gloves gloves)
         {
-
+            _equipment.SetGloves(gloves);
         }
         #endregion
     }

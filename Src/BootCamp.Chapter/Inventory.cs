@@ -5,7 +5,7 @@
         private Item[] _items;
         public Item[] GetItems()
         {
-            return new Item[0];
+            return _items;
         }
 
         public Inventory()
@@ -15,12 +15,29 @@
 
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            Item[] wantedItems = new Item[0];
+            for (int i = 0; i < _items.Length; i++)
+            {
+                Item currentItem = _items[i];
+                if (currentItem.GetName() == name)
+                {
+                    wantedItems = Item.Append(wantedItems, currentItem);
+                }
+            }
+            return wantedItems;
         }
 
         public void AddItem(Item item)
         {
-
+            _items = Item.Append(_items, item);
+        }
+        public bool ItemExists(Item item)
+        {
+            return Item.ItemInArray(_items, item);
+        }
+        public bool ItemExists(string name)
+        {
+            return Item.NameInArray(_items, name);
         }
 
         /// <summary>
@@ -29,7 +46,11 @@
         /// </summary>
         public void RemoveItem(Item item)
         {
-
+            _items = Item.RemoveItem(_items, item);
+        }
+        public void RemoveItem(string name)
+        {
+            _items = Item.RemoveName(_items, name);
         }
     }
 }

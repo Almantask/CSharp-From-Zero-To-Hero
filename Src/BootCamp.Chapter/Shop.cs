@@ -12,12 +12,13 @@
 
         public Shop()
         {
-
+            _inventory = new Inventory();
         }
 
         public Shop(decimal money)
         {
             _money = money;
+            _inventory = new Inventory();
         }
 
         public Item[] GetItems()
@@ -31,6 +32,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,6 +42,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            _inventory.RemoveItem(name);
         }
 
         /// <summary>
@@ -50,7 +53,14 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            var itemPrice = item.GetPrice();
+            if (_money - itemPrice < 0)
+            {
+                return 0;
+            }
+
+            _money -= itemPrice;
+            return itemPrice;
         }
 
         /// <summary>
@@ -64,6 +74,13 @@
         /// </returns>
         public Item Sell(string item)
         {
+            if (_inventory.ItemExists(item))
+            {
+                //since it is a shop, using GetItems should return a singleton as there are no repeats
+                Item itemToBeSold = _inventory.GetItems(item)[0];
+                _money += itemToBeSold.GetPrice();
+                return itemToBeSold;
+            }
             return null;
         }
     }
