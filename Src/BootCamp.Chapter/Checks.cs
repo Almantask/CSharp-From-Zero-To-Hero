@@ -5,7 +5,7 @@
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            return BalanceStats.FindMostPoorPerson(peopleAndBalances); 
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)

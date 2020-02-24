@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -91,6 +92,33 @@ namespace BootCamp.Chapter
             return new BalanceStats(persons, personBiggestLoss.GetAmount());
         }
 
+        internal static BalanceStats FindPoorest(string[] peopleAndBalances)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
+            var persons = new StringBuilder();
+            var poorestPerson = new Person("", decimal.MaxValue);
+
+            for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
+            {
+                var currentPersonData = peopleAndBalances[i].Split(',');
+                var amountOfPerson = decimal.Parse(currentPersonData[^1], NumberStyles.Currency);
+
+                if (amountOfPerson < poorestPerson.GetAmount())
+                {
+                    poorestPerson = new Person(currentPersonData[0], amountOfPerson);
+
+                    persons.Clear();
+                }
+
+                if (amountOfPerson <= poorestPerson.GetAmount())
+                {
+                    AddPerson(currentPersonData[0], persons);
+                }
+            }
+            return new BalanceStats(persons, poorestPerson.GetAmount());
+
+        }
+
         public static BalanceStats FindRichest(string[] peopleAndBalances)
         {
             CultureInfo.CurrentCulture = new CultureInfo("en-GB");
@@ -100,16 +128,16 @@ namespace BootCamp.Chapter
             for (int i = 0; i <= peopleAndBalances.Length - 1; i++)
             {
                 var currentPersonData = peopleAndBalances[i].Split(',');
-                var highestAmountOfPerson = decimal.Parse(currentPersonData[^1], NumberStyles.Currency);
+                var amountOfPerson = decimal.Parse(currentPersonData[^1], NumberStyles.Currency);
 
-                if (highestAmountOfPerson > richestPerson.GetAmount())
+                if (amountOfPerson > richestPerson.GetAmount())
                 {
-                    richestPerson = new Person(currentPersonData[0], highestAmountOfPerson);
+                    richestPerson = new Person(currentPersonData[0], amountOfPerson);
 
                     persons.Clear();
                 }
 
-                if (highestAmountOfPerson >= richestPerson.GetAmount())
+                if (amountOfPerson >= richestPerson.GetAmount())
                 {
                     AddPerson(currentPersonData[0], persons);
                 }

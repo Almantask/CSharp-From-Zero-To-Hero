@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -73,6 +74,32 @@ namespace BootCamp.Chapter
             else
             {
                 return $"{answer.GetPersons()} is the richest person. ¤{answer.GetAmount()}.";
+            }
+
+        }
+
+        public static string FindMostPoorPerson(string[] peopleAndBalances)
+        {
+            if (IsInValidInput(peopleAndBalances))
+            {
+                return InValidOutput;
+            }
+
+            var answer = BalanceParser.FindPoorest(peopleAndBalances);
+
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            NumberFormatInfo noParens = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+            noParens.CurrencyNegativePattern = 1;
+            var lowestBalanceString = answer.GetAmount().ToString("C0", noParens);
+
+            if (answer.GetPersons().ToString().Contains(','))
+            {
+                BalanceParser.ReplaceCommaWithAnd(answer.GetPersons());
+                return $"{answer.GetPersons().ToString()} have the least money. {lowestBalanceString}.";
+            }
+            else
+            {
+                return $"{answer.GetPersons().ToString()} has the least money. {lowestBalanceString}.";
             }
 
         }
