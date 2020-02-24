@@ -7,9 +7,11 @@ namespace BootCamp.Chapter
 {
     public class BalanceParser
     {
+        public const string culture = "en-GB"; 
+
         public static BalanceStats FindHighestBalance(string[] balances)
         {
-            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
+            CultureInfo.CurrentCulture = new CultureInfo(culture);
             var persons = new StringBuilder();
             var personWithHighestBalance = new Person("", decimal.MinValue);
 
@@ -59,7 +61,7 @@ namespace BootCamp.Chapter
 
         public static BalanceStats FindBiggestLoss(string[] balances)
         {
-            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
+            CultureInfo.CurrentCulture = new CultureInfo(culture);
             var persons = new StringBuilder();
             var personBiggestLoss = new Person("", decimal.MinValue);
 
@@ -94,7 +96,7 @@ namespace BootCamp.Chapter
 
         internal static BalanceStats FindPoorest(string[] peopleAndBalances)
         {
-            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
+            CultureInfo.CurrentCulture = new CultureInfo(culture);
             var persons = new StringBuilder();
             var poorestPerson = new Person("", decimal.MaxValue);
 
@@ -121,7 +123,7 @@ namespace BootCamp.Chapter
 
         public static BalanceStats FindRichest(string[] peopleAndBalances)
         {
-            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
+            CultureInfo.CurrentCulture = new CultureInfo(culture);
             var persons = new StringBuilder();
             var richestPerson = new Person("", decimal.MinValue);
 
