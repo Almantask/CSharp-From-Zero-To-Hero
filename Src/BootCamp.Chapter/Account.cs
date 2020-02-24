@@ -4,13 +4,11 @@
     {
         private readonly string _name;
         private readonly decimal[] _balance;
-        private readonly string[] _accountArray;
-        private readonly char _divider;
 
         public Account(string personAndBalance)
         {
-            _divider = Settings.divider;
-            _accountArray = ArrayOps.ConvertToAccountArray(personAndBalance, _divider);
+            char _divider = Settings.divider;
+            string[] _accountArray = ArrayOps.ConvertToAccountArray(personAndBalance, _divider);
             _name = AccountOps.GetNameForPerson(_accountArray);
             _balance = AccountOps.GetBalanceForPerson(_accountArray);
         }
