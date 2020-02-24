@@ -11,24 +11,15 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
-            return EncryptOrDecrypt(message, shift, true);
+            return ShiftsCharacters(message, shift);
         }
 
         public static string Decrypt(string message, byte shift)
         {
-            return EncryptOrDecrypt(message, shift, false);
+            return ShiftsCharacters(message, shift * -1);
         }
 
-        /// <summary>
-        /// Encrypt or decrypt given message
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="shift"></param>
-        /// <param name="encrypt"> 
-        /// true to encrypt, false to decrypt
-        /// </param>
-        /// <returns></returns>
-        public static string EncryptOrDecrypt (string message, byte shift, bool encrypt)
+        public static string ShiftsCharacters(string message, int shift)
         {
             if (message == null)
             {
@@ -38,14 +29,7 @@ namespace BootCamp.Chapter
             StringBuilder changedMessage = new StringBuilder();
             for (int i = 0; i < message.Length; i++)
             {
-                if (encrypt)
-                {
-                    changedMessage.Append((char)(message[i] + shift));
-                }
-                else
-                {
-                    changedMessage.Append((char)(message[i] - shift));
-                }                           
+                    changedMessage.Append((char)(message[i] + shift));                                     
             }
             return changedMessage.ToString();
         }
