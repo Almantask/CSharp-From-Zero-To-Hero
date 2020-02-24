@@ -1,17 +1,16 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class Account
     {
         private readonly string _name;
         private readonly decimal[] _balance;
         private readonly string[] _accountArray;
-        private char _delimiter = ',';
+        private readonly char _divider;
 
         public Account(string personAndBalance)
         {
-            _accountArray = ArrayOps.ConvertToAccountArray(personAndBalance, _delimiter);
+            _divider = Settings.divider;
+            _accountArray = ArrayOps.ConvertToAccountArray(personAndBalance, _divider);
             _name = AccountOps.GetNameForPerson(_accountArray);
             _balance = AccountOps.GetBalanceForPerson(_accountArray);
         }
@@ -24,16 +23,6 @@ namespace BootCamp.Chapter
         public decimal[] GetBalance()
         {
             return _balance;
-        }
-
-        public char GetDelimiter()
-        {
-            return _delimiter;
-        }
-
-        public void SetDelimiter(char delimiter)
-        {
-            _delimiter = delimiter;
         }
 
         public decimal GetHighestBalance()
