@@ -1,10 +1,12 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     public static class AccountOps
     {
         public static string GetNameForPerson(string[] personAndBalance)
         {
-            if (Test.IsStringValid(personAndBalance[0]))
+            if (Test.IsName(personAndBalance[0]))
             {
                 return personAndBalance[0];
             }
@@ -16,19 +18,26 @@
             var newArray = new decimal[personAndBalance.Length - 1];
             for (int i = 1; i < personAndBalance.Length; i++)
             {
-                newArray[i - 1] = Test.ConvertToDecimal(personAndBalance[i]);
+                newArray[i - 1] = Conversion.ConvertToDecimal(personAndBalance[i]);
             }
             return newArray;
         }
 
         public static Account[] BuildAccountList(string[] peopleAndBalances)
         {
-            Account[] accounts = new Account[peopleAndBalances.Length];
-            for (int i = 0; i < accounts.Length; i++)
+            try
             {
-                accounts[i] = new Account(peopleAndBalances[i]);
+                Account[] accounts = new Account[peopleAndBalances.Length];
+                for (int i = 0; i < accounts.Length; i++)
+                {
+                    accounts[i] = new Account(peopleAndBalances[i]);
+                }
+                return accounts;
             }
-            return accounts;
+            catch (Exception ex) when (ex is NullReferenceException || ex is IndexOutOfRangeException)
+            {
+                return default;
+            }
         }
 
         public static bool AreBalancesEqual(Account[] accounts)
