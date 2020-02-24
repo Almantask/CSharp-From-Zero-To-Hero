@@ -4,34 +4,25 @@ using System.IO;
 
 namespace BootCamp.Chapter
 {
-    public class FileCleaner
+    public static class FileCleaner
     {
-        private readonly string _dirtyFile;
-        private readonly string _cleanedFile;
-
-        public FileCleaner(string dirtyFile, string cleanedFile)
-        {
-            _dirtyFile = dirtyFile;
-            _cleanedFile = cleanedFile; 
-        }
-
         /// <summary>
         /// Cleans up dirtyFileName
         /// </summary>
         /// <param name="dirtyFile">Dirty file with "_" placed in random places.</param>
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
-        public void Clean()
+        public static void Clean(string dirtyFile, string cleanedFile)
         {
-            if (String.IsNullOrEmpty(_dirtyFile) || String.IsNullOrEmpty(_cleanedFile))
+            if (String.IsNullOrEmpty(dirtyFile) || String.IsNullOrEmpty(cleanedFile))
             {
                 throw new ArgumentException("File path is null or empty.");
             }
 
-            var contents = File.ReadAllLines(_dirtyFile);
+            var contents = File.ReadAllLines(dirtyFile);
 
             if (contents.Length == 0)
             {
-                File.WriteAllText(_cleanedFile, "");
+                File.WriteAllText(cleanedFile, "");
             }
 
             for (int i = 0; i < contents.Length; i++)
@@ -58,11 +49,11 @@ namespace BootCamp.Chapter
 
                 if (i == 0)
                 {
-                    File.WriteAllText(_cleanedFile, repairedText);
+                    File.WriteAllText(cleanedFile, repairedText);
                 }
                 else
                 {
-                    File.AppendAllText(_cleanedFile, repairedText);
+                    File.AppendAllText(cleanedFile, repairedText);
                 }
             }
         }

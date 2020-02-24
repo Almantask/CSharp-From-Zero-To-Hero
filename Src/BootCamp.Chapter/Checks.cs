@@ -29,15 +29,13 @@ namespace BootCamp.Chapter
 
         public static string Build(string message, in int padding)
         {
-            var table = new TextTable(message, padding);
-             return table.Build(); 
+            return TextTable.Build(message, padding);
         }
 
         public static void Clean(string file, string outputFile)
         {
-            var cleaner = new FileCleaner(file, outputFile);
-            cleaner.Clean(); 
-            
+            FileCleaner.Clean(file, outputFile);
+                
         }
     }
 }

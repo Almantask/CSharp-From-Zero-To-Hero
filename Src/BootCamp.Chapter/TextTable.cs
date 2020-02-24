@@ -3,25 +3,17 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class TextTable
+    public static class TextTable
     {
-        private readonly string _message;
-        private readonly int _padding;
-
-        public TextTable(string message, int padding)
+        public static string Build(string message, int padding)
         {
-            _message = message;
-            _padding = padding; 
-        }
-        public string Build()
-        {
-            if (string.IsNullOrEmpty(_message))
+            if (string.IsNullOrEmpty(message))
             {
                 return "";
             }
             // make a array so I can find the longest word. 
 
-            var arrayOfLines = _message.Split(Environment.NewLine);
+            var arrayOfLines = message.Split(Environment.NewLine);
 
             // Find length of longest word 
             var lengthLongestWord = GetLongestWordLength(arrayOfLines);
@@ -29,11 +21,11 @@ namespace BootCamp.Chapter
             // print table 
 
             var table = new StringBuilder();
-            AddTopOrBottomLineToTable(_padding, lengthLongestWord, table);
-            AddEmptyLinesToTable(_padding, lengthLongestWord, table);
-            AddTextToTable(_padding, arrayOfLines, lengthLongestWord, table);
-            AddEmptyLinesToTable(_padding, lengthLongestWord, table);
-            AddTopOrBottomLineToTable(_padding, lengthLongestWord, table);
+            AddTopOrBottomLineToTable(padding, lengthLongestWord, table);
+            AddEmptyLinesToTable(padding, lengthLongestWord, table);
+            AddTextToTable(padding, arrayOfLines, lengthLongestWord, table);
+            AddEmptyLinesToTable(padding, lengthLongestWord, table);
+            AddTopOrBottomLineToTable(padding, lengthLongestWord, table);
             return table.ToString();
 
         }
