@@ -105,7 +105,7 @@ namespace BootCamp.Chapter
                 //check if loss is greater then the current highest loss
                 if (lossForCurrentPerson > biggestLossPerson)
                 {
-                    biggestLossPerson = lossForCurrentPerson;
+                    biggestLossPerson = lossForCurrentPerson ;
                 }
             }
 
