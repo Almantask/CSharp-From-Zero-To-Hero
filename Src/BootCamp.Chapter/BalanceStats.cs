@@ -32,6 +32,9 @@ namespace BootCamp.Chapter
                         highestBalanceAccount = _accounts[i];
                     }
                 }
+                return _accounts.Length > _arrayBreak && AccountOps.AreBalancesEqual(_accounts)
+               ? $"{StringOps.FormatAndCommas(_accounts)} {Messages.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), _currency)}."
+               : $"{highestBalanceAccount.GetName()} {Messages.HadTheMostMoneyEver}. {StringOps.FormatCurrency(highestBalanceAccount.GetHighestBalance(), _currency)}.";
             }
             catch (Exception ex) when (ex is NullReferenceException || ex is IndexOutOfRangeException)
             {
@@ -58,6 +61,9 @@ namespace BootCamp.Chapter
                         biggestLossAccount = _accounts[i];
                     }
                 }
+                return _accounts.Length > _arrayBreak && AccountOps.AreBalancesEqual(_accounts)
+                ? $"{Messages.InvalidMessage}"
+                : $"{biggestLossAccount.GetName()} {Messages.LostTheMostMoney}. {StringOps.FormatCurrency(biggestLossAccount.GetLoss(), _currency)}.";
             }
             catch (Exception ex) when (ex is NullReferenceException || ex is IndexOutOfRangeException)
             {
@@ -84,6 +90,9 @@ namespace BootCamp.Chapter
                         richestBalanceAccount = _accounts[i];
                     }
                 }
+                return _accounts.Length > _arrayBreak && AccountOps.AreBalancesEqual(_accounts)
+               ? $"{StringOps.FormatAndCommas(_accounts)} {Messages.AreTheRichestPeople}. {StringOps.FormatCurrency(richestBalanceAccount.GetCurrentBalance(), _currency)}."
+               : $"{richestBalanceAccount.GetName()} {Messages.IsTheRichestPerson}. {StringOps.FormatCurrency(richestBalanceAccount.GetCurrentBalance(), _currency)}.";
             }
             catch (Exception ex) when (ex is NullReferenceException || ex is IndexOutOfRangeException)
             {
@@ -118,6 +127,11 @@ namespace BootCamp.Chapter
             return _accounts.Length > _arrayBreak && AccountOps.AreBalancesEqual(_accounts)
                 ? $"{StringOps.FormatAndCommas(_accounts)} {Messages.HaveTheLeastMoney}. {StringOps.FormatCurrency(poorestBalanceAccount.GetCurrentBalance(), _currency)}."
                 : $"{poorestBalanceAccount.GetName()} {Messages.HasTheLeastMoney}. {StringOps.FormatCurrency(poorestBalanceAccount.GetCurrentBalance(), _currency)}.";
+            }
+            catch (Exception ex) when (ex is NullReferenceException || ex is IndexOutOfRangeException)
+            {
+                return Messages.InvalidMessage;
+            }
         }
     }
 }
