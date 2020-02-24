@@ -10,13 +10,15 @@ namespace BootCamp.Chapter
         private const string _emptyChar = "";
         private readonly string _dirtyFile;
         private readonly string _cleanedFile;
+        private readonly char _divider;
         private readonly CultureInfo _cultureInfo;
 
-        public FileCleaner(string dirtyFile, string cleanedFile, CultureInfo cultureInfo)
+        public FileCleaner(string dirtyFile, string cleanedFile, CultureInfo cultureInfo, char divider)
         {
             _dirtyFile = dirtyFile;
             _cleanedFile = cleanedFile;
             _cultureInfo = cultureInfo;
+            _divider = divider;
         }
 
         public void Clean()
@@ -32,25 +34,32 @@ namespace BootCamp.Chapter
                 File.WriteAllText(_cleanedFile, dirtyData);
             }
 
-            string filtheredData = CleanData(dirtyData);
-
-            File.WriteAllText(_cleanedFile, filtheredData);
+            string cleandData = FiltherData(dirtyData);
+            File.WriteAllText(_cleanedFile, cleandData);
         }
 
-        private string CleanData(string dirtyData)
+        private string FiltherData(string dirtyData)
         {
             string cleanData = dirtyData.Replace(_corruptionChar, _emptyChar);
             string[] peopleAndBalance = cleanData.Split(Environment.NewLine);
-            for (int i = 0; i < peopleAndBalance.Length; i++)
+            if (!AreBalancesValid(peopleAndBalance))
             {
-                string[] account = peopleAndBalance[i].Split(',');
+                throw new InvalidBalancesException();
+            }
+            return cleanData;
+        }
+
+        private bool AreBalancesValid(string[] peopleAndBalance)
+        {
+            foreach (string field in peopleAndBalance)
+            {
+                string[] account = ArrayOps.ConvertToAccountArray(field, _divider);
                 if (!Test.IsName(account[0]) || !Test.IsBalance(account[1..], _cultureInfo))
                 {
-                    throw new InvalidBalancesException();
+                    return false;
                 }
             }
-
-            return cleanData;
+            return true;
         }
     }
 }
