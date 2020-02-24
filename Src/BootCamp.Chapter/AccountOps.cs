@@ -2,6 +2,25 @@
 {
     public static class AccountOps
     {
+        public static string GetNameForPerson(string[] personAndBalance)
+        {
+            if (Test.IsStringValid(personAndBalance[0]))
+            {
+                return personAndBalance[0];
+            }
+            return Messages.InvalidMessage;
+        }
+
+        public static decimal[] GetBalanceForPerson(string[] personAndBalance)
+        {
+            var newArray = new decimal[personAndBalance.Length - 1];
+            for (int i = 1; i < personAndBalance.Length; i++)
+            {
+                newArray[i - 1] = Test.ConvertToDecimal(personAndBalance[i]);
+            }
+            return newArray;
+        }
+
         public static Account[] BuildAccountList(string[] peopleAndBalances)
         {
             Account[] accounts = new Account[peopleAndBalances.Length];
@@ -9,7 +28,6 @@
             {
                 accounts[i] = new Account(peopleAndBalances[i]);
             }
-
             return accounts;
         }
 
@@ -23,7 +41,6 @@
                     return false;
                 }
             }
-
             return true;
         }
     }
