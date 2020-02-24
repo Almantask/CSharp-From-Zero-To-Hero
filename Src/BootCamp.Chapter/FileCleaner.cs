@@ -6,19 +6,22 @@ namespace BootCamp.Chapter
 {
     public class FileCleaner
     {
-        private const string _corruptionChar = "_";
-        private const string _emptyChar = "";
+        private readonly string _corruptionChar;
+        private readonly string _emptyChar;
+
         private readonly string _dirtyFile;
         private readonly string _cleanedFile;
         private readonly char _divider;
         private readonly CultureInfo _cultureInfo;
 
-        public FileCleaner(string dirtyFile, string cleanedFile, CultureInfo cultureInfo, char divider)
+        public FileCleaner(string dirtyFile, string cleanedFile)
         {
             _dirtyFile = dirtyFile;
             _cleanedFile = cleanedFile;
-            _cultureInfo = cultureInfo;
-            _divider = divider;
+            _corruptionChar = Settings.corruptionChar;
+            _emptyChar = Settings.emptyChar;
+            _cultureInfo = Settings.cultureInfo;
+            _divider = Settings.divider;
         }
 
         public void Clean()
