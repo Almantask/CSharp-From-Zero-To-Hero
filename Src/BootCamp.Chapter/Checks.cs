@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     // This class is used to have a freedom of design, but with tests applied.
     public static class Checks
@@ -24,7 +20,7 @@ namespace BootCamp.Chapter
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return BalanceStats.FindHighestBalanceEver(peopleAndBalances); 
+            return BalanceStats.FindHighestBalanceEver(peopleAndBalances);
         }
 
         public static string Build(string message, in int padding)
@@ -35,7 +31,6 @@ namespace BootCamp.Chapter
         public static void Clean(string file, string outputFile)
         {
             FileCleaner.Clean(file, outputFile);
-                
         }
     }
 }

@@ -4,7 +4,6 @@
     {
         private readonly string _name;
         private readonly decimal _amount;
-        
 
         public Person(string name, decimal amount)
         {
@@ -14,9 +13,7 @@
 
         public decimal GetAmount()
         {
-            return _amount; 
+            return _amount;
         }
-
-
     }
 }

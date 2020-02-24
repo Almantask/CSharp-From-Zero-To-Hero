@@ -1,19 +1,12 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class BalanceStats
+    internal class BalanceStats
     {
-        private readonly StringBuilder _persons;
-        private readonly decimal _amount;
-        private readonly string[] _amounts;
-
-        public BalanceStats(StringBuilder persons, string[] amounts)
-        {
-            _persons = persons;
-            _amounts = amounts;
-        }
+        private const string InValidOutput = "N/A.";
+        private StringBuilder _persons;
+        private decimal _amount;
 
         public BalanceStats(StringBuilder persons, decimal amount)
         {
@@ -21,22 +14,15 @@ namespace BootCamp.Chapter
             _amount = amount;
         }
 
-        public string[] GetAmounts()
-        {
-            return _amounts; 
-        }
-
-        public StringBuilder GetPersons() 
+        public StringBuilder GetPersons()
         {
             return _persons; 
         }
 
         public decimal GetAmount()
         {
-            return _amount;
+            return _amount; 
         }
-
-        private const string InValidOutput = "N/A.";
 
         public static bool IsInValidInput(string[] input) => input == null || input.Length == 0;
 
@@ -47,11 +33,22 @@ namespace BootCamp.Chapter
                 return InValidOutput;
             }
 
-            var balanceStat = new BalanceStats(new StringBuilder(), peopleAndBalances);
-            var answer = BalanceParser.FindHighestBalance(balanceStat);
+            var answer = BalanceParser.FindHighestBalance(peopleAndBalances);
 
             return $"{answer.GetPersons()} had the most money ever. ¤{answer.GetAmount()}.";
-
         }
+
+        //public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        //{
+        //    if (IsInValidInput(peopleAndBalances))
+        //    {
+        //        return InValidOutput;
+        //    }
+
+        //    var balanceStat = new BalanceStats(new StringBuilder(), peopleAndBalances);
+        //    var answer = BalanceParser.FindBiggestLoss(balanceStat);
+
+        //    return $"{answer.GetPersons()} lost the most money. -¤{answer.GetAmount()}.";
+        //}
     }
 }
