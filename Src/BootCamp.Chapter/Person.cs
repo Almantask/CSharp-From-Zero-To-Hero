@@ -1,16 +1,10 @@
 ﻿namespace BootCamp.Chapter
 {
-    internal class Person
+    public class Person
     {
-        private string _name;
-        private decimal _amount;
-        private Account _balance;
-
-        public Person(string name, Account balance)
-        {
-            _name = name;
-            _balance = balance;
-        }
+        private readonly string _name;
+        private readonly decimal _amount;
+        
 
         public Person(string name, decimal amount)
         {
