@@ -6,21 +6,13 @@ namespace BootCamp.Chapter
 {
     public class FileCleaner
     {
-        private readonly string _corruptionChar;
-        private readonly string _emptyChar;
         private readonly string _dirtyFile;
         private readonly string _cleanedFile;
-        private readonly char _divider;
-        private readonly CultureInfo _cultureInfo;
 
         public FileCleaner(string dirtyFile, string cleanedFile)
         {
             _dirtyFile = dirtyFile;
             _cleanedFile = cleanedFile;
-            _corruptionChar = Settings.corruptionChar;
-            _emptyChar = Settings.emptyChar;
-            _cultureInfo = Settings.cultureInfo;
-            _divider = Settings.stringSplitDivider;
         }
 
         public void Clean()
@@ -40,7 +32,7 @@ namespace BootCamp.Chapter
                 File.WriteAllText(_cleanedFile, dirtyData);
             }
 
-            string cleanedData = dirtyData.Replace(_corruptionChar, _emptyChar);
+            string cleanedData = dirtyData.Replace(Settings.corruptionChar, Settings.emptyChar);
             string testedData = TestData(cleanedData);
             File.WriteAllText(_cleanedFile, testedData);
         }
@@ -48,7 +40,7 @@ namespace BootCamp.Chapter
         private string TestData(string cleanData)
         {
             string[] peopleAndBalance = cleanData.Split(Environment.NewLine);
-            if (!ArrayOps.AreBalancesValid(peopleAndBalance, _divider, _cultureInfo))
+            if (!ArrayOps.AreBalancesValid(peopleAndBalance))
             {
                 throw new InvalidBalancesException();
             }

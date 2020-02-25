@@ -9,6 +9,7 @@ namespace BootCamp.Chapter
         public static readonly NumberFormatInfo numberFormatInfo = new NumberFormatInfo { NumberDecimalSeparator = "." };
 
         public static readonly char stringSplitDivider = ',';
+        public static readonly string validNameChars = "'-";
 
         // ¤ currency sign
         public static readonly string currencySymbol = "\u00A4";

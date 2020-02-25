@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     public class BalanceStats
     {
-        private readonly string _currency;
+        private readonly string _currency = Settings.currencySymbol;
         private readonly Account[] _accounts;
 
         // this is used in conjuncture with FormatAndCommas
@@ -12,7 +12,6 @@ namespace BootCamp.Chapter
 
         public BalanceStats(string[] peopleAndBalances)
         {
-            _currency = Settings.currencySymbol;
             _accounts = AccountOps.BuildAccountList(peopleAndBalances);
         }
 
