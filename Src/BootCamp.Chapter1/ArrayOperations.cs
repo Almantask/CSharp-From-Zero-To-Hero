@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,6 +11,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
+            Console.WriteLine("Hello World!");
             // ToDo: implement.
         }
 
