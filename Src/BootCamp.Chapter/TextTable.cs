@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
     /// <summary>
     /// Part 1.
     /// </summary>
-    public static class TextTable
+    public class TextTable
     {
         /*
 
@@ -35,7 +35,7 @@ namespace BootCamp.Chapter
         /// Padding means how many spaces will a message be wrapped with.
         /// Table itself is made of: "+-" symbolmessage. 
         /// </summary>
-        public static string Build(string message, int padding)
+        public string Build(string message, int padding)
         {
             //Analyze message
             if (String.IsNullOrEmpty(message))
@@ -50,7 +50,7 @@ namespace BootCamp.Chapter
             return BuildTable(messageLine, maxLength, padding);
         }
 
-        private static int GetNumberOfMessageLines(string message)
+        private int GetNumberOfMessageLines(string message)
         {
             var numOfLines = 1;
 
@@ -65,7 +65,7 @@ namespace BootCamp.Chapter
             return numOfLines;
         }
 
-        private static string[] GetMessageLines(string message, int numOfMessageLines)
+        private string[] GetMessageLines(string message, int numOfMessageLines)
         {
             var messageLine = new string[numOfMessageLines];
             var messageCount = 0;
@@ -95,7 +95,7 @@ namespace BootCamp.Chapter
             return messageLine;
         }
 
-        private static int GetMaxMessageLineLength(string[] messageLine)
+        private int GetMaxMessageLineLength(string[] messageLine)
         {
             var maxLength = 0;
 
@@ -110,7 +110,7 @@ namespace BootCamp.Chapter
             return maxLength;
         }
 
-        private static string BuildTable(string[] messageLine, int maxLength, int padding)
+        private string BuildTable(string[] messageLine, int maxLength, int padding)
         {
             var tableLine = BuildBorderLine(maxLength, padding, "+", "-");
             var table = new StringBuilder(tableLine + Environment.NewLine);
@@ -139,7 +139,7 @@ namespace BootCamp.Chapter
             return table.ToString();
         }
 
-        private static string BuildBorderLine(int maxLength, int padding, string sideBorder, string edgeBorder)
+        private string BuildBorderLine(int maxLength, int padding, string sideBorder, string edgeBorder)
         {
             var line = new StringBuilder(sideBorder);
             for (var i = 0; i < maxLength + 2 * padding; i++)
@@ -151,7 +151,7 @@ namespace BootCamp.Chapter
             return line.ToString();
         }
 
-        private static string BuildMessageLine(int maxLength, int padding, string sideBorder, string messageLine)
+        private string BuildMessageLine(int maxLength, int padding, string sideBorder, string messageLine)
         {
             var line = new StringBuilder(sideBorder);
             for (var i = 0; i < (maxLength - messageLine.Length) / 2 + padding; i++)

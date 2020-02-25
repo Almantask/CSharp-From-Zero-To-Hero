@@ -4,14 +4,14 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public static class BalanceStats
+    public class BalanceStats
     {
         private const string NotAvailable = "N/A.";
 
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
-        public static string FindHighestBalanceEver(string[] peopleAndBalances)
+        public string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
             return $"{FixPlural(name.ToString())} had the most money ever. {maxBalanceNoComma}.";
         }
 
-        private static decimal GetLargestBalance(string[] peopleBalances)
+        private decimal GetLargestBalance(string[] peopleBalances)
         {
             var maxBalance = 0m;
 
@@ -51,7 +51,7 @@ namespace BootCamp.Chapter
             return maxBalance;
         }
 
-        private static void SetNames(ref StringBuilder name, ref decimal maxBalance, string[] peopleBalances, decimal balance)
+        private void SetNames(ref StringBuilder name, ref decimal maxBalance, string[] peopleBalances, decimal balance)
         {
             if (balance >= maxBalance)
             {
@@ -73,7 +73,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
         /// </summary>
-        public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        public string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
@@ -112,7 +112,7 @@ namespace BootCamp.Chapter
             return $"{name} lost the most money. {biggestLossEverNoComma}.";
         }
 
-        private static decimal GetBiggestLossForPerson(string[] peopleBalances)
+        private decimal GetBiggestLossForPerson(string[] peopleBalances)
         {
             var biggestLoss = decimal.MaxValue;
 
@@ -133,7 +133,7 @@ namespace BootCamp.Chapter
             return biggestLoss;
         }
 
-        private static decimal GetBiggestLoss(decimal biggestLoss, decimal beginAmount, decimal endAmount)
+        private decimal GetBiggestLoss(decimal biggestLoss, decimal beginAmount, decimal endAmount)
         {
             var loss = endAmount - beginAmount;
             var bigLoss = biggestLoss;
@@ -149,7 +149,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and current money of the richest person.
         /// </summary>
-        public static string FindRichestPerson(string[] peopleAndBalances)
+        public string FindRichestPerson(string[] peopleAndBalances)
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
@@ -181,7 +181,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and current money of the most poor person.
         /// </summary>
-        public static string FindMostPoorPerson(string[] peopleAndBalances)
+        public string FindMostPoorPerson(string[] peopleAndBalances)
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
@@ -209,7 +209,7 @@ namespace BootCamp.Chapter
             return $"{FixPlural(name.ToString())} {word} the least money. {minBalanceNoComma}.";
         }
 
-        private static void GetPoorest(ref StringBuilder mostPoorPerson, ref decimal minBalance, string[] peopleBalances, decimal balance)
+        private void GetPoorest(ref StringBuilder mostPoorPerson, ref decimal minBalance, string[] peopleBalances, decimal balance)
         {
             if (balance <= minBalance)
             {
@@ -228,7 +228,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static string FixPlural(string name)
+        private string FixPlural(string name)
         {
             var lastComma = name.LastIndexOf(", ", StringComparison.InvariantCulture);
 
@@ -240,7 +240,7 @@ namespace BootCamp.Chapter
             return name;
         }
 
-        private static bool IsArrayNullOrEmpty(string[] array)
+        private bool IsArrayNullOrEmpty(string[] array)
         {
             if (array == null || array.Length == 0)
             {
@@ -250,7 +250,7 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        private static string RemoveComma(string data)
+        private string RemoveComma(string data)
         {
             return data.Replace(",", "");
         }
