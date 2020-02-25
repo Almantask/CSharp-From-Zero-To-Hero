@@ -2,6 +2,12 @@
 {
     public class DesktopComputer
     {
+        private Body _body;
+        public Body GetBody()
+        {
+            return _body;
+        }
+        
         private Ram _ram;
         public Ram GetRam()
         {

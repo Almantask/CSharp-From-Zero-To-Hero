@@ -37,6 +37,7 @@ namespace BootCamp.Chapter.Tests
                 computer.GetGpu().Should().NotBeNull();
                 computer.GetHard().Should().NotBeNull();
                 computer.GetRam().Should().NotBeNull();
+                computer.GetBody().Should().NotBeNull();
             }
         }
     }
