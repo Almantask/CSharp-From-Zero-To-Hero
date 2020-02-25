@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Computer\Ms\" />
+    <Folder Include="Computer\Mac\" />
+  </ItemGroup>
+
 </Project>
