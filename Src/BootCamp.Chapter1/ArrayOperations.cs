@@ -22,7 +22,17 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
+            int arrSize = array.Length;
+            for (int i = 0; i < arrSize / 2; i++)
+            {
+                int temp = array[i];
+                array[i] = array[arrSize - i - 1];
+                array[arrSize - i - 1] = temp;
+            }
         }
 
         /// <summary>

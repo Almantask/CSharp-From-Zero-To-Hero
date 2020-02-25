@@ -6,9 +6,13 @@ namespace BootCamp.Chapter1
     {
         static void Main(string[] args)
         {
-            int[] testArr = new int[1];
+            //int[] testArr = null;
+            //int[] testArr = new int[0];
+            int[] testArr = new int[5] {1, 2, 3, 4, 5};
 
-            ArrayOperations.Sort(testArr);
+            //ArrayOperations.Sort(testArr);
+            ArrayOperations.Reverse(testArr);
+            Array.ForEach(testArr, Console.WriteLine);
         }
     }
 }
