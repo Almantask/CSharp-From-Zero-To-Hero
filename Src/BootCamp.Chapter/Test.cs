@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using static BootCamp.Chapter.Settings;
 
 namespace BootCamp.Chapter
 {
@@ -7,11 +8,6 @@ namespace BootCamp.Chapter
         public static bool IsStringValid(string inputString)
         {
             return !string.IsNullOrEmpty(inputString) && !string.IsNullOrWhiteSpace(inputString);
-        }
-
-        public static bool IsNumeric(string input)
-        {
-            return double.TryParse(input, out _);
         }
 
         public static bool IsName(string input)
@@ -32,11 +28,11 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        public static bool IsBalance(string[] balanace, CultureInfo culture)
+        public static bool IsBalance(string[] balanace)
         {
             foreach (var amount in balanace)
             {
-                if (!decimal.TryParse(amount, NumberStyles.Currency, culture, out _))
+                if (!decimal.TryParse(amount, NumberStyles.Currency, cultureInfo, out _))
                 {
                     return false;
                 }

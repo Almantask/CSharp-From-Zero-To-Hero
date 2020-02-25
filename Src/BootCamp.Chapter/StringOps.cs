@@ -4,6 +4,9 @@ namespace BootCamp.Chapter
 {
     public static class StringOps
     {
+        /// <summary>
+        /// Return formated output for multiple accounts (Kai, EarLington and Mihail).
+        /// </summary>
         public static string FormatAndCommas(Account[] validPeople)
         {
             var sb = new StringBuilder();
@@ -24,6 +27,9 @@ namespace BootCamp.Chapter
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Returns an formated output of currency (ex. -¤1, ¤4, ¤1002, -¤1001).
+        /// </summary>
         public static string FormatCurrency(decimal value, string currencySymbol)
         {
             const char negativeSymbol = '-';

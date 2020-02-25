@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Globalization;
 
 namespace BootCamp.Chapter
 {
     public static class ArrayOps
     {
-        public static bool AreBalancesValid(string[] peopleAndBalance, char divider, CultureInfo cultureInfo)
+        public static bool AreBalancesValid(string[] peopleAndBalance)
         {
             foreach (string field in peopleAndBalance)
             {
-                string[] account = ConvertToAccountArray(field, divider);
-                if (!Test.IsName(account[0]) || !Test.IsBalance(account[1..], cultureInfo))
+                string[] account = ConvertToAccountArray(field);
+                if (!Test.IsName(account[0]) || !Test.IsBalance(account[1..]))
                 {
                     return false;
                 }
@@ -18,12 +17,12 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        public static string[] ConvertToAccountArray(string personAndBalance, char delimiter)
+        public static string[] ConvertToAccountArray(string personAndBalance)
         {
             string[] newArray;
             try
             {
-                newArray = personAndBalance.Split(delimiter);
+                newArray = personAndBalance.Split(Settings.stringSplitDivider);
             }
             catch (Exception)
             {
