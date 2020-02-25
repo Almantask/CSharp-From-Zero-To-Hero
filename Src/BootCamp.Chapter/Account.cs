@@ -7,7 +7,7 @@
 
         public Account(string personAndBalance)
         {
-            char _divider = Settings.divider;
+            char _divider = Settings.stringSplitDivider;
             string[] _accountArray = ArrayOps.ConvertToAccountArray(personAndBalance, _divider);
             _name = AccountOps.GetNameForPerson(_accountArray);
             _balance = AccountOps.GetBalanceForPerson(_accountArray);

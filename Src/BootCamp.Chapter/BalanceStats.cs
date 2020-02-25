@@ -6,11 +6,13 @@ namespace BootCamp.Chapter
     {
         private readonly string _currency;
         private readonly Account[] _accounts;
+
+        // this is used in conjuncture with FormatAndCommas
         private const int _arrayBreak = 2;
 
         public BalanceStats(string[] peopleAndBalances)
         {
-            _currency = Settings.currency;
+            _currency = Settings.currencySymbol;
             _accounts = AccountOps.BuildAccountList(peopleAndBalances);
         }
 

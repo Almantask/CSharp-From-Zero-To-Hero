@@ -8,7 +8,6 @@ namespace BootCamp.Chapter
     {
         private readonly string _corruptionChar;
         private readonly string _emptyChar;
-
         private readonly string _dirtyFile;
         private readonly string _cleanedFile;
         private readonly char _divider;
@@ -21,7 +20,7 @@ namespace BootCamp.Chapter
             _corruptionChar = Settings.corruptionChar;
             _emptyChar = Settings.emptyChar;
             _cultureInfo = Settings.cultureInfo;
-            _divider = Settings.divider;
+            _divider = Settings.stringSplitDivider;
         }
 
         public void Clean()

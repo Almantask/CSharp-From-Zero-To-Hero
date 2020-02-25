@@ -11,14 +11,20 @@ namespace BootCamp.Chapter
         private readonly string _message;
         private readonly int _padding;
         private readonly int _longestWordSize;
-        private readonly char _cornerChar = '+';
-        private readonly char _horizontalBorderChar = '-';
-        private readonly char _verticalBorderChar = '|';
-        private readonly char _emptySpace = ' ';
-        private readonly string messageDivider = Environment.NewLine;
+        private readonly char _cornerChar;
+        private readonly char _horizontalBorderChar;
+        private readonly char _verticalBorderChar;
+        private readonly char _emptySpace;
+        private readonly string _messageDivider;
 
         public TextTable(string message, int padding)
         {
+            _cornerChar = Settings.cornerChar;
+            _horizontalBorderChar = Settings.horizontalBorderChar;
+            _verticalBorderChar = Settings.verticalBorderChar;
+            _emptySpace = Settings.emptySpace;
+            _messageDivider = Settings.messageDivider;
+
             _message = message;
             _padding = padding;
             _longestWordSize = FindLongestWord();
@@ -43,7 +49,7 @@ namespace BootCamp.Chapter
 
         private string AddText()
         {
-            string[] words = _message.Split(messageDivider);
+            string[] words = _message.Split(_messageDivider);
             StringBuilder text = new StringBuilder();
 
             foreach (string word in words)
@@ -85,7 +91,7 @@ namespace BootCamp.Chapter
         private int FindLongestWord()
         {
             int size = 0;
-            foreach (string word in _message.Split(messageDivider))
+            foreach (string word in _message.Split(_messageDivider))
             {
                 if (word.Length > size)
                 {
