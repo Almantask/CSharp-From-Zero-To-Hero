@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -8,8 +7,8 @@ namespace BootCamp.Chapter
     class CleanTable
     {
         private const char DollarSign = '£';
-        private string _corruptedBalanceFile;
-        private string _fixedBalanceFile;
+        private readonly string _corruptedBalanceFile;
+        private readonly string _fixedBalanceFile;
 
         public CleanTable(string corruptedBalanceFile, string fixedBalanceFile)
         {
@@ -35,10 +34,10 @@ namespace BootCamp.Chapter
             DisplayStasticalData(CreateBalanceLinesForTextTable(fixedBalanceLines));
         }
 
-        private string[] CreateBalanceLinesForTextTable(string[] fixedBalanceLines)
+        private static string[] CreateBalanceLinesForTextTable(string[] fixedBalanceLines)
         {
+            const string balanceSeperator = ",";
             var balanceLinesForTextTable = new string[fixedBalanceLines.Length];
-            var balanceSeperator = ",";
 
             for (var i = 0; i < fixedBalanceLines.Length; i++)
             {
@@ -66,9 +65,9 @@ namespace BootCamp.Chapter
             {
                 fixedBalanceLines[i] = corruptedBalanceLines[i].Replace("_", "");
 
-                if (!isValidLine(fixedBalanceLines[i]))
+                if (!IsValidLine(fixedBalanceLines[i]))
                 {
-                    throw new Exception("Invalid Balance.");
+                    throw new InvalidBalancesException("Invalid Balance");
                 }
 
                 buildLines.Append(fixedBalanceLines[i]);
@@ -82,7 +81,7 @@ namespace BootCamp.Chapter
             File.WriteAllText(_fixedBalanceFile, buildLines.ToString());
         }
 
-        private bool isValidLine(string line)
+        private static bool IsValidLine(string line)
         {
             var words = line.Split(",");
 
@@ -102,7 +101,7 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private bool IsValidName(string name)
+        private static bool IsValidName(string name)
         {
             for (var i = 0; i < name.Length; i++)
             {
@@ -115,20 +114,34 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private bool IsValidLetter(char letter)
+        private static bool IsValidLetter(char letter)
         {
-            if ((letter >= 'a' && letter <= 'z') ||
-                (letter >= 'A' && letter <= 'Z') ||
-                (letter == ' ') ||
-                (letter == '\'') ||
-                (letter == '-'))
+            if (IsValidAlphabet(letter) || IsValidSymbolForName(letter))
             {
                 return true;
             }
             return false;
         }
 
-        private bool HasPeriodAtEnd(string name)
+        private static bool IsValidAlphabet(char letter)
+        {
+            if ((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static bool IsValidSymbolForName(char letter)
+        {
+            if ((letter == ' ') || (letter == '\'') || (letter == '-'))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static bool HasPeriodAtEnd(string name)
         {
             if (name[name.Length - 1] == '.')
             {
@@ -137,17 +150,35 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        private bool IsValidBalance(string balance)
+        private static bool IsValidBalance(string balance)
         {
             for (var i = 0; i < balance.Length; i++)
             {
-                if (balance[i] != DollarSign && (balance[i] < '0' || balance[i] > '9') && balance[i] != '-' && balance[i] != '.')
+                if (balance[i] != DollarSign && !IsValidNumber(balance[i]) && !IsValidSymbolForBalance(balance[i]))
                 {
                     return false;
                 }
             }
 
             return true;
+        }
+
+        private static bool IsValidNumber(char number)
+        {
+            if (number >= '0' && number <= '9')
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static bool IsValidSymbolForBalance(char punctuation)
+        {
+            if (punctuation == '-' || punctuation == '.')
+            {
+                return true;
+            }
+            return false;
         }
 
         private void DisplayStasticalData(string[] peopleBalances)

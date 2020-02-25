@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
             return $"{FixPlural(name.ToString())} had the most money ever. {maxBalanceNoComma}.";
         }
 
-        private decimal GetLargestBalance(string[] peopleBalances)
+        private static decimal GetLargestBalance(string[] peopleBalances)
         {
             var maxBalance = 0m;
 
@@ -51,7 +51,7 @@ namespace BootCamp.Chapter
             return maxBalance;
         }
 
-        private void SetNames(ref StringBuilder name, ref decimal maxBalance, string[] peopleBalances, decimal balance)
+        private static void SetNames(ref StringBuilder name, ref decimal maxBalance, string[] peopleBalances, decimal balance)
         {
             if (balance >= maxBalance)
             {
@@ -133,7 +133,7 @@ namespace BootCamp.Chapter
             return biggestLoss;
         }
 
-        private decimal GetBiggestLoss(decimal biggestLoss, decimal beginAmount, decimal endAmount)
+        private static decimal GetBiggestLoss(decimal biggestLoss, decimal beginAmount, decimal endAmount)
         {
             var loss = endAmount - beginAmount;
             var bigLoss = biggestLoss;
@@ -209,7 +209,7 @@ namespace BootCamp.Chapter
             return $"{FixPlural(name.ToString())} {word} the least money. {minBalanceNoComma}.";
         }
 
-        private void GetPoorest(ref StringBuilder mostPoorPerson, ref decimal minBalance, string[] peopleBalances, decimal balance)
+        private static void GetPoorest(ref StringBuilder mostPoorPerson, ref decimal minBalance, string[] peopleBalances, decimal balance)
         {
             if (balance <= minBalance)
             {
@@ -228,7 +228,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private string FixPlural(string name)
+        private static string FixPlural(string name)
         {
             var lastComma = name.LastIndexOf(", ", StringComparison.InvariantCulture);
 
@@ -240,7 +240,7 @@ namespace BootCamp.Chapter
             return name;
         }
 
-        private bool IsArrayNullOrEmpty(string[] array)
+        private static bool IsArrayNullOrEmpty(string[] array)
         {
             if (array == null || array.Length == 0)
             {
@@ -250,7 +250,7 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        private string RemoveComma(string data)
+        private static string RemoveComma(string data)
         {
             return data.Replace(",", "");
         }
