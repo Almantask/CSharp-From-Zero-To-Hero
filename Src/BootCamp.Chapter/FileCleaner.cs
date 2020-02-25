@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
             File.WriteAllText(_cleanedFile, testedData);
         }
 
-        private string TestData(string cleanData)
+        private static string TestData(string cleanData)
         {
             string[] peopleAndBalance = cleanData.Split(Environment.NewLine);
             if (!ArrayOps.AreBalancesValid(peopleAndBalance))
