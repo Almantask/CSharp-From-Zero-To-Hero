@@ -181,22 +181,19 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        private void DisplayStasticalData(string[] peopleBalances)
+        private static void DisplayStasticalData(string[] peopleBalances)
         {
-            var textTable = new TextTable();
-            var balanceStats = new BalanceStats();
-
             // Using FindHighestBalanceEver, print the statistical output using Text Table with padding 3.
-            Console.WriteLine(textTable.Build(balanceStats.FindHighestBalanceEver(peopleBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(peopleBalances), 3));
 
             // Using FindPersonWithBiggestLoss, print the statistical output using Text Table with padding 3.
-            Console.WriteLine(textTable.Build(balanceStats.FindPersonWithBiggestLoss(peopleBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(peopleBalances), 3));
 
             // Using FindRichestPerson, print the statistical output using Text Table with padding 3.
-            Console.WriteLine(textTable.Build(balanceStats.FindRichestPerson(peopleBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(peopleBalances), 3));
 
             // Using FindMostPoorPerson, print the statistical output using Text Table with padding 3.
-            Console.WriteLine(textTable.Build(balanceStats.FindMostPoorPerson(peopleBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(peopleBalances), 3));
         }
     }
 }

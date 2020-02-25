@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
-        public string FindHighestBalanceEver(string[] peopleAndBalances)
+        public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
@@ -73,7 +73,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
         /// </summary>
-        public string FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
@@ -112,7 +112,7 @@ namespace BootCamp.Chapter
             return $"{name} lost the most money. {biggestLossEverNoComma}.";
         }
 
-        private decimal GetBiggestLossForPerson(string[] peopleBalances)
+        private static decimal GetBiggestLossForPerson(string[] peopleBalances)
         {
             var biggestLoss = decimal.MaxValue;
 
@@ -149,7 +149,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and current money of the richest person.
         /// </summary>
-        public string FindRichestPerson(string[] peopleAndBalances)
+        public static string FindRichestPerson(string[] peopleAndBalances)
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {
@@ -181,7 +181,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and current money of the most poor person.
         /// </summary>
-        public string FindMostPoorPerson(string[] peopleAndBalances)
+        public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
             {

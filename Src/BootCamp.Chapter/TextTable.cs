@@ -35,7 +35,7 @@ namespace BootCamp.Chapter
         /// Padding means how many spaces will a message be wrapped with.
         /// Table itself is made of: "+-" symbolmessage. 
         /// </summary>
-        public string Build(string message, int padding)
+        public static string Build(string message, int padding)
         {
             //Analyze message
             if (String.IsNullOrEmpty(message))
