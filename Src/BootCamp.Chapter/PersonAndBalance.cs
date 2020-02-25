@@ -14,8 +14,8 @@ namespace BootCamp.Chapter
         public PersonAndBalance(string personAndBalance)
         {
             _personAndBalance = personAndBalance;
-            _personAndBalanceArray = ConvertToArray();
-            _balance = CreateBalanceArray();
+            _personAndBalanceArray = ArrayHandler.ConvertToArray(personAndBalance);
+            _balance = ArrayHandler.ConvertToBalanceArray(personAndBalance);
         }
 
         public string GetName()
@@ -32,6 +32,7 @@ namespace BootCamp.Chapter
         {
             return _balance[^1];
         }
+
         public float GetHighestBalance()
         {
             var highestBalance = _balance[0];
@@ -57,33 +58,5 @@ namespace BootCamp.Chapter
             }
             return loss;
         }
-
-        private float[] CreateBalanceArray()
-        {
-            if (_personAndBalanceArray.Length == 1)
-            {
-                float[] noBalance = new float[] { 0 };
-                return noBalance;
-            }
-
-            float[] balance = new float[_personAndBalanceArray.Length - 1];
-
-            for (int i = 1; i < _personAndBalanceArray.Length; i++)
-            {
-                // in this case not using try parse, becase it is known 
-                // that array have only numbers 
-                balance[i - 1] = float.Parse(_personAndBalanceArray[i], NumberStyles.Currency);
-            }
-            return balance;
-        }
-
-        private string[] ConvertToArray()
-        {
-            // this to remove white spaces in string array
-            _personAndBalance = _personAndBalance.Replace(", ", ",");
-            string[] personAndBalanceArray = _personAndBalance.Split(',');
-            return personAndBalanceArray;
-        }
-
     }
 }

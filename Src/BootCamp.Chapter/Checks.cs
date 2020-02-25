@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -29,7 +31,7 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// 
+        /// Pick answer
         /// </summary>
         /// <param name="peopleAndBalances"></param>
         /// <param name="answer">
@@ -61,6 +63,7 @@ namespace BootCamp.Chapter
                     return "N/A.";
             }
         }
+
         public static string Build(string message, in int padding)
         {
             return TextTable.Build(message, padding);
@@ -68,6 +71,82 @@ namespace BootCamp.Chapter
 
         public static void Clean(string file, string outputFile)
         {
+            var fc = new FileCleaner();
+            fc.Clean(file, outputFile);
+
+
+            //if (String.IsNullOrEmpty(file) || String.IsNullOrEmpty(outputFile))
+            //{
+            //    throw new ArgumentException("File path is null or empty.");
+            //}
+
+            //var corruptedFileContent = File.ReadAllText(file);
+            //if (String.IsNullOrEmpty(corruptedFileContent))
+            //{
+            //    File.WriteAllText(outputFile, corruptedFileContent);
+            //    return;
+            //}
+
+            //var cleanFileContent = corruptedFileContent.Replace("_", "");
+
+            //try
+            //{
+            //    ValidateName(cleanFileContent);
+            //    ValidateBalance(cleanFileContent);
+            //}
+            //catch (Exception ex)
+            //{
+            // //   throw new InvalidBalancesException("Invalid name or Balance format", ex);
+            //}
+
+          //  File.WriteAllText(outputFile, cleanFileContent);
+        }
+        public static void ValidateBalance(string fileContent)
+        {
+            var peopleAndBalances = fileContent.Split(Environment.NewLine);
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                ConvertToBalanceArray(peopleAndBalances[i]);
+            }
+        }
+        public static void ValidateName(string fileContent)
+        {
+            var name = ConvertToArray(fileContent)[0];
+            foreach (char letter in name)
+            {
+                if (!Char.IsLetter(letter) && !letter.Equals(' '))
+                {
+                    throw new ArgumentException("Name contains invalid characters!");
+                }
+            }
+        }
+        public static float[] ConvertToBalanceArray(string personAndBalance)
+        {
+            string[] personAndBalanceArray = ConvertToArray(personAndBalance);
+
+            if (personAndBalanceArray.Length == 1)
+            {
+                float[] noBalance = new float[] { 0 };
+                return noBalance;
+            }
+
+            float[] balance = new float[personAndBalanceArray.Length - 1];
+
+            for (int i = 1; i < personAndBalanceArray.Length; i++)
+            {
+                // in this case not using try parse, becase it is known 
+                // that array have only numbers 
+
+                balance[i - 1] = float.Parse(personAndBalanceArray[i], NumberStyles.Currency);
+            }
+            return balance;
+        }
+        public static string[] ConvertToArray(string personAndBalance)
+        {
+            // this to remove white spaces in string array
+            personAndBalance = personAndBalance.Replace(", ", ",");
+            string[] personAndBalanceArray = personAndBalance.Split(',');
+            return personAndBalanceArray;
         }
 
         public static bool IsArrayNullOrEmpty(string[] peopleAndBalances)

@@ -19,18 +19,15 @@ namespace BootCamp.Chapter
             "Catie, 0, 500, 990, 1300,10000,1"};
 
             var foo = new PersonAndBalance(pplAndBalances[2]);
-           // Console.WriteLine(foo.GetLoss());
-            // PeopleAndBalanceManager mng = new PeopleAndBalanceManager(pplAndBalances);
 
-            //  Console.WriteLine(mng.GetPeopleNamesWithSameBalance(pplAndBalances, 10000, "highest")[2]);
-            var bar = new PeopleAndBalanceManager(pplAndBalances);
+            var file = "../netcoreapp3.0/Input/BalancesCharBalance.Invalid";
+            var dirtyFile = "../netcoreapp3.0/Input/BalancesCharBalance.Invalid";
 
-           // Console.WriteLine(BalanceStats.GetFormatedPeople(pplAndBalances));
+            var fc = new FileCleaner();
+            fc.Clean(file, dirtyFile);
 
-            Console.WriteLine(bar.GetPoorestPersonAnswer());
-
-            //Console.WriteLine(BalanceStats.GetRichestPersonsBalance(pplAndBalances));
-
+            File.ReadAllText(file);
+            Console.WriteLine(File.ReadAllText(file));
         }
     }
 }
