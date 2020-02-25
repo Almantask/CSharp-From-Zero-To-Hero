@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class FileCleaner
+    public static class FileCleaner
     {
-        
-
-        public void Clean(string inputFile, string outputFile)
+        public static void Clean(string inputFile, string outputFile)
         {
             if (String.IsNullOrEmpty(inputFile) || String.IsNullOrEmpty(outputFile))
             {
@@ -22,18 +18,19 @@ namespace BootCamp.Chapter
                 File.WriteAllText(outputFile, corruptedFileContent);
                 return;
             }
-            var cleanFileContent = corruptedFileContent.Replace("_", "");
-            File.WriteAllText(outputFile, cleanFileContent);
 
+            var cleanFileContent = corruptedFileContent.Replace("_", "");
             try
             {
                 ValidateName(cleanFileContent);
-               // ValidateBalance(cleanFileContent);
+                ValidateBalance(cleanFileContent);
             }
             catch (Exception ex)
             {
-          //     throw new InvalidBalancesException("");
+               throw new InvalidBalancesException();
             }
+
+            File.WriteAllText(outputFile, cleanFileContent);
         }
 
         public static void ValidateBalance(string fileContent)

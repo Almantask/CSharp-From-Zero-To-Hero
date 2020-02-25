@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
+﻿using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -28,12 +25,27 @@ namespace BootCamp.Chapter
             }
             return balance;
         }
+        public static PersonAndBalance[] CreatePersonsArray(string[] peopleAndBalances)
+        {
+            var personsAndBalances = new PersonAndBalance[peopleAndBalances.Length];
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                personsAndBalances[i] = new PersonAndBalance(peopleAndBalances[i]);
+            }
+            return personsAndBalances;
+        }
+
         public static string[] ConvertToArray(string personAndBalance)
         {
             // this to remove white spaces in string array
             personAndBalance = personAndBalance.Replace(", ", ",");
             string[] personAndBalanceArray = personAndBalance.Split(',');
             return personAndBalanceArray;
+        }
+
+        public static bool IsArrayNullOrEmpty(string[] peopleAndBalances)
+        {
+            return peopleAndBalances == null || peopleAndBalances.Length == 0;
         }
     }
 }

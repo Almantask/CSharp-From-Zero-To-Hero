@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -73,7 +71,7 @@ namespace BootCamp.Chapter
             }
             // To remove comma at the end.
             var peopleWithSameBalance = sb.ToString().Remove(sb.ToString().Length - 2);
-            return ConvertToArray(peopleWithSameBalance);
+            return ArrayHandler.ConvertToArray(peopleWithSameBalance);
         }
         private string FormatPeopleNames(string[] peopleNames)
         {
@@ -87,14 +85,6 @@ namespace BootCamp.Chapter
                     // If need to this can be implemented to loop through the array, in any case only 3 different cases needed.
                     return $"{peopleNames[0]}, {peopleNames[1]} and {peopleNames[2]}";
             }
-        }
-
-        private string[] ConvertToArray(string personAndBalance)
-        {
-            // this to remove white spaces in string array
-            personAndBalance = personAndBalance.Replace(", ", ",");
-            string[] personAndBalanceArray = personAndBalance.Split(',');
-            return personAndBalanceArray;
         }
     }
 }

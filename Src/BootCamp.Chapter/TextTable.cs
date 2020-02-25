@@ -63,7 +63,6 @@ namespace BootCamp.Chapter
                 middleSb.Append($"|{AddBothSidePaddingTo(lines[i], message, padding)}|{Environment.NewLine}");
             }
 
-
             return middleSb.ToString();
         }
 
@@ -90,7 +89,6 @@ namespace BootCamp.Chapter
             var leftPadding = lengthOfLongestLine + padding * 2;
             return line.PadRight(rightPadding).PadLeft(leftPadding);
         }
-
 
         public static int LengthOfLongestLine(string message)
         {

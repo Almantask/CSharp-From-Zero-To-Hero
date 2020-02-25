@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class PersonAndBalance
     {
-        private string _personAndBalance;
         private string[] _personAndBalanceArray;
         private float[] _balance;
 
         public PersonAndBalance(string personAndBalance)
         {
-            _personAndBalance = personAndBalance;
             _personAndBalanceArray = ArrayHandler.ConvertToArray(personAndBalance);
             _balance = ArrayHandler.ConvertToBalanceArray(personAndBalance);
         }

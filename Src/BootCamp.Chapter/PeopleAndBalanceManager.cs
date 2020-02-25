@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class PeopleAndBalanceManager
     {
@@ -11,19 +6,10 @@ namespace BootCamp.Chapter
         private AnswerFormatter _answerFormatter;
         public PeopleAndBalanceManager(string[] peopleAndBalances)
         {
-            _peopleAndBalances = CreatePersonsArray(peopleAndBalances);
+            _peopleAndBalances = ArrayHandler.CreatePersonsArray(peopleAndBalances);
             _answerFormatter = new AnswerFormatter();
         }
 
-        private PersonAndBalance[] CreatePersonsArray(string[] peopleAndBalances)
-        {
-            _peopleAndBalances = new PersonAndBalance[peopleAndBalances.Length];
-            for (int i = 0; i < peopleAndBalances.Length; i++)
-            {
-                _peopleAndBalances[i] = new PersonAndBalance(peopleAndBalances[i]);
-            }
-            return _peopleAndBalances;
-        }
         public string GetHighestBalanceEverAnswer()
         {
             return _answerFormatter.GetFormattedAnswerForHighestBalanceEver(_peopleAndBalances, FindHighestBalanceEver());
@@ -50,7 +36,7 @@ namespace BootCamp.Chapter
             return _answerFormatter.GetFormattedAnswerForPoorestPerson(_peopleAndBalances, poorestPersonsBalance);
         }
 
-        public bool isValidForCheck()
+        private bool isValidForCheck()
         {
             for (int i = 0; i < _peopleAndBalances.Length; i++)
             {
