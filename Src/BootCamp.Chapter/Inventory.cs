@@ -2,6 +2,7 @@
 {
     public class Inventory
     {
+        private int itemIdx = 0;
         private Item[] _items;
         public Item[] GetItems()
         {
@@ -20,7 +21,7 @@
 
         public void AddItem(Item item)
         {
-
+            _items[++itemIdx] = item;
         }
 
         /// <summary>
@@ -29,7 +30,16 @@
         /// </summary>
         public void RemoveItem(Item item)
         {
+            foreach (var merchandise in _items)
+            {
+                if (merchandise.GetName() = item.GetName)
+                {
+                    foreach (var item in collection)
+                    {
 
+                    }
+                }
+            }
         }
     }
 }
