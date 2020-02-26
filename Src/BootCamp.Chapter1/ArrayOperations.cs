@@ -74,8 +74,23 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+            int[] tempArr = new int[array.Length - 1];
+            int oldArrayIndex = 0;
+            for(int i = 0; i < tempArr.Length; i++)
+            {
+                if(i == index)
+                {
+                    oldArrayIndex++;
+                }
+                tempArr[i] = array[oldArrayIndex];
+                oldArrayIndex++;
+            }
+            return tempArr;
         }
 
         /// <summary>

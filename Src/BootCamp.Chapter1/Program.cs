@@ -8,14 +8,18 @@ namespace BootCamp.Chapter1
         {
             //int[] testArr = null;
             //int[] testArr = new int[0];
-            //int[] testArr = new int[5] {1, 2, 3, 4, 5};
-            //int[] testArr = new int[5] { 5, 4, 3, 2, 1 
-            int[] testArr = new int[5] { 3, 10, 3, 2, 0 };
+            int[] testArr = new int[5] {0, 1, 2, 3, 4};
+            //int[] testArr = new int[5] { 5, 4, 3, 2, 1};
+            //int[] testArr = new int[5] { 3, 10, 3, 2, 0 };
+            int[] returnArr = new int[4];
 
 
-            ArrayOperations.Sort(testArr);
+            //ArrayOperations.Sort(testArr);
             //ArrayOperations.Reverse(testArr);
-            Array.ForEach(testArr, Console.WriteLine);
+            returnArr = ArrayOperations.RemoveAt(testArr, 2);
+
+            //Array.ForEach(testArr, Console.WriteLine);
+            Array.ForEach(returnArr, Console.WriteLine);
         }
     }
 }
