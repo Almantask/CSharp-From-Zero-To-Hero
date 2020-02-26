@@ -11,8 +11,18 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            Console.WriteLine("Hello World!");
-            // ToDo: implement.
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        int temp = array[j];
+                        array[j] = array[i];
+                        array[i] = temp;
+                    }
+                }
+            }
         }
 
         /// <summary>
