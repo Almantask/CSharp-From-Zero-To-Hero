@@ -113,8 +113,14 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+            int[] tempArr = new int[array.Length + 1];
+            tempArr = InsertAt(array, number, 0);
+            return tempArr;
         }
 
         /// <summary>
@@ -125,8 +131,14 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns input array.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+            int[] tempArr = new int[array.Length + 1];
+            tempArr = InsertAt(array, number, array.Length);
+            return tempArr;
         }
 
         /// <summary>
@@ -138,8 +150,28 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+            int[] tempArr = new int[array.Length + 1];
+            int oldArrayIndex = 0;
+            for (int i = 0; i < tempArr.Length; i++)
+            {
+                if (i == index)
+                {
+                    tempArr[i] = number;
+                    i++;
+                    if (index == array.Length)
+                    {
+                        return tempArr;
+                    }
+                }
+                tempArr[i] = array[oldArrayIndex];
+                oldArrayIndex++;
+            }
+            return tempArr;
         }
     }
 }
