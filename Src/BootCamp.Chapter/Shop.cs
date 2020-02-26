@@ -12,10 +12,10 @@
 
         public Shop()
         {
-
+            _inventory = new Inventory();
         }
 
-        public Shop(decimal money)
+        public Shop(decimal money) : this()
         {
             _money = money;
         }
@@ -31,6 +31,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,6 +41,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            _inventory.RemoveItem(name);
         }
 
         /// <summary>
@@ -50,7 +52,12 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            if (_money - item.GetPrice() < 0)
+            {
+                return 0;
+            }
+            _money -= item.GetPrice();
+            return item.GetPrice();
         }
 
         /// <summary>
@@ -64,6 +71,14 @@
         /// </returns>
         public Item Sell(string item)
         {
+            foreach (var merchandise in _inventory.GetItems())
+            {
+                if (merchandise.GetName() == item)
+                {
+                    _money += merchandise.GetPrice();
+                    return merchandise;
+                }
+            }
             return null;
         }
     }
