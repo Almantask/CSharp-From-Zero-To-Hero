@@ -16,7 +16,9 @@ namespace BootCamp.Chapter1
 
             //ArrayOperations.Sort(testArr);
             //ArrayOperations.Reverse(testArr);
-            returnArr = ArrayOperations.RemoveAt(testArr, 2);
+            //returnArr = ArrayOperations.RemoveAt(testArr, 2);
+            //returnArr = ArrayOperations.RemoveFirst(testArr);
+            returnArr = ArrayOperations.RemoveLast(testArr);
 
             //Array.ForEach(testArr, Console.WriteLine);
             Array.ForEach(returnArr, Console.WriteLine);
