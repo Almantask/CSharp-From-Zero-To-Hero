@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BootCamp.Chapter1
+﻿namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
