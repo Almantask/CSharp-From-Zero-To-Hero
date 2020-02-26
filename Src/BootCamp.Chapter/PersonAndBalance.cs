@@ -2,8 +2,8 @@
 {
     public class PersonAndBalance
     {
-        private string[] _personAndBalanceArray;
-        private float[] _balance;
+        private readonly string[] _personAndBalanceArray;
+        private readonly float[] _balance;
 
         public PersonAndBalance(string personAndBalance)
         {

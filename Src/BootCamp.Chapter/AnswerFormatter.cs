@@ -3,21 +3,21 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class AnswerFormatter
+    public static class AnswerFormatter
     {
-        public string GetFormattedAnswerForPersonWithBiggestLoss(PersonAndBalance personWithBiggestLoss)
+        public static string GetFormattedAnswerForPersonWithBiggestLoss(PersonAndBalance personWithBiggestLoss)
         {
             return $"{personWithBiggestLoss.GetName()} lost the most money. {FormatCurrency(personWithBiggestLoss.GetLoss())}.";
         }
 
-        public string GetFormattedAnswerForHighestBalanceEver(PersonAndBalance[] peopleAndBalances, float highestBalanceEver)
+        public static string GetFormattedAnswerForHighestBalanceEver(PersonAndBalance[] peopleAndBalances, float highestBalanceEver)
         {
             var peopleWithSameBalance = GetPeopleNamesWithSameBalance(peopleAndBalances, highestBalanceEver, "highest");
             var formatedPeopleNames = FormatPeopleNames(peopleWithSameBalance);
             return $"{formatedPeopleNames} had the most money ever. ¤{highestBalanceEver}.";
         }
         
-        public string GetFormattedAnswerForRichestPerson(PersonAndBalance[] peopleAndBalances, float balance)
+        public static string GetFormattedAnswerForRichestPerson(PersonAndBalance[] peopleAndBalances, float balance)
         {
             var peopleWithSameBalance = GetPeopleNamesWithSameBalance(peopleAndBalances, balance, "current");
             var formatedPeopleNames = FormatPeopleNames(peopleWithSameBalance);
@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
             return $"{formatedPeopleNames} {areOrIs} the richest {peopleOrPerson}. ¤{balance}.";
         }
 
-        public string GetFormattedAnswerForPoorestPerson(PersonAndBalance[] peopleAndBalances, float balance)
+        public static string GetFormattedAnswerForPoorestPerson(PersonAndBalance[] peopleAndBalances, float balance)
         {
             var peopleWithSameBalance = GetPeopleNamesWithSameBalance(peopleAndBalances, balance, "current");
             var formatedPeopleNames = FormatPeopleNames(peopleWithSameBalance);
@@ -36,7 +36,7 @@ namespace BootCamp.Chapter
             return $"{formatedPeopleNames} {hasOrHave} the least money. {FormatCurrency(balance)}.";
         }
 
-        private string FormatCurrency(float number)
+        private static string FormatCurrency(float number)
         {
             var originalCulture = CultureInfo.CurrentCulture;
             var culture = CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
@@ -48,7 +48,7 @@ namespace BootCamp.Chapter
             return formatedBiggestLoss;
         }
 
-        private string[] GetPeopleNamesWithSameBalance(PersonAndBalance[] peopleAndBalances, float balance, string typeOfBalance)
+        private static string[] GetPeopleNamesWithSameBalance(PersonAndBalance[] peopleAndBalances, float balance, string typeOfBalance)
         {
             var individualPersonAndBalance = 0f;
             var sb = new StringBuilder();
@@ -73,7 +73,7 @@ namespace BootCamp.Chapter
             var peopleWithSameBalance = sb.ToString().Remove(sb.ToString().Length - 2);
             return ArrayHandler.ConvertToArray(peopleWithSameBalance);
         }
-        private string FormatPeopleNames(string[] peopleNames)
+        private static string FormatPeopleNames(string[] peopleNames)
         {
             switch (peopleNames.Length)
             {

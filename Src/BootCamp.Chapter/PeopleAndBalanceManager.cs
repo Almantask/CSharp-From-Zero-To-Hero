@@ -2,41 +2,39 @@
 {
     public class PeopleAndBalanceManager
     {
-        private PersonAndBalance[] _peopleAndBalances;
-        private AnswerFormatter _answerFormatter;
+        private readonly PersonAndBalance[] _peopleAndBalances;
         public PeopleAndBalanceManager(string[] peopleAndBalances)
         {
             _peopleAndBalances = ArrayHandler.CreatePersonsArray(peopleAndBalances);
-            _answerFormatter = new AnswerFormatter();
         }
 
         public string GetHighestBalanceEverAnswer()
         {
-            return _answerFormatter.GetFormattedAnswerForHighestBalanceEver(_peopleAndBalances, FindHighestBalanceEver());
+            return AnswerFormatter.GetFormattedAnswerForHighestBalanceEver(_peopleAndBalances, FindHighestBalanceEver());
         }
 
         public string GetPersonWithBiggestLossAnswer()
         {
-            if (!isValidForCheck())
+            if (!IsValidForCheck())
             {
                 return "N/A.";
             }
-            return _answerFormatter.GetFormattedAnswerForPersonWithBiggestLoss(FindPersonWithBiggestLoss());
+            return AnswerFormatter.GetFormattedAnswerForPersonWithBiggestLoss(FindPersonWithBiggestLoss());
         }
 
         public string GetRichestPersonAnswer()
         {
             var richestPersonsBalance = FindRichestPerson().GetCurrentBalance();
-            return _answerFormatter.GetFormattedAnswerForRichestPerson(_peopleAndBalances, richestPersonsBalance);
+            return AnswerFormatter.GetFormattedAnswerForRichestPerson(_peopleAndBalances, richestPersonsBalance);
         }
 
         public string GetPoorestPersonAnswer()
         {
             var poorestPersonsBalance = FindPoorestPerson().GetCurrentBalance();
-            return _answerFormatter.GetFormattedAnswerForPoorestPerson(_peopleAndBalances, poorestPersonsBalance);
+            return AnswerFormatter.GetFormattedAnswerForPoorestPerson(_peopleAndBalances, poorestPersonsBalance);
         }
 
-        private bool isValidForCheck()
+        private bool IsValidForCheck()
         {
             for (int i = 0; i < _peopleAndBalances.Length; i++)
             {
