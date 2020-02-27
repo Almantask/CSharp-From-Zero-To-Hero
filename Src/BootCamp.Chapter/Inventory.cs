@@ -18,12 +18,12 @@ namespace BootCamp.Chapter
 
         public Item[] GetItems(string name)
         {
-            var foundItems = new Item[1];
+            var foundItems = new Item[0];
             foreach (var item in _items)
             {
                 if (item.GetName() == name)
                 {
-                    foundItems[0] = item;
+                    foundItems = item.AddItem(foundItems,item); 
                 }
             }
 
@@ -32,32 +32,28 @@ namespace BootCamp.Chapter
 
         public void AddItem(Item item)
         {
-            _items = AppendToArray(item);
+            _items = item.AddItem(_items, item);
         }
 
-        private Item[] AppendToArray(Item item)
-        {
-            var newItemArray = new Item[_items.Length + 1];
-            for (int i = 0; i < _items.Length - 1; i++)
-            {
-                newItemArray[i] = _items[i];
-            }
-            newItemArray[^1] = item;
-            return newItemArray;
-        }
-
-        internal Item SearchItem(string name)
+        internal bool SearchItem(string name)
         {
             foreach (var item in _items)
             {
                 if (item.GetName() == name)
                 {
-                    return item; 
+                    return true; 
                 }
             }
 
-            return new Item("", 0.00M, 00F); 
+            return false; 
         }
+
+        internal void RemoveByName(string name)
+        {
+            _items = Item.RemoveByBame(_items, name); 
+        }
+
+
 
         /// <summary>
         /// Removes item matching criteria by item.
@@ -65,31 +61,9 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(Item item)
         {
-            _items = RemoveFromArray(item);
+            _items = Item.RemoveFromArray(_items, item);
         }
 
-        private Item[] RemoveFromArray(Item item)
-        {
-            if (_items.Length == 0)
-            {
-                return _items;
-            }
-
-            var newItemArray = new Item[_items.Length - 1];
-            var indexItem = Array.IndexOf(_items, item);
-            for (int i = 0; i < _items.Length - 1; i++)
-            {
-                if (i < indexItem)
-                {
-                    newItemArray[i] = _items[i];
-                }
-                else if (i > indexItem)
-                {
-                    newItemArray[i - 1] = _items[i];
-                }
-            }
-
-            return newItemArray;
-        }
+       
     }
 }
