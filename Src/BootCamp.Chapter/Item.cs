@@ -108,10 +108,5 @@
             }
             return newArray;
         }
-
-        public static Item NullItem()
-        {
-            return new Item("", 0, 0);
-        }
     }
 }

@@ -8,6 +8,7 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
+        #region equipment and setters
         private Weapon _weapon;
         public void SetWeapon(Weapon weapon)
         {
@@ -62,6 +63,8 @@ namespace BootCamp.Chapter
             _gloves = gloves;
         }
 
+        #endregion
+
         /// <summary>
         /// Gets total weight of armour.
         /// </summary>
@@ -70,15 +73,29 @@ namespace BootCamp.Chapter
         {
             float currentWeight = 0f;
 
-            currentWeight += EquipedOrNullItem(_head).GetWeight();
-            currentWeight += EquipedOrNullItem(_weapon).GetWeight();
-            currentWeight += EquipedOrNullItem(_chest).GetWeight();
-            currentWeight += EquipedOrNullItem(_leftShoulder).GetWeight();
-            currentWeight += EquipedOrNullItem(_rightShoulder).GetWeight();
-            currentWeight += EquipedOrNullItem(_legs).GetWeight();
-            currentWeight += EquipedOrNullItem(_leftArm).GetWeight();
-            currentWeight += EquipedOrNullItem(_rightArm).GetWeight();
-            currentWeight += EquipedOrNullItem(_gloves).GetWeight();
+            var items = new Item[]
+           {
+               _chest,
+                _gloves,
+                _head,
+                _leftArm,
+                _leftShoulder,
+                _legs,
+                _rightArm,
+                _rightShoulder,
+                _weapon
+            };
+
+            foreach (var item in items)
+            {
+                if (item == null)
+                {
+                    currentWeight += 0f;
+                    continue;
+                }
+                currentWeight += item.GetWeight();
+            }
+
             return currentWeight;
         }
 
@@ -90,14 +107,27 @@ namespace BootCamp.Chapter
         {
             float currentDefense = 0f;
 
-            currentDefense += EquipedOrNullArmor(_head).GetDefence();
-            currentDefense += EquipedOrNullArmor(_chest).GetDefence();
-            currentDefense += EquipedOrNullArmor(_leftShoulder).GetDefence();
-            currentDefense += EquipedOrNullArmor(_rightShoulder).GetDefence();
-            currentDefense += EquipedOrNullArmor(_legs).GetDefence();
-            currentDefense += EquipedOrNullArmor(_leftArm).GetDefence();
-            currentDefense += EquipedOrNullArmor(_rightArm).GetDefence();
-            currentDefense += EquipedOrNullArmor(_gloves).GetDefence();
+            var armorset = new Armor[]
+           {
+               _chest,
+                _gloves,
+                _head,
+                _leftArm,
+                _leftShoulder,
+                _legs,
+                _rightArm,
+                _rightShoulder
+            };
+
+            foreach (var armor in armorset)
+            {
+                if (armor == null)
+                {
+                    currentDefense += 0f;
+                    continue;
+                }
+                currentDefense += armor.GetDefence();
+            }
 
             return currentDefense;
         }
@@ -113,29 +143,6 @@ namespace BootCamp.Chapter
                 return _weapon.GetDamage();
             }
             return 0;
-        }
-
-        /// <summary>
-        /// Returns either the item, or if it is null a null item.
-        /// </summary>
-        /// <param name="item"> Item from which to get weight </param>
-        /// <returns> The item's Weight, if null then zero</returns>
-        Item EquipedOrNullItem(Item item)
-        {
-            if (item != null)
-            {
-                return item;
-            }
-            return Item.NullItem();
-        }
-
-        Armor EquipedOrNullArmor(Armor armor)
-        {
-            if (armor != null)
-            {
-                return armor;
-            }
-            return Armor.NullArmor();
         }
     }
 }

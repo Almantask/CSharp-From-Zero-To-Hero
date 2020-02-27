@@ -16,10 +16,5 @@ namespace BootCamp.Chapter
         {
             _defence = defence;
         }
-
-        public static Armor NullArmor()
-        {
-            return new Armor("", 0, 0, 0);
-        }
     }
 }
