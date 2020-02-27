@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
     public static class CaesarCipher
     {
         const int CypherLength = 95; // number of characters before it loops to the start
-        const int Unusable = 32; //the first 32 chars of ascii are not printable
+        const int IndexOfLastUnusable = 32; //the first 32 chars of ascii are not printable
 
 
         public static string Encrypt(string message, byte shift)
@@ -35,7 +35,7 @@ namespace BootCamp.Chapter
             for (int i = 0; i < message.Length; i++)
             {
                 var currentCharByte = messageBytes[i];
-                byte newByte = Convert.ToByte(((currentCharByte - Unusable + shift) % CypherLength) + Unusable);
+                byte newByte = Convert.ToByte(((currentCharByte - IndexOfLastUnusable + shift) % CypherLength) + IndexOfLastUnusable);
                 messageBytes[i] = newByte;
             }
 
