@@ -14,17 +14,17 @@ namespace BootCamp.Chapter
 
         public static string Encrypt(string message, byte shift)
         {
-            return Cypher(message, shift);
+            return ShiftCharacters(message, shift);
         }
 
         public static string Decrypt(string message, byte shift)
         {
             shift = (byte) Math.Abs(CypherLength - shift);
 
-            return Cypher(message, shift);
+            return ShiftCharacters(message, shift);
         }
 
-        static string Cypher(string message, int shift)
+        static string ShiftCharacters(string message, int shift)
         {
             if (message == null)
             {
