@@ -52,7 +52,9 @@ namespace BootCamp.Chapter
             }
             for(int i = 0; i < splitMessage.Length; i++)
             {
-                sb.Append("|").Append(' ', padding).Append(splitMessage[i]).Append(' ', padding).AppendLine("|");
+                sb.Append("|").Append(' ', padding).Append(splitMessage[i]);
+                sb.Append(' ', splitMessage[longStringIndex].Length - splitMessage[i].Length);
+                sb.Append(' ', padding).AppendLine("|");
             }
             for (int i = 0; i < padding; i++)
             {
