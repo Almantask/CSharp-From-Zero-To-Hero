@@ -97,8 +97,6 @@ namespace BootCamp.Chapter
             if (moreThanOne)
             {
                 ReplaceLastCommaWithAnd(peopleWithSameLowBalance);
-                //int lastComma = peopleWithSameLowBalance.ToString().LastIndexOf(',');
-                //peopleWithSameLowBalance.Replace(",", " and", lastComma, 1);
             }
             peopleWithSameLowBalance.Append(minResult);
             return peopleWithSameLowBalance.ToString();
@@ -197,6 +195,7 @@ namespace BootCamp.Chapter
             poorPeople.Append(result);
             return poorPeople.ToString();
         }
+
         /// <summary>
         /// Makes a customizable invariant culture without currencygroupseparator and currencynegativepattern = 1
         /// </summary>
@@ -210,6 +209,7 @@ namespace BootCamp.Chapter
 
             return cult;
         }
+
         /// <summary>
         /// verify if string array is null or empty
         /// </summary>
@@ -217,8 +217,9 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         private static bool IsStrArrayNullOrEmpty(string[] array) 
         {
-            return (array == null || array.Length == 0) ? true : false;
+            return (array == null || array.Length == 0);
         }
+
         /// <summary>
         /// verify if decimal array is null or empty
         /// </summary>
@@ -226,8 +227,9 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         private static bool IsDecArrayNullOrEmpty(decimal[] array)
         {
-            return (array == null || array.Length == 0) ? true : false;
+            return (array == null || array.Length == 0);
         }
+
         /// <summary>
         /// convert the string values in the balance array to decimal.
         /// Note: it will skip null or empty strings,  return array.Length <= balance.Length
@@ -338,7 +340,7 @@ namespace BootCamp.Chapter
         /// <param name="sb"></param>
         private static void ReplaceLastCommaWithAnd(StringBuilder sb) 
         {
-            int lastComma = sb.ToString().LastIndexOf(",");
+            int lastComma = sb.ToString().LastIndexOf(",", StringComparison.InvariantCulture);
             sb.Replace(",", " and", lastComma, 1);
         }
     }
