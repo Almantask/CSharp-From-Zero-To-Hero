@@ -55,8 +55,7 @@
                 return array;
             }
 
-            int[] tempArr = new int[array.Length - 1];
-            tempArr = RemoveAt(array, array.Length - 1);
+            int[] tempArr = RemoveAt(array, array.Length - 1);
             return tempArr;
         }
 
@@ -71,8 +70,7 @@
                 return array;
             }
 
-            int[] tempArr = new int[array.Length - 1];
-            tempArr = RemoveAt(array, 0);
+            int[] tempArr = RemoveAt(array, 0);
             return tempArr;
         }
 
@@ -116,8 +114,7 @@
                 return array;
             }
 
-            int[] tempArr = new int[array.Length + 1];
-            tempArr = InsertAt(array, number, 0);
+            int[] tempArr = InsertAt(array, number, 0);
             return tempArr;
         }
 
@@ -134,8 +131,7 @@
                 return array;
             }
 
-            int[] tempArr = new int[array.Length + 1];
-            tempArr = InsertAt(array, number, array.Length);
+            int[] tempArr = InsertAt(array, number, array.Length);
             return tempArr;
         }
 
