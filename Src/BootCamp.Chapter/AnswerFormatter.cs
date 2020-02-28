@@ -5,19 +5,19 @@ namespace BootCamp.Chapter
 {
     public static class AnswerFormatter
     {
-        public static string GetFormattedAnswerForPersonWithBiggestLoss(PersonAndBalance personWithBiggestLoss)
+        public static string GetFormattedAnswerForPersonWithBiggestLoss(Person personWithBiggestLoss)
         {
             return $"{personWithBiggestLoss.GetName()} lost the most money. {FormatCurrency(personWithBiggestLoss.GetLoss())}.";
         }
 
-        public static string GetFormattedAnswerForHighestBalanceEver(PersonAndBalance[] peopleAndBalances, float highestBalanceEver)
+        public static string GetFormattedAnswerForHighestBalanceEver(Person[] peopleAndBalances, float highestBalanceEver)
         {
             var peopleWithSameBalance = GetPeopleNamesWithSameBalance(peopleAndBalances, highestBalanceEver, "highest");
             var formatedPeopleNames = FormatPeopleNames(peopleWithSameBalance);
             return $"{formatedPeopleNames} had the most money ever. ¤{highestBalanceEver}.";
         }
         
-        public static string GetFormattedAnswerForRichestPerson(PersonAndBalance[] peopleAndBalances, float balance)
+        public static string GetFormattedAnswerForRichestPerson(Person[] peopleAndBalances, float balance)
         {
             var peopleWithSameBalance = GetPeopleNamesWithSameBalance(peopleAndBalances, balance, "current");
             var formatedPeopleNames = FormatPeopleNames(peopleWithSameBalance);
@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
             return $"{formatedPeopleNames} {areOrIs} the richest {peopleOrPerson}. ¤{balance}.";
         }
 
-        public static string GetFormattedAnswerForPoorestPerson(PersonAndBalance[] peopleAndBalances, float balance)
+        public static string GetFormattedAnswerForPoorestPerson(Person[] peopleAndBalances, float balance)
         {
             var peopleWithSameBalance = GetPeopleNamesWithSameBalance(peopleAndBalances, balance, "current");
             var formatedPeopleNames = FormatPeopleNames(peopleWithSameBalance);
@@ -48,7 +48,7 @@ namespace BootCamp.Chapter
             return formatedBiggestLoss;
         }
 
-        private static string[] GetPeopleNamesWithSameBalance(PersonAndBalance[] peopleAndBalances, float balance, string typeOfBalance)
+        private static string[] GetPeopleNamesWithSameBalance(Person[] peopleAndBalances, float balance, string typeOfBalance)
         {
             var individualPersonAndBalance = 0f;
             var sb = new StringBuilder();

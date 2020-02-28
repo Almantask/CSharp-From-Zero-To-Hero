@@ -25,12 +25,12 @@ namespace BootCamp.Chapter
             }
             return balance;
         }
-        public static PersonAndBalance[] CreatePersonsArray(string[] peopleAndBalances)
+        public static Person[] CreatePersonsArray(string[] peopleAndBalances)
         {
-            var personsAndBalances = new PersonAndBalance[peopleAndBalances.Length];
+            var personsAndBalances = new Person[peopleAndBalances.Length];
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                personsAndBalances[i] = new PersonAndBalance(peopleAndBalances[i]);
+                personsAndBalances[i] = new Person(peopleAndBalances[i]);
             }
             return personsAndBalances;
         }

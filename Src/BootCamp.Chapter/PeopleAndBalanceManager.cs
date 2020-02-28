@@ -2,7 +2,7 @@
 {
     public class PeopleAndBalanceManager
     {
-        private readonly PersonAndBalance[] _peopleAndBalances;
+        private readonly Person[] _peopleAndBalances;
         public PeopleAndBalanceManager(string[] peopleAndBalances)
         {
             _peopleAndBalances = ArrayHandler.CreatePersonsArray(peopleAndBalances);
@@ -46,7 +46,7 @@
             return true;
         }
 
-        private PersonAndBalance FindPoorestPerson()
+        private Person FindPoorestPerson()
         {
             if (_peopleAndBalances.Length == 1)
             {
@@ -63,7 +63,7 @@
             return poorestPerson;
         }
 
-        private PersonAndBalance FindRichestPerson()
+        private Person FindRichestPerson()
         {
             if(_peopleAndBalances.Length == 1)
             {
@@ -81,7 +81,7 @@
             return richestPerson;
         }
 
-        private PersonAndBalance FindPersonWithBiggestLoss()
+        private Person FindPersonWithBiggestLoss()
         {
             var biggestLoss = _peopleAndBalances[0].GetLoss();
             var personWithBiggestLoss = _peopleAndBalances[0];

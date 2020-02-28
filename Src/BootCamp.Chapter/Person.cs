@@ -1,14 +1,14 @@
 ﻿namespace BootCamp.Chapter
 {
-    public class PersonAndBalance
+    public class Person
     {
         private readonly string[] _personAndBalanceArray;
         private readonly float[] _balance;
 
-        public PersonAndBalance(string personAndBalance)
+        public Person(string person)
         {
-            _personAndBalanceArray = ArrayHandler.ConvertToArray(personAndBalance);
-            _balance = ArrayHandler.ConvertToBalanceArray(personAndBalance);
+            _personAndBalanceArray = ArrayHandler.ConvertToArray(person);
+            _balance = ArrayHandler.ConvertToBalanceArray(person);
         }
 
         public string GetName()
