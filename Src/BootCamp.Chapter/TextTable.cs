@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
@@ -34,7 +37,45 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
-            return "";
+            if (string.IsNullOrEmpty(message))
+            {
+                return "";
+            }
+            string[] splitMessage = message.Split(new string[] { System.Environment.NewLine }, System.StringSplitOptions.None);
+            StringBuilder sb = new StringBuilder();
+            int longStringIndex = LongestStringIndex(splitMessage);
+            
+            sb.Append("+").Append('-', splitMessage[longStringIndex].Length + padding*2).AppendLine("+");
+            for(int i = 0; i < padding; i++)
+            {
+                sb.Append("|").Append(' ', splitMessage[longStringIndex].Length + padding*2).AppendLine("|");
+            }
+            for(int i = 0; i < splitMessage.Length; i++)
+            {
+                sb.Append("|").Append(' ', padding).Append(splitMessage[i]).Append(' ', padding).AppendLine("|");
+            }
+            for (int i = 0; i < padding; i++)
+            {
+                sb.Append("|").Append(' ', splitMessage[longStringIndex].Length + padding*2).AppendLine("|");
+            }
+            sb.Append("+").Append('-', splitMessage[longStringIndex].Length + padding*2).AppendLine("+");
+
+            return sb.ToString();
+        }
+        public static int LongestStringIndex(string[] message)
+        {
+            if (message.Length == 1) return 0;
+            int index = 0;
+            int max = 0;
+            for (int i = 0; i < message.Length; i++)
+            {
+                if (message[i].Length>max)
+                {
+                    max = message[i].Length;
+                    index = i;
+                }
+            }
+            return index;
         }
     }
 }
