@@ -15,14 +15,20 @@
 
         public Item[] GetItems(string name)
         {
-            var tempItems = new Item[GetNumberOfMatchName(name)];
-            var j = 0;
+            var numberOfMatchName = GetNumberOfMatchName(name);
+            if (numberOfMatchName == 0)
+            {
+                return new Item[0];
+            }
+
+            var tempItems = new Item[numberOfMatchName];
+            var i = 0;
 
             foreach (var item in _items)
             {
                 if (item.GetName() == name)
                 {
-                    tempItems[j++] = item;
+                    tempItems[i++] = item;
                 }
             }
 
@@ -47,6 +53,12 @@
         public void AddItem(Item item)
         {
             var tempItems = new Item[_items.Length + 1];
+
+            for (var i = 0; i < _items.Length; i++)
+            {
+                tempItems[i] = _items[i];
+            }
+
             tempItems[_items.Length] = item;
             _items = tempItems;
         }
@@ -66,11 +78,11 @@
         /// </summary>
         public void RemoveItem(string name)
         {
-            var numberOfItems = _items.Length - 1;
+            int removeNumber = GetRemoveNumber(name);
 
-            if (numberOfItems >= 0)
+            if (removeNumber > 0)
             {
-                var tempItems = new Item[numberOfItems];
+                var tempItems = new Item[_items.Length - removeNumber];
                 var i = 0;
 
                 foreach (var item in _items)
@@ -83,6 +95,21 @@
 
                 _items = tempItems;
             }
+        }
+
+        private int GetRemoveNumber(string name)
+        {
+            var removeNumber = 0;
+
+            foreach (var item in _items)
+            {
+                if (item.GetName() == name)
+                {
+                    removeNumber++;
+                }
+            }
+
+            return removeNumber;
         }
     }
 }
