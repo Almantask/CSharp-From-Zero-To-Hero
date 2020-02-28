@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -19,7 +20,7 @@ namespace BootCamp.Chapter
 
             decimal max = decimal.MinValue;
             string maxResult = "";
-            string peopleWithSameHighBalance = "";
+            StringBuilder peopleWithSameHighBalance = new StringBuilder();
             bool moreThanOne = false;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
@@ -30,23 +31,24 @@ namespace BootCamp.Chapter
                 if (max < currentMax )
                 {
                     max = currentMax;
-                    peopleWithSameHighBalance = auxBalances[0];
+                    peopleWithSameHighBalance.Clear();
+                    peopleWithSameHighBalance.Append(auxBalances[0]);
                     moreThanOne = false;
                     maxResult = $" had the most money ever. {max:C0}.";
                 }
                else if (max.Equals(currentMax))
                 {
-                    peopleWithSameHighBalance += $", {auxBalances[0]}";
+                    peopleWithSameHighBalance.Append($", {auxBalances[0]}");
                     moreThanOne = true;
                 }
             }
 
             if (moreThanOne)
             {
-                peopleWithSameHighBalance = ReplaceLastCommaWithAnd(peopleWithSameHighBalance);
+                ReplaceLastCommaWithAnd(peopleWithSameHighBalance);
             }
-
-            return peopleWithSameHighBalance + maxResult;
+            peopleWithSameHighBalance.Append(maxResult);
+            return peopleWithSameHighBalance.ToString();
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace BootCamp.Chapter
 
             decimal min = decimal.MaxValue;
             string minResult = "";
-            string peopleWithSameLowBalance = "";
+            StringBuilder peopleWithSameLowBalance = new StringBuilder();
             bool moreThanOne = false;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
@@ -80,22 +82,26 @@ namespace BootCamp.Chapter
                 if (min > currentMin)
                 {
                     min = currentMin;
-                    peopleWithSameLowBalance = auxBalances[0];
+                    peopleWithSameLowBalance.Clear();
+                    peopleWithSameLowBalance.Append(auxBalances[0]);
                     moreThanOne = false;
                     minResult = $" lost the most money. {min:C0}.";
                 }
                 else if (min.Equals(currentMin))
                 {
-                    peopleWithSameLowBalance += $", {auxBalances[0]}";
+                    peopleWithSameLowBalance.Append($", {auxBalances[0]}");
                     moreThanOne = true;
                 }
             }
 
             if (moreThanOne)
             {
-                peopleWithSameLowBalance = ReplaceLastCommaWithAnd(peopleWithSameLowBalance);
+                ReplaceLastCommaWithAnd(peopleWithSameLowBalance);
+                //int lastComma = peopleWithSameLowBalance.ToString().LastIndexOf(',');
+                //peopleWithSameLowBalance.Replace(",", " and", lastComma, 1);
             }
-            return peopleWithSameLowBalance + minResult;
+            peopleWithSameLowBalance.Append(minResult);
+            return peopleWithSameLowBalance.ToString();
         }
 
         /// <summary>
@@ -112,7 +118,7 @@ namespace BootCamp.Chapter
 
             decimal max = decimal.MinValue;
             string result = "";
-            string richestPeople = "";
+            StringBuilder richestPeople = new StringBuilder();
             bool moreThanOne = false;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
@@ -125,13 +131,14 @@ namespace BootCamp.Chapter
                 if (max < currentBalance)
                 {
                     max = currentBalance;
-                    richestPeople = auxBalances[0];
+                    richestPeople.Clear();
+                    richestPeople.Append(auxBalances[0]);
                     moreThanOne = false;
                     result = $" is the richest person. {max:C0}.";
                 }
                 else if(max.Equals(currentBalance))
                 {
-                    richestPeople += $", {auxBalances[0]}";
+                    richestPeople.Append($", {auxBalances[0]}");
                     result = $" are the richest people. {max:C0}.";
                     moreThanOne = true;
                 }
@@ -139,10 +146,10 @@ namespace BootCamp.Chapter
 
             if (moreThanOne)
             {
-                richestPeople = ReplaceLastCommaWithAnd(richestPeople);
+                ReplaceLastCommaWithAnd(richestPeople);
             }
-
-            return richestPeople + result;
+            richestPeople.Append(result);
+            return richestPeople.ToString();
         }
 
         /// <summary>
@@ -159,7 +166,7 @@ namespace BootCamp.Chapter
 
             decimal min = decimal.MaxValue;
             string result = "";
-            string poorPeople = "";
+            StringBuilder poorPeople = new StringBuilder();
             bool moreThanOne = false;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
@@ -170,13 +177,14 @@ namespace BootCamp.Chapter
                 if (min > currentBalance)
                 {
                     min = currentBalance;
-                    poorPeople = auxBalances[0];
+                    poorPeople.Clear();
+                    poorPeople.Append(auxBalances[0]);
                     result = $" has the least money. {min:C0}.";
                     moreThanOne = false;
                 }
                 else if(min.Equals(currentBalance))
                 {
-                    poorPeople += $", {auxBalances[0]}";
+                    poorPeople.Append($", {auxBalances[0]}");
                     result = $" have the least money. {min:C0}.";
                     moreThanOne = true;
                 }
@@ -184,12 +192,15 @@ namespace BootCamp.Chapter
 
             if (moreThanOne)
             {
-                poorPeople = ReplaceLastCommaWithAnd(poorPeople);
+                ReplaceLastCommaWithAnd(poorPeople);
             }
-
-            return poorPeople + result;
+            poorPeople.Append(result);
+            return poorPeople.ToString();
         }
-
+        /// <summary>
+        /// Makes a customizable invariant culture without currencygroupseparator and currencynegativepattern = 1
+        /// </summary>
+        /// <returns>an Invariant Culture CultureInfo</returns>
         private static CultureInfo GetCustomInvariantCulture()
         {
             CultureInfo cult = (CultureInfo)CultureInfo.InvariantCulture.Clone();
@@ -199,31 +210,30 @@ namespace BootCamp.Chapter
 
             return cult;
         }
-
+        /// <summary>
+        /// verify if string array is null or empty
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
         private static bool IsStrArrayNullOrEmpty(string[] array) 
         {
-            if (array == null || array.Length == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (array == null || array.Length == 0) ? true : false;
         }
-
+        /// <summary>
+        /// verify if decimal array is null or empty
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
         private static bool IsDecArrayNullOrEmpty(decimal[] array)
         {
-            if (array == null || array.Length == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (array == null || array.Length == 0) ? true : false;
         }
-
+        /// <summary>
+        /// convert the string values in the balance array to decimal.
+        /// Note: it will skip null or empty strings,  return array.Length <= balance.Length
+        /// </summary>
+        /// <param name="balance"></param>
+        /// <returns></returns>
         private static decimal[] GetBalances(string[] balance)
         {
             if (IsStrArrayNullOrEmpty(balance))
@@ -248,7 +258,11 @@ namespace BootCamp.Chapter
         }
 
 
-
+        /// <summary>
+        /// Calculte the max balance
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
         private static decimal MaxBalance(decimal[] array)
         {
             if (IsDecArrayNullOrEmpty(array))
@@ -267,12 +281,16 @@ namespace BootCamp.Chapter
             }
             return max;
         }
-
+        /// <summary>
+        /// Calculate min balance
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
         private static decimal MinBalance(decimal[] array)
         {
             if (IsDecArrayNullOrEmpty(array))
             {
-                return decimal.MinValue;
+                return decimal.MaxValue;
             }
 
             decimal min = decimal.MaxValue;
@@ -287,7 +305,11 @@ namespace BootCamp.Chapter
             return min;
         }
 
-
+        /// <summary>
+        /// calculate the balance difference array: Balance[i+1] - Balance[i] with i < Balance.Legth - 1
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns>an array with the differences</returns>
         private static decimal[] GetDiff(decimal[] array)
         {
             if (IsDecArrayNullOrEmpty(array))
@@ -311,14 +333,13 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Replace the last comma with the string " and" in a string with values separated by comma.
+        /// Changes the Strinbuilder instance by Replacing the last comma with the string " and" in a string with values separated by comma.
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns>Return a string with the last "," replaced by " and"</returns>
-        private static string ReplaceLastCommaWithAnd(string value) 
+        /// <param name="sb"></param>
+        private static void ReplaceLastCommaWithAnd(StringBuilder sb) 
         {
-            int lastComma = value.LastIndexOf(',');
-            return value[..lastComma] + " and" + value[(lastComma + 1)..];
+            int lastComma = sb.ToString().LastIndexOf(",");
+            sb.Replace(",", " and", lastComma, 1);
         }
     }
 }

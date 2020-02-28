@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
             // - FindMostPoorPerson
             stats[3] = BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances);
 
-            int padding = 3;
+            const int padding = 3;
             foreach (string result in stats)
             {
                 Console.WriteLine(TextTable.Build(result, padding));

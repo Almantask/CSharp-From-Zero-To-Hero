@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -56,41 +57,40 @@ namespace BootCamp.Chapter
             }
 
             // calculate table borders
-            char corner = '+';
+            const char corner = '+';
             int width = maxLength + padding * 2;
             string topLine = new string('-', width);
             string bottomLine = topLine;
             string horizontalPadding = padding > 0 ? new string(' ', padding) : "";
             string leftBorder = "|" + horizontalPadding;
             string rightBorder = horizontalPadding + "|";
-            string verticalPadding = "";
+            StringBuilder verticalPadding = new StringBuilder();
             string newLine = Environment.NewLine;
 
             if (padding > 0)
             {
                 for (int i = 0; i < padding; i++)
                 {
-                    verticalPadding += leftBorder + new string(' ', maxLength)
-                        + rightBorder + newLine;
+                    verticalPadding.Append(leftBorder + new string(' ', maxLength) + rightBorder + newLine);
                 }
             }
 
             // top border
-            string result = $"{corner}{topLine}{corner}{newLine}";
-            result += verticalPadding;
+            StringBuilder result = new StringBuilder($"{corner}{topLine}{corner}{newLine}");
+            result.Append(verticalPadding);
 
             //rows
             foreach (string item in stringArray)
             {
                 string sentence = item.PadRight(maxLength);
-                result += $"{leftBorder}{sentence}{rightBorder}{newLine}";
+                result.Append($"{leftBorder}{sentence}{rightBorder}{newLine}");
             }
 
             // bottom
-            result += verticalPadding;
-            result += $"{corner}{bottomLine}{corner}{newLine}";
+            result.Append(verticalPadding);
+            result.Append($"{corner}{bottomLine}{corner}{newLine}");
 
-            return result;
+            return result.ToString();
         }
 
         
