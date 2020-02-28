@@ -12,7 +12,7 @@
 
         public Shop()
         {
-
+            _inventory = new Inventory();
         }
 
         public Shop(decimal money)
@@ -31,6 +31,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,6 +41,15 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            var itemsToRemove = _inventory.GetItems(name);
+            var itemsInInventory = _inventory.GetItems();
+            for (int i = 0; i < itemsInInventory.Length; i++)
+            {
+                if(_inventory.AreTheSame(itemsInInventory[i], itemsToRemove[i]))
+                {
+                    _inventory.RemoveItem(itemsToRemove[i]);
+                }
+            }
         }
 
         /// <summary>

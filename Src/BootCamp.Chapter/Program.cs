@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var inv = new Inventory();
+            var shop = new Shop();
             var item1 = new Item("kelnis", 1, 1);
             var item2 = new Item("kelnis7", 2, 1);
             //// Item[] foo = new Item[] { new Item("kelnis", 2, 1), new Item("kelnis", 3, 1), new Item("kelnis", 4, 1) };
@@ -17,22 +17,20 @@ namespace BootCamp.Chapter
             //foo[^1] = item1;
             //Console.WriteLine(foo.Length);
 
-            inv.AddItem(item1);
-            inv.AddItem(new Item("kelnis", 2, 1));
-            inv.AddItem(new Item("kelnis2", 3, 1));
-            inv.AddItem(new Item("kelniss", 4, 1));
+            shop.Add(item1);
+            shop.Add(new Item("kelnis", 2, 1));
+            shop.Add(new Item("kelnis2", 3, 1));
+            shop.Add(new Item("kelniss", 4, 1));
 
             //  inv.RemoveItem(item2);
             // var foo =  RemoveAt(inv.GetItems(), 3);
-
-            int i = 0;
-            foreach (var item in inv.GetItems("kelnis"))
+            shop.Remove("kelnis");
+            foreach (var item in shop.GetItems())
             {
-                Console.WriteLine(i + item.GetName());
-                i++;
+                System.Console.WriteLine(item.GetName() + "   " + item.GetPrice());
             }
 
-            PrintInventory(inv);
+            // PrintInventory(shop);
 
         }
         public static Item[] RemoveAt(Item[] array, int index)
