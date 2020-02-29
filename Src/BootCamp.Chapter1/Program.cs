@@ -6,8 +6,8 @@ namespace BootCamp.Chapter1
     {
         static void Main(string[] args)
         {
-            int[] testArr = new int[2] { 0, 1 };
-            Array.ForEach(ArrayOperations.RemoveAt(testArr, 2), Console.WriteLine);
+            int[] testArr = new int[] { 1, 1, 1 };
+            Array.ForEach(ArrayOperations.RemoveAt(testArr, 4), Console.WriteLine);
         }
     }
 }

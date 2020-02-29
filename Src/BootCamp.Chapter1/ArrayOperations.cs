@@ -9,6 +9,11 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
+
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = i + 1; j < array.Length; j++)
@@ -87,7 +92,7 @@
                 return array;
             }
 
-            if (array.Length >= index)
+            if (array.Length <= index)
             {
                 return array;
             }
