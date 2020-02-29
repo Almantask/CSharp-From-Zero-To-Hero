@@ -20,7 +20,7 @@
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return BalanceStats.FindHighestBalanceEver(peopleAndBalances); 
+            return "";// BalanceStats.FindHighestBalanceEver(peopleAndBalances); 
         }
 
         public static string Build(string message, in int padding)

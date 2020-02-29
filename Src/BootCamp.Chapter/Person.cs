@@ -13,6 +13,11 @@ namespace BootCamp.Chapter
             _balances = balances;
         }
 
+        public string GetName()
+        {
+            return _name; 
+        }
+
         
         public decimal CurrentBalance()
         {

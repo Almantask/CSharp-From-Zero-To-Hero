@@ -5,7 +5,7 @@ namespace BootCamp.Chapter
 {
     public class BalanceParser
     {
-        public Person[] Parser(string[] contents)
+        public static Person[] Parser(string[] contents)
         {
             var culture = new CultureInfo("en-GB");
             var allPersons = new Person[contents.Length];

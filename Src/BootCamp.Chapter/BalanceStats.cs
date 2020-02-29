@@ -30,8 +30,7 @@ namespace BootCamp.Chapter
         
         public static Person[] FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            var parser = new BalanceParser();
-            var parsedFile = parser.Parser(peopleAndBalances); 
+            var parsedFile = BalanceParser.Parser(peopleAndBalances); 
             var person = FindHighestBalance(parsedFile);
 
             return person ;
@@ -42,8 +41,8 @@ namespace BootCamp.Chapter
             CultureInfo.CurrentCulture = new CultureInfo(culture);
             var persons = new Person[0];
             var highestBalanceEver = decimal.MinValue;
-            var personWithHighestBalance = new Person("", new decimal[0]); 
-
+           
+           
             for (int i = 0; i <= balances.Length - 1; i++)
             {
                 var currentPerson = balances[i];
@@ -52,14 +51,14 @@ namespace BootCamp.Chapter
 
                 if (highestAmountOfPerson > highestBalanceEver)
                 {
-                    personWithHighestBalance = currentPerson;
-                    highestBalanceEver = highestAmountOfPerson; 
+                    highestBalanceEver = highestAmountOfPerson;
+                    persons = new Person[0]; 
                    
                 }
 
-                if (highestAmountOfPerson >= currentPerson.HighestBalance())
+                if (highestAmountOfPerson >= highestBalanceEver)
                 {
-                    persons = AddPerson(personWithHighestBalance, persons);
+                    persons = AddPerson(currentPerson, persons);
                 }
             }
 
@@ -69,7 +68,7 @@ namespace BootCamp.Chapter
         private static Person[] AddPerson(Person person, Person[] persons)
         {
             var newArray = new Person[persons.Length + 1];
-            for (int i = 0; i < persons.Length - 1; i++)
+            for (int i = 0; i < persons.Length ; i++)
             {
                 newArray[i] = persons[i]; 
             }

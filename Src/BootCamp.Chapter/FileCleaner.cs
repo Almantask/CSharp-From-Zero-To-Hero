@@ -50,7 +50,6 @@ namespace BootCamp.Chapter
                     repairedText += Environment.NewLine;
                 }
 
-                ;
                 sb.Append(repairedText); 
                 
             }

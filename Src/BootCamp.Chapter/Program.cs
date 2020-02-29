@@ -7,9 +7,11 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
-            var parser = new BalanceParser();
             var contents = FileCleaner.Clean(@"Input\Balances.corrupted", @"Input\Balances.clean");
-            var allPersons = parser.Parser(contents);
+            var allPersons = BalanceParser.Parser(contents);
+            var answer = BalanceStats.FindHighestBalance(allPersons);
+           
+
             Console.WriteLine("kijken of het gelukt is");
         }
 
