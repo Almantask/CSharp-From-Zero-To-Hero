@@ -14,7 +14,7 @@ namespace BootCamp.Chapter
 
             var corruptedFileContent = File.ReadAllText(inputFile);
 
-            if (IsFileClean(corruptedFileContent))
+            if (IsFileClean(corruptedFileContent) || String.IsNullOrEmpty(corruptedFileContent))
             {
                 File.WriteAllText(outputFile, corruptedFileContent);
                 return;
