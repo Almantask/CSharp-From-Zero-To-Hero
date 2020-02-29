@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     class Program
     {
@@ -12,9 +9,6 @@ namespace BootCamp.Chapter
             // - FindPersonWithBiggestLoss
             // - FindRichestPerson
             // - FindMostPoorPerson
-
-            Console.WriteLine(TextTable.Build($"Hello{Environment.NewLine}World!{Environment.NewLine}Very Long Line!!!", 6));
-
         }
     }
 }

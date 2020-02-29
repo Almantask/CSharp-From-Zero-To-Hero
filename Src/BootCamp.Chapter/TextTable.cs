@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -41,6 +40,7 @@ namespace BootCamp.Chapter
             {
                 return "";
             }
+
             string[] splitMessage = message.Split(new string[] { System.Environment.NewLine }, System.StringSplitOptions.None);
             StringBuilder sb = new StringBuilder();
             int longStringIndex = LongestStringIndex(splitMessage);
