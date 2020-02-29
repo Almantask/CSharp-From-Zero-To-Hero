@@ -5,28 +5,32 @@
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+            Account[] accounts = AccountOps.BuildAccountList(peopleAndBalances);
+            BalanceStats balanceStats = new BalanceStats(accounts);
 
             return balanceStats.FindMostPoorPerson();
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+            Account[] accounts = AccountOps.BuildAccountList(peopleAndBalances);
+            BalanceStats balanceStats = new BalanceStats(accounts);
 
             return balanceStats.FindRichestPerson();
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+            Account[] accounts = AccountOps.BuildAccountList(peopleAndBalances);
+            BalanceStats balanceStats = new BalanceStats(accounts);
 
             return balanceStats.FindPersonWithBiggestLoss();
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            BalanceStats balanceStats = new BalanceStats(peopleAndBalances);
+            Account[] accounts = AccountOps.BuildAccountList(peopleAndBalances);
+            BalanceStats balanceStats = new BalanceStats(accounts);
 
             return balanceStats.FindHighestBalanceEver();
         }

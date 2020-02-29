@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     public static class ArrayOps
     {
-        public static bool AreBalancesValid(string[] peopleAndBalance)
+        public static bool CheckValidity(string[] peopleAndBalance)
         {
             foreach (string field in peopleAndBalance)
             {
@@ -31,7 +31,7 @@ namespace BootCamp.Chapter
             return newArray;
         }
 
-        public static decimal FindArrayMax(decimal[] inputArray)
+        public static decimal FindMax(decimal[] inputArray)
         {
             decimal max = inputArray[0];
             for (int i = 1; i < inputArray.Length; i++)
@@ -44,7 +44,7 @@ namespace BootCamp.Chapter
             return max;
         }
 
-        public static decimal FindArrayMin(decimal[] inputArray)
+        public static decimal FindMin(decimal[] inputArray)
         {
             var min = inputArray[0];
             for (int i = 0; i < inputArray.Length; i++)
@@ -57,7 +57,7 @@ namespace BootCamp.Chapter
             return min;
         }
 
-        public static bool AreArraysEqual(decimal[] array1, decimal[] array2)
+        public static bool CheckEquality(decimal[] array1, decimal[] array2)
         {
             for (int i = 0; i < array1.Length; i++)
             {

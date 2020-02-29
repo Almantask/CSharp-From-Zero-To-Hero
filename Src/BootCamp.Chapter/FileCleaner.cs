@@ -39,7 +39,7 @@ namespace BootCamp.Chapter
         private static string TestData(string cleanData)
         {
             string[] peopleAndBalance = cleanData.Split(Environment.NewLine);
-            if (!ArrayOps.AreBalancesValid(peopleAndBalance))
+            if (!ArrayOps.CheckValidity(peopleAndBalance))
             {
                 throw new InvalidBalancesException();
             }
