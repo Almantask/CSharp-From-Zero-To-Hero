@@ -32,7 +32,7 @@ namespace BootCamp.Chapter
             Account[] accounts = new Account[peopleAndBalances.Length];
             for (int i = 0; i < accounts.Length; i++)
             {
-                string[] accountArray = ArrayOps.ConvertToAccountArray(peopleAndBalances[i]);
+                string[] accountArray = ArrayOps.CreateAccount(peopleAndBalances[i]);
                 accounts[i] = new Account(GetNameForPerson(accountArray), GetBalanceForPerson(accountArray));
             }
 

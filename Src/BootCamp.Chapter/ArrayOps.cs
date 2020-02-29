@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         {
             foreach (string field in peopleAndBalance)
             {
-                string[] account = ConvertToAccountArray(field);
+                string[] account = CreateAccount(field);
                 if (!Test.IsName(account[0]) || !Test.IsBalance(account[1..]))
                 {
                     return false;
@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        public static string[] ConvertToAccountArray(string personAndBalance)
+        public static string[] CreateAccount(string personAndBalance)
         {
             string[] newArray;
             try
