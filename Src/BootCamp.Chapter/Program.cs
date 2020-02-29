@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
     class Program
     {
+        private const string CorruptedBalanceFile = @"..\..\..\Input\Balances.corrupted";
+        private const string FixedBalanceFile = @"..\..\..\Input\Balances.fixed";
+
         static void Main(string[] args)
         {
+            FileCleaner.Clean(CorruptedBalanceFile, FixedBalanceFile);
+
         }
     }
 }
