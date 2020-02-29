@@ -15,10 +15,10 @@ namespace BootCamp.Chapter
 
         public static decimal[] GetBalanceForPerson(string[] personAndBalance)
         {
-            var newArray = new decimal[personAndBalance.Length - 1];
+            decimal[] newArray = new decimal[personAndBalance.Length - 1];
             for (int i = 1; i < personAndBalance.Length; i++)
             {
-                newArray[i - 1] = Conversion.ConvertToDecimal(personAndBalance[i]);
+                newArray[i - 1] = Conversion.ToDecimal(personAndBalance[i]);
             }
             return newArray;
         }
@@ -32,18 +32,19 @@ namespace BootCamp.Chapter
             Account[] accounts = new Account[peopleAndBalances.Length];
             for (int i = 0; i < accounts.Length; i++)
             {
-                accounts[i] = new Account(peopleAndBalances[i]);
+                string[] accountArray = ArrayOps.ConvertToAccountArray(peopleAndBalances[i]);
+                accounts[i] = new Account(GetNameForPerson(accountArray), GetBalanceForPerson(accountArray));
             }
 
             return accounts;
         }
 
-        public static bool AreBalancesEqual(Account[] accounts)
+        public static bool CheckBalancesEquality(Account[] accounts)
         {
             Account firstAccount = accounts[0];
             for (int i = 1; i < accounts.Length; i++)
             {
-                if (!ArrayOps.AreArraysEqual(accounts[i].GetBalance(), firstAccount.GetBalance()))
+                if (!ArrayOps.CheckEquality(accounts[i].GetBalance(), firstAccount.GetBalance()))
                 {
                     return false;
                 }

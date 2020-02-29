@@ -5,11 +5,15 @@
         private readonly string _name;
         private readonly decimal[] _balance;
 
-        public Account(string personAndBalance)
+        public Account(string name)
         {
-            string[] _accountArray = ArrayOps.ConvertToAccountArray(personAndBalance);
-            _name = AccountOps.GetNameForPerson(_accountArray);
-            _balance = AccountOps.GetBalanceForPerson(_accountArray);
+            _name = name;
+        }
+
+        public Account(string name, decimal[] balance)
+        {
+            _name = name;
+            _balance = balance;
         }
 
         public string GetName()
@@ -24,7 +28,7 @@
 
         public decimal GetHighestBalance()
         {
-            var highestBalance = ArrayOps.FindArrayMax(_balance);
+            var highestBalance = ArrayOps.FindMax(_balance);
             return highestBalance;
         }
 
