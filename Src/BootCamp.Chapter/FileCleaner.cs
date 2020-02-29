@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -11,7 +12,7 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="dirtyFile">Dirty file with "_" placed in random places.</param>
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
-        public static void Clean(string dirtyFile, string cleanedFile)
+        public static string[] Clean(string dirtyFile, string cleanedFile)
         {
             if (String.IsNullOrEmpty(dirtyFile) || String.IsNullOrEmpty(cleanedFile))
             {
@@ -25,9 +26,11 @@ namespace BootCamp.Chapter
                 File.WriteAllText(cleanedFile, "");
             }
 
+            var repairedText = "";
+            var sb = new StringBuilder(); 
             for (int i = 0; i < contents.Length; i++)
             {
-                var repairedText = contents[i].Replace("_", "");
+                repairedText = contents[i].Replace("_", "");
                 var personData = repairedText.Split(',');
 
                 var name = personData[0];
@@ -47,15 +50,13 @@ namespace BootCamp.Chapter
                     repairedText += Environment.NewLine;
                 }
 
-                if (i == 0)
-                {
-                    File.WriteAllText(cleanedFile, repairedText);
-                }
-                else
-                {
-                    File.AppendAllText(cleanedFile, repairedText);
-                }
+                ;
+                sb.Append(repairedText); 
+                
             }
+
+            File.WriteAllText(cleanedFile, sb.ToString()); 
+            return sb.ToString().Split(Environment.NewLine); 
         }
 
         public static void CheckAmounts(string[] amounts)

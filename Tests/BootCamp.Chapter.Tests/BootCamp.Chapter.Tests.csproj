@@ -20,13 +20,13 @@
 
   <ItemGroup>
     <None Update="Input\Files\Expected\Balances.clean">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Input\Files\Expected\Balances1.clean">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Input\Files\Expected\Balances2.clean">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Input\Files\In\Balances.clean">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
