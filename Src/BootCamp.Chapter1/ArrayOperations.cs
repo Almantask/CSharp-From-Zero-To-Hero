@@ -87,6 +87,11 @@
                 return array;
             }
 
+            if (array.Length >= index)
+            {
+                return array;
+            }
+
             int[] tempArr = new int[array.Length - 1];
             int oldArrayIndex = 0;
             for(int i = 0; i < tempArr.Length; i++)
