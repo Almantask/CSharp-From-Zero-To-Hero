@@ -15,7 +15,7 @@
 
         public Item[] GetItems(string name)
         {
-            var numberOfMatchName = GetNumberOfMatchName(name);
+            var numberOfMatchName = GetMatchingNamesCount(name);
             if (numberOfMatchName == 0)
             {
                 return new Item[0];
@@ -35,7 +35,7 @@
             return tempItems;
         }
 
-        private int GetNumberOfMatchName(string name)
+        private int GetMatchingNamesCount(string name)
         {
             var matchName = 0;
 
@@ -63,22 +63,18 @@
             _items = tempItems;
         }
 
-        /// <summary>
-        /// Removes item matching criteria by item.
-        /// Does nothing if no such item exists
-        /// </summary>
         public void RemoveItem(Item item)
         {
             RemoveItem(item.GetName());
         }
 
         /// <summary>
-        /// Removes item matching criteria by item.
-        /// Does nothing if no such item exists
+        /// Removes item matching criteria by name.
+        /// Does nothing if no such name exists
         /// </summary>
         public void RemoveItem(string name)
         {
-            int removeNumber = GetRemoveNumber(name);
+            int removeNumber = GetRemoveCount(name);
 
             if (removeNumber > 0)
             {
@@ -97,7 +93,7 @@
             }
         }
 
-        private int GetRemoveNumber(string name)
+        private int GetRemoveCount(string name)
         {
             var removeNumber = 0;
 
