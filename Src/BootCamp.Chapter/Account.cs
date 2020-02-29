@@ -28,27 +28,28 @@
 
         public decimal GetHighestBalance()
         {
-            var highestBalance = ArrayOps.FindMax(_balance);
-            return highestBalance;
+            return ArrayOps.FindMax(_balance);
         }
 
-        public decimal GetLoss()
+        public decimal GetLoss(int historicBalance = 2)
         {
-            decimal previousBallance = _balance[^2];
-            decimal currentBalance = _balance[^1];
-            decimal loss = currentBalance - previousBallance;
-            return loss;
+            if (historicBalance < 2)
+            {
+                return default;
+            }
+            decimal previousBalance = _balance[^historicBalance];
+            decimal currentBalance = _balance[^(historicBalance - 1)];
+            return currentBalance - previousBalance;
         }
 
         public decimal GetCurrentBalance()
         {
-            decimal currentBalance = _balance[^1];
-            return currentBalance;
+            return _balance[^1];
         }
 
         public decimal GetTotalBalance()
         {
-            decimal totalBalance = decimal.MinValue;
+            decimal totalBalance = decimal.Zero;
             for (int i = 0; i < _balance.Length; i++)
             {
                 totalBalance += _balance[i];
