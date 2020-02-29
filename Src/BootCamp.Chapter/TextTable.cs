@@ -44,55 +44,76 @@ namespace BootCamp.Chapter
 
             // split the message
             string[] stringArray = message.Split(Environment.NewLine);
+
+            int maxLength = MaxLength(stringArray);
+
+            // get the borders and vertical padding
+            const char corner = '+';
+            int width = maxLength + padding * 2;
+            string horizontalPadding = GethorizontalPadding(padding);
+            string leftBorder = "|" + horizontalPadding;
+            string rightBorder = horizontalPadding + "|";
+            StringBuilder verticalPadding = new StringBuilder();
+            SetVerticalPadding(verticalPadding, leftBorder, rightBorder, maxLength, padding);
+
+            StringBuilder textTable = new StringBuilder();
+
+            // top border
+            string HorizontalBorder = GetHorizontalBorder(corner, width);
+            textTable.Append(HorizontalBorder);
+            textTable.Append(verticalPadding);
+
+            //rows
+            SetRows(textTable, stringArray, maxLength, leftBorder, rightBorder);
+
+            // bottom
+            textTable.Append(verticalPadding);
+            textTable.Append(HorizontalBorder);
+
+            return textTable.ToString();
+        }
+
+        static int MaxLength(string[] array)
+        {
             int maxLength = -1;
 
-
-            // calculate max length
-            foreach (string item in stringArray)
+            foreach (string item in array)
             {
                 if (maxLength < item.Length)
                 {
                     maxLength = item.Length;
                 }
             }
+            return maxLength;
+        }
 
-            // calculate table borders
-            const char corner = '+';
-            int width = maxLength + padding * 2;
-            string topLine = new string('-', width);
-            string bottomLine = topLine;
-            string horizontalPadding = padding > 0 ? new string(' ', padding) : "";
-            string leftBorder = "|" + horizontalPadding;
-            string rightBorder = horizontalPadding + "|";
-            StringBuilder verticalPadding = new StringBuilder();
-            string newLine = Environment.NewLine;
+        static string FillString(char c, int length) => new string(c, length);
+        static string GethorizontalPadding(int padding) => padding > 0 ? FillString(' ', padding) : "";
 
+        static string GetHorizontalBorder(char corner, int length)
+        {
+            return $"{corner}{FillString('-', length)}{corner}{Environment.NewLine}";
+        }
+
+        static void SetVerticalPadding(StringBuilder sb, string leftBorder, string rightBorder, int length, int padding)
+        {
             if (padding > 0)
             {
                 for (int i = 0; i < padding; i++)
                 {
-                    verticalPadding.Append(leftBorder + new string(' ', maxLength) + rightBorder + newLine);
+                    sb.Append($"{leftBorder}{FillString(' ', length)}{rightBorder}{Environment.NewLine}");
                 }
             }
-
-            // top border
-            StringBuilder result = new StringBuilder($"{corner}{topLine}{corner}{newLine}");
-            result.Append(verticalPadding);
-
-            //rows
-            foreach (string item in stringArray)
-            {
-                string sentence = item.PadRight(maxLength);
-                result.Append($"{leftBorder}{sentence}{rightBorder}{newLine}");
-            }
-
-            // bottom
-            result.Append(verticalPadding);
-            result.Append($"{corner}{bottomLine}{corner}{newLine}");
-
-            return result.ToString();
         }
 
-        
+        static void SetRows(StringBuilder sb, string[] array, int padding, string leftBorder, string rightBorder) 
+        {
+            foreach (string item in array)
+            {
+                string sentence = item.PadRight(padding);
+                sb.Append($"{leftBorder}{sentence}{rightBorder}{Environment.NewLine}");
+            }
+        }
+
     }
 }

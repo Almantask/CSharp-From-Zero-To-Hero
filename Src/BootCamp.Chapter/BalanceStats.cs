@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (IsStrArrayNullOrEmpty(peopleAndBalances))
+            if (IsNullOrEmpty(peopleAndBalances))
             {
                 return "N/A.";
             }
@@ -56,7 +56,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            if (IsStrArrayNullOrEmpty(peopleAndBalances))
+            if (IsNullOrEmpty(peopleAndBalances))
             {
                 return "N/A.";
             }
@@ -107,7 +107,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            if(IsStrArrayNullOrEmpty(peopleAndBalances))
+            if(IsNullOrEmpty(peopleAndBalances))
             {
                 return "N/A.";
             }
@@ -155,7 +155,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            if (IsStrArrayNullOrEmpty(peopleAndBalances))
+            if (IsNullOrEmpty(peopleAndBalances))
             {
                 return "N/A.";
             }
@@ -202,12 +202,12 @@ namespace BootCamp.Chapter
         /// <returns>an Invariant Culture CultureInfo</returns>
         private static CultureInfo GetCustomInvariantCulture()
         {
-            CultureInfo cult = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-            NumberFormatInfo nfi = cult.NumberFormat;
+            CultureInfo culture = (CultureInfo)CultureInfo.InvariantCulture.Clone();
+            NumberFormatInfo nfi = culture.NumberFormat;
             nfi.CurrencyNegativePattern = 1;
             nfi.CurrencyGroupSeparator = "";
 
-            return cult;
+            return culture;
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>
-        private static bool IsStrArrayNullOrEmpty(string[] array) 
+        private static bool IsNullOrEmpty(string[] array) 
         {
             return (array == null || array.Length == 0);
         }
@@ -225,7 +225,7 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>
-        private static bool IsDecArrayNullOrEmpty(decimal[] array)
+        private static bool IsNullOrEmpty(decimal[] array)
         {
             return (array == null || array.Length == 0);
         }
@@ -238,7 +238,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         private static decimal[] GetBalances(string[] balance)
         {
-            if (IsStrArrayNullOrEmpty(balance))
+            if (IsNullOrEmpty(balance))
             {
                 return null;
             }
@@ -267,7 +267,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         private static decimal MaxBalance(decimal[] array)
         {
-            if (IsDecArrayNullOrEmpty(array))
+            if (IsNullOrEmpty(array))
             {
                 return decimal.MinValue;
             }
@@ -290,7 +290,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         private static decimal MinBalance(decimal[] array)
         {
-            if (IsDecArrayNullOrEmpty(array))
+            if (IsNullOrEmpty(array))
             {
                 return decimal.MaxValue;
             }
@@ -314,7 +314,7 @@ namespace BootCamp.Chapter
         /// <returns>an array with the differences</returns>
         private static decimal[] GetDiff(decimal[] array)
         {
-            if (IsDecArrayNullOrEmpty(array))
+            if (IsNullOrEmpty(array))
             {
                 return array;
             }
