@@ -13,6 +13,13 @@ namespace BootCamp.Chapter
             }
 
             var corruptedFileContent = File.ReadAllText(inputFile);
+
+            if (IsFileClean(corruptedFileContent))
+            {
+                File.WriteAllText(outputFile, corruptedFileContent);
+                return;
+            }
+            
             if (String.IsNullOrEmpty(corruptedFileContent))
             {
                 File.WriteAllText(outputFile, corruptedFileContent);
@@ -31,6 +38,24 @@ namespace BootCamp.Chapter
             }
 
             File.WriteAllText(outputFile, cleanFileContent);
+        }
+
+        public static bool IsFileClean(string fileContent)
+        {
+            try
+            {
+                ValidateBalance(fileContent);
+                ValidateName(fileContent);
+            }
+            catch (Exception ex){
+                return false;
+            }
+
+            if (fileContent.Contains('_'))
+            {
+                return false;
+            }
+            return true;
         }
 
         public static void ValidateBalance(string fileContent)
