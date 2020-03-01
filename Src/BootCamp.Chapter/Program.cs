@@ -21,9 +21,9 @@ namespace BootCamp.Chapter
                 Console.Write("Input your weight in kg: ");
                 int weight = Convert.ToInt32(Console.ReadLine());
 
-                float BMI = (float)(weight / (height / 100 * height / 100));
+                float bmi = (float)(weight / (height / 100 * height / 100));
 
-                Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {BMI}");
+                Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {bmi}");
                 Console.WriteLine();
             }
 
