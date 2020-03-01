@@ -17,6 +17,7 @@ namespace BootCamp.Chapter.Examples
             {
                 AnnounceRound(round);
                 Fight(gladiator, snorlack);
+                ReportRound(gladiator, snorlack);
                 round++;
             }
 
@@ -27,8 +28,51 @@ namespace BootCamp.Chapter.Examples
         {
             gladiator.Attack(snorlack);
             snorlack.Attack(gladiator);
+        }
 
-            Console.WriteLine($"Gladiator: {gladiator.GetHitPoints()} hp, Snorlack: {snorlack.GetHitPoints()} hp.");
+        private static void ReportRound(ICombatant gladiator, ICombatant snorlack)
+        {
+            if (gladiator.GetHitPoints() > snorlack.GetHitPoints())
+            {
+                AnnounceWinning(gladiator, nameof(gladiator));
+                Console.Write(", ");
+                AnnounceLoosing(snorlack, nameof(snorlack));
+            }
+            else if (gladiator.GetHitPoints() < snorlack.GetHitPoints())
+            {
+                AnnounceLoosing(gladiator, nameof(gladiator));
+                Console.Write(", ");
+                AnnounceWinning(snorlack, nameof(snorlack));
+            }
+            else
+            {
+                AnnounceDraw(gladiator, snorlack);
+            }
+            Console.WriteLine();
+        }
+
+        private static void AnnounceWinning(ICombatant combatant, string name)
+        {
+            AnnounceInColoredHp(combatant, name, ConsoleColor.Yellow);
+        }
+
+        private static void AnnounceLoosing(ICombatant combatant, string name)
+        {
+            AnnounceInColoredHp(combatant, name, ConsoleColor.Red);
+        }
+
+        private static void AnnounceInColoredHp(ICombatant combatant, string name, ConsoleColor color)
+        {
+            Console.Write($"{name}: ");
+            Console.ForegroundColor = color;
+            Console.Write($"{combatant.GetHitPoints()} hp");
+            Console.ResetColor();
+        }
+
+        private static void AnnounceDraw(ICombatant combatant1, ICombatant combatant2)
+        {
+            Console.Write($"Gladiator: {combatant1.GetHitPoints()} hp");
+            Console.Write($"Snorlack: {combatant2.GetHitPoints()} hp.");
         }
 
         private static void AnnounceRound(int round)
@@ -36,6 +80,7 @@ namespace BootCamp.Chapter.Examples
             Console.WriteLine($"Round {round} is about to start.");
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
+            Console.WriteLine();
         }
 
         private static ICombatant[] CreateCombatants()
@@ -58,7 +103,10 @@ namespace BootCamp.Chapter.Examples
                 winner = "Snorlack";
             }
 
-            Console.WriteLine("The winner is: " + winner);
+            Console.Write("The winner is: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(winner);
+            Console.ResetColor();
         }
     }
 }
