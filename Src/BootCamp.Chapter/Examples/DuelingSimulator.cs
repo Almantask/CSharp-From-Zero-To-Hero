@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using BootCamp.Chapter.Combat;
 using BootCamp.Chapter.Combat.Armour;
 using BootCamp.Chapter.Combat.Attacks;
 using BootCamp.Chapter.Combat.Combatants;
@@ -26,6 +25,16 @@ namespace BootCamp.Chapter.Examples
             }
 
             AnnounceWinner(gladiator, snorlack);
+
+            Console.WriteLine("Try again? (y/n)");
+            var input = Console.ReadKey();
+            if (input.KeyChar == 'y')
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+
+                Run();  
+            }
         }
 
         private static void Fight(ICombatant gladiator, ICombatant snorlack)
@@ -95,16 +104,17 @@ namespace BootCamp.Chapter.Examples
             return new ICombatant[] { gladiator, pokemon };
         }
 
-        private static void AnnounceWinner(ICombatant gladiator, ICombatant snorlack)
+
+        private static void AnnounceWinner(ICombatant gladiator, ICombatant snorlax)
         {
             var winner = "";
-            if (gladiator.GetHitPoints() > snorlack.GetHitPoints())
+            if (gladiator.GetHitPoints() > snorlax.GetHitPoints())
             {
                 winner = "Gladiator";
             }
             else
             {
-                winner = "Snorlack";
+                winner = "Snorlax";
             }
 
             Console.Write("The winner is: ");

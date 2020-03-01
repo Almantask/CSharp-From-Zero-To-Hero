@@ -4,7 +4,7 @@ namespace BootCamp.Chapter.Combat.Weapons
 {
     class Sword : IWeapon
     {
-        public IAttack GetAtack()
+        public IAttack GetAttack()
         {
             return new Slash();
         }

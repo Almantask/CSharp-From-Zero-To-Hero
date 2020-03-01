@@ -39,7 +39,7 @@ namespace BootCamp.Chapter.Combat.Combatants
 
         public void Attack(IDefender defender)
         {
-            var attack = _weapon.GetAtack();
+            var attack = _weapon.GetAttack();
 
             var distance = Distance.Calculate(_position, defender.GetPosition());
             if (attack.GetRange() > distance)

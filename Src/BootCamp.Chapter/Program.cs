@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using BootCamp.Chapter.Examples;
 
 namespace BootCamp.Chapter
@@ -8,6 +7,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Console.Title = "Chapter 2. Lesson 4: interface- the ultimate abstraction";
             DuelingSimulator.Run();
         }
 

@@ -40,7 +40,6 @@ namespace BootCamp.Chapter.Combat.Combatants
         {
             _hitPoints -= attack.GetDamage();
         }
-
         public virtual void Attack(IDefender defender)
         {
             var randomAttackIndex = _random.Next(0, _attacks.Length);

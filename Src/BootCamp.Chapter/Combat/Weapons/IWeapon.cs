@@ -2,8 +2,8 @@
 
 namespace BootCamp.Chapter.Combat.Weapons
 {
-    internal interface IWeapon
+    public interface IWeapon
     {
-        IAttack GetAtack();
+        IAttack GetAttack();
     }
 }
