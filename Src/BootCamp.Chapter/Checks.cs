@@ -9,31 +9,32 @@ namespace BootCamp.Chapter
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            return BalanceStats.FindMostPoorPerson(peopleAndBalances);
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            return BalanceStats.FindRichestPerson(peopleAndBalances);
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            return BalanceStats.FindPersonWithBiggestLoss(peopleAndBalances);
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            return BalanceStats.FindHighestBalanceEver(peopleAndBalances);
         }
 
         public static string Build(string message, in int padding)
         {
-            return "";
+            return TextTable.Build(message, padding);
         }
 
         public static void Clean(string file, string outputFile)
         {
+            FileCleaner.Clean(file, outputFile);
         }
     }
 }
