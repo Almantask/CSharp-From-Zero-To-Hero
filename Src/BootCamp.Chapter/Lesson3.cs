@@ -47,13 +47,13 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Incorrect data entered!");
                 PromptFloat(message);
             }
+
             return result;
         }
 
         public static string PromptString(string message)
         {
             Console.Write(message);
-
             string result = Console.ReadLine();
 
             return result;
