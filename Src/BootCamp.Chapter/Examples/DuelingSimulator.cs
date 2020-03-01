@@ -13,18 +13,18 @@ namespace BootCamp.Chapter.Examples
         {
             ICombatant[] combatants = CreateCombatants();
             var gladiator = combatants[0];
-            var snorlack = combatants[1];
+            var hypnotoad = combatants[1];
 
             var round = 0;
-            while (gladiator.GetHitPoints() > 0 && snorlack.GetHitPoints() > 0)
+            while (gladiator.GetHitPoints() > 0 && hypnotoad.GetHitPoints() > 0)
             {
                 AnnounceRound(round);
-                Fight(gladiator, snorlack);
-                ReportRound(gladiator, snorlack);
+                Fight(gladiator, hypnotoad);
+                ReportRound(gladiator, hypnotoad);
                 round++;
             }
 
-            AnnounceWinner(gladiator, snorlack);
+            AnnounceWinner(gladiator, hypnotoad);
 
             Console.WriteLine("Try again? (y/n)");
             var input = Console.ReadKey();
@@ -84,8 +84,8 @@ namespace BootCamp.Chapter.Examples
 
         private static void AnnounceDraw(ICombatant combatant1, ICombatant combatant2)
         {
-            Console.Write($"Gladiator: {combatant1.GetHitPoints()} hp");
-            Console.Write($"Snorlack: {combatant2.GetHitPoints()} hp.");
+            Console.Write($"Gladiator: {combatant1.GetHitPoints()} hp, ");
+            Console.Write($"Hypnotoad: {combatant2.GetHitPoints()} hp.");
         }
 
         private static void AnnounceRound(int round)
@@ -99,22 +99,22 @@ namespace BootCamp.Chapter.Examples
         private static ICombatant[] CreateCombatants()
         {
             var gladiator = new Human(100, new Sword(), new ChainMail(), Point.Empty);
-            var pokemon = new Pokemon(100, new IAttack[] { new Slash(), new Punch() }, Point.Empty);
+            var pokemon = new Hyponotoad(100, new IAttack[] { new Slash(), new Punch() }, Point.Empty);
 
             return new ICombatant[] { gladiator, pokemon };
         }
 
 
-        private static void AnnounceWinner(ICombatant gladiator, ICombatant snorlax)
+        private static void AnnounceWinner(ICombatant gladiator, ICombatant hypnotoad)
         {
             var winner = "";
-            if (gladiator.GetHitPoints() > snorlax.GetHitPoints())
+            if (gladiator.GetHitPoints() > hypnotoad.GetHitPoints())
             {
                 winner = "Gladiator";
             }
             else
             {
-                winner = "Snorlax";
+                winner = nameof(hypnotoad);
             }
 
             Console.Write("The winner is: ");
@@ -123,4 +123,18 @@ namespace BootCamp.Chapter.Examples
             Console.ResetColor();
         }
     }
+
+    class Hyponotoad : Pokemon
+    {
+        public Hyponotoad(float hitPoints, IAttack[] attacks, Point position) : base(hitPoints, attacks, position)
+        {
+        }
+
+        public override void Attack(IDefender defender)
+        {
+            Console.WriteLine("Hypnosis...");
+            base.Attack(defender);
+        }
+    }
+
 }

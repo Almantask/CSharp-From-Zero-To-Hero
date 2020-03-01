@@ -51,5 +51,10 @@ namespace BootCamp.Chapter.Combat.Combatants
                 defender.DefendFrom(attack);
             }
         }
+
+        public void Move(Point position)
+        {
+            _position = position;
+        }
     }
 }

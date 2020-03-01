@@ -9,7 +9,7 @@
 
         public float GetRange()
         {
-            return 1;
+            return 3;
         }
     }
 }

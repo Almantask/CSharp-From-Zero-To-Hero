@@ -32,9 +32,19 @@ namespace BootCamp.Chapter.Combat.Combatants
             _hitPoints -= attack.GetDamage() * negatedDamage;
         }
 
-        public Point GetPosition()
+        private Point GetPosition()
         {
             return _position;
+        }
+
+        Point IAttacker.GetPosition()
+        {
+            return GetPosition();
+        }
+
+        Point IDefender.GetPosition()
+        {
+            return GetPosition();
         }
 
         public void Attack(IDefender defender)
@@ -46,6 +56,11 @@ namespace BootCamp.Chapter.Combat.Combatants
             {
                 defender.DefendFrom(attack);
             }
+        }
+
+        void IMovable.Move(Point position)
+        {
+            _position = position;
         }
     }
 }
