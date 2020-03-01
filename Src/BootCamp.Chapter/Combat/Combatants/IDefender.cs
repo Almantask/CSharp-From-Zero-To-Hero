@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
+using BootCamp.Chapter.Combat.Attacks;
 
-namespace BootCamp.Chapter.Combat
+namespace BootCamp.Chapter.Combat.Combatants
 {
     interface IDefender
     {

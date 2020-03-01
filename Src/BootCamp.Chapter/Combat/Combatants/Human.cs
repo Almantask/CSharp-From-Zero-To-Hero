@@ -1,6 +1,10 @@
 ﻿using System.Drawing;
+using BootCamp.Chapter.Combat.Armour;
+using BootCamp.Chapter.Combat.Attacks;
+using BootCamp.Chapter.Combat.Weapons;
+using BootCamp.Chapter.Utilities;
 
-namespace BootCamp.Chapter.Combat
+namespace BootCamp.Chapter.Combat.Combatants
 {
     class Human : ICombatant
     {

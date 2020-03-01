@@ -1,6 +1,6 @@
-﻿namespace BootCamp.Chapter.Combat
+﻿namespace BootCamp.Chapter.Combat.Armour
 {
-    class ChainMain : IArmour
+    class ChainMail : IArmour
     {
         public float GetArmour()
         {

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using BootCamp.Chapter.Combat;
+using BootCamp.Chapter.Combat.Armour;
+using BootCamp.Chapter.Combat.Attacks;
+using BootCamp.Chapter.Combat.Combatants;
+using BootCamp.Chapter.Combat.Weapons;
 
 namespace BootCamp.Chapter.Examples
 {
@@ -85,7 +89,7 @@ namespace BootCamp.Chapter.Examples
 
         private static ICombatant[] CreateCombatants()
         {
-            var gladiator = new Human(100, new Sword(), new ChainMain(), Point.Empty);
+            var gladiator = new Human(100, new Sword(), new ChainMail(), Point.Empty);
             var pokemon = new Pokemon(100, new IAttack[] { new Slash(), new Punch() }, Point.Empty);
 
             return new ICombatant[] { gladiator, pokemon };

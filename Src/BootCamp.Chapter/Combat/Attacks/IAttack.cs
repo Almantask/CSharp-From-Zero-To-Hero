@@ -1,4 +1,4 @@
-﻿namespace BootCamp.Chapter.Combat
+﻿namespace BootCamp.Chapter.Combat.Attacks
 {
     interface IAttack
     {

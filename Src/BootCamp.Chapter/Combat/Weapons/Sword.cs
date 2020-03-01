@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter.Combat
+﻿using BootCamp.Chapter.Combat.Attacks;
+
+namespace BootCamp.Chapter.Combat.Weapons
 {
     class Sword : IWeapon
     {

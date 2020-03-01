@@ -1,4 +1,4 @@
-﻿namespace BootCamp.Chapter.Combat
+﻿namespace BootCamp.Chapter.Combat.Armour
 {
     internal interface IArmour
     {

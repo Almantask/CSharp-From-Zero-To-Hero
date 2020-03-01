@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace BootCamp.Chapter.Combat
+namespace BootCamp.Chapter.Combat.Combatants
 {
     interface IAttacker
     {

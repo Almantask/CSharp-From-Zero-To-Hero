@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Utilities
 {
     public static class Distance
     {
