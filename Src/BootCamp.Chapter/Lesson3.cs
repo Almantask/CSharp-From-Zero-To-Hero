@@ -10,18 +10,23 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < personCount; i++)
             {
-                string firstName = PromptString("Input your first name: ");
-                string lastName = PromptString("Input your last name: ");
-                int age = PromptInt("Input your age: ");
-                float height = PromptFloat("Input your height in m: ");
-                float weight = PromptFloat("Input your weight in kg: ");
-                float bmi = CalculateBmi(weight, height);
-
-                Console.WriteLine($"{firstName} {lastName} is {age} years old, with a weight of {weight} kg and a height of {height} cm.\nCalculated BMI is {bmi}");
-                Console.WriteLine();
+                ProcessBmi();
             }
 
             Console.ReadKey();
+        }
+
+        public static void ProcessBmi()
+        {
+            string firstName = PromptString("Input your first name: ");
+            string lastName = PromptString("Input your last name: ");
+            int age = PromptInt("Input your age: ");
+            float height = PromptFloat("Input your height in m: ");
+            float weight = PromptFloat("Input your weight in kg: ");
+            float bmi = CalculateBmi(weight, height);
+
+            Console.WriteLine($"{firstName} {lastName} is {age} years old, with a weight of {weight} kg and a height of {height} cm.\nCalculated BMI is {bmi}");
+            Console.WriteLine();
         }
         public static int PromptInt(string message)
         {
