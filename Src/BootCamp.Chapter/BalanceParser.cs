@@ -114,7 +114,7 @@ namespace BootCamp.Chapter
 
 
 
-        private static StringBuilder ConvertToStringBuilder(Person[] person)
+        public static StringBuilder ConvertToStringBuilder(Person[] person)
         {
             var sb = new StringBuilder();
             for (int i = 0; i < person.Length; i++)

@@ -9,24 +9,24 @@ namespace BootCamp.Chapter
         private static void Main(string[] args)
         {
             var contents = FileCleaner.Clean(@"Input\Balances.corrupted", @"Input\Balances.clean");
-            
 
+            FindStaticalData(contents); 
         }
 
        
 
 
-        private static void FindStaticalData()
+        private static void FindStaticalData(string[] contents)
         {
-            //string[] contents = File.ReadAllLines(@"Input\Balances.clean");
+            // Print each of the statistical output using Text Table with padding 3:
 
-            //// Print each of the statistical output using Text Table with padding 3:
+            // - FindHighestBalanceEver
 
-            //// - FindHighestBalanceEver
-
-            //Console.WriteLine("The richest person ever was : ");
-            //var answer = BalanceStats.FindHighestBalanceEver(contents);
-            //Console.WriteLine(TextTable.Build(answer, 3));
+            Console.WriteLine("The richest person ever was : ");
+            var answer = BalanceStats.FindHighestBalanceEver(contents);
+            var names = BalanceParser.ConvertToStringBuilder(answer);
+            var output = $"{names.ToString()} had the most money ever. ¤{answer[0].HighestBalance()}.";
+            Console.WriteLine(TextTable.Build(output, 3));
 
             //// - FindPersonWithBiggestLoss
 
@@ -42,8 +42,11 @@ namespace BootCamp.Chapter
 
             //// - FindMostPoorPerson
 
-            //Console.WriteLine("The poorest person at this moment is : ");
-            //answer = BalanceStats.FindMostPoorPerson(contents);
+            Console.WriteLine("The poorest person at this moment is : ");
+            answer = BalanceStats.FindMostPoorPerson(contents);
+            names = BalanceParser.ConvertToStringBuilder(answer);
+            output =  $"{answer.ToString()} have the least money. {answer[0].LowestBalance()}";
+
             //Console.WriteLine(TextTable.Build(answer, 3));
 
         }

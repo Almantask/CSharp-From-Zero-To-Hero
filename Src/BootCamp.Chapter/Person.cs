@@ -26,6 +26,11 @@ namespace BootCamp.Chapter
         
         public decimal CurrentBalance()
         {
+            if (_balances == null)
+            {
+                return 0; 
+            }
+            
             return _balances[^1]; 
         }
 
