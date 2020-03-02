@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -18,6 +19,10 @@ namespace BootCamp.Chapter
             return _name; 
         }
 
+        public decimal[] GetBalance()
+        {
+            return _balances; 
+        }
         
         public decimal CurrentBalance()
         {
@@ -59,9 +64,9 @@ namespace BootCamp.Chapter
             {
                 var amount1 = _balances[j]; 
                 var amount2 = _balances[j + 1];
-                var lossForCurrentPerson = amount1 - amount2;
+                var lossForCurrentPerson = amount2 - amount1;
 
-                if (lossForCurrentPerson > biggestLossPerson)
+                if (lossForCurrentPerson >  biggestLossPerson)
                 {
                     biggestLossPerson = lossForCurrentPerson;
                 }

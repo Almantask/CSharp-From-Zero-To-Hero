@@ -5,7 +5,7 @@
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";  //BalanceStats.FindMostPoorPerson(peopleAndBalances); 
+            return BalanceParser.FindPoorestPerson(peopleAndBalances); 
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
@@ -15,17 +15,17 @@
         
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";  //BalanceStats.FindPersonWithBiggestLoss(peopleAndBalances); 
+            return BalanceParser.FindPersonWithBiggestLoss(peopleAndBalances); 
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";// BalanceStats.FindHighestBalanceEver(peopleAndBalances); 
+            return BalanceParser.FindRichestPersonEver(peopleAndBalances); 
         }
 
         public static string Build(string message, in int padding)
         {
-            return ""; // TextTable.Build(message, padding);
+            return TextTable.Build(message, padding);
         }
 
         public static void Clean(string file, string outputFile)

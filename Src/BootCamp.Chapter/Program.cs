@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -8,12 +9,12 @@ namespace BootCamp.Chapter
         private static void Main(string[] args)
         {
             var contents = FileCleaner.Clean(@"Input\Balances.corrupted", @"Input\Balances.clean");
-            var allPersons = BalanceParser.Parser(contents);
-            var answer = BalanceStats.FindHighestBalance(allPersons);
-           
+            
 
-            Console.WriteLine("kijken of het gelukt is");
         }
+
+       
+
 
         private static void FindStaticalData()
         {
