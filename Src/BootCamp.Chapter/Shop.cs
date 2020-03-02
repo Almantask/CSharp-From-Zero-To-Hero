@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
@@ -18,6 +20,7 @@
         public Shop(decimal money)
         {
             _money = money;
+            _inventory = new Inventory();
         }
 
         public Item[] GetItems()
@@ -42,10 +45,9 @@
         public void Remove(string name)
         {
             var itemsToRemove = _inventory.GetItems(name);
-            var itemsInInventory = _inventory.GetItems();
-            for (int i = 0; i < itemsInInventory.Length; i++)
+            for (int i = 0; i < itemsToRemove.Length; i++)
             {
-                if(_inventory.AreTheSame(itemsInInventory[i], itemsToRemove[i]))
+                if(_inventory.Contains(itemsToRemove[i]))
                 {
                     _inventory.RemoveItem(itemsToRemove[i]);
                 }
@@ -60,7 +62,12 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            if(_money - item.GetPrice() < 0)
+            {
+                return 0;
+            }
+            _money -= item.GetPrice();
+            return item.GetPrice();
         }
 
         /// <summary>
@@ -73,8 +80,34 @@
         /// Null, if no item is sold.
         /// </returns>
         public Item Sell(string item)
-        {
+        {            
+            if (IsItemInShop(item))
+            {
+                var itemForSale = _inventory.GetItems(item)[0];
+                Remove(item);
+                _money += itemForSale.GetPrice();
+                return itemForSale;
+            }
+
             return null;
+        }
+
+        public bool IsItemInShop(string item)
+        {            
+            try
+            {
+                var itemForSale = _inventory.GetItems(item)[0];
+                if (_inventory.Contains(itemForSale))
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
