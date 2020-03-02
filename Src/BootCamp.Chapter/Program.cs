@@ -11,6 +11,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-        }
+            Checks.FindRichestPerson(new String[] { "Tom, 1", "Gillie, 0" });
+    }
     }
 }

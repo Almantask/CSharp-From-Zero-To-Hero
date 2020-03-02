@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     // This class is used to have a freedom of design, but with tests applied.
     public static class Checks
@@ -16,7 +12,34 @@ namespace BootCamp.Chapter
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
             //TODO Find richest person!
-            return "";
+            string richestName = "";
+            decimal amount = 0;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var a = new Account(peopleAndBalances[i]);
+                if (i == 0)
+                {
+                    richestName = a.GetName();
+                    amount = a.CurrentBalance();
+                }
+                else if (amount == a.CurrentBalance())
+                {
+                    richestName += " and " + a.GetName();
+                }
+                else if (amount < a.CurrentBalance())
+                {
+                    richestName = a.GetName();
+                    amount = a.CurrentBalance();
+                }
+            }
+            foreach (string person in peopleAndBalances)
+            {
+                
+
+
+            }
+            return richestName + " is the richest person. ¤" + amount + ".";
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
@@ -41,7 +64,6 @@ namespace BootCamp.Chapter
         {
             var cl = new CleanTheFile();
             cl.Clean(file, outputFile);
-            //TODO Clean the file fo corruption. remove all underscores!
         }
     }
 }

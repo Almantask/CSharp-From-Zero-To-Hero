@@ -7,6 +7,7 @@ namespace BootCamp.Chapter
 {
     class CleanTheFile
     {
+        //TODO add exeptions for invalid balances exeption. name not right and wrong char in places.
         public void Clean(string file, string outputFile)
         {
             if (!IsThisStringValid(file) || !IsThisStringValid(outputFile))

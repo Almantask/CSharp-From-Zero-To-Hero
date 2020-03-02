@@ -9,23 +9,36 @@ namespace BootCamp.Chapter
         private string _name;
         private decimal[] _balance;
 
-        public string getName()
+        public string GetName()
         {
             return _name;
         }
-        public void setName(string name)
+        public void SetName(string name)
         {
             _name = name;
         }
-        public decimal[] getBalance()
+        public decimal[] GetBalance()
         {
             return _balance;
         }
-        public void setBalance(decimal[] balance)
+        public void SetBalance(decimal[] balance)
         {
             _balance = balance;
         }
 
+        public Account(string nameAndBalance)
+        {
+            string[] splitNameAndBalance = nameAndBalance.Split(',');
+            SetName(splitNameAndBalance[0]);
+
+            decimal[] balance = new decimal[splitNameAndBalance.Length - 1];
+
+            for (int i = 1; i < splitNameAndBalance.Length; i++)
+            {
+                Decimal.TryParse(splitNameAndBalance[i], out balance[i-1]);
+            }
+            SetBalance(balance);
+        }
         public decimal CurrentBalance()
         {
             if (_balance == null)
@@ -33,7 +46,7 @@ namespace BootCamp.Chapter
                 return 0;
             }
 
-            return _balance[_balance.Length];
+            return _balance[_balance.Length-1];
         }
         public decimal biggestLoss()
         {
