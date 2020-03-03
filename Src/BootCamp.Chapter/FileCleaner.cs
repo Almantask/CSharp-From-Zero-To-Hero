@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -7,7 +6,6 @@ namespace BootCamp.Chapter
 {
     public static class FileCleaner
     {
-        //Dollar sign.
         private const char DollarSign = '£';
 
         /// <summary>
@@ -181,41 +179,44 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        private static string[] CreateBalanceLinesForTextTable(string[] fixedBalanceLines)
+        private static Person[] CreateBalanceLinesForTextTable(string[] fixedBalanceLines)
         {
-            const string balanceSeperator = ",";
-            var balanceLinesForTextTable = new string[fixedBalanceLines.Length];
+            const string BalanceSeperator = ",";
+            var people = new Person[fixedBalanceLines.Length];
 
             for (var i = 0; i < fixedBalanceLines.Length; i++)
             {
-                var balances = fixedBalanceLines[i].Split(balanceSeperator);
-                var balanceLine = new StringBuilder(balances[0]);
+                var splitBalances = fixedBalanceLines[i].Split(BalanceSeperator);
 
-                for (var j = 1; j < balances.Length; j++)
+                var person = new Person();
+                person.SetName(splitBalances[0]);
+
+                var balances = new decimal[splitBalances.Length - 1];
+                for (var j = 0; j < splitBalances.Length - 1; j++)
                 {
-                    balanceLine.Append(", ");
-                    balanceLine.Append(balances[j].Replace(DollarSign.ToString(), ""));
+                    balances[j] = Convert.ToDecimal(splitBalances[j + 1].Replace(DollarSign.ToString(), ""));
                 }
+                person.SetBalances(balances);
 
-                balanceLinesForTextTable[i] = balanceLine.ToString();
+                people[i] = person;
             }
 
-            return balanceLinesForTextTable;
+            return people;
         }
 
-        private static void DisplayStasticalData(string[] peopleBalances)
+        private static void DisplayStasticalData(Person[] people)
         {
             // Using FindHighestBalanceEver, print the statistical output using Text Table with padding 3.
-            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(peopleBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(people), 3));
 
             // Using FindPersonWithBiggestLoss, print the statistical output using Text Table with padding 3.
-            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(peopleBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(people), 3));
 
             // Using FindRichestPerson, print the statistical output using Text Table with padding 3.
-            Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(peopleBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(people), 3));
 
             // Using FindMostPoorPerson, print the statistical output using Text Table with padding 3.
-            Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(peopleBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(people), 3));
         }
     }
 }

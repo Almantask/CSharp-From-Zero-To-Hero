@@ -12,7 +12,6 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             FileCleaner.Clean(CorruptedBalanceFile, FixedBalanceFile);
-
         }
     }
 }
