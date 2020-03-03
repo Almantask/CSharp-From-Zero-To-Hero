@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class Inventory
     {
@@ -23,7 +21,7 @@ namespace BootCamp.Chapter
             {
                 if (item.GetName() == name)
                 {
-                    foundItems = item.AddItem(foundItems,item); 
+                    foundItems = Add(item);
                 }
             }
 
@@ -32,28 +30,62 @@ namespace BootCamp.Chapter
 
         public void AddItem(Item item)
         {
-            _items = item.AddItem(_items, item);
+            _items = Add(item);
         }
 
-        internal bool SearchItem(string name)
+        public Item[] Add(Item item)
+        {
+            var newArray = new Item[_items.Length + 1];
+            for (int i = 0; i <= _items.Length - 1; i++)
+            {
+                newArray[i] = _items[i];
+            }
+            newArray[^1] = item;
+            return newArray;
+        }
+
+        public bool SearchItem(string name)
         {
             foreach (var item in _items)
             {
                 if (item.GetName() == name)
                 {
-                    return true; 
+                    return true;
                 }
             }
 
-            return false; 
+            return false;
         }
 
-        internal void RemoveByName(string name)
+        public void RemoveByName(string name)
         {
-            _items = Item.RemoveByBame(_items, name); 
+            _items = RemoveByBame(name);
         }
 
+        public Item[] RemoveByBame(string name)
+        {
+            var newArray = new Item[_items.Length + 1];
+            var found = false;
+            for (int i = 0; i < _items.Length; i++)
+            {
+                if (_items[i].GetName() == name)
+                {
+                    found = true;
+                    continue;
+                }
 
+                if (found)
+                {
+                    newArray[i - 1] = _items[i];
+                }
+                else
+                {
+                    newArray[i] = _items[i];
+                }
+            }
+
+            return newArray;
+        }
 
         /// <summary>
         /// Removes item matching criteria by item.
@@ -61,9 +93,37 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(Item item)
         {
-            _items = Item.RemoveFromArray(_items, item);
+            _items = RemoveFromArray(item);
         }
 
-       
+        public Item[] RemoveFromArray(Item item)
+        {
+            if (_items.Length == 0)
+            {
+                return _items;
+            }
+
+            var newArray = new Item[_items.Length - 1];
+            var found = false;
+            for (int i = 0; i < _items.Length - 1; i++)
+            {
+                if (_items[i] == item)
+                {
+                    found = true;
+                    continue;
+                }
+
+                if (found)
+                {
+                    newArray[i - 1] = _items[i];
+                }
+                else
+                {
+                    newArray[i] = _items[i];
+                }
+            }
+
+            return newArray;
+        }
     }
 }
