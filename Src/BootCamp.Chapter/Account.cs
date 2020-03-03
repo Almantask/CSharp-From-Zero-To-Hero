@@ -46,11 +46,11 @@ namespace BootCamp.Chapter
 
             return _balance[_balance.Length - 1];
         }
-        public decimal biggestLoss()
+        public decimal BiggestLoss()
         {
             return _balance[_balance.Length] - _balance[_balance.Length - 1];
         }
-        public decimal highestBalanceEver()
+        public decimal HighestBalanceEver()
         {
             decimal highestBalance = CurrentBalance();
 

@@ -1,12 +1,51 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     // This class is used to have a freedom of design, but with tests applied.
     public static class Checks
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            //TODO Find poorest person.
-            return "";
+            if (Testers.IsThisStringArrayValid(peopleAndBalances))
+            {
+                return "N/A.";
+            }
+            string poorestName = "";
+            decimal amount = 0;
+            int personCount = 1;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var a = new Account(peopleAndBalances[i]);
+                if (i == 0)
+                {
+                    poorestName = a.GetName();
+                    amount = a.CurrentBalance();
+                }
+                else if (amount == a.CurrentBalance())
+                {
+                    if (personCount == 1)
+                    {
+                        poorestName += " and " + a.GetName();
+                        personCount++;
+                    }
+                    else
+                    {
+                        poorestName = poorestName.Replace(" and ", ", ");
+                        poorestName += " and " + a.GetName();
+                        personCount++;
+                    }
+                }
+                else if (amount > a.CurrentBalance())
+                {
+                    poorestName = a.GetName();
+                    amount = a.CurrentBalance();
+                    personCount = 1;
+                }
+            }
+
+            return makefullstringPoorestPeople(personCount, poorestName, amount);
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
@@ -61,6 +100,35 @@
             else
             {
                 newString = people + " is the richest person. ¤" + amount + ".";
+            }
+            return newString;
+        }
+        private static string makefullstringPoorestPeople(int numberOfPeople, string people, decimal amount)
+        {
+            string newString;
+            if (numberOfPeople > 1)
+            {
+                if ( amount < 0)
+                {
+                    newString = people + " have the least money. -¤" + Math.Abs(amount) + ".";
+                }
+                else
+                {
+                    newString = people + " have the least money. ¤" + amount + ".";
+                }
+                
+            }
+            else
+            {
+                if (amount < 0)
+                {
+                    newString = people + " has the least money. -¤" + Math.Abs(amount) + ".";
+                }
+                else
+                {
+                    newString = people + " has the least money. ¤" + amount + ".";
+                }
+                    
             }
             return newString;
         }
