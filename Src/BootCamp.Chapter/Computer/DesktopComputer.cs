@@ -7,6 +7,11 @@
         {
             return _body;
         }
+
+        public void SetBody(Body body)
+        {
+            _body = body; 
+        }
         
         private Ram _ram;
         public Ram GetRam()

@@ -5,11 +5,15 @@ using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
-    public class MsFactory
+    public class MsFactory : ComputerFactory
     {
-        public DesktopComputer Assemble()
+        public override DesktopComputer Assemble()
         {
-            return new DesktopComputer();
+            var computer = new DesktopComputer();
+            var body = new Body("a ms body");
+            computer.SetBody(body);
+
+            return computer; 
         }
     }
 }
