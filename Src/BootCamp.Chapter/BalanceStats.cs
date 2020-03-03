@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
     public class BalanceStats
     {
         private const string NotAvailable = "N/A.";
-        private const decimal EPSILON = 0.00001m;
+        private const decimal Epsilon = 0.00001m;
 
         public static string FindHighestBalanceEver(string [] peopleAndBalances)
         {
@@ -62,7 +62,6 @@ namespace BootCamp.Chapter
             var largestHistoricBalanceNoComma = RemoveComma($"{largestHistoricBalance:C0}");
             return $"{FixPlural(largestHistoricBalanceNames)} had the most money ever. {largestHistoricBalanceNoComma}.";
         }
-
 
         private static string GetLargestHistoricBalanceNames(Person[] people, decimal largestHistoricBalance)
         {
@@ -287,7 +286,7 @@ namespace BootCamp.Chapter
 
         private static bool isNumberEqual(decimal num1, decimal num2)
         {
-            if (Math.Abs(num1 - num2) < EPSILON)
+            if (Math.Abs(num1 - num2) < Epsilon)
             {
                 return true;
             }
@@ -334,8 +333,6 @@ namespace BootCamp.Chapter
 
             var largestCurrentBalance = GetLargestCurrentBalance(people);
             var largestCurrentBalancesNames = GetLargestCurrentNames(people, largestCurrentBalance);
-
-
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var word1 = largestCurrentBalancesNames.ToString().Contains(", ") ? "are" : "is";
@@ -389,8 +386,6 @@ namespace BootCamp.Chapter
             var word = smallestCurrentBalancesNames.ToString().Contains(", ") ? "have" : "has";
             return $"{FixPlural(smallestCurrentBalancesNames.ToString())} {word} the least money. {minBalanceNoComma}.";
         }
-
-
 
         private static decimal GetSmallestCurrentBalance(Person[] people)
         {
