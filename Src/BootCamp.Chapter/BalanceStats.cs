@@ -60,6 +60,38 @@ namespace BootCamp.Chapter
             return persons;
         }
 
+        internal static Person[] FindRichestPerson(string[] contents)
+        {
+            var parsedFile = BalanceParser.Parser(contents);
+            return FindRichest(parsedFile);
+        }
+
+        internal static Person[] FindRichest(Person[] balances)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo(culture);
+            var persons = new Person[0];
+            var lowestAmount = decimal.MinValue;
+
+            for (int i = 0; i <= balances.Length - 1; i++)
+            {
+                var currentPerson = balances[i];
+                var amountOfPerson = currentPerson.CurrentBalance();
+
+                if (lowestAmount < amountOfPerson)
+                {
+                    lowestAmount = amountOfPerson;
+
+                    persons = new Person[0];
+                }
+
+                if (lowestAmount <= amountOfPerson)
+                {
+                    persons = AddPerson(currentPerson, persons);
+                }
+            }
+            return persons;
+        }
+
         private static Person[] AddPerson(Person person, Person[] persons)
         {
             var newArray = new Person[persons.Length + 1];
@@ -87,16 +119,16 @@ namespace BootCamp.Chapter
             for (int i = 0; i <= balances.Length - 1; i++)
             {
                 var currentPerson = balances[i];
-                var lowestAmountOfPerson = currentPerson.CurrentBalance();
+                var amountOfPerson = currentPerson.CurrentBalance();
 
-                if (lowestAmount > lowestAmountOfPerson)
+                if (lowestAmount > amountOfPerson)
                 {
-                    lowestAmount = lowestAmountOfPerson;
+                    lowestAmount = amountOfPerson;
 
                     persons = new Person[0];
                 }
 
-                if (lowestAmount >= lowestAmountOfPerson)
+                if (lowestAmount >= amountOfPerson)
                 {
                     persons = AddPerson(currentPerson, persons);
                 }
@@ -115,9 +147,9 @@ namespace BootCamp.Chapter
         {
             CultureInfo.CurrentCulture = new CultureInfo(culture);
             var persons = new Person[0];
-            var biggestLoss = decimal.MinValue; 
+            var biggestLoss = decimal.MaxValue; 
 
-            for (int i = 0; i <= balances.Length - 1; i++)
+            for (int i = 0; i < balances.Length; i++)
             {
                 var currentPerson = balances[i]; 
 
@@ -128,13 +160,13 @@ namespace BootCamp.Chapter
 
                  var biggestLossPerson = currentPerson.BiggestLoss(); 
                 
-                if (biggestLossPerson > biggestLoss)
+                if (biggestLossPerson < biggestLoss)
                 {
                     biggestLoss = biggestLossPerson;
                     persons = new Person[0]; 
                 }
 
-                if (biggestLossPerson >= biggestLoss)
+                if (biggestLossPerson <= biggestLoss)
                 {
                     persons = AddPerson(currentPerson, persons);
                 }
@@ -144,45 +176,9 @@ namespace BootCamp.Chapter
         }
 
 
-        private static decimal FindBiggestLossPerson(decimal[] allAmounts)
-        {
-            var biggestLossPerson = decimal.MinValue;
-            for (int j = 0; j < allAmounts.Length - 1; j++)
-            {
-                var amount1 = allAmounts[j];
-                var amount2 = allAmounts[j + 1]; 
-                var lossForCurrentPerson = amount1 - amount2;
-
-                //check if loss is greater then the current highest loss
-                if (lossForCurrentPerson > biggestLossPerson)
-                {
-                    biggestLossPerson = lossForCurrentPerson;
-                }
-            }
-
-            return biggestLossPerson;
-        }
+       
 
 
-        //    public static string FindRichestPerson(string[] peopleAndBalances)
-        //    {
-        //        if (IsInValidInput(peopleAndBalances))
-        //        {
-        //            return InValidOutput;
-        //        }
-
-        //        var answer = BalanceParser.FindRichest(peopleAndBalances);
-
-        //        if (answer.GetPersons().ToString().Contains(", "))
-        //        {
-        //            BalanceParser.ReplaceCommaWithAnd(answer.GetPersons());
-        //            return $"{answer.GetPersons()} are the richest people. ¤{answer.GetAmount()}.";
-        //        }
-        //        else
-        //        {
-        //            return $"{answer.GetPersons()} is the richest person. ¤{answer.GetAmount()}.";
-        //        }
-
-        //    }
+        
     }
 }

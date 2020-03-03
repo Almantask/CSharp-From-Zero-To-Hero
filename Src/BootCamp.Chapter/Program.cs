@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -10,11 +8,8 @@ namespace BootCamp.Chapter
         {
             var contents = FileCleaner.Clean(@"Input\Balances.corrupted", @"Input\Balances.clean");
 
-            FindStaticalData(contents); 
+            FindStaticalData(contents);
         }
-
-       
-
 
         private static void FindStaticalData(string[] contents)
         {
@@ -23,34 +18,26 @@ namespace BootCamp.Chapter
             // - FindHighestBalanceEver
 
             Console.WriteLine("The richest person ever was : ");
-            var answer = BalanceStats.FindHighestBalanceEver(contents);
-            var names = BalanceParser.ConvertToStringBuilder(answer);
-            var output = $"{names.ToString()} had the most money ever. ¤{answer[0].HighestBalance()}.";
-            Console.WriteLine(TextTable.Build(output, 3));
+            var answer = BalanceParser.FindRichestPersonEver(contents);
+            Console.WriteLine(TextTable.Build(answer, 3));
 
-            //// - FindPersonWithBiggestLoss
+            // - FindPersonWithBiggestLoss
 
-            //Console.WriteLine("The person with the biggest loss was  : ");
-            //answer = BalanceStats.FindPersonWithBiggestLoss(contents);
-            //Console.WriteLine(TextTable.Build(answer, 3));
+            Console.WriteLine("The person with the biggest loss was  : ");
+            answer = BalanceParser.FindPersonWithBiggestLoss(contents);
+            Console.WriteLine(TextTable.Build(answer, 3));
 
             //// - FindRichestPerson
 
-            //Console.WriteLine("The richest person at this moment is : ");
-            //answer = BalanceStats.FindRichestPerson(contents);
-            //Console.WriteLine(TextTable.Build(answer, 3));
+            Console.WriteLine("The richest person at this moment is : ");
+            answer = BalanceParser.FindRichestPerson(contents);
+            Console.WriteLine(TextTable.Build(answer, 3));
 
             //// - FindMostPoorPerson
 
             Console.WriteLine("The poorest person at this moment is : ");
-            answer = BalanceStats.FindMostPoorPerson(contents);
-            names = BalanceParser.ConvertToStringBuilder(answer);
-            output =  $"{answer.ToString()} have the least money. {answer[0].LowestBalance()}";
-
-            //Console.WriteLine(TextTable.Build(answer, 3));
-
+            answer = BalanceParser.FindPoorestPerson(contents);
+            Console.WriteLine(TextTable.Build(answer, 3));
         }
-
-
     }
 }

@@ -10,7 +10,7 @@
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";  //BalanceStats.FindRichestPerson(peopleAndBalances);
+            return BalanceParser.FindRichestPerson(peopleAndBalances); 
         }
         
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)

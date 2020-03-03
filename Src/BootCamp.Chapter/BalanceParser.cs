@@ -42,6 +42,29 @@ namespace BootCamp.Chapter
             return allPersons;
         }
 
+        public static string FindRichestPerson(string[] contents)
+        {
+            if (IsInValidInput(contents))
+            {
+                return InValidOutput;
+            }
+
+            var person = BalanceStats.FindRichestPerson(contents); 
+                       
+            StringBuilder sb = ConvertToStringBuilder(person);
+            
+            if (sb.ToString().Contains(','))
+            {
+                return $"{sb.ToString()} are the richest people. ¤{person[0].CurrentBalance()}.";
+            }
+            else
+            {
+                return $"{sb.ToString()} is the richest person. ¤{person[0].CurrentBalance()}.";
+            }
+
+
+        }
+
         public static string FindRichestPersonEver(string[] contents)
         {
             if (IsInValidInput(contents))

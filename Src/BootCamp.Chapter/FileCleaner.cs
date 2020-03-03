@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
             }
 
             var repairedText = "";
-            var sb = new StringBuilder(); 
+            var sb = new StringBuilder();
             for (int i = 0; i < contents.Length; i++)
             {
                 repairedText = contents[i].Replace("_", "");
@@ -50,12 +50,11 @@ namespace BootCamp.Chapter
                     repairedText += Environment.NewLine;
                 }
 
-                sb.Append(repairedText); 
-                
+                sb.Append(repairedText);
             }
 
-            File.WriteAllText(cleanedFile, sb.ToString()); 
-            return sb.ToString().Split(Environment.NewLine); 
+            File.WriteAllText(cleanedFile, sb.ToString());
+            return sb.ToString().Split(Environment.NewLine);
         }
 
         public static void CheckAmounts(string[] amounts)

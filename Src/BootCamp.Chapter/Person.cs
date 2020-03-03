@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class Person
     {
@@ -16,28 +13,28 @@ namespace BootCamp.Chapter
 
         public string GetName()
         {
-            return _name; 
+            return _name;
         }
 
         public decimal[] GetBalance()
         {
-            return _balances; 
+            return _balances;
         }
-        
+
         public decimal CurrentBalance()
         {
-            if (_balances == null)
+            if (_balances.Length == 0 )
             {
-                return 0; 
+                return 0;
             }
-            
-            return _balances[^1]; 
+
+            return _balances[^1];
         }
 
         public decimal HighestBalance()
         {
             var highestAmount = decimal.MinValue;
-            foreach (var amount in _balances )
+            foreach (var amount in _balances)
             {
                 if (amount > highestAmount)
                 {
@@ -45,7 +42,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return highestAmount; 
+            return highestAmount;
         }
 
         public decimal LowestBalance()
@@ -61,27 +58,13 @@ namespace BootCamp.Chapter
 
             return lowestAmount;
         }
-        
+
         public decimal BiggestLoss()
         {
-            var biggestLossPerson = decimal.MinValue;
-            for (int j = 0; j < _balances.Length - 1; j++)
-            {
-                var amount1 = _balances[j]; 
-                var amount2 = _balances[j + 1];
-                var lossForCurrentPerson = amount2 - amount1;
-
-                if (lossForCurrentPerson >  biggestLossPerson)
-                {
-                    biggestLossPerson = lossForCurrentPerson;
-                }
-            }
-
-            return biggestLossPerson;
+            var amount1 = _balances[^1];
+            var amount2 = _balances[^2];
+            var lossForCurrentPerson = amount1 - amount2;
+            return lossForCurrentPerson;
         }
     }
-
-        
-
-
 }
