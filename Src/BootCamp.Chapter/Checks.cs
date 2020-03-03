@@ -11,9 +11,13 @@
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            //TODO Find richest person!
+            if (Testers.IsThisStringArrayValid(peopleAndBalances))
+            {
+                return "N/A.";
+            }
             string richestName = "";
             decimal amount = 0;
+            int personCount = 1;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -25,21 +29,40 @@
                 }
                 else if (amount == a.CurrentBalance())
                 {
-                    richestName += " and " + a.GetName();
+                    if (personCount == 1)
+                    {
+                        richestName += " and " + a.GetName();
+                        personCount++;
+                    }
+                    else
+                    {
+                        richestName = richestName.Replace(" and ", ", ");
+                        richestName += " and " + a.GetName();
+                        personCount++;
+                    }
                 }
                 else if (amount < a.CurrentBalance())
                 {
                     richestName = a.GetName();
                     amount = a.CurrentBalance();
+                    personCount = 1;
                 }
             }
-            foreach (string person in peopleAndBalances)
+
+            return makefullstringRichestPeople(personCount, richestName, amount);
+        }
+        private static string makefullstringRichestPeople(int numberOfPeople, string people, decimal amount)
+        {
+            string newString;
+            if (numberOfPeople > 1)
             {
-                
-
-
+                newString = people + " are the richest people. ¤" + amount + ".";
             }
-            return richestName + " is the richest person. ¤" + amount + ".";
+            else
+            {
+                newString = people + " is the richest person. ¤" + amount + ".";
+            }
+            return newString;
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)

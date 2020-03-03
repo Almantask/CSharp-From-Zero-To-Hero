@@ -10,10 +10,11 @@ namespace BootCamp.Chapter
         //TODO add exeptions for invalid balances exeption. name not right and wrong char in places.
         public void Clean(string file, string outputFile)
         {
-            if (!IsThisStringValid(file) || !IsThisStringValid(outputFile))
+            if (!Testers.IsThisStringValid(file) || !Testers.IsThisStringValid(outputFile))
             {
                 throw new ArgumentException();
             }
+
             string cleanFile = "";
                 using (var fileS = new FileStream(file, FileMode.Open))
                 {
@@ -40,14 +41,6 @@ namespace BootCamp.Chapter
                 }
             }
         }
-        public bool IsThisStringValid(string file)
-        {
-            if (String.IsNullOrEmpty(file) || String.IsNullOrWhiteSpace(file))
-            {
-                return false;
-            }
-            
-            return true;
-        }
+        
     }
 }

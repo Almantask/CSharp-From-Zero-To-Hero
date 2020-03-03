@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -35,7 +33,7 @@ namespace BootCamp.Chapter
 
             for (int i = 1; i < splitNameAndBalance.Length; i++)
             {
-                Decimal.TryParse(splitNameAndBalance[i], out balance[i-1]);
+                Decimal.TryParse(splitNameAndBalance[i], out balance[i - 1]);
             }
             SetBalance(balance);
         }
@@ -46,27 +44,17 @@ namespace BootCamp.Chapter
                 return 0;
             }
 
-            return _balance[_balance.Length-1];
+            return _balance[_balance.Length - 1];
         }
         public decimal biggestLoss()
         {
-            decimal biggestLoss = 0;
-
-            for (int i = _balance.Length; i < 0; i--)
-            {
-                decimal change = _balance[i] - _balance[i-1];
-                if (change < biggestLoss)
-                {
-                    biggestLoss = change;
-                }
-            }
-            return biggestLoss;
+            return _balance[_balance.Length] - _balance[_balance.Length - 1];
         }
         public decimal highestBalanceEver()
         {
             decimal highestBalance = CurrentBalance();
 
-            for (int i = _balance.Length-1; i <-1 ; i--)
+            for (int i = _balance.Length - 1; i < -1; i--)
             {
                 if (_balance[i] > highestBalance)
                 {
