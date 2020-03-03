@@ -6,6 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            var computer = new MsFactory();
+            computer.Assemble(); 
 
         }
     }

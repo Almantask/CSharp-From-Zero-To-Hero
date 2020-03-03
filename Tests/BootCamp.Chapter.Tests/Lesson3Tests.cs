@@ -7,15 +7,15 @@ namespace BootCamp.Chapter.Tests
 {
     public class Lesson3Tests
     {
-        //[Fact]
-        //public void MacFactory_Assemble_Returns_Computer_With_All_Slots_Filled()
-        //{
-        //    var factory = new MacFactory();
+        [Fact]
+        public void MacFactory_Assemble_Returns_Computer_With_All_Slots_Filled()
+        {
+            var factory = new MacFactory();
 
-        //    var computer = factory.Assemble();
+            var computer = factory.Assemble();
 
-        //    AssertAllPropertiesFilled(computer);
-        //}
+            AssertAllPropertiesFilled(computer);
+        }
 
         [Fact]
         public void MsFactory_Assemble_Returns_Computer_With_All_Slots_Filled()
@@ -32,11 +32,11 @@ namespace BootCamp.Chapter.Tests
             computer.Should().NotBeNull();
             using (new AssertionScope())
             {
-                //computer.GetCpu().Should().NotBeNull();
-                //computer.GetMotherboard().Should().NotBeNull();
-                //computer.GetGpu().Should().NotBeNull();
-                //computer.GetHard().Should().NotBeNull();
-                //computer.GetRam().Should().NotBeNull();
+                computer.GetCpu().Should().NotBeNull();
+                computer.GetMotherboard().Should().NotBeNull();
+                computer.GetGpu().Should().NotBeNull();
+                computer.GetHard().Should().NotBeNull();
+                computer.GetRam().Should().NotBeNull();
                 computer.GetBody().Should().NotBeNull();
             }
         }
