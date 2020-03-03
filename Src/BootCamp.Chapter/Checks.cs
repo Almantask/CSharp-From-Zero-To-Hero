@@ -132,11 +132,85 @@ namespace BootCamp.Chapter
             }
             return newString;
         }
+        private static string makefullstringBiggestLossPeople(int numberOfPeople, string people, decimal amount)
+        {
+            string newString;
+            if (people == "")
+            {
+                return "N/A.";
+            }
+            if (numberOfPeople > 1)
+            {
+                if (amount < 0)
+                {
+                    newString = people + " lost the most money. -¤" + Math.Abs(amount) + ".";
+                }
+                else
+                {
+                    newString = people + " lost the most money. ¤" + amount + ".";
+                }
+
+            }
+            else
+            {
+                if (amount < 0)
+                {
+                    newString = people + " lost the most money. -¤" + Math.Abs(amount) + ".";
+                }
+                else
+                {
+                    newString = people + " lost the most money. ¤" + amount + ".";
+                }
+
+            }
+            return newString;
+        }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            //TODO Find person with biggest loss!
-            return "";
+            if (Testers.IsThisStringArrayValid(peopleAndBalances))
+            {
+                return "N/A.";
+            }
+            string biggestLossName = "";
+            decimal amount = 0;
+            int personCount = 1;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var a = new Account(peopleAndBalances[i]);
+                if (a.MoreThan1Balance())
+                {
+
+                }
+                else if (biggestLossName == "")
+                {
+                    biggestLossName = a.GetName();
+                    amount = a.BiggestLoss();
+                }
+                else if (amount == a.BiggestLoss())
+                {
+                    if (personCount == 1)
+                    {
+                        biggestLossName += " and " + a.GetName();
+                        personCount++;
+                    }
+                    else
+                    {
+                        biggestLossName = biggestLossName.Replace(" and ", ", ");
+                        biggestLossName += " and " + a.GetName();
+                        personCount++;
+                    }
+                }
+                else if (amount > a.BiggestLoss())
+                {
+                    biggestLossName = a.GetName();
+                    amount = a.BiggestLoss();
+                    personCount = 1;
+                }
+            }
+
+            return makefullstringBiggestLossPeople(personCount, biggestLossName, amount);
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)

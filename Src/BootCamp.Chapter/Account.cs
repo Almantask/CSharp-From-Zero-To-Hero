@@ -46,9 +46,13 @@ namespace BootCamp.Chapter
 
             return _balance[_balance.Length - 1];
         }
+        public bool MoreThan1Balance()
+        {
+            return _balance.Length < 2;
+        }
         public decimal BiggestLoss()
         {
-            return _balance[_balance.Length] - _balance[_balance.Length - 1];
+            return _balance[_balance.Length -1 ] - _balance[_balance.Length - 2];
         }
         public decimal HighestBalanceEver()
         {
