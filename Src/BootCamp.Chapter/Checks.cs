@@ -45,7 +45,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return makefullstringPoorestPeople(personCount, poorestName, amount);
+            return MakeString.MakefullstringPoorestPeople(personCount, poorestName, amount);
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
@@ -88,84 +88,8 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return makefullstringRichestPeople(personCount, richestName, amount);
+            return MakeString.MakefullstringRichestPeople(personCount, richestName, amount);
         }
-        private static string makefullstringRichestPeople(int numberOfPeople, string people, decimal amount)
-        {
-            string newString;
-            if (numberOfPeople > 1)
-            {
-                newString = people + " are the richest people. ¤" + amount + ".";
-            }
-            else
-            {
-                newString = people + " is the richest person. ¤" + amount + ".";
-            }
-            return newString;
-        }
-        private static string makefullstringPoorestPeople(int numberOfPeople, string people, decimal amount)
-        {
-            string newString;
-            if (numberOfPeople > 1)
-            {
-                if ( amount < 0)
-                {
-                    newString = people + " have the least money. -¤" + Math.Abs(amount) + ".";
-                }
-                else
-                {
-                    newString = people + " have the least money. ¤" + amount + ".";
-                }
-                
-            }
-            else
-            {
-                if (amount < 0)
-                {
-                    newString = people + " has the least money. -¤" + Math.Abs(amount) + ".";
-                }
-                else
-                {
-                    newString = people + " has the least money. ¤" + amount + ".";
-                }
-                    
-            }
-            return newString;
-        }
-        private static string makefullstringBiggestLossPeople(int numberOfPeople, string people, decimal amount)
-        {
-            string newString;
-            if (people == "")
-            {
-                return "N/A.";
-            }
-            if (numberOfPeople > 1)
-            {
-                if (amount < 0)
-                {
-                    newString = people + " lost the most money. -¤" + Math.Abs(amount) + ".";
-                }
-                else
-                {
-                    newString = people + " lost the most money. ¤" + amount + ".";
-                }
-
-            }
-            else
-            {
-                if (amount < 0)
-                {
-                    newString = people + " lost the most money. -¤" + Math.Abs(amount) + ".";
-                }
-                else
-                {
-                    newString = people + " lost the most money. ¤" + amount + ".";
-                }
-
-            }
-            return newString;
-        }
-
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
             if (Testers.IsThisStringArrayValid(peopleAndBalances))
@@ -210,7 +134,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return makefullstringBiggestLossPeople(personCount, biggestLossName, amount);
+            return MakeString.MakefullstringBiggestLossPeople(biggestLossName, amount);
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
