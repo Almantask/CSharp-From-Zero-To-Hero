@@ -11,8 +11,6 @@ namespace BootCamp.Chapter
             Console.WriteLine("Hello World!");
 
             Program.HomeworkOne();
-            //Program.HomeworkOneB("Stefan", "Andersson", 41f, 95f, 178f);
-            //Program.HomeworkOneB("Frank", "Johnsson", 48f, 105f, 188f);
 
         }
         public static void HomeworkOneB(string fname, string sname, float age, float weight, float height)
@@ -23,7 +21,7 @@ namespace BootCamp.Chapter
             var bmi = weight / height / height;
             Console.WriteLine("With BMI: " + bmi.ToString("0"));
         }
-        public static void HomeworkOne()//(string name, string surename, double age, double weight, double height)
+        public static void HomeworkOne()
         {
             Console.WriteLine("Enter First Name: ");
             var name = Console.ReadLine();
