@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
         }
         public static bool IsThisAValidName(string name)
         {
-            string abc = " '-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string abc = " '-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             int nameLength = name.Length;
             for (int i = 0; i < nameLength; i++)
             {
@@ -33,13 +33,18 @@ namespace BootCamp.Chapter
         }
         public static bool IsThisAValidBalance(string balance)
         {
-            //TODO ValidNameChecker!
             string[] splitLine = balance.Split(',');
-
+            const string cash = "£€$  .1234567890-";
             for (int i = 1; i < splitLine.Length; i++)
             {
-                //if (splitLine[i] is not a correct balance)
-                // return false;
+                for (int letter = 0; letter < splitLine[i].Length; letter++)
+                {
+                    if (!cash.Contains(splitLine[i][letter]))
+                    {
+                        return false;
+                    }
+
+                }
             }
             return true;
         }

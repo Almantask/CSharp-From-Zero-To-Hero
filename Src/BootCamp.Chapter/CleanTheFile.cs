@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
             foreach (string line in splitCleanFile)
             {
                 string[] splitLine = line.Split(',');
-                if (!Testers.IsThisAValidName(splitLine[0])) // || !Testers.IsThisAValidBalance(line)
+                if (!Testers.IsThisAValidName(splitLine[0]) || !Testers.IsThisAValidBalance(line))
                 {
                     throw new InvalidBalancesException();
                 }
