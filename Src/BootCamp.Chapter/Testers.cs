@@ -16,7 +16,19 @@ namespace BootCamp.Chapter
         }
         public static bool IsThisAValidName(string name)
         {
-            //TODO ValidNameChecker!
+            string abc = " '-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            int nameLength = name.Length;
+            for (int i = 0; i < nameLength; i++)
+            {
+                if (!abc.Contains(name[i]))
+                {
+                    if (name[i] == '.' && i == nameLength -1)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
             return true;
         }
         public static bool IsThisAValidBalance(string balance)

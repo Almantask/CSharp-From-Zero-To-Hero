@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         //TODO add exeptions for invalid balances exeption. name not right and wrong char in places.
         public void Clean(string file, string outputFile)
         {
-            if (!Testers.IsThisStringValid(file) || !Testers.IsThisStringValid(outputFile))
+            if (Testers.IsThisStringValid(file) || Testers.IsThisStringValid(outputFile))
             {
                 throw new ArgumentException();
             }
@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
             foreach (string line in splitCleanFile)
             {
                 string[] splitLine = line.Split(',');
-                if (!Testers.IsThisAValidName(splitLine[0]) || !Testers.IsThisAValidBalance(line))
+                if (!Testers.IsThisAValidName(splitLine[0])) // || !Testers.IsThisAValidBalance(line)
                 {
                     throw new InvalidBalancesException();
                 }
