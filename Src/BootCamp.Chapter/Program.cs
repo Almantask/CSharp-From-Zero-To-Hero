@@ -31,13 +31,10 @@ namespace BootCamp.Chapter
             var surename = Console.ReadLine();
             Console.WriteLine("Enter age: ");
             float age = float.Parse(Console.ReadLine());
-            //float age = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Weight: ");
             float weight = float.Parse(Console.ReadLine());
-            //float weight = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Height: ");
             float height = float.Parse(Console.ReadLine());
-            //float height = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine(name + " " + surename + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
             height = height / 100;
