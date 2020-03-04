@@ -1,16 +1,16 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class Item
     {
         private string _name;
+
         public string GetName()
         {
             return _name;
         }
 
         private decimal _price;
+
         public decimal GetPrice()
         {
             return _price;
@@ -24,11 +24,5 @@ namespace BootCamp.Chapter
             _price = price;
             _weight = weight;
         }
-
-        
-
-        
-
-        
     }
 }
