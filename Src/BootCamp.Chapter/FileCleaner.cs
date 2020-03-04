@@ -139,15 +139,6 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        private static bool HasPeriodAtEnd(string name)
-        {
-            if (name[name.Length - 1] == '.') //For example, to let Barbie Pankhurst. through
-            {
-                return true;
-            }
-            return false;
-        }
-
         private static bool IsValidBalance(string balance)
         {
             for (var i = 0; i < balance.Length; i++)

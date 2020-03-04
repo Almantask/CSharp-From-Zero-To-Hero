@@ -65,8 +65,8 @@ namespace BootCamp.Chapter
             var largestCurrentBalancesNames = GetLargestCurrentNames(people, largestCurrentBalance);
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            var word1 = largestCurrentBalancesNames.ToString().Contains(", ") ? "are" : "is";
-            var word2 = largestCurrentBalancesNames.ToString().Contains(", ") ? "people" : "person";
+            var word1 = largestCurrentBalancesNames.Contains(", ") ? "are" : "is";
+            var word2 = largestCurrentBalancesNames.Contains(", ") ? "people" : "person";
             var largestCurrentBalanceNoComma = RemoveComma($"{largestCurrentBalance:C0}");
 
             return $"{FixPlural(largestCurrentBalancesNames)} {word1} the richest {word2}. {largestCurrentBalanceNoComma}.";
@@ -87,9 +87,9 @@ namespace BootCamp.Chapter
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var minBalanceNoComma = RemoveComma($"{smallestCurrentBalance:C0}").Replace("(", "-").Replace(")", "");
-            var word = smallestCurrentBalancesNames.ToString().Contains(", ") ? "have" : "has";
+            var word = smallestCurrentBalancesNames.Contains(", ") ? "have" : "has";
 
-            return $"{FixPlural(smallestCurrentBalancesNames.ToString())} {word} the least money. {minBalanceNoComma}.";
+            return $"{FixPlural(smallestCurrentBalancesNames)} {word} the least money. {minBalanceNoComma}.";
         }
 
         private static string GetLargestHistoricBalanceNames(Person[] people, decimal largestHistoricBalance)
@@ -294,7 +294,6 @@ namespace BootCamp.Chapter
         private static decimal GetSmallestCurrentBalance(Person[] people)
         {
             var smallestBalance = decimal.MaxValue;
-            var name = new StringBuilder();
 
             for (var i = 0; i < people.Length; i++)
             {
