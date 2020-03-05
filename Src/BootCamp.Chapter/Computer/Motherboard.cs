@@ -2,11 +2,11 @@
 {
     public class Motherboard
     {
-        private string _motherboard;
+        private readonly string _motherboard;
 
         public Motherboard(string motherboard)
         {
-            _motherboard = motherboard; 
+            _motherboard = motherboard;
         }
     }
 }

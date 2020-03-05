@@ -41,7 +41,7 @@ namespace BootCamp.Chapter
             computer.SetCpu(cpu);
         }
 
-        private void PlaceHarddisk(DesktopComputer computer)
+        private static void PlaceHarddisk(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a mac HardDisk");
             var hardDisk = new HardDisk("a mac harddisk");

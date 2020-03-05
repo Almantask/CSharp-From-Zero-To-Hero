@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter.Computer
+﻿namespace BootCamp.Chapter.Computer
 {
     public class Body
     {
-        private string _body;
+        private readonly string _body;
 
         public Body(string body)
         {

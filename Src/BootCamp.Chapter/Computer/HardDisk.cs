@@ -2,11 +2,11 @@
 {
     public class HardDisk
     {
-        private string _hardDisk;
+        private readonly string _hardDisk;
 
         public HardDisk(string hardDisk)
         {
-            _hardDisk = hardDisk; 
+            _hardDisk = hardDisk;
         }
     }
 }

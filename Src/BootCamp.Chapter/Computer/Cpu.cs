@@ -2,11 +2,11 @@
 {
     public class Cpu
     {
-        private string _cpu;
+        private readonly string _cpu;
 
         public Cpu(string cpu)
         {
-            _cpu = cpu; 
+            _cpu = cpu;
         }
     }
 }

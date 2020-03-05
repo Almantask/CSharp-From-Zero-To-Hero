@@ -2,7 +2,7 @@
 {
     public class Ram
     {
-        private string _ram;
+        private readonly string _ram;
 
         public Ram(string ram)
         {

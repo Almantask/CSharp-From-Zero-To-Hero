@@ -2,12 +2,11 @@
 {
     public class Gpu
     {
-        private string _gpu;
+        private readonly string _gpu;
 
         public Gpu(string gpu)
         {
-            _gpu = gpu; 
+            _gpu = gpu;
         }
-
     }
 }
