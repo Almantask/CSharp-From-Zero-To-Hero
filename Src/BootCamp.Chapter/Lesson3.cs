@@ -36,9 +36,11 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             Console.Write(message);
+            string input = Console.ReadLine();
 
-            if (!int.TryParse(Console.ReadLine(), out int result))
+            if (!int.TryParse(input, out int result))
             {
+                Console.WriteLine($"{input} is not valid number");
                 return -1;
             }
 
@@ -53,11 +55,13 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.Write(message);
+            string input = Console.ReadLine();
 
-            var style = NumberStyles.Float;
+            const NumberStyles style = NumberStyles.Float;
             var culture = CultureInfo.InvariantCulture;
-            if (!float.TryParse(Console.ReadLine(), style, culture , out float result))
+            if (!float.TryParse(input, style, culture , out float result))
             {
+                Console.WriteLine($"{input} is not valid number");
                 return -1;
             }
 
@@ -76,7 +80,6 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(input))
             {
-                input = "-";
                 Console.WriteLine("Name cannot be empty.");
                 input = PromptString(message);
             }
@@ -99,7 +102,10 @@ namespace BootCamp.Chapter
                 heightError = true;
             }
 
-            if (!weightError && !heightError) return (weight / (height * height));
+            if (!weightError && !heightError)
+            {
+                return (weight / (height * height));
+            }
             
             PrintErrorMessage(weightError, heightError, weight, height);
             
