@@ -45,7 +45,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return MakeString.MakefullstringPoorestPeople(personCount, poorestName, amount);
+            return MakeStuffWithInput.MakefullstringPoorestPeople(personCount, poorestName, amount);
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
@@ -88,7 +88,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return MakeString.MakefullstringRichestPeople(personCount, richestName, amount);
+            return MakeStuffWithInput.MakefullstringRichestPeople(personCount, richestName, amount);
         }
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
@@ -134,7 +134,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return MakeString.MakefullstringBiggestLossPeople(biggestLossName, amount);
+            return MakeStuffWithInput.MakefullstringBiggestLossPeople(biggestLossName, amount);
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
@@ -177,13 +177,16 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return MakeString.MakefullstringHighestBalanceEver(personCount, richestName, amount);
+            return MakeStuffWithInput.MakefullstringHighestBalanceEver(personCount, richestName, amount);
         }
 
         public static string Build(string message, in int padding)
         {
-            //TODO Build a nice framework for the info of people
-            return "";
+            if (Testers.IsThisStringValid(message))
+            {
+                return "";
+            }
+            return MakeStuffWithInput.MakePadding(message, padding);
         }
 
         public static void Clean(string file, string outputFile)
