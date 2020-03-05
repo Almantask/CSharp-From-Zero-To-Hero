@@ -60,6 +60,23 @@ namespace BootCamp.Chapter
             }
 
         }
+        //"Tom had the most money ever. ¤1."
+        public static string MakefullstringHighestBalanceEver(int numberOfPeople, string people, decimal amount)
+        {
+            if (people == "")
+            {
+                return "N/A.";
+            }
+            if (numberOfPeople > 1)
+            {
+                return people + " had the most money ever. ¤" + amount + ".";
+            }
+            else
+            {
+                return people + " had the most money ever. ¤" + amount + ".";
+            }
+
+        }
 
     }
 }

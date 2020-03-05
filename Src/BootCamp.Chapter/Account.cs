@@ -58,7 +58,7 @@ namespace BootCamp.Chapter
         {
             decimal highestBalance = CurrentBalance();
 
-            for (int i = _balance.Length - 1; i < -1; i--)
+            for (int i = _balance.Length -2; i > -1; i--)
             {
                 if (_balance[i] > highestBalance)
                 {

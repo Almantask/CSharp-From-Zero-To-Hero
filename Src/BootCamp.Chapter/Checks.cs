@@ -139,8 +139,45 @@ namespace BootCamp.Chapter
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            //TODO Find highest balence person
-            return "";
+            if (Testers.IsThisStringArrayValid(peopleAndBalances))
+            {
+                return "N/A.";
+            }
+            string richestName = "";
+            decimal amount = 0;
+            int personCount = 1;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var a = new Account(peopleAndBalances[i]);
+                if (i == 0)
+                {
+                    richestName = a.GetName();
+                    amount = a.HighestBalanceEver();
+                }
+                else if (amount == a.HighestBalanceEver())
+                {
+                    if (personCount == 1)
+                    {
+                        richestName += " and " + a.GetName();
+                        personCount++;
+                    }
+                    else
+                    {
+                        richestName = richestName.Replace(" and ", ", ");
+                        richestName += " and " + a.GetName();
+                        personCount++;
+                    }
+                }
+                else if (amount < a.HighestBalanceEver())
+                {
+                    richestName = a.GetName();
+                    amount = a.HighestBalanceEver();
+                    personCount = 1;
+                }
+            }
+
+            return MakeString.MakefullstringHighestBalanceEver(personCount, richestName, amount);
         }
 
         public static string Build(string message, in int padding)
