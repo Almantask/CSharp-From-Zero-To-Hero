@@ -49,7 +49,7 @@ namespace BootCamp.Chapter
             }
             else if ((cleanedFile.Contains(@"\")))
             {
-                var pathLength = cleanedFile.LastIndexOf(@"\") + 1;
+                var pathLength = cleanedFile.LastIndexOf(@"\", StringComparison.Ordinal) + 1;
 
                 if (!Directory.Exists(cleanedFile.Substring(0, pathLength)))
                 {
