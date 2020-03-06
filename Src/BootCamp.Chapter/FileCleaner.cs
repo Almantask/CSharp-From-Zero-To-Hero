@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {
-            if (!isValidFile(dirtyFile, cleanedFile))
+            if (!IsValidFile(dirtyFile, cleanedFile))
             {
                 return;
             }
@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
             DisplayStasticalData(CreateBalanceLinesForTextTable(fixedBalanceLines));
         }
 
-        private static bool isValidFile(string dirtyFile, string cleanedFile)
+        private static bool IsValidFile(string dirtyFile, string cleanedFile)
         {
             if (dirtyFile == null || dirtyFile.Trim() == "")
             {
