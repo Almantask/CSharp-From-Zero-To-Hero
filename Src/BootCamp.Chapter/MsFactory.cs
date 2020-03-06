@@ -20,21 +20,21 @@ namespace BootCamp.Chapter
             return computer;
         }
 
-        public override void PlaceRam(DesktopComputer computer)
+        public static void PlaceRam(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a standard ram");
             var ram = new Ram("a  standard cpu");
             computer.SetRam(ram);
         }
 
-        public override void PlaceGpu(DesktopComputer computer)
+        public static void PlaceGpu(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a standard gpu");
             var gpu = new Gpu("a  standard cpu");
             computer.SetGpu(gpu);
         }
 
-        public override void PlaceCpu(DesktopComputer computer)
+        public static void PlaceCpu(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a MS cpu");
             var cpu = new Cpu("a  MS cpu");
@@ -48,14 +48,14 @@ namespace BootCamp.Chapter
             computer.SetHardDisk(hardDisk);
         }
 
-        public override void TakeBody(DesktopComputer computer)
+        public static void TakeBody(DesktopComputer computer)
         {
             Console.WriteLine("Im going to take a MS Body");
             var body = new Body("a ms body");
             computer.SetBody(body);
         }
 
-        public override void PlaceMotherBoard(DesktopComputer computer)
+        public static void PlaceMotherBoard(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a MS motherboard");
             var motherboard = new Motherboard("a  MS motherboard");

@@ -19,22 +19,22 @@ namespace BootCamp.Chapter
             Console.WriteLine("the mac computer is ready to be shipped");
             return computer;
         }
-
-        public override void PlaceRam(DesktopComputer computer)
+                             
+        public static void PlaceRam(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a mac ram");
             var ram = new Ram("a  mac cpu");
             computer.SetRam(ram);
         }
 
-        public override void PlaceGpu(DesktopComputer computer)
+        public static void PlaceGpu(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a mac gpu");
             var gpu = new Gpu("a  mac cpu");
             computer.SetGpu(gpu);
         }
 
-        public override void PlaceCpu(DesktopComputer computer)
+        public static void PlaceCpu(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a mac cpu");
             var cpu = new Cpu("a  mac cpu");
@@ -48,14 +48,14 @@ namespace BootCamp.Chapter
             computer.SetHardDisk(hardDisk);
         }
 
-        public override void TakeBody(DesktopComputer computer)
+        public static void TakeBody(DesktopComputer computer)
         {
             Console.WriteLine("Im going to take a mac Body");
             var body = new Body("a mac body");
             computer.SetBody(body);
         }
 
-        public override void PlaceMotherBoard(DesktopComputer computer)
+        public static void PlaceMotherBoard(DesktopComputer computer)
         {
             Console.WriteLine("Im going to place a mac motherboard");
             var motherboard = new Motherboard("a  mac motherboard");
