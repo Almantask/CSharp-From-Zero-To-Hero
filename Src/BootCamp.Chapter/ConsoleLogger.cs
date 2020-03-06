@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace BootCamp.Chapter
 {
-    class ConsoleLogger : Illogger
+    class ConsoleLogger : Ilogger
     {
         public void Log(string message)
         {

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
+
 
 namespace BootCamp.Chapter
 {
-    class FileLogger : Illogger
+    class FileLogger : Ilogger
     {
         public void Log(string message)
         {
