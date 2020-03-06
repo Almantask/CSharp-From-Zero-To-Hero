@@ -1,15 +1,11 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
-    class Program
+    public class Program
     {
-        
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var logger = new ConsoleLogger(); 
-            LogDemo.Demo(logger); 
-
+            var logger = new ConsoleLogger();
+            LogDemo.Demo(logger);
         }
     }
 }
