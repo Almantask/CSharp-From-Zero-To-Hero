@@ -2,14 +2,14 @@
 {
     public class DesktopComputer
     {
-        private Body _body;
-        public Body GetBody()
+        private ComputerCase _body;
+        public ComputerCase GetBody()
         {
             return _body;
         }
-        public void SetBody(string manufacturersId)
+        public void SetComputerCase(string manufacturersId)
         {
-            _body = new Body(manufacturersId);
+            _body = new ComputerCase(manufacturersId);
         }
 
         private Ram _ram;
@@ -57,9 +57,9 @@
         {
             return _motherboard;
         }
-        public void SetMotherboard(string manufacturersId)
+        public void SetMotherboard()
         {
-            _motherboard = new Motherboard(manufacturersId);
+            _motherboard = new Motherboard();
         }
     }
 }

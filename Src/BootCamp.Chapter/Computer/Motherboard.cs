@@ -2,15 +2,8 @@
 {
     public class Motherboard
     {
-        private string _manufacturersId;
-        public Motherboard(string manufacturersId)
+        public Motherboard()
         {
-            _manufacturersId = manufacturersId;
-        }
-
-        public string GetManufacturersId()
-        {
-            return _manufacturersId;
         }
     }
 }

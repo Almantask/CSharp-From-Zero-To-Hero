@@ -4,10 +4,10 @@ using System.Text;
 
 namespace BootCamp.Chapter.Computer
 {
-    public class Body
+    public class ComputerCase
     {
         private string _manufacturersId;
-        public Body(string manufacturersId)
+        public ComputerCase(string manufacturersId)
         {
             _manufacturersId = manufacturersId;
         }
