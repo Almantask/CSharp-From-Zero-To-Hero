@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
             const float height = 166.6f;
             Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
             //BMI calculations
-            double bmi = weight * 703 / height / height;
+            const double bmi = weight * 703 / height / height;
             Console.WriteLine(bmi);
             //Code
         }
