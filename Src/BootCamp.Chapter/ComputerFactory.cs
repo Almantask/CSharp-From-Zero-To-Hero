@@ -7,12 +7,12 @@ namespace BootCamp.Chapter
 {
     public abstract class ComputerFactory
     {
-        protected Body _body;
-        protected Motherboard _motherboard;
-        protected HardDisk _hard;
-        protected Cpu _cpu;
-        protected Gpu _gpu;
-        protected Ram _ram;
+        protected readonly Body _body;
+        protected readonly Motherboard _motherboard;
+        protected readonly HardDisk _hard;
+        protected readonly Cpu _cpu;
+        protected readonly Gpu _gpu;
+        protected readonly Ram _ram;
 
         protected ComputerFactory()
         {
