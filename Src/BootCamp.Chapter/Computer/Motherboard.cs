@@ -2,8 +2,5 @@
 {
     public class Motherboard
     {
-        public Motherboard()
-        {
-        }
     }
 }

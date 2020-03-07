@@ -8,11 +8,10 @@ namespace BootCamp.Chapter
     {
         private DesktopComputer _macComputer;
         readonly string _manufacturersId;
-        private Stopwatch _timer;
+        readonly Stopwatch _timer;
 
         public MacFactory()
         {
-            _macComputer = new DesktopComputer();
             _manufacturersId = "mac-PC-2020";
             _timer = new Stopwatch();
         }
@@ -21,6 +20,7 @@ namespace BootCamp.Chapter
         {
             _timer.Start();
             Console.WriteLine("Assembly for Mac Computer started please wait.");
+            _macComputer = new DesktopComputer();
             CreateComputerCase();
             InstallMotherboard();
             InstallCpu();
