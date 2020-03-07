@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
         {
             if (string.IsNullOrEmpty(dirtyFile))
             {
-                throw new ArgumentException();
+                throw new InvalidArgumentException(dirtyFile, null);
             }
 
             var corruptedBalanceLines = File.ReadAllLines(dirtyFile);
