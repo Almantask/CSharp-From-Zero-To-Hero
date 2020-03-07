@@ -105,5 +105,89 @@ namespace BootCamp.Chapter
 
         }
         #endregion
+
+        public void AddWeapon(Weapon weapon) 
+        {
+            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            {
+                return;   
+            }
+
+            _equipment.SetWeapon(weapon);
+        }
+
+        public void AddHeadPiece(Headpiece headpiece)
+        {
+            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            {
+                return;
+            }
+
+            _equipment.SetHead(headpiece);
+        }
+
+        public void AddChestPiece(Chestpiece chestpiece)
+        {
+            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            {
+                return;
+            }
+
+            _equipment.SetChest(chestpiece);
+        }
+
+        public void AddArmPiece(Armpiece armpiece, bool isRight )
+        {
+            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            {
+                return;
+            }
+
+            if (isRight)
+            {
+                _equipment.SetRightArm(armpiece); 
+            }
+            else
+            {
+                _equipment.SetLeftArmp(armpiece); 
+            }
+        }
+
+        public void AddSchoulderPiece(Shoulderpiece shoulderpiece, bool isRight)
+        {
+            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            {
+                return;
+            }
+
+            if (isRight)
+            {
+                _equipment.SetRightShoulder(shoulderpiece); 
+            }
+            else
+            {
+                _equipment.SetLeftShoulder(shoulderpiece); 
+            }
+        }
+
+        public void AddLegPiece(Legspiece legspiece)
+        {
+            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            {
+                return;
+            }
+
+            _equipment.SetLeg(legspiece); 
+        }
+
+        public void AddGloves(Gloves gloves)
+        {
+            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            {
+                return;
+            }
+
+            _equipment.SetGloves(gloves); 
+        }
     }
 }

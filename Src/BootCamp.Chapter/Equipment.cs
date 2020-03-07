@@ -67,7 +67,21 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalWeight()
         {
-            return 0;
+            var items = new Item[] {_weapon, _head, _chest,  _leftShoulder,  _rightShoulder, _legs, _leftArm, _rightArm,_gloves};
+            var totalweight = 0f; 
+
+            foreach (var item in items)
+            {
+                if (item == null)
+                {
+                    totalweight += 0;
+                    continue; 
+                }
+
+                totalweight += item.GetWeight(); 
+            }
+
+            return totalweight; 
         }
 
         /// <summary>
@@ -76,7 +90,21 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalDefense()
         {
-            return 0;
+            var items = new Armor[] { _head, _chest, _leftShoulder, _rightShoulder, _legs, _leftArm, _rightArm, _gloves };
+            var totaldefense = 0f;
+
+            foreach (var item in items)
+            {
+                if (item == null)
+                {
+                    totaldefense += 0;
+                    continue;
+                }
+
+                totaldefense += item.GetDefence(); 
+            }
+
+            return totaldefense;
         }
 
         /// <summary>
@@ -85,7 +113,12 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalAttack()
         {
-            return 0;
+            if (_weapon == null)
+            {
+                return 0; 
+            }
+
+            return _weapon.GetDamage(); 
         }
     }
 }
