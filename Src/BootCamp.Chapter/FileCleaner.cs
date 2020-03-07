@@ -15,9 +15,9 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {
-            if (!IsValidFile(dirtyFile, cleanedFile))
+            if (string.IsNullOrEmpty(dirtyFile))
             {
-                return;
+                throw new ArgumentException();
             }
 
             var corruptedBalanceLines = File.ReadAllLines(dirtyFile);
@@ -28,40 +28,7 @@ namespace BootCamp.Chapter
             DisplayStasticalData(CreateBalanceLinesForTextTable(fixedBalanceLines));
         }
 
-        private static bool IsValidFile(string dirtyFile, string cleanedFile)
-        {
-            if (dirtyFile == null || dirtyFile.Trim() == "")
-            {
-                Console.WriteLine("The corrupted input file is not found. The file path cannot be null or empty.");
-                return false;
-
-            }
-            else if (!File.Exists(dirtyFile))
-            {
-                Console.WriteLine("The corrupted input file is not found. Please check the file path.");
-                return false;
-            }
-
-            if (cleanedFile == null || cleanedFile.Trim() == "")
-            {
-                Console.WriteLine("The fixed output file is not saved. The file path cannot be null or empty.");
-                return false;
-            }
-            else if ((cleanedFile.Contains(@"\")))
-            {
-                var pathLength = cleanedFile.LastIndexOf(@"\", StringComparison.Ordinal) + 1;
-
-                if (!Directory.Exists(cleanedFile.Substring(0, pathLength)))
-                {
-                    Console.WriteLine("The fixed output file is not saved. Please check the file path.");
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private static string FixCorruptedBalanceFile(string[] corruptedBalanceLines, string[] fixedBalanceLines)
+         private static string FixCorruptedBalanceFile(string[] corruptedBalanceLines, string[] fixedBalanceLines)
         {
             var buildLines = new StringBuilder();
             var skipCarriageReturn = corruptedBalanceLines.Length - 1;
