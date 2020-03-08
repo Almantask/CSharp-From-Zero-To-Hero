@@ -5,22 +5,23 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class Logger : ILogger
+    class FileLogger : ILogger
     {
         readonly string _file;
-        public Logger(string file)
+        public FileLogger(string file)
         {
             _file = file;
         }
 
         public void LogStart()
         {
-            File.AppendAllText(_file, $"{System.DateTime.Now} - Program started{Environment.NewLine}");
+            File.AppendAllText(_file, Environment.NewLine);
+            File.AppendAllText(_file, $"{System.DateTime.Now} - Program start{Environment.NewLine}");
         }
 
         public void LogExit()
         {
-            File.AppendAllText(_file, $"{System.DateTime.Now} - Program terminated{Environment.NewLine}");
+            File.AppendAllText(_file, $"{System.DateTime.Now} - Program exit{Environment.NewLine}");
         }
 
         public void Error(Exception ex)
@@ -29,7 +30,7 @@ namespace BootCamp.Chapter
         }
         public void Error(Exception ex, string message)
         {
-            File.AppendAllText(_file, $"{System.DateTime.Now} - Exception has been thrown: {ex} {Environment.NewLine}");
+            Error(ex);
             File.AppendAllText(_file, $"{System.DateTime.Now} - {message} {Environment.NewLine}");
         }
     }

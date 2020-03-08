@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 namespace BootCamp.Chapter
 {
@@ -8,10 +10,21 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             var file = "./logger.txt";
-            var logger = new Logger(file);
+            var fileLogger = new FileLogger(file);
+            var consoleLogger = new ConsoleLogger();
+
+            TestLogger(consoleLogger);
+            TestLogger(fileLogger);
+
+            Environment.Exit(0);
+        }
+
+        public static void TestLogger(ILogger logger)
+        {            
             logger.LogStart();
 
             Console.WriteLine("Start");
+            Thread.Sleep(1000);
 
             var foo = new int[0];
             try
@@ -22,13 +35,10 @@ namespace BootCamp.Chapter
             {
                 logger.Error(ex);
             }
-            
 
+            Thread.Sleep(1000);
             logger.LogExit();
-            Environment.Exit(0);
         }
-
-
 
     }
 }
