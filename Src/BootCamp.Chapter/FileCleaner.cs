@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {
-            if (string.IsNullOrEmpty(dirtyFile))
+            if (string.IsNullOrEmpty(dirtyFile) || string.IsNullOrEmpty(cleanedFile))
             {
                 throw new InvalidArgumentException(dirtyFile, null);
             }
