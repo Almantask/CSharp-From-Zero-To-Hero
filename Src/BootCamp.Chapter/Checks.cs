@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
     // This class is used to have a freedom of design, but with tests applied.
+
+    //TODO All the string concatination from a loop should be done using StringBuilder. Please refactor.
     public static class Checks
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
@@ -11,42 +14,52 @@ namespace BootCamp.Chapter
             {
                 return "N/A.";
             }
-            string poorestName = "";
+            StringBuilder poorestName = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
+            //TODO The body of the for loop could be refactored into a function (or a few) so that it is easier to skim through the bigger function.
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
 
-                if (i == 0)
+                CheckIfThisPersonIsPoorer(account, i);
+            }
+
+            return MakeStuffWithInput.MakefullstringPoorestPeople(personCount, poorestName.ToString(), amount);
+
+
+
+            
+            void CheckIfThisPersonIsPoorer(Account account, int i)
+            {
+                if (i == 0) // first account to be added is alway's the poorest.
                 {
-                    poorestName = account.GetName();
+                    poorestName.Append(account.GetName());
                     amount = account.CurrentBalance();
                 }
-                else if (amount == account.CurrentBalance())
+                else if (amount == account.CurrentBalance()) // this account has the same balance as current.
                 {
-                    if (personCount == 1)
+                    if (personCount == 1) // the second account to be added
                     {
-                        poorestName += " and " + account.GetName();
+                        poorestName.Append(" and " + account.GetName());
                         personCount++;
                     }
-                    else
+                    else // any others
                     {
-                        poorestName = poorestName.Replace(" and ", ", ");
-                        poorestName += " and " + account.GetName();
+                        poorestName.Replace(" and ", ", ");
+                        poorestName.Append(" and " + account.GetName());
                         personCount++;
                     }
                 }
-                else if (amount > account.CurrentBalance())
+                else if (amount > account.CurrentBalance()) // this is now the poorest account.
                 {
-                    poorestName = account.GetName();
+                    poorestName.Clear();
+                    poorestName.Append(account.GetName());
                     amount = account.CurrentBalance();
                     personCount = 1;
                 }
             }
-
-            return MakeStuffWithInput.MakefullstringPoorestPeople(personCount, poorestName, amount);
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
