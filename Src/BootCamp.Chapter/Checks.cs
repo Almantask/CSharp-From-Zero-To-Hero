@@ -5,7 +5,6 @@ namespace BootCamp.Chapter
 {
     // This class is used to have a freedom of design, but with tests applied.
 
-    //TODO All the string concatination from a loop should be done using StringBuilder. Please refactor.
     public static class Checks
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
@@ -211,8 +210,7 @@ namespace BootCamp.Chapter
 
         public static void Clean(string file, string outputFile)
         {
-            var cl = new CleanTheFile();
-            cl.Clean(file, outputFile);
+            CleanTheFile.Clean(file, outputFile);
         }
     }
 }

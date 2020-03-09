@@ -115,7 +115,7 @@ namespace BootCamp.Chapter
             int height = splitmessage.Length + (padding * 2) + 1;
             int width = 0;
 
-            foreach (string line in splitmessage)
+            foreach (string line in splitmessage) // checking which word is the longest to know how wide the padding should be.
             {
                 if(line.Length > width)
                 {
@@ -156,8 +156,10 @@ namespace BootCamp.Chapter
                     }
                     final.Append(Environment.NewLine);
                 }
+
                 return final.ToString();
             }
+
             bool IsThisCorner(int iHeight, int kWidth)
             {
                 // corners = 0 + 0 =====  0 + width === height + 0 === height + width
@@ -201,12 +203,9 @@ namespace BootCamp.Chapter
                 int heightOfFirstTextLine = 1 + padding;
                 int textRow = iHeight - heightOfFirstTextLine;
 
-                if (iHeight >= heightOfFirstTextLine && iHeight < heightOfFirstTextLine + numberOfTextLines)
+                if ((iHeight >= heightOfFirstTextLine && iHeight < heightOfFirstTextLine + numberOfTextLines) && (kWidth >= heightOfFirstTextLine && kWidth < heightOfFirstTextLine + splitmessage[textRow].Length))
                 {
-                    if (kWidth >= heightOfFirstTextLine && kWidth < heightOfFirstTextLine + splitmessage[textRow].Length)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
                 return false;
             }
@@ -219,6 +218,7 @@ namespace BootCamp.Chapter
                 return splitmessage[textRow][letternumber].ToString();
             }
         }
+
         public static string GetNameFromString(string nameAndBalance)
         {
             string[] splitNameAndBalance = nameAndBalance.Split(',');

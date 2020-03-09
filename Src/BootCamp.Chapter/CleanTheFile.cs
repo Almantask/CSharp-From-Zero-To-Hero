@@ -4,9 +4,9 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class CleanTheFile
+    static class CleanTheFile
     {
-        public void Clean(string file, string outputFile)
+        public static void Clean(string file, string outputFile)
         {
             if (Testers.IsThisStringValid(file) || Testers.IsThisStringValid(outputFile))
             {
