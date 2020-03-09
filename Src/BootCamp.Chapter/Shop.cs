@@ -52,7 +52,14 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            //TODO Buy- removes money from shop. Shop cannot buy an item if it doesn't have enough money.
+            decimal price = item.GetPrice();
+
+            if (price <= _money)
+            {
+                _money -= price;
+                Add(item);
+                return price;
+            }
 
             return 0;
         }
@@ -69,7 +76,15 @@
         public Item Sell(string item)
         {
             //TODO Sell- adds money to the shop. Shop can only sell items that it has. 
-            //Selling item doesn't reduce item count in shop. Returns item sold. 
+            //Selling item doesn't reduce item count in shop. Returns item sold.
+
+            Item item1 = _inventory.Contains(item);
+
+            if (item1 != null)
+            {
+                _money += item1.GetPrice();
+                return item1;
+            }
             
             return null;
         }
