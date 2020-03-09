@@ -5,7 +5,7 @@
         private Item[] _items;
         public Item[] GetItems()
         {
-            return new Item[0];
+            return _items;
         }
 
         public Inventory()
@@ -15,12 +15,41 @@
 
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            int number = 0;
+            int[] placeOfItemsInArr = new int[_items.Length];
+
+            for (int i = 0; i < _items.Length; i++)
+            {
+                if (_items[i] == null)
+                { }
+                else if (_items[i].GetName() == name)
+                {
+                    placeOfItemsInArr[number] = i;
+                    number++;
+
+                }
+            }
+            Item[] final = new Item[number];
+            for (int i = 0; i < number; i++)
+            {
+                final[i] = _items[placeOfItemsInArr[i]];
+            }
+
+            return final;
         }
 
         public void AddItem(Item item)
         {
-
+            for (int i = 0; i < _items.Length; i++)
+            {
+                if (_items[i] == null)
+                {
+                    _items[i] = item;
+                    return;
+                }
+            }
+            _items = new Item[_items.Length + 1];
+            _items[_items.Length -1] = item;
         }
 
         /// <summary>
@@ -29,7 +58,14 @@
         /// </summary>
         public void RemoveItem(Item item)
         {
-
+            for (int i = 0; i < _items.Length; i++)
+            {
+                if (_items[i] == item)
+                {
+                    _items[i] = null;
+                    return;
+                }
+            }
         }
     }
 }

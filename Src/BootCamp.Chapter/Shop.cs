@@ -12,7 +12,7 @@
 
         public Shop()
         {
-
+            _inventory = new Inventory();
         }
 
         public Shop(decimal money)
@@ -31,6 +31,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            //TODO AddItem- shop can add extra items to the stock, but adding the same item twice has no effect.
         }
 
         /// <summary>
@@ -40,6 +41,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            //TODO RemoveItem- shop can remove items from stock by their name
         }
 
         /// <summary>
@@ -50,6 +52,8 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
+            //TODO Buy- removes money from shop. Shop cannot buy an item if it doesn't have enough money.
+
             return 0;
         }
 
@@ -64,6 +68,9 @@
         /// </returns>
         public Item Sell(string item)
         {
+            //TODO Sell- adds money to the shop. Shop can only sell items that it has. 
+            //Selling item doesn't reduce item count in shop. Returns item sold. 
+            
             return null;
         }
     }

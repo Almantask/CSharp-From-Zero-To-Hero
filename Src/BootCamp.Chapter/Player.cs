@@ -12,30 +12,37 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Player
     {
-        /// <summary>
-        /// Everyone can carry this much weight at least.
-        /// </summary>
-        private const int baseCarryWeight = 30;
+        private void BonusTask()
+        {
 
-        private string _name;
-        private int _hp;
+            /// <summary>
+            /// Everyone can carry this much weight at least.
+            /// </summary>
+            //private const int baseCarryWeight = 30;
 
-        /// <summary>
-        /// Each point of strength allows extra 10 kg to carry.
-        /// </summary>
-        private int _strenght;
+            //private string _name;
+            //private int _hp;
+
+            /// <summary>
+            /// Each point of strength allows extra 10 kg to carry.
+            /// </summary>
+            //private int _strenght;
+
+
+            /// <summary>
+            /// Needed only for the extra task.
+            /// </summary>
+            //private Equipment _equipment;
+        }
 
         /// <summary>
         /// Player items. There can be multiple of items with same name.
         /// </summary>
         private Inventory _inventory;
-        /// <summary>
-        /// Needed only for the extra task.
-        /// </summary>
-        private Equipment _equipment;
 
         public Player()
         {
+            _inventory = new Inventory();
         }
 
         /// <summary>
@@ -43,7 +50,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public Item[] GetItems()
         {
-            return new Item[0];
+            return _inventory.GetItems();
         }
 
         /// <summary>
@@ -51,11 +58,12 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
@@ -64,7 +72,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
