@@ -68,7 +68,7 @@ namespace BootCamp.Chapter
             {
                 return "N/A.";
             }
-            string richestName = "";
+            StringBuilder richestName = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
@@ -78,32 +78,33 @@ namespace BootCamp.Chapter
 
                 if (i == 0)
                 {
-                    richestName = account.GetName();
+                    richestName.Append(account.GetName());
                     amount = account.CurrentBalance();
                 }
                 else if (amount == account.CurrentBalance())
                 {
                     if (personCount == 1)
                     {
-                        richestName += " and " + account.GetName();
+                        richestName.Append(" and " + account.GetName());
                         personCount++;
                     }
                     else
                     {
-                        richestName = richestName.Replace(" and ", ", ");
-                        richestName += " and " + account.GetName();
+                        richestName.Replace(" and ", ", ");
+                        richestName.Append(" and " + account.GetName());
                         personCount++;
                     }
                 }
                 else if (amount < account.CurrentBalance())
                 {
-                    richestName = account.GetName();
+                    richestName.Clear();
+                    richestName.Append(account.GetName());
                     amount = account.CurrentBalance();
                     personCount = 1;
                 }
             }
 
-            return MakeStuffWithInput.MakefullstringRichestPeople(personCount, richestName, amount);
+            return MakeStuffWithInput.MakefullstringRichestPeople(personCount, richestName.ToString(), amount);
         }
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
@@ -111,7 +112,7 @@ namespace BootCamp.Chapter
             {
                 return "N/A.";
             }
-            string biggestLossName = "";
+            StringBuilder biggestLossName = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
@@ -123,34 +124,35 @@ namespace BootCamp.Chapter
                 {
 
                 }
-                else if (biggestLossName == "")
+                else if (biggestLossName.ToString() == "")
                 {
-                    biggestLossName = account.GetName();
+                    biggestLossName.Append(account.GetName());
                     amount = account.BiggestLoss();
                 }
                 else if (amount == account.BiggestLoss())
                 {
                     if (personCount == 1)
                     {
-                        biggestLossName += " and " + account.GetName();
+                        biggestLossName.Append(" and " + account.GetName());
                         personCount++;
                     }
                     else
                     {
-                        biggestLossName = biggestLossName.Replace(" and ", ", ");
-                        biggestLossName += " and " + account.GetName();
+                        biggestLossName.Replace(" and ", ", ");
+                        biggestLossName.Append(" and " + account.GetName());
                         personCount++;
                     }
                 }
                 else if (amount > account.BiggestLoss())
                 {
-                    biggestLossName = account.GetName();
+                    biggestLossName.Clear();
+                    biggestLossName.Append(account.GetName());
                     amount = account.BiggestLoss();
                     personCount = 1;
                 }
             }
 
-            return MakeStuffWithInput.MakefullstringBiggestLossPeople(biggestLossName, amount);
+            return MakeStuffWithInput.MakefullstringBiggestLossPeople(biggestLossName.ToString(), amount);
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
@@ -159,7 +161,7 @@ namespace BootCamp.Chapter
             {
                 return "N/A.";
             }
-            string richestName = "";
+            StringBuilder richestName = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
@@ -169,32 +171,33 @@ namespace BootCamp.Chapter
 
                 if (i == 0)
                 {
-                    richestName = account.GetName();
+                    richestName.Append(account.GetName());
                     amount = account.HighestBalanceEver();
                 }
                 else if (amount == account.HighestBalanceEver())
                 {
                     if (personCount == 1)
                     {
-                        richestName += " and " + account.GetName();
+                        richestName.Append(" and " + account.GetName());
                         personCount++;
                     }
                     else
                     {
-                        richestName = richestName.Replace(" and ", ", ");
-                        richestName += " and " + account.GetName();
+                        richestName.Replace(" and ", ", ");
+                        richestName.Append(" and " + account.GetName());
                         personCount++;
                     }
                 }
                 else if (amount < account.HighestBalanceEver())
                 {
-                    richestName = account.GetName();
+                    richestName.Clear();
+                    richestName.Append(account.GetName());
                     amount = account.HighestBalanceEver();
                     personCount = 1;
                 }
             }
 
-            return MakeStuffWithInput.MakefullstringHighestBalanceEver(personCount, richestName, amount);
+            return MakeStuffWithInput.MakefullstringHighestBalanceEver(personCount, richestName.ToString(), amount);
         }
 
         public static string Build(string message, in int padding)
