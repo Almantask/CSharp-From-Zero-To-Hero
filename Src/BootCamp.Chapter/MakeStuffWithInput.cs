@@ -107,7 +107,6 @@ namespace BootCamp.Chapter
         }
         public static string MakePadding(string message, int padding)
         {
-            string finalstring = "";
             const string corner = "+";
             const string horizontal = "-";
             const string vertical = "|";
@@ -128,7 +127,7 @@ namespace BootCamp.Chapter
 
             string MakeTabel()
             {
-                string final = "";
+                StringBuilder final = new StringBuilder();
                 for (int iHeight = 0; iHeight <= height; iHeight++)
                 {
                     for (int kWidth = 0; kWidth <= width; kWidth++)
@@ -136,28 +135,28 @@ namespace BootCamp.Chapter
 
                         if (IsThisCorner(iHeight, kWidth))
                         {
-                            final += corner;
+                            final.Append(corner);
                         }
                         else if (IsThisHorizontal(iHeight, kWidth))
                         {
-                            final += horizontal;
+                            final.Append(horizontal);
                         }
                         else if (IsThisVertical(iHeight, kWidth))
                         {
-                            final += vertical;
+                            final.Append(vertical);
                         }
                         else if (IsThisText(iHeight, kWidth))
                         {
-                            final += WhatLetterToBePlaced(iHeight, kWidth);
+                            final.Append(WhatLetterToBePlaced(iHeight, kWidth));
                         }
                         else if (IsThisWhiteSpace(iHeight, kWidth))
                         {
-                            final += " ";
+                            final.Append(" ");
                         }
                     }
-                    final += Environment.NewLine;
+                    final.Append(Environment.NewLine);
                 }
-                return final;
+                return final.ToString();
             }
             bool IsThisCorner(int iHeight, int kWidth)
             {
@@ -213,10 +212,10 @@ namespace BootCamp.Chapter
             }
             string WhatLetterToBePlaced(int iHeight, int kWidth)
             {
-                int numberOfTextLines = splitmessage.Length;
                 int heightOfFirstTextLine = 1 + padding;
                 int textRow = iHeight - heightOfFirstTextLine;
                 int letternumber = kWidth - heightOfFirstTextLine;
+
                 return splitmessage[textRow][letternumber].ToString();
             }
         }
