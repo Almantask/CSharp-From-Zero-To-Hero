@@ -14,7 +14,7 @@ namespace BootCamp.Chapter
 
         private const int ConsoleLogger = 1;
         private const int FileLogger = 2;
-        private int LogOption = FileLogger; //Set to either ConsoleLogger or FileLogger
+        private readonly int LogOption = ConsoleLogger; //Set to either ConsoleLogger or FileLogger
         private ILogger _logger;
 
         public void Log(string msg)
