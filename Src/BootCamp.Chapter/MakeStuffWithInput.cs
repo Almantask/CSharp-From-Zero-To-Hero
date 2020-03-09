@@ -220,6 +220,24 @@ namespace BootCamp.Chapter
                 return splitmessage[textRow][letternumber].ToString();
             }
         }
+        public static string GetNameFromString(string nameAndBalance)
+        {
+            string[] splitNameAndBalance = nameAndBalance.Split(',');
+
+            return splitNameAndBalance[0];
+        }
+        public static decimal[] GetBalanceFromString(string nameAndBalance)
+        {
+            string[] splitNameAndBalance = nameAndBalance.Split(',');
+
+            decimal[] balance = new decimal[splitNameAndBalance.Length - 1];
+
+            for (int i = 1; i < splitNameAndBalance.Length; i++)
+            {
+                Decimal.TryParse(splitNameAndBalance[i], out balance[i - 1]);
+            }
+            return balance;
+        }
 
     }
 }

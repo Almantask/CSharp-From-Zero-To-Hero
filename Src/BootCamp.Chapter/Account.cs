@@ -24,17 +24,9 @@ namespace BootCamp.Chapter
             _balance = balance;
         }
 
-        public Account(string nameAndBalance)
+        public Account(string name, decimal[] balance)
         {
-            string[] splitNameAndBalance = nameAndBalance.Split(',');
-            SetName(splitNameAndBalance[0]);
-
-            decimal[] balance = new decimal[splitNameAndBalance.Length - 1];
-
-            for (int i = 1; i < splitNameAndBalance.Length; i++)
-            {
-                Decimal.TryParse(splitNameAndBalance[i], out balance[i - 1]);
-            }
+            SetName(name);
             SetBalance(balance);
         }
         public decimal CurrentBalance()

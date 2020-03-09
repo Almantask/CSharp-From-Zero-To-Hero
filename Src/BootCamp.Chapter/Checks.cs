@@ -17,30 +17,31 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var a = new Account(peopleAndBalances[i]);
+                var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
+
                 if (i == 0)
                 {
-                    poorestName = a.GetName();
-                    amount = a.CurrentBalance();
+                    poorestName = account.GetName();
+                    amount = account.CurrentBalance();
                 }
-                else if (amount == a.CurrentBalance())
+                else if (amount == account.CurrentBalance())
                 {
                     if (personCount == 1)
                     {
-                        poorestName += " and " + a.GetName();
+                        poorestName += " and " + account.GetName();
                         personCount++;
                     }
                     else
                     {
                         poorestName = poorestName.Replace(" and ", ", ");
-                        poorestName += " and " + a.GetName();
+                        poorestName += " and " + account.GetName();
                         personCount++;
                     }
                 }
-                else if (amount > a.CurrentBalance())
+                else if (amount > account.CurrentBalance())
                 {
-                    poorestName = a.GetName();
-                    amount = a.CurrentBalance();
+                    poorestName = account.GetName();
+                    amount = account.CurrentBalance();
                     personCount = 1;
                 }
             }
@@ -60,30 +61,31 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var a = new Account(peopleAndBalances[i]);
+                var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
+
                 if (i == 0)
                 {
-                    richestName = a.GetName();
-                    amount = a.CurrentBalance();
+                    richestName = account.GetName();
+                    amount = account.CurrentBalance();
                 }
-                else if (amount == a.CurrentBalance())
+                else if (amount == account.CurrentBalance())
                 {
                     if (personCount == 1)
                     {
-                        richestName += " and " + a.GetName();
+                        richestName += " and " + account.GetName();
                         personCount++;
                     }
                     else
                     {
                         richestName = richestName.Replace(" and ", ", ");
-                        richestName += " and " + a.GetName();
+                        richestName += " and " + account.GetName();
                         personCount++;
                     }
                 }
-                else if (amount < a.CurrentBalance())
+                else if (amount < account.CurrentBalance())
                 {
-                    richestName = a.GetName();
-                    amount = a.CurrentBalance();
+                    richestName = account.GetName();
+                    amount = account.CurrentBalance();
                     personCount = 1;
                 }
             }
@@ -102,34 +104,35 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var a = new Account(peopleAndBalances[i]);
-                if (a.MoreThan1Balance())
+                var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
+
+                if (account.MoreThan1Balance())
                 {
 
                 }
                 else if (biggestLossName == "")
                 {
-                    biggestLossName = a.GetName();
-                    amount = a.BiggestLoss();
+                    biggestLossName = account.GetName();
+                    amount = account.BiggestLoss();
                 }
-                else if (amount == a.BiggestLoss())
+                else if (amount == account.BiggestLoss())
                 {
                     if (personCount == 1)
                     {
-                        biggestLossName += " and " + a.GetName();
+                        biggestLossName += " and " + account.GetName();
                         personCount++;
                     }
                     else
                     {
                         biggestLossName = biggestLossName.Replace(" and ", ", ");
-                        biggestLossName += " and " + a.GetName();
+                        biggestLossName += " and " + account.GetName();
                         personCount++;
                     }
                 }
-                else if (amount > a.BiggestLoss())
+                else if (amount > account.BiggestLoss())
                 {
-                    biggestLossName = a.GetName();
-                    amount = a.BiggestLoss();
+                    biggestLossName = account.GetName();
+                    amount = account.BiggestLoss();
                     personCount = 1;
                 }
             }
@@ -149,30 +152,31 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var a = new Account(peopleAndBalances[i]);
+                var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
+
                 if (i == 0)
                 {
-                    richestName = a.GetName();
-                    amount = a.HighestBalanceEver();
+                    richestName = account.GetName();
+                    amount = account.HighestBalanceEver();
                 }
-                else if (amount == a.HighestBalanceEver())
+                else if (amount == account.HighestBalanceEver())
                 {
                     if (personCount == 1)
                     {
-                        richestName += " and " + a.GetName();
+                        richestName += " and " + account.GetName();
                         personCount++;
                     }
                     else
                     {
                         richestName = richestName.Replace(" and ", ", ");
-                        richestName += " and " + a.GetName();
+                        richestName += " and " + account.GetName();
                         personCount++;
                     }
                 }
-                else if (amount < a.HighestBalanceEver())
+                else if (amount < account.HighestBalanceEver())
                 {
-                    richestName = a.GetName();
-                    amount = a.HighestBalanceEver();
+                    richestName = account.GetName();
+                    amount = account.HighestBalanceEver();
                     personCount = 1;
                 }
             }
