@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -12,7 +13,7 @@ namespace BootCamp.Chapter
                 throw new ArgumentException();
             }
 
-            string cleanFile = "";
+            StringBuilder cleanFile = new StringBuilder();
 
             using (var fileS = new FileStream(file, FileMode.Open))
             {
@@ -26,12 +27,12 @@ namespace BootCamp.Chapter
                         }
                         else
                         {
-                            cleanFile += letter;
+                            cleanFile.Append(letter);
                         }
                     }
                 }
             }
-            string[] splitCleanFile = cleanFile.Split(Environment.NewLine);
+            string[] splitCleanFile = cleanFile.ToString().Split(Environment.NewLine);
 
             foreach (string line in splitCleanFile)
             {
