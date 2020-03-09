@@ -20,9 +20,7 @@
 
             for (int i = 0; i < _items.Length; i++)
             {
-                if (_items[i] == null)
-                { }
-                else if (_items[i].GetName() == name)
+                if (_items[i] != null && _items[i].GetName() == name)
                 {
                     placeOfItemsInArr[number] = i;
                     number++;
