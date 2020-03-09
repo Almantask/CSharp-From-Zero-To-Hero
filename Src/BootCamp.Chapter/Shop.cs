@@ -10,14 +10,11 @@
 
         private Inventory _inventory;
 
-        public Shop()
-        {
-            _inventory = new Inventory();
-        }
 
         public Shop(decimal money)
         {
             _money = money;
+            _inventory = new Inventory();
         }
 
         public Item[] GetItems()
@@ -31,7 +28,10 @@
         /// </summary>
         public void Add(Item item)
         {
-            //TODO AddItem- shop can add extra items to the stock, but adding the same item twice has no effect.
+            if (_inventory.Contains(item.GetName()) != item)
+            {
+                _inventory.AddItem(item);
+            }
         }
 
         /// <summary>
@@ -41,7 +41,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            //TODO RemoveItem- shop can remove items from stock by their name
+            _inventory.RemoveItem(_inventory.Contains(name));
         }
 
         /// <summary>

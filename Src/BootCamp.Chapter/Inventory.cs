@@ -13,6 +13,23 @@
             _items = new Item[0];
         }
 
+        /// <summary>
+        /// Returns the item it found based on the name you gave, if no item is found returns null
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Item Contains(string name)
+        {
+            foreach (Item item in _items)
+            {
+                if (item.GetName() == name)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
         public Item[] GetItems(string name)
         {
             int number = 0;
