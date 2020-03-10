@@ -2,12 +2,21 @@
 {
     public class DesktopComputer
     {
+        public DesktopComputer()
+        {
+            _body = new Body();
+            _cpu = new Cpu();
+            _gpu = new Gpu();
+            _hard = new HardDisk();
+            _motherboard = new Motherboard();
+            _ram = new Ram();
+        }
         private Body _body;
         public Body GetBody()
         {
             return _body;
         }
-        
+
         private Ram _ram;
         public Ram GetRam()
         {
