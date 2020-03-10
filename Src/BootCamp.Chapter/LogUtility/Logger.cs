@@ -1,13 +1,13 @@
-﻿using BootCamp.Chapter.Logger;
+﻿using BootCamp.Chapter.LogUtility;
 using System.IO;
 
 namespace BootCamp.Chapter
 {
-    public class LogMessage
+    public class Logger
     {
         private const string LogPath = @"..\..\..\Output\Log.txt";
 
-        public LogMessage()
+        public Logger()
         {
             File.Delete(LogPath);
         }
@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
                     _logger = new FileLogger(LogPath);
                     break;
                 default:
-                    throw new InvalidArgumentException(LogOption);
+                    throw new InvalidUnexpectedException(LogOption);
             }
 
             _logger.Log(msg);

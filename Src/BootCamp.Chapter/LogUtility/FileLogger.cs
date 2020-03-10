@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace BootCamp.Chapter.Logger
+namespace BootCamp.Chapter.LogUtility
 {
     class FileLogger : ILogger
     {

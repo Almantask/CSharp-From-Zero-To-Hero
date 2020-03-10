@@ -6,8 +6,8 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
-            var logMessage = new LogMessage();
-            logMessage.Log("Program boots.");
+            var logger = new Logger();
+            logger.Log("Program boots.");
 
             for (int num = 0; num < 2; num++)
             {
@@ -24,14 +24,14 @@ namespace BootCamp.Chapter
                 Console.Write("Enter height: ");
                 float height = Convert.ToSingle(Console.ReadLine());
 
-                logMessage.Log(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
+                logger.Log(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
 
                 //BMI is weight (kg) / [height (m)] ^ 2
                 float bmi = (float)(weight / Math.Pow((height / 100), 2));
-                logMessage.Log("Body-mass index (BMI) is " + bmi);
+                logger.Log("Body-mass index (BMI) is " + bmi);
             }
 
-            logMessage.Log("Program shutdowns.");
+            logger.Log("Program shutdowns.");
         }
     }
 }

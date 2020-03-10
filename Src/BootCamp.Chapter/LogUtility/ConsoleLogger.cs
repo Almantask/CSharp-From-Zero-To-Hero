@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BootCamp.Chapter.Logger
+namespace BootCamp.Chapter.LogUtility
 {
     class ConsoleLogger : ILogger
     {

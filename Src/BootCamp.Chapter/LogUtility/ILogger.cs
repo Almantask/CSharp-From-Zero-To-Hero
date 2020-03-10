@@ -1,4 +1,4 @@
-﻿namespace BootCamp.Chapter.Logger
+﻿namespace BootCamp.Chapter.LogUtility
 {
     interface ILogger
     {
