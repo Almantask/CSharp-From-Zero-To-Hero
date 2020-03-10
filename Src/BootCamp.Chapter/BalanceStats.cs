@@ -32,8 +32,12 @@ namespace BootCamp.Chapter
             {
                 return invalidMessage;
             }
-
             string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            for (int i = 0; i < workingPeopleAndBalances.Length; i++)
+            {
+                if (workingPeopleAndBalances[i].Length <= 2)
+                    return invalidMessage;
+            }
             float biggestLossEver = GetLoss(workingPeopleAndBalances[0]);
             string biggestLossNames = workingPeopleAndBalances[0][0];
             for (int i = 0; i < workingPeopleAndBalances.Length; i++)
@@ -46,8 +50,7 @@ namespace BootCamp.Chapter
                     biggestLossNames = name;
                 }
             }
-
-            return $"{biggestLossNames} lost the most money. {currencySymbol}{biggestLossEver}.";
+            return $"{biggestLossNames} lost the most money. -{currencySymbol}{System.Math.Abs(biggestLossEver)}.";
         }
 
         /// <summary>
