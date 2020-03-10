@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
                     _logger = new FileLogger(LogPath);
                     break;
                 default:
-                    throw new InvalidUnexpectedException(LogOption);
+                    throw new InvalidArgumentException(LogOption);
             }
 
             _logger.Log(msg);

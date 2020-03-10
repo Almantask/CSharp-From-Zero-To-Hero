@@ -3,9 +3,9 @@ using System;
 
 namespace BootCamp.Chapter
 {
-    class InvalidUnexpectedException : ArgumentException
+    class InvalidArgumentException : ArgumentException
     {
-        public InvalidUnexpectedException(int option) : base ($"Unexpected logger option '{option}'.")
+        public InvalidArgumentException(int option) : base ($"Unexpected logger option '{option}'.")
         {
 
         }
