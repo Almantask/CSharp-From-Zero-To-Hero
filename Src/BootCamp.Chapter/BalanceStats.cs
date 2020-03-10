@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -33,7 +32,22 @@ namespace BootCamp.Chapter
             {
                 return invalidMessage;
             }
-            return "";
+
+            string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            float biggestLossEver = GetLoss(workingPeopleAndBalances[0]);
+            string biggestLossNames = workingPeopleAndBalances[0][0];
+            for (int i = 0; i < workingPeopleAndBalances.Length; i++)
+            {
+                float loss = GetLoss(workingPeopleAndBalances[i]);
+                string name = workingPeopleAndBalances[i][0];
+                if (loss < biggestLossEver)
+                {
+                    biggestLossEver = loss;
+                    biggestLossNames = name;
+                }
+            }
+
+            return $"{biggestLossNames} lost the most money. {currencySymbol}{biggestLossEver}";
         }
 
         /// <summary>
@@ -195,6 +209,11 @@ namespace BootCamp.Chapter
             return totalNames;
         }
 
+        /// <summary>
+        /// Takes a string of names separated by ', ' and returns a grammatically correct string
+        /// </summary>
+        /// <param name="balanceNames"></param>
+        /// <returns></returns>
         public static string FormatBalanceNames(string balanceNames)
         {
             int count = balanceNames.Split(',').Length - 1;
@@ -218,6 +237,25 @@ namespace BootCamp.Chapter
             sbNames.Append($", and{names[^1]}");
             balanceNames = sbNames.ToString();
             return balanceNames;
+        }
+
+        /// <summary>
+        /// Takes one individual with balances as an array and return their greatest loss in history.
+        /// </summary>
+        /// <param name="personAndBalance"></param>
+        /// <returns></returns>
+        public static float GetLoss(string[] personAndBalance)
+        {
+            float[] balance = StringArrToFloatArr(personAndBalance[1..]);
+            float loss = 0f;
+            for (int i = 0; i < balance.Length - 1; i++)
+            {
+                if (balance[i + 1] - balance[i] < loss)
+                {
+                    loss = balance[i + 1] - balance[i];
+                }
+            }
+            return loss;
         }
     }
 }
