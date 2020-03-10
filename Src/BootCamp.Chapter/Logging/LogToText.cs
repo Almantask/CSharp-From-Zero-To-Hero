@@ -6,7 +6,7 @@ namespace BootCamp.Chapter.Logging
     abstract class LogToText : ILog, IConnection
     {
 
-        private string _Connection = @"\LogToText.txt";
+        private string _Connection = @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Logging\Log.txt";
         public string GetConnection()
         {
             return _Connection;
@@ -14,21 +14,28 @@ namespace BootCamp.Chapter.Logging
 
         public void LogOpenProgram()
         {
-            //Write To Text
+            LogNow($"Program Started. Time: {DateTime.Now}");
         }
         public void LogCloseProgram()
         {
-            //Write To Text
+            LogNow($"Program Stopped. Time: {DateTime.Now}");
         }
         public void LogCrash(Exception e)
         {
-            //Write To Text
+            LogNow($"Program Crashed Time: {DateTime.Now}\r\nReason: {e.Message}");
         }
-        var fileS = new FileStream(GetConnection(), FileMode.Create);
+        public void LogNow(string text)
+        {
+            using (var fileS = new FileStream(GetConnection(), FileMode.Create))
+            {
                 using (var writer = new StreamWriter(fileS))
                 {
-                    writer.Write(cleanFile);
+                    writer.WriteLine(text);
                 }
             }
+
+
+        }
     }
+
 }
