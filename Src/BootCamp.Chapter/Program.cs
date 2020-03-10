@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             //Console.WriteLine(BalanceStats.FindRichestPerson(PeoplesBalances.Balances));
-            Console.WriteLine(BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances));
+            //Console.WriteLine(BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances));
 
             //string testString = " 99.99";
             //float testInt = float.Parse(testString);
@@ -20,21 +20,21 @@ namespace BootCamp.Chapter
             // - FindPersonWithBiggestLoss
             // - FindRichestPerson
             // - FindMostPoorPerson
+            string[] stringArr = new string[] { "Tom, 15.5, 200, 500, 600, 200, 500, 1000", 
+                "Katherine, 85, 0, -500, 0, 500, 10000, 1500.99", 
+                "Test, 85, 0, -500, 0, 500, 10000, 1500.99",
+                "Test2, 85, 0, -500, a, 500, 10000, 1500.99",
+                "Catie, 0, 500, 990, 1300" };
+            //float[] floatArr = new float[] { 85, 0, -500, 0, 500, 10000, 1500.99f };
+            //Console.WriteLine(BalanceStats.HighestBalance(BalanceStats.StringArrToFloatArr(stringArr[1..])));
 
-            //string[][] parsedBalances = BalanceStats.ArrayifyBalances(PeoplesBalances.Balances);
-            //for (int i = 0; i < parsedBalances.Length; i++)
-            //{
-            //    Console.WriteLine($"{parsedBalances[i][0]} has a ballance of {parsedBalances[i][^1]}");
-            //}
+            //float[] floatArr2 = BalanceStats.StringArrToFloatArr(stringArr[1..]);
+            //Array.ForEach(floatArr2, Console.WriteLine);
 
-            //for (int i = 0; i < parsedBalances.Length; i++)
-            //{
-            //    for (int j = 0; j < parsedBalances[i].Length; j++)
-            //    {
-            //        Console.WriteLine("Toot Toot!!!");
-            //        Console.WriteLine(parsedBalances[i][j]);
-            //    }
-            //}
+            //Console.WriteLine(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances));
+            Console.WriteLine(BalanceStats.FindHighestBalanceEver(stringArr));
+            //string newString = "Bill, Tedd, Frank, ";
+            //Console.WriteLine(BalanceStats.FormatBalanceNames(newString));
         }
     }
 }
