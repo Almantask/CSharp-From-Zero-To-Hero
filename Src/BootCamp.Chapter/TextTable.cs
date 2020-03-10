@@ -66,7 +66,10 @@ namespace BootCamp.Chapter
         }
         public static int LongestStringIndex(string[] message)
         {
-            if (message.Length == 1) return 0;
+            if (message.Length == 1)
+            {
+                return 0;
+            }
             int index = 0;
             int max = 0;
             for (int i = 0; i < message.Length; i++)
