@@ -5,4 +5,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Log1234.log" />
+  </ItemGroup>
 </Project>
