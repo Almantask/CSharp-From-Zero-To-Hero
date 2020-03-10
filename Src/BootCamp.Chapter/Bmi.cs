@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
 
         public static float Calculate(Person person)
         {
-            if (person.GetHeigth() <= 0 && person.GetHeigth() <= 0)
+            if (person.GetHeigth() <= 0 && person.GetWeight() <= 0)
             {
                 Logger.Log($"{messageBmi}{Environment.NewLine}{messageWeight}{Environment.NewLine}{messageHeightLessZero}.");
                 return -1;
