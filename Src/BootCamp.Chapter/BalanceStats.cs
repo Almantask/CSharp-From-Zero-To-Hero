@@ -62,7 +62,7 @@ namespace BootCamp.Chapter
 
             string[][] workingBalances = ArrayifyBalances(peopleAndBalances);
             int richestPerson = 0;
-            string message = $"{workingBalances[richestPerson][0]} is the richest person. ${workingBalances[richestPerson][^1]}.";
+            string message = $"{workingBalances[richestPerson][0]} is the richest person. {currencySymbol}{workingBalances[richestPerson][^1]}.";
             if (workingBalances.Length == 1)
             {
                 return message;
@@ -74,7 +74,7 @@ namespace BootCamp.Chapter
                     richestPerson = i;
                 }
             }
-            return $"{workingBalances[richestPerson][0]} is the richest person. ${workingBalances[richestPerson][^1]}.";
+            return $"{workingBalances[richestPerson][0]} is the richest person. {currencySymbol}{workingBalances[richestPerson][^1]}.";
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace BootCamp.Chapter
 
             string[][] workingBalances = ArrayifyBalances(peopleAndBalances);
             int poorestPerson = 0;
-            string message = $"{workingBalances[poorestPerson][0]} is the poorest person. {currencySymbol}{workingBalances[poorestPerson][^1]}.";
+            string message = $"{workingBalances[poorestPerson][0]} has the least money. {currencySymbol}{workingBalances[poorestPerson][^1]}.";
             if (workingBalances.Length == 1)
             {
                 return message;
@@ -101,7 +101,7 @@ namespace BootCamp.Chapter
                     poorestPerson = i;
                 }
             }
-            return $"{workingBalances[poorestPerson][0]} is the poorest person. {currencySymbol}{workingBalances[poorestPerson][^1]}.";
+            return $"{workingBalances[poorestPerson][0]} has the least money. {currencySymbol}{workingBalances[poorestPerson][^1]}.";
         }
 
         /// <summary>
