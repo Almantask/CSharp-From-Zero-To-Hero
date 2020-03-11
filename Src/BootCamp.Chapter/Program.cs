@@ -14,7 +14,8 @@ namespace BootCamp.Chapter
             //BMI calculations
             const double bmi = weight * 703 / height / height;
             Console.WriteLine(bmi);
-            //Code
+            //Read line from console
+            Console.ReadLine();
         }
     }
 }
