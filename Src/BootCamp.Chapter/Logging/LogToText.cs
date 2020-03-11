@@ -3,38 +3,17 @@ using System.IO;
 
 namespace BootCamp.Chapter.Logging
 {
-    abstract class LogToText : ILog, IConnection
+    class LogToText : Log, IConnection
     {
 
-        private string _Connection = @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Logging\Log.txt";
+        private readonly string _connection = @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Logging\Log.txt";
         public string GetConnection()
         {
-            return _Connection;
+            return _connection;
         }
-
-        public void LogOpenProgram()
+        public override void LogNow(string text)
         {
-            LogNow($"Program Started. Time: {DateTime.Now}");
-        }
-        public void LogCloseProgram()
-        {
-            LogNow($"Program Stopped. Time: {DateTime.Now}");
-        }
-        public void LogCrash(Exception e)
-        {
-            LogNow($"Program Crashed Time: {DateTime.Now}\r\nReason: {e.Message}");
-        }
-        public void LogNow(string text)
-        {
-            using (var fileS = new FileStream(GetConnection(), FileMode.Create))
-            {
-                using (var writer = new StreamWriter(fileS))
-                {
-                    writer.WriteLine(text);
-                }
-            }
-
-
+            File.AppendAllText(GetConnection(), text + "\r\n");
         }
     }
 

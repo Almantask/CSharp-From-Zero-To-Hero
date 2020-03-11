@@ -4,8 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter.Logging
 {
-    internal interface IConnection
+    interface IConnection
     {
-        string GetConnection();
+        public string GetConnection();
     }
 }

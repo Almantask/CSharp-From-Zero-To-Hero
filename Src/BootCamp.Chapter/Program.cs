@@ -7,7 +7,21 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(File.Exists(@"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Logging\Log.txt"));
+            var textLogger = new Logging.LogToText();
+            textLogger.LogOpenProgram();
+            try
+            {
+                int b = 0;
+                int i = 10 / b;
+                Console.WriteLine("Finshed");
+            }
+            catch (Exception e)
+            {
+                textLogger.LogCrash(e);
+            }
+            
+            textLogger.LogCloseProgram();
+            
         }
     }
 }

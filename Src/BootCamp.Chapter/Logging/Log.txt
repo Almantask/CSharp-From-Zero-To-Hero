@@ -1,1 +1,11 @@
-﻿
+
+Program Started. Time: 11/03/2020 03:47:21
+Program Stopped. Time: 11/03/2020 03:47:21
+Program Started. Time: 11/03/2020 03:47:30
+Program Stopped. Time: 11/03/2020 03:47:30
+Program Started. Time: 11/03/2020 03:47:48
+Program Stopped. Time: 11/03/2020 03:47:48
+Program Started. Time: 11/03/2020 03:50:32
+Program Crashed Time: 11/03/2020 03:50:32
+Reason: Attempted to divide by zero.
+Program Stopped. Time: 11/03/2020 03:50:32
