@@ -7,5 +7,7 @@ namespace BootCamp.Chapter
         public void LogOpenProgram();
         public void LogCloseProgram();
         public void LogCrash(Exception e);
+
+        public abstract void LogNow(string text);
     }
 }

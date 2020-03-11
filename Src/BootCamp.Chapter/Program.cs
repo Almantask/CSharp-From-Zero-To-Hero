@@ -6,21 +6,26 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var textLogger = new Logging.LogToConsole();
-            textLogger.LogOpenProgram();
+            var textLogger = new Logging.LogToText();
+            var consoleLogger = new Logging.LogToConsole();
+
+            Test(consoleLogger);
+            Test(textLogger);
+        }
+
+        public static void Test(ILog logger)
+        {
+            logger.LogOpenProgram();
             try
             {
-                int b = 0;
-                int i = 10 / b;
-                Console.WriteLine("Finshed");
+                Doktor.DoctorAsks();
             }
             catch (Exception e)
             {
-                textLogger.LogCrash(e);
+                logger.LogCrash(e);
             }
-            
-            textLogger.LogCloseProgram();
-            
+
+            logger.LogCloseProgram();
         }
     }
 }

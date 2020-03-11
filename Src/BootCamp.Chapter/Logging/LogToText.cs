@@ -2,13 +2,12 @@
 
 namespace BootCamp.Chapter.Logging
 {
-    class LogToText : Log, IConnection
+    class LogToText : Log
     {
 
-        private readonly string _connection = @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Logging\Log.txt";
         public string GetConnection()
         {
-            return _connection;
+            return @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Logging\Log.txt";
         }
         public override void LogNow(string text)
         {
