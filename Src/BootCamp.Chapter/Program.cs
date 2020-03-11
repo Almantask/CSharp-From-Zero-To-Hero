@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace BootCamp.Chapter
 {
@@ -7,7 +6,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var textLogger = new Logging.LogToText();
+            var textLogger = new Logging.LogToConsole();
             textLogger.LogOpenProgram();
             try
             {

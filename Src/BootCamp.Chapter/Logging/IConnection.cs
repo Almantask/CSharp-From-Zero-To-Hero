@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter.Logging
+﻿namespace BootCamp.Chapter.Logging
 {
     interface IConnection
     {
