@@ -22,10 +22,7 @@ namespace BootCamp.Chapter.Tests
             _player.AddItem(item);
             var items = _player.GetItems(item.GetName());
 
-            using (new AssertionScope())
-            {
-                items.Should().Contain(item);
-            }
+            items.Should().Contain(item);
         }
 
         [Fact]

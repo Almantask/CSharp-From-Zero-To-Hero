@@ -24,7 +24,7 @@ namespace BootCamp.Chapter.Tests
             var sword = new Item(ItemName, ItemPrice, 2);
             _shop.Add(sword);
 
-            _shop.GetItems().Should().Contain(sword);
+            _shop.Items.Should().Contain(sword);
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace BootCamp.Chapter.Tests
             _shop.Add(sword);
             _shop.Add(sword);
 
-            _shop.GetItems().Should().Contain(sword);
+            _shop.Items.Should().Contain(sword);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace BootCamp.Chapter.Tests
 
             _shop.Remove(ItemName);
             
-            _shop.GetItems().Should().NotContain(sword);
+            _shop.Items.Should().NotContain(sword);
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace BootCamp.Chapter.Tests
             using (new AssertionScope())
             {
                 itemSold.Should().Be(sword);
-                _shop.GetMoney().Should().Be(InitialShopMoney + itemSold.GetPrice());
+                _shop.Money.Should().Be(InitialShopMoney + itemSold.Price);
             }
         }
 
@@ -73,7 +73,7 @@ namespace BootCamp.Chapter.Tests
             using (new AssertionScope())
             {
                 baughtItemPrice.Should().Be(ItemPrice);
-                _shop.GetMoney().Should().Be(InitialShopMoney - baughtItemPrice);
+                _shop.Money.Should().Be(InitialShopMoney - baughtItemPrice);
             }
         }
 
@@ -89,7 +89,7 @@ namespace BootCamp.Chapter.Tests
             using (new AssertionScope())
             {
                 baughtItemPrice.Should().Be(0);
-                _shop.GetMoney().Should().Be(InitialShopMoney);
+                _shop.Money.Should().Be(InitialShopMoney);
             }
         }
     }
