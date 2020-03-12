@@ -8,5 +8,10 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
         }
+
+        public void LogError(string message)
+        {
+            Console.WriteLine($"Error encountered: {message}");
+        }
     }
 }

@@ -13,5 +13,12 @@ namespace BootCamp.Chapter
             logWriter.WriteLine(message);
             logWriter.Close();
         }
+
+        public void LogError(string message)
+        {
+            using StreamWriter logWriter = new StreamWriter(logFile, true);
+            logWriter.WriteLine($"Error encountered: {message}");
+            logWriter.Close();
+        }
     }
 }

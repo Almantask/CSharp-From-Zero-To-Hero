@@ -4,7 +4,6 @@
     {
         File,
         Console,
-        Error
     }
 
     public static class Logger
@@ -24,6 +23,25 @@
                 return;
             }
 
+            CheckTarket();
+
+            _logger.Log(message);
+        }
+
+        public static void LogError(string message)
+        {
+            if (!StringOps.IsStringValid(message))
+            {
+                return;
+            }
+
+            CheckTarket();
+
+            _logger.LogError(message);
+        }
+
+        private static void CheckTarket()
+        {
             if (_target == LogTarget.File)
             {
                 _logger = new FileLogger();
@@ -32,8 +50,6 @@
             {
                 _logger = new ConsoleLogger();
             }
-
-            _logger.Log(message);
         }
     }
 }
