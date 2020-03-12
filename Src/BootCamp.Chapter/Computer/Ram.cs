@@ -2,5 +2,6 @@
 {
     public class Ram
     {
+        public string Name { get; set; }
     }
 }

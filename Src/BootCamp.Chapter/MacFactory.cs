@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
     {
         public DesktopComputer Assemble()
         {
-            return new DesktopComputer();
+            return new Computer.Mac.MacDesktopComputer();
         }
     }
 }

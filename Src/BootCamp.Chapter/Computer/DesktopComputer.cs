@@ -1,50 +1,28 @@
 ﻿namespace BootCamp.Chapter.Computer
 {
-    public class DesktopComputer
+    public abstract class DesktopComputer
     {
         public DesktopComputer()
         {
-            _body = new Body();
-            _cpu = new Cpu();
-            _gpu = new Gpu();
-            _hard = new HardDisk();
-            _motherboard = new Motherboard();
-            _ram = new Ram();
-        }
-        private Body _body;
-        public Body GetBody()
-        {
-            return _body;
+            AssemblePC();
         }
 
-        private Ram _ram;
-        public Ram GetRam()
-        {
-            return _ram;
-        }
+        /// <summary>
+        /// Must Set the following items:
+        /// Body
+        /// Cpu
+        /// Gpu
+        /// HardDisk
+        /// Motherboard
+        /// Ram
+        /// </summary>
+        public abstract void AssemblePC();
 
-        private Cpu _cpu;
-        public Cpu GetCpu()
-        {
-            return _cpu;
-
-        }
-        private Gpu _gpu;
-        public Gpu GetGpu()
-        {
-            return _gpu;
-        }
-
-        private HardDisk _hard;
-        public HardDisk GetHard()
-        {
-            return _hard;
-        }
-
-        private Motherboard _motherboard;
-        public Motherboard GetMotherboard()
-        {
-            return _motherboard;
-        }
+        public Body Body { get; set; }
+        public Cpu Cpu { get; set; }
+        public Gpu Gpu { get; set; }
+        public HardDisk HardDisk { get; set; }
+        public Motherboard Motherboard { get; set; }
+        public Ram Ram { get; set; }
     }
 }

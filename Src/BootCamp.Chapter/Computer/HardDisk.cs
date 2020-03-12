@@ -2,5 +2,6 @@
 {
     public class HardDisk
     {
+        public string Name { get; set; }
     }
 }
