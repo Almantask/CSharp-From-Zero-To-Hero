@@ -1,18 +1,17 @@
 # C#: From Zero To Hero
-## Chapter 2. Homework 2: Inheritance
+## Chapter 3. Homework 1: Properties
 ### Intro
-Inheritance is a swiss army knife of OOP. It is a powerful tool to form strong relations between our **domain objects**.
-Using inheritance we can achieve generalization of other objects, reuse code and much more...
-However, with great power comes great responsibility. Inheritance should not be overused, exactly because it forms strong relations of our domain objects.
-It's hard to design clean inheritance, because it needs to be stable, purely additive and not too deep so we can maintain it easilly.
-Prefer composition over inheritance is a principle that should be followed in most cases,
-because it allows us to build more modular and less coupled code, with a price of some duplicate code.
+Property is not data- it's a function. It's just 1 or 2 methods for getting, setting a field value (or both).
+Property allows us cheap, fast encapsulation. It's cheap and fast, because it takes only {get;set;} to be written
+and here you go- encapsulation! Semantically it will look as if you are calling a public field (from outside), but
+you are still working with getter and setter methods. Practice this, for it is the most common way of exposing data in C#.
 
 ### Task
 Player has inventory where they store their items. They can buy and sell items to/from a shop.
 Shop sells/buys items. You can also just add and remove Item from a shop selection of merchandise.
 
 Do a shop simulator, where player can buy and sell different items from their inventory. You need to support selling all sorts of items: armour, chestpieces, weapons, armpieces...
+If you did already pass Chapter 2, you can clone that homework and just refactor this one so that it uses properties.
 
 #### Rules
 ##### Shop 
