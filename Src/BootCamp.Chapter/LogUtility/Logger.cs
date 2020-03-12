@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
             File.Delete(LogPath);
         }
 
-        private ILogger SetLogOption()
+        private ILogger GetLogOption()
         {
             return new ConsoleLogger();
             //return new FileLogger(LogPath);
@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
 
         public void Log(string msg)
         {
-            SetLogOption().Log(msg);
+            GetLogOption().Log(msg);
         }
     }
 }
