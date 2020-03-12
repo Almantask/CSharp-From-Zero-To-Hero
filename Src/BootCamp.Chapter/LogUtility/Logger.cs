@@ -14,8 +14,7 @@ namespace BootCamp.Chapter
 
         private ILogger GetLogOption()
         {
-            return new ConsoleLogger();
-            //return new FileLogger(LogPath);
+            return new ConsoleLogger(); //Use ConsoleLogger() or FileLogger(LogPath) method.
         }
 
         public void Log(string msg)
