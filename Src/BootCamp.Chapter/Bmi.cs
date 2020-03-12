@@ -11,24 +11,24 @@ namespace BootCamp.Chapter
 
         public static float Calculate(Person person)
         {
-            if (person.GetHeigth() <= 0 && person.GetWeight() <= 0)
+            if (person.Heigth <= 0 && person.Weight <= 0)
             {
                 Logger.Log($"{messageBmi}{Environment.NewLine}{messageWeight}{Environment.NewLine}{messageHeightLessZero}.");
                 return -1;
             }
-            else if (person.GetWeight() <= 0)
+            else if (person.Weight <= 0)
             {
                 Logger.Log($"{messageBmi}{Environment.NewLine}{messageWeight}.");
                 return -1;
             }
-            else if (person.GetHeigth() <= 0)
+            else if (person.Heigth <= 0)
             {
                 Logger.Log($"{messageBmi}{Environment.NewLine}{messageHeight}.");
                 return -1;
             }
             else
             {
-                return person.GetWeight() / (float)Math.Pow(person.GetHeigth(), 2);
+                return person.Weight / (float)Math.Pow(person.Heigth, 2);
             }
         }
     }
