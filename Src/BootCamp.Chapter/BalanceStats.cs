@@ -266,7 +266,7 @@ namespace BootCamp.Chapter
         {
             int count = balanceNames.Split(',').Length - 1;
             balanceNames = balanceNames.Remove(balanceNames.Length - 2);
-            string[] formatedBalanceNames = { "", "is", "person", "have" };
+            string[] formatedBalanceNames = { "", "is", "person", "has" };
             if (count == 1)
             {
                 formatedBalanceNames[0] = balanceNames;
@@ -291,7 +291,7 @@ namespace BootCamp.Chapter
             formatedBalanceNames[0] = sbNames.ToString();
             formatedBalanceNames[1] = "are";
             formatedBalanceNames[2] = "people";
-            formatedBalanceNames[3] = "has";
+            formatedBalanceNames[3] = "have";
             return formatedBalanceNames;
         }
 
