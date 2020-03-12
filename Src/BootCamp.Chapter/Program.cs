@@ -21,8 +21,8 @@ namespace BootCamp.Chapter
         {
             foreach (var person in people)
             {
-                Logger.Log($"{person.GetFirstName()} {person.GetLastName()} is {person.GetAge()} old,");
-                Logger.Log($"measures {person.GetHeigth()}m, weights {person.GetWeight()}Kg");
+                Logger.Log($"{person.FirstName} {person.LastName} is {person.Age} old,");
+                Logger.Log($"measures {person.Heigth}m, weights {person.Weight}Kg");
                 Logger.Log($"and has BMI of {Bmi.Calculate(person)}");
             }
         }

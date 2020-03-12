@@ -3,28 +3,18 @@
     public enum LogTarget
     {
         File,
-        Console
+        Console,
+        Error
     }
 
     public static class Logger
     {
         private static ILogger _logger;
-        private static LogTarget _target = LogTarget.Console;
-        private static string _message;
+        private static LogTarget _target;
 
         public static void SetTarget(LogTarget target)
         {
             _target = target;
-        }
-
-        public static void SetMessage(string message)
-        {
-            _message = message;
-        }
-
-        public static string GetMessage()
-        {
-            return _message;
         }
 
         public static void Log(string message)
@@ -36,14 +26,14 @@
 
             if (_target == LogTarget.File)
             {
-                _logger = new FileLogger(message);
+                _logger = new FileLogger();
             }
             else if (_target == LogTarget.Console)
             {
-                _logger = new ConsoleLogger(message);
+                _logger = new ConsoleLogger();
             }
 
-            _logger.Log();
+            _logger.Log(message);
         }
     }
 }
