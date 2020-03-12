@@ -17,10 +17,10 @@ namespace BootCamp.Chapter
                 return invalidMessage;
             }
 
-            float highestBalanceEver = HighestBalanceEver(peopleAndBalances);
-            string highestBalanceNames = BalanceNames(highestBalanceEver, peopleAndBalances);
+            float highestBalanceEver = GetHighestBalanceEver(peopleAndBalances);
+            string[] highestBalanceNames = FindBalanceNames(highestBalanceEver, peopleAndBalances, false);
 
-            return $"{highestBalanceNames} had the most money ever. {currencySymbol}{highestBalanceEver}.";
+            return $"{highestBalanceNames[0]} had the most money ever. {currencySymbol}{highestBalanceEver}.";
         }
 
         /// <summary>
@@ -36,13 +36,15 @@ namespace BootCamp.Chapter
             for (int i = 0; i < workingPeopleAndBalances.Length; i++)
             {
                 if (workingPeopleAndBalances[i].Length <= 2)
+                {
                     return invalidMessage;
+                }
             }
-            float biggestLossEver = GetLoss(workingPeopleAndBalances[0]);
+            float biggestLossEver = GetBiggestLoss(workingPeopleAndBalances[0]);
             string biggestLossNames = workingPeopleAndBalances[0][0];
             for (int i = 0; i < workingPeopleAndBalances.Length; i++)
             {
-                float loss = GetLoss(workingPeopleAndBalances[i]);
+                float loss = GetBiggestLoss(workingPeopleAndBalances[i]);
                 string name = workingPeopleAndBalances[i][0];
                 if (loss < biggestLossEver)
                 {
@@ -50,7 +52,7 @@ namespace BootCamp.Chapter
                     biggestLossNames = name;
                 }
             }
-            return $"{biggestLossNames} lost the most money. -{currencySymbol}{System.Math.Abs(biggestLossEver)}.";
+            return $"{biggestLossNames} lost the most money. {ConcatMoney(biggestLossEver)}.";
         }
 
         /// <summary>
@@ -63,21 +65,9 @@ namespace BootCamp.Chapter
                 return invalidMessage;
             }
 
-            string[][] workingBalances = ArrayifyBalances(peopleAndBalances);
-            int richestPerson = 0;
-            string message = $"{workingBalances[richestPerson][0]} is the richest person. {currencySymbol}{workingBalances[richestPerson][^1]}.";
-            if (workingBalances.Length == 1)
-            {
-                return message;
-            }
-            for (int i = 1; i < workingBalances.Length; i++)
-            {
-                if(float.Parse(workingBalances[i][^1]) > float.Parse(workingBalances[richestPerson][^1]))
-                {
-                    richestPerson = i;
-                }
-            }
-            return $"{workingBalances[richestPerson][0]} is the richest person. {currencySymbol}{workingBalances[richestPerson][^1]}.";
+            float highestCurrentBalance = GetHighestCurrentBalance(peopleAndBalances);
+            string[] richestPersons = FindBalanceNames(highestCurrentBalance, peopleAndBalances, true);
+            return $"{richestPersons[0]} {richestPersons[1]} the richest {richestPersons[2]}. {currencySymbol}{highestCurrentBalance}.";
         }
 
         /// <summary>
@@ -90,21 +80,9 @@ namespace BootCamp.Chapter
                 return invalidMessage;
             }
 
-            string[][] workingBalances = ArrayifyBalances(peopleAndBalances);
-            int poorestPerson = 0;
-            string message = $"{workingBalances[poorestPerson][0]} has the least money. {currencySymbol}{workingBalances[poorestPerson][^1]}.";
-            if (workingBalances.Length == 1)
-            {
-                return message;
-            }
-            for (int i = 1; i < workingBalances.Length; i++)
-            {
-                if (float.Parse(workingBalances[i][^1]) < float.Parse(workingBalances[poorestPerson][^1]))
-                {
-                    poorestPerson = i;
-                }
-            }
-            return $"{workingBalances[poorestPerson][0]} has the least money. {currencySymbol}{workingBalances[poorestPerson][^1]}.";
+            float lowestCurrentBalance = GetLowestCurrentBalance(peopleAndBalances);
+            string[] poorestPersons = FindBalanceNames(lowestCurrentBalance, peopleAndBalances, true);
+            return $"{poorestPersons[0]} {poorestPersons[3]} the least money. {ConcatMoney(lowestCurrentBalance)}.";
         }
 
         /// <summary>
@@ -134,7 +112,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Takes an array of strings and returns that array as floats.
         /// </summary>
-        public static float[] StringArrToFloatArr(string[] balances)
+        public static float[] ConvertStringArrToFloatArr(string[] balances)
         {
             int failLength = 0;
             float[] floatArr = new float[balances.Length];
@@ -165,7 +143,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Takes an array of floats and returns a single float of the highest value.
         /// </summary>
-        public static float HighestBalance(float[] balances)
+        public static float GetHighestBalance(float[] balances)
         {
             float highestBalance = balances[0];
             if (balances.Length == 0)
@@ -187,17 +165,17 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="peopleAndBalances"></param>
         /// <returns></returns>
-        public static float HighestBalanceEver(string[] peopleAndBalances)
+        public static float GetHighestBalanceEver(string[] peopleAndBalances)
         {
             string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
-            float highestBalanceEver = HighestBalance(StringArrToFloatArr(workingPeopleAndBalances[0][1..]));
+            float highestBalanceEver = GetHighestBalance(ConvertStringArrToFloatArr(workingPeopleAndBalances[0][1..]));
             if (workingPeopleAndBalances.Length == 1)
             {
                 return highestBalanceEver;
             }
             for (int i = 1 ; i < workingPeopleAndBalances.Length; i++)
             {
-                float balanceToTest = HighestBalance(StringArrToFloatArr(workingPeopleAndBalances[i][1..]));
+                float balanceToTest = GetHighestBalance(ConvertStringArrToFloatArr(workingPeopleAndBalances[i][1..]));
                 if (balanceToTest > highestBalanceEver)
                 {
                     highestBalanceEver = balanceToTest;
@@ -206,23 +184,66 @@ namespace BootCamp.Chapter
             return highestBalanceEver;
         }
 
+        public static float GetHighestCurrentBalance(string[] peopleAndBalances)
+        {
+            string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            float highestCurrentBalance = float.Parse(workingPeopleAndBalances[0][^1]);
+            if (workingPeopleAndBalances.Length == 1)
+            {
+                return highestCurrentBalance;
+            }
+            for (int i = 1; i < workingPeopleAndBalances.Length; i++)
+            {
+                float balanceToTest = float.Parse(workingPeopleAndBalances[i][^1]);
+                if (balanceToTest > highestCurrentBalance)
+                {
+                    highestCurrentBalance = balanceToTest;
+                }
+            }
+            return highestCurrentBalance;
+        }
+
+        public static float GetLowestCurrentBalance(string[] peopleAndBalances)
+        {
+            string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            float lowestCurrentBalance = float.Parse(workingPeopleAndBalances[0][^1]);
+            if (workingPeopleAndBalances.Length == 1)
+            {
+                return lowestCurrentBalance;
+            }
+            for (int i = 1; i < workingPeopleAndBalances.Length; i++)
+            {
+                float balanceToTest = float.Parse(workingPeopleAndBalances[i][^1]);
+                if (balanceToTest < lowestCurrentBalance)
+                {
+                    lowestCurrentBalance = balanceToTest;
+                }
+            }
+            return lowestCurrentBalance;
+        }
+
         /// <summary>
         /// Takes a balance then finds and returns all the names that share that balance
         /// </summary>
         /// <param name="balance"></param>
         /// <param name="peopleAndBalances"></param>
         /// <returns></returns>
-        public static string BalanceNames(float balance, string[]peopleAndBalances)
+        public static string[] FindBalanceNames(float balance, string[]peopleAndBalances, bool isCurrent)
         {
             string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
             string totalNames = "";
             for (int i = 0; i < workingPeopleAndBalances.Length; i++)
             {
-                float[] balances = StringArrToFloatArr(workingPeopleAndBalances[i][1..]);
+                float[] balances = ConvertStringArrToFloatArr(workingPeopleAndBalances[i][1..]);
                 bool isBalance = false;
-                foreach (var item in balances)
+                int isCurrentIndexShift = 0;
+                if (isCurrent)
                 {
-                    if (item == balance)
+                    isCurrentIndexShift = balances.Length - 1;
+                }
+                for (int j = 0 + isCurrentIndexShift; j < balances.Length; j++)
+                {
+                    if(balances[j] == balance)
                     {
                         isBalance = true;
                     }
@@ -232,8 +253,8 @@ namespace BootCamp.Chapter
                     totalNames += $"{workingPeopleAndBalances[i][0]}, ";
                 }
             }
-            totalNames = FormatBalanceNames(totalNames);
-            return totalNames;
+            string[] formatedNames = FormatBalanceNames(totalNames);
+            return formatedNames;
         }
 
         /// <summary>
@@ -241,32 +262,37 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="balanceNames"></param>
         /// <returns></returns>
-        public static string FormatBalanceNames(string balanceNames)
+        public static string[] FormatBalanceNames(string balanceNames)
         {
             int count = balanceNames.Split(',').Length - 1;
             balanceNames = balanceNames.Remove(balanceNames.Length - 2);
+            string[] formatedBalanceNames = { "", "is", "person", "have" };
             if (count == 1)
             {
-                return balanceNames;
+                formatedBalanceNames[0] = balanceNames;
+                return formatedBalanceNames;
             }
             string[] names = balanceNames.Split(',');
             StringBuilder sbNames = new StringBuilder(names[0]);
-            switch (count)
+            if (count == 2)
             {
-                case 2:
-                    sbNames.Append($" and{names[1]}");
-                    balanceNames = sbNames.ToString();
-                    return balanceNames;
-                default:
-                    for (int i = 1; i < names.Length - 1; i++)
-                    {
-                        sbNames.Append($",{names[i]}");
-                    }
-                    break;
+                sbNames.Append($" and{names[1]}");
+                formatedBalanceNames[0] = sbNames.ToString();
             }
+            else
+            {
+                for (int i = 1; i < names.Length - 1; i++)
+                {
+                    sbNames.Append($",{names[i]}");
+                }
+            }
+            
             sbNames.Append($" and{names[^1]}");
-            balanceNames = sbNames.ToString();
-            return balanceNames;
+            formatedBalanceNames[0] = sbNames.ToString();
+            formatedBalanceNames[1] = "are";
+            formatedBalanceNames[2] = "people";
+            formatedBalanceNames[3] = "has";
+            return formatedBalanceNames;
         }
 
         /// <summary>
@@ -274,9 +300,9 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="personAndBalance"></param>
         /// <returns></returns>
-        public static float GetLoss(string[] personAndBalance)
+        public static float GetBiggestLoss(string[] personAndBalance)
         {
-            float[] balance = StringArrToFloatArr(personAndBalance[1..]);
+            float[] balance = ConvertStringArrToFloatArr(personAndBalance[1..]);
             float loss = 0f;
             for (int i = 0; i < balance.Length - 1; i++)
             {
@@ -286,6 +312,18 @@ namespace BootCamp.Chapter
                 }
             }
             return loss;
+        }
+
+        public static string ConcatMoney(float balance)
+        {
+            if (balance < 0)
+            {
+                return $"-{currencySymbol}{System.Math.Abs(balance)}";
+            }
+            else
+            {
+                return $"{currencySymbol}{balance}";
+            }
         }
     }
 }
