@@ -44,27 +44,17 @@
             return newArray;
         }
 
-        public bool SearchItem(string name)
-        {
-            foreach (var item in _items)
-            {
-                if (item.GetName() == name)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         public void RemoveByName(string name)
         {
-            _items = RemoveByBame(name);
-        }
-
-        public Item[] RemoveByBame(string name)
-        {
-            var newArray = new Item[_items.Length + 1];
+            var newArray = new Item[_items.Length - 1];
+            if (_items == null)
+            {
+                newArray = _items; 
+            }
+            else
+            {
+                newArray = new Item[_items.Length - 1];
+            }
             var found = false;
             for (int i = 0; i < _items.Length; i++)
             {
@@ -84,26 +74,26 @@
                 }
             }
 
-            return newArray;
+            _items = newArray; 
         }
 
+        
         /// <summary>
         /// Removes item matching criteria by item.
         /// Does nothing if no such item exists
         /// </summary>
         public void RemoveItem(Item item)
         {
-            _items = RemoveFromArray(item);
-        }
-
-        public Item[] RemoveFromArray(Item item)
-        {
-            if (_items.Length == 0)
+            var newArray = new Item[0];
+            if (_items.Length == 0 )
             {
-                return _items;
+                newArray = _items;
             }
-
-            var newArray = new Item[_items.Length - 1];
+            else
+            {
+                newArray = new Item[_items.Length - 1];
+            }
+           
             var found = false;
             for (int i = 0; i < _items.Length - 1; i++)
             {
@@ -123,7 +113,9 @@
                 }
             }
 
-            return newArray;
+            _items = newArray; 
         }
+
+        
     }
 }

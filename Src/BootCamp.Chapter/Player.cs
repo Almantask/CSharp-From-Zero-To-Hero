@@ -29,6 +29,7 @@ namespace BootCamp.Chapter
         /// Player items. There can be multiple of items with same name.
         /// </summary>
         private Inventory _inventory;
+
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
@@ -36,7 +37,7 @@ namespace BootCamp.Chapter
 
         public Player()
         {
-            _inventory = new Inventory(); 
+            _inventory = new Inventory();
         }
 
         /// <summary>
@@ -52,12 +53,12 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
-            _inventory.AddItem(item); 
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-            _inventory.RemoveItem(item); 
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
@@ -66,128 +67,99 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return _inventory.GetItems(name); 
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
+
         // Player has equipment.
         // Various slots of equipment can be equiped and unequiped.
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+
+        private bool CheckForTotalWeight()
+        {
+            return _equipment.GetTotalWeight() > (30 + _strenght * 10);
+        }
+
         public void Equip(Headpiece head)
         {
+            if (!CheckForTotalWeight())
+            {
+                return;
+            }
 
+            _equipment.SetHead(head);
         }
 
         public void Equip(Chestpiece head)
         {
+            if (!CheckForTotalWeight())
+            {
+                return;
+            }
 
+            _equipment.SetChest(head);
         }
 
         public void Equip(Shoulderpiece head, bool isLeft)
         {
+            if (!CheckForTotalWeight())
+            {
+                return;
+            }
 
-        }
-
-        public void Equip(Legspiece head)
-        {
-
+            if (isLeft)
+            {
+                _equipment.SetLeftShoulder(head);
+            }
+            else
+            {
+                _equipment.SetRightShoulder(head);
+            }
         }
 
         public void Equip(Armpiece head, bool isLeft)
         {
+            if (!CheckForTotalWeight())
+            {
+                return;
+            }
 
+            if (isLeft)
+            {
+                _equipment.SetLeftArmp(head);
+            }
+            else
+            {
+                _equipment.SetRightArm(head);
+            }
         }
 
         public void Equip(Gloves head)
         {
-
-        }
-        #endregion
-
-        public void AddWeapon(Weapon weapon) 
-        {
-            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
-            {
-                return;   
-            }
-
-            _equipment.SetWeapon(weapon);
-        }
-
-        public void AddHeadPiece(Headpiece headpiece)
-        {
-            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            if (!CheckForTotalWeight())
             {
                 return;
             }
 
-            _equipment.SetHead(headpiece);
+            _equipment.SetGloves(head);
         }
 
-        public void AddChestPiece(Chestpiece chestpiece)
+        public void Equip(Legspiece legspiece)
         {
-            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
+            if (!CheckForTotalWeight())
             {
                 return;
             }
 
-            _equipment.SetChest(chestpiece);
+            _equipment.SetLeg(legspiece);
         }
 
-        public void AddArmPiece(Armpiece armpiece, bool isRight )
-        {
-            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
-            {
-                return;
-            }
 
-            if (isRight)
-            {
-                _equipment.SetRightArm(armpiece); 
-            }
-            else
-            {
-                _equipment.SetLeftArmp(armpiece); 
-            }
-        }
+        #endregion Extra challenge: Equipment
 
-        public void AddSchoulderPiece(Shoulderpiece shoulderpiece, bool isRight)
-        {
-            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
-            {
-                return;
-            }
 
-            if (isRight)
-            {
-                _equipment.SetRightShoulder(shoulderpiece); 
-            }
-            else
-            {
-                _equipment.SetLeftShoulder(shoulderpiece); 
-            }
-        }
-
-        public void AddLegPiece(Legspiece legspiece)
-        {
-            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
-            {
-                return;
-            }
-
-            _equipment.SetLeg(legspiece); 
-        }
-
-        public void AddGloves(Gloves gloves)
-        {
-            if (_equipment.GetTotalWeight() > (30 + _strenght * 10))
-            {
-                return;
-            }
-
-            _equipment.SetGloves(gloves); 
-        }
     }
 }

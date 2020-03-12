@@ -3,6 +3,7 @@
     public class Shop
     {
         private decimal _money;
+
         public decimal GetMoney()
         {
             return _money;
@@ -12,13 +13,13 @@
 
         public Shop()
         {
-            _inventory = new Inventory(); 
+            _inventory = new Inventory();
         }
 
         public Shop(decimal money)
         {
             _money = money;
-            _inventory = new Inventory(); 
+            _inventory = new Inventory();
         }
 
         public Item[] GetItems()
@@ -32,7 +33,7 @@
         /// </summary>
         public void Add(Item item)
         {
-            _inventory.AddItem(item); 
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -42,13 +43,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            var isAvaible = _inventory.SearchItem(name);
-            if (!isAvaible)
-            {
-                return; 
-            }
-
-            _inventory.RemoveByName(name); 
+            _inventory.RemoveByName(name);
         }
 
         /// <summary>
@@ -63,11 +58,11 @@
 
             if (price > _money)
             {
-                return 0; 
+                return 0;
             }
-           
-            _money -= price; 
-            return price;  
+
+            _money -= price;
+            return price;
         }
 
         /// <summary>
@@ -81,17 +76,9 @@
         /// </returns>
         public Item Sell(string item)
         {
-            var isAvaible = _inventory.SearchItem(item);
-            if (!isAvaible)
-            {
-                return null; 
-            }
-
-            var soldItem = _inventory.GetItems(item)[0];
+             var soldItem = _inventory.GetItems(item)[0];
             _money += soldItem.GetPrice();
-            return soldItem; 
-
- 
+            return soldItem;
         }
     }
 }
