@@ -2,19 +2,13 @@
 {
     public abstract class DesktopComputer
     {
-        public DesktopComputer()
+        protected DesktopComputer()
         {
             AssemblePC();
         }
 
         /// <summary>
-        /// Must Set the following items:
-        /// Body
-        /// Cpu
-        /// Gpu
-        /// HardDisk
-        /// Motherboard
-        /// Ram
+        /// Must Set the following items:Body, Cpu, Gpu, HardDisk, Motherboard, Ram.
         /// </summary>
         public abstract void AssemblePC();
 
