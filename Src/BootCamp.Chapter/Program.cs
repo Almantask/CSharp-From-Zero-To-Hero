@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var textLogger = new Logging.LogToText();
             var consoleLogger = new Logging.LogToConsole();
@@ -15,7 +15,8 @@ namespace BootCamp.Chapter
 
         public static void Test(ILog logger)
         {
-            logger.LogOpenProgram();
+            Console.WriteLine($"I will now start logging to {logger.Type()}.");
+            logger.LogWithTime("Start Time of program:");
             try
             {
                 Doktor.DoctorAsks();
@@ -25,7 +26,7 @@ namespace BootCamp.Chapter
                 logger.LogCrash(e);
             }
 
-            logger.LogCloseProgram();
+            logger.LogWithTime("End Time of program:");
         }
     }
 }

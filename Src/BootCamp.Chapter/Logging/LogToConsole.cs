@@ -8,5 +8,10 @@ namespace BootCamp.Chapter.Logging
         {
             Console.WriteLine(text);
         }
+
+        public override string Type()
+        {
+            return "Console";
+        }
     }
 }

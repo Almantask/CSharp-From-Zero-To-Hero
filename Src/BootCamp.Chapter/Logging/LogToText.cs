@@ -13,6 +13,10 @@ namespace BootCamp.Chapter.Logging
         {
             File.AppendAllText(GetConnection(), text + "\r\n");
         }
+        public override string Type()
+        {
+            return "Text";
+        }
     }
 
 }
