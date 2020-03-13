@@ -23,7 +23,8 @@ namespace BootCamp.Chapter
             }
             catch (Exception e)
             {
-                logger.LogCrash(e);
+                logger.LogNow($"Program Crashed Time: {DateTime.Now}\r\nReason: {e.Message}");
+
             }
 
             logger.LogWithTime("End Time of program:");
