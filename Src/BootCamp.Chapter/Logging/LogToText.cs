@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace BootCamp.Chapter.Logging
 {
@@ -11,7 +12,7 @@ namespace BootCamp.Chapter.Logging
         }
         public override void LogNow(string text)
         {
-            File.AppendAllText(GetConnection(), text + "\r\n");
+            File.AppendAllText(GetConnection(), $"{DateTime.Now}: {text}" + "\r\n");
         }
         public override string Type()
         {

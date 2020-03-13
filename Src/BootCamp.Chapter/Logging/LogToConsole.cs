@@ -6,7 +6,7 @@ namespace BootCamp.Chapter.Logging
     {
         public override void LogNow(string text)
         {
-            Console.WriteLine(text);
+            Console.WriteLine($"{DateTime.Now}: {text}");
         }
 
         public override string Type()
