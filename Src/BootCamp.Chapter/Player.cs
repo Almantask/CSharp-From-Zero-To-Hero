@@ -80,7 +80,7 @@ namespace BootCamp.Chapter
 
         private bool CheckForTotalWeight()
         {
-            return _equipment.GetTotalWeight() > (30 + _strenght * 10);
+            return _equipment.GetTotalWeight() > (baseCarryWeight + _strenght * 10);
         }
 
         public void Equip(Headpiece head)

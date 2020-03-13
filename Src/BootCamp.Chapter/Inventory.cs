@@ -46,7 +46,7 @@
 
         public void RemoveByName(string name)
         {
-            var newArray = new Item[_items.Length - 1];
+            Item[] newArray = null ;
             if (_items.Length == 0 )
             {
                 newArray = _items; 
@@ -84,7 +84,7 @@
         /// </summary>
         public void RemoveItem(Item item)
         {
-            var newArray = new Item[0];
+            Item[] newArray = null;
             if (_items.Length == 0 )
             {
                 newArray = _items;

@@ -2,7 +2,7 @@
 {
     public class Armor : Item
     {
-        float _defence;
+        readonly float  _defence;
         public float GetDefence()
         {
             return _defence;

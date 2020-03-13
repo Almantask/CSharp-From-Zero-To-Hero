@@ -2,7 +2,7 @@
 {
     public class Weapon : Item
     {
-        private float _damage;
+        private readonly float _damage;
         public float GetDamage()
         { 
             return _damage; 
