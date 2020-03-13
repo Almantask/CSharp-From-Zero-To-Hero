@@ -21,11 +21,7 @@ namespace BootCamp.Chapter
                 {
                     foreach (char letter in reader.ReadToEnd())
                     {
-                        if (letter == '_')
-                        {
-
-                        }
-                        else
+                        if (letter != '_')
                         {
                             cleanFile.Append(letter);
                         }
@@ -39,7 +35,7 @@ namespace BootCamp.Chapter
                 string[] splitLine = line.Split(',');
                 if (!Testers.IsThisAValidName(splitLine[0]) || !Testers.IsThisAValidBalance(line))
                 {
-                    throw new InvalidBalancesException();
+                    throw new InvalidBalancesException(Testers.WhatIsNotValid(line));
                 }
             }
 

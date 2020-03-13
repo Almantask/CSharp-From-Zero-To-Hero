@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -7,30 +6,30 @@ namespace BootCamp.Chapter
 
     public static class Checks
     {
+        const string nA = "N/A.";
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             if (Testers.IsThisStringArrayValid(peopleAndBalances))
             {
-                return "N/A.";
+                return nA;
             }
             StringBuilder poorestName = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
-            //TODO The body of the for loop could be refactored into a function (or a few) so that it is easier to skim through the bigger function.
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
+                string name = MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]);
+                decimal[] balance = MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]);
 
-                CheckIfThisPersonIsPoorer(account, i);
+                var account = new Account(name, balance);
+
+                IsMorePoor(account, i);
             }
 
             return MakeStuffWithInput.MakefullstringPoorestPeople(personCount, poorestName.ToString(), amount);
 
-
-
-            
-            void CheckIfThisPersonIsPoorer(Account account, int i)
+            void IsMorePoor(Account account, int i)
             {
                 if (i == 0) // first account to be added is alway's the poorest.
                 {
@@ -65,7 +64,7 @@ namespace BootCamp.Chapter
         {
             if (Testers.IsThisStringArrayValid(peopleAndBalances))
             {
-                return "N/A.";
+                return nA;
             }
             StringBuilder richestName = new StringBuilder();
             decimal amount = 0;
@@ -109,7 +108,7 @@ namespace BootCamp.Chapter
         {
             if (Testers.IsThisStringArrayValid(peopleAndBalances))
             {
-                return "N/A.";
+                return nA;
             }
             StringBuilder biggestLossName = new StringBuilder();
             decimal amount = 0;
@@ -158,7 +157,7 @@ namespace BootCamp.Chapter
         {
             if (Testers.IsThisStringArrayValid(peopleAndBalances))
             {
-                return "N/A.";
+                return nA;
             }
             StringBuilder richestName = new StringBuilder();
             decimal amount = 0;

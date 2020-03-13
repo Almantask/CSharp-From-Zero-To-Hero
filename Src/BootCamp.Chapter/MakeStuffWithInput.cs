@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -174,7 +173,8 @@ namespace BootCamp.Chapter
             bool IsThisHorizontal(int iHeight, int kWidth)
             {
                 // horizontal = height 0 !& width 0 !& width maxwidth || height max !& width 0 !& width maxwidth
-                if ((iHeight == 0 && !(kWidth == 0 || kWidth == width)) || (iHeight == height && !(kWidth == 0 || kWidth == width)))
+                if ((iHeight == 0 && !(kWidth == 0 || kWidth == width)) ||
+                    (iHeight == height && !(kWidth == 0 || kWidth == width)))
                 {
                     return true;
                 }
@@ -183,7 +183,8 @@ namespace BootCamp.Chapter
             bool IsThisVertical(int iHeight, int kWidth)
             {
                 // vertical oposite of horizontal
-                if ((kWidth == 0 && !(iHeight == 0 || iHeight == height)) || (kWidth == width && !(iHeight == 0 || iHeight == height)))
+                if ((kWidth == 0 && !(iHeight == 0 || iHeight == height)) ||
+                    (kWidth == width && !(iHeight == 0 || iHeight == height)))
                 {
                     return true;
                 }
@@ -203,7 +204,8 @@ namespace BootCamp.Chapter
                 int heightOfFirstTextLine = 1 + padding;
                 int textRow = iHeight - heightOfFirstTextLine;
 
-                if ((iHeight >= heightOfFirstTextLine && iHeight < heightOfFirstTextLine + numberOfTextLines) && (kWidth >= heightOfFirstTextLine && kWidth < heightOfFirstTextLine + splitmessage[textRow].Length))
+                if ((iHeight >= heightOfFirstTextLine && iHeight < heightOfFirstTextLine + numberOfTextLines) &&
+                    (kWidth >= heightOfFirstTextLine && kWidth < heightOfFirstTextLine + splitmessage[textRow].Length))
                 {
                     return true;
                 }
