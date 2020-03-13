@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg and his height is {height} cm. ");
 
             //BMI calculations
-            double bmi = weight * 703 / height / height;
+            double bmi = weight / height / height;
             Console.WriteLine("Your BMI is:" + bmi);
             //Code
         }
