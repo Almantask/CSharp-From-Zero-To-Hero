@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public interface ILog
     {

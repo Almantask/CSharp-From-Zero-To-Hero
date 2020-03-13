@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BootCamp.Chapter.Logging
+﻿namespace BootCamp.Chapter.Logging
 {
     abstract class Log : ILog
     {
