@@ -36,7 +36,7 @@
 
             return _balance[_balance.Length - 1];
         }
-        public bool MoreThan1Balance()
+        public bool IsLessThan2Balance()
         {
             return _balance.Length < 2;
         }

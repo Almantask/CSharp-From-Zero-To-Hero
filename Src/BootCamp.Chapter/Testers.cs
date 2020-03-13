@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
         {
             return (array == null || array.Length == 0);
         }
-        public static bool IsThisAValidName(string name)
+        public static void CheckForValidName(string name)
         {
             const string abc = " '-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             int nameLength = name.Length;
@@ -22,14 +22,13 @@ namespace BootCamp.Chapter
                 {
                     if (name[i] == '.' && i == nameLength -1)
                     {
-                        return true;
+                        return;
                     }
-                    return false;
+                    throw new InvalidBalancesException($"The name \"{name}\" Contains an invallid character.");
                 }
             }
-            return true;
         }
-        public static bool IsThisAValidBalance(string balance)
+        public static void CheckForValidBalance(string balance)
         {
             string[] splitLine = balance.Split(',');
             const string cash = "£€$  .1234567890-";
@@ -39,40 +38,10 @@ namespace BootCamp.Chapter
                 {
                     if (!cash.Contains(splitLine[i][letter]))
                     {
-                        return false;
+                        throw new InvalidBalancesException($"The balance \"{splitLine[i]}\" Contains an invallid character.");
                     }
                 }
             }
-            return true;
-        }
-        public static string WhatIsNotValid(string balance)
-        {
-            string[] splitLine = balance.Split(',');
-            const string cash = "£€$  .1234567890-";
-            const string abc = " '-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            int nameLength = splitLine[0].Length;
-            for (int i = 0; i < nameLength; i++)
-            {
-                if (!abc.Contains(splitLine[0][i]))
-                {
-                    if (splitLine[0][i] == '.' && i == nameLength - 1)
-                    {
-                        continue;
-                    }
-                    return $"{splitLine[0]} Contains a invallid character."; ;
-                }
-            }
-            for (int i = 1; i < splitLine.Length; i++)
-            {
-                for (int letter = 0; letter < splitLine[i].Length; letter++)
-                {
-                    if (!cash.Contains(splitLine[i][letter]))
-                    {
-                        return $"{splitLine[i]} Contains a invallid character.";
-                    }
-                }
-            }
-            return "nothing is wrong with this string.";
         }
     }
 }

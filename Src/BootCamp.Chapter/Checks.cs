@@ -13,47 +13,41 @@ namespace BootCamp.Chapter
             {
                 return nA;
             }
-            StringBuilder poorestName = new StringBuilder();
+            StringBuilder name = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                string name = MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]);
-                decimal[] balance = MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]);
-
-                var account = new Account(name, balance);
-
-                IsMorePoor(account, i);
+                IsMorePoor(AccountCreator(peopleAndBalances[i]), i);
             }
 
-            return MakeStuffWithInput.MakefullstringPoorestPeople(personCount, poorestName.ToString(), amount);
+            return MakeStuffWithInput.MakefullstringPoorestPeople(personCount, name.ToString(), amount);
 
             void IsMorePoor(Account account, int i)
             {
                 if (i == 0) // first account to be added is alway's the poorest.
                 {
-                    poorestName.Append(account.GetName());
+                    name.Append(account.GetName());
                     amount = account.CurrentBalance();
                 }
                 else if (amount == account.CurrentBalance()) // this account has the same balance as current.
                 {
                     if (personCount == 1) // the second account to be added
                     {
-                        poorestName.Append(" and " + account.GetName());
-                        personCount++;
+                        name.Append(" and " + account.GetName());
                     }
                     else // any others
                     {
-                        poorestName.Replace(" and ", ", ");
-                        poorestName.Append(" and " + account.GetName());
-                        personCount++;
+                        name.Replace(" and ", ", ");
+                        name.Append(" and " + account.GetName());
                     }
+                    personCount++;
                 }
                 else if (amount > account.CurrentBalance()) // this is now the poorest account.
                 {
-                    poorestName.Clear();
-                    poorestName.Append(account.GetName());
+                    name.Clear();
+                    name.Append(account.GetName());
                     amount = account.CurrentBalance();
                     personCount = 1;
                 }
@@ -66,43 +60,42 @@ namespace BootCamp.Chapter
             {
                 return nA;
             }
-            StringBuilder richestName = new StringBuilder();
+            StringBuilder name = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
+                Account account = AccountCreator(peopleAndBalances[i]);
 
                 if (i == 0)
                 {
-                    richestName.Append(account.GetName());
+                    name.Append(account.GetName());
                     amount = account.CurrentBalance();
                 }
                 else if (amount == account.CurrentBalance())
                 {
                     if (personCount == 1)
                     {
-                        richestName.Append(" and " + account.GetName());
-                        personCount++;
+                        name.Append(" and " + account.GetName());
                     }
                     else
                     {
-                        richestName.Replace(" and ", ", ");
-                        richestName.Append(" and " + account.GetName());
-                        personCount++;
+                        name.Replace(" and ", ", ");
+                        name.Append(" and " + account.GetName());
                     }
+                    personCount++;
                 }
                 else if (amount < account.CurrentBalance())
                 {
-                    richestName.Clear();
-                    richestName.Append(account.GetName());
+                    name.Clear();
+                    name.Append(account.GetName());
                     amount = account.CurrentBalance();
                     personCount = 1;
                 }
             }
 
-            return MakeStuffWithInput.MakefullstringRichestPeople(personCount, richestName.ToString(), amount);
+            return MakeStuffWithInput.MakefullstringRichestPeople(personCount, name.ToString(), amount);
         }
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
@@ -110,47 +103,46 @@ namespace BootCamp.Chapter
             {
                 return nA;
             }
-            StringBuilder biggestLossName = new StringBuilder();
+            StringBuilder name = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
+                Account account = AccountCreator(peopleAndBalances[i]);
 
-                if (account.MoreThan1Balance())
+                if (account.IsLessThan2Balance())
                 {
 
                 }
-                else if (biggestLossName.ToString() == "")
+                else if (name.ToString() == "")
                 {
-                    biggestLossName.Append(account.GetName());
+                    name.Append(account.GetName());
                     amount = account.BiggestLoss();
                 }
                 else if (amount == account.BiggestLoss())
                 {
                     if (personCount == 1)
                     {
-                        biggestLossName.Append(" and " + account.GetName());
-                        personCount++;
+                        name.Append(" and " + account.GetName());
                     }
                     else
                     {
-                        biggestLossName.Replace(" and ", ", ");
-                        biggestLossName.Append(" and " + account.GetName());
-                        personCount++;
+                        name.Replace(" and ", ", ");
+                        name.Append(" and " + account.GetName());
                     }
+                    personCount++;
                 }
                 else if (amount > account.BiggestLoss())
                 {
-                    biggestLossName.Clear();
-                    biggestLossName.Append(account.GetName());
+                    name.Clear();
+                    name.Append(account.GetName());
                     amount = account.BiggestLoss();
                     personCount = 1;
                 }
             }
 
-            return MakeStuffWithInput.MakefullstringBiggestLossPeople(biggestLossName.ToString(), amount);
+            return MakeStuffWithInput.MakefullstringBiggestLossPeople(name.ToString(), amount);
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
@@ -159,43 +151,42 @@ namespace BootCamp.Chapter
             {
                 return nA;
             }
-            StringBuilder richestName = new StringBuilder();
+            StringBuilder name = new StringBuilder();
             decimal amount = 0;
             int personCount = 1;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var account = new Account(MakeStuffWithInput.GetNameFromString(peopleAndBalances[i]), MakeStuffWithInput.GetBalanceFromString(peopleAndBalances[i]));
+                Account account = AccountCreator(peopleAndBalances[i]);
 
                 if (i == 0)
                 {
-                    richestName.Append(account.GetName());
+                    name.Append(account.GetName());
                     amount = account.HighestBalanceEver();
                 }
                 else if (amount == account.HighestBalanceEver())
                 {
                     if (personCount == 1)
                     {
-                        richestName.Append(" and " + account.GetName());
-                        personCount++;
+                        name.Append(" and " + account.GetName());
                     }
                     else
                     {
-                        richestName.Replace(" and ", ", ");
-                        richestName.Append(" and " + account.GetName());
-                        personCount++;
+                        name.Replace(" and ", ", ");
+                        name.Append(" and " + account.GetName());
                     }
+                    personCount++;
                 }
                 else if (amount < account.HighestBalanceEver())
                 {
-                    richestName.Clear();
-                    richestName.Append(account.GetName());
+                    name.Clear();
+                    name.Append(account.GetName());
                     amount = account.HighestBalanceEver();
                     personCount = 1;
                 }
             }
 
-            return MakeStuffWithInput.MakefullstringHighestBalanceEver(personCount, richestName.ToString(), amount);
+            return MakeStuffWithInput.MakefullstringHighestBalanceEver(personCount, name.ToString(), amount);
         }
 
         public static string Build(string message, in int padding)
@@ -210,6 +201,14 @@ namespace BootCamp.Chapter
         public static void Clean(string file, string outputFile)
         {
             CleanTheFile.Clean(file, outputFile);
+        }
+
+        private static Account AccountCreator(string peopleAndBalances)
+        {
+            string name = MakeStuffWithInput.GetNameFromString(peopleAndBalances);
+            decimal[] balance = MakeStuffWithInput.GetBalanceFromString(peopleAndBalances);
+
+            return new Account(name, balance);
         }
     }
 }

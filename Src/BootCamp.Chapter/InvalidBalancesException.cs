@@ -4,9 +4,18 @@ namespace BootCamp.Chapter
 {
     public class InvalidBalancesException : Exception
     {
-        public InvalidBalancesException(string message)
+        private string _Msg;
+        public InvalidBalancesException(string err)
         {
-            Console.WriteLine(message);
+            _Msg = err;
+        }
+        public override string Message
+        {
+            get
+            {
+                return _Msg;
+            }
+
         }
     }
 }
