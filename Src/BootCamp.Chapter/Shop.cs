@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         public List<Item> Items { get; set; }
 
         
-
+        // make a constructor 
         public Shop()
         {
            
