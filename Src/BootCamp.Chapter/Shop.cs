@@ -22,6 +22,7 @@
             _inventory = new Inventory();
         }
 
+        //test to look if  the chcks now will come up 
         public Item[] GetItems()
         {
             return _inventory.GetItems();
