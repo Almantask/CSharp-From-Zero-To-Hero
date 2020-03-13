@@ -8,7 +8,6 @@ namespace BootCamp.Chapter
         public List<Item> Items { get; set; }
 
         
-        // make a constructor 
         public Shop()
         {
            
@@ -19,11 +18,6 @@ namespace BootCamp.Chapter
         {
             Money = money;
             Items = new List<Item>();
-        }
-
-        public List<Item> GetItems()
-        {
-            return Items; 
         }
 
         /// <summary>
