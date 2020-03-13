@@ -1,65 +1,22 @@
 ﻿using BootCamp.Chapter.Items;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
     /// <summary>
-    /// Extra assignment. 
+    /// Extra assignment.
     /// </summary>
     public class Equipment
     {
-        private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
-        {
-
-        }
-
-        private Headpiece _head;
-        public void SetHead(Headpiece head)
-        {
-
-        }
-
-        private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
-        {
-
-        }
-
-        private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece should)
-        {
-
-        }
-
-        private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
-        {
-
-        }
-
-        private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
-        {
-
-        }
-
-        private Armpiece _leftArm;
-        public void SetLeftArmp(Armpiece arm)
-        {
-
-        }
-
-        private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
-        {
-
-        }
-
-        private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
-        {
-
-        }
+        public Weapon Weapon { get; set; }
+        public Headpiece HeadPiece { get; set; }
+        public Chestpiece ChestPiece { get; set; }
+        public Shoulderpiece LeftShoulderpiece { get; set; }
+        public Shoulderpiece RightShoulderpiece { get; set; }
+        public Legspiece Legspiece { get; set; }
+        public Armpiece LeftArmPiece { get; set; }
+        public Armpiece RightArmPiece { get; set; }
+        public Gloves Gloves { get; set; }
 
         /// <summary>
         /// Gets total weight of armour.
@@ -67,7 +24,15 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalWeight()
         {
-            return 0;
+            var items = new List<Item> { Weapon, HeadPiece, ChestPiece, LeftShoulderpiece, RightShoulderpiece, Legspiece, LeftArmPiece, RightArmPiece, Gloves };
+            var totalweight = 0f;
+
+            foreach (var item in items)
+            {
+                totalweight += item.Weight;
+            }
+
+            return totalweight;
         }
 
         /// <summary>
@@ -76,7 +41,15 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalDefense()
         {
-            return 0;
+            var items = new List<Armour> { HeadPiece, ChestPiece, LeftShoulderpiece, RightShoulderpiece, Legspiece, LeftArmPiece, RightArmPiece, Gloves };
+            var totaldefense = 0f;
+
+            foreach (var item in items)
+            {
+                totaldefense += item.Defence;
+            }
+
+            return totaldefense;
         }
 
         /// <summary>
@@ -85,7 +58,12 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalAttack()
         {
-            return 0;
+            if (Weapon == null)
+            {
+                return 0;
+            }
+
+            return Weapon.Damage;
         }
     }
 }

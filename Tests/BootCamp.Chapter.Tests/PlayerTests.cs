@@ -1,6 +1,5 @@
-﻿using System;
-using FluentAssertions;
-using FluentAssertions.Execution;
+﻿using FluentAssertions;
+using System;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -20,7 +19,7 @@ namespace BootCamp.Chapter.Tests
             var item = new Item("Potion", 20, 0.2f);
 
             _player.AddItem(item);
-            var items = _player.GetItems(item.Name;
+            var items = _player.GetItems(item.Name);
 
             items.Should().Contain(item);
         }
@@ -41,7 +40,7 @@ namespace BootCamp.Chapter.Tests
         public void RemoveItem_Given_Item_Does_Not_Exist_Ignores()
         {
             var item = new Item("Sword", 10, 5);
-            
+
             Action action = () => _player.Remove(item);
             action.Should().NotThrow();
         }

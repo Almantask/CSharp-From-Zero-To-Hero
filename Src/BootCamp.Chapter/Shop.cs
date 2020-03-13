@@ -1,28 +1,29 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
+        public decimal Money { get; set; }
+        public List<Item> Items { get; set; }
 
-        private Inventory _inventory;
+        
 
         public Shop()
         {
-
+           
+            Items = new List<Item>();
         }
 
         public Shop(decimal money)
         {
-            _money = money;
+            Money = money;
+            Items = new List<Item>();
         }
 
-        public Item[] GetItems()
+        public List<Item> GetItems()
         {
-            return _inventory.GetItems();
+            return Items; 
         }
 
         /// <summary>
@@ -31,6 +32,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            Items.Add(item); 
         }
 
         /// <summary>
@@ -40,6 +42,13 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (name == Items[i].Name)
+                {
+                    Items.Remove(Items[i]);
+                }
+            }
         }
 
         /// <summary>
@@ -50,7 +59,15 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            var price = item.Price;
+
+            if (price > Money)
+            {
+                return 0;
+            }
+
+            Money -= price;
+            return price;
         }
 
         /// <summary>
@@ -64,7 +81,16 @@
         /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            var soldItems = new List<Item>(); 
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (item == Items[i].Name)
+                {
+                    soldItems.Add(Items[i]); 
+                }
+            }
+            Money += soldItems[0].Price;
+            return soldItems[0];
         }
     }
 }
