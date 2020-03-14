@@ -7,59 +7,15 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
-        private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
-        {
-
-        }
-
-        private Headpiece _head;
-        public void SetHead(Headpiece head)
-        {
-
-        }
-
-        private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
-        {
-
-        }
-
-        private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece should)
-        {
-
-        }
-
-        private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
-        {
-
-        }
-
-        private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
-        {
-
-        }
-
-        private Armpiece _leftArm;
-        public void SetLeftArmp(Armpiece arm)
-        {
-
-        }
-
-        private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
-        {
-
-        }
-
-        private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
-        {
-
-        }
+        public Weapon Weapon { get; set; }
+        public Headpiece Head { get; set; }
+        public Chestpiece Chest { get; set; }
+        public Shoulderpiece LeftShoulder { get; set; }
+        public Shoulderpiece RightShoulder { get; set; }
+        public Legspiece Legs { get; set; }
+        public Armpiece LeftArm { get; set; }
+        public Armpiece RightArm { get; set; }
+        public Gloves Gloves { get; set; }
 
         /// <summary>
         /// Gets total weight of armour.
@@ -67,6 +23,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalWeight()
         {
+
             return 0;
         }
 
