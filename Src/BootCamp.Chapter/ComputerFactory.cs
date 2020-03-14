@@ -4,22 +4,19 @@ namespace BootCamp.Chapter
 {
     public abstract class ComputerFactory
     {
-        protected readonly Body _body;
-        protected readonly Motherboard _motherboard;
-        protected readonly HardDisk _hard;
-        protected readonly Cpu _cpu;
-        protected readonly Gpu _gpu;
-        protected readonly Ram _ram;
+        protected Body _body;
+        protected Ram _ram;
+        protected Cpu _cpu;
+        protected Gpu _gpu;
+        protected HardDisk _hard;
+        protected Motherboard _motherboard;
 
-        protected ComputerFactory()
-        {
-            _body = new Body();
-            _motherboard = new Motherboard();
-            _hard = new HardDisk();
-            _cpu = new Cpu();
-            _gpu = new Gpu();
-            _ram = new Ram();
-        }
+        public abstract void InstallBody();
+        public abstract void InstallRam();
+        public abstract void InstallCpu();
+        public abstract void InstallGpu();
+        public abstract void InstallHardDisk();
+        public abstract void InstallMotherboard();
 
         public abstract DesktopComputer Assemble();
     }
