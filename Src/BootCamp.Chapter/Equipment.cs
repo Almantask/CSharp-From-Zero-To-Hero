@@ -23,7 +23,6 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalWeight()
         {
-
             return 0;
         }
 

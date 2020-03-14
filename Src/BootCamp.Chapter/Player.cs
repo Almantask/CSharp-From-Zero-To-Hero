@@ -63,48 +63,62 @@ namespace BootCamp.Chapter
         /// </summary>
         private const int baseCarryWeight = 30;
 
-        private string _name;
-        private int _hp;
+        private int Name { get; set; }
+        private int Hp { get; set; }
 
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
         /// </summary>
-        private int _strenght;
+        private int Strenght { get; set; }
 
 
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
-        private Equipment _equipment;
+        private Equipment Equipment { get; set; }
 
         public void Equip(Headpiece head)
         {
-
+            Equipment.Head = head;
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Chestpiece chest)
         {
-
+            Equipment.Chest = chest;
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                Equipment.LeftShoulder = shoulder;
+            }
+            else
+            {
+                Equipment.RightShoulder = shoulder;
+            }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Legspiece legs)
         {
-
+            Equipment.Legs = legs;
         }
 
-        public void Equip(Armpiece head, bool isLeft)
+        public void Equip(Armpiece arm, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                Equipment.LeftArm = arm;
+            }
+            else
+            {
+                Equipment.RightArm = arm;
+            }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Gloves gloves)
         {
-
+            Equipment.Gloves = gloves;
         }
         #endregion
     }
