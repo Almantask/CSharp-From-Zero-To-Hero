@@ -3,15 +3,19 @@
     public class Item
     {
         private string _name;
+        public string Name
+        {
+            get => _name;
+        }
         public string GetName()
         {
             return _name;
         }
 
         private decimal _price;
-        public decimal GetPrice()
+        public decimal Price
         {
-            return _price;
+            get => _price;
         }
 
         private float _weight;

@@ -1,71 +1,43 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Inventory
     {
-        private Item[] _items;
-        public Item[] GetItems()
+        private List<Item> _items;
+        public List<Item> Items
         {
-            return _items;
+            get => _items;
         }
 
         public Inventory()
         {
-            _items = new Item[0];
+            _items = new List<Item>();
         }
 
-        public Item[] GetItems(string name)
+        public List<Item> GetItems(string name)
         {
-            var numberOfMatchName = GetMatchingNamesCount(name);
-            if (numberOfMatchName == 0)
-            {
-                return new Item[0];
-            }
-
-            var tempItems = new Item[numberOfMatchName];
-            var i = 0;
+            var tempItems = new List<Item>();
 
             foreach (var item in _items)
             {
-                if (item.GetName() == name)
+                if (item.Name == name)
                 {
-                    tempItems[i++] = item;
+                    tempItems.Add(item);
                 }
             }
 
             return tempItems;
         }
 
-        private int GetMatchingNamesCount(string name)
-        {
-            var matchName = 0;
-
-            foreach (var item in _items)
-            {
-                if (item.GetName() == name)
-                {
-                    matchName++;
-                }
-            }
-
-            return matchName;
-        }
-
         public void AddItem(Item item)
         {
-            var tempItems = new Item[_items.Length + 1];
-
-            for (var i = 0; i < _items.Length; i++)
-            {
-                tempItems[i] = _items[i];
-            }
-
-            tempItems[_items.Length] = item;
-            _items = tempItems;
+            _items.Add(item);
         }
 
         public void RemoveItem(Item item)
         {
-            RemoveItem(item.GetName());
+            _items.Remove(item);
         }
 
         /// <summary>
@@ -74,38 +46,13 @@
         /// </summary>
         public void RemoveItem(string name)
         {
-            int removeNumber = GetRemoveCount(name);
-
-            if (removeNumber > 0)
+            for(var i = 0; i < _items.Count; i++)
             {
-                var tempItems = new Item[_items.Length - removeNumber];
-                var i = 0;
-
-                foreach (var item in _items)
+                if (_items[i].Name == name)
                 {
-                    if (item.GetName() != name)
-                    {
-                        tempItems[i++] = item;
-                    }
-                }
-
-                _items = tempItems;
-            }
-        }
-
-        private int GetRemoveCount(string name)
-        {
-            var removeNumber = 0;
-
-            foreach (var item in _items)
-            {
-                if (item.GetName() == name)
-                {
-                    removeNumber++;
+                    _items.RemoveAt(i);
                 }
             }
-
-            return removeNumber;
         }
     }
 }
