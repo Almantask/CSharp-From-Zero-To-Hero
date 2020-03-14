@@ -7,6 +7,7 @@ namespace BootCamp.Chapter
     public static class Checks
     {
         const string nA = "N/A.";
+        const string and = " and ";
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             if (Testers.IsThisStringArrayValid(peopleAndBalances))
@@ -33,16 +34,7 @@ namespace BootCamp.Chapter
                 }
                 else if (amount == account.CurrentBalance()) // this account has the same balance as current.
                 {
-                    if (personCount == 1) // the second account to be added
-                    {
-                        name.Append(" and " + account.GetName());
-                    }
-                    else // any others
-                    {
-                        name.Replace(" and ", ", ");
-                        name.Append(" and " + account.GetName());
-                    }
-                    personCount++;
+                    personCount = AddPersonToExising(name, personCount, account);
                 }
                 else if (amount > account.CurrentBalance()) // this is now the poorest account.
                 {
@@ -75,16 +67,7 @@ namespace BootCamp.Chapter
                 }
                 else if (amount == account.CurrentBalance())
                 {
-                    if (personCount == 1)
-                    {
-                        name.Append(" and " + account.GetName());
-                    }
-                    else
-                    {
-                        name.Replace(" and ", ", ");
-                        name.Append(" and " + account.GetName());
-                    }
-                    personCount++;
+                    personCount = AddPersonToExising(name, personCount, account);
                 }
                 else if (amount < account.CurrentBalance())
                 {
@@ -122,16 +105,7 @@ namespace BootCamp.Chapter
                 }
                 else if (amount == account.BiggestLoss())
                 {
-                    if (personCount == 1)
-                    {
-                        name.Append(" and " + account.GetName());
-                    }
-                    else
-                    {
-                        name.Replace(" and ", ", ");
-                        name.Append(" and " + account.GetName());
-                    }
-                    personCount++;
+                    personCount = AddPersonToExising(name, personCount, account);
                 }
                 else if (amount > account.BiggestLoss())
                 {
@@ -166,16 +140,7 @@ namespace BootCamp.Chapter
                 }
                 else if (amount == account.HighestBalanceEver())
                 {
-                    if (personCount == 1)
-                    {
-                        name.Append(" and " + account.GetName());
-                    }
-                    else
-                    {
-                        name.Replace(" and ", ", ");
-                        name.Append(" and " + account.GetName());
-                    }
-                    personCount++;
+                    personCount = AddPersonToExising(name, personCount, account);
                 }
                 else if (amount < account.HighestBalanceEver())
                 {
@@ -187,6 +152,20 @@ namespace BootCamp.Chapter
             }
 
             return MakeStuffWithInput.MakefullstringHighestBalanceEver(personCount, name.ToString(), amount);
+        }
+
+        private static int AddPersonToExising(StringBuilder name, int personCount, Account account)
+        {
+            if (personCount == 1)
+            {
+                name.Append(and + account.GetName());
+            }
+            else
+            {
+                name.Replace(and, ", ");
+                name.Append(and + account.GetName());
+            }
+            return personCount + 1;
         }
 
         public static string Build(string message, in int padding)

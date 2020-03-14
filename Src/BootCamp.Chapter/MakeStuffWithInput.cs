@@ -5,8 +5,6 @@ namespace BootCamp.Chapter
 {
     class MakeStuffWithInput
     {
-        //TODO Make the Stringmakers more streamlined so they can be called and read more easy. and modular.
-
         /// <summary>
         /// This Gives back a string that reads: people are/is the richest people. ¤ amount. 
         /// </summary>
@@ -36,6 +34,7 @@ namespace BootCamp.Chapter
         {
             if (numberOfPeople > 1)
             {
+                // this seems more readable and easy on the eyes than the other way? imo
                 if (amount < 0)
                 {
                     return people + " have the least money. -¤" + Math.Abs(amount) + ".";
@@ -48,15 +47,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                if (amount < 0)
-                {
-                    return people + " has the least money. -¤" + Math.Abs(amount) + ".";
-                }
-                else
-                {
-                    return people + " has the least money. ¤" + amount + ".";
-                }
-
+                return amount < 0 ? people + " has the least money. -¤" + Math.Abs(amount) + "." : people + " has the least money. ¤" + amount + ".";
             }
         }
         /// <summary>
