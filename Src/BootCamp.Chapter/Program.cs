@@ -25,7 +25,9 @@ namespace BootCamp.Chapter
                 Age = 50
             };
 
-            RefTest(ref personGood.Age);
+            // Error
+            //RefTest(ref personGood.Age);
+            // Ok
             RefTest(ref personBad.Age);
         }
 
