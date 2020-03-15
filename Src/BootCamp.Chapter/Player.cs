@@ -77,7 +77,7 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
-        private bool CanEquipNewItemt(Item currentEquipedItem, Item newItemToEquip)
+        private bool CanEquipNewItem(Item currentEquipedItem, Item newItemToEquip)
         {
             if (currentEquipedItem == null)
             {
@@ -89,7 +89,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Headpiece headPiece)
         {
-            if (!CanEquipNewItemt(_equipment.HeadPiece, headPiece))
+            if (!CanEquipNewItem(_equipment.HeadPiece, headPiece))
             {
                 return;
             }
@@ -99,7 +99,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Chestpiece chestPiece)
         {
-            if (!CanEquipNewItemt(_equipment.HeadPiece, chestPiece))
+            if (!CanEquipNewItem(_equipment.ChestPiece, chestPiece))
             {
                 return;
             }
@@ -111,7 +111,7 @@ namespace BootCamp.Chapter
         {
             if (isLeft)
             {
-                if (!CanEquipNewItemt(_equipment.LeftShoulderpiece, shoulderpiece))
+                if (!CanEquipNewItem(_equipment.LeftShoulderpiece, shoulderpiece))
                 {
                     return;
                 }
@@ -120,7 +120,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                if (!CanEquipNewItemt(_equipment.RightShoulderpiece, shoulderpiece))
+                if (!CanEquipNewItem(_equipment.RightShoulderpiece, shoulderpiece))
                 {
                     return;
                 }
@@ -133,7 +133,7 @@ namespace BootCamp.Chapter
         {
             if (isLeft)
             {
-                if (!CanEquipNewItemt(_equipment.RightArmPiece, armpiece))
+                if (!CanEquipNewItem(_equipment.LeftArmPiece, armpiece))
                 {
                     return;
                 }
@@ -142,7 +142,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                if (!CanEquipNewItemt(_equipment.RightArmPiece, armpiece))
+                if (!CanEquipNewItem(_equipment.RightArmPiece, armpiece))
                 {
                     return;
                 }
@@ -152,7 +152,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Gloves gloves)
         {
-            if (!CanEquipNewItemt(_equipment.Gloves, gloves))
+            if (!CanEquipNewItem(_equipment.Gloves, gloves))
             {
                 return;
             }
@@ -162,7 +162,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Legspiece legspiece)
         {
-            if (!CanEquipNewItemt(_equipment.Legspiece, legspiece))
+            if (!CanEquipNewItem(_equipment.Legspiece, legspiece))
             {
                 return;
             }
