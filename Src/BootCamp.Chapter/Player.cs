@@ -41,8 +41,7 @@ namespace BootCamp.Chapter
         public Player()
         {
             _inventory = new Inventory();
-            // Items = new List<Item>();
-            _equipment = new Equipment();
+           _equipment = new Equipment();
         }
 
         /// <summary>
@@ -68,16 +67,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public List<Item> GetItems(string name)
         {
-            var foundItems = new List<Item>();
-            for (int i = 0; i < _inventory.Items.Count; i++)
-            {
-                if (name == _inventory.Items[i].Name)
-                {
-                    foundItems.Add(_inventory.Items[i]);
-                }
-            }
-
-            return foundItems;
+           return  _inventory.GetItems(name); 
         }
 
         #region Extra challenge: Equipment
@@ -87,14 +77,19 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
-        private bool CheckForTotalWeight(Item currentEquipedItem, Item newItemToEquip)
+        private bool CanEquipNewItemt(Item currentEquipedItem, Item newItemToEquip)
         {
-            return currentEquipedItem.Weight + newItemToEquip.Weight < (baseCarryWeight + _strenght * 10);
+            if (currentEquipedItem == null)
+            {
+                return _equipment.GetTotalWeight() + newItemToEquip.Weight < (baseCarryWeight + _strenght * 10);
+            }
+            
+            return _equipment.GetTotalWeight() - currentEquipedItem.Weight + newItemToEquip.Weight < (baseCarryWeight + _strenght * 10);
         }
 
         public void Equip(Headpiece headPiece)
         {
-            if (!CheckForTotalWeight(Items[0], headPiece))
+            if (!CanEquipNewItemt(_equipment.HeadPiece, headPiece))
             {
                 return;
             }
@@ -104,7 +99,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Chestpiece chestPiece)
         {
-            if (!CheckForTotalWeight(Items[0], chestPiece))
+            if (!CanEquipNewItemt(_equipment.HeadPiece, chestPiece))
             {
                 return;
             }
@@ -114,41 +109,50 @@ namespace BootCamp.Chapter
 
         public void Equip(Shoulderpiece shoulderpiece, bool isLeft)
         {
-            if (!CheckForTotalWeight(Items[0], shoulderpiece))
-            {
-                return;
-            }
-
             if (isLeft)
             {
+                if (!CanEquipNewItemt(_equipment.LeftShoulderpiece, shoulderpiece))
+                {
+                    return;
+                }
+
                 _equipment.LeftShoulderpiece = shoulderpiece;
             }
             else
             {
+                if (!CanEquipNewItemt(_equipment.RightShoulderpiece, shoulderpiece))
+                {
+                    return;
+                }
+
                 _equipment.RightShoulderpiece = shoulderpiece;
             }
         }
 
         public void Equip(Armpiece armpiece, bool isLeft)
         {
-            if (!CheckForTotalWeight(Items[0], armpiece))
-            {
-                return;
-            }
-
             if (isLeft)
             {
+                if (!CanEquipNewItemt(_equipment.RightArmPiece, armpiece))
+                {
+                    return;
+                }
+
                 _equipment.LeftArmPiece = armpiece;
             }
             else
             {
+                if (!CanEquipNewItemt(_equipment.RightArmPiece, armpiece))
+                {
+                    return;
+                }
                 _equipment.RightArmPiece = armpiece;
             }
         }
 
         public void Equip(Gloves gloves)
         {
-            if (!CheckForTotalWeight(Items[0], gloves))
+            if (!CanEquipNewItemt(_equipment.Gloves, gloves))
             {
                 return;
             }
@@ -158,7 +162,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Legspiece legspiece)
         {
-            if (!CheckForTotalWeight(Items[0], legspiece))
+            if (!CanEquipNewItemt(_equipment.Legspiece, legspiece))
             {
                 return;
             }

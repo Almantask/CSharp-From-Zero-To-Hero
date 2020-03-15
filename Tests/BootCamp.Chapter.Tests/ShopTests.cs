@@ -1,5 +1,6 @@
 using FluentAssertions;
 using FluentAssertions.Execution;
+using System.Collections.Generic;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -10,12 +11,14 @@ namespace BootCamp.Chapter.Tests
         private const string ItemName = "Shortsword";
         private const decimal ItemPrice = 10;
         private const decimal InitialShopMoney = 10;
+        
 
         private Shop _shop;
 
         public ShopTests()
         {
             _shop = new Shop(InitialShopMoney);
+            
         }
 
         [Fact]

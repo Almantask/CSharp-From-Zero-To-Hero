@@ -5,17 +5,21 @@ namespace BootCamp.Chapter
     public class Shop
     {
         public decimal Money { get; set; }
-        public List<Item> Items { get; set; }
+        public Inventory _inventory;
+        public List<Item> Items
+        {
+            get => _inventory.Items; 
+        }
 
         public Shop()
         {
-            Items = new List<Item>();
+            _inventory = new Inventory(); 
         }
 
         public Shop(decimal money)
         {
             Money = money;
-            Items = new List<Item>();
+            _inventory = new Inventory(); 
         }
 
         /// <summary>
@@ -24,7 +28,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public void Add(Item item)
         {
-            Items.Add(item);
+            _inventory.AddItem(item); 
         }
 
         /// <summary>
@@ -34,13 +38,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            for (int i = 0; i < Items.Count; i++)
-            {
-                if (name == Items[i].Name)
-                {
-                    Items.Remove(Items[i]);
-                }
-            }
+            _inventory.RemoveByName(name); 
         }
 
         /// <summary>
@@ -73,12 +71,12 @@ namespace BootCamp.Chapter
         /// </returns>
         public Item Sell(string item)
         {
-            for (int i = 0; i < Items.Count; i++)
+            for (int i = 0; i < _inventory.Items.Count ;  i++)
             {
-                if (item == Items[i].Name)
+                if (item == _inventory.Items[i].Name)
                 {
-                    Money += Items[i].Price;
-                    return Items[i];
+                    Money +=  _inventory.Items[i].Price;
+                    return _inventory.Items[i];
                 }
             }
             return null;
