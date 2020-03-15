@@ -4,11 +4,6 @@
     {
         public string Name { get; private set; }
 
-        public string GetName()
-        {
-            return Name;
-        }
-
         public decimal Price { get; private set; }
 
         private float _weight;
