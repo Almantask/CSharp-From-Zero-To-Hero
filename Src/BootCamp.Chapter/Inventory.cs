@@ -4,22 +4,18 @@ namespace BootCamp.Chapter
 {
     public class Inventory
     {
-        private List<Item> _items;
-        public List<Item> Items
-        {
-            get => _items;
-        }
+        public List<Item> Items { get; private set; }
 
         public Inventory()
         {
-            _items = new List<Item>();
+            Items = new List<Item>();
         }
 
         public List<Item> GetItems(string name)
         {
             var tempItems = new List<Item>();
 
-            foreach (var item in _items)
+            foreach (var item in Items)
             {
                 if (item.Name == name)
                 {
@@ -32,12 +28,12 @@ namespace BootCamp.Chapter
 
         public void AddItem(Item item)
         {
-            _items.Add(item);
+            Items.Add(item);
         }
 
         public void RemoveItem(Item item)
         {
-            _items.Remove(item);
+            Items.Remove(item);
         }
 
         /// <summary>
@@ -46,11 +42,11 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(string name)
         {
-            for(var i = 0; i < _items.Count; i++)
+            for(var i = 0; i < Items.Count; i++)
             {
-                if (_items[i].Name == name)
+                if (Items[i].Name == name)
                 {
-                    _items.RemoveAt(i);
+                    Items.RemoveAt(i);
                 }
             }
         }

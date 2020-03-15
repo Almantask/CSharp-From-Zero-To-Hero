@@ -4,11 +4,7 @@ namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private decimal _money;
-        public decimal Money
-        {
-            get => _money;
-        }
+        public decimal Money { get; private set; }
 
         private Inventory _inventory;
 
@@ -19,7 +15,7 @@ namespace BootCamp.Chapter
 
         public Shop(decimal money) : this()
         {
-            _money = money;
+            Money = money;
         }
 
         public List<Item> Items
@@ -54,11 +50,11 @@ namespace BootCamp.Chapter
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            if (_money - item.Price < 0)
+            if (Money - item.Price < 0)
             {
                 return 0;
             }
-            _money -= item.Price;
+            Money -= item.Price;
             return item.Price;
         }
 
@@ -77,7 +73,7 @@ namespace BootCamp.Chapter
             {
                 if (merchandise.Name == item)
                 {
-                    _money += merchandise.Price;
+                    Money += merchandise.Price;
                     return merchandise;
                 }
             }

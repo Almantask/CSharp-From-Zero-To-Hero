@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{3E67C921-D341-42FB-9934-B03C05A28BEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7559227A-AC63-40F9-B43A-BF1D3CB352D6}"
-	ProjectSection(SolutionItems) = preProject
-		Src\BootCamp.Chapter\Item.cs = Src\BootCamp.Chapter\Item.cs
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootCamp.Chapter", "Src\BootCamp.Chapter\BootCamp.Chapter.csproj", "{AD4B9DF0-A466-44FE-ADB8-D16BE20E6A37}"
 EndProject
