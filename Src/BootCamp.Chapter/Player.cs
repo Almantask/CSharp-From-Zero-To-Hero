@@ -1,4 +1,5 @@
-﻿using BootCamp.Chapter.Items;
+﻿using System.Collections.Generic;
+using BootCamp.Chapter.Items;
 
 namespace BootCamp.Chapter
 {
@@ -17,25 +18,27 @@ namespace BootCamp.Chapter
         /// </summary>
         private const int baseCarryWeight = 30;
 
-        private string _name;
-        private int _hp;
+        public string Name { get; }
+        public int Hp { get; private set; }
 
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
         /// </summary>
-        private int _strenght;
+        public int Strength { get; private set; }
 
         /// <summary>
         /// Player items. There can be multiple of items with same name.
         /// </summary>
-        private Inventory _inventory;
+        private readonly Inventory _inventory;
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
-        private Equipment _equipment;
+        private readonly Equipment _equipment;
 
         public Player()
         {
+            _inventory = new Inventory();
+            _equipment = new Equipment();
         }
 
         /// <summary>
@@ -51,20 +54,21 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
         /// Gets items with matching name.
         /// </summary>
         /// <param name="name"></param>
-        public Item[] GetItems(string name)
+        public List<Item> GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
@@ -75,32 +79,46 @@ namespace BootCamp.Chapter
         // Implement equiping logic and total defense/attack calculation.
         public void Equip(Headpiece head)
         {
-
+            _equipment.Head = head;
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Chestpiece chest)
         {
 
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                _equipment.LeftShoulder = shoulder;
+            }
+            else
+            {
+                _equipment.RightShoulder = shoulder;
+            }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Legspiece legs)
         {
-
+            _equipment.Legs = legs;
         }
 
-        public void Equip(Armpiece head, bool isLeft)
+        public void Equip(Armpiece arms, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                _equipment.LeftArm = arms;
+            }
+            else
+            {
+                _equipment.RightArm = arms;
+            }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Gloves gloves)
         {
-
+            _equipment.Gloves = gloves;
         }
         #endregion
     }

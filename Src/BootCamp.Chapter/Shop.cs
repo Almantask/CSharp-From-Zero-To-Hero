@@ -1,29 +1,27 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+using BootCamp.Chapter.Items;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
+        public decimal Money { get; private set; }
 
         private Inventory _inventory;
 
         public Shop()
         {
-
+            Money = 0;
+            _inventory = new Inventory();
         }
 
         public Shop(decimal money)
         {
-            _money = money;
+            Money = money;
+            _inventory = new Inventory();
         }
 
-        public Item[] GetItems()
-        {
-            return _inventory.GetItems();
-        }
+        public List<Item> Items { get => _inventory.GetItems(); }
 
         /// <summary>
         /// Adds item to the stock.
@@ -31,6 +29,8 @@
         /// </summary>
         public void Add(Item item)
         {
+            var items = _inventory.GetItems(item.Name);
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,6 +40,10 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            var itemsToRemove = _inventory.GetItems(name);
+
+            // there should be no duplicates in a shop inventory, so it will return a singleton
+            _inventory.RemoveItem(itemsToRemove[0]);
         }
 
         /// <summary>
@@ -50,6 +54,12 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
+            var price = item.Price;
+            if (price <= Money)
+            {
+                Money -= price;
+                return price;
+            }
             return 0;
         }
 
@@ -64,7 +74,18 @@
         /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            var itemList = _inventory.GetItems(item);
+
+            if (itemList.Count == 0)
+            {
+                return null;
+            }
+
+            // itemList should be a singleton since a shop can't contain multiple items of the same name
+            var itemToSell = itemList[0];
+
+            Money += itemToSell.Price;
+            return itemToSell;
         }
     }
 }

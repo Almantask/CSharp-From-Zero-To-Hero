@@ -1,3 +1,4 @@
+using BootCamp.Chapter.Items;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;

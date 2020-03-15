@@ -7,59 +7,23 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
-        private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
-        {
+        public Weapon Weapon { get; set; }
 
-        }
+        public Headpiece Head { get; set; }
 
-        private Headpiece _head;
-        public void SetHead(Headpiece head)
-        {
+        public Chestpiece Chest { get; set;  }
+        
+        public Shoulderpiece LeftShoulder { get; set; }
 
-        }
+        public Shoulderpiece RightShoulder { get; set; }
 
-        private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
-        {
+        public Legspiece Legs { get; set; }
 
-        }
+        public Armpiece LeftArm { get; set; }
+        
+        public Armpiece RightArm { get; set; }
 
-        private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece should)
-        {
-
-        }
-
-        private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
-        {
-
-        }
-
-        private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
-        {
-
-        }
-
-        private Armpiece _leftArm;
-        public void SetLeftArmp(Armpiece arm)
-        {
-
-        }
-
-        private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
-        {
-
-        }
-
-        private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
-        {
-
-        }
+        public Gloves Gloves { get; set; }
 
         /// <summary>
         /// Gets total weight of armour.
@@ -67,7 +31,30 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalWeight()
         {
-            return 0;
+            var equipped = new Item[]
+            {
+                Weapon,
+                Head,
+                Chest,
+                LeftShoulder,
+                RightShoulder,
+                Legs,
+                LeftArm,
+                RightArm,
+                Gloves
+            };
+
+            float weight = 0f;
+
+            foreach (Item item in equipped)
+            {
+                if (item != null)
+                {
+                    weight += item.Weight;
+                }
+            }
+            
+            return weight;
         }
 
         /// <summary>
@@ -76,7 +63,29 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalDefense()
         {
-            return 0;
+            var equipped = new Armor[]
+            {
+                Head,
+                Chest,
+                LeftShoulder,
+                RightShoulder,
+                Legs,
+                LeftArm,
+                RightArm,
+                Gloves
+            };
+
+            float defense = 0f;
+
+            foreach (Armor armor in equipped)
+            {
+                if (armor != null)
+                {
+                    defense += armor.Defence;
+                }
+            }
+
+            return defense;
         }
 
         /// <summary>
@@ -85,7 +94,11 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalAttack()
         {
-            return 0;
+            if (Weapon == null)
+            {
+                return 0;
+            }
+            return Weapon.Attack;
         }
     }
 }
