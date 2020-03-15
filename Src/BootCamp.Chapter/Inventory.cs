@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
 
         public Inventory()
         {
-            //Items = new List<Item>(); 
+            Items = new List<Item>();
         }
 
         public List<Item> GetItems(string name)

@@ -41,25 +41,25 @@ namespace BootCamp.Chapter
         public Player()
         {
             _inventory = new Inventory();
-            Items = new List<Item>(); 
+            // Items = new List<Item>();
+            _equipment = new Equipment();
         }
 
         /// <summary>
         /// Gets all items from player's inventory
         /// </summary>
-        
 
         /// <summary>
         /// Adds item to player's inventory
         /// </summary>
         public void AddItem(Item item)
         {
-            Items.Add(item); 
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-            Items.Remove(item); 
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
@@ -68,16 +68,16 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public List<Item> GetItems(string name)
         {
-            var foundItems = new List<Item>(); 
-            for (int i = 0; i < Items.Count; i++)
+            var foundItems = new List<Item>();
+            for (int i = 0; i < _inventory.Items.Count; i++)
             {
-                if (name == Items[i].Name)
+                if (name == _inventory.Items[i].Name)
                 {
-                    foundItems.Add(Items[i]); 
+                    foundItems.Add(_inventory.Items[i]);
                 }
             }
 
-            return foundItems; 
+            return foundItems;
         }
 
         #region Extra challenge: Equipment
@@ -87,83 +87,83 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
-        private bool CheckForTotalWeight()
+        private bool CheckForTotalWeight(Item currentEquipedItem, Item newItemToEquip)
         {
-            return _equipment.GetTotalWeight() > (baseCarryWeight + _strenght * 10);
+            return currentEquipedItem.Weight + newItemToEquip.Weight < (baseCarryWeight + _strenght * 10);
         }
 
-        public void Equip(Headpiece head)
+        public void Equip(Headpiece headPiece)
         {
-            if (!CheckForTotalWeight())
+            if (!CheckForTotalWeight(Items[0], headPiece))
             {
                 return;
             }
 
-            _equipment.HeadPiece = head;
+            _equipment.HeadPiece = headPiece;
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Chestpiece chestPiece)
         {
-            if (!CheckForTotalWeight())
+            if (!CheckForTotalWeight(Items[0], chestPiece))
             {
                 return;
             }
 
-            _equipment.ChestPiece = head;
+            _equipment.ChestPiece = chestPiece;
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Shoulderpiece shoulderpiece, bool isLeft)
         {
-            if (!CheckForTotalWeight())
-            {
-                return;
-            }
-
-            if (isLeft)
-            {
-                _equipment.LeftShoulderpiece = head;
-            }
-            else
-            {
-                _equipment.RightShoulderpiece = head;
-            }
-        }
-
-        public void Equip(Armpiece head, bool isLeft)
-        {
-            if (!CheckForTotalWeight())
+            if (!CheckForTotalWeight(Items[0], shoulderpiece))
             {
                 return;
             }
 
             if (isLeft)
             {
-                _equipment.LeftArmPiece = head;
+                _equipment.LeftShoulderpiece = shoulderpiece;
             }
             else
             {
-                _equipment.RightArmPiece = head;
+                _equipment.RightShoulderpiece = shoulderpiece;
             }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Armpiece armpiece, bool isLeft)
         {
-            if (!CheckForTotalWeight())
+            if (!CheckForTotalWeight(Items[0], armpiece))
             {
                 return;
             }
 
-            _equipment.Gloves = head;
+            if (isLeft)
+            {
+                _equipment.LeftArmPiece = armpiece;
+            }
+            else
+            {
+                _equipment.RightArmPiece = armpiece;
+            }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Gloves gloves)
         {
-            if (!CheckForTotalWeight())
+            if (!CheckForTotalWeight(Items[0], gloves))
             {
                 return;
             }
 
-            _equipment.Legspiece = head;
+            _equipment.Gloves = gloves;
+        }
+
+        public void Equip(Legspiece legspiece)
+        {
+            if (!CheckForTotalWeight(Items[0], legspiece))
+            {
+                return;
+            }
+
+            _equipment.Legspiece = legspiece;
 
             #endregion Extra challenge: Equipment
         }

@@ -7,10 +7,8 @@ namespace BootCamp.Chapter
         public decimal Money { get; set; }
         public List<Item> Items { get; set; }
 
-        
         public Shop()
         {
-           
             Items = new List<Item>();
         }
 
@@ -26,7 +24,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public void Add(Item item)
         {
-            Items.Add(item); 
+            Items.Add(item);
         }
 
         /// <summary>
@@ -75,16 +73,15 @@ namespace BootCamp.Chapter
         /// </returns>
         public Item Sell(string item)
         {
-            var soldItems = new List<Item>(); 
             for (int i = 0; i < Items.Count; i++)
             {
                 if (item == Items[i].Name)
                 {
-                    soldItems.Add(Items[i]); 
+                    Money += Items[i].Price;
+                    return Items[i];
                 }
             }
-            Money += soldItems[0].Price;
-            return soldItems[0];
+            return null;
         }
     }
 }
