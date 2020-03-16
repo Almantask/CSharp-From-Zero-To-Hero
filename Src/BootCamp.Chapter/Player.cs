@@ -18,7 +18,7 @@ namespace BootCamp.Chapter
         /// </summary>
         private const int baseCarryWeight = 30;
 
-        public string Name { get; }
+        public string Name { get; private set; }
         public int Hp { get; private set; }
 
         /// <summary>
@@ -77,48 +77,116 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+        private float EquipCapacity { get { return baseCarryWeight + 10 * Strength; } }
         public void Equip(Headpiece head)
         {
-            _equipment.Head = head;
+            var weightIfEquipped = WeightIfAdded(head) ;
+            if (_equipment.Head != null)
+            {
+                weightIfEquipped -= _equipment.Head.Weight; 
+            }
+            if (weightIfEquipped <= EquipCapacity)
+            {
+                _equipment.Head = head;
+            }
         }
 
         public void Equip(Chestpiece chest)
         {
-
+            var weightIfEquipped = WeightIfAdded(chest);
+            if (_equipment.Chest != null)
+            {
+                weightIfEquipped -= _equipment.Chest.Weight;
+            }
+            if (weightIfEquipped <= EquipCapacity)
+            {
+                _equipment.Chest = chest;
+            }
         }
 
         public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
+            var weightIfEquipped = WeightIfAdded(shoulder);
             if (isLeft)
             {
-                _equipment.LeftShoulder = shoulder;
+                if (_equipment.LeftShoulder != null)
+                {
+                    weightIfEquipped -= _equipment.LeftShoulder.Weight;
+                }
+                if (weightIfEquipped <= EquipCapacity)
+                {
+                    _equipment.LeftShoulder = shoulder;
+                }
             }
             else
             {
-                _equipment.RightShoulder = shoulder;
+                if (_equipment.RightShoulder != null)
+                {
+                    weightIfEquipped -= _equipment.RightShoulder.Weight;
+                }
+                if (weightIfEquipped <= EquipCapacity)
+                {
+                    _equipment.RightShoulder = shoulder;
+                }
             }
         }
 
         public void Equip(Legspiece legs)
         {
-            _equipment.Legs = legs;
+            var weightIfEquipped = WeightIfAdded(legs);
+            if (_equipment.Legs != null)
+            {
+                weightIfEquipped -= _equipment.Legs.Weight;
+            }
+            if (weightIfEquipped <= EquipCapacity)
+            {
+                _equipment.Legs = legs;
+            }
         }
 
         public void Equip(Armpiece arms, bool isLeft)
         {
+            var weightIfEquipped = WeightIfAdded(arms);
             if (isLeft)
             {
-                _equipment.LeftArm = arms;
+                if (_equipment.LeftArm != null)
+                {
+                    weightIfEquipped -= _equipment.LeftArm.Weight;
+                }
+                if (weightIfEquipped <= EquipCapacity)
+                {
+                    _equipment.LeftArm = arms;
+                }
             }
             else
             {
-                _equipment.RightArm = arms;
+                if (_equipment.RightArm != null)
+                {
+                    weightIfEquipped -= _equipment.RightArm.Weight;
+                }
+                if (weightIfEquipped <= EquipCapacity)
+                {
+                    _equipment.RightArm = arms;
+                }
             }
         }
 
         public void Equip(Gloves gloves)
         {
-            _equipment.Gloves = gloves;
+            var weightIfEquipped = WeightIfAdded(gloves);
+            if (_equipment.Gloves != null)
+            {
+                weightIfEquipped -= _equipment.Gloves.Weight;
+            }
+            if (weightIfEquipped <= EquipCapacity)
+            {
+                _equipment.Gloves = gloves;
+            }
+        }
+
+        float WeightIfAdded(Item item)
+        {
+            return _equipment.GetTotalWeight() + item.Weight;
         }
         #endregion
     }

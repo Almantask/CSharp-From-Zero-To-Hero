@@ -5,28 +5,22 @@ namespace BootCamp.Chapter
 {
     public class Inventory
     {
-        private List<Item> _items;
-
-        public List<Item> GetItems()
-        {
-            return new List<Item>(_items);
-        }
+        public List<Item> Items { get; private set; }
 
         public Inventory()
         {
-            _items = new List<Item>();
+            Items = new List<Item>();
         }
 
         public List<Item> GetItems(string name)
         {
-            var items = GetItems();
             var filteredItems = new List<Item>();
 
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < Items.Count; i++)
             {
-                if (items[i].Name == name)
+                if (Items[i].Name == name)
                 {
-                    filteredItems.Add(items[i]);
+                    filteredItems.Add(Items[i]);
                 }
             }
             return filteredItems;
@@ -34,7 +28,7 @@ namespace BootCamp.Chapter
 
         public void AddItem(Item item)
         {
-            _items.Add(item);
+            Items.Add(item);
         }
 
         /// <summary>
@@ -43,7 +37,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(Item item)
         {
-            _items.Remove(item);
+            Items.Remove(item);
         }
     }
 }

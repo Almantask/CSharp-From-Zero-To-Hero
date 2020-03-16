@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
             _inventory = new Inventory();
         }
 
-        public List<Item> Items { get => _inventory.GetItems(); }
+        public List<Item> Items { get => _inventory.Items; }
 
         /// <summary>
         /// Adds item to the stock.
@@ -30,7 +30,10 @@ namespace BootCamp.Chapter
         public void Add(Item item)
         {
             var items = _inventory.GetItems(item.Name);
-            _inventory.AddItem(item);
+            if (items.Count == 0)
+            {
+                _inventory.AddItem(item);
+            }
         }
 
         /// <summary>
