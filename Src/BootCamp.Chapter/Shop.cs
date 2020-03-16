@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
             _inventory = new Inventory();
         }
 
-        public List<Item> Items { get => _inventory.Items; }
+        public List<Item> Items { get => _inventory._items; }
 
         /// <summary>
         /// Adds item to the stock.
