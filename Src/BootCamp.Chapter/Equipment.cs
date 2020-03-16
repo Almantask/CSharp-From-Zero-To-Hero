@@ -81,6 +81,11 @@ namespace BootCamp.Chapter
 
             foreach (var item in items)
             {
+                if (item == null)
+                {
+                    continue;
+                }
+
                 totalweight += item.GetWeight();
             }
 
@@ -100,7 +105,6 @@ namespace BootCamp.Chapter
             {
                 if (item == null)
                 {
-                    totaldefense += 0;
                     continue;
                 }
 
