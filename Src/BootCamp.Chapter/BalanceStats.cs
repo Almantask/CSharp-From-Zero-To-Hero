@@ -32,7 +32,7 @@ namespace BootCamp.Chapter
             {
                 return invalidMessage;
             }
-            string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            string[][] workingPeopleAndBalances = ReturnJaggedArray(peopleAndBalances);
             for (int i = 0; i < workingPeopleAndBalances.Length; i++)
             {
                 if (workingPeopleAndBalances[i].Length <= 2)
@@ -88,7 +88,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Takes an array of strings and returns a jagged array with each string on ", ".
         /// </summary>
-        public static string[][] ArrayifyBalances(string[] peopleAndBalances)
+        public static string[][] ReturnJaggedArray(string[] peopleAndBalances)
         {
             string[][] parsedBalances = new string[peopleAndBalances.Length][];
 
@@ -167,7 +167,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static float GetHighestBalanceEver(string[] peopleAndBalances)
         {
-            string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            string[][] workingPeopleAndBalances = ReturnJaggedArray(peopleAndBalances);
             float highestBalanceEver = GetHighestBalance(ConvertStringArrToFloatArr(workingPeopleAndBalances[0][1..]));
             if (workingPeopleAndBalances.Length == 1)
             {
@@ -186,7 +186,7 @@ namespace BootCamp.Chapter
 
         public static float GetHighestCurrentBalance(string[] peopleAndBalances)
         {
-            string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            string[][] workingPeopleAndBalances = ReturnJaggedArray(peopleAndBalances);
             float highestCurrentBalance = float.Parse(workingPeopleAndBalances[0][^1]);
             if (workingPeopleAndBalances.Length == 1)
             {
@@ -205,7 +205,7 @@ namespace BootCamp.Chapter
 
         public static float GetLowestCurrentBalance(string[] peopleAndBalances)
         {
-            string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            string[][] workingPeopleAndBalances = ReturnJaggedArray(peopleAndBalances);
             float lowestCurrentBalance = float.Parse(workingPeopleAndBalances[0][^1]);
             if (workingPeopleAndBalances.Length == 1)
             {
@@ -230,7 +230,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static string[] FindBalanceNames(float balance, string[]peopleAndBalances, bool isCurrent)
         {
-            string[][] workingPeopleAndBalances = ArrayifyBalances(peopleAndBalances);
+            string[][] workingPeopleAndBalances = ReturnJaggedArray(peopleAndBalances);
             string totalNames = "";
             for (int i = 0; i < workingPeopleAndBalances.Length; i++)
             {

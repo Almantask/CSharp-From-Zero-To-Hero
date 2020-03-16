@@ -44,24 +44,12 @@ namespace BootCamp.Chapter
             string[] splitMessage = message.Split(new string[] { System.Environment.NewLine }, System.StringSplitOptions.None);
             StringBuilder sb = new StringBuilder();
             int longStringIndex = LongestStringIndex(splitMessage);
-            
-            sb.Append("+").Append('-', splitMessage[longStringIndex].Length + padding*2).AppendLine("+");
-            for(int i = 0; i < padding; i++)
-            {
-                sb.Append("|").Append(' ', splitMessage[longStringIndex].Length + padding*2).AppendLine("|");
-            }
-            for(int i = 0; i < splitMessage.Length; i++)
-            {
-                sb.Append("|").Append(' ', padding).Append(splitMessage[i]);
-                sb.Append(' ', splitMessage[longStringIndex].Length - splitMessage[i].Length);
-                sb.Append(' ', padding).AppendLine("|");
-            }
-            for (int i = 0; i < padding; i++)
-            {
-                sb.Append("|").Append(' ', splitMessage[longStringIndex].Length + padding*2).AppendLine("|");
-            }
-            sb.Append("+").Append('-', splitMessage[longStringIndex].Length + padding*2).AppendLine("+");
 
+            sb = BuildTopOrBottom(sb, splitMessage[longStringIndex].Length + padding * 2);
+            sb = BuildInnerPadding(sb, splitMessage[longStringIndex].Length + padding * 2, padding);
+            sb = BuildInnerMessage(sb, splitMessage, longStringIndex, padding);
+            sb = BuildInnerPadding(sb, splitMessage[longStringIndex].Length + padding * 2, padding);
+            sb = BuildTopOrBottom(sb, splitMessage[longStringIndex].Length + padding * 2);
             return sb.ToString();
         }
         public static int LongestStringIndex(string[] message)
@@ -81,6 +69,31 @@ namespace BootCamp.Chapter
                 }
             }
             return index;
+        }
+        
+        public static StringBuilder BuildTopOrBottom(StringBuilder sb, int padding)
+        {
+            return sb.Append("+").Append('-', padding).AppendLine("+");
+        }
+
+        public static StringBuilder BuildInnerPadding(StringBuilder sb, int innerPadding, int padding)
+        {
+            for (int i = 0; i < padding; i++)
+            {
+                sb.Append("|").Append(' ', innerPadding).AppendLine("|");
+            }
+            return sb;
+        }
+
+        public static StringBuilder BuildInnerMessage(StringBuilder sb, string[] splitMessage, int longStringIndex,int padding)
+        {
+            for (int i = 0; i < splitMessage.Length; i++)
+            {
+                sb.Append("|").Append(' ', padding).Append(splitMessage[i]);
+                sb.Append(' ', splitMessage[longStringIndex].Length - splitMessage[i].Length);
+                sb.Append(' ', padding).AppendLine("|");
+            }
+            return sb;
         }
     }
 }
