@@ -77,10 +77,25 @@ namespace BootCamp.Chapter
 
         private static Person InputData()
         {
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.WriteLine("May I have your name");
             var name = Console.ReadLine();
             Console.WriteLine("May I have your password");
-            var input = Console.ReadLine();
+            string input = "";
+            ConsoleKeyInfo key; 
+            do
+            {
+                key = Console.ReadKey(true); 
+                if (key.Key != ConsoleKey.Enter)
+                {
+                    input += key.KeyChar;
+                    Console.Write("\u263A");
+                    Console.Write(" ");
+                }
+                 
+
+            } while (key.Key != ConsoleKey.Enter);
+            
             var person = new Person(name, input);
             return person;
         }
