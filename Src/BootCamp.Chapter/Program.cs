@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
+            CredentialsManager.Demo();
         }
     }
 }
