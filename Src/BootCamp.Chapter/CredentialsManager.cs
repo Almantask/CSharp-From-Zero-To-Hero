@@ -45,13 +45,13 @@ namespace BootCamp.Chapter
             var isValidLogin = false;
             var data = File.ReadAllText(@"Database/user.txt");
             var fileData = data.Split($"{Environment.NewLine}");
-            var personData = InputData();
-            string encodedPassWord = ConvertToUnicode(personData);
+            var input = InputData();
+            bool isValidInput = TryParse(input, out Person personData);
             for (int i = 0; i < 1; i++)
             {
                 var person = fileData[i];
                 var splitted = person.Split(";");
-                if (splitted[1] == encodedPassWord & splitted[0] == personData.Name)
+                if (splitted[1] == personData.Password & splitted[0] == personData.Name)
                 {
                     isValidLogin = true;
                 }
@@ -60,22 +60,40 @@ namespace BootCamp.Chapter
             Console.WriteLine(isValidLogin);
         }
 
-        private static string ConvertToUnicode(Person personData)
+        private static bool TryParse(string input, out Person person)
         {
-            var password = Encoding.Unicode.GetBytes(personData.Password);
+            person = new Person(); 
+            if (String.IsNullOrEmpty(input))
+            {
+                return false; 
+            }
+
+            var parts = input.Split(" "); 
+
+            if (parts.Length != 2)
+            {
+                return false; 
+            }
+
+
+            var name = parts[0]; 
+            var password = Encoding.Unicode.GetBytes(parts[1]);
             var encodedPassWord = Encoding.Unicode.GetString(password);
-            return encodedPassWord;
+
+            person = new Person(name, encodedPassWord);
+
+            return true;  
         }
 
         private static void Register()
         {
             var personData = InputData();
-            string encodedPassWord = ConvertToUnicode(personData);
-            var output = $"{personData.Name};{encodedPassWord}{Environment.NewLine}";
+            bool isValidInput = TryParse(personData, out Person person);
+            var output = $"{person.Name};{person.Password}{Environment.NewLine}";
             File.AppendAllText(@"Database/user.txt", output);
         }
 
-        private static Person InputData()
+        private static String InputData()
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.WriteLine("May I have your name");
@@ -96,8 +114,7 @@ namespace BootCamp.Chapter
 
             } while (key.Key != ConsoleKey.Enter);
             
-            var person = new Person(name, input);
-            return person;
+            return $"{name} {input}"; 
         }
     }
 }
