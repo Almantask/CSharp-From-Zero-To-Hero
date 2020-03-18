@@ -17,17 +17,15 @@ namespace BootCamp.Chapter
             }
         }
 
-        public bool Register()
+        public void Register()
         {
             if (RegisterUser())
             {
-                Console.WriteLine("You have successfully registered your credentials.");
-                return true;
+                Console.WriteLine("You have successfully registered.\n");
             }
             else
             {
-                Console.WriteLine("Registration failed.  User already exists.");
-                return false;
+                Console.WriteLine("Sorry, your registration was unsuccessful.  The username is already taken.\n");
             }
         }
 
@@ -58,14 +56,12 @@ namespace BootCamp.Chapter
 
             if (AuthenticateUser(user))
             {
-                Console.WriteLine("You have sucessfuly logged in.");
+                Console.WriteLine("You have sucessfuly logged in.\n");
                 return true;
             }
-            else
-            {
-                Console.WriteLine("You have failed to log in.");
-                return false;
-            }
+
+            Console.WriteLine("Sorry, we don't recognize you.\n");
+            return false;
         }
 
         private User GetNameAndPassword()
@@ -75,14 +71,14 @@ namespace BootCamp.Chapter
             do
             {
                 username = PromptText("Enter username:");
-            } while (string.IsNullOrEmpty(username));
+            } while (string.IsNullOrEmpty(username.Trim()));
 
             string password = "";
 
             do
             {
                 password = PromptPassword("Enter password:");
-            } while (string.IsNullOrEmpty(password));
+            } while (string.IsNullOrEmpty(password.Trim()));
 
             return new User(username, password);
         }
@@ -95,7 +91,9 @@ namespace BootCamp.Chapter
 
         private string PromptPassword(string message)
         {
-            const string Backspace = "\b\0\b\b\0\b";
+            const char BackspaceKey = '\b';
+            const char ReturnKey = '\r';
+            const string PasswordBackspace = "\b\0\b\b\0\b";
             const string SmileyFace = "\x263A ";
 
             Console.WriteLine(message);
@@ -108,11 +106,11 @@ namespace BootCamp.Chapter
 
                 switch (key.KeyChar)
                 {
-                    case '\r':
+                    case ReturnKey:
                         enter = false;
                         break;
-                    case '\b':
-                        Console.Write(Backspace);
+                    case BackspaceKey:
+                        Console.Write(PasswordBackspace);
 
                         if (password.Length > 0)
                         {
@@ -151,7 +149,7 @@ namespace BootCamp.Chapter
         {
             var storedUser = GetUser(user.UserName);
 
-            if (storedUser.UserName == null || storedUser.Password != new Cryptography().Encode(user.Password))
+            if (storedUser == null || storedUser.Password != new Cryptography().Encode(user.Password))
             {
                 return false;
             }
