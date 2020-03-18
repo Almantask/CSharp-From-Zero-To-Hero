@@ -47,6 +47,11 @@ namespace BootCamp.Chapter
             var fileData = data.Split($"{Environment.NewLine}");
             var input = InputData();
             bool isValidInput = TryParse(input, out Person personData);
+             if(!isValidInput)
+            {
+                Console.WriteLine("You entered invalid data");
+                return; 
+            }
             for (int i = 0; i < 1; i++)
             {
                 var person = fileData[i];
@@ -89,6 +94,11 @@ namespace BootCamp.Chapter
         {
             var personData = InputData();
             bool isValidInput = TryParse(personData, out Person person);
+            if(!isValidInput)
+            {
+                Console.WriteLine("You entered invalid data");
+                return; 
+            }
             var output = $"{person.Name};{person.Password}{Environment.NewLine}";
             File.AppendAllText(@"Database/user.txt", output);
         }
