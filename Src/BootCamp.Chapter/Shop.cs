@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
@@ -13,9 +15,9 @@
             _inventory = new Inventory();
         }
 
-        public Item[] GetItems()
+        public List<Item> GetItems()
         {
-            return _inventory.Items.ToArray();
+            return _inventory.Items;
         }
 
         /// <summary>
@@ -24,7 +26,7 @@
         /// </summary>
         public void Add(Item item)
         {
-            if (_inventory.Contains(item.Name) != item)
+            if (_inventory.GetItem(item.Name) != item)
             {
                 _inventory.AddItem(item);
             }
@@ -37,7 +39,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            _inventory.RemoveItem(_inventory.Contains(name));
+            _inventory.RemoveItem(_inventory.GetItem(name));
         }
 
         /// <summary>
@@ -71,7 +73,7 @@
         public Item Sell(string item)
         {
 
-            Item item1 = _inventory.Contains(item);
+            Item item1 = _inventory.GetItem(item);
 
             if (item1 != null)
             {

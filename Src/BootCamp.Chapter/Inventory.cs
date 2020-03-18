@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public Item Contains(string name)
+        public Item GetItem(string name)
         {
             foreach (Item item in Items)
             {
@@ -27,38 +27,37 @@ namespace BootCamp.Chapter
             }
             return null;
         }
-
-        public Item[] GetItems(string name)
+        /// <summary>
+        /// Returns a List of all items that are in the inventory based on the name you gave.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public List<Item> GetItems(string name)
         {
-            int number = 0;
-            int[] placeOfItemsInArr = new int[Items.Count];
+            List<Item> final = new List<Item>();
 
             for (int i = 0; i < Items.Count; i++)
             {
                 if (Items[i] != null && Items[i].Name == name)
                 {
-                    placeOfItemsInArr[number] = i;
-                    number++;
+                    final.Add(Items[i]);
 
                 }
             }
-            Item[] final = new Item[number];
-            for (int i = 0; i < number; i++)
-            {
-                final[i] = Items[placeOfItemsInArr[i]];
-            }
-
             return final;
         }
-
+        /// <summary>
+        /// Add an item to the inventory.
+        /// </summary>
+        /// <param name="item"></param>
         public void AddItem(Item item)
         {
             Items.Add(item);
         }
 
         /// <summary>
-        /// Removes item matching criteria by item.
-        /// Does nothing if no such item exists
+        /// Removes ONE item matching criteria by item.
+        /// Does nothing if no such item exists.
         /// </summary>
         public void RemoveItem(Item item)
         {
