@@ -54,10 +54,7 @@ namespace BootCamp.Chapter
                 throw new InvalidCredentialsDbFile($"There was an error while trying to work with {credentialsFile}", ex);
             }
 
-            if (writer is null)
-            {
-                return false;
-            }
+            writer?.Close();
 
             writer.Close();
             return true;
