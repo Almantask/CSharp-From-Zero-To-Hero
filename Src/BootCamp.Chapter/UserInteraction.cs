@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
     public static class UserInteraction
     {
         private const string characterMask = "\u263A";
-
+        private const string backspace = "\b \b";
         private static readonly Credentials newCredentials = new Credentials();
 
         public static void DisplayMenu()
@@ -30,11 +31,11 @@ namespace BootCamp.Chapter
             }
             else if (pressedKey == ConsoleKey.D1)
             {
-                Login();
+                LoginUser();
             }
             else if (pressedKey == ConsoleKey.D2)
             {
-                Register();
+                RegisterUser();
             }
             else
             {
@@ -66,9 +67,9 @@ namespace BootCamp.Chapter
             Console.WriteLine();
         }
 
-        private static void Login()
+        private static void LoginUser()
         {
-            ConsoleInit(true);
+            ConsoleInit(false);
             DisplayHeader("Login");
 
             var name = PromptName();
@@ -77,7 +78,14 @@ namespace BootCamp.Chapter
             Console.WriteLine();
 
             var testUser = new User(name, password);
-            if (newCredentials.FindUser(testUser))
+            TestLogin(testUser);
+
+            Wait();
+        }
+
+        private static void TestLogin(User testUser)
+        {
+            if (newCredentials.Login(testUser))
             {
                 Console.WriteLine("Login succesfull!");
             }
@@ -85,22 +93,34 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine("Invalid credentials!");
             }
-
-            Wait();
         }
 
-        private static void Register()
+        private static void RegisterUser()
         {
-            ConsoleInit(true);
+            ConsoleInit(false);
             DisplayHeader("Register");
 
             var name = PromptName();
             var password = PromptPassword();
 
+            Console.WriteLine();
+
             var newUser = new User(name, password);
-            newCredentials.AddUser(newUser);
+            TestRegistration(newUser);
 
             Wait();
+        }
+
+        private static void TestRegistration(User newUser)
+        {
+            if (newCredentials.Register(newUser))
+            {
+                Console.WriteLine("Registration succesfull!");
+            }
+            else
+            {
+                Console.WriteLine("Registration failed, user allready exists!");
+            }
         }
 
         private static string PromptName()
@@ -108,7 +128,7 @@ namespace BootCamp.Chapter
             Console.Write("Enter your name: ");
             string input = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+            if (StringOps.IsValid(input))
             {
                 throw new InvalidNameException("Name is not valid!");
             }
@@ -118,29 +138,33 @@ namespace BootCamp.Chapter
 
         private static string PromptPassword()
         {
-            string password = default;
+            var password = new StringBuilder();
+
+            Console.Write("Enter your password: ");
+
             while (true)
             {
                 ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-                if (pressedKey.Key != ConsoleKey.Backspace && pressedKey.Key != ConsoleKey.Enter)
+                if (pressedKey.Key != ConsoleKey.Backspace && pressedKey.Key != ConsoleKey.Enter && pressedKey.Key != ConsoleKey.Escape)
                 {
-                    password += pressedKey.KeyChar;
+                    password.Append(pressedKey.KeyChar);
                     Console.Write(characterMask);
                 }
-                else
+                else if (pressedKey.Key == ConsoleKey.Backspace && password.Length != 0)
                 {
-                    if (pressedKey.Key == ConsoleKey.Backspace && password.Length > 0)
-                    {
-                        password = password[0..^1];
-                        Console.Write("\b \b");
-                    }
-                    else if (pressedKey.Key == ConsoleKey.Enter)
-                    {
-                        break;
-                    }
+                    password.Remove(password.Length - 1, 1);
+                    Console.Write(backspace);
+                }
+                else if (pressedKey.Key == ConsoleKey.Enter)
+                {
+                    break;
                 }
             }
-            return password;
+            if (password.Length == 0)
+            {
+                throw new InvalidPasswordException("Invalid password!");
+            }
+            return password.ToString();
         }
     }
 }

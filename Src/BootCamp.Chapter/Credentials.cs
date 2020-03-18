@@ -1,39 +1,98 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
     public class Credentials
     {
+        private const string Separator = ",";
+
         private readonly string credentialsFile = "credentials.db";
 
-        public bool FindUser(User user)
+        private bool FindUser(User user)
         {
             string line;
-            using StreamReader reader = new StreamReader(credentialsFile);
             bool found = false;
-            while ((line = reader.ReadLine()) != null)
+
+            StreamReader reader;
+
+            try
             {
-                var isValid = User.TryParse(line, out User credentials);
-                if (isValid && user.Equals(credentials))
+                reader = new StreamReader(credentialsFile);
+                while ((line = reader.ReadLine()) != null)
                 {
-                    found = true;
-                    break;
+                    var isValid = TryParse(line, out User credentials);
+                    if (isValid && user.Equals(credentials))
+                    {
+                        found = true;
+                        break;
+                    }
                 }
             }
-            reader.Close();
+            catch (Exception)
+            {
+                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {credentialsFile}");
+            }
+            reader?.Close();
             return found;
         }
 
-        public void AddUser(User user)
+        private bool AddUser(User user)
         {
             if (FindUser(user))
             {
                 throw new UserAllreadyExistsException("User allready exists!");
             }
+            StreamWriter writer;
+            try
+            {
+                writer = new StreamWriter(credentialsFile, true);
+                writer.WriteLine($"{user.Name},{user.Password}");
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {credentialsFile}", ex);
+            }
 
-            using StreamWriter writer = new StreamWriter(credentialsFile, true);
-            writer.WriteLine($"{user.Name},{user.Password}");
-            writer.Close();
+            if (writer != null)
+            {
+                writer.Close();
+                return true;
+            }
+            return false;
+        }
+
+        private bool TryParse(string input, out User user)
+        {
+            user = default;
+
+            if (string.IsNullOrEmpty(input))
+            {
+                return false;
+            }
+
+            var parts = input.Split(Separator);
+            var isValid = parts.Length == 2 || StringOps.IsValid(parts[0]) || StringOps.IsValid(parts[1]);
+            if (!isValid)
+            {
+                return false;
+            }
+
+            user = new User(parts[0], parts[1]);
+            return true;
+        }
+
+        public bool Register(User user)
+        {
+            var tempUser = new User(user.Name, StringOps.Encode(user.Password));
+            return AddUser(tempUser);
+        }
+
+        public bool Login(User user)
+        {
+            var tempUser = new User(user.Name, StringOps.Encode(user.Password));
+            return FindUser(tempUser);
         }
     }
 }
