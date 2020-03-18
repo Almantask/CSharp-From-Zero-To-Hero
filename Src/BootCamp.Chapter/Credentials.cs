@@ -54,12 +54,13 @@ namespace BootCamp.Chapter
                 throw new InvalidCredentialsDbFile($"There was an error while trying to work with {credentialsFile}", ex);
             }
 
-            if (writer != null)
+            if (writer is null)
             {
-                writer.Close();
-                return true;
+                return false;
             }
-            return false;
+
+            writer.Close();
+            return true;
         }
 
         private static bool TryParse(string input, out User user)

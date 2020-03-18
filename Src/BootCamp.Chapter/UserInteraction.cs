@@ -19,7 +19,26 @@ namespace BootCamp.Chapter
             Console.WriteLine();
             Console.WriteLine("(0) Exit!");
 
-            ChooseMenu();
+            try
+            {
+                ChooseMenu();
+            }
+            catch (InvalidCredentialsDbFile ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InvalidNameException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InvalidPasswordException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (UserAllreadyExistsException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private static void ChooseMenu()
