@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         private static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.Unicode;
-            UserInteraction.DisplayMenu();
+            UserInteraction.DisplayMainMenu();
         }
     }
 }

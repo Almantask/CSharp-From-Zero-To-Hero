@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
         private const string backspace = "\b \b";
         private static readonly Credentials newCredentials = new Credentials();
 
-        public static void DisplayMenu()
+        public static void DisplayMainMenu()
         {
             ConsoleInit();
             DisplayHeader("Main menu");
@@ -62,7 +62,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Invalid option!");
                 Wait();
             }
-            DisplayMenu();
+            DisplayMainMenu();
         }
 
         private static void Wait()
