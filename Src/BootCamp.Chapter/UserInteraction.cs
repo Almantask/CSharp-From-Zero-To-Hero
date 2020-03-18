@@ -69,7 +69,7 @@ namespace BootCamp.Chapter
 
         private static void LoginUser()
         {
-            ConsoleInit(false);
+            ConsoleInit();
             DisplayHeader("Login");
 
             var name = PromptName();
@@ -97,7 +97,7 @@ namespace BootCamp.Chapter
 
         private static void RegisterUser()
         {
-            ConsoleInit(false);
+            ConsoleInit();
             DisplayHeader("Register");
 
             var name = PromptName();

@@ -13,9 +13,9 @@ namespace BootCamp.Chapter
             Password = password;
         }
 
-        public bool Equals(User user)
+        public bool Equals(User other)
         {
-            return Name == user.Name && Password == user.Password;
+            return Name == other.Name && Password == other.Password;
         }
 
         public static bool operator ==(User left, User right)

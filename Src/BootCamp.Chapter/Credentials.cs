@@ -62,7 +62,7 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        private bool TryParse(string input, out User user)
+        private static bool TryParse(string input, out User user)
         {
             user = default;
 
