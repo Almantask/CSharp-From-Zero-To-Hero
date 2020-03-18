@@ -15,7 +15,6 @@ namespace BootCamp.Chapter
             bool found = false;
 
             StreamReader reader;
-
             try
             {
                 reader = new StreamReader(credentialsFile);
@@ -54,10 +53,7 @@ namespace BootCamp.Chapter
                 throw new InvalidCredentialsDbFile($"There was an error while trying to work with {credentialsFile}", ex);
             }
 
-            if (writer is null)
-            {
-                return false;
-            }
+            writer?.Close();
 
             writer.Close();
             return true;
@@ -67,19 +63,21 @@ namespace BootCamp.Chapter
         {
             user = default;
 
-            if (string.IsNullOrEmpty(input))
+            if (StringOps.IsValid(input))
             {
                 return false;
             }
 
-            var parts = input.Split(Separator);
-            var isValid = parts.Length == 2 || StringOps.IsValid(parts[0]) || StringOps.IsValid(parts[1]);
+            var fields = input.Split(Separator);
+            const int fieldsNumber = 2;
+
+            var isValid = fields.Length == fieldsNumber || StringOps.IsValid(fields[0]) || StringOps.IsValid(fields[1]);
             if (!isValid)
             {
                 return false;
             }
 
-            user = new User(parts[0], parts[1]);
+            user = new User(fields[0], fields[1]);
             return true;
         }
 
