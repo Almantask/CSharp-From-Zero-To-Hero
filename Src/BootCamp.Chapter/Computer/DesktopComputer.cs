@@ -4,13 +4,13 @@
     {
         protected DesktopComputer()
         {
-            AssemblePC();
+            NeededComponents();
         }
 
         /// <summary>
         /// Must Set the following items:Body, Cpu, Gpu, HardDisk, Motherboard, Ram.
         /// </summary>
-        public abstract void AssemblePC();
+        public abstract void NeededComponents();
 
         public Body Body { get; set; }
         public Cpu Cpu { get; set; }

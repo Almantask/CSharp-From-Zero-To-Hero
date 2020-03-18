@@ -2,9 +2,9 @@
 
 namespace BootCamp.Chapter
 {
-    public class MacFactory
+    public class MacFactory : Factory
     {
-        public DesktopComputer Assemble()
+        public override DesktopComputer Assemble()
         {
             return new Computer.Mac.MacDesktopComputer();
         }

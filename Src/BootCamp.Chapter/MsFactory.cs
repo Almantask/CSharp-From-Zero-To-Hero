@@ -2,9 +2,9 @@
 
 namespace BootCamp.Chapter
 {
-    public class MsFactory
+    public class MsFactory: Factory
     {
-        public DesktopComputer Assemble()
+        public override DesktopComputer Assemble()
         {
             return new Computer.Ms.MSDesktopComputer();
         }

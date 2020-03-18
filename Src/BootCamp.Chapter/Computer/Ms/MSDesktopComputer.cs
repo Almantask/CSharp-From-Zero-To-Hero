@@ -3,7 +3,7 @@ namespace BootCamp.Chapter.Computer.Ms
 {
     class MSDesktopComputer : DesktopComputer
     {
-        public override void AssemblePC()
+        public override void NeededComponents()
         {
             Body = new MsBody();
             Cpu = new MsCpu();
