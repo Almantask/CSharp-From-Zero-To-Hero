@@ -40,7 +40,7 @@ namespace BootCamp.Chapter
         {
             if (FindUser(user))
             {
-                throw new UserAllreadyExistsException("User allready exists!");
+                throw new UserAllreadyExistsException("User already exists!");
             }
             StreamWriter writer;
             try
@@ -63,7 +63,7 @@ namespace BootCamp.Chapter
         {
             user = default;
 
-            if (StringOps.IsValid(input))
+            if (!StringOps.IsValid(input))
             {
                 return false;
             }

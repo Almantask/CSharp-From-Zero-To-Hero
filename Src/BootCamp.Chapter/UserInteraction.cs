@@ -106,7 +106,7 @@ namespace BootCamp.Chapter
         {
             if (newCredentials.Login(testUser))
             {
-                Console.WriteLine("Login succesfull!");
+                Console.WriteLine("Login successful!");
             }
             else
             {
@@ -134,11 +134,11 @@ namespace BootCamp.Chapter
         {
             if (newCredentials.Register(newUser))
             {
-                Console.WriteLine("Registration succesfull!");
+                Console.WriteLine("Registration successful!");
             }
             else
             {
-                Console.WriteLine("Registration failed, user allready exists!");
+                Console.WriteLine("Registration failed, user already exists!");
             }
         }
 
@@ -147,7 +147,7 @@ namespace BootCamp.Chapter
             Console.Write("Enter your name: ");
             string input = Console.ReadLine();
 
-            if (StringOps.IsValid(input))
+            if (!StringOps.IsValid(input))
             {
                 throw new InvalidNameException("Name is not valid!");
             }
