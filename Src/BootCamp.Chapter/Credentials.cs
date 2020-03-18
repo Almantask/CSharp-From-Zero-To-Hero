@@ -7,7 +7,16 @@ namespace BootCamp.Chapter
     {
         private const string Separator = ",";
 
-        private readonly string credentialsFile = "credentials.db";
+        public string CredentialsFile { get; } = "credentials.db";
+
+        public Credentials()
+        {
+        }
+
+        public Credentials(string credentialsFile)
+        {
+            CredentialsFile = credentialsFile ?? throw new ArgumentNullException(nameof(credentialsFile));
+        }
 
         private bool FindUser(User user)
         {
@@ -17,7 +26,7 @@ namespace BootCamp.Chapter
             StreamReader reader;
             try
             {
-                reader = new StreamReader(credentialsFile);
+                reader = new StreamReader(CredentialsFile);
                 while ((line = reader.ReadLine()) != null)
                 {
                     var isValid = TryParse(line, out User credentials);
@@ -30,7 +39,7 @@ namespace BootCamp.Chapter
             }
             catch (Exception)
             {
-                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {credentialsFile}");
+                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {CredentialsFile}");
             }
             reader?.Close();
             return found;
@@ -45,17 +54,15 @@ namespace BootCamp.Chapter
             StreamWriter writer;
             try
             {
-                writer = new StreamWriter(credentialsFile, true);
+                writer = new StreamWriter(CredentialsFile, true);
                 writer.WriteLine($"{user.Name},{user.Password}");
             }
             catch (Exception ex)
             {
-                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {credentialsFile}", ex);
+                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {CredentialsFile}", ex);
             }
 
             writer?.Close();
-
-            writer.Close();
             return true;
         }
 
