@@ -63,7 +63,7 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        private User GetNameAndPassword()
+        private Credentials GetNameAndPassword()
         {
             string username = "";
 
@@ -79,7 +79,7 @@ namespace BootCamp.Chapter
                 password = Utilities.PromptPassword("Enter password:");
             } while (string.IsNullOrEmpty(password.Trim()));
 
-            return new User(username, password);
+            return new Credentials(username, password);
         }
 
 
@@ -96,7 +96,7 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private bool AuthenticateUser(User user)
+        private bool AuthenticateUser(Credentials user)
         {
             var storedUser = GetUser(user.Username);
 
@@ -108,7 +108,7 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private User GetUser(string username)
+        private Credentials GetUser(string username)
         {
             foreach (var user in GetCredentials())
             {
@@ -118,12 +118,12 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return new User();
+            return new Credentials();
         }
 
-        private List<User> GetCredentials()
+        private List<Credentials> GetCredentials()
         {
-            var users = new List<User>();
+            var users = new List<Credentials>();
 
             var credentials = File.ReadAllLines(CredentialsPath);
 
@@ -140,17 +140,17 @@ namespace BootCamp.Chapter
             return users;
         }
 
-        private bool TryCredentialsParse(string credential, out User users)
+        private bool TryCredentialsParse(string credential, out Credentials users)
         {
             var credentialData = credential.Split(",");
 
             if (!IsCredentialDataValid(credentialData))
             {
-                users = new User();
+                users = new Credentials();
                 return false;
             }
 
-            users = new User(credentialData[0], credentialData[1]);
+            users = new Credentials(credentialData[0], credentialData[1]);
             return true;
         }
 

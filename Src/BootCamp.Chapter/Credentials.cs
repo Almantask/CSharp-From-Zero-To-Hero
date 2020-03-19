@@ -1,11 +1,11 @@
 ﻿namespace BootCamp.Chapter
 {
-    internal struct User
+    internal struct Credentials
     {
         public readonly string Username;
         public readonly string Password;
 
-        public User(string username, string password)
+        public Credentials(string username, string password)
         {
             Username = username;
             Password = password;
