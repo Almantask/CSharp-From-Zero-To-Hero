@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -36,13 +35,13 @@ namespace BootCamp.Chapter
 
             var user = GetNameAndPassword();
 
-            if (IsNameRegistered(user.UserName))
+            if (IsNameRegistered(user.Username))
             {
                 return false;
             }
 
             var encodedPassword = new Cryptography().Encode(user.Password);
-            File.AppendAllText(CredentialsPath, user.UserName);
+            File.AppendAllText(CredentialsPath, user.Username);
             File.AppendAllText(CredentialsPath, Delimiter);
             File.AppendAllText(CredentialsPath, encodedPassword);
             File.AppendAllText(CredentialsPath, CarriageReturn);
@@ -70,74 +69,26 @@ namespace BootCamp.Chapter
 
             do
             {
-                username = PromptText("Enter username:");
+                username = Utilities.PromptText("Enter username:");
             } while (string.IsNullOrEmpty(username.Trim()));
 
             string password = "";
 
             do
             {
-                password = PromptPassword("Enter password:");
+                password = Utilities.PromptPassword("Enter password:");
             } while (string.IsNullOrEmpty(password.Trim()));
 
             return new User(username, password);
         }
 
-        private string PromptText(string message)
-        {
-            Console.WriteLine(message);
-            return Console.ReadLine();
-        }
 
-        private string PromptPassword(string message)
-        {
-            const char BackspaceKey = '\b';
-            const char ReturnKey = '\r';
-            const string PasswordBackspace = "\b\0\b\b\0\b";
-            const string SmileyFace = "\x263A ";
-
-            Console.WriteLine(message);
-            var password = new StringBuilder();
-            var enter = false;
-
-            do
-            {
-                var key = Console.ReadKey(true);
-
-                switch (key.KeyChar)
-                {
-                    case ReturnKey:
-                        enter = false;
-                        break;
-                    case BackspaceKey:
-                        Console.Write(PasswordBackspace);
-
-                        if (password.Length > 0)
-                        {
-                            password.Remove(password.Length - 1, 1);
-                        }
-
-                        enter = true;
-                        break;
-                    default:
-                        Console.OutputEncoding = Encoding.Unicode;
-                        Console.Write(SmileyFace);
-                        Console.OutputEncoding = Encoding.Default;
-                        password.Append(key.KeyChar);
-                        enter = true;
-                        break;
-                }
-            } while (enter);
-
-            Console.WriteLine("");
-            return password.ToString();
-        }
 
         private bool IsNameRegistered(string username)
         {
             var user = GetUser(username);
 
-            if (user == null)
+            if (user.Username == null)
             {
                 return false;
             }
@@ -147,9 +98,9 @@ namespace BootCamp.Chapter
 
         private bool AuthenticateUser(User user)
         {
-            var storedUser = GetUser(user.UserName);
+            var storedUser = GetUser(user.Username);
 
-            if (storedUser == null || storedUser.Password != new Cryptography().Encode(user.Password))
+            if (storedUser.Username == null || storedUser.Password != new Cryptography().Encode(user.Password))
             {
                 return false;
             }
@@ -161,13 +112,13 @@ namespace BootCamp.Chapter
         {
             foreach (var user in GetCredentials())
             {
-                if (user.UserName == username)
+                if (user.Username == username)
                 {
                     return user;
                 }
             }
 
-            return null;
+            return new User();
         }
 
         private List<User> GetCredentials()
@@ -195,7 +146,7 @@ namespace BootCamp.Chapter
 
             if (!IsCredentialDataValid(credentialData))
             {
-                users = null;
+                users = new User();
                 return false;
             }
 

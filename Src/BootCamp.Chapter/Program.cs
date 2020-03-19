@@ -19,8 +19,7 @@ namespace BootCamp.Chapter
             {
                 do
                 {
-                    Console.WriteLine("Which option do you want ('1' for Register, '2' for Login)?");
-                    option = Console.ReadLine();
+                    option = Utilities.PromptText("Which option do you want ('1' for Register, '2' for Login)?");
                 } while (option != Register && option != Login);
 
                 if (option == Register)
