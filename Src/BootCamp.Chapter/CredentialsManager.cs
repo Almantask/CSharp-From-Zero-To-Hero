@@ -1,36 +1,23 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
     internal class CredentialsManager
     {
-        public struct Person
-        {
-            public Person(string name, string password)
-            {
-                Name = name;
-                Password = password;
-            }
-
-            public string Name { get; set; }
-            public string Password { get; set; }
-        }
-
         internal static void Demo()
         {
             Console.WriteLine("Would you like to register or login");
-            Console.WriteLine("Choose R voor register");
-            Console.WriteLine("Choose L voor login");
+            Console.WriteLine("Choose R for register");
+            Console.WriteLine("Choose L for login");
             var choice = Console.ReadLine();
-            switch (choice)
+            switch (Enum.Parse(typeof(Menu), choice ) )
             {
-                case "R":
+                case Menu.MenuChoices.R:
                     Register();
                     break;
 
-                case "L":
+                case Menu.MenuChoices.L:
                     Login();
                     break;
 
@@ -45,18 +32,18 @@ namespace BootCamp.Chapter
             var isValidLogin = false;
             var data = File.ReadAllText(@"Database/user.txt");
             var fileData = data.Split($"{Environment.NewLine}");
-            var input = InputData();
-            bool isValidInput = TryParse(input, out Person personData);
-             if(!isValidInput)
+            var input = PromptCredentials();
+            bool isValidInput = CredentialsParsing.TryParse(input, out CredentialsParsing.Credentials credentials);
+            if (!isValidInput)
             {
                 Console.WriteLine("You entered invalid data");
-                return; 
+                return;
             }
             for (int i = 0; i < 1; i++)
             {
                 var person = fileData[i];
                 var splitted = person.Split(";");
-                if (splitted[1] == personData.Password & splitted[0] == personData.Name)
+                if (splitted[1] == credentials.Password & splitted[0] == credentials.Name)
                 {
                     isValidLogin = true;
                 }
@@ -65,66 +52,39 @@ namespace BootCamp.Chapter
             Console.WriteLine(isValidLogin);
         }
 
-        private static bool TryParse(string input, out Person person)
-        {
-            person = new Person(); 
-            if (String.IsNullOrEmpty(input))
-            {
-                return false; 
-            }
-
-            var parts = input.Split(" "); 
-
-            if (parts.Length != 2)
-            {
-                return false; 
-            }
-
-
-            var name = parts[0]; 
-            var password = Encoding.Unicode.GetBytes(parts[1]);
-            var encodedPassWord = Encoding.Unicode.GetString(password);
-
-            person = new Person(name, encodedPassWord);
-
-            return true;  
-        }
-
         private static void Register()
         {
-            var personData = InputData();
-            bool isValidInput = TryParse(personData, out Person person);
-            if(!isValidInput)
+            var personData = PromptCredentials();
+            bool isValidInput = CredentialsParsing.TryParse(personData, out CredentialsParsing.Credentials credentials);
+            if (!isValidInput)
             {
                 Console.WriteLine("You entered invalid data");
-                return; 
+                return;
             }
-            var output = $"{person.Name};{person.Password}{Environment.NewLine}";
+            var output = $"{credentials.Name};{credentials.Password}{Environment.NewLine}";
             File.AppendAllText(@"Database/user.txt", output);
         }
 
-        private static String InputData()
+        private static String PromptCredentials()
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.WriteLine("May I have your name");
             var name = Console.ReadLine();
             Console.WriteLine("May I have your password");
             string input = "";
-            ConsoleKeyInfo key; 
+            ConsoleKeyInfo key;
             do
             {
-                key = Console.ReadKey(true); 
+                key = Console.ReadKey(true);
                 if (key.Key != ConsoleKey.Enter)
                 {
                     input += key.KeyChar;
                     Console.Write("\u263A");
                     Console.Write(" ");
                 }
-                 
-
             } while (key.Key != ConsoleKey.Enter);
-            
-            return $"{name} {input}"; 
+
+            return $"{name} {input}";
         }
     }
 }
