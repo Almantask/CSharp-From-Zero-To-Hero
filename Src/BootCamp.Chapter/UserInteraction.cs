@@ -30,6 +30,11 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                Wait();
+                DisplayMainMenu();
+            }
         }
 
         private static void ChooseMenuItem()
@@ -37,7 +42,7 @@ namespace BootCamp.Chapter
             ConsoleKey pressedKey = Console.ReadKey(true).Key;
             if (pressedKey == ConsoleKey.D0 || pressedKey == ConsoleKey.NumPad0)
             {
-                return;
+                Environment.Exit(0);
             }
             else if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
             {
