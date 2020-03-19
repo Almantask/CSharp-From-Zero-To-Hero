@@ -13,6 +13,11 @@ namespace BootCamp.Chapter
             Password = password;
         }
 
+        public override string ToString()
+        {
+            return $"{Name},{Password}";
+        }
+
         public bool Equals(User other)
         {
             return Name == other.Name && Password == other.Password;
