@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace BootCamp.Chapter
@@ -7,7 +8,7 @@ namespace BootCamp.Chapter
     {
         private const string Separator = ",";
 
-        public string CredentialsFile { get; } = "credentials.db";
+        private readonly string CredentialsFile = "credentials.db";
 
         public Credentials()
         {
@@ -20,50 +21,88 @@ namespace BootCamp.Chapter
 
         private bool FindUser(User user)
         {
-            string line;
             bool found = false;
 
-            StreamReader reader;
+            foreach (var credential in ReadDatabase())
+            {
+                if (credential.Equals(user))
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            return found;
+        }
+
+        private bool CheckUserExists(User user)
+        {
+            bool exists = false;
+
+            foreach (var credential in ReadDatabase())
+            {
+                if (credential.Name == user.Name)
+                {
+                    exists = true;
+                    break;
+                }
+            }
+
+            return exists;
+        }
+
+        private bool AddUser(User user)
+        {
+            if (CheckUserExists(user))
+            {
+                throw new UserAllreadyExistsException("User already exists!");
+            }
+
+            StreamWriter writer = null;
+            try
+            {
+                writer = new StreamWriter(CredentialsFile, true);
+                writer.WriteLine(user.ToString());
+            }
+            catch (Exception)
+            {
+                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {nameof(CredentialsFile)}");
+            }
+            finally
+            {
+                writer?.Close();
+            }
+
+            return true;
+        }
+
+        private List<User> ReadDatabase()
+        {
+            string line;
+            var internalUserList = new List<User>();
+
+            StreamReader reader = null;
             try
             {
                 reader = new StreamReader(CredentialsFile);
                 while ((line = reader.ReadLine()) != null)
                 {
-                    var isValid = TryParse(line, out User credentials);
-                    if (isValid && user.Equals(credentials))
+                    if (TryParse(line, out User credentials))
                     {
-                        found = true;
-                        break;
+                        internalUserList.Add(credentials);
                     }
                 }
             }
             catch (Exception)
             {
-                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {CredentialsFile}");
+                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {nameof(CredentialsFile)}");
             }
-            reader?.Close();
-            return found;
-        }
-
-        private bool AddUser(User user)
-        {
-            if (FindUser(user))
+            finally
             {
-                throw new UserAllreadyExistsException("User already exists!");
-            }
-            StreamWriter writer;
-            try
-            {
-                writer = new StreamWriter(CredentialsFile, true);
-                writer.WriteLine($"{user.Name},{user.Password}");
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {CredentialsFile}", ex);
+                reader?.Close();
             }
 
-            writer?.Close();
-            return true;
+            return internalUserList;
         }
 
         private static bool TryParse(string input, out User user)
@@ -78,7 +117,7 @@ namespace BootCamp.Chapter
             var fields = input.Split(Separator);
             const int fieldsNumber = 2;
 
-            var isValid = fields.Length == fieldsNumber || StringOps.IsValid(fields[0]) || StringOps.IsValid(fields[1]);
+            var isValid = fields.Length == fieldsNumber && StringOps.IsValid(fields[0]) && StringOps.IsValid(fields[1]);
             if (!isValid)
             {
                 return false;
