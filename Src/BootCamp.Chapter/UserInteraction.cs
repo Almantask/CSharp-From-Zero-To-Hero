@@ -21,38 +21,29 @@ namespace BootCamp.Chapter
 
             try
             {
-                ChooseMenu();
+                ChooseMenuItem();
             }
-            catch (InvalidCredentialsDbFile ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (InvalidNameException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (InvalidPasswordException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (UserAllreadyExistsException ex)
+            catch (Exception ex) when (ex is InvalidCredentialsDbFile ||
+                                       ex is InvalidNameException ||
+                                       ex is InvalidPasswordException ||
+                                       ex is UserAllreadyExistsException)
             {
                 Console.WriteLine(ex.Message);
             }
         }
 
-        private static void ChooseMenu()
+        private static void ChooseMenuItem()
         {
             ConsoleKey pressedKey = Console.ReadKey(true).Key;
-            if (pressedKey == ConsoleKey.D0)
+            if (pressedKey == ConsoleKey.D0 || pressedKey == ConsoleKey.NumPad0)
             {
                 return;
             }
-            else if (pressedKey == ConsoleKey.D1)
+            else if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
             {
                 LoginUser();
             }
-            else if (pressedKey == ConsoleKey.D2)
+            else if (pressedKey == ConsoleKey.D2 || pressedKey == ConsoleKey.NumPad2)
             {
                 RegisterUser();
             }
@@ -164,7 +155,11 @@ namespace BootCamp.Chapter
             while (true)
             {
                 ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-                if (pressedKey.Key != ConsoleKey.Backspace && pressedKey.Key != ConsoleKey.Enter && pressedKey.Key != ConsoleKey.Escape)
+                var IsValidKey = pressedKey.Key != ConsoleKey.Backspace &&
+                                   pressedKey.Key != ConsoleKey.Enter &&
+                                   pressedKey.Key != ConsoleKey.Escape;
+
+                if (IsValidKey)
                 {
                     password.Append(pressedKey.KeyChar);
                     Console.Write(characterMask);
@@ -179,6 +174,7 @@ namespace BootCamp.Chapter
                     break;
                 }
             }
+
             if (password.Length == 0)
             {
                 throw new InvalidPasswordException("Invalid password!");
