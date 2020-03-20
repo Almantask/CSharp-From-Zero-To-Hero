@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -18,5 +17,4 @@ namespace BootCamp.Chapter
             return encodedMessage.ToString();
         }
     }
-
 }

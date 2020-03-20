@@ -12,83 +12,33 @@ namespace BootCamp.Chapter
         {
             if (!File.Exists(CredentialsPath))
             {
-                File.WriteAllText(CredentialsPath, "");
+                File.Create(CredentialsPath).Dispose();
             }
         }
 
-        public void Register()
+        public bool Register(Credentials credentials)
         {
-            if (RegisterUser())
-            {
-                Console.WriteLine("You have successfully registered.\n");
-            }
-            else
-            {
-                Console.WriteLine("Sorry, your registration was unsuccessful.  The username is already taken.\n");
-            }
-        }
-
-        private bool RegisterUser()
-        {
-            const string CarriageReturn = "\r\n";
             const string Delimiter = ",";
 
-            var user = GetNameAndPassword();
-
-            if (IsNameRegistered(user.Username))
+            if (IsNameRegistered(credentials.Username))
             {
                 return false;
             }
 
-            var encodedPassword = new Cryptography().Encode(user.Password);
-            File.AppendAllText(CredentialsPath, user.Username);
+            var encodedPassword = new Cryptography().Encode(credentials.Password);
+            File.AppendAllText(CredentialsPath, credentials.Username);
             File.AppendAllText(CredentialsPath, Delimiter);
             File.AppendAllText(CredentialsPath, encodedPassword);
-            File.AppendAllText(CredentialsPath, CarriageReturn);
+            File.AppendAllText(CredentialsPath, Environment.NewLine);
 
             return true;
         }
-
-        public bool Login()
-        {
-            var user = GetNameAndPassword();
-
-            if (AuthenticateUser(user))
-            {
-                Console.WriteLine("You have sucessfuly logged in.\n");
-                return true;
-            }
-
-            Console.WriteLine("Sorry, we don't recognize you.\n");
-            return false;
-        }
-
-        private Credentials GetNameAndPassword()
-        {
-            string username = "";
-
-            do
-            {
-                username = Utilities.PromptText("Enter username:");
-            } while (string.IsNullOrEmpty(username.Trim()));
-
-            string password = "";
-
-            do
-            {
-                password = Utilities.PromptPassword("Enter password:");
-            } while (string.IsNullOrEmpty(password.Trim()));
-
-            return new Credentials(username, password);
-        }
-
-
 
         private bool IsNameRegistered(string username)
         {
-            var user = GetUser(username);
+            var credentials = GetStoredCredentials(username);
 
-            if (user.Username == null)
+            if (credentials.Username == null)
             {
                 return false;
             }
@@ -96,67 +46,67 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private bool AuthenticateUser(Credentials user)
+        public bool Login(Credentials credentials)
         {
-            var storedUser = GetUser(user.Username);
+            var storedCredentials = GetStoredCredentials(credentials.Username);
 
-            if (storedUser.Username == null || storedUser.Password != new Cryptography().Encode(user.Password))
+            if (storedCredentials.Username == null || storedCredentials.Password != new Cryptography().Encode(credentials.Password))
             {
                 return false;
             }
 
             return true;
         }
-
-        private Credentials GetUser(string username)
+               
+        private Credentials GetStoredCredentials(string username)
         {
-            foreach (var user in GetCredentials())
+            foreach (var credentials in ReadCredentials())
             {
-                if (user.Username == username)
+                if (credentials.Username == username)
                 {
-                    return user;
+                    return credentials;
                 }
             }
 
             return new Credentials();
         }
 
-        private List<Credentials> GetCredentials()
+        private List<Credentials> ReadCredentials()
         {
-            var users = new List<Credentials>();
+            var credentialsList = new List<Credentials>();
 
-            var credentials = File.ReadAllLines(CredentialsPath);
+            var readCredentials = File.ReadAllLines(CredentialsPath);
 
-            foreach (var credential in credentials)
+            foreach (var credentials in readCredentials)
             {
-                if (!TryCredentialsParse(credential, out var user))
+                if (!TryCredentialsParse(credentials, out var parsedCredentials))
                 {
-                    throw new InvalidDatabaseException("Unpexpected data found in credential database.");
+                    throw new InvalidDatabaseException("Unpexpected data found in credentials database.");
                 }
 
-                users.Add(user);
+                credentialsList.Add(parsedCredentials);
             }
 
-            return users;
+            return credentialsList;
         }
 
-        private bool TryCredentialsParse(string credential, out Credentials users)
+        private bool TryCredentialsParse(string credentials, out Credentials parsedCredentials)
         {
-            var credentialData = credential.Split(",");
+            var credentialsData = credentials.Split(",");
 
-            if (!IsCredentialDataValid(credentialData))
+            if (!IsCredentialsDataValid(credentialsData))
             {
-                users = new Credentials();
+                parsedCredentials = new Credentials();
                 return false;
             }
 
-            users = new Credentials(credentialData[0], credentialData[1]);
+            parsedCredentials = new Credentials(credentialsData[0], credentialsData[1]);
             return true;
         }
 
-        private bool IsCredentialDataValid(string[] credentialData)
+        private bool IsCredentialsDataValid(string[] credentialsData)
         {
-            if (credentialData.Length != 2)
+            if (credentialsData.Length != 2)
             {
                 return false;
             }
@@ -164,5 +114,4 @@ namespace BootCamp.Chapter
             return true;
         }
     }
-
 }
