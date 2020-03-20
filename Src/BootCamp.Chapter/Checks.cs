@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                IsMorePoor(AccountCreator(peopleAndBalances[i]), i);
+                IsMorePoor(ParseAccount(peopleAndBalances[i]), i);
             }
 
             return MakeStuffWithInput.MakefullstringPoorestPeople(personCount, name.ToString(), amount);
@@ -58,7 +58,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                Account account = AccountCreator(peopleAndBalances[i]);
+                Account account = ParseAccount(peopleAndBalances[i]);
 
                 if (i == 0)
                 {
@@ -92,13 +92,13 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                Account account = AccountCreator(peopleAndBalances[i]);
+                Account account = ParseAccount(peopleAndBalances[i]);
 
-                if (account.IsLessThan2Balance())
+                if (account.GetBalance().Length < 2)
                 {
 
                 }
-                else if (name.ToString() == "")
+                else if (name.ToString() == string.Empty)
                 {
                     name.Append(account.GetName());
                     amount = account.BiggestLoss();
@@ -131,7 +131,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                Account account = AccountCreator(peopleAndBalances[i]);
+                Account account = ParseAccount(peopleAndBalances[i]);
 
                 if (i == 0)
                 {
@@ -172,7 +172,7 @@ namespace BootCamp.Chapter
         {
             if (Testers.IsThisStringValid(message))
             {
-                return "";
+                return string.Empty;
             }
             return MakeStuffWithInput.MakePadding(message, padding);
         }
@@ -182,7 +182,7 @@ namespace BootCamp.Chapter
             CleanTheFile.Clean(file, outputFile);
         }
 
-        private static Account AccountCreator(string peopleAndBalances)
+        private static Account ParseAccount(string peopleAndBalances)
         {
             string name = MakeStuffWithInput.GetNameFromString(peopleAndBalances);
             decimal[] balance = MakeStuffWithInput.GetBalanceFromString(peopleAndBalances);

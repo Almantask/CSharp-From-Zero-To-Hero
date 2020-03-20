@@ -36,10 +36,6 @@
 
             return _balance[_balance.Length - 1];
         }
-        public bool IsLessThan2Balance()
-        {
-            return _balance.Length < 2;
-        }
         public decimal BiggestLoss()
         {
             return _balance[_balance.Length -1 ] - _balance[_balance.Length - 2];
