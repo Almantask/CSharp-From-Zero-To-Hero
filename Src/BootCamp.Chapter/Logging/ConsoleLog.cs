@@ -2,14 +2,14 @@
 
 namespace BootCamp.Chapter.Logging
 {
-    class LogToConsole : Log
+    class ConsoleLog : ILog
     {
-        public override void LogNow(string text)
+        public void LogNow(string text)
         {
             Console.WriteLine($"{DateTime.Now}: {text}");
         }
 
-        public override string Type()
+        public string Type()
         {
             return "Console";
         }

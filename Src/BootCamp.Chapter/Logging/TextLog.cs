@@ -3,18 +3,18 @@ using System.IO;
 
 namespace BootCamp.Chapter.Logging
 {
-    class LogToText : Log
+    class TextLog : ILog
     {
 
         public string GetConnection()
         {
             return @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Logging\Log.txt";
         }
-        public override void LogNow(string text)
+        public void LogNow(string text)
         {
             File.AppendAllText(GetConnection(), $"{DateTime.Now}: {text}" + "\r\n");
         }
-        public override string Type()
+        public string Type()
         {
             return "Text";
         }

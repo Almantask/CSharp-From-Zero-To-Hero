@@ -6,8 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main()
         {
-            var textLogger = new Logging.LogToText();
-            var consoleLogger = new Logging.LogToConsole();
+            var textLogger = new Logging.TextLog();
+            var consoleLogger = new Logging.ConsoleLog();
 
             Test(consoleLogger);
             Test(textLogger);
