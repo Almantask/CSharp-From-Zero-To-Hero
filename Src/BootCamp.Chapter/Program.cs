@@ -9,8 +9,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            // ContravarianceDemo.Run();
-            CovarianceDemo.Run();
+            ContravarianceDemo.Run();
+            //CovarianceDemo.Run();
         }
     }
 }

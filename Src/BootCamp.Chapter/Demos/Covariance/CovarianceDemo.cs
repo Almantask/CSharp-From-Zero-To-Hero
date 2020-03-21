@@ -15,13 +15,22 @@ namespace BootCamp.Chapter.Demos.Covariance
             IDivision<Programmer> programmersDivision = new ProgrammersDivision(new List<Programmer>());
             IDivision<FullstackDev> fullstackDivision = new FullstackDevsDivision(new List<FullstackDev>() { dev });
             IDivision<GameDev> gamedevDivision = new GameDevsDivision(new List<GameDev>());
-            
-            GlobalDevDivision globalDevDivision = new GlobalDevDivision();
-            globalDevDivision.RegisterDivision(programmersDivision);
-            globalDevDivision.RegisterDivision(fullstackDivision);
-            globalDevDivision.RegisterDivision(gamedevDivision);
 
-            var employee = globalDevDivision.GetEmployeeById(id);
+
+
+
+
+
+
+
+
+
+            SquareEnixCompany squareEnixCompany = new SquareEnixCompany();
+            squareEnixCompany.RegisterDivision(programmersDivision);
+            squareEnixCompany.RegisterDivision(fullstackDivision);
+            squareEnixCompany.RegisterDivision(gamedevDivision);
+
+            var employee = squareEnixCompany.GetEmployeeById(id);
             Console.WriteLine(employee?.Id.ToString() ?? "Not found");
         }
     }

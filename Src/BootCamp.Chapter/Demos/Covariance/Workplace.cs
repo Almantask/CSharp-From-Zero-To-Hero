@@ -28,9 +28,9 @@ namespace BootCamp.Chapter.Demos.Covariance
 
         public TEmployee GetEmployeeById(Guid id)
         {
-            foreach (var f in _employees)
+            foreach (var employee in _employees)
             {
-                if (f.Id == id) return f;
+                if (employee.Id == id) return employee;
             }
 
             return null;
@@ -58,7 +58,7 @@ namespace BootCamp.Chapter.Demos.Covariance
         }
     }
 
-    public class GlobalDevDivision : IDivision<Programmer>
+    public class SquareEnixCompany : IWorkplace<Programmer>
     {
         // Due to division being covariance,
         // we can register all types that derive from IDivision<Programmer>.

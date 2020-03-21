@@ -11,13 +11,13 @@ namespace BootCamp.Chapter.Demos.Contravariance
         {
             IManager<Janitor> janitorsManager = new JanitorsManager<Janitor>();
             IManager<Programmer> programmersManager = new ProgrammersManager<Programmer>();
-            IManager<Employee> employeeManager = new EmployeeManager<Employee>();
+            IManager<Employee> employeesManager = new EmployeeManager<Employee>();
 
             // EmployeeManager is not a JanitorsManager.
             // However both work, because EmployeeManager can take EVERY employee.
             // So this means that we can store all the managers,
             // as long as they accept Janitors or more generalized forms.
-            IManager<Janitor>[] managers = {janitorsManager, employeeManager};
+            IManager<Janitor>[] managers = {janitorsManager, employeesManager};
             
             // Therefore the name- contravariance. Because it goes a bit against common sense.
             // Contra, meaning the opposite, we normally generalize things and not specify them more
