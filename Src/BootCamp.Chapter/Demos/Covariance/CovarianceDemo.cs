@@ -16,14 +16,8 @@ namespace BootCamp.Chapter.Demos.Covariance
             IDivision<FullstackDev> fullstackDivision = new FullstackDevsDivision(new List<FullstackDev>() { dev });
             IDivision<GameDev> gamedevDivision = new GameDevsDivision(new List<GameDev>());
 
-
-
-
-
-
-
-
-
+            GameDev gameDev = gamedevDivision.GetEmployeeById(Guid.NewGuid());
+            Programmer gameDev1 = gamedevDivision.GetEmployeeById(Guid.Empty);
 
             SquareEnixCompany squareEnixCompany = new SquareEnixCompany();
             squareEnixCompany.RegisterDivision(programmersDivision);
