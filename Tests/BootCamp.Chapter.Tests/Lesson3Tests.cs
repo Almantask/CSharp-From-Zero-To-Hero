@@ -32,12 +32,12 @@ namespace BootCamp.Chapter.Tests
             computer.Should().NotBeNull();
             using (new AssertionScope())
             {
-                computer.GetCpu().Should().NotBeNull();
-                computer.GetMotherboard().Should().NotBeNull();
-                computer.GetGpu().Should().NotBeNull();
-                computer.GetHard().Should().NotBeNull();
-                computer.GetRam().Should().NotBeNull();
-                computer.GetBody().Should().NotBeNull();
+                computer.Cpu.Should().NotBeNull();
+                computer.Motherboard.Should().NotBeNull();
+                computer.Gpu.Should().NotBeNull();
+                computer.HardDisk.Should().NotBeNull();
+                computer.Ram.Should().NotBeNull();
+                computer.Body.Should().NotBeNull();
             }
         }
     }
