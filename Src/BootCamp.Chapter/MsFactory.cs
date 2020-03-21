@@ -5,11 +5,30 @@ using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
-    public class MsFactory
+    public class MsFactory : Factory
     {
-        public DesktopComputer Assemble()
+        const string brand = "Ms";
+
+        public override DesktopComputer Assemble()
         {
-            return new DesktopComputer();
+            Console.WriteLine($"Building a {brand} PC.");
+            DesktopComputer MsPC = new DesktopComputer();
+            MsPC.Body = AddBody(brand);
+            MsPC.components.Add(MsPC.Body);
+            MsPC.Cpu = AddCpu(brand);
+            MsPC.components.Add(MsPC.Cpu);
+            MsPC.Gpu = AddGpu(brand);
+            MsPC.components.Add(MsPC.Gpu);
+            MsPC.HardDisk = AddHardDisk(brand);
+            MsPC.components.Add(MsPC.HardDisk);
+            MsPC.Motherboard = AddMotherboard(brand);
+            MsPC.components.Add(MsPC.Motherboard);
+            MsPC.Ram = AddRam(brand);
+            MsPC.components.Add(MsPC.Ram);
+
+            Console.WriteLine($"{brand}PC assembled!");
+            MsPC.PrintAssembledPc();
+            return MsPC;
         }
     }
 }

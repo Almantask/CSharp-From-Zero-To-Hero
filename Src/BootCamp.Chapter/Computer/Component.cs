@@ -4,10 +4,12 @@ using System.Text;
 
 namespace BootCamp.Chapter.Computer
 {
-    public class Body : Component
+    public abstract class Component
     {
-        public Body(string name) : base(name)
+        public Component(string name)
         {
+            Name = name;
         }
+        public string Name { get; }
     }
 }

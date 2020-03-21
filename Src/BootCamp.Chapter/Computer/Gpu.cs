@@ -1,6 +1,9 @@
 ﻿namespace BootCamp.Chapter.Computer
 {
-    public class Gpu
+    public class Gpu : Component
     {
+        public Gpu(string name) : base(name)
+        {
+        }
     }
 }

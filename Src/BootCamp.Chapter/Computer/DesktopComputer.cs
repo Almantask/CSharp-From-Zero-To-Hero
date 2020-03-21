@@ -1,41 +1,26 @@
-﻿namespace BootCamp.Chapter.Computer
+﻿using System;
+using System.Collections.Generic;
+
+namespace BootCamp.Chapter.Computer
 {
     public class DesktopComputer
     {
-        private Body _body;
-        public Body GetBody()
-        {
-            return _body;
-        }
-        
-        private Ram _ram;
-        public Ram GetRam()
-        {
-            return _ram;
-        }
+        public List<Component> components = new List<Component>();
+        public Body Body { get; set; }
+        public Cpu Cpu { get; set; }
+        public Gpu Gpu { get; set; }
+        public HardDisk HardDisk { get; set; }
+        public Motherboard Motherboard { get; set; }
+        public Ram Ram { get; set; }
 
-        private Cpu _cpu;
-        public Cpu GetCpu()
+        public void PrintAssembledPc()
         {
-            return _cpu;
-
-        }
-        private Gpu _gpu;
-        public Gpu GetGpu()
-        {
-            return _gpu;
-        }
-
-        private HardDisk _hard;
-        public HardDisk GetHard()
-        {
-            return _hard;
-        }
-
-        private Motherboard _motherboard;
-        public Motherboard GetMotherboard()
-        {
-            return _motherboard;
+            foreach (Component component in components)
+            {
+                Console.WriteLine($"This PC has a {component.Name}.");
+            }
         }
     }
+    
+
 }
