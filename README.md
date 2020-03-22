@@ -12,9 +12,9 @@ There is:
 A lot of neat quality of programmer life improvements provided by a language design. It's time to try it out!
 
 ### Task
-Take (homework 1 assignment)[https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter3/Homework/1/Src/BootCamp.Chapter]
+Take [homework 1 assignment](https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter3/Homework/1/Src/BootCamp.Chapter)
 and refactor it trying to apply the operators and functions learned in lesson- as much as you can.
-If you haven't done homework 1, refer to (chapter 2 homework 3)[https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter2/Homework/2] what needs to be done.
+If you haven't done homework 1, refer to [chapter 2 homework 3](https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter2/Homework/2) what needs to be done.
 
 Also apply null validation for every method and constructor:
 1) Don't allow passing null references  
