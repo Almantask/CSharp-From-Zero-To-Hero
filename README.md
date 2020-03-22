@@ -1,21 +1,19 @@
 # C#: From Zero To Hero
-Chapter 3: C#. Homework 2: struct, in, ref, out
-```
-Create an insecure credentials manager, which works supports register and login functions. 
+##Chapter 3: C#. Homework 3: Null related operators and more sugar
+### Intro
+C# is a modern high-level programming language. It has many nice features and it's time to explore some of it.
+In particular, it's really cool the way C# handles null. There are several operators/patterns in regards to null handling and typecheck.
+There is:
+- ?. - null-conditional operator
+- ?? - null-coalecense operator
+- ? valueIfTrue : valueIfFalse - conditional operator
+- value is Type1 - pattern matching  
 
-Register works like this:
-1) User inputs name and password
-2) Password gets encoded to Unicode
-3) Username (not encodd) and password (encoded) are persisted in a file
+A lot of neat quality of programmer life improvements provided by a language design. It's time to try it out!
 
-Login works like this:
-1) Reads the credentials file
-2) User inputs their credentials
-3) Encodes password
-4) Encoded password is searched for in credentials field
-5) Comparison between encoded passwords is made
-6) Is password, login returns true, else returns false.
-
-Extra #1: credentials parsing from the file should be done applying TryParse pattern. 
-Extra #2: inputting password should be hidden with smile emoji character.
-```
+### Task
+Take (homework 1 assignment)[https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter3/Homework/1/Src/BootCamp.Chapter]
+and refactor it trying to apply the operators and functions learned in lesson- as much as you can.
+Also apply null validation for every method and constructor:
+1) Don't allow passing null references  
+2) Don't allow passing null or empty strings
