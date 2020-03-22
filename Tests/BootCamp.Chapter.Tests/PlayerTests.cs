@@ -1,6 +1,5 @@
-﻿using System;
-using FluentAssertions;
-using FluentAssertions.Execution;
+﻿using FluentAssertions;
+using System;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -34,7 +33,6 @@ namespace BootCamp.Chapter.Tests
             _player.Remove(item);
 
             var items = _player.GetItems(item.Name);
-            
             items.Should().NotContain(item);
         }
 
@@ -42,36 +40,9 @@ namespace BootCamp.Chapter.Tests
         public void RemoveItem_Given_Item_Does_Not_Exist_Ignores()
         {
             var item = new Item("Sword", 10, 5);
-            
+
             Action action = () => _player.Remove(item);
-            
             action.Should().NotThrow();
-        }
-
-        [Fact]
-        public void Add_Item_Given_Item_Is_Null_Throws_ArgumentNullException()
-        {
-            Action action = () => _player.AddItem(null);
-
-            action.Should().Throw<ArgumentNullException>();
-        }
-
-        [Fact]
-        public void Remove_Item_Given_Item_Is_Null_Throws_ArgumentNullException()
-        {
-            Action action = () => _player.Remove(null);
-
-            action.Should().Throw<ArgumentNullException>();
-        }
-
-        [Theory]
-        [InlineData(null)]
-        [InlineData("")]
-        public void GetItems_Given_ItemName_Is_Null_Or_Empty_Throws_ArgumentException(string item)
-        {
-            Action action = () => _player.GetItems(item);
-
-            action.Should().Throw<ArgumentException>();
         }
     }
 }

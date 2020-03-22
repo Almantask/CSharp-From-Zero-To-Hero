@@ -1,28 +1,26 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private decimal _money;
-        public decimal GetMoney()
+        public decimal Money { get; set; }
+        public Inventory _inventory;
+        public List<Item> Items
         {
-            return _money;
+            get => _inventory.Items;
         }
-
-        private Inventory _inventory;
 
         public Shop()
         {
-
+            _inventory = new Inventory();
         }
 
         public Shop(decimal money)
         {
-            _money = money;
-        }
-
-        public Item[] GetItems()
-        {
-            return _inventory.GetItems();
+            Money = money;
+            _inventory = new Inventory();
         }
 
         /// <summary>
@@ -31,6 +29,12 @@
         /// </summary>
         public void Add(Item item)
         {
+            if (item == null)
+            {
+                throw new ArgumentNullException(); 
+            }
+            
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,6 +44,11 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            if (String.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException();
+            }
+            _inventory.RemoveByName(name);
         }
 
         /// <summary>
@@ -50,7 +59,15 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            var price = item.Price;
+
+            if (price > Money)
+            {
+                return 0;
+            }
+
+            Money -= price;
+            return price;
         }
 
         /// <summary>
@@ -64,6 +81,18 @@
         /// </returns>
         public Item Sell(string item)
         {
+            if (String.IsNullOrEmpty(item))
+            {
+                throw new ArgumentException(); 
+            }
+                for (int i = 0; i < _inventory.Items.Count; i++)
+            {
+                if (item == _inventory.Items[i].Name)
+                {
+                    Money += _inventory.Items[i].Price;
+                    return _inventory.Items[i];
+                }
+            }
             return null;
         }
     }

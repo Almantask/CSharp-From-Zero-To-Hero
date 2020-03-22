@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -29,79 +30,141 @@ namespace BootCamp.Chapter
         /// Player items. There can be multiple of items with same name.
         /// </summary>
         private Inventory _inventory;
+
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
         private Equipment _equipment;
 
+        public List<Item> Items { get; set; }
+
         public Player()
         {
+            _inventory = new Inventory();
+            _equipment = new Equipment();
         }
 
         /// <summary>
         /// Gets all items from player's inventory
         /// </summary>
-        public Item[] GetItems()
-        {
-            return new Item[0];
-        }
 
         /// <summary>
         /// Adds item to player's inventory
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
         /// Gets items with matching name.
         /// </summary>
         /// <param name="name"></param>
-        public Item[] GetItems(string name)
+        public List<Item> GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
+
         // Player has equipment.
         // Various slots of equipment can be equiped and unequiped.
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
-        public void Equip(Headpiece head)
+        private bool CanEquipNewItem(Item currentEquipedItem, Item newItemToEquip)
         {
-
+            return _equipment.GetTotalWeight() - (currentEquipedItem?.Weight??0) + newItemToEquip.Weight < (baseCarryWeight + _strenght * 10);
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Headpiece headPiece)
         {
+            if (!CanEquipNewItem(_equipment.HeadPiece, headPiece))
+            {
+                return;
+            }
 
+            _equipment.HeadPiece = headPiece;
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Chestpiece chestPiece)
         {
+            if (!CanEquipNewItem(_equipment.ChestPiece, chestPiece))
+            {
+                return;
+            }
 
+            _equipment.ChestPiece = chestPiece;
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Shoulderpiece shoulderpiece, bool isLeft)
         {
+            if (isLeft)
+            {
+                if (!CanEquipNewItem(_equipment.LeftShoulderpiece, shoulderpiece))
+                {
+                    return;
+                }
 
+                _equipment.LeftShoulderpiece = shoulderpiece;
+            }
+            else
+            {
+                if (!CanEquipNewItem(_equipment.RightShoulderpiece, shoulderpiece))
+                {
+                    return;
+                }
+
+                _equipment.RightShoulderpiece = shoulderpiece;
+            }
         }
 
-        public void Equip(Armpiece head, bool isLeft)
+        public void Equip(Armpiece armpiece, bool isLeft)
         {
+            if (isLeft)
+            {
+                if (!CanEquipNewItem(_equipment.LeftArmPiece, armpiece))
+                {
+                    return;
+                }
 
+                _equipment.LeftArmPiece = armpiece;
+            }
+            else
+            {
+                if (!CanEquipNewItem(_equipment.RightArmPiece, armpiece))
+                {
+                    return;
+                }
+                _equipment.RightArmPiece = armpiece;
+            }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Gloves gloves)
         {
+            if (!CanEquipNewItem(_equipment.Gloves, gloves))
+            {
+                return;
+            }
 
+            _equipment.Gloves = gloves;
         }
-        #endregion
+
+        public void Equip(Legspiece legspiece)
+        {
+            if (!CanEquipNewItem(_equipment.Legspiece, legspiece))
+            {
+                return;
+            }
+
+            _equipment.Legspiece = legspiece;
+
+            #endregion Extra challenge: Equipment
+        }
     }
 }
