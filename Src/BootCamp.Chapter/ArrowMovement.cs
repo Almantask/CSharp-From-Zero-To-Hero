@@ -32,8 +32,9 @@ namespace BootCamp.Chapter
                 case 'D':
                 case 'd':
                     return '↦';
+                default:
+                    return '↥';
             }
-            return '↥';
         }
     }
 }
