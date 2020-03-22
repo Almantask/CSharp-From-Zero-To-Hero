@@ -15,32 +15,32 @@ namespace BootCamp.Chapter
             }
 
             var splitArray = peopleAndBalances[0].Split(',');
-            var floatArray = ConvertStringArrayToFloat(splitArray[1..]);
+            var floatArray = ConvertStringArrayToFloatArray(splitArray[1..]);
             var names = new[] { splitArray[0] };
-            var heighest = FindHighest(floatArray);
+            var heighestBalance = FindHighestBalance(floatArray);
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
             {
                 var currrentSplitArray = peopleAndBalances[i].Split(',');
-                var currentFloatArray = ConvertStringArrayToFloat(currrentSplitArray[1..]);
+                var currentFloatArray = ConvertStringArrayToFloatArray(currrentSplitArray[1..]);
                 var name = currrentSplitArray[0];
-                var currentHeighest = FindHighest(currentFloatArray);
+                var currentHeighest = FindHighestBalance(currentFloatArray);
 
-                if (currentHeighest > heighest)
+                if (currentHeighest > heighestBalance)
                 {
-                    heighest = currentHeighest;
+                    heighestBalance = currentHeighest;
                     names = new[] { name };
                 }
-                else if (currentHeighest == heighest)
+                else if (currentHeighest == heighestBalance)
                 {
-                    names = AddStrings(names, name);
+                    names = AddString(names, name);
                 }
             }
 
-            return $"{FormatStrings(names)} had the most money ever. ¤{heighest}.";
+            return $"{FormatStrings(names)} had the most money ever. ¤{heighestBalance}.";
         }
 
-        private static float FindHighest(float[] floatArray)
+        private static float FindHighestBalance(float[] floatArray)
         {
             float currentMax = floatArray[0];
             for (int i = 1; i < floatArray.Length; i++)
@@ -53,7 +53,7 @@ namespace BootCamp.Chapter
             return currentMax;
         }
 
-        private static float[] ConvertStringArrayToFloat(string[] v)
+        private static float[] ConvertStringArrayToFloatArray(string[] v)
         {
             var arr = new float[v.Length];
 
@@ -76,7 +76,7 @@ namespace BootCamp.Chapter
             return formatArray;
         }
 
-        private static string[] AddStrings(string[] currentNames, string v)
+        private static string[] AddString(string[] currentNames, string v)
         {
             var newArray = new string[currentNames.Length + 1];
             for (int i = 0; i < currentNames.Length; i++)
@@ -104,7 +104,7 @@ namespace BootCamp.Chapter
             do
             {
                 splitArray = peopleAndBalances[firstIndex].Split(',');
-                floatArray = ConvertStringArrayToFloat(splitArray[1..]);
+                floatArray = ConvertStringArrayToFloatArray(splitArray[1..]);
                 firstIndex++;
 
             } while (floatArray.Length < 2 && firstIndex < peopleAndBalances.Length);
@@ -116,15 +116,15 @@ namespace BootCamp.Chapter
             }
 
             var names = new[] { splitArray[0] };
-            var biggestLoss = FindHighest(floatArray) - FindLowest(floatArray);
+            var biggestLoss = FindHighestBalance(floatArray) - FindLowestBalance(floatArray);
 
             for (int i = firstIndex; i < peopleAndBalances.Length; i++)
             {
                 var currentSplitArray = peopleAndBalances[0].Split(',');
-                var currentFloatArray = ConvertStringArrayToFloat(splitArray[1..]);
+                var currentFloatArray = ConvertStringArrayToFloatArray(splitArray[1..]);
 
 
-                var currentBiggestLoss = FindHighest(currentFloatArray) - FindLowest(currentFloatArray);
+                var currentBiggestLoss = FindHighestBalance(currentFloatArray) - FindLowestBalance(currentFloatArray);
 
                 if (biggestLoss < currentBiggestLoss)
                 {
@@ -133,14 +133,14 @@ namespace BootCamp.Chapter
                 }
                 else if (biggestLoss == currentBiggestLoss)
                 {
-                    AddStrings(names, currentSplitArray[0]);
+                    AddString(names, currentSplitArray[0]);
                 }
             }
 
             return $"{FormatStrings(names)} lost the most money. -¤{biggestLoss}.";
         }
 
-        private static float FindLowest(float[] floatArray)
+        private static float FindLowestBalance(float[] floatArray)
         {
             float currentLow = floatArray[0];
             for (int i = 1; i < floatArray.Length; i++)
@@ -164,7 +164,7 @@ namespace BootCamp.Chapter
             }
 
             var personBalance = peopleAndBalances[0].Split(", ");
-            var balanceArray = ConvertStringArrayToFloat(personBalance[1..]);
+            var balanceArray = ConvertStringArrayToFloatArray(personBalance[1..]);
 
             var biggestBalance = balanceArray[^1];
             var names = new[] { personBalance[0] };
@@ -172,7 +172,7 @@ namespace BootCamp.Chapter
             for (int i = 1; i < peopleAndBalances.Length; i++)
             {
                 personBalance = peopleAndBalances[i].Split(", ");
-                balanceArray = ConvertStringArrayToFloat(personBalance[1..]);
+                balanceArray = ConvertStringArrayToFloatArray(personBalance[1..]);
                 var currentBiggestBalance = balanceArray[^1];
 
                 if (currentBiggestBalance > biggestBalance)
@@ -182,7 +182,7 @@ namespace BootCamp.Chapter
                 }
                 else if (currentBiggestBalance == biggestBalance)
                 {
-                    names = AddStrings(names, personBalance[0]);
+                    names = AddString(names, personBalance[0]);
                 }
             }
 
@@ -204,7 +204,7 @@ namespace BootCamp.Chapter
             }
 
             var personBalance = peopleAndBalances[0].Split(", ");
-            var balanceArray = ConvertStringArrayToFloat(personBalance[1..]);
+            var balanceArray = ConvertStringArrayToFloatArray(personBalance[1..]);
 
             var lowestBalance = balanceArray[^1];
             var names = new[] { personBalance[0] };
@@ -212,7 +212,7 @@ namespace BootCamp.Chapter
             for (int i = 1; i < peopleAndBalances.Length; i++)
             {
                 personBalance = peopleAndBalances[i].Split(", ");
-                balanceArray = ConvertStringArrayToFloat(personBalance[1..]);
+                balanceArray = ConvertStringArrayToFloatArray(personBalance[1..]);
                 var currentLowestBalance = balanceArray[^1];
 
                 if (currentLowestBalance < lowestBalance)
@@ -222,7 +222,7 @@ namespace BootCamp.Chapter
                 }
                 else if (currentLowestBalance == lowestBalance)
                 {
-                    names = AddStrings(names, personBalance[0]);
+                    names = AddString(names, personBalance[0]);
                 }
             }
 
