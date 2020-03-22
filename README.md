@@ -14,6 +14,10 @@ A lot of neat quality of programmer life improvements provided by a language des
 ### Task
 Take (homework 1 assignment)[https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter3/Homework/1/Src/BootCamp.Chapter]
 and refactor it trying to apply the operators and functions learned in lesson- as much as you can.
+If you haven't done homework 1, refer to (chapter 2 homework 3)[https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter2/Homework/2] what needs to be done.
+
 Also apply null validation for every method and constructor:
 1) Don't allow passing null references  
 2) Don't allow passing null or empty strings
+
+Note: the tests still are meant for getter/setter METHODS, so you will need to update them in case you didn't already.
