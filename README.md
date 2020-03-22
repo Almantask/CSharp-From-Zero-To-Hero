@@ -1,5 +1,5 @@
 # C#: From Zero To Hero
-##Chapter 3: C#. Homework 3: Null related operators and more sugar
+## Chapter 3: C#. Homework 3: Null related operators and more sugar
 ### Intro
 C# is a modern high-level programming language. It has many nice features and it's time to explore some of it.
 In particular, it's really cool the way C# handles null. There are several operators/patterns in regards to null handling and typecheck.
