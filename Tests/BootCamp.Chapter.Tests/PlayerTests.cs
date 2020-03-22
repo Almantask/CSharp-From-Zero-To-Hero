@@ -20,7 +20,7 @@ namespace BootCamp.Chapter.Tests
             var item = new Item("Potion", 20, 0.2f);
 
             _player.AddItem(item);
-            var items = _player.GetItems(item.GetName());
+            var items = _player.GetItems(item.Name);
 
             items.Should().Contain(item);
         }
@@ -33,7 +33,7 @@ namespace BootCamp.Chapter.Tests
 
             _player.Remove(item);
 
-            var items = _player.GetItems(item.GetName());
+            var items = _player.GetItems(item.Name);
             items.Should().NotContain(item);
         }
 
