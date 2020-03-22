@@ -29,9 +29,9 @@ namespace BootCamp.Chapter
            +-------+
 
          */
-        private static string _corner = "+";
-        private static string _horizontalBorder = "-";
-        private static string _verticalBorder = "|";
+        const string _corner = "+";
+        const string _horizontalBorder = "-";
+        const string _verticalBorder = "|";
 
         /// <summary>
         /// Build a table for given message with given padding.
