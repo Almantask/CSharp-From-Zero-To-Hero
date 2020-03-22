@@ -37,20 +37,22 @@ namespace BootCamp.Chapter
 
         public static string ToBinary(long number)
         {
-            Stack<int> myBinaryStack = new Stack<int>();
+            string binaryWord = "";
             while (number / 2 != 0)
             {
                 var binaryNumber = number % 2;
                 number /= 2;
-                myBinaryStack.Push((int)binaryNumber);
+                binaryWord += binaryNumber;
             }
-            myBinaryStack.Push((int)number);
+            binaryWord += number;
 
-            StringBuilder sbBinary = new StringBuilder();
-            foreach (var item in myBinaryStack)
-            {
-                sbBinary.Append(item);
-            }
+            StringBuilder sbBinary = new StringBuilder(binaryWord);
+            char[] binaryArrayToReverse  = sbBinary.ToString().ToCharArray();
+            Array.Reverse(binaryArrayToReverse);
+
+            string binaryString = new string(binaryArrayToReverse);
+
+            sbBinary.Replace(sbBinary.ToString(), binaryString);
             return sbBinary.ToString();
         }
     }
