@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace BootCamp.Chapter.LogUtility
 {
@@ -12,7 +13,7 @@ namespace BootCamp.Chapter.LogUtility
 
         public void Log(string msg)
         {
-            File.AppendAllText(_logPath, msg + "\r\n");
+            File.AppendAllText(_logPath, msg + Environment.NewLine);
         }
     }
 }
