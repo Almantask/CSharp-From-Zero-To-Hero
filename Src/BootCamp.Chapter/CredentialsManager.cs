@@ -6,8 +6,6 @@ namespace BootCamp.Chapter
 {
     public class CredentialsManager
     {
-        private const string Separator = ",";
-
         private readonly string CredentialsFile = "credentials.db";
 
         public CredentialsManager()
@@ -87,7 +85,7 @@ namespace BootCamp.Chapter
                 reader = new StreamReader(CredentialsFile);
                 while ((line = reader.ReadLine()) != null)
                 {
-                    if (TryParse(line, out Credentials credentials))
+                    if (Credentials.TryParse(line, out Credentials credentials))
                     {
                         internalUserList.Add(credentials);
                     }
@@ -103,28 +101,6 @@ namespace BootCamp.Chapter
             }
 
             return internalUserList;
-        }
-
-        private static bool TryParse(string input, out Credentials user)
-        {
-            user = default;
-
-            if (!StringOps.IsValid(input))
-            {
-                return false;
-            }
-
-            var fields = input.Split(Separator);
-            const int fieldsNumber = 2;
-
-            var isValid = fields.Length == fieldsNumber && StringOps.IsValid(fields[0]) && StringOps.IsValid(fields[1]);
-            if (!isValid)
-            {
-                return false;
-            }
-
-            user = new Credentials(fields[0], fields[1]);
-            return true;
         }
 
         public bool Register(Credentials user)
