@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
 
         public static bool IsValid(string input)
         {
-            return !string.IsNullOrWhiteSpace(input) && !string.IsNullOrEmpty(input);
+            return !string.IsNullOrWhiteSpace(input) || !string.IsNullOrEmpty(input);
         }
     }
 }
