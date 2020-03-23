@@ -44,20 +44,32 @@ namespace BootCamp.Chapter.Tests
             isLoggedIn.Should().BeTrue();
         }
 
-        [Theory]
-        [InlineData(EmptyFile)]
-        [InlineData(FileWtihSingleCredential)]
-        public void Register_Appends_Comma_Separated_Credentials(string credentialsFile)
+        [Fact]
+        public void Register_Appends_Comma_Separated_Credentials_To_Zero_Length_File()
         {
-            var credentialsManager = new CredentialsManager(credentialsFile);
-            var credentials = new Credentials("Kai", "Kai123");
-            var oldContents = GetCredentials(credentialsFile);
+            var credentialsManager = new CredentialsManager(EmptyFile);
+            var credentials = new Credentials("Tom", "Tom123");
+            var curentCredentials = new Credentials("Tom", StringOps.Encode("Tom123"));
 
             credentialsManager.Register(credentials);
 
-            GetCredentials(credentialsFile)
-                .Should().Contain(oldContents)
-                .And.HaveCount(oldContents.Count + 1);
+            GetCredentials(EmptyFile).Should()
+                                           .Contain(curentCredentials).And
+                                           .HaveCount(1);
+        }
+
+        [Fact]
+        public void Register_Appends_Comma_Separated_Credentials_To_File_With_Single_Credential()
+        {
+            var credentialsManager = new CredentialsManager(EmptyFile);
+            var credentials = new Credentials("Kai", "Kai123");
+            var oldContents = GetCredentials(EmptyFile);
+
+            credentialsManager.Register(credentials);
+
+            GetCredentials(EmptyFile).Should()
+                                           .Contain(oldContents).And
+                                           .HaveCount(oldContents.Count + 1);
         }
 
         private List<Credentials> GetCredentials(string credentialsFile)
