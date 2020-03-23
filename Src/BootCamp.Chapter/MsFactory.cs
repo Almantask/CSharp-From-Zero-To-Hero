@@ -6,32 +6,32 @@ namespace BootCamp.Chapter
     {
         public override void InstallBody(DesktopComputer computer)
         {
-            computer.SetBody(new Body());
+            computer.SetBody(_body);
         }
 
         public override void InstallMotherboard(DesktopComputer computer)
         {
-            computer.SetMotherboard(new Motherboard());
+            computer.SetMotherboard(_motherboard);
         }
 
         public override void InstallCpu(DesktopComputer computer)
         {
-            computer.SetCpu(new Cpu());
+            computer.SetCpu(_cpu);
         }
 
         public override void InstallGpu(DesktopComputer computer)
         {
-            computer.SetGpu(new Gpu());
+            computer.SetGpu(_gpu);
         }
 
         public override void InstallRam(DesktopComputer computer)
         {
-            computer.SetRam(new Ram());
+            computer.SetRam(_ram);
         }
 
         public override void InstallHardDisk(DesktopComputer computer)
         {
-            computer.SetHard(new HardDisk());
+            computer.SetHard(_hard);
         }
 
         public override DesktopComputer Assemble()
