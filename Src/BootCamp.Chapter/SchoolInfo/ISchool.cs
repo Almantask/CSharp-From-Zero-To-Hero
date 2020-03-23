@@ -6,7 +6,6 @@ using System.Text;
 namespace BootCamp.Chapter.SchoolInfo
 {
     interface ISchool<TStudent, TId> where TStudent : Student
-        where TId : class
     {
         TStudent Get(TId id);
         IList<TStudent> Get();
