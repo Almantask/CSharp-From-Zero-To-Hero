@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
     {
         private const string characterMask = "\u263A";
         private const string backspace = "\b \b";
-        private static readonly Credentials newCredentials = new Credentials();
+        private static readonly CredentialsManager credentialsMananger = new CredentialsManager();
 
         public static void DisplayMainMenu()
         {
@@ -30,6 +30,11 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                Wait();
+                DisplayMainMenu();
+            }
         }
 
         private static void ChooseMenuItem()
@@ -37,7 +42,7 @@ namespace BootCamp.Chapter
             ConsoleKey pressedKey = Console.ReadKey(true).Key;
             if (pressedKey == ConsoleKey.D0 || pressedKey == ConsoleKey.NumPad0)
             {
-                return;
+                Environment.Exit(0);
             }
             else if (pressedKey == ConsoleKey.D1 || pressedKey == ConsoleKey.NumPad1)
             {
@@ -87,15 +92,15 @@ namespace BootCamp.Chapter
 
             Console.WriteLine();
 
-            var testUser = new User(name, password);
+            var testUser = new Credentials(name, password);
             TestLogin(testUser);
 
             Wait();
         }
 
-        private static void TestLogin(User testUser)
+        private static void TestLogin(Credentials testUser)
         {
-            if (newCredentials.Login(testUser))
+            if (credentialsMananger.Login(testUser))
             {
                 Console.WriteLine("Login successful!");
             }
@@ -115,15 +120,15 @@ namespace BootCamp.Chapter
 
             Console.WriteLine();
 
-            var newUser = new User(name, password);
+            var newUser = new Credentials(name, password);
             TestRegistration(newUser);
 
             Wait();
         }
 
-        private static void TestRegistration(User newUser)
+        private static void TestRegistration(Credentials newUser)
         {
-            if (newCredentials.Register(newUser))
+            if (credentialsMananger.Register(newUser))
             {
                 Console.WriteLine("Registration successful!");
             }

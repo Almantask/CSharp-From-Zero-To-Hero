@@ -1,72 +1,50 @@
 ﻿using System;
-using System.IO;
 
 namespace BootCamp.Chapter
 {
-    public class Credentials
+    public readonly struct Credentials : IEquatable<Credentials>
     {
+        public readonly string Name;
+        public readonly string Password;
         private const string Separator = ",";
 
-        public string CredentialsFile { get; } = "credentials.db";
-
-        public Credentials()
+        public Credentials(string name, string password)
         {
+            Name = name;
+            Password = password;
         }
 
-        public Credentials(string credentialsFile)
+        public override string ToString()
         {
-            CredentialsFile = credentialsFile ?? throw new ArgumentNullException(nameof(credentialsFile));
+            return $"{Name},{Password}";
         }
 
-        private bool FindUser(User user)
+        public bool Equals(Credentials other)
         {
-            string line;
-            bool found = false;
-
-            StreamReader reader;
-            try
-            {
-                reader = new StreamReader(CredentialsFile);
-                while ((line = reader.ReadLine()) != null)
-                {
-                    var isValid = TryParse(line, out User credentials);
-                    if (isValid && user.Equals(credentials))
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {CredentialsFile}");
-            }
-            reader?.Close();
-            return found;
+            return Name == other.Name && Password == other.Password;
         }
 
-        private bool AddUser(User user)
+        public static bool operator ==(Credentials left, Credentials right)
         {
-            if (FindUser(user))
-            {
-                throw new UserAllreadyExistsException("User already exists!");
-            }
-            StreamWriter writer;
-            try
-            {
-                writer = new StreamWriter(CredentialsFile, true);
-                writer.WriteLine($"{user.Name},{user.Password}");
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidCredentialsDbFile($"There was an error while trying to work with {CredentialsFile}", ex);
-            }
-
-            writer?.Close();
-            return true;
+            return left.Equals(right);
         }
 
-        private static bool TryParse(string input, out User user)
+        public static bool operator !=(Credentials left, Credentials right)
+        {
+            return !(left == right);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, Password);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Credentials user && Name == user.Name && Password == user.Password;
+        }
+
+        public static bool TryParse(string input, out Credentials user)
         {
             user = default;
 
@@ -78,26 +56,14 @@ namespace BootCamp.Chapter
             var fields = input.Split(Separator);
             const int fieldsNumber = 2;
 
-            var isValid = fields.Length == fieldsNumber || StringOps.IsValid(fields[0]) || StringOps.IsValid(fields[1]);
+            var isValid = fields.Length == fieldsNumber && StringOps.IsValid(fields[0]) && StringOps.IsValid(fields[1]);
             if (!isValid)
             {
                 return false;
             }
 
-            user = new User(fields[0], fields[1]);
+            user = new Credentials(fields[0], fields[1]);
             return true;
-        }
-
-        public bool Register(User user)
-        {
-            var tempUser = new User(user.Name, StringOps.Encode(user.Password));
-            return AddUser(tempUser);
-        }
-
-        public bool Login(User user)
-        {
-            var tempUser = new User(user.Name, StringOps.Encode(user.Password));
-            return FindUser(tempUser);
         }
     }
 }
