@@ -50,7 +50,7 @@ namespace BootCamp.Chapter
         public void Register(Credentials credentials)
 
         {
-            var output = $"{credentials.Username}, {credentials.Password}{Environment.NewLine}"; 
+            var output = $"{Environment.NewLine}{credentials.Username}, {credentials.Password}"; 
             File.AppendAllText(_fileName, output);
         }
 
