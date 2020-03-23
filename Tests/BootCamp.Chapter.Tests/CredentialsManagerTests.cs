@@ -64,11 +64,13 @@ namespace BootCamp.Chapter.Tests
             var credentialsManager = new CredentialsManager(EmptyFile);
             var credentials = new Credentials("Kai", "Kai123");
             var oldContents = GetCredentials(EmptyFile);
+            var curentCredentials = new Credentials("Kai", StringOps.Encode("Kai123"));
 
             credentialsManager.Register(credentials);
 
             GetCredentials(EmptyFile).Should()
                                            .Contain(oldContents).And
+                                           .EndWith(curentCredentials).And
                                            .HaveCount(oldContents.Count + 1);
         }
 
