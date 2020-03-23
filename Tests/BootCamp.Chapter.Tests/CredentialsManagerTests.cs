@@ -45,7 +45,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Theory]
-        [InlineData(EmptyFile)]
+        //[InlineData(EmptyFile)]
         [InlineData(FileWtihSingleCredential)]
         public void Register_Appends_Comma_Separated_Credentials(string credentialsFile)
         {
@@ -55,7 +55,7 @@ namespace BootCamp.Chapter.Tests
 
             credentialsManager.Register(credentials);
 
-
+            var test = File.ReadAllLines(credentialsFile); 
             File.ReadAllLines(credentialsFile)
                 .Should().Contain(oldContents)
                 .And.HaveCount(oldContents.Length + 1);

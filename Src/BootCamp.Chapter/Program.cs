@@ -4,7 +4,7 @@
     {
         private static void Main(string[] args)
         {
-            CredentialsManager.Demo();
+            Demo1.Demo(); 
         }
     }
 }
