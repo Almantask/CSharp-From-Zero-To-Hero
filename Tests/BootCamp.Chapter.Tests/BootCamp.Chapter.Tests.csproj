@@ -18,4 +18,13 @@
     <ProjectReference Include="..\..\Src\BootCamp.Chapter\BootCamp.Chapter.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Input\Files\EmptyCredentials.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Files\TomTom123Credentials.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
