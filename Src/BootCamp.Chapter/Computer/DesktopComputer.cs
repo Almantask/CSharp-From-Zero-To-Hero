@@ -7,11 +7,19 @@
         {
             return _body;
         }
+        public void SetBody(Body body)
+        {
+            _body = body;
+        }
         
         private Ram _ram;
         public Ram GetRam()
         {
             return _ram;
+        }
+        public void SetRam(Ram ram)
+        {
+            _ram = ram;
         }
 
         private Cpu _cpu;
@@ -20,10 +28,19 @@
             return _cpu;
 
         }
+        public void SetCpu(Cpu cpu)
+        {
+            _cpu = cpu;
+        }
+
         private Gpu _gpu;
         public Gpu GetGpu()
         {
             return _gpu;
+        }
+        public void SetGpu(Gpu gpu)
+        {
+            _gpu = gpu;
         }
 
         private HardDisk _hard;
@@ -31,20 +48,18 @@
         {
             return _hard;
         }
+        public void SetHard(HardDisk hard)
+        {
+            _hard = hard;
+        }
 
         private Motherboard _motherboard;
         public Motherboard GetMotherboard()
         {
             return _motherboard;
         }
-
-        public DesktopComputer(Body body, Ram ram, Cpu cpu, Gpu gpu, HardDisk hard, Motherboard motherboard)
+        public void SetMotherboard(Motherboard motherboard)
         {
-            _body = body;
-            _ram = ram;
-            _cpu = cpu;
-            _gpu = gpu;
-            _hard = hard;
             _motherboard = motherboard;
         }
     }

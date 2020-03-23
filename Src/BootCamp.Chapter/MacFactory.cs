@@ -4,49 +4,48 @@ namespace BootCamp.Chapter
 {
     public class MacFactory : ComputerFactory
     {
-        public override void InstallBody()
+        public override void InstallBody(DesktopComputer computer)
         {
-            _body = new Body();
+            computer.SetBody(new Body());
         }
 
-        public override void InstallRam()
+        public override void InstallMotherboard(DesktopComputer computer)
         {
-            _ram = new Ram();
+            computer.SetMotherboard(new Motherboard());
         }
 
-        public override void InstallCpu()
+        public override void InstallCpu(DesktopComputer computer)
         {
-            _cpu = new Cpu();
+            computer.SetCpu(new Cpu());
         }
 
-        public override void InstallGpu()
+        public override void InstallGpu(DesktopComputer computer)
         {
-            _gpu = new Gpu();
+            computer.SetGpu(new Gpu());
         }
 
-        public override void InstallHardDisk()
+        public override void InstallRam(DesktopComputer computer)
         {
-            _hard = new HardDisk();
+            computer.SetRam(new Ram());
         }
 
-        public override void InstallMotherboard()
+        public override void InstallHardDisk(DesktopComputer computer)
         {
-            _motherboard = new Motherboard();
-        }
-
-        public MacFactory()
-        {
-            InstallBody();
-            InstallRam();
-            InstallCpu();
-            InstallGpu();
-            InstallHardDisk();
-            InstallMotherboard();
+            computer.SetHard(new HardDisk());
         }
 
         public override DesktopComputer Assemble()
         {
-            return new DesktopComputer(_body, _ram, _cpu, _gpu, _hard, _motherboard);
+            var computer = new DesktopComputer();
+            
+            InstallBody(computer);
+            InstallMotherboard(computer);
+            InstallCpu(computer);
+            InstallGpu(computer);
+            InstallRam(computer);
+            InstallHardDisk(computer);
+            
+            return computer;
         }
     }
 }
