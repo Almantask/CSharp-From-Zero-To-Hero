@@ -6,22 +6,23 @@ namespace BootCamp.Chapter
 {
     public class CredentialsManager
     {
-        private readonly string CredentialsFile = "credentials.db";
-
-        public CredentialsManager()
-        {
-        }
+        private readonly string CredentialsFile;
 
         public CredentialsManager(string credentialsFile)
         {
-            CredentialsFile = credentialsFile ?? throw new ArgumentNullException(nameof(credentialsFile));
+            if (!StringOps.IsValid(credentialsFile))
+            {
+                throw new ArgumentNullException(nameof(credentialsFile));
+            }
+
+            CredentialsFile = credentialsFile;
         }
 
         private bool FindUser(Credentials user)
         {
             var found = false;
 
-            foreach (var credential in ReadDatabase())
+            foreach (var credential in GetCredentials())
             {
                 if (credential.Equals(user))
                 {
@@ -37,7 +38,7 @@ namespace BootCamp.Chapter
         {
             var exists = false;
 
-            foreach (var credential in ReadDatabase())
+            foreach (var credential in GetCredentials())
             {
                 if (credential.Name == user.Name)
                 {
@@ -74,10 +75,10 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private List<Credentials> ReadDatabase()
+        private List<Credentials> GetCredentials()
         {
             string line;
-            var internalUserList = new List<Credentials>();
+            var internalCredentialsList = new List<Credentials>();
 
             StreamReader reader = null;
             try
@@ -87,7 +88,7 @@ namespace BootCamp.Chapter
                 {
                     if (Credentials.TryParse(line, out Credentials credentials))
                     {
-                        internalUserList.Add(credentials);
+                        internalCredentialsList.Add(credentials);
                     }
                 }
             }
@@ -100,7 +101,7 @@ namespace BootCamp.Chapter
                 reader?.Close();
             }
 
-            return internalUserList;
+            return internalCredentialsList;
         }
 
         public bool Register(Credentials user)

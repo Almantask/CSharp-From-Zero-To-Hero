@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
     {
         private const string characterMask = "\u263A";
         private const string backspace = "\b \b";
-        private static readonly CredentialsManager credentialsMananger = new CredentialsManager();
+        private static readonly CredentialsManager credentialsMananger = new CredentialsManager("credentials.db");
 
         public static void DisplayMainMenu()
         {

@@ -50,15 +50,29 @@ namespace BootCamp.Chapter.Tests
         public void Register_Appends_Comma_Separated_Credentials(string credentialsFile)
         {
             var credentialsManager = new CredentialsManager(credentialsFile);
-            var credentials = new Credentials("Tom", "Tom123");
-            var oldContents = File.ReadAllLines(credentialsFile);
+            var credentials = new Credentials("Kai", "Kai123");
+            var oldContents = GetCredentials(credentialsFile);
 
             credentialsManager.Register(credentials);
 
-
-            File.ReadAllLines(credentialsFile)
+            GetCredentials(credentialsFile)
                 .Should().Contain(oldContents)
-                .And.HaveCount(oldContents.Length + 1);
+                .And.HaveCount(oldContents.Count + 1);
+        }
+
+        private List<Credentials> GetCredentials(string credentialsFile)
+        {
+            var internalCredentialsList = new List<Credentials>();
+            var fileContent = File.ReadAllLines(credentialsFile);
+
+            foreach (var line in fileContent)
+            {
+                if (Credentials.TryParse(line, out Credentials credentials))
+                {
+                    internalCredentialsList.Add(credentials);
+                }
+            }
+            return internalCredentialsList;
         }
 
         private static string ToHexedString(byte[] bytes)

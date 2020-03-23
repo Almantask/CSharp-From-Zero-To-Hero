@@ -10,6 +10,11 @@ namespace BootCamp.Chapter
 
         public Credentials(string name, string password)
         {
+            if (!StringOps.IsValid(name) || !StringOps.IsValid(password))
+            {
+                throw new ArgumentException($"{nameof(name)} or {nameof(password)} must not be null or empty");
+            }
+
             Name = name;
             Password = password;
         }
