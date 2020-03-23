@@ -3,12 +3,14 @@ using System.IO;
 
 namespace BootCamp.Chapter.LogUtility
 {
-    class FileLogger : ILogger
+    public class FileLogger : ILogger
     {
-        readonly string _logPath;
-        public FileLogger(string LogPath)
+        private string _logPath;
+
+        public FileLogger(string logPath)
         {
-            _logPath = LogPath;
+            _logPath = logPath;
+            File.Delete(logPath);
         }
 
         public void Log(string msg)

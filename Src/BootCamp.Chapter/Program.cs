@@ -1,37 +1,64 @@
 ﻿using System;
+using BootCamp.Chapter.LogUtility;
 
 namespace BootCamp.Chapter
 {
+    enum LogOption
+    {
+        Console,
+        File
+    }
+
     class Program
     {
+        private static ILogger _logger;
+
         public static void Main(string[] args)
         {
-            var logger = new Logger();
-            logger.Log("Program boots.");
+            _logger = SetLogOption(LogOption.Console);
+
+            _logger.Log("Program boots.");
 
             for (int num = 0; num < 2; num++)
             {
-                Console.WriteLine("Calculate BMI for a person.");
-
-                Console.Write("Enter name: ");
-                string name = Console.ReadLine();
-                Console.Write("Enter surname: ");
-                string surname = Console.ReadLine();
-                Console.Write("Enter age: ");
-                int age = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter weight: ");
-                float weight = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter height: ");
-                float height = Convert.ToSingle(Console.ReadLine());
-
-                logger.Log(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
-
-                //BMI is weight (kg) / [height (m)] ^ 2
-                float bmi = (float)(weight / Math.Pow((height / 100), 2));
-                logger.Log("Body-mass index (BMI) is " + bmi);
+                var person = PromptBmi("Calculate BMI for a person.");
+                _logger.Log($"{person.Name} {person.Surname} is {person.Age} years old, his weight is {person.Weight} kg and his height is {person.Height} cm.");
+                float bmi = (float)(person.Weight / Math.Pow((person.Height / 100), 2)); //BMI is weight (kg) / [height (m)] ^ 2
+                _logger.Log($"Body-mass index (BMI) is {bmi}");
             }
 
-            logger.Log("Program shutdowns.");
+            _logger.Log("Program shutdowns.");
+        }
+
+        private static ILogger SetLogOption(LogOption logOption)
+        {
+            const string LogPath = @"..\..\..\Output\Log.txt";
+
+            if (logOption == LogOption.Console)
+            {
+                return new ConsoleLogger();
+            }
+            return new FileLogger(LogPath);
+        }
+
+        private static Person PromptBmi(string message)
+        {
+            _logger.Log(message);
+
+            return new Person()
+            {
+                Name = PromptText("Enter name: "),
+                Surname = PromptText("Enter surname: "),
+                Age = Convert.ToInt32(PromptText("Enter age: ")),
+                Weight = Convert.ToInt32(PromptText("Enter weight: ")),
+                Height = Convert.ToSingle(PromptText("Enter height: "))
+            };
+        }
+
+        private static string PromptText(string message)
+        {
+            _logger.Log(message);
+            return (Console.ReadLine());
         }
     }
 }
