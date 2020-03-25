@@ -33,6 +33,7 @@ namespace BootCamp.Chapter
             string[] accountsArray = allLines.Split(Environment.NewLine);
             for (int i = 0; i < accountsArray.Length; i += 2)
             {
+                //TODO out of bounds!!!
                 Account account = new Account(accountsArray[i].Split(',')[0], accountsArray[i].Split(',')[1]);
                 accounts.Add(account);
             }
@@ -42,7 +43,8 @@ namespace BootCamp.Chapter
 
         public void AddAccountToFile(Account account)
         {
-            string textToBeAdded = $"{account.Name},{string.Concat(Encoding.Unicode.GetChars(account.Password))}{Environment.NewLine}";
+            //TODO needs to save it encoded!!!
+            string textToBeAdded = $"{account.Name},{string.Concat(account.Password)}{Environment.NewLine}";
             File.AppendAllText(filePath, textToBeAdded);
         }
     }
