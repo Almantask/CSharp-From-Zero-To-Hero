@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BootCamp.Chapter.StudentInfo;
+using BootCamp.Chapter.Teachers;
+using BootCamp.Chapter.Teachers.HighSchool;
+using System;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +9,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-
+                         
         }
     }
 }

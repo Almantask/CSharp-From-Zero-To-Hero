@@ -4,9 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter.Teachers
 {
-    class Teacher
+    public abstract class Teacher<TSubject> : ITeacher<TSubject> where TSubject : Subject
     {
-        public Guid Guid { get; set; }
-        public string Name { get; set; }
+        public abstract TSubject ProduceSubjectMaterial();
     }
 }

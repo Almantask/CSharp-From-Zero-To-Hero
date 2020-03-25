@@ -1,12 +1,11 @@
-﻿using BootCamp.Chapter.SchoolInfo;
-using BootCamp.Chapter.Teachers;
+﻿using BootCamp.Chapter.Teachers;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter.StudentInfo
 {
-    class UniversityStudent<TTeacher> : IStudent<TTeacher> where TTeacher : UniversityTeacher
+    class MiddleSchoolStudent<TTeacher> : IStudent<TTeacher> where TTeacher : MiddleSchoolTeacher
     {
         public void LearnFrom(TTeacher teacher)
         {

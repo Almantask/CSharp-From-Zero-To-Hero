@@ -4,8 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter.Teachers
 {
-    interface ITeacher<TSubjectMaterial>
+    interface ITeacher<Subject>
     {
-       TSubjectMaterial ProduceSubjectMaterial();
+       Subject ProduceSubjectMaterial();
     }
 }

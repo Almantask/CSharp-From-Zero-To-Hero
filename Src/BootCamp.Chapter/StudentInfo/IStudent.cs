@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BootCamp.Chapter.StudentInfo
 {
-    interface IStudent<TTeacher> where TTeacher : Teacher
+    interface IStudent<TTeacher>
     {
         void LearnFrom(TTeacher teacher);
     }
