@@ -9,6 +9,14 @@ namespace BootCamp.Chapter
     {
         const string filePath = "Login.txt";
 
+        public FileAccessor()
+        {
+            if (!File.Exists(filePath))
+            {
+                File.Create(filePath);
+            }
+        }
+
         public List<Account> GetAccountsList()
         {
             return AccountsFromFile();
@@ -16,10 +24,16 @@ namespace BootCamp.Chapter
         private List<Account> AccountsFromFile()
         {
             List<Account> accounts = new List<Account>();
-            string[] accountsArray = File.ReadAllText(filePath).Split(',');
+            string allLines = File.ReadAllText(filePath);
+
+            if (String.IsNullOrEmpty(allLines))
+            {
+                return accounts;
+            }
+            string[] accountsArray = allLines.Split(Environment.NewLine);
             for (int i = 0; i < accountsArray.Length; i += 2)
             {
-                Account account = new Account(accountsArray[i], accountsArray[i + 1]);
+                Account account = new Account(accountsArray[i].Split(',')[0], accountsArray[i].Split(',')[1]);
                 accounts.Add(account);
             }
 
@@ -28,7 +42,7 @@ namespace BootCamp.Chapter
 
         public void AddAccountToFile(Account account)
         {
-            string textToBeAdded = $"{account.Name},{account.Password.ToString()}{Environment.NewLine}";
+            string textToBeAdded = $"{account.Name},{Encoding.Unicode.GetChars(account.Password)}{Environment.NewLine}";
             File.AppendAllText(filePath, textToBeAdded);
         }
     }

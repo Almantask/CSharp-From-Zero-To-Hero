@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +7,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Area51 a = new Area51();
 
+            a.Demo();
         }
     }
 }
