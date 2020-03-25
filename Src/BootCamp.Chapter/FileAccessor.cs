@@ -42,7 +42,7 @@ namespace BootCamp.Chapter
 
         public void AddAccountToFile(Account account)
         {
-            string textToBeAdded = $"{account.Name},{Encoding.Unicode.GetChars(account.Password)}{Environment.NewLine}";
+            string textToBeAdded = $"{account.Name},{string.Concat(Encoding.Unicode.GetChars(account.Password))}{Environment.NewLine}";
             File.AppendAllText(filePath, textToBeAdded);
         }
     }
