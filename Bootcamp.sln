@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootCamp.Chapter", "Src\Boo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootCamp.Chapter.Tests", "Tests\BootCamp.Chapter.Tests\BootCamp.Chapter.Tests.csproj", "{955C76C7-582C-4C12-A253-0551A59E630A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryVsListBench", "Src\DictionaryVsListBench\DictionaryVsListBench.csproj", "{26794BE4-61C1-4476-B7DC-5B6E0AE5D513}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{955C76C7-582C-4C12-A253-0551A59E630A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{955C76C7-582C-4C12-A253-0551A59E630A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{955C76C7-582C-4C12-A253-0551A59E630A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26794BE4-61C1-4476-B7DC-5B6E0AE5D513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26794BE4-61C1-4476-B7DC-5B6E0AE5D513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26794BE4-61C1-4476-B7DC-5B6E0AE5D513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26794BE4-61C1-4476-B7DC-5B6E0AE5D513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AD4B9DF0-A466-44FE-ADB8-D16BE20E6A37} = {3E67C921-D341-42FB-9934-B03C05A28BEB}
 		{955C76C7-582C-4C12-A253-0551A59E630A} = {7559227A-AC63-40F9-B43A-BF1D3CB352D6}
+		{26794BE4-61C1-4476-B7DC-5B6E0AE5D513} = {3E67C921-D341-42FB-9934-B03C05A28BEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5969FA83-B2F9-4714-8336-EEBBDA71F6FF}
