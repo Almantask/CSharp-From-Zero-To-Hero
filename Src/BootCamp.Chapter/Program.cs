@@ -70,16 +70,16 @@ namespace BootCamp.Chapter
             do
             {
                 username = PromptText("Enter username:");
-            } while (string.IsNullOrEmpty(username.Trim()));
+            } while (username.Trim() == "");
 
             string password;
 
             do
             {
                 password = PromptPassword("Enter password:");
-            } while (string.IsNullOrEmpty(password.Trim()));
+            } while (password.Trim() == "");
 
-            return new Credentials(username, password);
+            return new Credentials { Username = username, Password = password };
         }
 
         private static string PromptText(string message)

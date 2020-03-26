@@ -2,18 +2,40 @@
 {
     internal struct Credentials
     {
-        public readonly string Username;
-        public readonly string Password;
+        private string _username;
 
-        public Credentials(string username, string password)
+        public string Username
         {
-            if (string.IsNullOrEmpty(username.Trim()) || string.IsNullOrEmpty(password.Trim()))
+            get
             {
-                throw new InvalidArgumentException("Unexpected arguments for username or password.");
+                return _username;
             }
+            set
+            {
+                if (value == null || value.Trim() == "")
+                {
+                    throw new InvalidArgumentException("Unexpected argument for username.");
+                }
+                _username = value;
+            }
+        }
 
-            Username = username;
-            Password = password;
+        private string _password;
+
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                if (value == null || value.Trim() == "")
+                {
+                    throw new InvalidArgumentException("Unexpected argument for password.");
+                }
+                _password = value;
+            }
         }
     }
 }

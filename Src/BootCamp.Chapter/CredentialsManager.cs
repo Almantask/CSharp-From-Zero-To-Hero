@@ -100,7 +100,7 @@ namespace BootCamp.Chapter
                 return false;
             }
 
-            parsedCredentials = new Credentials(credentialsData[0], credentialsData[1]);
+            parsedCredentials = new Credentials { Username = credentialsData[0], Password = credentialsData[1] };
             return true;
         }
 
