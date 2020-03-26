@@ -18,13 +18,13 @@ namespace BootCamp.Chapter
             CredentialsFile = credentialsFile;
         }
 
-        private bool FindUser(Credentials user)
+        private bool FindUser(Credentials input)
         {
             var found = false;
 
             foreach (var credential in GetCredentials())
             {
-                if (credential.Equals(user))
+                if (credential.Equals(input))
                 {
                     found = true;
                     break;
@@ -34,13 +34,13 @@ namespace BootCamp.Chapter
             return found;
         }
 
-        private bool CheckUserExists(Credentials user)
+        private bool CheckUserExists(Credentials input)
         {
             var exists = false;
 
             foreach (var credential in GetCredentials())
             {
-                if (credential.Name == user.Name)
+                if (credential.Name == input.Name)
                 {
                     exists = true;
                     break;
@@ -50,9 +50,9 @@ namespace BootCamp.Chapter
             return exists;
         }
 
-        private bool AddUser(Credentials user)
+        private bool AddUser(Credentials input)
         {
-            if (CheckUserExists(user))
+            if (CheckUserExists(input))
             {
                 throw new UserAllreadyExistsException("User already exists!");
             }
@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
             try
             {
                 writer = new StreamWriter(CredentialsFile, true);
-                writer.WriteLine(user.ToString());
+                writer.WriteLine(input.ToString());
             }
             catch (Exception)
             {
@@ -104,15 +104,15 @@ namespace BootCamp.Chapter
             return internalCredentialsList;
         }
 
-        public bool Register(Credentials user)
+        public bool Register(Credentials input)
         {
-            var tempUser = new Credentials(user.Name, StringOps.Encode(user.Password));
+            var tempUser = new Credentials(input.Name, StringOps.Encode(input.Password));
             return AddUser(tempUser);
         }
 
-        public bool Login(Credentials user)
+        public bool Login(Credentials input)
         {
-            var tempUser = new Credentials(user.Name, StringOps.Encode(user.Password));
+            var tempUser = new Credentials(input.Name, StringOps.Encode(input.Password));
             return FindUser(tempUser);
         }
     }
