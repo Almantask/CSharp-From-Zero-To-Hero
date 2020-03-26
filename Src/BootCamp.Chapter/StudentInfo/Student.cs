@@ -4,9 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter.StudentInfo
 {
-    class Student
+    public class Student<Tid>
     {
-        public Guid Guid { get; set; }
-        public string Name { get; set; }
+        public TId Id { get; set; }
     }
 }

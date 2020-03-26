@@ -8,5 +8,6 @@ namespace BootCamp.Chapter.StudentInfo
     interface IStudent<TTeacher>
     {
         void LearnFrom(TTeacher teacher);
+        public TId Id { get; set; }
     }
 }

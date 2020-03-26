@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Subjects
 {
-    public class TId
+    class Art : Subject
     {
-        public Guid Guid { get; set; }
     }
 }

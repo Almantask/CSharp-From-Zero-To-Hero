@@ -6,11 +6,12 @@ using System.Text;
 
 namespace BootCamp.Chapter.SchoolInfo
 {
-    interface ISchool<TStudent, TTeacher, TSubject>
-                   where TStudent : IStudent<TTeacher>
-                   where TTeacher : ITeacher<TSubject>
-                   where TSubject : Subject
+    interface ISchool<TStudent, TId>
     {
+        TStudent Get(TId id);
+        IList<TStudent> Get();
+        void Add(TStudent student);
+        public List<TStudent> students { get; set; }
 
     }
 }

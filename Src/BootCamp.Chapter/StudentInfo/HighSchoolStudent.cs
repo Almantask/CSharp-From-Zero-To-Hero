@@ -7,6 +7,8 @@ namespace BootCamp.Chapter.StudentInfo
 {
     class HighSchoolStudent<TTeacher> : IStudent<TTeacher> where TTeacher : HighSchoolTeacher
     {
+        public TId Id { get; set ; }
+
         public void LearnFrom(TTeacher teacher)
         {
             Console.WriteLine($"I learn something from my {teacher}");

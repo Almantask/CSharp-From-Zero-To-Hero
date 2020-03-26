@@ -1,15 +1,15 @@
-﻿using BootCamp.Chapter.Subjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BootCamp.Chapter.Subjects;
 
 namespace BootCamp.Chapter.Teachers.HighSchool
 {
-    public class MathsHighSchoolTeacher<Math> : HighSchoolTeacher
+    public class HighSchoolArtTeacher<Art> : HighSchoolTeacher
     {
         public override Subject ProduceSubjectMaterial()
         {
-            return new Maths(); 
+            return new Art();
         }
     }
 }
