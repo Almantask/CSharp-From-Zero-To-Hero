@@ -5,11 +5,12 @@ using System.Text;
 
 namespace BootCamp.Chapter.Teachers.HighSchool
 {
-    public class HighSchoolMathsTeacher : HighSchoolTeacher 
+    public class MiddleSchoolMusicTeacher : MiddleSchoolTeacher
     {
         public override Subject ProduceSubjectMaterial()
         {
-            return new Maths(); 
+            return new Music();
         }
     }
 }
+

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BootCamp.Chapter.Teachers.HighSchool
 {
-    public class HighSchoolMathsTeacher : HighSchoolTeacher 
+    public class MiddleSchoolMathsTeacher : MiddleSchoolTeacher 
     {
         public override Subject ProduceSubjectMaterial()
         {

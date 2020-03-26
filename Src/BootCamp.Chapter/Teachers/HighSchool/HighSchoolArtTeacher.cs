@@ -5,9 +5,9 @@ using BootCamp.Chapter.Subjects;
 
 namespace BootCamp.Chapter.Teachers.HighSchool
 {
-    public class HighSchoolArtTeacher<Art> : HighSchoolTeacher
+    public class HighSchoolArtTeacher : HighSchoolTeacher  
     {
-        public override Subject ProduceSubjectMaterial()
+        public override Subject ProduceSubjectMaterial() 
         {
             return new Art();
         }

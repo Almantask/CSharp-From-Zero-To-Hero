@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter.Subjects
 {
-    class Programming
+    class Programming : Subject
     {
     }
 }

@@ -9,6 +9,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            var teacher = new HighSchoolMathsTeacher();
+            Console.WriteLine(teacher.ProduceSubjectMaterial());
+
+            var student = new HighSchoolStudent<HighSchoolMathsTeacher>();
+            student.LearnFrom(teacher); 
                          
         }
     }
