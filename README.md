@@ -38,7 +38,7 @@ And different kinds of subjects (and material for each subject):
 - Programming  
 
 You are told to implement a simulation where:  
-- Specific students learn from a specific teacher (by consuming the material a teacher produced)  
+- Students can learn from **any teacher** (by consuming the material a teacher produced)  
 - Specific teachers produce material for a specific subject  
 - Specific schools have ability to add or get specific students  
 
