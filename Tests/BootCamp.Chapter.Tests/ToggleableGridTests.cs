@@ -3,6 +3,7 @@ using BootCamp.Chapter.Tests.Utils;
 using FluentAssertions;
 using Xunit;
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 namespace BootCamp.Chapter.Tests
 {
     public abstract class ToggleableGridTests<TToggleableGrid> : ConsoleTests 
@@ -43,7 +44,7 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void Toggle_1_1_Given_2x2_Grid_Empty_Prints_Black_Square()
         {
-            Grid2x2.Toggle(0, 0);
+            Grid2x2.Toggle(1, 1);
 
             var expectation = "  " + Environment.NewLine +
                               " ■";
