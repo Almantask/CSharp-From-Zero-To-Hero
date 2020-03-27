@@ -9,6 +9,7 @@ namespace BootCamp.Chapter
         public static bool IsNameValid(string name)
         {
             const string goodLeters = "abcdefghijklmnopqrstuvwxyz";
+
             if (name.Length < 3 || name.Length > 14)
             {
                 return false;
@@ -20,7 +21,6 @@ namespace BootCamp.Chapter
                     return false;
                 }
             }
-
             return true;
         }
         public static bool IsPasswordValid(string password)
@@ -59,7 +59,6 @@ namespace BootCamp.Chapter
                     containUpper = true;
                 }
             }
-
             return containLower && containUpper && containNumber && containSpecial;
         }
     }

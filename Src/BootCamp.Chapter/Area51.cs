@@ -9,31 +9,18 @@ namespace BootCamp.Chapter
         readonly LoginAndRedister loginAndRegister = new LoginAndRedister();
         const string login = "login";
         const string create = "create";
+        const string see = "see";
         const string quit = "quit";
         public void Demo()
         {
-            string answer = "";
+            string answer = string.Empty;
             while (answer != quit)
             {
-                answer = LoginCreateOrQuit();
-                switch (answer)
-                {
-                    case login:
-                        Login();
-                        break;
-                    case create:
-                        Create();
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Terminating Program!");
-                        Console.ReadKey();
-                        break;
-                }  
+                answer = GetAnswerMainMenu();
+                GoToPartOfProgram(answer);
             }
         }
-
-        private string LoginCreateOrQuit()
+        private string GetAnswerMainMenu()
         {
 
             string answer = string.Empty;
@@ -42,7 +29,7 @@ namespace BootCamp.Chapter
             while (dontKnowAnswer)
             {
                 Console.Clear();
-                Console.WriteLine("Login\r\nCreate\r\nQuit");
+                Console.WriteLine("Login\r\nCreate\r\nSee\r\nQuit");
                 Console.Write("Please choose one: ");
                 answer = Console.ReadLine();
                 dontKnowAnswer = AnswerParser(answer);
@@ -50,24 +37,79 @@ namespace BootCamp.Chapter
             return answer.ToLower();
 
         }
+        private void GoToPartOfProgram(string answer)
+        {
+            switch (answer)
+            {
+                case login:
+                    Login();
+                    break;
+                case create:
+                    CreateAccount();
+                    break;
+                case see:
+                    See();
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Terminating Program!");
+                    Console.ReadKey();
+                    break;
+            }
+        }
         private void Login()
         {
-            loginAndRegister.ShowAllAccounts();
-            /*
-            string answer = string.Empty;
-            bool dontKnowAnswer = true;
+            bool wrongAnswer = true;
 
-            while (dontKnowAnswer)
+            while (wrongAnswer)
             {
                 Console.Clear();
-                Console.WriteLine("Login\r\nCreate\r\nQuit");
-                Console.Write("Please choose one: ");
-                answer = Console.ReadLine();
-                dontKnowAnswer = AnswerParser(answer);
+                Console.WriteLine("Create Account.");
+                Console.Write("Login Name:");
+                string name = Console.ReadLine();
+
+                Console.Write("Password:");
+                string password = Console.ReadLine();
+                if (loginAndRegister.Login(name, password, out Account account))
+                {
+                    Console.Clear();
+                    Console.WriteLine($"Logging {name} in now.");
+                    Console.ReadKey();
+
+                    loggedInAccounts.Add(account);
+                    Console.WriteLine($"{name} now logged in. type See in main menu to check for logged in accounts.");
+                    Console.ReadKey();
+                    wrongAnswer = false;
+                }
+                else
+                {
+                    wrongAnswer = AskTryAgain();
+                }
             }
-            */
         }
-        private void Create()
+        private bool AskTryAgain()
+        {
+            bool again = true;
+            while (again)
+            {
+                Console.Clear();
+                Console.WriteLine("Wrong Login information!");
+                Console.WriteLine("Try Again? Y/N:");
+                string answer = Console.ReadLine().ToLower();
+
+                if ( answer == "n")
+                {
+                    return false;
+                }
+                else if (answer == "y" )
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void CreateAccount()
         {
             string name = AskForName();
             string password = AskForPassword();
@@ -78,12 +120,14 @@ namespace BootCamp.Chapter
         {
             string name = string.Empty;
             bool wrongAnswer = true;
+
             while (wrongAnswer)
             {
                 Console.Clear();
                 Console.WriteLine("Create Account.");
                 Console.Write("Login Name:");
                 name = Console.ReadLine();
+
                 if (loginAndRegister.AccountNameExists(name))
                 {
                     Console.WriteLine($"{name} already exists as a name please choose a new one.");
@@ -114,6 +158,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Login Name:*****");
                 Console.Write("Password:");
                 password = Console.ReadLine();
+
                 if (!Checks.IsPasswordValid(password))
                 {
                     Console.WriteLine($"Password must be more than 7 and less than 50 characters.\r\n" +
@@ -122,8 +167,8 @@ namespace BootCamp.Chapter
                 }
                 else
                 {
-                    Console.Write("Please rewrite password: ");
-                    
+                    Console.Write("Please rewrite password:");
+
                     if (password != Console.ReadLine())
                     {
                         Console.WriteLine("Passwords do not match try again!");
@@ -137,9 +182,18 @@ namespace BootCamp.Chapter
             }
             return password;
         }
-
-        private void Quit()
+        private void See()
         {
+            Console.Clear();
+            Console.WriteLine("Showing all Accounts in the system:");
+            loginAndRegister.ShowAllAccounts();
+
+            Console.WriteLine("Showing all Accounts logged in:");
+            foreach (Account account in loggedInAccounts)
+            {
+                Console.WriteLine($"{account.Name} + {account.Password}");
+            }
+            Console.ReadKey();
 
         }
 
@@ -152,6 +206,8 @@ namespace BootCamp.Chapter
                 case create:
                     return false;
                 case quit:
+                    return false;
+                case see:
                     return false;
                 default:
                     return true;

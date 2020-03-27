@@ -9,9 +9,22 @@ namespace BootCamp.Chapter
         public Account(string name, string password)
         {
             Name = name;
-            Password = Encoding.Unicode.GetBytes(password);
+            StringBuilder sb = new StringBuilder();
+            byte[] bytePassword = Encoding.Unicode.GetBytes(password);
+            for (int i = 0; i < bytePassword.Length; i++)
+            {
+                if (i < bytePassword.Length - 1)
+                {
+                    sb.Append(bytePassword[i].ToString() + " ");
+                }
+                else
+                {
+                    sb.Append(bytePassword[i].ToString());
+                }
+            }
+            Password = sb.ToString();
         }
         public string Name { get; }
-        public byte[] Password { get; }
+        public string Password { get; }
     }
 }

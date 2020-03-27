@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -13,7 +14,7 @@ namespace BootCamp.Chapter
         {
             if (!File.Exists(filePath))
             {
-                File.Create(filePath);
+                File.Create(filePath).Close();
             }
         }
 
@@ -21,6 +22,7 @@ namespace BootCamp.Chapter
         {
             return AccountsFromFile();
         }
+
         private List<Account> AccountsFromFile()
         {
             List<Account> accounts = new List<Account>();
@@ -30,20 +32,27 @@ namespace BootCamp.Chapter
             {
                 return accounts;
             }
+
             string[] accountsArray = allLines.Split(Environment.NewLine);
-            for (int i = 0; i < accountsArray.Length; i += 2)
+
+            for (int i = 0; i < accountsArray.Length; i++)
             {
-                //TODO out of bounds!!!
-                Account account = new Account(accountsArray[i].Split(',')[0], accountsArray[i].Split(',')[1]);
+                if (String.IsNullOrWhiteSpace(accountsArray[i]))
+                {
+                    continue;
+                }
+
+                string[] splitNameAndPassword = accountsArray[i].Split(',');
+                byte[] passwordByteArray = splitNameAndPassword[1].Split(' ').Select(byte.Parse).ToArray();
+
+                Account account = new Account(splitNameAndPassword[0], String.Concat(Encoding.Unicode.GetChars(passwordByteArray)));
                 accounts.Add(account);
             }
-
             return accounts;
         }
 
         public void AddAccountToFile(Account account)
         {
-            //TODO needs to save it encoded!!!
             string textToBeAdded = $"{account.Name},{string.Concat(account.Password)}{Environment.NewLine}";
             File.AppendAllText(filePath, textToBeAdded);
         }

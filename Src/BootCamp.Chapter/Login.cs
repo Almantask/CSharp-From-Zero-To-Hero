@@ -13,7 +13,6 @@ namespace BootCamp.Chapter
         {
             _accounts = _accessor.GetAccountsList();
         }
-        //TODO see if one of the accounts has the same name
         public bool AccountNameExists(string name)
         {
             foreach (Account account in _accounts)
@@ -27,24 +26,26 @@ namespace BootCamp.Chapter
         }
         public void ShowAllAccounts()
         {
-            Console.Clear();
             foreach (Account account in _accounts)
             {
-                Console.WriteLine($"{account.Name} + { String.Concat( Encoding.Unicode.GetChars(account.Password))}");
+                Console.WriteLine($"{account.Name} + { account.Password }"); //String.Concat( Encoding.Unicode.GetChars(account.Password))
             }
             Console.ReadKey();
         }
-
-        public bool Login(string name, string password)
+        public bool Login(string name, string password, out Account loggedInAccount)
         {
-            if (AccountNameExists(name))
+            loggedInAccount = null;
+            Account temp = new Account(name, password);
+
+            if (AccountNameExists(temp.Name))
             {
                 foreach (Account account in _accounts)
                 {
-                    if (account.Name == name)
+                    if (account.Name == temp.Name)
                     {
-                        if (account.Password == Encoding.Unicode.GetBytes(password))
+                        if (account.Password == temp.Password)
                         {
+                            loggedInAccount = account;
                             return true;
                         }
                         return false;
@@ -59,11 +60,5 @@ namespace BootCamp.Chapter
             _accounts.Add(account);
             _accessor.AddAccountToFile(account);
         }
-
-        // if create:
-        //TODO if none exist create + add to list
-        //TODO return success or not.
-
-
     }
 }
