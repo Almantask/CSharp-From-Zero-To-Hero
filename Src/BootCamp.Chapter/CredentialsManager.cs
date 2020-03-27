@@ -36,6 +36,11 @@ namespace BootCamp.Chapter
         // TODO: store credentials in credentials file.
         public void Register(Credentials credentials)
         {
+            if (File.ReadAllLines(_credentialsFile).Length > 0)
+            {
+                File.AppendAllText(_credentialsFile, Environment.NewLine);
+            }
+            
             File.AppendAllText(_credentialsFile, credentials.ToFile);
         }
 

@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
         public string Username;
         public string Password;
 
-        public string ToFile { get { return $"{Username},{Password}{Environment.NewLine}"; } }
+        public string ToFile { get { return $"{Username},{Password}"; } }
 
         public Credentials(string username, string password)
         {
