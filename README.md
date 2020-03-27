@@ -24,3 +24,8 @@ Toggle element should be filled with a black square.
 Toggling element which already contains a black square should remove the square.
 2) Do the same for a 2d array, where you just ask for x and y dimensions. 
 3) Given a sentence, find the symbol that repeats itself the most amount of times.
+
+Note: DO NOT CLEAR CONSOLE WITH ``Console.Clear()``;   
+Use ``IGridCleaner.Clear()``
+
+Extra: Draw a border arround the grid.
