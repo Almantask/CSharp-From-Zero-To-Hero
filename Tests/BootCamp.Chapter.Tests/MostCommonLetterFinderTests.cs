@@ -1,7 +1,6 @@
 using System;
 using FluentAssertions;
 using Xunit;
-
 namespace BootCamp.Chapter.Tests
 {
     // You don't have to be here for a long time.

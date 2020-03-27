@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
-    public class ToggleableGrid2d : IToggleableGrid
+    public class ToggleableGrid2D : IToggleableGrid
     {
-        public ToggleableGrid2d(bool[][] toggles)
+        public ToggleableGrid2D(bool[,] toggles)
         {
         }
 

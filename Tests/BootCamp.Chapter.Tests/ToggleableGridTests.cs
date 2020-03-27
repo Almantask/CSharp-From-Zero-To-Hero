@@ -3,6 +3,7 @@ using BootCamp.Chapter.Tests.Utils;
 using FluentAssertions;
 using Xunit;
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 namespace BootCamp.Chapter.Tests
 {
     public abstract class ToggleableGridTests<TToggleableGrid> : ConsoleTests 
