@@ -38,7 +38,7 @@ namespace BootCamp.Chapter.Tests
         {
             Grid1x1Filled.Toggle(0, 0);
 
-            ConsoleOutput.Should().Be("");
+            ConsoleOutput.Should().Be(" ");
         }
 
         [Fact]
