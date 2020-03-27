@@ -13,8 +13,6 @@ namespace BootCamp.Chapter
 
         public void Toggle(int x, int y)
         {
-            _gridClearer.Clear();
-            Console.Write("■");
         }
     }
 }
