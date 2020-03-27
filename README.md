@@ -1,5 +1,5 @@
 # C#: From Zero To Hero
-## Chapter 1. Homework 6: Debugging
+## Chapter 1. Homework 6: Jagged array, 2D Array and Dictionary
 
 ### Intro
 #### Jagged array and 2d array
@@ -15,6 +15,12 @@ If you access an element of dictionary, you access it through a key. Unlike inde
 dictionary uses a key which first gets converted into a hashcode and only then used as an index to find an element.
 
 ### Task
-1) Implement a console application where you can toggle any cell on a 2d array. Your program should start with asking for amount of rows in grid and then for each row in grid- its' legth. After that, you can type x,y for example, to toggle that grid element on or off. Toggle element should be filled with a black square. Toggling element which already contains a black square should remove the square.
-2) Do the same for a jagged array, where you just ask for x and y dimensions. 
+1) Implement a console application where you can toggle any cell on a jagged array. 
+Your program should start with asking for amount of rows in grid and then for each row in grid- its' legth.
+After that, you can type x,y for example, to toggle that grid element on or off. 
+Toggle ith asking for amount of rows in grid and then for each row in grid- its' legth. 
+After that, you can type x,y for example, to toggle that grid element on or off. 
+Toggle element should be filled with a black square. 
+Toggling element which already contains a black square should remove the square.
+2) Do the same for a 2d array, where you just ask for x and y dimensions. 
 3) Given a sentence, find the symbol that repeats itself the most amount of times.
