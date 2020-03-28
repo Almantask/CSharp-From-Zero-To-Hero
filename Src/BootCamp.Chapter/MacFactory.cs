@@ -1,34 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BootCamp.Chapter.Computer;
+﻿using BootCamp.Chapter.Computer;
+using System;
 
 namespace BootCamp.Chapter
 {
     public class MacFactory : Factory
     {
-        const string brand = "Mac";
-
-        public override DesktopComputer Assemble()
+        public override string Brand()
         {
-            Console.WriteLine("Building a Mac PC.");
-            DesktopComputer MacPC = new DesktopComputer();
-            MacPC.Body = AddBody(brand);
-            MacPC.components.Add(MacPC.Body);
-            MacPC.Cpu = AddCpu(brand);
-            MacPC.components.Add(MacPC.Cpu);
-            MacPC.Gpu = AddGpu(brand);
-            MacPC.components.Add(MacPC.Gpu);
-            MacPC.HardDisk = AddHardDisk(brand);
-            MacPC.components.Add(MacPC.HardDisk);
-            MacPC.Motherboard = AddMotherboard(brand);
-            MacPC.components.Add(MacPC.Motherboard);
-            MacPC.Ram = AddRam(brand);
-            MacPC.components.Add(MacPC.Ram);
+            return "Mac";
+        }
 
-            Console.WriteLine($"{brand}PC assembled!");
-            MacPC.PrintAssembledPc();
-            return MacPC;
+        public override Body InstallBody(string brand)
+        {
+            PrintAddMsg("Body", brand);
+            return new Body(brand + "Body");
+        }
+        public override Cpu InstallCpu(string brand)
+        {
+            PrintAddMsg("Cpu", brand);
+            return new Cpu(brand + "Cpu");
+        }
+        public override Gpu InstallGpu(string brand)
+        {
+            PrintAddMsg("Gpu", brand);
+            return new Gpu(brand + "Gpu");
+        }
+        public override HardDisk InstallHardDisk(string brand)
+        {
+            PrintAddMsg("HardDisk", brand);
+            return new HardDisk(brand + "HardDisk");
+        }
+        public override Motherboard InstallMotherboard(string brand)
+        {
+            PrintAddMsg("Motherboard", brand);
+            return new Motherboard(brand + "Motherboard");
+        }
+        public override Ram InstallRam(string brand)
+        {
+            PrintAddMsg("Ram", brand);
+            return new Ram(brand + "Ram");
+        }
+        public override void PrintAddMsg(string component, string brand)
+        {
+            Console.WriteLine($"Adding {component} to {brand}PC.");
         }
     }
 }

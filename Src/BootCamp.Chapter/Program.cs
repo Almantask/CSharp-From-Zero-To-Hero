@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
 
             foreach (Factory fac in factories)
             {
-                fac.Assemble();
+                fac.Assemble(fac.Brand());
             }
 
         }

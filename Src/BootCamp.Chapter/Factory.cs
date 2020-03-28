@@ -5,40 +5,34 @@ namespace BootCamp.Chapter
 {
     public abstract class Factory
     {
-        public abstract DesktopComputer Assemble();
-        public Body AddBody(string brand)
+        public abstract string Brand();
+        public DesktopComputer Assemble(string brand)
         {
-            PrintAddMsg("Body", brand);
-            return new Body(brand + "Body");
+            Console.WriteLine($"Building a {brand} PC.");
+            DesktopComputer PC = new DesktopComputer();
+            PC.Body = AddBody(brand);
+            PC.components.Add(PC.Body);
+            PC.Cpu = AddCpu(brand);
+            PC.components.Add(PC.Cpu);
+            PC.Gpu = AddGpu(brand);
+            PC.components.Add(PC.Gpu);
+            PC.HardDisk = AddHardDisk(brand);
+            PC.components.Add(PC.HardDisk);
+            PC.Motherboard = AddMotherboard(brand);
+            PC.components.Add(PC.Motherboard);
+            PC.Ram = AddRam(brand);
+            PC.components.Add(PC.Ram);
+
+            Console.WriteLine($"{brand}PC assembled!");
+            PC.PrintAssembledPc();
+            return PC;
         }
-        public Cpu AddCpu(string brand)
-        {
-            PrintAddMsg("Cpu", brand);
-            return new Cpu(brand + "Cpu");
-        }
-        public Gpu AddGpu(string brand)
-        {
-            PrintAddMsg("Gpu", brand);
-            return new Gpu(brand + "Gpu");
-        }
-        public HardDisk AddHardDisk(string brand)
-        {
-            PrintAddMsg("HardDisk", brand);
-            return new HardDisk(brand + "HardDisk");
-        }
-        public Motherboard AddMotherboard(string brand)
-        {
-            PrintAddMsg("Motherboard", brand);
-            return new Motherboard(brand + "Motherboard");
-        }
-        public Ram AddRam(string brand)
-        {
-            PrintAddMsg("Ram", brand);
-            return new Ram(brand + "Ram");
-        }
-        private void PrintAddMsg(string component, string brand)
-        {
-            Console.WriteLine($"Adding {component} to {brand}PC.");
-        }
+        public abstract Body InstallBody(string brand);
+        public abstract Cpu InstallCpu(string brand);
+        public abstract Gpu InstallGpu(string brand);
+        public abstract HardDisk InstallHardDisk(string brand);
+        public abstract Motherboard InstallMotherboard(string brand);
+        public abstract Ram InstallRam(string brand);
+        public abstract void PrintAddMsg(string component, string brand);
     }
 }
