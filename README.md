@@ -1,5 +1,5 @@
 # C#: From Zero To Hero
-## Chapter 1. Homework 6: Jagged array, 2D Array and Dictionary
+## Chapter 3. Homework 6: Jagged array, 2D Array and Dictionary
 
 ### Intro
 #### Jagged array and 2d array
