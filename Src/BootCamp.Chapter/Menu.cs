@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public class Menu
     {
-        public enum MenuChoices
+        public enum Choices
         {
-            R, 
-            L
+            Register,
+            Login
         }
     }
 }

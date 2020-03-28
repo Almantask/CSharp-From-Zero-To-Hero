@@ -1,6 +1,6 @@
-﻿using System;
-using BootCamp.Chapter.Tests.Input.ClassData;
+﻿using BootCamp.Chapter.Tests.Input.ClassData;
 using FluentAssertions;
+using System;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests

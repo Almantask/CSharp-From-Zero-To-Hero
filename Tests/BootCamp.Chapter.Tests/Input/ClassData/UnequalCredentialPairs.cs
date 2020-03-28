@@ -24,8 +24,8 @@ namespace BootCamp.Chapter.Tests.Input.ClassData
 
         private IList<Credentials> GenerateCredentials()
         {
-            var usernames = new[] {"Tom", "Jack"};
-            var passwords = new[] {"Tom123", "Jack123"};
+            var usernames = new[] { "Tom", "Jack" };
+            var passwords = new[] { "Tom123", "Jack123" };
 
             var credentials = new List<Credentials>();
             foreach (var username in usernames)

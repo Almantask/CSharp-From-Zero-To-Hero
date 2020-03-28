@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FluentAssertions;
+using System;
 using System.IO;
 using System.Text;
-using FluentAssertions;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -55,7 +54,7 @@ namespace BootCamp.Chapter.Tests
 
             credentialsManager.Register(credentials);
 
-            var test = File.ReadAllLines(credentialsFile); 
+            var test = File.ReadAllLines(credentialsFile);
             File.ReadAllLines(credentialsFile)
                 .Should().Contain(oldContents)
                 .And.HaveCount(oldContents.Length + 1);

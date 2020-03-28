@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 using System.IO;
 
@@ -7,50 +7,46 @@ namespace BootCamp.Chapter
     public class CredentialsManager
     {
         private readonly string _fileName;
+        private const string outputChar = "☺";
 
         public CredentialsManager(string fileName)
         {
             if (String.IsNullOrEmpty(fileName))
             {
-                throw new ArgumentException(); 
+                throw new ArgumentException();
             }
-            _fileName = fileName; 
+            _fileName = fileName;
         }
-        
 
         public bool Login(Credentials credentials)
         {
             var isValidLogin = false;
 
-            var data = File.ReadAllText(_fileName);
+            var data = File.ReadAllLines(_fileName);
 
-            if (String.IsNullOrEmpty(data))
+            if (data.Length == 0)
             {
-                return false; 
+                return false;
             }
 
-            var fileData = data.Split($"{Environment.NewLine}");
-
             for (int i = 0; i < 1; i++)
-
             {
-                var data2 = fileData[i];
+                var data2 = data[i];
 
                 var splitted = data2.Split(",");
 
                 var credentials2 = new Credentials(splitted[0], splitted[1]);
 
-                isValidLogin = credentials.Equals(credentials2); 
-               
+                isValidLogin = credentials.Equals(credentials2);
             }
 
-            return isValidLogin; 
+            return isValidLogin;
         }
 
         public void Register(Credentials credentials)
 
         {
-            var output = $"{Environment.NewLine}{credentials.Username}, {credentials.Password}"; 
+            var output = $"{Environment.NewLine}{credentials.Username}, {credentials.Password}";
             File.AppendAllText(_fileName, output);
         }
 
@@ -60,17 +56,12 @@ namespace BootCamp.Chapter
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
             Console.WriteLine("May I have your name");
-
             var name = Console.ReadLine();
 
             Console.WriteLine("May I have your password");
-
             string input = "";
-
             ConsoleKeyInfo key;
-
             do
-
             {
                 key = Console.ReadKey(true);
 
@@ -79,7 +70,7 @@ namespace BootCamp.Chapter
                 {
                     input += key.KeyChar;
 
-                    Console.Write("\u263A");
+                    Console.Write(outputChar);
 
                     Console.Write(" ");
                 }

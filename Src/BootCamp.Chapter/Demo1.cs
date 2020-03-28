@@ -1,50 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
-    static class Demo1
+    internal static class Demo1
     {
         public static void Demo()
         {
-            var Manager = new CredentialsManager(""); 
-            
-            Console.WriteLine("Would you like to register or login");
+            var Manager = new CredentialsManager("@File/user.txt");
 
-            Console.WriteLine("Choose R for register");
+            Enum choice = Intro();
 
-            Console.WriteLine("Choose L for login");
-
-            var choice = Console.ReadLine();
-
-            switch (Enum.Parse(typeof(Menu), choice))
-
+            switch (choice)
             {
-                case Menu.MenuChoices.R:
+                case Menu.Choices.Register:
 
-                    var inputtedData = Manager.PromptCredentials(); 
+                    var inputtedData = Manager.PromptCredentials();
                     var splitted = inputtedData.Split(' ');
                     var credentials = new Credentials(splitted[0], splitted[1]);
                     Manager.Register(credentials);
-
                     break;
 
-                case Menu.MenuChoices.L:
+                case Menu.Choices.Login:
 
                     inputtedData = Manager.PromptCredentials();
                     splitted = inputtedData.Split(' ');
                     credentials = new Credentials(splitted[0], splitted[1]);
                     Manager.Login(credentials);
-
                     break;
 
                 default:
 
-                    Console.WriteLine("This is not a right choice. Only R and L are valid");
-
+                    Console.WriteLine("This is not a right choice. Only Register and Login are valid");
                     break;
             }
+        }
+
+        private static Menu.Choices Intro()
+        {
+            Console.WriteLine("Would you like to register or login");
+
+            foreach (var menuchoice in Enum.GetValues(typeof(Menu.Choices)))
+            {
+                Console.WriteLine($"Choose {menuchoice} for {menuchoice}");
+            }
+
+            var choice = Console.ReadLine();
+            var eNumChoice = (Menu.Choices) Enum.Parse(typeof(Menu.Choices), choice);
+            return eNumChoice;
         }
     }
 }
