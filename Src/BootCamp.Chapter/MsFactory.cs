@@ -9,39 +9,39 @@ namespace BootCamp.Chapter
         {
             return "Ms";
         }
-        public override Body InstallBody(string brand)
+        public override Body InstallBody()
         {
-            PrintAddMsg("Body", brand);
-            return new Body(brand + "Body");
+            PrintAddMsg("Body");
+            return new Body(Brand() + "Body");
         }
-        public override Cpu InstallCpu(string brand)
+        public override Cpu InstallCpu()
         {
-            PrintAddMsg("Cpu", brand);
-            return new Cpu(brand + "Cpu");
+            PrintAddMsg("Cpu");
+            return new Cpu(Brand() + "Cpu");
         }
-        public override Gpu InstallGpu(string brand)
+        public override Gpu InstallGpu()
         {
-            PrintAddMsg("Gpu", brand);
-            return new Gpu(brand + "Gpu");
+            PrintAddMsg("Gpu");
+            return new Gpu(Brand() + "Gpu");
         }
-        public override HardDisk InstallHardDisk(string brand)
+        public override HardDisk InstallHardDisk()
         {
-            PrintAddMsg("HardDisk", brand);
-            return new HardDisk(brand + "HardDisk");
+            PrintAddMsg("HardDisk");
+            return new HardDisk(Brand() + "HardDisk");
         }
-        public override Motherboard InstallMotherboard(string brand)
+        public override Motherboard InstallMotherboard()
         {
-            PrintAddMsg("Motherboard", brand);
-            return new Motherboard(brand + "Motherboard");
+            PrintAddMsg("Motherboard");
+            return new Motherboard(Brand() + "Motherboard");
         }
-        public override Ram InstallRam(string brand)
+        public override Ram InstallRam()
         {
-            PrintAddMsg("Ram", brand);
-            return new Ram(brand + "Ram");
+            PrintAddMsg("Ram");
+            return new Ram(Brand() + "Ram");
         }
-        public override void PrintAddMsg(string component, string brand)
+        public override void PrintAddMsg(string component)
         {
-            Console.WriteLine($"Adding {component} to {brand}PC.");
+            Console.WriteLine($"Installing {component} to {Brand()}PC.");
         }
     }
 }
