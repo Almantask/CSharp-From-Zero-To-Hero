@@ -24,10 +24,10 @@ namespace BootCamp.Chapter
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             var numberOfRows = toggles.GetLength(0);
-            var numberOfCols = numberOfRows;
-
+            
             for (int i = 0; i < numberOfRows; i++)
             {
+                var numberOfCols = toggles[i].Length; 
                 for (int j = 0; j < numberOfCols; j++)
                 {
                     if (toggles[i][j])

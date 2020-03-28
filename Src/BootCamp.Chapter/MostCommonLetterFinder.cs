@@ -7,17 +7,36 @@ namespace BootCamp.Chapter
     {
         public static char Find(string sentence)
         {
-            Dictionary<char, int> histogram = new Dictionary<char, int>(); 
-            if (string.IsNullOrEmpty(sentence))
-            {
-                throw new ArgumentNullException(); 
-            }
+            Dictionary<char, int> histogram = new Dictionary<char, int>();
 
             if (string.IsNullOrWhiteSpace(sentence))
             {
-                throw new ArgumentNullException(); 
+                throw new ArgumentNullException();
             }
 
+            CountEachLetter(sentence, histogram);
+            KeyValuePair<char, int> max = FindMostCommonLetter(histogram);
+
+            return max.Key;
+
+        }
+
+        private static KeyValuePair<char, int> FindMostCommonLetter(Dictionary<char, int> histogram)
+        {
+            var max = default(KeyValuePair<char, int>);
+            foreach (var item in histogram)
+            {
+                if (item.Value > max.Value)
+                {
+                    max = item;
+                }
+            }
+
+            return max;
+        }
+
+        private static void CountEachLetter(string sentence, Dictionary<char, int> histogram)
+        {
             foreach (var character in sentence)
             {
                 if (histogram.ContainsKey(character))
@@ -26,23 +45,10 @@ namespace BootCamp.Chapter
                 }
                 else
                 {
-                    histogram[character] = 1; 
+                    histogram[character] = 1;
                 }
-                ; 
+                ;
             }
-
-
-            var max = default(KeyValuePair<char, int>);
-            foreach (var item in histogram)
-            {
-                if (item.Value > max.Value)
-                {
-                    max = item; 
-                }
-            }
-
-            return max.Key; 
-
         }
     }
 }

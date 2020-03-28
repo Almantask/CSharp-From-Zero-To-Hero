@@ -22,7 +22,6 @@ namespace BootCamp.Chapter
 
         private void Redraw(bool[,] toggles)
         {
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
             var numberOfRows = toggles.GetLength(0);
             var numberOfCols = numberOfRows;
 
@@ -32,7 +31,7 @@ namespace BootCamp.Chapter
                 {
                     if (toggles[i, j])
                     {
-                        Console.Write("\u25A0");
+                        Console.Write("■");
                     }
                     else
                     {
