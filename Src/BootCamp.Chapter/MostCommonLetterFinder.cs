@@ -18,7 +18,6 @@ namespace BootCamp.Chapter
             KeyValuePair<char, int> max = FindMostCommonLetter(histogram);
 
             return max.Key;
-
         }
 
         private static KeyValuePair<char, int> FindMostCommonLetter(Dictionary<char, int> histogram)
@@ -47,7 +46,6 @@ namespace BootCamp.Chapter
                 {
                     histogram[character] = 1;
                 }
-                ;
             }
         }
     }

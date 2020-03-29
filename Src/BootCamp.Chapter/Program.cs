@@ -6,8 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Demo1.JaggedArray();
-            Demo1.TwoDGrid(); 
+            Lesson5.RunJaggedGrid();
+            Lesson5.RunTwoDGrid(); 
         }
     }
 }
