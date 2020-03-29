@@ -9,17 +9,17 @@ namespace BootCamp.Chapter
         public DesktopComputer Assemble()
         {
             DesktopComputer PC = new DesktopComputer();
-            PC.Body = InstallBody();
+            InstallBody(PC);
             PC.components.Add(PC.Body);
-            PC.Cpu = InstallCpu();
+            InstallCpu(PC);
             PC.components.Add(PC.Cpu);
-            PC.Gpu = InstallGpu();
+            InstallGpu(PC);
             PC.components.Add(PC.Gpu);
-            PC.HardDisk = InstallHardDisk();
+            InstallHardDisk(PC);
             PC.components.Add(PC.HardDisk);
-            PC.Motherboard = InstallMotherboard();
+            InstallMotherboard(PC);
             PC.components.Add(PC.Motherboard);
-            PC.Ram = InstallRam();
+            InstallRam(PC);
             PC.components.Add(PC.Ram);
 
 
@@ -27,12 +27,12 @@ namespace BootCamp.Chapter
             PC.PrintAssembledPc();
             return PC;
         }
-        public abstract Body InstallBody();
-        public abstract Cpu InstallCpu();
-        public abstract Gpu InstallGpu();
-        public abstract HardDisk InstallHardDisk();
-        public abstract Motherboard InstallMotherboard();
-        public abstract Ram InstallRam();
+        public abstract void InstallBody(DesktopComputer PC);
+        public abstract void InstallCpu(DesktopComputer PC);
+        public abstract void InstallGpu(DesktopComputer PC);
+        public abstract void InstallHardDisk(DesktopComputer PC);
+        public abstract void InstallMotherboard(DesktopComputer PC);
+        public abstract void InstallRam(DesktopComputer PC);
         public abstract void PrintAddMsg(string component);
     }
 }

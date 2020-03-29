@@ -10,35 +10,35 @@ namespace BootCamp.Chapter
             return "Mac";
         }
 
-        public override Body InstallBody()
+        public override void InstallBody(DesktopComputer PC)
         {
             PrintAddMsg("Body");
-            return new Body(Brand() + "Body");
+            PC.Body = new Body(Brand() + "Body");
         }
-        public override Cpu InstallCpu()
+        public override void InstallCpu(DesktopComputer PC)
         {
             PrintAddMsg("Cpu");
-            return new Cpu(Brand() + "Cpu");
+            PC.Cpu = new Cpu(Brand() + "Cpu");
         }
-        public override Gpu InstallGpu()
+        public override void InstallGpu(DesktopComputer PC)
         {
             PrintAddMsg("Gpu");
-            return new Gpu(Brand() + "Gpu");
+            PC.Gpu = new Gpu(Brand() + "Gpu");
         }
-        public override HardDisk InstallHardDisk()
+        public override void InstallHardDisk(DesktopComputer PC)
         {
             PrintAddMsg("HardDisk");
-            return new HardDisk(Brand() + "HardDisk");
+            PC.HardDisk = new HardDisk(Brand() + "HardDisk");
         }
-        public override Motherboard InstallMotherboard()
+        public override void InstallMotherboard(DesktopComputer PC)
         {
             PrintAddMsg("Motherboard");
-            return new Motherboard(Brand() + "Motherboard");
+            PC.Motherboard = new Motherboard(Brand() + "Motherboard");
         }
-        public override Ram InstallRam()
+        public override void InstallRam(DesktopComputer PC)
         {
             PrintAddMsg("Ram");
-            return new Ram(Brand() + "Ram");
+            PC.Ram = new Ram(Brand() + "Ram");
         }
         public override void PrintAddMsg(string component)
         {
