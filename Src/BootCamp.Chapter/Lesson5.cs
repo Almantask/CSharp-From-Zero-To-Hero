@@ -10,7 +10,11 @@ namespace BootCamp.Chapter
             var input = Console.ReadLine();
             var rows = ValidateInput(input);
 
-            var grid = new bool[rows, rows];
+            Console.WriteLine("How much columns do you want the grid to be");
+            input = Console.ReadLine();
+            var columns = ValidateInput(input);
+
+            var grid = new bool[rows, columns];
             
             var cleaner = new GridCleaner();
             var twoDGrid = new ToggleableGrid2D(grid, cleaner);
@@ -52,7 +56,20 @@ namespace BootCamp.Chapter
             var rows = ValidateInput(input);
 
             var grid = new bool[rows][];
-            
+
+            for (int i = 0; i < rows; i++)
+            {
+                Console.WriteLine($"How much columns do you want row {i} to be");
+                input = Console.ReadLine();
+                var columns = ValidateInput(input);
+
+                for (int j = 0; j < columns; j++)
+                {
+                    grid[i][j] = false;
+                }
+
+            }
+
             var cleaner = new GridCleaner();
             var jaggedDGrid = new ToggleableGridJagged(grid, cleaner);
 

@@ -22,11 +22,11 @@ namespace BootCamp.Chapter
 
         private void Redraw(bool[,] toggles)
         {
-            var numberOfRows = toggles.GetLength(0);
-            var numberOfCols = numberOfRows;
-
+            var numberOfRows = toggles.GetLength(0);  ;
+            
             for (int i = 0; i < numberOfRows; i++)
             {
+                var numberOfCols = toggles.GetLength(i); 
                 for (int j = 0; j < numberOfCols; j++)
                 {
                     if (toggles[i, j])
