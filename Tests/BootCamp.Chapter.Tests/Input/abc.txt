@@ -1,0 +1,4 @@
+﻿name,sureName,birthday,gender,country,email,streetAddress
+Chrisy,Frise,4/24/1946,Male,Philippines,cfrise0@europa.eu,62895 Troy Parkway
+Gavra,Podkin,3/13/2007,Female,Moldova,gpadkin1@marketwatch.com,3550 Hansons Lane
+Edith,Skirling,12/12/1953,Female,UK,eskirling2@bloomberg.com,562 Cody Terrace

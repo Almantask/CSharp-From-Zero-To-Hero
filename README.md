@@ -7,7 +7,7 @@ TODO: add intro
 ### Task
 1) There a a file people.cs  
 It contains info on different people such as : 
-their birthday, name, surename, weight, height, addressLine1, addressLine2, addressLine3. 
+their birthday, name, surename, country, email, street address.
 Parse it into people's list.  
 2) Create a function Filter(Predicate<Person> people) combines all the predicates with "and" 
 and returns true or false. Have different functions which fit the predicate for getting people by:   
