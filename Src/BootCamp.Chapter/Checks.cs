@@ -29,8 +29,9 @@ namespace BootCamp.Chapter
             bool containSpecial = false;
             const string special = @"!@#$%^&*()-_=+/\|{}[]<>.?";
 
-            if (password.Length < 8 || password.Length > 50)
+            if (password.Length > 8 || password.Length < 50)
             {
+                //throw new IncorrectPasswordException("PasswordLength Must be > 8 and < 50");
                 return false;
             }
 
@@ -56,6 +57,10 @@ namespace BootCamp.Chapter
                 {
                     containUpper = true;
                 }
+            }
+            if (!(containLower && containUpper && containNumber && containSpecial))
+            {
+                //throw new IncorrectPasswordException("Password Must a number");
             }
             return containLower && containUpper && containNumber && containSpecial;
         }
