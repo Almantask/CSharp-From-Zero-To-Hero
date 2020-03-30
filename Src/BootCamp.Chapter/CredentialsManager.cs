@@ -10,6 +10,7 @@ namespace BootCamp.Chapter
         public CredentialsManager(string credentialsFile)
         {
             _credentialsFile = credentialsFile;
+
             if (!File.Exists(_credentialsFile))
             {
                 File.Create(_credentialsFile).Close();
@@ -24,12 +25,14 @@ namespace BootCamp.Chapter
             {
                 return false;
             }
+
             return IsUsernameAndPasswordCorrect(credentials, allLines);
         }
 
         private static bool IsUsernameAndPasswordCorrect(Credentials credentials, string allLines)
         {
             string[] credentialsArray = allLines.Split(Environment.NewLine);
+
             for (int i = 0; i < credentialsArray.Length; i++)
             {
                 if (String.IsNullOrWhiteSpace(credentialsArray[i]))
@@ -54,9 +57,10 @@ namespace BootCamp.Chapter
         public void Register(Credentials credentials)
         {
             string textToBeAdded;
+
             if (string.IsNullOrEmpty(File.ReadAllText(_credentialsFile)))
             {
-                textToBeAdded = $"{credentials.Username},{credentials.Password}";//{Environment.NewLine}
+                textToBeAdded = $"{credentials.Username},{credentials.Password}";
             }
             else
             {
@@ -64,7 +68,6 @@ namespace BootCamp.Chapter
             }
             
             File.AppendAllText(_credentialsFile,textToBeAdded);
-            //File.AppendAllText(_credentialsFile, textToBeAdded);
         }
     }
 }

@@ -4,8 +4,6 @@
     {
         static void Main(string[] args)
         {
-            Area51 a = new Area51();
-            a.Demo();
         }
     }
 }
