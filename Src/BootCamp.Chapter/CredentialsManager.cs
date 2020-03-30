@@ -16,7 +16,6 @@ namespace BootCamp.Chapter
             }
         }
 
-        // TODO: load credentials and check for equality.
         public bool Login(Credentials credentials)
         {
             string allLines = File.ReadAllText(_credentialsFile);
@@ -25,9 +24,12 @@ namespace BootCamp.Chapter
             {
                 return false;
             }
+            return IsUsernameAndPasswordCorrect(credentials, allLines);
+        }
 
+        private static bool IsUsernameAndPasswordCorrect(Credentials credentials, string allLines)
+        {
             string[] credentialsArray = allLines.Split(Environment.NewLine);
-
             for (int i = 0; i < credentialsArray.Length; i++)
             {
                 if (String.IsNullOrWhiteSpace(credentialsArray[i]))
@@ -49,11 +51,19 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        // TODO: store credentials in credentials file.
         public void Register(Credentials credentials)
         {
-            string textToBeAdded = $"{credentials.Username},{credentials.Password}";//{Environment.NewLine}
-            File.AppendAllLines(_credentialsFile, new string[] { textToBeAdded });
+            string textToBeAdded;
+            if (string.IsNullOrEmpty(File.ReadAllText(_credentialsFile)))
+            {
+                textToBeAdded = $"{credentials.Username},{credentials.Password}";//{Environment.NewLine}
+            }
+            else
+            {
+                textToBeAdded = $"{Environment.NewLine}{credentials.Username},{credentials.Password}";
+            }
+            
+            File.AppendAllText(_credentialsFile,textToBeAdded);
             //File.AppendAllText(_credentialsFile, textToBeAdded);
         }
     }

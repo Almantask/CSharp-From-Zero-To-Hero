@@ -3,7 +3,6 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    // TODO: make a struct and add validation and other needed methods (if needed)
     public struct Credentials
     {
         public string Username;
@@ -24,7 +23,6 @@ namespace BootCamp.Chapter
             }
         }
 
-        // TODO: Implement properly.
         public static bool TryParse(string input, out Credentials credentials)
         {
             credentials = default;
@@ -39,10 +37,19 @@ namespace BootCamp.Chapter
             return true;
 
         }
+
         public static string EncodePasswordToString(string password)
         {
-            var bytes = Encoding.Unicode.GetBytes(password);
-            return new string(Encoding.Unicode.GetChars(bytes));
+            StringBuilder sb = new StringBuilder();
+            byte[] bytePassword = Encoding.Unicode.GetBytes(password);
+            for (int i = 0; i < bytePassword.Length; i++)
+            {
+                sb.Append(bytePassword[i].ToString());
+            }
+            return sb.ToString();
+
+            //var bytes = Encoding.Unicode.GetBytes(password);
+            //return new string(Encoding.Unicode.GetChars(bytes));
         }
     }
 }
