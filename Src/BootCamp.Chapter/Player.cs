@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -12,38 +13,22 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Player
     {
-        /// <summary>
-        /// Everyone can carry this much weight at least.
-        /// </summary>
-        private const int baseCarryWeight = 30;
-
-        private string _name;
-        private int _hp;
-
-        /// <summary>
-        /// Each point of strength allows extra 10 kg to carry.
-        /// </summary>
-        private int _strenght;
-
+        
         /// <summary>
         /// Player items. There can be multiple of items with same name.
         /// </summary>
         private Inventory _inventory;
-        /// <summary>
-        /// Needed only for the extra task.
-        /// </summary>
-        private Equipment _equipment;
-
         public Player()
         {
+            _inventory = new Inventory();
         }
 
         /// <summary>
         /// Gets all items from player's inventory
         /// </summary>
-        public Item[] GetItems()
+        public List<Item> GetItems()
         {
-            return new Item[0];
+            return _inventory.Items;
         }
 
         /// <summary>
@@ -51,20 +36,21 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
         /// Gets items with matching name.
         /// </summary>
         /// <param name="name"></param>
-        public Item[] GetItems(string name)
+        public List<Item> GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
@@ -73,34 +59,67 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+        /// <summary>
+        /// Everyone can carry this much weight at least.
+        /// </summary>
+        private const int baseCarryWeight = 30;
+
+        private int Name { get; set; }
+        private int Hp { get; set; }
+
+        /// <summary>
+        /// Each point of strength allows extra 10 kg to carry.
+        /// </summary>
+        private int Strenght { get; set; }
+
+
+        /// <summary>
+        /// Needed only for the extra task.
+        /// </summary>
+        private Equipment Equipment { get; set; }
+
         public void Equip(Headpiece head)
         {
-
+            Equipment.Head = head;
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Chestpiece chest)
         {
-
+            Equipment.Chest = chest;
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                Equipment.LeftShoulder = shoulder;
+            }
+            else
+            {
+                Equipment.RightShoulder = shoulder;
+            }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Legspiece legs)
         {
-
+            Equipment.Legs = legs;
         }
 
-        public void Equip(Armpiece head, bool isLeft)
+        public void Equip(Armpiece arm, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                Equipment.LeftArm = arm;
+            }
+            else
+            {
+                Equipment.RightArm = arm;
+            }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Gloves gloves)
         {
-
+            Equipment.Gloves = gloves;
         }
         #endregion
     }
