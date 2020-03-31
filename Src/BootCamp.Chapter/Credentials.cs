@@ -18,9 +18,13 @@ namespace BootCamp.Chapter
 
         private static void CheckForNullAndEmpty(string username, string password)
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(username))
             {
-                throw new ArgumentException("Username or password can't be empty.");
+                throw new ArgumentException("Username can't be empty.");
+            }
+            if(string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentException("password can't be empty.");
             }
         }
 

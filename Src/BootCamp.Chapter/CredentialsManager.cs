@@ -9,6 +9,11 @@ namespace BootCamp.Chapter
 
         public CredentialsManager(string credentialsFile)
         {
+            if (string.IsNullOrEmpty(credentialsFile))
+            {
+                throw new ArgumentException("CredentialsFile name cannot be empty.");
+            }
+
             _credentialsFile = credentialsFile;
 
             if (!File.Exists(_credentialsFile))
@@ -19,19 +24,7 @@ namespace BootCamp.Chapter
 
         public bool Login(Credentials credentials)
         {
-            string allLines = File.ReadAllText(_credentialsFile);
-
-            if (String.IsNullOrEmpty(allLines))
-            {
-                return false;
-            }
-
-            return IsUsernameAndPasswordCorrect(credentials, allLines);
-        }
-
-        private static bool IsUsernameAndPasswordCorrect(Credentials credentials, string allLines)
-        {
-            string[] credentialsArray = allLines.Split(Environment.NewLine);
+            string[] credentialsArray = File.ReadAllLines(_credentialsFile);
 
             for (int i = 0; i < credentialsArray.Length; i++)
             {
@@ -51,6 +44,7 @@ namespace BootCamp.Chapter
                 }
             }
             return false;
+
         }
 
         public void Register(Credentials credentials)
@@ -65,8 +59,8 @@ namespace BootCamp.Chapter
             {
                 textToBeAdded = $"{Environment.NewLine}{credentials.ToString()}";
             }
-            
-            File.AppendAllText(_credentialsFile,textToBeAdded);
+
+            File.AppendAllText(_credentialsFile, textToBeAdded);
         }
     }
 }
