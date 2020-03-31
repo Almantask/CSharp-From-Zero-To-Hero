@@ -5,8 +5,8 @@ namespace BootCamp.Chapter
 {
     public class Area51
     {
-        private List<Account> loggedInAccounts = new List<Account>();
-        readonly LoginAndRedister loginAndRegister = new LoginAndRedister();
+        private List<Credentials> loggedInAccounts = new List<Credentials>();
+        readonly CredentialsManager credentialsManager = new CredentialsManager("Login.txt");
         const string login = "login";
         const string create = "create";
         const string see = "see";
@@ -70,13 +70,14 @@ namespace BootCamp.Chapter
 
                 Console.Write("Password:");
                 string password = Console.ReadLine();
-                if (loginAndRegister.Login(name, password, out Account account))
+                if (Credentials.TryParse(name + "," + password, out Credentials credentials) 
+                    && credentialsManager.Login(credentials))
                 {
                     Console.Clear();
                     Console.WriteLine($"Logging {name} in now.");
                     Console.ReadKey();
 
-                    loggedInAccounts.Add(account);
+                    loggedInAccounts.Add(credentials);
                     Console.WriteLine($"{name} now logged in. type See in main menu to check for logged in accounts.");
                     Console.ReadKey();
                     wrongAnswer = false;
@@ -97,11 +98,11 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Try Again? Y/N:");
                 string answer = Console.ReadLine().ToLower();
 
-                if ( answer == "n")
+                if (answer == "n")
                 {
                     return false;
                 }
-                else if (answer == "y" )
+                else if (answer == "y")
                 {
                     return true;
                 }
@@ -111,32 +112,42 @@ namespace BootCamp.Chapter
 
         private void CreateAccount()
         {
-            string name = AskForName();
-            string password = AskForPassword();
-            loginAndRegister.Create(name, password);
+            bool isInputGood = false;
+
+            while (!isInputGood)
+            {
+                try
+                {
+                    string name = AskForNameOrPasswordCreate("username");
+                    string password = AskForNameOrPasswordCreate("password");
+                    Credentials.TryParse(name + "," + password, out Credentials credentials);
+                    credentialsManager.Register(credentials);
+                    Console.WriteLine($"Account {name} created.");
+                    Console.ReadKey();
+                    isInputGood = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
-        private string AskForName()
+        private string AskForNameOrPasswordCreate(string usernameOrPassword)
         {
-            string name = string.Empty;
+            string input = string.Empty;
             bool wrongAnswer = true;
 
             while (wrongAnswer)
             {
                 Console.Clear();
                 Console.WriteLine("Create Account.");
-                Console.Write("Login Name:");
-                name = Console.ReadLine();
+                Console.Write($"Login {usernameOrPassword}:");
+                input = Console.ReadLine();
 
-                if (loginAndRegister.AccountNameExists(name))
+                if (string.IsNullOrWhiteSpace(input))
                 {
-                    Console.WriteLine($"{name} already exists as a name please choose a new one.");
-                    Console.ReadKey();
-                }
-                else if (!Checks.IsNameValid(name))
-                {
-                    Console.WriteLine($"{name} must be more than 2 and less than 15 characters.\r\n" +
-                        $" It Cannot contain any non alphabetical characters.");
+                    Console.WriteLine($"{usernameOrPassword} Cannot be empty.");
                     Console.ReadKey();
                 }
                 else
@@ -144,54 +155,15 @@ namespace BootCamp.Chapter
                     wrongAnswer = false;
                 }
             }
-            return name;
+            return input;
         }
-        private string AskForPassword()
-        {
-            string password = string.Empty;
-            bool falsePassword = true;
 
-            while (falsePassword)
-            {
-                Console.Clear();
-                Console.WriteLine("Create Account.");
-                Console.WriteLine("Login Name:*****");
-                Console.Write("Password:");
-                password = Console.ReadLine();
-
-                if (!Checks.IsPasswordValid(password))
-                {
-                    Console.WriteLine($"Password must be more than 7 and less than 50 characters.\r\n" +
-                        $" It must contain at least one Capital letter, 1 lowercase letter, 1 number and 1 special character.");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    Console.Write("Please rewrite password:");
-
-                    if (password != Console.ReadLine())
-                    {
-                        Console.WriteLine("Passwords do not match try again!");
-                        Console.ReadKey();
-                    }
-                    else
-                    {
-                        falsePassword = false;
-                    }
-                }
-            }
-            return password;
-        }
         private void See()
         {
-            Console.Clear();
-            Console.WriteLine("Showing all Accounts in the system:");
-            loginAndRegister.ShowAllAccounts();
-
             Console.WriteLine("Showing all Accounts logged in:");
-            foreach (Account account in loggedInAccounts)
+            foreach (Credentials credentials in loggedInAccounts)
             {
-                Console.WriteLine($"{account.Name} + {account.Password}");
+                Console.WriteLine($"{credentials.Username} + {credentials.Password}");
             }
             Console.ReadKey();
 

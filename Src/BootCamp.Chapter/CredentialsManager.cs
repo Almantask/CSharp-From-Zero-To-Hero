@@ -45,7 +45,6 @@ namespace BootCamp.Chapter
                     {
                         return true;
                     }
-                    return false;
                 }
             }
             return false;
