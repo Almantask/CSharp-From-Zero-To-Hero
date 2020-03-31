@@ -47,7 +47,7 @@ namespace BootCamp.Chapter
             return people;
         }
 
-        private Person ConvertStringToPerson(string personString)
+        public Person ConvertStringToPerson(string personString)
         {
             var splittedPerson = personString.Split(',');
             var person = new Person();
