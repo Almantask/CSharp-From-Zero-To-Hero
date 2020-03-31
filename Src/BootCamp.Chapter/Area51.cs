@@ -70,22 +70,32 @@ namespace BootCamp.Chapter
 
                 Console.Write("Password:");
                 string password = Console.ReadLine();
-                if (Credentials.TryParse(username + "," + password, out Credentials credentials) 
+                try
+                {
+                    if (Credentials.TryParse(username + "," + password, out Credentials credentials)
                     && credentialsManager.Login(credentials))
-                {
-                    Console.Clear();
-                    Console.WriteLine($"Logging {username} in now.");
-                    Console.ReadKey();
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Logging {username} in now.");
+                        Console.ReadKey();
 
-                    loggedInAccounts.Add(credentials);
-                    Console.WriteLine($"{username} now logged in. type See in main menu to check for logged in accounts.");
-                    Console.ReadKey();
-                    isKeepLoopingLogin = false;
+                        loggedInAccounts.Add(credentials);
+                        Console.WriteLine($"{username} now logged in. type See in main menu to check for logged in accounts.");
+                        Console.ReadKey();
+                        isKeepLoopingLogin = false;
+                    }
+                    else
+                    {
+                        isKeepLoopingLogin = AskTryAgain();
+                    }
                 }
-                else
+                catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
+                    Console.ReadKey();
                     isKeepLoopingLogin = AskTryAgain();
                 }
+                
             }
         }
         private bool AskTryAgain()
@@ -164,6 +174,7 @@ namespace BootCamp.Chapter
 
         private void See()
         {
+            Console.Clear();
             Console.WriteLine("Showing all Accounts logged in:");
 
             foreach (Credentials credentials in loggedInAccounts)
