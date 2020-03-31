@@ -23,23 +23,23 @@ namespace BootCamp.Chapter
         private string GetAnswerMainMenu()
         {
 
-            string answer = string.Empty;
-            bool dontKnowAnswer = true;
+            string input = string.Empty;
+            bool isLoopMainMenu = true;
 
-            while (dontKnowAnswer)
+            while (isLoopMainMenu)
             {
                 Console.Clear();
                 Console.WriteLine("Login\r\nCreate\r\nSee\r\nQuit");
                 Console.Write("Please choose one: ");
-                answer = Console.ReadLine();
-                dontKnowAnswer = AnswerParser(answer);
+                input = Console.ReadLine();
+                isLoopMainMenu = AnswerParser(input);
             }
-            return answer.ToLower();
+            return input.ToLower();
 
         }
-        private void GoToPartOfProgram(string answer)
+        private void GoToPartOfProgram(string input)
         {
-            switch (answer)
+            switch (input)
             {
                 case login:
                     Login();
@@ -59,39 +59,40 @@ namespace BootCamp.Chapter
         }
         private void Login()
         {
-            bool wrongAnswer = true;
+            bool isKeepLoopingLogin = true;
 
-            while (wrongAnswer)
+            while (isKeepLoopingLogin)
             {
                 Console.Clear();
                 Console.WriteLine("Create Account.");
                 Console.Write("Login Name:");
-                string name = Console.ReadLine();
+                string username = Console.ReadLine();
 
                 Console.Write("Password:");
                 string password = Console.ReadLine();
-                if (Credentials.TryParse(name + "," + password, out Credentials credentials) 
+                if (Credentials.TryParse(username + "," + password, out Credentials credentials) 
                     && credentialsManager.Login(credentials))
                 {
                     Console.Clear();
-                    Console.WriteLine($"Logging {name} in now.");
+                    Console.WriteLine($"Logging {username} in now.");
                     Console.ReadKey();
 
                     loggedInAccounts.Add(credentials);
-                    Console.WriteLine($"{name} now logged in. type See in main menu to check for logged in accounts.");
+                    Console.WriteLine($"{username} now logged in. type See in main menu to check for logged in accounts.");
                     Console.ReadKey();
-                    wrongAnswer = false;
+                    isKeepLoopingLogin = false;
                 }
                 else
                 {
-                    wrongAnswer = AskTryAgain();
+                    isKeepLoopingLogin = AskTryAgain();
                 }
             }
         }
         private bool AskTryAgain()
         {
-            bool again = true;
-            while (again)
+            bool keeploopingUntillYesOrNo = true;
+
+            while (keeploopingUntillYesOrNo)
             {
                 Console.Clear();
                 Console.WriteLine("Wrong Login information!");
@@ -120,10 +121,13 @@ namespace BootCamp.Chapter
                 {
                     string name = AskForNameOrPasswordCreate("username");
                     string password = AskForNameOrPasswordCreate("password");
+
                     Credentials.TryParse(name + "," + password, out Credentials credentials);
                     credentialsManager.Register(credentials);
+
                     Console.WriteLine($"Account {name} created.");
                     Console.ReadKey();
+
                     isInputGood = true;
                 }
                 catch (Exception e)
@@ -136,9 +140,9 @@ namespace BootCamp.Chapter
         private string AskForNameOrPasswordCreate(string usernameOrPassword)
         {
             string input = string.Empty;
-            bool wrongAnswer = true;
+            bool isInLoopForNameOrPassword = true;
 
-            while (wrongAnswer)
+            while (isInLoopForNameOrPassword)
             {
                 Console.Clear();
                 Console.WriteLine("Create Account.");
@@ -152,7 +156,7 @@ namespace BootCamp.Chapter
                 }
                 else
                 {
-                    wrongAnswer = false;
+                    isInLoopForNameOrPassword = false;
                 }
             }
             return input;
@@ -161,17 +165,17 @@ namespace BootCamp.Chapter
         private void See()
         {
             Console.WriteLine("Showing all Accounts logged in:");
+
             foreach (Credentials credentials in loggedInAccounts)
             {
                 Console.WriteLine($"{credentials.Username} + {credentials.Password}");
             }
             Console.ReadKey();
-
         }
 
-        private bool AnswerParser(string answer)
+        private bool AnswerParser(string input)
         {
-            switch (answer.ToLower())
+            switch (input.ToLower())
             {
                 case login:
                     return false;
