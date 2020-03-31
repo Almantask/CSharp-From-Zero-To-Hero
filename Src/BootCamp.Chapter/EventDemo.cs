@@ -4,46 +4,44 @@ using System.IO;
 
 namespace BootCamp.Chapter
 {
-    internal class EventDemo
+    public class EventDemo
     {
-
-        public event EventHandler DemoStarted;
-        public event EventHandler ChoosePredicate;
-        public event EventHandler DemoEnded;
-        public event EventHandler ApplicationClosed; 
-
         public static void Demo()
         {
-            throw new NotImplementedException();
+            var events = new Events();
+            events.DemoStarted += OnDemoStarted;
+            events.DemoEnded += OnDemoEnded;
+            events.ChoosePredicate += ChoosePredicates;
+            events.ApplicationClosed += OnApplicationClosed;
         }
 
-        protected void OnDemoStarted()
+        protected static void OnDemoStarted(object sender, EventArgs e)
         {
             Console.WriteLine("The demo has started");
         }
 
-        protected void OnDemoEnded()
+        protected static void OnDemoEnded(object sender, EventArgs e)
         {
             Console.WriteLine("the demo has ended");
         }
 
-        protected void OnApplicationClosed()
+        protected static void OnApplicationClosed(object sender, EventArgs e)
         {
             Console.WriteLine("the application has closed");
         }
 
-        protected void ChoosePredicates()
+        protected static void ChoosePredicates(object sender, EventArgs e)
         {
             var menuChoice = MenuPredicates();
-            var contact = new ContactsCenter("@/Input/MOCK_DATA.cvs"); 
-            var persons = new List<Person>(); 
+            var contact = new ContactsCenter("@/Input/MOCK_DATA.cvs");
+            var persons = new List<Person>();
 
             var answer = new List<Person>();
             switch (menuChoice)
             {
                 case "1":
-                  answer = contact.Filter(PeoplePredicates.IsA); 
-                  break;
+                    answer = contact.Filter(PeoplePredicates.IsA);
+                    break;
                 case "2":
                     answer = contact.Filter(PeoplePredicates.IsB);
                     break;
@@ -62,16 +60,17 @@ namespace BootCamp.Chapter
             }
         }
 
-        private string MenuPredicates()
+        private static string MenuPredicates()
         {
             Console.WriteLine($"Choose on the following fiters you want to use. {Environment.NewLine}");
             Console.WriteLine("1) Persons older then 18 which do not live in the UK and which surname does not contain the character a ");
             Console.WriteLine("2) Persons who are younger then 18 and who surname does not contain the character a");
             Console.WriteLine("3_ Persons who do no live in the Uk and where both the name and surnmae contains the character a");
             var choice = Console.ReadLine();
-            return choice; 
-            
-       
+            return choice;
+
+
         }
     }
+
 }
