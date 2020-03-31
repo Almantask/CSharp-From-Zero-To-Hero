@@ -54,5 +54,9 @@ namespace BootCamp.Chapter
             //var bytes = Encoding.Unicode.GetBytes(password);
             //return new string(Encoding.Unicode.GetChars(bytes));
         }
+        public override string ToString()
+        {
+            return $"{Username},{Password}";
+        }
     }
 }

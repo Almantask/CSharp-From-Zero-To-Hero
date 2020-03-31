@@ -59,11 +59,11 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(File.ReadAllText(_credentialsFile)))
             {
-                textToBeAdded = $"{credentials.Username},{credentials.Password}";
+                textToBeAdded = $"{credentials.ToString()}";
             }
             else
             {
-                textToBeAdded = $"{Environment.NewLine}{credentials.Username},{credentials.Password}";
+                textToBeAdded = $"{Environment.NewLine}{credentials.ToString()}";
             }
             
             File.AppendAllText(_credentialsFile,textToBeAdded);
