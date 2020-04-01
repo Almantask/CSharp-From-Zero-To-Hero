@@ -6,6 +6,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+
+            var demo = EventDemo.Demo();
+            demo.Run(); 
+                
+            
             
         }
     }

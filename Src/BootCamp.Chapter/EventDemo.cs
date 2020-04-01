@@ -6,13 +6,15 @@ namespace BootCamp.Chapter
 {
     public class EventDemo
     {
-        public static void Demo()
+        public static Events Demo()
         {
             var events = new Events();
             events.DemoStarted += OnDemoStarted;
             events.DemoEnded += OnDemoEnded;
             events.ChoosePredicate += ChoosePredicates;
             events.ApplicationClosed += OnApplicationClosed;
+
+            return events; 
         }
 
         protected static void OnDemoStarted(object sender, EventArgs e)
@@ -33,7 +35,7 @@ namespace BootCamp.Chapter
         protected static void ChoosePredicates(object sender, EventArgs e)
         {
             var menuChoice = MenuPredicates();
-            var contact = new ContactsCenter("@/Input/MOCK_DATA.cvs");
+            var contact = new ContactsCenter(@"Input/MOCK_DATA.csv");
             var persons = new List<Person>();
 
             var answer = new List<Person>();
@@ -56,7 +58,7 @@ namespace BootCamp.Chapter
             Console.WriteLine("The persons who are filterd out are");
             foreach (var person in answer)
             {
-                Console.WriteLine(person);
+                Console.WriteLine($"{person.Name} {person.SureName}");
             }
         }
 
@@ -65,7 +67,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"Choose on the following fiters you want to use. {Environment.NewLine}");
             Console.WriteLine("1) Persons older then 18 which do not live in the UK and which surname does not contain the character a ");
             Console.WriteLine("2) Persons who are younger then 18 and who surname does not contain the character a");
-            Console.WriteLine("3_ Persons who do no live in the Uk and where both the name and surnmae contains the character a");
+            Console.WriteLine("3) Persons who do no live in the Uk and where both the name and surnmae contains the character a");
             var choice = Console.ReadLine();
             return choice;
 

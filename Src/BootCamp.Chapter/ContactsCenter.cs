@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
         {
             var people = new List<Person>();
             var splittedList = _peopleFile.Split($"{Environment.NewLine}");
-            for (int i = 1; i < splittedList.Length; i++)
+            for (int i = 1; i < splittedList.Length -1 ; i++)
             {
                 var person = ConvertStringToPerson(splittedList[i]);
                 if (predicate(person))
