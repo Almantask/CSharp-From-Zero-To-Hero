@@ -4,9 +4,9 @@ using System.IO;
 
 namespace BootCamp.Chapter
 {
-    public class EventDemo
+    public class EventManager
     {
-        public static Events Demo()
+        public static Events ManageEvents()
         {
             var events = new Events();
             events.DemoStarted += OnDemoStarted;

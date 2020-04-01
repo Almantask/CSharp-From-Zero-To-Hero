@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
 
-            var demo = EventDemo.Demo();
+            var demo = EventManager.ManageEvents();
             demo.Run(); 
                 
             
