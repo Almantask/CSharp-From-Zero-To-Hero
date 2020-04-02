@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -18,9 +19,11 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public Item GetItem(string name)
         {
+            NullChecks.StringNullChecks(name);
+
             foreach (Item item in Items)
             {
-                if (item.Name == name)
+                if (item?.Name == name)
                 {
                     return item;
                 }
@@ -34,14 +37,15 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public List<Item> GetItems(string name)
         {
+            NullChecks.StringNullChecks(name);
+
             List<Item> final = new List<Item>();
 
             for (int i = 0; i < Items.Count; i++)
             {
-                if (Items[i] != null && Items[i].Name == name)
+                if (Items[i]?.Name == name)
                 {
                     final.Add(Items[i]);
-
                 }
             }
             return final;
@@ -52,7 +56,7 @@ namespace BootCamp.Chapter
         /// <param name="item"></param>
         public void AddItem(Item item)
         {
-            Items.Add(item);
+            Items.Add(item ?? throw new ArgumentNullException($"{nameof(item)} can't be null."));
         }
 
         /// <summary>
@@ -63,7 +67,7 @@ namespace BootCamp.Chapter
         {
             for (int i = 0; i < Items.Count; i++)
             {
-                if (Items[i] == item)
+                if (Items[i].IsTheSameItem(item ?? throw new ArgumentNullException($"{nameof(item)} can't be null.")))
                 {
                     Items.RemoveAt(i);
                     return;

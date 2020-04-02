@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System;
 using System.Collections.Generic;
 
 namespace BootCamp.Chapter
@@ -36,12 +37,13 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
-            _inventory.AddItem(item);
+            _inventory.AddItem(item ?? throw new ArgumentNullException($"{nameof(item)} can't be null."));
+
         }
 
         public void Remove(Item item)
         {
-            _inventory.RemoveItem(item);
+            _inventory.RemoveItem(item ?? throw new ArgumentNullException($"{nameof(item)} can't be null."));
         }
 
         /// <summary>
@@ -50,6 +52,8 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public List<Item> GetItems(string name)
         {
+            NullChecks.StringNullChecks(name);
+
             return _inventory.GetItems(name);
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -26,7 +27,10 @@ namespace BootCamp.Chapter
         /// </summary>
         public void Add(Item item)
         {
-            if (_inventory.GetItem(item.Name) != item)
+            Item item1 = _inventory.GetItem(item?.Name);
+            bool isSameItem = item1?.IsTheSameItem(item) ?? false;
+
+            if (!isSameItem)
             {
                 _inventory.AddItem(item);
             }
@@ -39,6 +43,8 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            NullChecks.StringNullChecks(name);
+
             _inventory.RemoveItem(_inventory.GetItem(name));
         }
 
@@ -50,7 +56,7 @@ namespace BootCamp.Chapter
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            decimal price = item.Price;
+            decimal price = item?.Price ?? throw new ArgumentNullException($"{nameof(item)} can't be null.");
 
             if (price <= Money)
             {
@@ -70,18 +76,14 @@ namespace BootCamp.Chapter
         /// Item sold.
         /// Null, if no item is sold.
         /// </returns>
-        public Item Sell(string item)
+        public Item Sell(string name)
         {
+            NullChecks.StringNullChecks(name);
 
-            Item item1 = _inventory.GetItem(item);
+            Item item1 = _inventory.GetItem(name);
 
-            if (item1 != null)
-            {
-                Money += item1.Price;
-                return item1;
-            }
-
-            return null;
+            Money += item1?.Price ?? 0;
+            return item1;
         }
     }
 }
