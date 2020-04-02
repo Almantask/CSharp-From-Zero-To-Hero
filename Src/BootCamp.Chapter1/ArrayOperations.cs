@@ -1,4 +1,9 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,7 +14,18 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if(array == null)
+            {
+                Console.WriteLine(array);
+            }
+            else
+            {
+                Array.Sort(array);
+                foreach (int value in array)
+
+                    Console.Write(value);
+            }
+            
         }
 
         /// <summary>
@@ -19,7 +35,18 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null)
+            {
+                Console.WriteLine(array);
+            }
+            else
+            {
+                Array.Reverse(array);
+                foreach (int value in array)
+
+                    Console.Write(value);
+            }
+
         }
 
         /// <summary>
@@ -27,20 +54,61 @@
         /// </summary>
         /// <param name="array">Input array.</param>
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
-        public static int[] RemoveLast(int[] array)
+        public static object RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
-        }
+            
+            if (array != null || array.Length != 0)
+            {
+                var type = array.GetType().IsArray;
 
+                if(type)
+                {
+                    if(array.Length == 1)
+                {
+                        var length = 0;
+                        List<int> numbers = new List<int>(array);
+                        numbers.RemoveAt(numbers.IndexOf(length));
+                        array = numbers.ToArray();
+                    }
+                else
+                    {
+                        var length = array.Length - 1;
+                        List<int> numbers = new List<int>(array);
+                        numbers.RemoveAt(numbers.IndexOf(length));
+                        array = numbers.ToArray();
+                    }
+                }
+
+            }
+            else
+            {
+                return array;
+            }
+
+                
+                return array;
+            }
+            
+    
         /// <summary>
         /// Remove first element in array.
         /// </summary>
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return array;
+            }
+            else
+            {
+                
+                Array.Clear(array, 1 , 1);
+
+                return array;
+            }
+
+            
         }
 
         /// <summary>
@@ -91,5 +159,6 @@
             // ToDo: implement.
             return array;
         }
+
     }
 }
