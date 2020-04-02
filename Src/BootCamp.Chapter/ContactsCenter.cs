@@ -1,16 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
     public class ContactsCenter
     {
-        private readonly List<Person> _people;
+        private readonly List<Person> _people = new List<Person>();
 
         public ContactsCenter(string peopleFile)
         {
-            // load people
+            if (!File.Exists(peopleFile))
+            {
+                throw new FileNotFoundException($"{nameof(peopleFile)} was not found!");
+            }
+
+            string line;
+            StreamReader reader = null;
+            try
+            {
+                reader = new StreamReader(peopleFile);
+                if (reader.EndOfStream)
+                {
+                    throw new ContactsFileIsEmptyException($"{nameof(peopleFile)} is empty");
+                }
+
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (Person.TryParse(line, out Person person))
+                    {
+                        _people.Add(person);
+                    }
+                }
+            }
+            catch
+            {
+                throw new Exception($"There was an error working with{nameof(peopleFile) }");
+            }
+            finally
+            {
+                reader?.Close();
+            }
         }
 
         /// <summary>
@@ -19,9 +50,8 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public List<Person> Filter(Predicate<Person> predicate)
         {
-            var people = new List<Person>();
-            // ToDo: implement applying filter.
-            return people;
+            var counter = _people.RemoveAll(predicate);
+            return _people;
         }
     }
 }
