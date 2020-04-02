@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
 {
     public static class PeoplePredicates
     {
-        private const string country = "United Kingdom";
+        private const string country = "UK";
         private const int ageBarrier = 18;
         private const char letter = 'a';
 
@@ -16,8 +16,9 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static bool IsA(Person person)
         {
-            var condittionsMet = !person.SureName.Contains(letter) && GetAge(person.Birthdate) > ageBarrier && person.Country != country;
-            return condittionsMet;
+            return person.Age > ageBarrier
+                && person.Country != country
+                && !person.SureName.Contains(letter);
         }
 
         /// <summary>
@@ -27,8 +28,9 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static bool IsB(Person person)
         {
-            var condittionsMet = !person.SureName.Contains(letter) && GetAge(person.Birthdate) < ageBarrier && person.Country != country;
-            return condittionsMet;
+            return person.Age < ageBarrier
+                && person.Country != country
+                && !person.SureName.Contains(letter);
         }
 
         /// <summary>
@@ -38,13 +40,9 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static bool IsC(Person person)
         {
-            var condittionsMet = !person.SureName.Contains(letter) && person.Country != country;
-            return condittionsMet;
-        }
-
-        private static int GetAge(DateTime date)
-        {
-            return DateTime.Now.Year - date.Year;
+            return person.Country != country
+                && !person.Name.Contains(letter)
+                && !person.SureName.Contains(letter);
         }
     }
 }

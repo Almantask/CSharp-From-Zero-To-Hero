@@ -13,6 +13,7 @@ namespace BootCamp.Chapter
     {
         private const string separator = ",";
         private const int fieldsNumber = 7;
+        private const string fileHeader = "name,sureName,birthday,gender,country,email,streetAddress";
 
         public string Name { get; set; }
 
@@ -27,6 +28,8 @@ namespace BootCamp.Chapter
         public string Email { get; set; }
 
         public string StreetAdress { get; set; }
+
+        public int Age => DateTime.Now.Year - Birthdate.Year;
 
         public static bool TryParse(string input, out Person person)
         {
@@ -61,6 +64,11 @@ namespace BootCamp.Chapter
         private static bool AreValid(string[] input)
         {
             if (input is null)
+            {
+                return false;
+            }
+
+            if (string.Join(separator, input) == fileHeader)
             {
                 return false;
             }
