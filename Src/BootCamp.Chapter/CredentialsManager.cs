@@ -39,12 +39,16 @@ namespace BootCamp.Chapter
                 {
                     if (credentials.Password == splitNameAndPassword[1])
                     {
+
+                        Console.Clear();
+                        Console.WriteLine($"Logging {splitNameAndPassword[0]} in now.");
+                        Console.ReadKey();
+
                         return true;
                     }
                 }
             }
             return false;
-
         }
 
         public void Register(Credentials credentials)
