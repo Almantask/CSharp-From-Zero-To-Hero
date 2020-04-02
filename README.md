@@ -5,8 +5,12 @@ building a house if you never built one. Programming is hard only until you prac
 I would like to invite you to learn programming and C# following this course. 
 Ignite passion for finding little miracles in code every day 🙂
 
-# New joiner guide
+# For new joiners
 It's never too late to join, because the community is there, all the material is saved
 and you will not be left alone.
-Live lessons material (slides + videos + examples + homework) here: https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/Summary  
-New joiner's guide here: https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/New-joiner-guide  
+
+Live lessons material (slides + videos + examples + homework) here:  
+https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/Summary
+
+New joiner's guide here:  
+https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/New-joiner-guide  
