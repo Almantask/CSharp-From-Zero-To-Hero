@@ -14,3 +14,4 @@ https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/Summary
 
 New joiner's guide here:  
 https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/New-joiner-guide  
+![Boot Camp Banner](Res/kaisi_banner_4.png)
