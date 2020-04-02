@@ -44,19 +44,29 @@ namespace BootCamp.Chapter.Tests
             isLoggedIn.Should().BeTrue();
         }
 
-        [Theory]
-        [InlineData(EmptyFile)]
-        [InlineData(FileWtihSingleCredential)]
-        public void Register_Appends_Comma_Separated_Credentials(string credentialsFile)
+        [Fact]
+        public void Register_Given_EmptyFile_Appends_Comma_Separated_Credentials()
         {
-            var credentialsManager = new CredentialsManager(credentialsFile);
+            var credentialsManager = new CredentialsManager(EmptyFile);
             var credentials = new Credentials("Tom", "Tom123");
-            var oldContents = File.ReadAllLines(credentialsFile);
+
+            credentialsManager.Register(credentials);
+
+            File.ReadAllLines(EmptyFile)
+                .Should().HaveCount(1);
+        }
+
+        [Fact]
+        public void Register_Given_Valid_FilledFile_Appends_Comma_Separated_Credentials()
+        {
+            var credentialsManager = new CredentialsManager(FileWtihSingleCredential);
+            var credentials = new Credentials("Tom", "Tom123");
+            var oldContents = File.ReadAllLines(FileWtihSingleCredential);
 
             credentialsManager.Register(credentials);
 
 
-            File.ReadAllLines(credentialsFile)
+            File.ReadAllLines(FileWtihSingleCredential)
                 .Should().Contain(oldContents)
                 .And.HaveCount(oldContents.Length + 1);
         }
