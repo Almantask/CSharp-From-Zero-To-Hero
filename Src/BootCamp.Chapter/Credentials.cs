@@ -10,22 +10,8 @@ namespace BootCamp.Chapter
 
         public Credentials(string username, string password)
         {
-            CheckForNullAndEmpty(username, password);
-
-            Username = username;
-            Password = EncodePasswordToString(password);
-        }
-
-        private static void CheckForNullAndEmpty(string username, string password)
-        {
-            if (string.IsNullOrEmpty(username))
-            {
-                throw new ArgumentException("Username can't be empty.");
-            }
-            if(string.IsNullOrEmpty(password))
-            {
-                throw new ArgumentException("password can't be empty.");
-            }
+            Username = username ?? throw new ArgumentException($"{nameof(username)} can't be empty.");
+            Password = EncodePasswordToString(password ?? throw new ArgumentException($"{nameof(password)} can't be empty."));
         }
 
         public static bool TryParse(string input, out Credentials credentials)
