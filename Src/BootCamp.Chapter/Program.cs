@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
     {
         private static void Main(string[] args)
         {
-            MenuDemo.DisplayMainMenu();
+            Demo.Run();
         }
     }
 }

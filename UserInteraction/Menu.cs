@@ -1,24 +1,76 @@
 ﻿using System;
-using UtilsLibrary;
+using System.Collections.Generic;
 
 namespace MenuLibrary
 {
-    public class MenuItem
+    public class Menu
     {
-        public string Title { get; }
-        public Action Execute { get; }
-        public char Key { get; set; }
+        public string MenuTitle { get; }
 
-        public MenuItem(string title, Action execute, char key)
+        public List<MenuItem> MainMenu { get; } = new List<MenuItem>();
+
+        public Menu(string menuTitle, List<MenuItem> menuItems)
         {
-            if (!Utils.IsValid(title) || execute is null || !Utils.IsValid(key))
+            MenuTitle = menuTitle;
+            MainMenu.AddRange(menuItems);
+            MainMenu.Add(new MenuItem("Exit", Exit, '0'));
+        }
+
+        private void ShowHeading()
+        {
+            Console.WriteLine(MenuTitle);
+            Console.WriteLine(new string('-', MenuTitle.Length));
+        }
+
+        public void DisplayMainMenu()
+        {
+            ConsoleInit();
+            ShowHeading();
+            DisplayMenuOptions();
+            ReadUserInput();
+        }
+
+        private void ReadUserInput()
+        {
+            var userInput = Console.ReadKey(true).KeyChar;
+            for (int i = 0; i < MainMenu.Count; i++)
             {
-                throw new ArgumentNullException($"{nameof(title)}, {nameof(execute)} & {nameof(key)} can not be null or empty");
+                if (MainMenu[i].Key == userInput)
+                {
+                    ConsoleInit();
+                    MainMenu[i].Execute();
+                    Wait();
+                }
             }
 
-            Title = title;
-            Execute = execute;
-            Key = key;
+            DisplayMainMenu();
+        }
+
+        private void DisplayMenuOptions()
+        {
+            for (int i = 0; i < MainMenu.Count; i++)
+            {
+                Console.WriteLine($"({MainMenu[i].Key}) {MainMenu[i].Title}");
+            }
+        }
+
+        private void Wait()
+        {
+            Console.CursorVisible = false;
+            Console.WriteLine();
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadLine();
+        }
+
+        private void ConsoleInit(bool cursorVisible = false)
+        {
+            Console.Clear();
+            Console.CursorVisible = cursorVisible;
+        }
+
+        private void Exit()
+        {
+            Environment.Exit(0);
         }
     }
 }
