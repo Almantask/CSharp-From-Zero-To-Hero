@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
         {
             if (String.IsNullOrEmpty(fileName))
             {
-                throw new ArgumentException();
+                throw new ArgumentNullException("file cannot be empty");
             }
             _fileName = fileName;
         }

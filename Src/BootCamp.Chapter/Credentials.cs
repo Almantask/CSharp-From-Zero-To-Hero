@@ -10,10 +10,11 @@ namespace BootCamp.Chapter
 
         public Credentials(string username, string password)
         {
-            if (String.IsNullOrEmpty(username) & (String.IsNullOrEmpty(password)))
-            {
-                throw new ArgumentException();
-            }
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentNullException(nameof(username));
+
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException(nameof(password));
 
             Username = username;
             Password = password;
