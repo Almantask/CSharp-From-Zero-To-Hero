@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace BootCamp.Chapter
 {
     public class EventManager
     {
-        public static Events ManageEvents()
+        public static Event ManageEvents()
         {
-            var events = new Events();
+            var events = new Event();
             events.DemoStarted += OnDemoStarted;
             events.DemoEnded += OnDemoEnded;
             events.ChoosePredicate += ChoosePredicates;
             events.ApplicationClosed += OnApplicationClosed;
 
-            return events; 
+            return events;
         }
 
         protected static void OnDemoStarted(object sender, EventArgs e)
@@ -34,7 +33,7 @@ namespace BootCamp.Chapter
 
         protected static void ChoosePredicates(object sender, EventArgs e)
         {
-            var menuChoice = MenuPredicates();
+            var menuChoice = DisplayPredicateChoises();
             var contact = new ContactsCenter(@"Input/MOCK_DATA.csv");
             var persons = new List<Person>();
 
@@ -44,12 +43,15 @@ namespace BootCamp.Chapter
                 case "1":
                     answer = contact.Filter(PeoplePredicates.IsA);
                     break;
+
                 case "2":
                     answer = contact.Filter(PeoplePredicates.IsB);
                     break;
+
                 case "3":
                     answer = contact.Filter(PeoplePredicates.IsC);
                     break;
+
                 default:
                     Console.WriteLine("you make non valid choice");
                     break;
@@ -62,7 +64,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static string MenuPredicates()
+        private static string DisplayPredicateChoises()
         {
             Console.WriteLine($"Choose on the following fiters you want to use. {Environment.NewLine}");
             Console.WriteLine("1) Persons older then 18 which do not live in the UK and which surname does not contain the character a ");
@@ -70,9 +72,6 @@ namespace BootCamp.Chapter
             Console.WriteLine("3) Persons who do no live in the Uk and where both the name and surnmae contains the character a");
             var choice = Console.ReadLine();
             return choice;
-
-
         }
     }
-
 }

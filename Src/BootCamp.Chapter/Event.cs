@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class Events
+    public class Event
     {
         public event EventHandler DemoStarted;
 
@@ -19,5 +21,6 @@ namespace BootCamp.Chapter
             DemoEnded?.Invoke(this, EventArgs.Empty);
             ApplicationClosed?.Invoke(this, EventArgs.Empty);
         }
+        
     }
 }

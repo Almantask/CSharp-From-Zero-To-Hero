@@ -1,31 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
     public class ContactsCenter
     {
-         private readonly string _peopleFile;
+        private readonly string _peopleFile;
 
         public ContactsCenter(string peopleFile)
         {
             if (!File.Exists(peopleFile))
             {
-                throw new FileNotFoundException("File is made up"); 
+                throw new FileNotFoundException("File is made up");
             }
-                      
-            _peopleFile = File.ReadAllText(peopleFile); 
-           
+
+            _peopleFile = File.ReadAllText(peopleFile);
+
             if (String.IsNullOrWhiteSpace(_peopleFile))
             {
-                throw new Exception(); 
+                throw new InvalidOperationException("File cannot be empty");
             }
-         
         }
 
-       
         /// <summary>
         /// Gets people by filter predicate.
         /// </summary>
@@ -33,34 +31,37 @@ namespace BootCamp.Chapter
         public List<Person> Filter(Predicate<Person> predicate)
         {
             var people = new List<Person>();
-            var splittedList = _peopleFile.Split($"{Environment.NewLine}");
-            for (int i = 1; i < splittedList.Length -1 ; i++)
+            var splittedList = _peopleFile.Split(Environment.NewLine);
+            // skipped the first row because its a header.
+            for (int i = 1; i < splittedList.Length - 1; i++)
             {
                 var person = ConvertStringToPerson(splittedList[i]);
                 if (predicate(person))
                 {
                     people.Add(person);
                 }
-
             }
-                   
+
             return people;
         }
 
         public Person ConvertStringToPerson(string personString)
         {
+            var person = new Person(); 
+            CultureInfo culture = new CultureInfo("en-US");
             var splittedPerson = personString.Split(',');
-            var person = new Person();
             person.Name = splittedPerson[0];
             person.SureName = splittedPerson[1];
-            person.BirthDay = splittedPerson[2];
-            person.Gender = splittedPerson[3];
+            person.BirthDay = DateTime.Parse(splittedPerson[2], culture, DateTimeStyles.None);
+            person.Gender = (Gender)Enum.Parse(typeof(Gender), splittedPerson[3]);
             person.Country = splittedPerson[4];
             person.Email = splittedPerson[5];
             person.StreetAdress = splittedPerson[6];
-
+            
             return person; 
-
         }
+
+       
+
     }
 }
