@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
 
-namespace BootCamp.Chapter
+namespace UtilsLibrary
 {
     public static class Utils
     {
@@ -10,5 +12,12 @@ namespace BootCamp.Chapter
         {
             return !string.IsNullOrWhiteSpace(input) || !string.IsNullOrEmpty(input);
         }
+
+        public static bool IsValid(char input)
+        {
+            return char.IsLetterOrDigit(input);
+        }
+
+        // methodnot properly implemented
     }
 }

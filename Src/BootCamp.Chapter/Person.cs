@@ -1,4 +1,5 @@
 ﻿using System;
+using UtilsLibrary;
 
 namespace BootCamp.Chapter
 {
@@ -84,7 +85,7 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private static GenderEnum ParseGender(string input)
+        public static GenderEnum ParseGender(string input)
         {
             if (!Utils.IsValid(input))
             {
