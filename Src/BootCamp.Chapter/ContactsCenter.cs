@@ -50,8 +50,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public List<Person> Filter(Predicate<Person> predicate)
         {
-            var counter = _people.RemoveAll(predicate);
-            return _people;
+            return _people.FindAll(predicate);
         }
     }
 }
