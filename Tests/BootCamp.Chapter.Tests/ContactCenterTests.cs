@@ -1,6 +1,6 @@
+using FluentAssertions;
 using System;
 using System.IO;
-using FluentAssertions;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests

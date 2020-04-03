@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MenuLibrary;
+﻿using MenuLibrary;
 
 namespace BootCamp.Chapter
 

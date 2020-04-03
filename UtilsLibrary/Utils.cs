@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Net.Mail;
-
-namespace UtilsLibrary
+﻿namespace UtilsLibrary
 {
     public static class Utils
     {
@@ -17,7 +11,5 @@ namespace UtilsLibrary
         {
             return char.IsLetterOrDigit(input);
         }
-
-        // methodnot properly implemented
     }
 }
