@@ -9,9 +9,7 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            Console.Write("Please enter the number of individuals you would like to calculate the BMI of: ");
-            int numberOfIndividuals = Convert.ToInt32(Console.ReadLine());
-
+            int numberOfIndividuals = PromptInt("Please enter the number of individuals you would like to calculate the BMI of: ");
             while (numberOfIndividuals != 0)
             {
                 PromptForPersonalData();
