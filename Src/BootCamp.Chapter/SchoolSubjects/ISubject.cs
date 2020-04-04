@@ -8,5 +8,6 @@ namespace BootCamp.Chapter.SchoolSubjects
     {
         // TODO return the material from the subject.
         public void ProduceMaterial();
+        public string GetMessage();
     }
 }

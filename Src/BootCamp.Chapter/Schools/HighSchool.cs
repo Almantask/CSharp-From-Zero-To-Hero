@@ -7,5 +7,16 @@ namespace BootCamp.Chapter.Schools
 {
     class HighSchool : ISchool<HighSchoolStudent>
     {
+        List<HighSchoolStudent> students;
+
+        public HighSchool()
+        {
+            students = new List<HighSchoolStudent>();
+        }
+
+        public void Add(HighSchoolStudent student)
+        {
+            students.Add(student);
+        }
     }
 }

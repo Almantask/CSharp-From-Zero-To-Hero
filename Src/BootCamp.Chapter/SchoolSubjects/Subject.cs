@@ -4,20 +4,23 @@ using System.Text;
 
 namespace BootCamp.Chapter.SchoolSubjects
 {
-    class Art : Subject, ISubject
+    abstract class Subject : ISubject
     {
-        
-    }
-}
-/*
- * public string Message;
+        public string Message;
 
-        public Art()
+        public Subject()
         {
             Message = $"I know {this.GetType().Name}";
         }
+
+        public string GetMessage()
+        {
+            return Message;
+        }
+
         public void ProduceMaterial()
         {
             Console.WriteLine($"I Learnt {this.GetType().Name}.");
         }
- */
+    }
+}

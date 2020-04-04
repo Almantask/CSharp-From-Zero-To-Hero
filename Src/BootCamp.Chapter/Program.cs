@@ -1,4 +1,8 @@
-﻿using System;
+﻿using BootCamp.Chapter.SchoolSubjects;
+using BootCamp.Chapter.Students;
+using BootCamp.Chapter.Teachers;
+using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -6,6 +10,17 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            List<ISubject> subjects = new List<ISubject>();
+            List<IStudent> students = new List<IStudent>();
+
+            English English = new English();
+            HighSchoolTeacher teach = new HighSchoolTeacher(English);
+            HighSchoolStudent jan = new HighSchoolStudent();
+
+            jan.LearnFrom<ITeacher<ISubject>, ISubject>(teach);
+
+            jan.GetSubjectsLearnt();
+
             //TODO these things:
             /*
              * 

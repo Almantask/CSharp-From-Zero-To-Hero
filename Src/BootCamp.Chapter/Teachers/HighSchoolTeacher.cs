@@ -13,6 +13,7 @@ namespace BootCamp.Chapter.Teachers
         {
             _Teachings = subject;
         }
+
         public ISubject ProduceMaterial()
         {
             return _Teachings;

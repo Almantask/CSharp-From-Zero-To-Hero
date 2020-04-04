@@ -7,6 +7,7 @@ namespace BootCamp.Chapter.Schools
 {
     interface ISchool<TStudent> where TStudent : IStudent
     {
+        public void Add(TStudent student);
         //TODO. school has list of students and teachers.
         
         // Missing:
