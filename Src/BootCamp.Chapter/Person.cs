@@ -18,9 +18,9 @@ namespace BootCamp.Chapter
 
         public string Name { get; set; }
 
-        public string SureName { get; set; }
+        public string SurName { get; set; }
 
-        public DateTime Birthdate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public GenderEnum Gender { get; set; }
 
@@ -30,7 +30,21 @@ namespace BootCamp.Chapter
 
         public string StreetAdress { get; set; }
 
-        public int Age => DateTime.Now.Year - Birthdate.Year;
+        public int Age => DateTime.Now.Year - BirthDate.Year;
+
+        public override string ToString()
+        {
+            return string.Format(
+                "|{0,12}|{1,15}|{2,15}|{3,4}|{4,12}|{5,27}|{6,27}|{7,37}|",
+                Name,
+                SurName,
+                BirthDate.ToString("dd/MM/yyy"),
+                Age,
+                Gender,
+                Country,
+                StreetAdress,
+                Email);
+        }
 
         public static bool TryParse(string input, out Person person)
         {
@@ -51,12 +65,12 @@ namespace BootCamp.Chapter
             person = new Person()
             {
                 Name = fields[0],
-                SureName = fields[1],
-                Birthdate = DateTime.Parse(fields[2]),
+                SurName = fields[1],
+                BirthDate = DateTime.Parse(fields[2]),
                 Gender = ParseGender(fields[3]),
                 Country = fields[4],
-                StreetAdress = fields[5],
-                Email = fields[6]
+                Email = fields[5],
+                StreetAdress = fields[6]
             };
 
             return true;

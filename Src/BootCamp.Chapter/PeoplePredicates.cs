@@ -14,7 +14,7 @@
         {
             return person.Age > ageLimit
             && person.Country != country
-            && !person.SureName.Contains(letter);
+            && !person.SurName.Contains(letter);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@
         {
             return person.Age < ageLimit
             && person.Country != country
-            && !person.SureName.Contains(letter);
+            && !person.SurName.Contains(letter);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@
         {
             return person.Country != country
             && !person.Name.Contains(letter)
-            && !person.SureName.Contains(letter);
+            && !person.SurName.Contains(letter);
         }
     }
 }
