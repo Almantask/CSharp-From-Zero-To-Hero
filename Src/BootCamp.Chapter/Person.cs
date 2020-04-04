@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -12,7 +11,7 @@ namespace BootCamp.Chapter
         public string Country { get; set; }
         public string Email { get; set; }
         public string StreetAdress { get; set; }
-        public int Age { get => CalculateAge(); } 
+        public int Age { get => CalculateAge(); }
 
         public int CalculateAge()
         {
@@ -23,7 +22,5 @@ namespace BootCamp.Chapter
 
             return age;
         }
-
-
     }
 }

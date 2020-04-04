@@ -47,19 +47,18 @@ namespace BootCamp.Chapter
 
         public Person TryParse(string personString)
         {
-
             if (String.IsNullOrEmpty(personString))
             {
-                throw new ArgumentException("String cannot be empty"); 
+                throw new ArgumentException("String cannot be empty");
             }
 
-            var person = new Person(); 
+            var person = new Person();
             CultureInfo culture = new CultureInfo("en-US");
             var splittedPerson = personString.Split(',');
-            
+
             if (String.IsNullOrEmpty(splittedPerson[0]))
             {
-                throw new ArgumentException("name cannot be empty"); 
+                throw new ArgumentException("name cannot be empty");
             }
 
             if (String.IsNullOrEmpty(splittedPerson[1]))
@@ -67,10 +66,10 @@ namespace BootCamp.Chapter
                 throw new ArgumentException("surename cannot be empty");
             }
 
-            var isValid = DateTime.TryParse(splittedPerson[2], culture, DateTimeStyles.None, out DateTime date); 
+            var isValid = DateTime.TryParse(splittedPerson[2], culture, DateTimeStyles.None, out DateTime date);
             if (!isValid)
             {
-                throw new ArgumentException("date is not valid"); 
+                throw new ArgumentException("date is not valid");
             }
 
             isValid = Enum.TryParse(splittedPerson[3], true, out Gender gender);
@@ -95,19 +94,15 @@ namespace BootCamp.Chapter
                 throw new ArgumentException("street adress cannot be empty");
             }
 
-
             person.Name = splittedPerson[0];
             person.SureName = splittedPerson[1];
             person.BirthDay = date;
-            person.Gender = gender; 
+            person.Gender = gender;
             person.Country = splittedPerson[4];
             person.Email = splittedPerson[5];
             person.StreetAdress = splittedPerson[6];
-            
-            return person; 
+
+            return person;
         }
-
-       
-
     }
 }
