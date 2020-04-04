@@ -7,11 +7,11 @@ namespace BootCamp.Chapter
 {
     public static class Demo
     {
-        private const string inputFile = "Input/MOCK_DATA.csv";
-        private static readonly Menu menu = new Menu("Main menu", PopulateMainMenu());
+        private static readonly ContactsCenter contactsCenter = new ContactsCenter("Input/MOCK_DATA.csv");
 
         public static void Run()
         {
+            var menu = new Menu("Main menu", PopulateMainMenu());
             menu.DisplayMainMenu();
         }
 
@@ -19,10 +19,9 @@ namespace BootCamp.Chapter
         {
             var mainMenu = new List<MenuItem>
             {
-                new MenuItem("Over 18, who do not live in UK, whose surename does not contain letter 'a'", ViewMenuOptionOne, '1'),
-                new MenuItem("Under 18,  who do not live in UK, whose surename does not contain letter 'a'", ViewMenuOptionTwo, '2'),
-                new MenuItem("Who do not live in UK, whose surename and name does not contain letter 'a'", ViewMenuOptionThree, '3'),
-                new MenuItem("All of above", ViewMenuOptionFour, '4')
+                new MenuItem("Over 18, who do not live in UK, whose surname does not contain letter 'a'", ViewMenuOptionOne, '1'),
+                new MenuItem("Under 18,  who do not live in UK, whose surname does not contain letter 'a'", ViewMenuOptionTwo, '2'),
+                new MenuItem("Who do not live in UK, whose surname and name does not contain letter 'a'", ViewMenuOptionThree, '3'),
             };
 
             return mainMenu;
@@ -30,21 +29,47 @@ namespace BootCamp.Chapter
 
         private static void ViewMenuOptionOne()
         {
+            var temp = contactsCenter.Filter(PeoplePredicates.IsA);
+            PrintList(temp);
         }
 
         private static void ViewMenuOptionTwo()
         {
-            Console.WriteLine("Menu option two");
+            var temp = contactsCenter.Filter(PeoplePredicates.IsB);
+            PrintList(temp);
         }
 
         private static void ViewMenuOptionThree()
         {
-            Console.WriteLine("Menu option three");
+            var temp = contactsCenter.Filter(PeoplePredicates.IsC);
+            PrintList(temp);
         }
 
-        private static void ViewMenuOptionFour()
+        private static void PrintList(List<Person> people)
         {
-            Console.WriteLine("Menu option three");
+            var tableHeader = string.Format(
+                "|{0,12}|{1,15}|{2,15}|{3,4}|{4,12}|{5,27}|{6,27}|{7,37}|",
+                "Name",
+                "Surname",
+                "BirthDate",
+                "Age",
+                "Gender",
+                "Country",
+                "StreetAdress",
+                "Email");
+
+            var sb = new StringBuilder(tableHeader);
+            sb.Append(Environment.NewLine);
+            sb.Append('-', tableHeader.Length);
+
+            Console.WriteLine(sb.ToString());
+
+            foreach (var person in people)
+            {
+                Console.WriteLine(person.ToString());
+            }
+
+            Console.WriteLine($"{Environment.NewLine}Total records: {people.Count}");
         }
     }
 }
