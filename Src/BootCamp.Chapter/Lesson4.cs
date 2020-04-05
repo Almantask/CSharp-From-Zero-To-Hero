@@ -31,20 +31,11 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{firstName} {lastName}'s BMI is: {bodyMassIndex}");
         }
 
+
         public static string PromptString(string message)
         {
             Console.Write(message);
             return ValidateString(Console.ReadLine());
-        }
-
-        static string ValidateString(string input)
-        {
-            if (String.IsNullOrWhiteSpace(input))
-            {
-                Console.WriteLine("Name cannot be empty.");
-                return "-";
-            }
-            return input;
         }
 
         public static int PromptInt(string message)
@@ -53,42 +44,10 @@ namespace BootCamp.Chapter
             return ValidateInt(Console.ReadLine());
         }
 
-        static int ValidateInt(string input)
-        {
-            if (String.IsNullOrWhiteSpace(input))
-            {
-                return 0;
-            }
-
-            bool isValidNumber = int.TryParse(input, out int result);
-            if (!isValidNumber)
-            {
-                Console.WriteLine("{0} is not a valid whole number.", input);
-                return -1;
-            }
-            return result;
-        }
-
         public static float PromptFloat(string message)
         {
             Console.Write(message);
             return ValidateFloat(Console.ReadLine());
-        }
-
-        static float ValidateFloat(string input)
-        {
-            if (String.IsNullOrWhiteSpace(input))
-            {
-                return 0;
-            }
-
-            bool isValidFloat = float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out float result);
-            if (!isValidFloat)
-            {
-                Console.WriteLine("{0} is not a valid number.", input);
-                return -1;
-            }
-            return result;
         }
 
         public static float CalculateBMI(float height, float weight)
@@ -105,10 +64,57 @@ namespace BootCamp.Chapter
                 {
                     Console.WriteLine("Weight cannot be equal or less than zero, but was {0}", weight);
                 }
-                return -1;
+                return InvalidNumberReturnValue;
             }
+
             float bodyMassIndex = weight / (MathF.Pow(height, 2.0f)); //BMI equals to kg/m2 hence the number 2
             return bodyMassIndex;
+        }
+
+        private const string InvalidStringReturnValue = "-";
+        private const int InvalidNumberReturnValue = -1;
+        private const int EmptyNumberReturnValue = 0;
+
+        static string ValidateString(string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return InvalidStringReturnValue;
+            }
+            return input;
+        }
+
+        static int ValidateInt(string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                return EmptyNumberReturnValue;
+            }
+
+            bool isValidInt = int.TryParse(input, out int result);
+            if (!isValidInt)
+            {
+                Console.WriteLine("{0} is not a valid whole number.", input);
+                return InvalidNumberReturnValue;
+            }
+            return result;
+        }
+
+        static float ValidateFloat(string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                return EmptyNumberReturnValue;
+            }
+
+            bool isValidFloat = float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out float result);
+            if (!isValidFloat)
+            {
+                Console.WriteLine("{0} is not a valid number.", input);
+                return InvalidNumberReturnValue;
+            }
+            return result;
         }
     }
 }
