@@ -1,6 +1,4 @@
-﻿using MenuLibrary;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 
 {
     internal static class Program

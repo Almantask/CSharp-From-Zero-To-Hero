@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MenuLibrary\MenuLibrary.csproj" />
     <ProjectReference Include="..\..\UserInteraction\MenuLibrary.csproj" />
     <ProjectReference Include="..\..\UtilsLibrary\UtilsLibrary.csproj" />
   </ItemGroup>
@@ -15,5 +16,4 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
 </Project>
