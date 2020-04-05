@@ -6,12 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MenuLibrary\MenuLibrary.csproj" />
-    <ProjectReference Include="..\..\UserInteraction\MenuLibrary.csproj" />
-    <ProjectReference Include="..\..\UtilsLibrary\UtilsLibrary.csproj" />
+    <Compile Remove="Libraries\**" />
+    <EmbeddedResource Remove="Libraries\**" />
+    <None Remove="Libraries\**" />
   </ItemGroup>
 
-  <ItemGroup>
+    <ItemGroup>
     <None Update="Input\MOCK_DATA.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
