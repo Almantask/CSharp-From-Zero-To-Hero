@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
             string firstName = PromptString("Please enter the individual's first name: ");
             string lastName = PromptString("Please enter the individual's last name: ");
             int age = PromptInt("Please enter the individual's age: ");
-            float weight = PromptFloat("Please enter the individual's weight (in kg): ");
+            float weight = PromptFloat("Please enter the individual's weight (in kg, example: 70.5): ");
             float height = PromptFloat("Please enter the individual's height (in meters, example: 1.8): ");
             float bodyMassIndex = CalculateBMI(height, weight);
 
@@ -60,9 +60,10 @@ namespace BootCamp.Chapter
                 return 0;
             }
 
-            bool isValidNumber = int.TryParse(input, out var result);
+            bool isValidNumber = int.TryParse(input, out int result);
             if (!isValidNumber)
             {
+                Console.WriteLine("{0} is not a valid whole number.", input);
                 return -1;
             }
             return result;
@@ -71,11 +72,41 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.Write(message);
-            return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            return ValidateFloat(Console.ReadLine());
+        }
+
+        static float ValidateFloat(string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                return 0;
+            }
+
+            bool isValidFloat = float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out float result);
+            if (!isValidFloat)
+            {
+                Console.WriteLine("{0} is not a valid number.", input);
+                return -1;
+            }
+            return result;
         }
 
         public static float CalculateBMI(float height, float weight)
         {
+            if (height <= 0 || weight <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (height <= 0)
+                {
+                    Console.WriteLine("Height cannot be equal or less than zero, but was {0}.", height);
+                }
+
+                if (weight <= 0)
+                {
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was {0}", weight);
+                }
+                return -1;
+            }
             float bodyMassIndex = weight / (MathF.Pow(height, 2.0f)); //BMI equals to kg/m2 hence the number 2
             return bodyMassIndex;
         }
