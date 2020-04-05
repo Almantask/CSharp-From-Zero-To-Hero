@@ -10,7 +10,7 @@ namespace BootCamp.Chapter
         public static void Demo()
         {
             int numberOfIndividuals = PromptInt("Please enter the number of individuals you would like to calculate the BMI of: ");
-            while (numberOfIndividuals != 0)
+            while (numberOfIndividuals > 0)
             {
                 PromptForPersonalData();
 
@@ -50,7 +50,22 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             Console.Write(message);
-            return Convert.ToInt32(Console.ReadLine());
+            return ValidateInt(Console.ReadLine());
+        }
+
+        static int ValidateInt(string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                return 0;
+            }
+
+            bool isValidNumber = int.TryParse(input, out var result);
+            if (!isValidNumber)
+            {
+                return -1;
+            }
+            return result;
         }
 
         public static float PromptFloat(string message)
