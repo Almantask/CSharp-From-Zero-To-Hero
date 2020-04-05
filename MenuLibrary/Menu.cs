@@ -64,8 +64,10 @@ namespace MenuLibrary
 
         private void ConsoleInit(bool cursorVisible = false)
         {
-            Console.Clear();
             Console.CursorVisible = cursorVisible;
+            Console.CursorLeft = 0;
+            Console.CursorTop = 0;
+            Console.Clear();
         }
 
         private void Exit()
