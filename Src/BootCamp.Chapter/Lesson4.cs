@@ -34,36 +34,44 @@ namespace BootCamp.Chapter
 
         public static string PromptString(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             return ValidateString(Console.ReadLine());
         }
 
         public static int PromptInt(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             return ValidateInt(Console.ReadLine());
         }
 
         public static float PromptFloat(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             return ValidateFloat(Console.ReadLine());
         }
 
-        public static float CalculateBMI(float height, float weight)
+        public static float CalculateBMI(float weight, float height)
         {
             if (height <= 0 || weight <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-                if (height <= 0)
+                if (weight <= 0 && height <= 0)
                 {
-                    Console.WriteLine("Height cannot be equal or less than zero, but was {0}.", height);
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was {0}.", weight);
+                    Console.WriteLine("Height cannot be less than zero, but was {0}.", height);
+                }
+                else
+                {
+                    if (weight <= 0)
+                    {
+                        Console.WriteLine("Weight cannot be equal or less than zero, but was {0}.", weight);
+                    }
+                    if (height <= 0)
+                    {
+                        Console.WriteLine("Height cannot be equal or less than zero, but was {0}.", height);
+                    }
                 }
 
-                if (weight <= 0)
-                {
-                    Console.WriteLine("Weight cannot be equal or less than zero, but was {0}", weight);
-                }
                 return InvalidNumberReturnValue;
             }
 
@@ -79,7 +87,7 @@ namespace BootCamp.Chapter
         {
             if (String.IsNullOrWhiteSpace(input))
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write("Name cannot be empty.");
                 return InvalidStringReturnValue;
             }
             return input;
@@ -95,7 +103,7 @@ namespace BootCamp.Chapter
             bool isValidInt = int.TryParse(input, out int result);
             if (!isValidInt)
             {
-                Console.WriteLine("{0} is not a valid whole number.", input);
+                Console.Write("\"" + input + "\" is not a valid number.");
                 return InvalidNumberReturnValue;
             }
             return result;
@@ -111,7 +119,7 @@ namespace BootCamp.Chapter
             bool isValidFloat = float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out float result);
             if (!isValidFloat)
             {
-                Console.WriteLine("{0} is not a valid number.", input);
+                Console.Write("\"" + input + "\" is not a valid number.");
                 return InvalidNumberReturnValue;
             }
             return result;
