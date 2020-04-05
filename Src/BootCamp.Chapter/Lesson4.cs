@@ -58,6 +58,12 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             string input = Console.ReadLine();
 
+            if (String.IsNullOrEmpty(input))
+            {
+                Console.Write($"{input}");
+                return 0;
+            }
+
             bool isNumber = int.TryParse(input, out int number);
 
             if (!isNumber) {
@@ -77,19 +83,27 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             string input = Console.ReadLine();
             // if intput is "" it should retunr 0 , fisr place and the other lines after it shouldd stop working
-            bool isNumber = float.TryParse(input, out float number);
-
-            if (!isNumber)
+            if (String.IsNullOrEmpty(input))
             {
-
-                // "10b" is not a valid number."
-                Console.Write($"\"{input}\" is not a valid number.");
-                return -1;
-
+                Console.Write($"{input}");
+                return 0;
             }
-            if (number == 0) return 0;
             else
-                return number;
+            {
+                bool isNumber = float.TryParse(input, out float number);
+
+                if (!isNumber)
+                {
+
+                    // "10b" is not a valid number."
+                    Console.Write($"\"{input}\" is not a valid number.");
+                    return -1;
+
+                }
+                if (number == 0) return 0;
+                else
+                    return number;
+            }            
         }
 
         public static float BmiCalculator(float weight, float height)
