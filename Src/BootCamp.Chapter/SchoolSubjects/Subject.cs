@@ -20,7 +20,7 @@ namespace BootCamp.Chapter.SchoolSubjects
 
         public void ProduceMaterial()
         {
-            Console.WriteLine($"I Learnt {this.GetType().Name}.");
+            Console.WriteLine($"I taught a lesson in {this.GetType().Name}.");
         }
     }
 }

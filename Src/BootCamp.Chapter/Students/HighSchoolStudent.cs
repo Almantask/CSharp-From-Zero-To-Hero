@@ -6,30 +6,10 @@ using System.Text;
 
 namespace BootCamp.Chapter.Students
 {
-    class HighSchoolStudent : IStudent
+    class HighSchoolStudent : Student
     {
-        public long Id => throw new NotImplementedException();
-
-        List<ISubject> learntSubjects;
-
-        public void GetSubjectsLearnt()
+        public HighSchoolStudent(string name) : base(name)
         {
-            foreach (ISubject subject in learntSubjects)
-            {
-                Console.WriteLine(subject.GetMessage());
-            }
-        }
-        public HighSchoolStudent()
-        {
-            learntSubjects = new List<ISubject>();
-        }
-
-
-        public void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
-            where TTeacher : ITeacher<TSubject>
-            where TSubject : ISubject
-        {
-            learntSubjects.Add(teacher.ProduceMaterial());
         }
     }
 }

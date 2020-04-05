@@ -6,11 +6,7 @@ namespace BootCamp.Chapter.Students
 {
     interface IStudent
     {
-        // has a list of materials learnt.
-        long Id { get; }
-
-        //List<ISubject> learntSubjects;
-
+        public long Id { get; set; }
         void LearnFrom<TTeacher, TSubject>(TTeacher teacher) where TTeacher : ITeacher<TSubject> where TSubject : ISubject;
     }
 }

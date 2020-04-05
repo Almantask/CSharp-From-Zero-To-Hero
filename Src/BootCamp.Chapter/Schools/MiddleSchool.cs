@@ -1,21 +1,12 @@
 ﻿using BootCamp.Chapter.Students;
+using BootCamp.Chapter.Teachers;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter.Schools
 {
-    class MiddleSchool : ISchool<MiddleSchoolStudent>
+    class MiddleSchool : School<MiddleSchoolStudent, MiddleSchoolTeacher>
     {
-        List<MiddleSchoolStudent> students;
-
-        public MiddleSchool()
-        {
-            students = new List<MiddleSchoolStudent>();
-        }
-        public void Add(MiddleSchoolStudent student)
-        {
-            students.Add(student);
-        }
     }
 }

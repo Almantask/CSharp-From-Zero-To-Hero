@@ -6,21 +6,20 @@ using System.Text;
 
 namespace BootCamp.Chapter.Students
 {
-    class UniversityStudent : Student
+    class Student : IStudent
     {
-        public UniversityStudent(string name) : base(name)
-        {
-
-        }
-        /*
-        public long Id;
+        private long _Id;
         string Name { get; }
+        long IStudent.Id { get { return _Id; } set { _Id = value; } }
+
         List<ISubject> learntSubjects;
-        public UniversityStudent(string name)
+
+        public Student(string name)
         {
             Name = name;
             learntSubjects = new List<ISubject>();
         }
+
         public void GetSubjectsLearnt()
         {
             Console.WriteLine($"{Name}:");
@@ -35,6 +34,6 @@ namespace BootCamp.Chapter.Students
             where TSubject : ISubject
         {
             learntSubjects.Add(teacher.ProduceMaterial());
-        }*/
+        }
     }
 }

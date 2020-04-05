@@ -7,15 +7,19 @@ namespace BootCamp.Chapter.Teachers
 {
     class HighSchoolTeacher : ITeacher<ISubject>
     {
+        string Name { get; }
         private ISubject _Teachings;
 
-        public HighSchoolTeacher(ISubject subject)
+        public HighSchoolTeacher(string name, ISubject subject)
         {
+            Name = name;
             _Teachings = subject;
         }
 
         public ISubject ProduceMaterial()
         {
+            Console.WriteLine($"{Name}:");
+            _Teachings.ProduceMaterial();
             return _Teachings;
         }
     }

@@ -1,17 +1,15 @@
-﻿using BootCamp.Chapter.Students;
+﻿using BootCamp.Chapter.SchoolSubjects;
+using BootCamp.Chapter.Students;
+using BootCamp.Chapter.Teachers;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter.Schools
 {
-    interface ISchool<TStudent> where TStudent : IStudent
+    interface ISchool<TStudent, TTeacher> where TStudent : IStudent where TTeacher : ITeacher<ISubject>
     {
-        public void Add(TStudent student);
-        //TODO. school has list of students and teachers.
-        
-        // Missing:
-        // Add
-        // Get
+        public void AddStudent(TStudent student);
+        public void AddTeacher(TTeacher teacher);
     }
 }
