@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
             int age = PromptInt("Please enter the individual's age: ");
             float weight = PromptFloat("Please enter the individual's weight (in kg, example: 70.5): ");
             float height = PromptFloat("Please enter the individual's height (in meters, example: 1.8): ");
-            float bodyMassIndex = CalculateBMI(height, weight);
+            float bodyMassIndex = CalculateBMI(weight, height);
 
             Console.WriteLine($"{firstName} {lastName} is {age} years old, their weight is {weight} kg and their height is {height} m.");
             Console.WriteLine($"{firstName} {lastName}'s BMI is: {bodyMassIndex}");
@@ -52,7 +52,7 @@ namespace BootCamp.Chapter
 
         public static float CalculateBMI(float weight, float height)
         {
-            if (height <= 0 || weight <= 0)
+            if (weight <= 0 || height <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 if (weight <= 0 && height <= 0)
