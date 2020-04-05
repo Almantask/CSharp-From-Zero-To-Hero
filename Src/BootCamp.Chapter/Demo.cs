@@ -5,6 +5,16 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
+    public enum DemoEventType
+    {
+        DemoStarted,
+        ExampleOne,
+        ExampleTwo,
+        ExampleThree,
+        DemoEnded,
+        ApplicationClosed
+    }
+
     public static class Demo
     {
         private static readonly ContactsCenter contactsCenter = new ContactsCenter("Input/MOCK_DATA.csv");
