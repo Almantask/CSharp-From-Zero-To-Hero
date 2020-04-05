@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
         {
             var demo = new Demo();
             demo.DemoStarted += onDemoStarted;
-            demo.ChoosePredicate += ChoosePredicates;
+            demo.PredicateChosen += OnPredicateChosen;
             demo.DemoEnded += onDemoEnded;
             demo.ApplicationClosed += OnApplicationClosed;
 
@@ -31,15 +31,15 @@ namespace BootCamp.Chapter
             Console.WriteLine("the application has closed");
         }
 
-        protected static void ChoosePredicates(object sender, EventArgs e)
+        public static void OnPredicateChosen(object sender, PredicateEventArgs e)
         {
-            var menuChoice = DisplayPredicateChoises();
             var contact = new ContactsCenter(@"Input/MOCK_DATA.csv");
             var persons = new List<Person>();
 
             // contains all people who are qualified by the predicate
             var qualifiedPersons = new List<Person>();
-            switch (menuChoice)
+            var number = "1"; 
+            switch (e.Choice)
             {
                 case "1":
                     qualifiedPersons = contact.Filter(PeoplePredicates.IsA);
@@ -65,14 +65,6 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static string DisplayPredicateChoises()
-        {
-            Console.WriteLine($"Choose on the following fiters you want to use. {Environment.NewLine}");
-            Console.WriteLine("1) Persons older then 18 which do not live in the UK and which surname does not contain the character a ");
-            Console.WriteLine("2) Persons who are younger then 18 and who surname does not contain the character a");
-            Console.WriteLine("3) Persons who do no live in the Uk and where both the name and surnmae contains the character a");
-            var choice = Console.ReadLine();
-            return choice;
-        }
+        
     }
 }
