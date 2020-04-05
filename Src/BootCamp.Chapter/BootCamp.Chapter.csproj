@@ -6,12 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Libraries\**" />
-    <EmbeddedResource Remove="Libraries\**" />
-    <None Remove="Libraries\**" />
-  </ItemGroup>
-
-    <ItemGroup>
     <None Update="Input\MOCK_DATA.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

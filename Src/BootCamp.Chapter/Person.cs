@@ -62,7 +62,7 @@ namespace BootCamp.Chapter
                 return false;
             }
 
-            person = new Person()
+            person = new Person
             {
                 Name = fields[0],
                 SurName = fields[1],

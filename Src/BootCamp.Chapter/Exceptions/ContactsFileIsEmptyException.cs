@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     public class ContactsFileIsEmptyException : Exception
     {
-        public ContactsFileIsEmptyException() : base()
+        public ContactsFileIsEmptyException()
         {
         }
 

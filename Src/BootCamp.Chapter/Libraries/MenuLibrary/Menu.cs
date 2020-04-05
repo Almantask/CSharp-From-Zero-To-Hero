@@ -54,7 +54,7 @@ namespace MenuLibrary
             }
         }
 
-        private void Wait()
+        private static void Wait()
         {
             Console.CursorVisible = false;
             Console.WriteLine();
@@ -62,7 +62,7 @@ namespace MenuLibrary
             Console.ReadLine();
         }
 
-        private void ConsoleInit(bool cursorVisible = false)
+        private static void ConsoleInit(bool cursorVisible = false)
         {
             Console.CursorVisible = cursorVisible;
             Console.CursorLeft = 0;
@@ -70,7 +70,7 @@ namespace MenuLibrary
             Console.Clear();
         }
 
-        private void Exit()
+        private static void Exit()
         {
             Environment.Exit(0);
         }
