@@ -29,11 +29,17 @@ namespace BootCamp.Chapter.Students
             }
         }
 
+        public void LearnFrom(ITeacher<ISubject> teacher)
+        {
+            learntSubjects.Add(teacher.ProduceMaterial());
+        }
+        /*
         public void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
             where TTeacher : ITeacher<TSubject>
             where TSubject : ISubject
         {
             learntSubjects.Add(teacher.ProduceMaterial());
         }
+        */
     }
 }

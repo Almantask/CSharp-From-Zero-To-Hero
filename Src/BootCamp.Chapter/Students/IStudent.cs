@@ -7,6 +7,6 @@ namespace BootCamp.Chapter.Students
     interface IStudent
     {
         public long Id { get; set; }
-        void LearnFrom<TTeacher, TSubject>(TTeacher teacher) where TTeacher : ITeacher<TSubject> where TSubject : ISubject;
+        void LearnFrom(ITeacher<ISubject> teacher);// where TTeacher : ITeacher<TSubject> where TSubject : ISubject;
     }
 }

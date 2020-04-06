@@ -16,24 +16,28 @@ namespace BootCamp.Chapter
             List<ISchool<IStudent, ITeacher<ISubject>>> schools = new List<ISchool<IStudent, ITeacher<ISubject>>>();
 
             English english = new English();
-            HighSchoolTeacher teach = new HighSchoolTeacher("John", english);
+            HighSchoolTeacher<ISubject> teach = new HighSchoolTeacher<ISubject>("John", english);
             HighSchoolStudent jan = new HighSchoolStudent("Max");
-            HighSchool kicker = new HighSchool();
+            UniversityStudent bill = new UniversityStudent("Kai");
+
+            //HighSchool<IStudent, ITeacher<ISubject>> kicker = new HighSchool<IStudent, ITeacher<ISubject>>();
             School<IStudent, ITeacher<ISubject>> school1 = new School<IStudent, ITeacher<ISubject>>();
 
-            kicker = school1;
-            school1 = kicker;
+            //kicker = school1;
+            //school1 = kicker;
 
-            jan.LearnFrom<ITeacher<ISubject>, ISubject>(teach);
+            jan.LearnFrom(teach);
+            //jan.LearnFrom<ITeacher<ISubject>, ISubject>(teach);
 
             students.Add(jan);
+            students.Add(bill);
             subjects.Add(english);
 
             jan.GetSubjectsLearnt();
-            kicker.AddStudent(jan);
-            kicker.AddTeacher(teach);
+            //kicker.AddStudent(jan);
+            //kicker.AddTeacher(teach);
 
-            schools.Add(kicker);
+            //schools.Add(kicker);
             schools.Add(school1);
 
             foreach (ISchool <IStudent, ITeacher<ISubject>> school in schools)
