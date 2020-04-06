@@ -7,8 +7,9 @@ using System.Text;
 
 namespace BootCamp.Chapter.Schools
 {
-    interface ISchool<TStudent,TTeacher> where TStudent : IStudent where TTeacher : ITeacher<ISubject>
+    interface ISchool<TStudent, in TTeacher> where TStudent : IStudent where TTeacher : ITeacher<ISubject>
     {
+        public TStudent GetStudent(long id);
         public void AddStudent(TStudent student);
         public void AddTeacher(TTeacher teacher);
     }

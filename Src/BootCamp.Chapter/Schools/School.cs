@@ -29,5 +29,10 @@ namespace BootCamp.Chapter.Schools
             student.Id = Id;
             Id++;
         }
+
+        public TStudent GetStudent(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

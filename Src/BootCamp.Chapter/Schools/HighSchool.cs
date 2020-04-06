@@ -7,8 +7,9 @@ using System.Text;
 
 namespace BootCamp.Chapter.Schools
 {
-    class HighSchool<TStudent, TTeacher> : ISchool<TStudent, TTeacher> where TStudent : HighSchoolStudent where TTeacher : HighSchoolTeacher<ISubject>
+    class HighSchool<TStudent, TTeacher> : School<TStudent, TTeacher> where TStudent : HighSchoolStudent where TTeacher : HighSchoolTeacher<ISubject>
     {
+        /*
         List<TStudent> students;
         List<TTeacher> teachers;
         long Id { get; set; }
@@ -29,5 +30,6 @@ namespace BootCamp.Chapter.Schools
             //student.Id = Id;
             Id++;
         }
+        */
     }
 }
