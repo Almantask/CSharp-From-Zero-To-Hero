@@ -9,7 +9,30 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
+            else
+            {
+                for (int i = 0; i < array.Length -1; i++)
+                {
+                    for (int j = i + 1; j < array.Length; j++)
+                    {
+                        if (array[i] > array[j])
+                        {
+                            Swap(array, i, j);
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void Swap(int[] array, int i, int j)
+        {
+            int aux = array[i];
+            array[i] = array[j];
+            array[j] = aux;
         }
 
         /// <summary>
@@ -19,7 +42,18 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
+            else
+            {              
+
+                for (int i = 0; i < array.Length / 2; i++)
+                {
+                    Swap(array, i, array.Length - i - 1);
+                }
+            }
         }
 
         /// <summary>
@@ -29,8 +63,19 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            else
+            {
+                var array2 = new int[array.Length-1];
+                for (int i = 0; i < array.Length-1; i++)
+                {
+                    array2[i] = array[i];
+                }
+                return array2;
+            }
         }
 
         /// <summary>
@@ -39,8 +84,19 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            else
+            {
+                var array2 = new int[array.Length - 1];
+                for (int i = 0; i < array2.Length; i++)
+                {
+                    array2[i] = array[i + 1];
+                }
+                return array2;
+            }
         }
 
         /// <summary>
@@ -51,8 +107,24 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            else
+            {
+                var array2 = new int[array.Length - 1];
+
+                if (index < 0 || index >= array2.Length)
+                    return array;
+
+                
+                for (int i = index - 1; i < array.Length; i++)
+                {
+                    array2[i] = array[i + 1];
+                }
+                return array2;
+            }
         }
 
         /// <summary>
