@@ -44,20 +44,31 @@ You are told to implement a simulation where:
 
 Implementing this simulation should use the following interfaces with the right in/out modifiers and constraints for each generic T:
 ```
-interface ISchool<TStudent, TId>
-{
-  TStudent Get(TId id);
-  IList<TStudent> Get();
-  void Add(TStudent student);
-}
+    // Leave it empty, because subjects are unrelated. Just for simulation
+    // Alternatively use base Subject class.
+    interface ISubject { }
 
-interface ITeacher<TSubjectMaterial>()
-{
-  TSubjectMaterial ProduceSubjectMaterial();
-}
+    // For simulation you can store a specific teacher to school.
+    // However for the interface based on requirements it is not needed.
+    interface ISchool<TStudent> where TStudent : IStudent
+    {
+        // Missing:
+        // Add
+        // Get
+    }
 
-interface IStudent<TTeacher>
-{
-  void LearnFrom(TTeacher teacher);
-}
+    interface IStudent
+    {
+        long Id { get; }
+
+        void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
+            where TTeacher : ITeacher<TSubject>
+            where TSubject : ISubject;
+    }
+
+
+    interface ITeacher<TSubject> where TSubject : ISubject
+    {
+        TSubject ProduceMaterial();
+    }
 ```
