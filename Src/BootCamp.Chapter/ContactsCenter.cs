@@ -35,7 +35,7 @@ namespace BootCamp.Chapter
             // skipped the first row because its a header.
             for (int i = 1; i < splittedList.Length - 1; i++)
             {
-                var person = Person.TryParse(splittedList[i]);
+                var isValid = Person.TryParse(splittedList[i], out Person person); 
                 if (predicate(person))
                 {
                     people.Add(person);

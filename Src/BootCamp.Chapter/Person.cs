@@ -24,9 +24,9 @@ namespace BootCamp.Chapter
             return age;
         }
 
-        public static Person TryParse(string personString)
+        public static bool TryParse(string input, out Person person)
         {
-            var splittedPerson = personString.Split(',');
+            var splittedPerson = input.Split(',');
 
             CultureInfo culture = new CultureInfo("en-US");
             var isValid = DateTime.TryParse(splittedPerson[2], culture, DateTimeStyles.None, out DateTime date);
@@ -41,16 +41,17 @@ namespace BootCamp.Chapter
                 throw new ArgumentException("Gender can only be Male or Female");
             }
 
-            var person = new Person();
-            person.Name = splittedPerson[0];
-            person.SureName = splittedPerson[1];
-            person.BirthDay = date;
-            person.Gender = gender;
-            person.Country = splittedPerson[4];
-            person.Email = splittedPerson[5];
-            person.StreetAdress = splittedPerson[6];
+            var person1 = new Person(); 
+            person1.Name = splittedPerson[0];
+            person1.SureName = splittedPerson[1];
+            person1.BirthDay = date;
+            person1.Gender = gender;
+            person1.Country = splittedPerson[4];
+            person1.Email = splittedPerson[5];
+            person1.StreetAdress = splittedPerson[6];
 
-            return person;
+            person = person1; 
+            return true; 
         }
     }
 }
