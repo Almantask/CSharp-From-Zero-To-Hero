@@ -5,24 +5,20 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public enum DemoEventType
-    {
-        DemoStarted,
-        ExampleOne,
-        ExampleTwo,
-        ExampleThree,
-        DemoEnded,
-        ApplicationClosed
-    }
-
     public static class Demo
     {
         private static readonly ContactsCenter contactsCenter = new ContactsCenter("Input/MOCK_DATA.csv");
+        private static readonly Menu menu = new Menu("Main menu", PopulateMainMenu());
 
         public static void Run()
         {
-            var menu = new Menu("Main menu", PopulateMainMenu());
+            menu.MenuItemSelectedEvent += SelectMenuItem;
             menu.DisplayMainMenu();
+        }
+
+        private static void SelectMenuItem(object sender, Action action)
+        {
+            action();
         }
 
         private static List<MenuItem> PopulateMainMenu()
@@ -32,6 +28,7 @@ namespace BootCamp.Chapter
                 new MenuItem("Over 18, who do not live in UK, whose surname does not contain letter 'a'", ViewMenuOptionOne, '1'),
                 new MenuItem("Under 18,  who do not live in UK, whose surname does not contain letter 'a'", ViewMenuOptionTwo, '2'),
                 new MenuItem("Who do not live in UK, whose surname and name does not contain letter 'a'", ViewMenuOptionThree, '3'),
+                new MenuItem("Exit", Exit, '0')
             };
 
             return mainMenu;
@@ -53,6 +50,11 @@ namespace BootCamp.Chapter
         {
             var temp = contactsCenter.Filter(PeoplePredicates.IsC);
             PrintList(temp);
+        }
+
+        private static void Exit()
+        {
+            Environment.Exit(0);
         }
 
         private static void PrintList(List<Person> people)

@@ -5,6 +5,8 @@ namespace MenuLibrary
 {
     public class Menu
     {
+        public event EventHandler<Action> MenuItemSelectedEvent;
+
         public string MenuTitle { get; }
 
         public List<MenuItem> MainMenu { get; } = new List<MenuItem>();
@@ -13,7 +15,6 @@ namespace MenuLibrary
         {
             MenuTitle = menuTitle;
             MainMenu.AddRange(menuItems);
-            MainMenu.Add(new MenuItem("Exit", Exit, '0'));
         }
 
         private void ShowHeading()
@@ -38,7 +39,7 @@ namespace MenuLibrary
                 if (MainMenu[i].Key == userInput)
                 {
                     ConsoleInit();
-                    MainMenu[i].Execute();
+                    MenuItemSelectedEvent?.Invoke(this, MainMenu[i].Execute);
                     Wait();
                 }
             }
@@ -68,11 +69,6 @@ namespace MenuLibrary
             Console.CursorLeft = 0;
             Console.CursorTop = 0;
             Console.Clear();
-        }
-
-        private static void Exit()
-        {
-            Environment.Exit(0);
         }
     }
 }
