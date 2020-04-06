@@ -7,26 +7,31 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             //Homework 1 and 2 
-            //1
-            string name, surename;
-            int age;
-            double weight, height, heightMeters, bmi;
-
+          
+            string name;
             Console.WriteLine("What's your name ?");
             name = Console.ReadLine();
+
+            string surename;
             Console.WriteLine("What's your name ?");
             surename = Console.ReadLine();
 
+            int age;
             Console.WriteLine("What's your age ?");
             age = Convert.ToInt32(Console.ReadLine());
+
+            double weight;
             Console.WriteLine("What's your weight (in kg) ?");
             weight = Convert.ToDouble(Console.ReadLine());
+
+            double height;
             Console.WriteLine("What's your height (in cm) ?");
             height = Convert.ToDouble(Console.ReadLine());
 
-            //2
-
+            double heightMeters;
             heightMeters = height / 100;
+
+            double bmi;
             bmi = weight / (heightMeters * heightMeters);
             bmi = Math.Round(bmi, 2);
 
