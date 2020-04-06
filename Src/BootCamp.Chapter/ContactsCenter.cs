@@ -35,7 +35,7 @@ namespace BootCamp.Chapter
             }
             catch
             {
-                throw new Exception($"There was an error working with{nameof(peopleFile) }");
+                throw; //new Exception($"There was an error working with { nameof(peopleFile) }");
             }
             finally
             {

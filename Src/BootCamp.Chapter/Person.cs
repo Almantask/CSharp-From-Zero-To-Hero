@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using UtilsLibrary;
 
 namespace BootCamp.Chapter
@@ -66,7 +67,7 @@ namespace BootCamp.Chapter
             {
                 Name = fields[0],
                 SurName = fields[1],
-                BirthDate = DateTime.Parse(fields[2]),
+                BirthDate = DateTime.Parse(fields[2], CultureInfo.InvariantCulture),
                 Gender = ParseGender(fields[3]),
                 Country = fields[4],
                 Email = fields[5],
