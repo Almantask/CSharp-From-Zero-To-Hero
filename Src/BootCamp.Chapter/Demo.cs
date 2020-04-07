@@ -5,20 +5,35 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public static class Demo
+    public class DemoAppEventArgs : EventArgs
     {
+        public AppStatus AppStatus { get; set; }
+    }
+
+    public sealed class Demo
+    {
+        public static event EventHandler<DemoAppEventArgs> AppStatusChanged;
+
         private static readonly ContactsCenter contactsCenter = new ContactsCenter("Input/MOCK_DATA.csv");
         private static readonly Menu menu = new Menu("Main menu", PopulateMainMenu());
 
-        public static void Run()
+        public void Run()
         {
-            menu.MenuItemSelectedEvent += SelectMenuItem;
+            menu.MenuItemSelectedEvent += OnMenuItemSelected;
+            OnAppStatusChanged(AppStatus.DemoStarted);
             menu.DisplayMainMenu();
         }
 
-        private static void SelectMenuItem(object sender, Action action)
+        private void OnMenuItemSelected(object sender, Action action)
         {
+            OnAppStatusChanged(AppStatus.ExampleSelected);
             action();
+        }
+
+        private static void OnAppStatusChanged(AppStatus appStatus)
+        {
+            // I used new Demo() so I can use static method bellow in new MenuItem("Exit", Exit, '0')
+            AppStatusChanged?.Invoke(new Demo(), new DemoAppEventArgs() { AppStatus = appStatus });
         }
 
         private static List<MenuItem> PopulateMainMenu()
@@ -54,6 +69,7 @@ namespace BootCamp.Chapter
 
         private static void Exit()
         {
+            OnAppStatusChanged(AppStatus.AppClosed);
             Environment.Exit(0);
         }
 
