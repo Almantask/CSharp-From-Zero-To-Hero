@@ -5,5 +5,7 @@
         void Log(string message);
 
         void LogError(string message);
+
+        void LogEvent(string message);
     }
 }

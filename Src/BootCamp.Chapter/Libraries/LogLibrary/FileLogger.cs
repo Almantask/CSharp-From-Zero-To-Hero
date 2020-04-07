@@ -6,6 +6,7 @@ namespace LogLibrary
     public class FileLogger : ILogger
     {
         private readonly string logFile = $"Log_{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}.log";
+        private readonly string eventsLogFile = $"EventsLog_{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}.log";
 
         public void Log(string message)
         {
@@ -18,6 +19,13 @@ namespace LogLibrary
         {
             using StreamWriter logWriter = new StreamWriter(logFile, true);
             logWriter.WriteLine($"Error encountered: {message}");
+            logWriter.Close();
+        }
+
+        public void LogEvent(string message)
+        {
+            using StreamWriter logWriter = new StreamWriter(eventsLogFile, true);
+            logWriter.WriteLine($"Event triggered: {message}");
             logWriter.Close();
         }
     }

@@ -6,14 +6,19 @@ namespace LogLibrary
     {
         public void Log(string message)
         {
-            MoveCursor();
             Console.WriteLine(message);
-            ResetCursor();
         }
 
         public void LogError(string message)
         {
             Console.WriteLine($"Error encountered: {message}");
+        }
+
+        public void LogEvent(string message)
+        {
+            MoveCursor();
+            Console.WriteLine(message);
+            ResetCursor();
         }
 
         private static void MoveCursor()

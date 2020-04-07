@@ -42,6 +42,18 @@ namespace LogLibrary
             _logger.LogError(message);
         }
 
+        public static void LogEvent(string message)
+        {
+            if (!Utils.IsValid(message))
+            {
+                return;
+            }
+
+            CheckTarket();
+
+            _logger.LogEvent(message);
+        }
+
         private static void CheckTarket()
         {
             if (_target == LogTarget.File)
