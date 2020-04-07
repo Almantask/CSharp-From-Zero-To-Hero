@@ -7,6 +7,9 @@ namespace BootCamp.Chapter
 {
     class Lesson4
     {
+        private const string InvalidStringReturnValue = "-";
+        private const int InvalidNumberReturnValue = -1;
+        private const int EmptyNumberReturnValue = 0;
         public static void Demo()
         {
             int numberOfIndividuals = PromptInt("Please enter the number of individuals you would like to calculate the BMI of: ");
@@ -52,36 +55,14 @@ namespace BootCamp.Chapter
 
         public static float CalculateBMI(float weight, float height)
         {
-            if (weight <= 0 || height <= 0)
+            if (!IsValidBMI(weight, height))
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                if (weight <= 0 && height <= 0)
-                {
-                    Console.WriteLine("Weight cannot be equal or less than zero, but was {0}.", weight);
-                    Console.WriteLine("Height cannot be less than zero, but was {0}.", height);
-                }
-                else
-                {
-                    if (weight <= 0)
-                    {
-                        Console.WriteLine("Weight cannot be equal or less than zero, but was {0}.", weight);
-                    }
-                    if (height <= 0)
-                    {
-                        Console.WriteLine("Height cannot be equal or less than zero, but was {0}.", height);
-                    }
-                }
-
                 return InvalidNumberReturnValue;
             }
 
             float bodyMassIndex = weight / (MathF.Pow(height, 2.0f)); //BMI equals to kg/m2 hence the number 2
             return bodyMassIndex;
         }
-
-        private const string InvalidStringReturnValue = "-";
-        private const int InvalidNumberReturnValue = -1;
-        private const int EmptyNumberReturnValue = 0;
 
         static string ValidateString(string input)
         {
@@ -123,6 +104,35 @@ namespace BootCamp.Chapter
                 return InvalidNumberReturnValue;
             }
             return result;
+        }
+
+        static bool IsValidBMI(float weight, float height)
+        {
+            bool isValidBmi = weight > 0 && height > 0;
+            if (isValidBmi)
+            {
+                return true;
+            } else
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (weight <= 0 && height <= 0)
+                {
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was {0}.", weight);
+                    Console.WriteLine("Height cannot be less than zero, but was {0}.", height);
+                }
+                else
+                {
+                    if (weight <= 0)
+                    {
+                        Console.WriteLine("Weight cannot be equal or less than zero, but was {0}.", weight);
+                    }
+                    if (height <= 0)
+                    {
+                        Console.WriteLine("Height cannot be equal or less than zero, but was {0}.", height);
+                    }
+                }
+                return false;
+            }
         }
     }
 }
