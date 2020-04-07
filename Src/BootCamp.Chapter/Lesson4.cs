@@ -10,6 +10,7 @@ namespace BootCamp.Chapter
         private const string InvalidStringReturnValue = "-";
         private const int InvalidNumberReturnValue = -1;
         private const int EmptyNumberReturnValue = 0;
+
         public static void Demo()
         {
             int numberOfIndividuals = PromptInt("Please enter the number of individuals you would like to calculate the BMI of: ");
