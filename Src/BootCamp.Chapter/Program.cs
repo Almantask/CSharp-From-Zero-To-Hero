@@ -69,7 +69,7 @@ namespace BootCamp.Chapter
                     ageValid = true;
                 }
             }
-            int age = Convert.ToInt32(Console.ReadLine().Trim());
+            int age = Convert.ToInt32(ageInput);
 
             // Weight input
             Console.Write("Enter your weight (in kg): ");
@@ -121,7 +121,7 @@ namespace BootCamp.Chapter
                     heightValid = true;
                 }
             }
-            float height = float.Parse(Console.ReadLine().Trim());
+            float height = float.Parse(heightInput);
 
             // Print all data inputed data
             Console.WriteLine("{0} is {1} years old, his weight is {2} kg and his height is {3} cm",
