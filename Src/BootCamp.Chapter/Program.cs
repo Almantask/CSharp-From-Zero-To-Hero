@@ -14,11 +14,11 @@ namespace BootCamp.Chapter
              * 3) Do 1 and 2 for another person.
             */
 
-            Question();
-            Question();
+            AskQuestions();
+            AskQuestions();
         }
 
-        static void Question()
+        static void AskQuestions()
         {
             Console.WriteLine("Homework#1");
             Console.WriteLine("--------------");
@@ -134,6 +134,7 @@ namespace BootCamp.Chapter
             // Caculate and print BMI
             float bmi = (weight) / ((height / 100) * (height / 100));
             Console.WriteLine("BMI: {0}", string.Format("{0:F1}", bmi));
+            Console.WriteLine("");
         }
     }
 }
