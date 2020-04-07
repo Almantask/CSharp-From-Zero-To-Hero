@@ -16,7 +16,6 @@ namespace BootCamp.Chapter
 
             Question();
             Question();
-
         }
 
         static void Question()
@@ -30,6 +29,7 @@ namespace BootCamp.Chapter
             while (string.IsNullOrEmpty(name))
             {
                 Console.WriteLine("Name cannot be empty, please try again.");
+                Console.Write("Enter your name: ");
                 name = Console.ReadLine().Trim();
             }
 
@@ -39,6 +39,7 @@ namespace BootCamp.Chapter
             while (string.IsNullOrEmpty(surname))
             {
                 Console.WriteLine("Surname cannot be empty, please try again.");
+                Console.Write("Enter your surname: ");
                 surname = Console.ReadLine().Trim();
             }
 
@@ -55,12 +56,13 @@ namespace BootCamp.Chapter
                 if (string.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("weight cannot be empty, please try again.");
+                    Console.Write("Enter your weight (in kg): ");
                     input = Console.ReadLine().Trim();
                 }
-                // This check will be false if user enters in value as a decimal for example 74.50
-                else if (int.TryParse(input, out int result) == false)
+                else if (float.TryParse(input, out float result) == false)
                 {
-                    Console.WriteLine("weight must only include numbers");
+                    Console.WriteLine("weight must be an integer or floating point value, please try again.");
+                    Console.Write("Enter your weight (in kg): ");
                     input = Console.ReadLine().Trim();
                 }
                 else
