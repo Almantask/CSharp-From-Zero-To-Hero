@@ -23,6 +23,7 @@ namespace BootCamp.Chapter
             Console.WriteLine("Homework#1");
             Console.WriteLine("--------------");
 
+            // Name input
             Console.Write("Enter your name: ");
             string name = Console.ReadLine().Trim();
 
@@ -33,6 +34,7 @@ namespace BootCamp.Chapter
                 name = Console.ReadLine().Trim();
             }
 
+            // Surname input
             Console.Write("Enter your surname: ");
             string surname = Console.ReadLine().Trim();
 
@@ -43,39 +45,85 @@ namespace BootCamp.Chapter
                 surname = Console.ReadLine().Trim();
             }
 
-            // Need to implement validation
+            // Age input
             Console.Write("Enter your age: ");
-            int age = Convert.ToInt32(Console.ReadLine().Trim());
+            string ageInput = Console.ReadLine().Trim();
+            bool ageValid = false;
 
-            Console.Write("Enter your weight (in kg): ");
-            string input = Console.ReadLine().Trim();
-            bool valid = false;
-
-            while (valid == false)
+            while (ageValid == false)
             {
-                if (string.IsNullOrEmpty(input))
+                if (string.IsNullOrEmpty(ageInput))
                 {
-                    Console.WriteLine("weight cannot be empty, please try again.");
-                    Console.Write("Enter your weight (in kg): ");
-                    input = Console.ReadLine().Trim();
+                    Console.WriteLine("Age cannot be empty, please try again.");
+                    Console.Write("Enter your age: ");
+                    ageInput = Console.ReadLine().Trim();
                 }
-                else if (float.TryParse(input, out float result) == false)
+                else if (int.TryParse(ageInput, out int result) == false)
                 {
-                    Console.WriteLine("weight must be an integer or floating point value, please try again.");
-                    Console.Write("Enter your weight (in kg): ");
-                    input = Console.ReadLine().Trim();
+                    Console.WriteLine("Age must be an integer value, please try again.");
+                    Console.Write("Enter your age: ");
+                    ageInput = Console.ReadLine().Trim();
                 }
                 else
                 {
-                    valid = true;
+                    ageValid = true;
                 }
             }
-            float weight = float.Parse(input);
+            int age = Convert.ToInt32(Console.ReadLine().Trim());
 
-            // Need to implement validation
+            // Weight input
+            Console.Write("Enter your weight (in kg): ");
+            string weightInput = Console.ReadLine().Trim();
+            bool weightValid = false;
+
+            while (weightValid == false)
+            {
+                if (string.IsNullOrEmpty(weightInput))
+                {
+                    Console.WriteLine("Weight cannot be empty, please try again.");
+                    Console.Write("Enter your weight (in kg): ");
+                    weightInput = Console.ReadLine().Trim();
+                }
+                else if (float.TryParse(weightInput, out float result) == false)
+                {
+                    Console.WriteLine("Weight must be an integer or floating point value, please try again.");
+                    Console.Write("Enter your weight (in kg): ");
+                    weightInput = Console.ReadLine().Trim();
+                }
+                else
+                {
+                    weightValid = true;
+                }
+            }
+            float weight = float.Parse(weightInput);
+
+            // Height input
             Console.Write("Enter your height (in cm): ");
+            string heightInput = Console.ReadLine().Trim();
+            bool heightValid = false;
+
+            while (heightValid == false)
+            {
+                if (string.IsNullOrEmpty(heightInput))
+                {
+                    Console.WriteLine("Height cannot be empty, please try again.");
+                    Console.Write("Enter your height (in cm): ");
+                    heightInput = Console.ReadLine().Trim();
+                }
+                else if (float.TryParse(heightInput, out float result) == false)
+                {
+                    Console.WriteLine("Height must be an integer or floating point value, please try again.");
+                    Console.Write("Enter your height (in cm): ");
+                    heightInput = Console.ReadLine().Trim();
+                }
+                else
+                {
+                    heightValid = true;
+                }
+            }
             float height = float.Parse(Console.ReadLine().Trim());
 
+            // Print all data inputed data
             Console.WriteLine("{0} is {1} years old, his weight is {2} kg and his height is {3} cm",
                 name + " " + surname,
                 age,
@@ -83,6 +131,7 @@ namespace BootCamp.Chapter
                 height
                 );
 
+            // Caculate and print BMI
             float bmi = (weight) / ((height / 100) * (height / 100));
             Console.WriteLine("BMI: {0}", string.Format("{0:F1}", bmi));
         }
