@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
             float height = PromptFloat("Enter your height(in cm): ");
 
             // BMI calculation
-            float bmi = CalculateBMI((weight/100), height);
+            float bmi = CalculateBMI(weight, (height/100));
 
             // User profile output
             PrintUserProfile(name, surname, age, weight, height, bmi);
@@ -50,7 +50,7 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.Write(message);
-            float input = float.Parse(message);
+            float input = float.Parse(Console.ReadLine());
             return input;
         }
 
