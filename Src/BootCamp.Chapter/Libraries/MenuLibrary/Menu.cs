@@ -17,18 +17,34 @@ namespace MenuLibrary
             MainMenu.AddRange(menuItems);
         }
 
-        private void ShowHeading()
-        {
-            Console.WriteLine(MenuTitle);
-            Console.WriteLine(new string('-', MenuTitle.Length));
-        }
-
         public void DisplayMainMenu()
         {
             ConsoleInit();
             ShowHeading();
             DisplayMenuOptions();
             ReadUserInput();
+        }
+
+        private static void ConsoleInit(bool cursorVisible = false)
+        {
+            Console.CursorVisible = cursorVisible;
+            Console.CursorLeft = 0;
+            Console.CursorTop = 0;
+            Console.Clear();
+        }
+
+        private void ShowHeading()
+        {
+            Console.WriteLine(MenuTitle);
+            Console.WriteLine(new string('-', MenuTitle.Length));
+        }
+
+        private void DisplayMenuOptions()
+        {
+            for (int i = 0; i < MainMenu.Count; i++)
+            {
+                Console.WriteLine($"({MainMenu[i].Key}) {MainMenu[i].Title}");
+            }
         }
 
         private void ReadUserInput()
@@ -47,28 +63,12 @@ namespace MenuLibrary
             DisplayMainMenu();
         }
 
-        private void DisplayMenuOptions()
-        {
-            for (int i = 0; i < MainMenu.Count; i++)
-            {
-                Console.WriteLine($"({MainMenu[i].Key}) {MainMenu[i].Title}");
-            }
-        }
-
         private static void Wait()
         {
             Console.CursorVisible = false;
             Console.WriteLine();
             Console.WriteLine("Press ENTER to continue");
             Console.ReadLine();
-        }
-
-        private static void ConsoleInit(bool cursorVisible = false)
-        {
-            Console.CursorVisible = cursorVisible;
-            Console.CursorLeft = 0;
-            Console.CursorTop = 0;
-            Console.Clear();
         }
     }
 }
