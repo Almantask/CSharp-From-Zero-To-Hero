@@ -20,19 +20,19 @@ namespace BootCamp.Chapter
 
         public static int PromptInt(string message)
         {
-            Console.Write("Please give me a number: ");
+            Console.Write(message);
             return Convert.ToInt32(Console.ReadLine());
         }
 
         public static string PromptString(string message)
         {
-            Console.Write("Please give me a color: ");
+            Console.Write(message);
             return Convert.ToString(Console.ReadLine());
         }
 
         public static float PromptFloat(string message)
         {
-            Console.Write("Please give me a simple number: ");
+            Console.Write(message);
             return float.Parse(Console.ReadLine());
             
         }
