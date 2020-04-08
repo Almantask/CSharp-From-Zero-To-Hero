@@ -33,7 +33,7 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            return float.Parse(Console.ReadLine());
+            return float.Parse(message);
             
         }
     }
