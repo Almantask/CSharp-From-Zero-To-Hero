@@ -5,12 +5,12 @@ using System.Text;
 
 namespace BootCamp.Chapter.Teachers
 {
-    class HighSchoolTeacher<TSubject> : ITeacher<ISubject> where TSubject : ISubject
+    class HighSchoolTeacher : ITeacher<ISubject>
     {
         string Name { get; }
-        private TSubject _Teachings;
+        private ISubject _Teachings;
 
-        public HighSchoolTeacher(string name, TSubject subject)
+        public HighSchoolTeacher(string name, ISubject subject)
         {
             Name = name;
             _Teachings = subject;
