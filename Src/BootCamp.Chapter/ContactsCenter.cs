@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
         {
             if (!File.Exists(peopleFile))
             {
-                throw new FileNotFoundException($"{nameof(peopleFile)} was not found!");
+                throw new FileNotFoundException($"{peopleFile} was not found!");
             }
 
             string line;
@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
                 reader = new StreamReader(peopleFile);
                 if (reader.EndOfStream)
                 {
-                    throw new ContactsFileIsEmptyException($"{nameof(peopleFile)} is empty");
+                    throw new ContactsFileIsEmptyException($"{peopleFile} is empty");
                 }
 
                 while ((line = reader.ReadLine()) != null)
@@ -32,10 +32,6 @@ namespace BootCamp.Chapter
                         _people.Add(person);
                     }
                 }
-            }
-            catch
-            {
-                throw;
             }
             finally
             {
