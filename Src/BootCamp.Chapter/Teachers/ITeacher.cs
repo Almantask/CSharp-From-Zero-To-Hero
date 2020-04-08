@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BootCamp.Chapter.Teachers
 {
-    interface ITeacher<TSubject> where TSubject : ISubject
+    interface ITeacher< out TSubject> where TSubject : ISubject
     {
         // TODO teacher produces material from subject.
         TSubject ProduceMaterial();

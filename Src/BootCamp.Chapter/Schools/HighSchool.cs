@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BootCamp.Chapter.Schools
 {
-    class HighSchool<TStudent> : School<TStudent> where TStudent : IStudent
+    class HighSchool : School<HighSchoolStudent, HighSchoolTeacher>
     {
         /*
         List<TStudent> students;

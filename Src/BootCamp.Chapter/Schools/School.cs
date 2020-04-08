@@ -7,23 +7,22 @@ using System.Text;
 
 namespace BootCamp.Chapter.Schools
 {
-    class School<TStudent> : ISchool<TStudent> where TStudent : IStudent
+    class School<TStudent, TTeacher> : ISchool<TStudent,TTeacher> where TStudent : IStudent where TTeacher : ITeacher<ISubject>
     {
         List<TStudent> students;
-        //List<TTeacher> teachers;
+        List<TTeacher> teachers;
         long Id { get; set; }
         public School()
         {
             Id = 0;
             students = new List<TStudent>();
-            //teachers = new List<TTeacher>();
+            teachers = new List<TTeacher>();
         }
-        /*
+        
         public void AddTeacher(TTeacher teacher)
         {
             teachers.Add(teacher);
         }
-        */
         public void AddStudent(TStudent student)
         {
             students.Add(student);
@@ -33,7 +32,15 @@ namespace BootCamp.Chapter.Schools
 
         public TStudent GetStudent(long id)
         {
-            throw new NotImplementedException();
+            foreach (TStudent student in students)
+            {
+                if (student.Id == id)
+                {
+                    return student;
+                }
+            }
+            TStudent defaultStudent = default;
+            return defaultStudent;
         }
     }
 }
