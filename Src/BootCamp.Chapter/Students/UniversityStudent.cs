@@ -10,31 +10,6 @@ namespace BootCamp.Chapter.Students
     {
         public UniversityStudent(string name) : base(name)
         {
-
         }
-        /*
-        public long Id;
-        string Name { get; }
-        List<ISubject> learntSubjects;
-        public UniversityStudent(string name)
-        {
-            Name = name;
-            learntSubjects = new List<ISubject>();
-        }
-        public void GetSubjectsLearnt()
-        {
-            Console.WriteLine($"{Name}:");
-            foreach (ISubject subject in learntSubjects)
-            {
-                Console.WriteLine(subject.GetMessage());
-            }
-        }
-
-        public void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
-            where TTeacher : ITeacher<TSubject>
-            where TSubject : ISubject
-        {
-            learntSubjects.Add(teacher.ProduceMaterial());
-        }*/
     }
 }

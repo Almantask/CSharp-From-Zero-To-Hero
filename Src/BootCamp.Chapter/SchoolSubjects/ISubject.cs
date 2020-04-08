@@ -6,7 +6,6 @@ namespace BootCamp.Chapter.SchoolSubjects
 {
     interface ISubject
     {
-        // TODO return the material from the subject.
         public void ProduceMaterial();
         public string GetMessage();
     }

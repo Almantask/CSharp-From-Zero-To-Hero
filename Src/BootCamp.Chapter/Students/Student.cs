@@ -33,13 +33,5 @@ namespace BootCamp.Chapter.Students
         {
             learntSubjects.Add(teacher.ProduceMaterial());
         }
-        /*
-        public void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
-            where TTeacher : ITeacher<TSubject>
-            where TSubject : ISubject
-        {
-            learntSubjects.Add(teacher.ProduceMaterial());
-        }
-        */
     }
 }

@@ -10,8 +10,6 @@ namespace BootCamp.Chapter
 {
     public class Demo
     {
-        
-
         public void RunDemo()
         {
             List<object> schools = new List<object>();

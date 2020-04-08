@@ -9,15 +9,3 @@ namespace BootCamp.Chapter.SchoolSubjects
         
     }
 }
-/*
- * public string Message;
-
-        public Art()
-        {
-            Message = $"I know {this.GetType().Name}";
-        }
-        public void ProduceMaterial()
-        {
-            Console.WriteLine($"I Learnt {this.GetType().Name}.");
-        }
- */

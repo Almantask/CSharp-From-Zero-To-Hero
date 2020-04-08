@@ -9,27 +9,5 @@ namespace BootCamp.Chapter.Schools
 {
     class HighSchool : School<HighSchoolStudent, HighSchoolTeacher>
     {
-        /*
-        List<TStudent> students;
-        List<TTeacher> teachers;
-        long Id { get; set; }
-        public HighSchool()
-        {
-            Id = 0;
-            students = new List<TStudent>();
-            teachers = new List<TTeacher>();
-        }
-        public void AddTeacher(TTeacher teacher)
-        {
-            teachers.Add(teacher);
-        }
-
-        public void AddStudent(TStudent student)
-        {
-            students.Add(student);
-            //student.Id = Id;
-            Id++;
-        }
-        */
     }
 }
