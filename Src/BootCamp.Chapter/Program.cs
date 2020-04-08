@@ -13,19 +13,19 @@ namespace BootCamp.Chapter
             // Use functions to achieve DRY (as little duplicate code as possible).
 
             // Name input
-            string name = PromptUserInput("Enter your name: ");
+            string name = PromptString("Enter your name: ");
 
             // Surname input
-            string surname = PromptUserInput("Enter your surname: ");
+            string surname = PromptString("Enter your surname: ");
 
             // Age input
-            int age = ConvertStringToInt(PromptUserInput("Enter your age: "));
+            int age = PromptInt("Enter your age: ");
 
             // Weight input
-            float weight = ConvertStringToFloat(PromptUserInput("Enter your weight(in kg): "));
+            float weight = PromptFloat("Enter your weight(in kg): ");
 
             // Height input
-            float height = ConvertStringToFloat(PromptUserInput("Enter your height(in cm): "));
+            float height = PromptFloat("Enter your height(in cm): ");
 
             // BMI calculation
             float bmi = CalculateBMI(weight, height);
@@ -34,10 +34,30 @@ namespace BootCamp.Chapter
             PrintUserProfile(name, surname, age, weight, height, bmi);
         }
 
-        static string PromptUserInput(string message)
+        static string PromptString(string message)
         {
             Console.Write(message);
             return Console.ReadLine();
+        }
+
+        static int PromptInt(string message)
+        {
+            Console.Write(message);
+            int input = Convert.ToInt32(Console.ReadLine());
+            return input;
+        }
+
+        static float PromptFloat(string message)
+        {
+            Console.Write(message);
+            float input = float.Parse(message);
+            return input;
+        }
+
+        static float CalculateBMI(float weight, float height)
+        {
+            float bmi = (weight) / ((height / 100) * (height / 100));
+            return bmi;
         }
 
         static void PrintUserProfile(string name, string surname, int age, float weight, float height, float bmi)
@@ -49,22 +69,6 @@ namespace BootCamp.Chapter
                 height,
                 string.Format("{0:F1}", bmi)
                 );
-        }
-
-        static float CalculateBMI(float weight, float height)
-        {
-            float bmi = (weight) / ((height / 100) * (height / 100));
-            return bmi;
-        }
-
-        static int ConvertStringToInt(string input)
-        {
-            return Convert.ToInt32(input);
-        }
-
-        static float ConvertStringToFloat(string input)
-        {
-            return float.Parse(input);
         }
     }
 }
