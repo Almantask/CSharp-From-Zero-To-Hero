@@ -12,15 +12,15 @@ namespace BootCamp.Chapter
             Console.WriteLine("Demo works");
         }
 
-        public static int Bmi(int Weight, int Height)
+        public static float Bmi(float Weight, float Height)
         {
             //Console.Write("Please give me your weight");
             //var Weight = Convert.ToInt32(Console.ReadLine());
             //Console.Write("Please give me your height");
             //var Height = Convert.ToInt32(Console.ReadLine());
-            var bmi = Weight / Height / Height;
+            var Bmi = Weight / Height / Height;
             //Console.WriteLine("Your BMI is " + bmi);
-            return bmi;
+            return Bmi;
         }
 
         public static int Numbers()
