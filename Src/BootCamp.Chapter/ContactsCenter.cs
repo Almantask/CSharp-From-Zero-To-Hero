@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 
 namespace BootCamp.Chapter
 {
     public class ContactsCenter
     {
-        private readonly string _peopleFile;
+        private readonly List<Person> _people;
 
         public ContactsCenter(string peopleFile)
         {
@@ -16,11 +15,23 @@ namespace BootCamp.Chapter
                 throw new FileNotFoundException("File is made up");
             }
 
-            _peopleFile = File.ReadAllText(peopleFile);
+            var contents = File.ReadAllLines(peopleFile);
 
-            if (String.IsNullOrWhiteSpace(_peopleFile))
+            if (contents.Length == 0)
             {
                 throw new InvalidOperationException("File cannot be empty");
+            }
+
+            _people = new List<Person>(); 
+
+            for (int i = 1; i < contents.Length; i++)
+            {
+                var isValid = Person.TryParse(contents[i], out Person person);
+
+                if (isValid)
+                {
+                    _people.Add(person);
+                }
             }
         }
 
@@ -31,19 +42,17 @@ namespace BootCamp.Chapter
         public List<Person> Filter(Predicate<Person> predicate)
         {
             var people = new List<Person>();
-            var splittedList = _peopleFile.Split(Environment.NewLine);
             // skipped the first row because its a header.
-            for (int i = 1; i < splittedList.Length - 1; i++)
+            for (int i = 0; i < _people.Count - 1; i++)
             {
-                var isValid = Person.TryParse(splittedList[i], out Person person); 
-                if (predicate(person))
+                var person = _people[i]; 
+                if (predicate(_people[i]))
                 {
-                    people.Add(person);
+                    people.Add(_people[i]);
                 }
             }
 
             return people;
         }
-
     }
 }
