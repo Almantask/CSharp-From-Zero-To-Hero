@@ -28,39 +28,39 @@ namespace BootCamp.Chapter
             float height = PromptFloat("Enter your height(in cm): ");
 
             // BMI calculation
-            float bmi = CalculateBMI(weight, height);
+            float bmi = CalculateBMI((weight/100), height);
 
             // User profile output
             PrintUserProfile(name, surname, age, weight, height, bmi);
         }
 
-        static string PromptString(string message)
+        public static string PromptString(string message)
         {
             Console.Write(message);
             return Console.ReadLine();
         }
 
-        static int PromptInt(string message)
+        public static int PromptInt(string message)
         {
             Console.Write(message);
             int input = Convert.ToInt32(Console.ReadLine());
             return input;
         }
 
-        static float PromptFloat(string message)
+        public static float PromptFloat(string message)
         {
             Console.Write(message);
             float input = float.Parse(message);
             return input;
         }
 
-        static float CalculateBMI(float weight, float height)
+        public static float CalculateBMI(float weightKG, float heightMetres)
         {
-            float bmi = (weight) / ((height / 100) * (height / 100));
+            float bmi = (weightKG / heightMetres) / heightMetres;
             return bmi;
         }
 
-        static void PrintUserProfile(string name, string surname, int age, float weight, float height, float bmi)
+        public static void PrintUserProfile(string name, string surname, int age, float weight, float height, float bmi)
         {
             Console.WriteLine("{0} is {1} years old, his weight is {2} kg and his height is {3} cm\nBMI: {4}",
                 name + " " + surname,
