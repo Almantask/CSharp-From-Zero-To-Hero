@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,7 +11,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if (IsValidArray(array))
+            if (!IsArrayNullOrEmpty(array))
             {
                 SortArrayInAscendingOrder(array);
             }
@@ -22,9 +24,25 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (IsValidArray(array))
+            if (!IsArrayNullOrEmpty(array))
             {
+                int[] buffer = new int[array.Length];
+                int numberofIterations = 0;
 
+                for (int i = (array.Length - 1); i >= 0; i--)
+                {
+                    buffer[numberofIterations] = array[i];
+                    numberofIterations++;
+                }
+
+                array = buffer;
+
+                //for (int i = 0; i < array.Length / 2; i++)
+                //{
+                //    int buffer = array[i];
+                //    array[i] = array[array.Length - i - 1];
+                //    array[array.Length - i - 1] = buffer;
+                //}
             }
         }
 
@@ -35,11 +53,6 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (IsValidArray(array))
-            {
-
-            }
-
             return array;
         }
 
@@ -60,7 +73,20 @@
         /// <param name="index">Index at which array element should be removed.</param>
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
-        {
+        {            
+            if (!IsArrayNullOrEmpty(array) && !IsIndexOutOfRange(array, index))
+            {
+                int bufferSize = array.Length - 1;
+                int[] buffer = new int[bufferSize];
+
+                for (int i = 0; i < bufferSize; i++)
+                {
+                    buffer[i] = i < index ? array[i] : array[i + 1];
+                }
+
+                return buffer;
+            }
+
             return array;
         }
 
@@ -129,36 +155,19 @@
         }
 
         /// <summary>
-        /// Creates a buffer that is the exact copy of the array that is passed in as the input parameter.
-        /// </summary>
-        /// <param name="array">Input array that will be copied and stored in a buffer</param>
-        /// <returns></returns>
-        private static int[] CreateBuffer(int[] array)
-        {
-            int[] buffer = new int[array.Length];
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                buffer[i] = array[i];
-            }
-
-            return buffer;
-        }
-
-        /// <summary>
         /// Validates an array by checking whether it's empty or null.
         /// </summary>
         /// <param name="array">Input array.</param>
         /// <returns>Returns the boolean representation whether the array is valid or not.</returns>
-        private static bool IsValidArray(int[] array)
+        private static bool IsArrayNullOrEmpty(int[] array)
         {
             if (array == null)
-                return false; //Array is invalid if it's null
+                return true;
 
             if (array.Length == 0)
-                return false; //Array is invalid if it contains no elements
+                return true;
 
-            return true; //Otherwise, array is valid
+            return false;
         }
 
         /// <summary>
@@ -167,18 +176,12 @@
         /// <param name="array">Input array.</param>
         /// <param name="index">Index which should be checked whether it is in range of the input array or not.</param>
         /// <returns>Returns the boolean representation whether the array is valid or not.</returns>
-        private static bool IsValidArray(int[] array, int index)
+        private static bool IsIndexOutOfRange(int[] array, int index)
         {
-            if (array == null)
-                return false; //Array is invalid if it's null
+            if (index > (array.Length - 1) || index < 0)
+                return true;
 
-            if (array.Length == 0)
-                return false; //Array is invalid if it contains no elements
-
-            if ((array.Length - 1) < index) //Array is invalid if index is out of range
-                return false;
-
-            return true; //Otherwise, array is valid
+            return false;
         }
     }
 }

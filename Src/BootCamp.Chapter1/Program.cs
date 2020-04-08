@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            int[] array = new int[] { 0, 1 };
+            int[] array = new int[] { 1, 0, 2, -1, 3 };
             //ArrayOperations.Reverse(array);
-            ArrayOperations.RemoveAt(array, 1);
+            ArrayOperations.RemoveLast(array);
         }
     }
 }
