@@ -11,15 +11,8 @@ namespace BootCamp.Chapter
         {
 
             Lesson3.Demo();
+            //Lesson3.PromptFloat("test");
 
-            Lesson3.Bmi(150, 1075);
-            Console.WriteLine(Bmi);
-
-            Lesson3.Numbers();
-
-            Lesson3.Colors();
-
-            Lesson3.Balloon();
         }
     }
 }

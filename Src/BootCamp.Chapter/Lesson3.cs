@@ -12,36 +12,26 @@ namespace BootCamp.Chapter
             Console.WriteLine("Demo works");
         }
 
-        public static float Bmi(float Weight, float Height)
+        public static float CalculateBmi(float weight, float height)
         {
-            //Console.Write("Please give me your weight");
-            //var Weight = Convert.ToInt32(Console.ReadLine());
-            //Console.Write("Please give me your height");
-            //var Height = Convert.ToInt32(Console.ReadLine());
-            var Bmi = Weight / Height / Height;
-            //Console.WriteLine("Your BMI is " + bmi);
+            var Bmi = weight / height / height;
             return Bmi;
         }
 
-        public static int Numbers()
+        public static int PromptInt(string message)
         {
-            Console.Write("Please give me a number: ");
-            var Number2 = Convert.ToInt32(Console.ReadLine());
-            return Number2;
+            return Convert.ToInt32(Console.ReadLine());
         }
 
-        public static string Colors()
+        public static string PromptString(string message)
         {
-            Console.Write("Please give me a color: ");
-            var Color = Convert.ToString(Console.ReadLine());
-            return Color;
+            return Console.ReadLine();
         }
 
-        public static float Balloon()
+        public static float PromptFloat(string message)
         {
-            Console.Write("Please give me a simple number: ");
-            float rubber = float.Parse(Console.ReadLine());
-            return rubber;
+            return float.Parse(Console.ReadLine());
+            
         }
     }
 }
