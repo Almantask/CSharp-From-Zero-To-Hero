@@ -107,24 +107,26 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array == null || array.Length == 0)
+            bool ArgumentsAreNotValid = array == null || index < 0 || index >= array.Length;
+
+            if (ArgumentsAreNotValid)
             {
                 return array;
             }
-            else
-            {
-                var array2 = new int[array.Length - 1];
 
-                if (index < 0 || index >= array2.Length)
-                    return array;
-
-                
-                for (int i = index - 1; i < array.Length; i++)
+            var array2 = new int[array.Length - 1];
+            for (int i = 0; i < array2.Length; i++)
+            {                
+                if (i<index)
+                {
+                    array2[i] = array[i];
+                }
+                else
                 {
                     array2[i] = array[i + 1];
                 }
-                return array2;
             }
+            return array2;
         }
 
         /// <summary>
@@ -135,8 +137,33 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            
+            if (array == null)
+            {
+                array = new int[] { number };
+                return array;
+
+            }
+            else if (array.Length == 0)
+            {
+                var array2 = new int[array.Length + 1];
+                for (int i = 0; i < array2.Length; i++)
+                {
+                    array2[i] = number;
+                }
+                return array2;
+            }
+            else
+            {
+                var array2 = new int[array.Length + 1];
+                array2[0] = number;
+                for (int i = 1; i < array2.Length; i++)
+                {
+                    array2[i] = array[i - 1];
+                }
+                return array2;
+            }
+            
         }
 
         /// <summary>
@@ -147,8 +174,34 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                array = new int[] { number };
+                return array;
+
+            }
+            else if (array.Length == 0)
+            {
+                var array2 = new int[array.Length + 1];
+                for (int i = 0; i < array2.Length; i++)
+                {
+                    array2[i] = number;
+                }
+                return array2;
+            }
+            else
+            {
+                var array2 = new int[array.Length + 1];
+                
+                for (int i = 0; i < array2.Length - 1; i++)
+                {
+                    array2[i] = array[i];
+                }
+                array2[array2.Length - 1] = number;
+
+                return array2;
+            }
+           
         }
 
         /// <summary>
@@ -160,8 +213,34 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+
+            // I know I have a lot of repeated code in this homework, but I'm glad it finnaly works!!!
+
+            if (array == null && index == 0)
+            {
+                array = new int[] { number };
+                return array;
+
+            }
+            if (array.Length == 0 && index == 1 || index == -1)
+                return array;            
+
+            var array2 = new int[array.Length + 1];
+            array2[index] = number;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i < index)
+                {
+                    array2[i] = array[i];
+                }
+                else
+                {
+                    array2[i + 1] = array[i];
+                }
+            }
+            return array2;
+
         }
     }
 }
