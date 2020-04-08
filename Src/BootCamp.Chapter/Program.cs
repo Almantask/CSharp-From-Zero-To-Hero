@@ -9,6 +9,17 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+
+            Lesson3.Demo();
+
+            Lesson3.Bmi(150, 1075);
+            Console.WriteLine(Bmi);
+
+            Lesson3.Numbers();
+
+            Lesson3.Colors();
+
+            Lesson3.Balloon();
         }
     }
 }
