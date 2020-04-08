@@ -15,22 +15,22 @@ namespace BootCamp.Chapter
         public static event EventHandler<DemoAppEventArgs> AppStatusChanged;
 
         private static readonly ContactsCenter contactsCenter = new ContactsCenter("Input/MOCK_DATA.csv");
-        private static readonly Menu menu = new Menu("Main menu", PopulateMainMenu());
+        private readonly Menu menu = new Menu("Main menu", PopulateMainMenu());
 
         public void Run()
         {
             menu.MenuItemSelectedEvent += OnMenuItemSelected;
-            OnAppStatusChanged(AppStatus.DemoStarted);
+            StatusChanged(AppStatus.DemoStarted);
             menu.DisplayMainMenu();
         }
 
         private void OnMenuItemSelected(object sender, Action action)
         {
-            OnAppStatusChanged(AppStatus.ExampleSelected);
+            StatusChanged(AppStatus.ExampleSelected);
             action();
         }
 
-        private static void OnAppStatusChanged(AppStatus appStatus)
+        private static void StatusChanged(AppStatus appStatus)
         {
             // I used new Demo() so I can use static method bellow in new MenuItem("Exit", Exit, '0')
             AppStatusChanged?.Invoke(new Demo(), new DemoAppEventArgs() { AppStatus = appStatus });
@@ -69,7 +69,7 @@ namespace BootCamp.Chapter
 
         private static void Exit()
         {
-            OnAppStatusChanged(AppStatus.AppClosed);
+            StatusChanged(AppStatus.AppClosed);
             Environment.Exit(0);
         }
 
