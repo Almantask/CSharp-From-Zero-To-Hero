@@ -26,23 +26,12 @@ namespace BootCamp.Chapter1
         {
             if (!IsArrayNullOrEmpty(array))
             {
-                int[] buffer = new int[array.Length];
-                int numberofIterations = 0;
-
-                for (int i = (array.Length - 1); i >= 0; i--)
+                for (int i = 0; i < array.Length / 2; i++)
                 {
-                    buffer[numberofIterations] = array[i];
-                    numberofIterations++;
+                    int buffer = array[i];
+                    array[i] = array[array.Length - i - 1];
+                    array[array.Length - i - 1] = buffer;
                 }
-
-                array = buffer;
-
-                //for (int i = 0; i < array.Length / 2; i++)
-                //{
-                //    int buffer = array[i];
-                //    array[i] = array[array.Length - i - 1];
-                //    array[array.Length - i - 1] = buffer;
-                //}
             }
         }
 
@@ -53,7 +42,13 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
+            if (!IsArrayNullOrEmpty(array))
+            {
+                return RemoveAt(array, array.Length - 1);
+            }
+            
             return array;
+
         }
 
         /// <summary>
@@ -62,8 +57,13 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
+            if (!IsArrayNullOrEmpty(array))
+            {
+                return RemoveAt(array, 0);
+            }
+
             return array;
+
         }
 
         /// <summary>
