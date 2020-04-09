@@ -74,7 +74,7 @@ namespace BootCamp.Chapter1
         {            
             if (!IsArrayNullOrEmpty(array) && !IsIndexOutOfRange(array, index, false))
             {
-                int bufferSize = array.Length - 1; //Since we remove an element we want to increase the size of the array by 1
+                int bufferSize = array.Length - 1; //Since we remove an element we want to decrease the size of the array by 1
                 int[] buffer = new int[bufferSize];
 
                 for (int i = 0; i < bufferSize; i++)
