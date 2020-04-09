@@ -89,16 +89,26 @@ namespace BootCamp.Chapter
         {
             bool isValid = true;
             string message = "Failed calculating BMI. Reason:";
+
             if (weightKG <= 0)
             {
                 message += $"{Environment.NewLine}Weight cannot be equal or less than zero, but was {weightKG}.";
                 isValid = false;
             }
+
             if (heightMetres <= 0)
             {
-                message += $"{Environment.NewLine}Height cannot be equal or less than zero, but was {heightMetres}.";
-                isValid = false;
+                if (isValid == false)
+                {
+                    message += $"{Environment.NewLine}Height cannot be less than zero, but was {heightMetres}.";
+                }
+                else
+                {
+                    message += $"{Environment.NewLine}Height cannot be equal or less than zero, but was {heightMetres}.";
+                    isValid = false;
+                }
             }
+
             Console.WriteLine(message);
             if (isValid == false) return -1;
 
