@@ -6,7 +6,7 @@ using Xunit;
 namespace BootCamp.Chapter.Tests
 {
     // You don't have to be here for a long time.
-    public class Lesson3Tests: ConsoleTests
+    public class Lesson3Tests : ConsoleTests
     {
         private readonly string _promptMessage = $"Testing";
 
@@ -54,7 +54,7 @@ namespace BootCamp.Chapter.Tests
         public void PromptName_Empty_Returns_Dash_And_Prints_Error()
         {
             ConsoleInput = "";
-            
+
             var convertedInput = Checks.PromptString(_promptMessage);
 
             ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}Name cannot be empty.");
