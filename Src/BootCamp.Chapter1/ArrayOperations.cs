@@ -72,9 +72,9 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {            
-            if (!IsArrayNullOrEmpty(array) && !IsIndexOutOfRange(array, index))
+            if (!IsArrayNullOrEmpty(array) && !IsIndexOutOfRange(array, index, false))
             {
-                int bufferSize = array.Length - 1;
+                int bufferSize = array.Length - 1; //Since we remove an element we want to increase the size of the array by 1
                 int[] buffer = new int[bufferSize];
 
                 for (int i = 0; i < bufferSize; i++)
@@ -96,7 +96,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            return array;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -107,7 +107,13 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            return array;
+            if (!IsArrayNullOrEmpty(array)) {
+                return InsertAt(array, number, array.Length);
+            }
+            int[] buffer = new int[1];
+            buffer[0] = number;
+
+            return buffer;
         }
 
         /// <summary>
@@ -119,7 +125,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (IsArrayNullOrEmpty(array))
+            if (IsArrayNullOrEmpty(array) && !IsIndexOutOfRange(array, index, true))
             {
                 int[] buffer = new int[1];
                 buffer[0] = number;
@@ -127,9 +133,9 @@ namespace BootCamp.Chapter1
                 return buffer;
             }
             
-            if (!IsArrayNullOrEmpty(array) && !IsIndexOutOfRange(array, index))
+            if (!IsArrayNullOrEmpty(array) && !IsIndexOutOfRange(array, index, true))
             {
-                int bufferSize = array.Length + 1;
+                int bufferSize = array.Length + 1; //Since we insert a new element, we want to increase the size of the array by 1
                 int[] buffer = new int[bufferSize];
 
                 for (int i = 0; i < bufferSize; i++)
@@ -198,14 +204,24 @@ namespace BootCamp.Chapter1
         }
 
         /// <summary>
-        /// Validates an array by checking whether it's empty or null, or if the passed index is out of range.
+        /// Validates whether a given index is in the range of the array or not. Optionally, it can allow the index to exceed the length of the array by one.
         /// </summary>
         /// <param name="array">Input array.</param>
         /// <param name="index">Index which should be checked whether it is in range of the input array or not.</param>
+        /// <param name="allowIndexToExcessLengthByOne">Indicates whether the passed index can exceed the length of the array by one or not.</param>
         /// <returns>Returns the boolean representation whether the array is valid or not.</returns>
-        private static bool IsIndexOutOfRange(int[] array, int index)
+        private static bool IsIndexOutOfRange(int[] array, int index, bool allowIndexToExcessLengthByOne)
         {
-            if (index > (array.Length - 1) || index < 0)
+            if (allowIndexToExcessLengthByOne)
+            {
+                if (index == (array?.Length))
+                    return false;
+            }
+
+            if (index == 0)
+                return false;
+
+            if (index > (array?.Length - 1) || index < 0)
                 return true;
 
             return false;
