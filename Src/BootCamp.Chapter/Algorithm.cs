@@ -12,11 +12,12 @@ namespace BootCamp.Chapter
         /// </summary>
         internal static void OptionalTestCases()
         {
-            // int swapCount = 0;
-            // Sort(new int[0], ref swapCount);
+            int swapCount = 0;
+            int [] testArray = new int[4] { 4, 2, 3, 1 };
+            Sort(testArray, ref swapCount);
 
             // This will print your array like "3, 2, 4, 1".
-            Utility.PrintArray(new int[] { 3, 2, 4, 1 });
+            Utility.PrintArray(testArray);
         }
 
         /// <summary>
@@ -27,19 +28,22 @@ namespace BootCamp.Chapter
         /// <returns>The sorted array.</returns>
         internal static int[] Sort(int[] array, ref int swapCount)
         {
-            if (array.Length > 2)
+            if (!IsArrayNullOrEmpty(array))
             {
-                Split(array, out int[] array1, out int[] array2);
-                return Merge(Sort(array1, ref swapCount), Sort(array2, ref swapCount));
-            }
+                if (array.Length > 2)
+                {
+                    Split(array, out int[] array1, out int[] array2);
+                    return Merge(Sort(array1, ref swapCount), Sort(array2, ref swapCount));
+                }
 
-            if (array[0] < array[1])
-            {
-                // You need to use my Swap function for solving the challange.
-                // It does nothing else than just swapping the two elements of index1 and index2 of the array.
-                Utility.Swap(array, 0, 1, ref swapCount);
+                if (array[0] > array[1])
+                {
+                    // You need to use my Swap function for solving the challange.
+                    // It does nothing else than just swapping the two elements of index1 and index2 of the array.
+                    Utility.Swap(array, 0, 1, ref swapCount);
+                }
             }
-
+            
             return array;
         }
 
@@ -83,6 +87,16 @@ namespace BootCamp.Chapter
             }
 
             return array;
+        }
+
+        internal static bool IsArrayNullOrEmpty(int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
