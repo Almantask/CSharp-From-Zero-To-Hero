@@ -48,7 +48,6 @@ namespace BootCamp.Chapter1
             }
             
             return array;
-
         }
 
         /// <summary>
@@ -63,7 +62,6 @@ namespace BootCamp.Chapter1
             }
 
             return array;
-
         }
 
         /// <summary>
@@ -98,7 +96,6 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
             return array;
         }
 
@@ -110,7 +107,6 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
             return array;
         }
 
@@ -123,7 +119,38 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
+            if (IsArrayNullOrEmpty(array))
+            {
+                int[] buffer = new int[1];
+                buffer[0] = number;
+
+                return buffer;
+            }
+            
+            if (!IsArrayNullOrEmpty(array) && !IsIndexOutOfRange(array, index))
+            {
+                int bufferSize = array.Length + 1;
+                int[] buffer = new int[bufferSize];
+
+                for (int i = 0; i < bufferSize; i++)
+                {
+                    if (i < index)
+                    {
+                        buffer[i] = array[i];
+                    }
+                    else if (i == index)
+                    {
+                        buffer[i] = number;
+                    }
+                    else
+                    {
+                        buffer[i] = array[i - 1];
+                    }
+                }
+
+                return buffer;
+            }
+
             return array;
         }
 
@@ -135,7 +162,7 @@ namespace BootCamp.Chapter1
         {
             while (true)
             {
-                int numberOfSwaps = 0;
+                int numberOfSwaps = 0; //Number of swaps per each pass through the array
                 for (int i = 0; i < array.Length - 1; i++)
                 {
                     if (array[i] > array[i + 1])
