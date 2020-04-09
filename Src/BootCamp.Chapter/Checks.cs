@@ -17,19 +17,19 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             // To do: call your implementation. 
-            return 0;
+            return Lesson4.GetInt(message);
         }
 
         public static string PromptString(string message)
         {
             // To do: call your implementation. 
-            return "";
+            return Lesson4.GetString(message);
         }
 
         public static float PromptFloat(string message)
         {
             // To do: call your implementation. 
-            return 0;
+            return Lesson4.GetFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
