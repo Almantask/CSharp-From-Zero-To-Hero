@@ -7,9 +7,9 @@ namespace BootCamp.Chapter
         private readonly IGridClearer _gridClearer;
         bool[,] grid;
 
-        public ToggleableGrid2D(bool[,] toggles)//, IGridClearer gridClearer
+        public ToggleableGrid2D(bool[,] toggles, IGridClearer gridClearer)
         {
-            //_gridClearer = gridClearer;
+            _gridClearer = gridClearer;
             grid = toggles;
 
         }
