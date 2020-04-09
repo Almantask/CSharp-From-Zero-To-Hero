@@ -16,19 +16,19 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            Lesson3.PromptInt(message);
+            //Lesson3.PromptInt(message);
             return Lesson3.PromptInt(message);
         }
 
         public static string PromptString(string message)
         {
-            Lesson3.PromptString(message);
+            //Lesson3.PromptString(message);
             return Lesson3.PromptString(message);
         }
 
         public static float PromptFloat(string message)
         {
-            Lesson3.PromptFloat(message);
+            //Lesson3.PromptFloat(message);
             return Lesson3.PromptFloat(message);
         }
 
