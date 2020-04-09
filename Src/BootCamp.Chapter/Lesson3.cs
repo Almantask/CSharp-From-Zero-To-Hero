@@ -10,32 +10,31 @@ namespace BootCamp.Chapter
 
         public static void Demo()
         {
-            PersonalInfo();
-            PersonalInfo();
+            PromptPersonalInfo();
+            PromptPersonalInfo();
         }
 
-        public static void PersonalInfo(){
-
-            string name = WholeName(message: "Input your name: ");
-            string surname = WholeName(message: "Input your surname: ");
-            int age = Age(message: "Input your age: ");
-            float height = HeightAndWeight(message: "Input your height in meters: ");
-            float weight = HeightAndWeight(message: "Input your weight in kg: ");
+        public static void PromptPersonalInfo()
+        {
+            string name = PromptString(message: "Input your name: ");
+            string surname = PromptString(message: "Input your surname: ");
+            int age = PromptInt(message: "Input your age: ");
+            float height = PromptFloat(message: "Input your height in meters: ");
+            float weight = PromptFloat(message: "Input your weight in kg: ");
             float bmi = CalculateBMI(weight: weight, height: height);
 
             Console.WriteLine(name + " " + surname + " " + "is" + " " + age + " years old, his weight is " + weight + " kg and his height is " + height + " m and his/her BMI is: " + bmi);
-
         }
 
-        public static string WholeName(string message)
+        public static string PromptString(string message)
         {
             Console.WriteLine(message);
-            string partOfName = Console.ReadLine();
+            string text = Console.ReadLine();
 
-            return partOfName;
+            return text;
         }
 
-        public static float HeightAndWeight(string message)
+        public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
             float value = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
@@ -43,17 +42,16 @@ namespace BootCamp.Chapter
             return value;
         }
 
-        public static int Age (string message)
+        public static int PromptInt (string message)
         {
             Console.WriteLine(message);
-            int age = Convert.ToInt32(Console.ReadLine());
+            int value = Convert.ToInt32(Console.ReadLine());
 
-            return age;
+            return value;
         }
 
         public static float CalculateBMI(float weight, float height)
         {
-            
             float bmi = weight / (height * height);
 
             return bmi;
