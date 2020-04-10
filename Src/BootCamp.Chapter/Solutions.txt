@@ -1,0 +1,35 @@
+﻿Debug this correctly to move on to part 2 of this homework.
+
+
+What is my first return value?
+Debugger!
+What is my second return value?
+51
+What is my third return value?
+79
+What is my last return value?
+77
+
+
+Welcome to part 2.
+
+
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+-------------------------------
+What's the passcode?
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+
+YOU MAY PROCEED!
+--------------------------------
+From the smaller to the greater,
+From sunrise to sunset,
+From one, learn all.
+--------------------------------
+Hello. Did you solve part 2 of homework 6? (y/n)
+Good. Then a new challange is waiting for you!
+But first let me check that you didn't lie to me:
+Type in the 3 words starting with letter 's' from the answer you've got delimited by ' '.
+smaller sunrise sunset
+Correct! Now the real journey begins...
+
+I will return to the challange later. To me it seems like it tries to run a merge sort algorhythm to I could not figure it out so far how to debug it.
