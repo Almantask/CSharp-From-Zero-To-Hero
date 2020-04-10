@@ -47,7 +47,7 @@ namespace BootCamp.Chapter
 
             float friendHeightInMetres = friendHeight / 100;
 
-            float friendBodyMassIndex = weight / (friendHeightInMetres * friendHeightInMetres);
+            float friendBodyMassIndex = friendWeight / (friendHeightInMetres * friendHeightInMetres);
 
             Console.WriteLine(friendName + " " + friendSurname + " is " + friendAge + " years old, his weight is " + friendWeight + "kg and his height is " + friendHeight + " cm");
 
