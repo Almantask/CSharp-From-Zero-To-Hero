@@ -7,26 +7,54 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             //experimenting with variables
-            string exampleName = "Tom Jefferson";
+            Console.WriteLine("What is your name?");
+            string exampleName = Console.ReadLine();
 
-            int age1 = 19;
-            float weightTom = 50.0f;
-            float heightTom = 156.5f;
-            Console.WriteLine(exampleName + " is " + age1 + " years old, his weight is " + weightTom + " kg and his height is " + heightTom + " cm.");
+            Console.WriteLine("What is your age?");
+            int age1 = Int32.Parse(Console.ReadLine());
+            
 
-            float tomHeightInMetersSquared = heightTom / 100.0f;
-            tomHeightInMetersSquared = tomHeightInMetersSquared * tomHeightInMetersSquared;
-            var bodyMassIndex = weightTom / tomHeightInMetersSquared;
-            Console.WriteLine("Tom's BMI is " + bodyMassIndex);
+            Console.WriteLine("What is your weight in kg?");
+            float weight1 = float.Parse(Console.ReadLine());
+            
 
-            //second person, different approach
-            Console.WriteLine("Zache Hutchingson is 25 years old, his weight is 65 kg and his height is 178.6 cm");
-            float heightZache = 178.6f;
-            heightZache = heightZache / 100.0f;
-            float weightZache = 65.0f;
-            float zacheHeightSquared = heightZache * heightZache;
-            var bodyMassIndexZache = weightZache / zacheHeightSquared;
-            Console.WriteLine("Zache's BMI is " + bodyMassIndexZache);
+            Console.WriteLine("What is your height in cm?");
+            float height1 = float.Parse(Console.ReadLine());
+            
+
+            Console.WriteLine(exampleName + " is " + age1 + " years old, your weight is " + weight1 + " kg and your height is " + height1 + " cm.");
+         
+            float height1InMetersSquared = height1 / 100.0f;
+                  height1InMetersSquared = height1InMetersSquared * height1InMetersSquared;
+            var bodyMassIndex = weight1 / height1InMetersSquared;
+            Console.WriteLine(exampleName + "'s BMI is " + bodyMassIndex);
+
+            //second person
+            Console.WriteLine("What is your friend's name?");
+            string name2 = Console.ReadLine();
+
+            Console.WriteLine("What is their age?");
+            int age2 = Int32.Parse(Console.ReadLine());
+
+
+            Console.WriteLine("What is their weight in kg?");
+            float weight2 = float.Parse(Console.ReadLine());
+
+
+            Console.WriteLine("What is their height in cm?");
+            float height2 = float.Parse(Console.ReadLine());
+
+
+            Console.WriteLine(name2 + " is " + age2 + " years old, their weight is " + weight2 + " kg and their height is " + height2 + " cm.");
+
+            float height2InMetersSquared = height2 / 100.0f;
+            height2InMetersSquared = height2InMetersSquared * height2InMetersSquared;
+            var bodyMassIndexDeux= weight2 / height2InMetersSquared;
+            Console.WriteLine(name2 + "'s BMI is " + bodyMassIndex);
+
+
         }
+
     }
 }
+                
