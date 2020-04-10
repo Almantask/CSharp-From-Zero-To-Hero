@@ -9,11 +9,11 @@ namespace BootCamp.Chapter
 
         public static void Demo()
         {
-            string name = GetString("What's your first name?");
-            string surname = GetString("What's your surname?");
-            int age = GetInt("How old are you?");
-            float weight = GetFloat("How much do you weight in kg?");
-            float height = GetFloat("How tall are you in cm?");
+            string name = PromptString("What's your first name?");
+            string surname = PromptString("What's your surname?");
+            int age = PromptInt("How old are you?");
+            float weight = PromptFloat("How much do you weight in kg?");
+            float height = PromptFloat("How tall are you in cm?");
             float mHeight = ConvertToMetres(height);
             float bodyMassIndex = CalculateBMI(mHeight, weight);
 
@@ -21,11 +21,11 @@ namespace BootCamp.Chapter
 
             Console.WriteLine("Their BMI is: " + bodyMassIndex);
 
-            string friendName = GetString("\nWhat's your friend's first name?");
-            string friendSurname = GetString("What's their surname?");
-            int friendAge = GetInt("How old are they?");
-            float friendWeight = GetFloat("How much do they weight in kg?");
-            float friendHeight = GetFloat("How tall are they in cm?");
+            string friendName = PromptString("\nWhat's your friend's first name?");
+            string friendSurname = PromptString("What's their surname?");
+            int friendAge = PromptInt("How old are they?");
+            float friendWeight = PromptFloat("How much do they weight in kg?");
+            float friendHeight = PromptFloat("How tall are they in cm?");
             float friendMHeight = ConvertToMetres(friendHeight);
             float friendBodyMassIndex = CalculateBMI(friendMHeight, friendWeight);
 
@@ -34,25 +34,19 @@ namespace BootCamp.Chapter
             Console.WriteLine("Their BMI is: " + friendBodyMassIndex);
         }
 
-        public static string GetString(string message)
+        public static string PromptString(string message)
         {
             Console.WriteLine(message);
             return Console.ReadLine();
         }
 
-        public static int GetInt(string message)
+        public static int PromptInt(string message)
         {
             Console.WriteLine(message);
             return int.Parse(Console.ReadLine());
         }
 
-        public static float GetFloat(string message)
-        {
-            Console.WriteLine(message);
-            return float.Parse(Console.ReadLine());
-        }
-
-        public static float GetHeight(string message)
+        public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
             return float.Parse(Console.ReadLine());
