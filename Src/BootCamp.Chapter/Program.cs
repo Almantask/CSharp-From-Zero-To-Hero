@@ -9,29 +9,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            // Need to refactor the code I made in Lesson 2.
-            // Use functions to achieve DRY (as little duplicate code as possible).
-
-            // Name input
-            string name = PromptString("Enter your name: ");
-
-            // Surname input
-            string surname = PromptString("Enter your surname: ");
-
-            // Age input
-            int age = PromptInt("Enter your age: ");
-
-            // Weight input
-            float weight = PromptFloat("Enter your weight(in kg): ");
-
-            // Height input
-            float height = PromptFloat("Enter your height(in cm): ");
-
-            // BMI calculation
-            float bmi = CalculateBMI(weight, (height / 100));
-
-            // User profile output
-            PrintUserProfile(name, surname, age, weight, height, bmi);
+            AskUserQuestionsAndUserPrintProfile();
+            AskUserQuestionsAndUserPrintProfile();
         }
 
         public static string PromptString(string message)
@@ -83,8 +62,6 @@ namespace BootCamp.Chapter
             return number;
         }
 
-        // {Environment.NewLine} is environment independant
-
         public static float CalculateBMI(float weightKG, float heightMetres)
         {
             bool isValid = true;
@@ -92,6 +69,7 @@ namespace BootCamp.Chapter
 
             if (weightKG <= 0)
             {
+                // {Environment.NewLine} is environment independent
                 message += $"{Environment.NewLine}Weight cannot be equal or less than zero, but was {weightKG}.";
                 isValid = false;
             }
@@ -125,6 +103,18 @@ namespace BootCamp.Chapter
                 height,
                 string.Format("{0:F1}", bmi)
                 );
+        }
+
+        static void AskUserQuestionsAndUserPrintProfile()
+        {
+            string name = PromptString("Enter your name: ");
+            string surname = PromptString("Enter your surname: ");
+            int age = PromptInt("Enter your age: ");
+            float weight = PromptFloat("Enter your weight(in kg): ");
+            float height = PromptFloat("Enter your height(in cm): ");
+            float bmi = CalculateBMI(weight, (height / 100));
+
+            PrintUserProfile(name, surname, age, weight, height, bmi);
         }
     }
 }
