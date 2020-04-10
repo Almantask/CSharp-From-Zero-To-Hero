@@ -19,6 +19,18 @@ namespace BootCamp.Chapter
             Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + "kg and his height is " + height + " cm");
 
             Console.WriteLine("Their BMI is: " + bodyMassIndex);
+
+            string friendName = GetString("\nWhat's your friend's first name?");
+            string friendSurname = GetString("What's their surname?");
+            int friendAge = GetInt("How old are they?");
+            float friendWeight = GetFloat("How much do they weight in kg?");
+            float friendHeight = GetFloat("How tall are they in cm?");
+            float friendMHeight = ConvertToMetres(friendHeight);
+            float friendBodyMassIndex = CalculateBMI(friendMHeight, friendWeight);
+
+            Console.WriteLine(friendName + " " + friendSurname + " is " + friendAge + " years old, his weight is " + friendWeight + "kg and his height is " + friendHeight + " cm");
+
+            Console.WriteLine("Their BMI is: " + friendBodyMassIndex);
         }
 
         public static string GetString(string message)
