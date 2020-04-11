@@ -40,7 +40,7 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(response))
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write("Name cannot be empty.");
                 return "-";
             }
 
@@ -71,7 +71,13 @@ namespace BootCamp.Chapter
             var input = Console.ReadLine();
             bool isNumber = float.TryParse(input, out float number);
 
-            if (!isNumber) return -1;
+            if (string.IsNullOrEmpty(input)) 
+                return 0;
+            if (!isNumber)
+            {
+                Console.Write($"\"{input}\" is not a valid number.");
+                return -1;
+            }
 
             return number;
         }
