@@ -10,13 +10,14 @@ namespace BootCamp.Chapter
     {
         public static float IsNumber(string input)
         {
-            if ((input) == "") return 0;
+            if ((input) == "0") return 0f;
 
             var isNumber = float.TryParse(input, out var result);
             if (!isNumber) 
             {
-                Console.WriteLine(input + " is not a valid number.");
-                return -1;
+                Console.WriteLine('"' + input + '"' + " is not a valid number.");
+
+                return -1f;
             }
             
             return result;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -30,14 +31,16 @@ namespace BootCamp.Chapter
 
         public static float PromptFloat(string message)
         {
+            float float1 = Lesson3.GetFloat(message);
             // To do: call your implementation. 
-            return 0;
+            return float1;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
+            float bmi1 = Lesson3.Bmi(weight, height);
             // To do: call your implementation. 
-            return 0;
+            return bmi1;
         }
     }
 }
