@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BootCamp.Chapter": {
+      "commandName": "Project",
+      "commandLineArgs": "kaisinel"
+    }
+  }
+}
