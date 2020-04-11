@@ -1,14 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using Console = System.Console;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class Program
+    class Lesson3
     {
-        static void Main(string[] args)
+        public static void Demo()
         {
+            static void GreetAndGatherInformation()
+            {
+                Console.WriteLine("Hello first user! What's your name?");
+                string name = Console.ReadLine();
+                Console.WriteLine("Great, and what's your surname?");
+                string surname = Console.ReadLine();
+                Console.WriteLine("Amazing, and how old are you?");
+                string age = Console.ReadLine();
+                Console.WriteLine("Cool, and what's your weight?");
+                string weight = Console.ReadLine();
+                Console.WriteLine("Groovie, and how tall are you?");
+                string height = Console.ReadLine();
+            }
+            GreetAndGatherInformation();
+            Console.WriteLine("posle ovoga normalan");
             Console.WriteLine("Hello first user! What's your name?");
             string name1 = Console.ReadLine();
             Console.WriteLine("Great, and what's your surname?");
@@ -19,7 +34,7 @@ namespace BootCamp.Chapter
             string weight1 = Console.ReadLine();
             Console.WriteLine("Groovie, and how tall are you?");
             string height1 = Console.ReadLine();
-            
+
             float w1 = float.Parse(weight1);
             float h1 = float.Parse(height1);
             float bmi1 = (w1 / h1 / h1) * 10000;
@@ -37,7 +52,7 @@ namespace BootCamp.Chapter
             string weight2 = Console.ReadLine();
             Console.WriteLine("Groovie, and how tall are you?");
             string height2 = Console.ReadLine();
-            
+
             float w2 = float.Parse(weight2);
             float h2 = float.Parse(height2);
             float bmi2 = (w2 / h2 / h2) * 10000;
