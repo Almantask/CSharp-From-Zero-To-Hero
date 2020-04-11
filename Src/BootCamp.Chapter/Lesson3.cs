@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
             var isNumber = float.TryParse(input, out var result);
             if (!isNumber) 
             {
-                Console.WriteLine('"' + input + '"' + " is not a valid number.");
+                Console.WriteLine(@"""" + input + @""" " + "is not a valid number.");
 
                 return -1f;
             }
@@ -28,8 +28,8 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             var string1 = Console.ReadLine();
            
-            bool isNotEmpty = string1 != "";
-            if (!isNotEmpty)
+            bool isEmpty = string1 == "";
+            if (isEmpty)
             {
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
@@ -55,6 +55,7 @@ namespace BootCamp.Chapter
            
             return isFloat;
         }
+
         public static float Bmi(float weight, float height)
         {
             float bmi = (weight / height / height);
