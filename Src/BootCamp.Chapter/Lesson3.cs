@@ -8,26 +8,53 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
+        public static float IsNumber(string input)
+        {
+            if ((input) == "") return 0;
+
+            var isNumber = float.TryParse(input, out var result);
+            if (!isNumber) 
+            {
+                Console.WriteLine(input + " is not a valid number.");
+                return -1;
+            }
+            
+            return result;
+        }
         
-        static string GetString(string message)
+        public static string GetString(string message)
         {
             Console.WriteLine(message);
-            string string1= Convert.ToString(Console.ReadLine());
+            var string1 = Console.ReadLine();
+           
+            bool isNotEmpty = string1 != "";
+            if (!isNotEmpty)
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+
             return string1;
         }
-        static int GetInt(string message)
+       
+        public static int GetInt(string message)
         {
             Console.WriteLine(message);
-            int int1 = Convert.ToInt32(Console.ReadLine());
-            return int1;
+            string int1 = Console.ReadLine();
+            var isInt = IsNumber(int1);
+            int result = Convert.ToInt32(isInt);
+            return (result);
         }
-        static float GetFloat(string message)
+       
+        public static float GetFloat(string message)
         {
             Console.WriteLine(message);
-            float float1 = float.Parse(Console.ReadLine());
-            return float1;
+            string float1 = Console.ReadLine();
+            var isFloat = IsNumber(float1);
+           
+            return isFloat;
         }
-        static float Bmi(float weight, float height)
+        public static float Bmi(float weight, float height)
         {
             float bmi = (weight / height / height);
             return bmi;

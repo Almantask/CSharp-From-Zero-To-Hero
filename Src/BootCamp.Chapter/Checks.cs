@@ -16,14 +16,16 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
+            int intTest = Lesson3.GetInt(message);
             // To do: call your implementation. 
-            return 0;
+            return intTest;
         }
 
         public static string PromptString(string message)
         {
+            string string1 = Lesson3.GetString(message);
             // To do: call your implementation. 
-            return "";
+            return string1;
         }
 
         public static float PromptFloat(string message)
