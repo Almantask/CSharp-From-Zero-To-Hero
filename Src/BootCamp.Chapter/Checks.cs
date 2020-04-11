@@ -16,8 +16,9 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            Lesson3.Age();
+            int age = Lesson3.Age();
             // To do: call your implementation. 
+            
             return 0;
         }
 
@@ -32,7 +33,7 @@ namespace BootCamp.Chapter
         {
             float weight = Lesson3.Weight();
             // To do: call your implementation. 
-            return 0;
+            return weight;
         }
 
         public static float CalculateBmi(float weight, float height)
