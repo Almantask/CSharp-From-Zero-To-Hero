@@ -7,20 +7,35 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
+        static string name = "";
+        static string surname = "";
+        static string age = "";
+        static string weight = "";
+        static string height = "";
+
+        
         public static void Demo()
         {
+            
             static void GreetAndGatherInformation()
             {
                 Console.WriteLine("Hello first user! What's your name?");
-                string name = Console.ReadLine();
+                name = Console.ReadLine();
                 Console.WriteLine("Great, and what's your surname?");
-                string surname = Console.ReadLine();
+                surname = Console.ReadLine();
                 Console.WriteLine("Amazing, and how old are you?");
-                string age = Console.ReadLine();
+                age = Console.ReadLine();
                 Console.WriteLine("Cool, and what's your weight?");
-                string weight = Console.ReadLine();
+                weight = Console.ReadLine();
                 Console.WriteLine("Groovie, and how tall are you?");
-                string height = Console.ReadLine();
+                height = Console.ReadLine();
+            }
+            static float Bmi()
+            {
+                float w1 = float.Parse(weight);
+                float h1 = float.Parse(height);
+                float bmi = (w1 / h1 / h1) * 10000;
+                return bmi;
             }
             GreetAndGatherInformation();
             Console.WriteLine("posle ovoga normalan");
