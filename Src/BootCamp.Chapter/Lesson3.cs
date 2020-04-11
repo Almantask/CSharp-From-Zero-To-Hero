@@ -8,35 +8,23 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
-        public static string GreetName(string userNo)
+        public static string GetString(string message)
         {
-            Console.WriteLine("Hello " + userNo + " user! What's your name?");
-            string name = Convert.ToString(Console.ReadLine());
-            return name;
+            Console.WriteLine(message);
+            string string1= Convert.ToString(Console.ReadLine());
+            return string1;
         }
-        public static string Surname()
+        public static int GetInt(string message)
         {
-            Console.WriteLine("Great, and what's your surname?");
-            string surname = Convert.ToString(Console.ReadLine());
-            return surname;
+            Console.WriteLine(message);
+            int int1 = Convert.ToInt32(Console.ReadLine());
+            return int1;
         }
-        public static int Age()
+        public static float GetFloat(string message)
         {
-            Console.WriteLine("Amazing, and how old are you?");
-            int age = Convert.ToInt32(Console.ReadLine());
-            return age;
-        }
-        public static float Weight()
-        {
-            Console.WriteLine("Cool, and what's your weight?");
-            float weight = float.Parse(Console.ReadLine());
-            return weight;
-        }
-        public static float Height()
-        {
-            Console.WriteLine("Groovie, and how tall are you (in meters)?");
-            float height = float.Parse(Console.ReadLine());
-            return height;
+            Console.WriteLine(message);
+            float float1 = float.Parse(Console.ReadLine());
+            return float1;
         }
         public static float Bmi(float weight, float height)
         {
@@ -48,11 +36,11 @@ namespace BootCamp.Chapter
         {
             static void GatherAndPrint(string userNo)
             {
-                string name = GreetName(userNo);
-                string surname = Surname();
-                int age = Age();
-                float weight = Weight();
-                float height = Height();
+                string name = GetString("Hello " + userNo + " user! What's your name?");
+                string surname = GetString("Great, and what's your surname?");
+                int age = GetInt("Amazing, and how old are you?");
+                float weight = GetFloat("Cool, and what's your weight?");
+                float height = GetFloat("Groovie, and how tall are you (in meters)?");
                 float bmi = Bmi(weight, height);
 
                 Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
