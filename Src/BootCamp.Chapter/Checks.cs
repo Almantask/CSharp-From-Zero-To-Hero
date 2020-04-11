@@ -10,17 +10,14 @@ namespace BootCamp.Chapter
         {
             return Lesson3.PromptInt(message);
         }
-
         public static string PromptString(string message)
         {
             return Lesson3.PromptString(message);
         }
-
         public static float PromptFloat(string message)
         {
             return Lesson3.PromptFloat(message);
         }
-
         public static float CalculateBmi(float Weight, float Height)
         {
             float BmiResult = Lesson3.CalculateBmi(Weight, Height);
