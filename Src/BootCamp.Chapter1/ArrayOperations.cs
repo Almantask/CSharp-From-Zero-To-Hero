@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -56,12 +58,12 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (NullOrEmptyArray(array))
             {
                 return array;
             }
             else
-            {
+            {                
                 var array2 = new int[array.Length-1];
                 for (int i = 0; i < array.Length-1; i++)
                 {
@@ -77,7 +79,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (NullOrEmptyArray(array))
             {
                 return array;
             }
@@ -99,28 +101,28 @@
         /// <param name="index">Index at which array element should be removed.</param>
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
-        {
-            bool ArgumentsAreNotValid = array == null || index < 0 || index >= array.Length;
-
-            if (ArgumentsAreNotValid)
+        {            
+            if (NullOrEmptyArray(array))
             {
                 return array;
             }
-
-            var array2 = new int[array.Length - 1];
-            for (int i = 0; i < array2.Length; i++)
-            {                
-                if (i<index)
+            else
+            {
+                var array2 = new int[array.Length - 1];
+                for (int i = 0; i < array2.Length; i++)
                 {
-                    array2[i] = array[i];
+                    if (i < index)
+                    {
+                        array2[i] = array[i];
+                    }
+                    else
+                    {
+                        array2[i] = array[i + 1];
+                    }
                 }
-                else
-                {
-                    array2[i] = array[i + 1];
-                }
-            }
-            return array2;
-        }
+                return array2;
+            }            
+        }        
 
         /// <summary>
         /// Inserts a new array element at the start.
@@ -133,18 +135,11 @@
             
             if (array == null)
             {
-                array = new int[] { number };
-                return array;
-
+                return IfArrayNull(array, number);
             }
             else if (array.Length == 0)
             {
-                var array2 = new int[array.Length + 1];
-                for (int i = 0; i < array2.Length; i++)
-                {
-                    array2[i] = number;
-                }
-                return array2;
+                return ArrayLengthZero(array, number);                
             }
             else
             {
@@ -169,18 +164,12 @@
         {
             if (array == null)
             {
-                array = new int[] { number };
-                return array;
+                return IfArrayNull(array, number);
 
             }
             else if (array.Length == 0)
             {
-                var array2 = new int[array.Length + 1];
-                for (int i = 0; i < array2.Length; i++)
-                {
-                    array2[i] = number;
-                }
-                return array2;
+                return ArrayLengthZero(array, number);
             }
             else
             {
@@ -196,6 +185,7 @@
             }
            
         }
+        
 
         /// <summary>
         /// Inserts a new array element at the specified index.
@@ -211,10 +201,9 @@
 
             if (array == null && index == 0)
             {
-                array = new int[] { number };
-                return array;
-
+                return IfArrayNull(array, number);                
             }
+
             if (array.Length == 0 && index == 1 || index == -1)
                 return array;            
 
@@ -236,11 +225,39 @@
 
         }
 
+        private static int[] ArrayLengthZero(int[] array, int number)
+        {
+            var array2 = new int[array.Length + 1];
+            for (int i = 0; i < array2.Length; i++)
+            {
+                array2[i] = number;
+            }
+            return array2;
+        }
+
+        private static int[] IfArrayNull(int[] array, int number)
+        {
+            array = new int[] { number };
+            return array;
+        }
+
         private static void Swap(int[] array, int i, int j)
         {
             int aux = array[i];
             array[i] = array[j];
             array[j] = aux;
+        }
+
+        private static bool NullOrEmptyArray(int[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
