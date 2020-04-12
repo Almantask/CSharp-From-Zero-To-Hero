@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            System.Console.WriteLine(7/2);
         }
     }
 }
