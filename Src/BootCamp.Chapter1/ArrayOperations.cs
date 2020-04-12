@@ -102,7 +102,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {            
-            if (NullOrEmptyArray(array))
+            if (NullOrEmptyArray(array) || index == array.Length || index == -1)
             {
                 return array;
             }
