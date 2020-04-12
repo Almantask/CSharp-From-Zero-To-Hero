@@ -9,9 +9,27 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array != null)
+            {
+                if (array.Length != 0)
+                {
+                    int t;
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        for (int j = i + 1; j < array.Length; j++)
+                        {
+                            if (array[j] < array[i])
+                            {
+                                t = array[i];
+                                array[i] = array[j];
+                                array[j] = t;
+                            }
+                        }
+                    }
+                }
+            }
         }
-
+        
         /// <summary>
         /// Reverse the array elements, first being last and so on.
         /// If array empty or null- don't do anything.
