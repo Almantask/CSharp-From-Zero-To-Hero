@@ -26,14 +26,7 @@
                     }
                 }
             }
-        }
-
-        private static void Swap(int[] array, int i, int j)
-        {
-            int aux = array[i];
-            array[i] = array[j];
-            array[j] = aux;
-        }
+        }        
 
         /// <summary>
         /// Reverse the array elements, first being last and so on.
@@ -241,6 +234,13 @@
             }
             return array2;
 
+        }
+
+        private static void Swap(int[] array, int i, int j)
+        {
+            int aux = array[i];
+            array[i] = array[j];
+            array[j] = aux;
         }
     }
 }
