@@ -42,14 +42,21 @@
             }
         }
 
-        /// <summary>
-        /// Remove last element in array.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
+            if (array != null)
+            {
+                if (array.Length != 0)
+                {
+                    int[] updatedArray = new int[array.Length - 1];
+                    for (int i = 0; i < array.Length - 1; i++)
+                    {
+                        updatedArray[i] = array[i];
+                    }
+                    return updatedArray;
+                }
+            }
+
             return array;
         }
 
