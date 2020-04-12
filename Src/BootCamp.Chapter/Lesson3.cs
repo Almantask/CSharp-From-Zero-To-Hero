@@ -10,12 +10,16 @@ namespace BootCamp.Chapter
     {
         public static float IsNumber(string input)
         {
+            var isEmpty = String.IsNullOrEmpty(input);
+           
+            if (isEmpty) return 0f;
+            
             if ((input) == "0") return 0f;
 
             var isNumber = float.TryParse(input, out var result);
             if (!isNumber) 
             {
-                Console.WriteLine(@"""" + input + @""" " + "is not a valid number.");
+                Console.Write(@"""" + input + @""" " + "is not a valid number.");
 
                 return -1f;
             }
@@ -26,31 +30,37 @@ namespace BootCamp.Chapter
         public static string GetString(string message)
         {
             Console.WriteLine(message);
-            var string1 = Console.ReadLine();
-           
-            bool isEmpty = string1 == "";
+            var input = Console.ReadLine();
+
+            bool isEmpty = String.IsNullOrEmpty(input);
             if (isEmpty)
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write("Name cannot be empty.");
+
                 return "-";
             }
 
-            return string1;
+            return input;
         }
        
         public static int GetInt(string message)
         {
             Console.WriteLine(message);
+            
             string int1 = Console.ReadLine();
+            
             var isInt = IsNumber(int1);
             int result = Convert.ToInt32(isInt);
+            
             return (result);
         }
        
         public static float GetFloat(string message)
         {
             Console.WriteLine(message);
+            
             string float1 = Console.ReadLine();
+            
             var isFloat = IsNumber(float1);
            
             return isFloat;
@@ -58,7 +68,37 @@ namespace BootCamp.Chapter
 
         public static float Bmi(float weight, float height)
         {
+            string heightError = ("Height cannot be equal or less than zero, but was " + height);
+            string weightError = ("Weight cannot be equal or less than zero, but was " + weight);
+            string failedCalc = ("Failed calculating BMI. Reason:");
+
+            bool isW0OrLess = ((weight) <= 0);
+            bool isH0OrLess = ((height) <= 0);
+
+            if (isH0OrLess && isW0OrLess)
+            {
+                Console.WriteLine(failedCalc);
+                Console.WriteLine(weightError + '.' + Environment.NewLine + "Height cannot be less than zero, but was " + height + '.');
+
+                return -1f;
+            }
+
+            if (isW0OrLess)
+            {
+                Console.WriteLine(failedCalc);
+                Console.WriteLine(weightError + '.');
+                return -1f;
+            }
+
+            if (isH0OrLess)
+            {
+                Console.WriteLine(failedCalc);
+                Console.WriteLine(heightError + '.');
+                return - 1f;
+            }
+
             float bmi = (weight / height / height);
+            
             return bmi;
         }
        
