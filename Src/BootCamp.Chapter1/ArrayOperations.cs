@@ -250,14 +250,7 @@ namespace BootCamp.Chapter1
 
         private static bool NullOrEmptyArray(int[] array)
         {
-            if (array == null || array.Length == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return array == null || array.Length == 0;            
         }
     }
 }
