@@ -10,7 +10,7 @@ namespace BootCamp.Chapter
         {
             static void GatherInfo(string userNumber)
             {
-                Console.WriteLine("\r\nHello! You are the " + userNumber + " user today.");
+                Console.WriteLine("Hello! You are the " + userNumber + " user today.");
                 string firstName = PromptString("What is your first name?");
                 string surName = PromptString("What is your surname?");
                 int age = PromptInt("What is your age?");
@@ -27,18 +27,50 @@ namespace BootCamp.Chapter
         public static string PromptString(string message)
         {
             Console.WriteLine(message);
-            return Console.ReadLine();
+            string Name = Console.ReadLine();
+
+            if (string.IsNullOrEmpty (Name))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            else return Name;
         }
         public static int PromptInt(string message)
         {
             Console.WriteLine(message);
-            int Age = int.Parse(Console.ReadLine());
-            return Age;
+            var Age = Console.ReadLine();
+            int checkInt;
+
+            if (string.IsNullOrEmpty (Age))
+            {
+                Console.WriteLine("Don't want your age to be known eh? No matter.");
+                return 0;
+            }
+            else if (!int.TryParse(Age, out checkInt))
+            {
+                Console.WriteLine("Invalid Input");
+                return -1;
+            }
+            else return checkInt;
         }
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            return float.Parse(Console.ReadLine());
+            var dimensions = Console.ReadLine();
+            float checkFloat;
+
+            if (string.IsNullOrEmpty (dimensions))
+            {
+                Console.WriteLine("Please don't leave this empty.");
+                return 0;
+            }
+            else if (!float.TryParse(dimensions, out checkFloat))
+            {
+                Console.WriteLine($"\"{dimensions}\" is not a valid number.");
+                return -1;
+            }
+            else return checkFloat;
         }
         private static float ConvertToMeters(float height)
         {
@@ -47,12 +79,39 @@ namespace BootCamp.Chapter
         }
         public static float CalculateBmi(float weight, float mHeight)
         {
+            bool checkResults = true;
+            string response = "Failed calculating BMI. Reason:";
+            
+            if (weight <= 0)
+            {
+                response += $"\r\nWeight cannot be equal or less than zero, but was {weight}";
+                checkResults = false;
+            }
+            if (mHeight <= 0)
+            {
+                if (checkResults == false)
+                {
+                    response += $"\r\nHeight cannot be less than zero, but was {mHeight}";
+                }
+                else
+                {
+                    response += $"\r\nHeight cannot be equal or less than zero, but was {mHeight}";
+                    checkResults = false;
+                }
+
+                Console.WriteLine(response);
+                if (checkResults == false)
+                {
+                    return -1;
+                }
+            }
+
             float BMI = (weight / (mHeight * mHeight));
             return BMI;
         }
         public static void PrintResult(string firstName, string surName, int age, float weight, float height, float BMI)
         {
-            Console.WriteLine(firstName + " " + surName + " is " + age + " years old, their weight is " + weight + " kg and they are " + height + " cm tall.\r\nThey have a BMI of " + BMI);
+            Console.WriteLine($"\r\n{firstName} {surName} is {age} years old, their weight is {weight} kg and they are {height} cm tall.\r\nThey have a BMI of {BMI}\r\n");
         }
     }
 }
