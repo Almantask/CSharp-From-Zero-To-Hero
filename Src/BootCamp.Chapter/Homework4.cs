@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class Lesson4
+    class Homework4
     {
         public static void Demo()
         {
@@ -29,7 +29,7 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             string Name = Console.ReadLine();
 
-            if (string.IsNullOrEmpty (Name))
+            if (string.IsNullOrEmpty(Name))
             {
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
@@ -42,14 +42,14 @@ namespace BootCamp.Chapter
             var Age = Console.ReadLine();
             int checkInt;
 
-            if (string.IsNullOrEmpty (Age))
+            if (string.IsNullOrEmpty(Age))
             {
                 Console.WriteLine("Don't want your age to be known eh? No matter.");
                 return 0;
             }
             else if (!int.TryParse(Age, out checkInt))
             {
-                Console.WriteLine("Invalid Input");
+                Console.WriteLine($"\"{Age}\" is not a valid number.");
                 return -1;
             }
             else return checkInt;
@@ -60,9 +60,8 @@ namespace BootCamp.Chapter
             var dimensions = Console.ReadLine();
             float checkFloat;
 
-            if (string.IsNullOrEmpty (dimensions))
+            if (string.IsNullOrEmpty(dimensions))
             {
-                Console.WriteLine("Please don't leave this empty.");
                 return 0;
             }
             else if (!float.TryParse(dimensions, out checkFloat))
@@ -81,21 +80,21 @@ namespace BootCamp.Chapter
         {
             bool checkResults = true;
             string response = "Failed calculating BMI. Reason:";
-            
+
             if (weight <= 0)
             {
-                response += $"\r\nWeight cannot be equal or less than zero, but was {weight}";
+                response += $"\r\nWeight cannot be equal or less than zero, but was {weight}.";
                 checkResults = false;
             }
             if (mHeight <= 0)
             {
                 if (checkResults == false)
                 {
-                    response += $"\r\nHeight cannot be less than zero, but was {mHeight}";
+                    response += $"\r\nHeight cannot be less than zero, but was {mHeight}.";
                 }
                 else
                 {
-                    response += $"\r\nHeight cannot be equal or less than zero, but was {mHeight}";
+                    response += $"\r\nHeight cannot be equal or less than zero, but was {mHeight}.";
                     checkResults = false;
                 }
 
