@@ -30,6 +30,7 @@ namespace BootCamp.Chapter
         public static string GetString(string message)
         {
             Console.WriteLine(message);
+            
             var input = Console.ReadLine();
 
             bool isEmpty = String.IsNullOrEmpty(input);
@@ -50,6 +51,7 @@ namespace BootCamp.Chapter
             string int1 = Console.ReadLine();
             
             var isInt = IsNumber(int1);
+            
             int result = Convert.ToInt32(isInt);
             
             return (result);
