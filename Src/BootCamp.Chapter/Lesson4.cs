@@ -21,7 +21,6 @@ namespace BootCamp.Chapter
 
                 PrintResult(firstName, surName, age, weight, height, BMI);
             }
-
             GatherInfo("first");
             GatherInfo("second");
         }
@@ -30,7 +29,7 @@ namespace BootCamp.Chapter
             Console.WriteLine(message);
             string Name = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty (Name))
             {
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
@@ -43,7 +42,7 @@ namespace BootCamp.Chapter
             var Age = Console.ReadLine();
             int checkInt;
 
-            if (string.IsNullOrEmpty(Age))
+            if (string.IsNullOrEmpty (Age))
             {
                 Console.WriteLine("Don't want your age to be known eh? No matter.");
                 return 0;
@@ -61,7 +60,7 @@ namespace BootCamp.Chapter
             var dimensions = Console.ReadLine();
             float checkFloat;
 
-            if (string.IsNullOrEmpty(dimensions))
+            if (string.IsNullOrEmpty (dimensions))
             {
                 Console.WriteLine("Please don't leave this empty.");
                 return 0;
@@ -82,7 +81,7 @@ namespace BootCamp.Chapter
         {
             bool checkResults = true;
             string response = "Failed calculating BMI. Reason:";
-
+            
             if (weight <= 0)
             {
                 response += $"\r\nWeight cannot be equal or less than zero, but was {weight}";
