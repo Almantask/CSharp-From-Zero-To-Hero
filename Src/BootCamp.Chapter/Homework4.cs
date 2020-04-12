@@ -31,7 +31,7 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(Name))
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write("Name cannot be empty.");
                 return "-";
             }
             else return Name;
@@ -44,12 +44,11 @@ namespace BootCamp.Chapter
 
             if (string.IsNullOrEmpty(Age))
             {
-                Console.WriteLine("Don't want your age to be known eh? No matter.");
                 return 0;
             }
             else if (!int.TryParse(Age, out checkInt))
             {
-                Console.WriteLine($"\"{Age}\" is not a valid number.");
+                Console.Write($"\"{Age}\" is not a valid number.");
                 return -1;
             }
             else return checkInt;
@@ -66,7 +65,7 @@ namespace BootCamp.Chapter
             }
             else if (!float.TryParse(dimensions, out checkFloat))
             {
-                Console.WriteLine($"\"{dimensions}\" is not a valid number.");
+                Console.Write($"\"{dimensions}\" is not a valid number.");
                 return -1;
             }
             else return checkFloat;
@@ -81,7 +80,7 @@ namespace BootCamp.Chapter
             bool checkResults = true;
             string response = "Failed calculating BMI. Reason:";
 
-            if (weight <= 0)
+            if (weight <=0)
             {
                 response += $"\r\nWeight cannot be equal or less than zero, but was {weight}.";
                 checkResults = false;
@@ -97,12 +96,11 @@ namespace BootCamp.Chapter
                     response += $"\r\nHeight cannot be equal or less than zero, but was {mHeight}.";
                     checkResults = false;
                 }
-
+            }
+            if (checkResults == false)
+            {
                 Console.WriteLine(response);
-                if (checkResults == false)
-                {
-                    return -1;
-                }
+                return -1;
             }
 
             float BMI = (weight / (mHeight * mHeight));
