@@ -60,13 +60,21 @@
             return array;
         }
 
-        /// <summary>
-        /// Remove first element in array.
-        /// </summary>
-        /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
+            if (array != null)
+            {
+                if (array.Length != 0)
+                {
+                    int[] updatedArray = new int[array.Length - 1];
+                    for (int i = 0; i < array.Length - 1; i++)
+                    {
+                        updatedArray[i] = array[i + 1];
+                    }
+                    return updatedArray;
+                }
+            }
+
             return array;
         }
 
