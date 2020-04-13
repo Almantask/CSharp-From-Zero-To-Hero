@@ -8,22 +8,23 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            static void GatherInfo(string userNumber)
-            {
-                Console.WriteLine("Hello! You are the " + userNumber + " user today.");
-                string firstName = PromptString("What is your first name?");
-                string surName = PromptString("What is your surname?");
-                int age = PromptInt("What is your age?");
-                float weight = PromptFloat("How much do you weigh(in kg)?");
-                float height = PromptFloat("How tall are you(in cm)?");
-
-                float BMI = CalculateBmi(weight, height);
-
-                PrintResult(firstName, surName, age, weight, height, BMI);
-            }
             GatherInfo("first");
             GatherInfo("second");
         }
+        private static void GatherInfo(string userNumber)
+        {
+            Console.WriteLine("Hello! You are the " + userNumber + " user today.");
+            string firstName = PromptString("What is your first name?");
+            string surName = PromptString("What is your surname?");
+            int age = PromptInt("What is your age?");
+            float weight = PromptFloat("How much do you weigh(in kg)?");
+            float height = PromptFloat("How tall are you(in cm)?");
+
+            float BMI = CalculateBmi(weight, height);
+
+            PrintResult(firstName, surName, age, weight, height, BMI);
+        }
+
         public static string PromptString(string message)
         {
             Console.WriteLine(message);
@@ -40,13 +41,12 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             var Age = Console.ReadLine();
-            int checkInt;
 
             if (string.IsNullOrEmpty(Age))
             {
                 return 0;
             }
-            else if (!int.TryParse(Age, out checkInt))
+            if (!int.TryParse(Age, out int checkInt))
             {
                 Console.Write($"\"{Age}\" is not a valid number.");
                 return -1;
@@ -57,13 +57,12 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             var dimensions = Console.ReadLine();
-            float checkFloat;
 
             if (string.IsNullOrEmpty(dimensions))
             {
                 return 0;
             }
-            else if (!float.TryParse(dimensions, out checkFloat))
+            if (!float.TryParse(dimensions, out float checkFloat))
             {
                 Console.Write($"\"{dimensions}\" is not a valid number.");
                 return -1;
