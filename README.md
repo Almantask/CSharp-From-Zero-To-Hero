@@ -1,18 +1,27 @@
 # C#: From Zero To Hero
 ## Chapter 3: C#. Homework: Advanced LINQ
+### Intro
+LINQ is a powerful tool not only to filter data, but also to transform it. All the common operations
+that you would do in a foreach loop can, and in most cases should be done using LINQ.
+Even though LINQ is not the fastest, it is still good enough for daily programming tasks as it makes code
+much more readable and it's efficient (time-wise) to write code using LINQ.
+
+Anonymous object is a nice addition for selecting something without a defined type. Sometimes we just
+want to print the results and that purpose anonymous object serves just fine.
+
 ### Task
 All transactions within the shops are known: what, when, where and for how much was an item baught.
 You need to generate the following reports:  
 
-1) By time: how many items have been bought during every hour of a day (on average), 
-how much money did every hour total (on average)? Get rush hour (most mony earned). 
-Support getting items sold count and money earned for a selected range of hours as well  
-2) How many items did each city cell and how much did it earn? What city (can be parsed from address) 
+1) By time: how many items have been bought during every hour of a day (on average),  
+how much money did every hour total (on average)? Get rush hour (most mony earned).
+Support getting items sold count and money earned for a selected range of hours as well   
+2) How many items did each city cell and how much did it earn? What city (can be parsed from address)  
 earned the most/least money and what city sold the most/least items?  
 
 --- Extra challenge:  
 3) Daily money earned for specific shop.  
-4) What items were sold in what shop, at what price and when (file, named after shop). 
+4) What items were sold in what shop, at what price and when (file, named after shop).
 Can get a specific shop as well.  
 
 The following commands will invoke the following cases:  
