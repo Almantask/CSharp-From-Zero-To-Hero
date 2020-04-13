@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace BootCamp.Chapter.Examples.PremadeAttributes.DataAnnotations
+namespace BootCamp.Chapter.Examples.PremadeAttributes.ValidationThroughAttributes
 {
     public static class StateValidator
     {

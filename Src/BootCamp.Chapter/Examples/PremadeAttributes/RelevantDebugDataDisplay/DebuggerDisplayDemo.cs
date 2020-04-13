@@ -1,4 +1,4 @@
-﻿namespace BootCamp.Chapter.Examples.PremadeAttributes.DebuggerDisplay
+﻿namespace BootCamp.Chapter.Examples.PremadeAttributes.RelevantDebugDataDisplay
 {
     public static class DebuggerDisplayDemo
     {

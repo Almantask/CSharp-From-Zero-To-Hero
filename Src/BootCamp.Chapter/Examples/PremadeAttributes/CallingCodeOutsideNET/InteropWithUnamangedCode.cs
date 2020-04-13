@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace BootCamp.Chapter.Examples.PremadeAttributes.OutsideNET
+namespace BootCamp.Chapter.Examples.PremadeAttributes.CallingCodeOutsideNET
 {
     public static class InteropWithUnamangedCode
     {

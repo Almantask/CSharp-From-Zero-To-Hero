@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BootCamp.Chapter.Examples.PremadeAttributes.DataAnnotations
+namespace BootCamp.Chapter.Examples.PremadeAttributes.ValidationThroughAttributes
 {
     public class Person
     {
@@ -9,7 +9,7 @@ namespace BootCamp.Chapter.Examples.PremadeAttributes.DataAnnotations
         [RegularExpression(@"^[a-zA-Z'\s]{1,40}$")]
         public string Name { get; set; }
 
-        [RequiredAttribute]
+        [Required]
         public DateTime? Birthday { get; set; }
 
         [EmailAddress]

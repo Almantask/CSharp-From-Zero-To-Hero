@@ -1,10 +1,10 @@
 ﻿using System;
 using BootCamp.Chapter.Examples.CustomAttributes.CustomValidator;
 using BootCamp.Chapter.Examples.CustomAttributes.PrintIMportantItems;
-using BootCamp.Chapter.Examples.PremadeAttributes.DataAnnotations;
-using BootCamp.Chapter.Examples.PremadeAttributes.DebuggerDisplay;
-using BootCamp.Chapter.Examples.PremadeAttributes.OutsideNET;
+using BootCamp.Chapter.Examples.PremadeAttributes.CallingCodeOutsideNET;
 using BootCamp.Chapter.Examples.PremadeAttributes.PermissionsViaFlags;
+using BootCamp.Chapter.Examples.PremadeAttributes.RelevantDebugDataDisplay;
+using BootCamp.Chapter.Examples.PremadeAttributes.ValidationThroughAttributes;
 
 namespace BootCamp.Chapter
 {
@@ -12,7 +12,6 @@ namespace BootCamp.Chapter
     {
         static void Main()
         {
-            int a = 5; var o = new { a }; Console.Write(o);
             Console.WriteLine("-------NET Attributes------");
             DataAnnotationsDemo.Run();
             InteropWithUnamangedCode.Run();

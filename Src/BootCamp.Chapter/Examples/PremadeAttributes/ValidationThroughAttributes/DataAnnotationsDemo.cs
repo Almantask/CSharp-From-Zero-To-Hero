@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BootCamp.Chapter.Examples.PremadeAttributes.DataAnnotations
+namespace BootCamp.Chapter.Examples.PremadeAttributes.ValidationThroughAttributes
 {
     public static class DataAnnotationsDemo
     {
@@ -32,7 +32,7 @@ namespace BootCamp.Chapter.Examples.PremadeAttributes.DataAnnotations
 
             var person5 = new Person()
             {
-                // 60 symbols (max allowed is 50)
+                // 60 symbols (max allowed is 40)
                 Name = "ajsdlkajdl" +
                        "kdjlkasdjs" +
                        "ldkajsdlka" +
