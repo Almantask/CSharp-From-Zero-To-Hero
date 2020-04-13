@@ -1,7 +1,14 @@
 # C#: From Zero To Hero
 ## Homework 7 & 8: LINQ and Extension Methods
 ## Intro
-ToDo: add
+Extension methods allows us to bend outside code completely to our own needs.
+Adding functions to an alredy existing code is neat and enables to put tightly related code to where it
+belong- as member functions. We can make such methods on nearly anything: class, interface, enum. 
+Generic or not- matters not! :)
+
+LINQ (Language Integrated Query) as the name implies is meant for querying data.
+Forget about a foreach loop in most cases, because LINQ nearly always replaces it.
+LINQ allows easy, reasaonably fast data querying which makes writing code pure joy!
 
 ### Task
 1) Create an extension method to shuffle elements inside a collection.  
