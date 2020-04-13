@@ -30,8 +30,7 @@ namespace BootCamp.Chapter
                     $"BMI: {bmi}");
 
             // Ask if user want to do the test again
-            Console.WriteLine("Would you like to try again?");
-            string response = Console.ReadLine();
+            string response = GetInput("Would you like to try again?");
             if (response.ToLower() == "yes" || response.ToLower() == "y")
             {
                 Console.Clear();
@@ -70,34 +69,29 @@ namespace BootCamp.Chapter
 
         public static float PromptFloat(string message)
         {
-            Console.WriteLine(message);
-            string value = Console.ReadLine();
-
+            string value = GetInput(message);
             if (string.IsNullOrEmpty(value)) return 0;
             
             bool isFloat = float.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out float floatNumber);
-            if (!isFloat) return NotANumber(value);
+            if (!isFloat) return ValidateNumber(value);
 
             return floatNumber;
         }
 
         public static int PromptInt(string message)
         {
-            Console.WriteLine(message);
-            string value = Console.ReadLine();
-
+            string value = GetInput(message);
             if (string.IsNullOrEmpty(value)) return 0;
 
             bool isInt = int.TryParse(value, out var intNumber);
-            if (!isInt) return NotANumber(value);
+            if (!isInt) return ValidateNumber(value);
+
             return intNumber;
         }
-        
+
         public static string PromptString(string message)
         {
-            Console.WriteLine(message);
-            string value =  Console.ReadLine();
-
+            string value = GetInput(message);
             if (string.IsNullOrEmpty(value))
             {
                 Console.Write("Name cannot be empty.");
@@ -107,11 +101,16 @@ namespace BootCamp.Chapter
             return value;
         }
 
-        private static int NotANumber(string value)
+        private static string GetInput(string message)
+        {
+            Console.WriteLine(message);
+            return Console.ReadLine();
+        }
+
+        private static int ValidateNumber(string value)
         {
             Console.Write($"\"{value}\" is not a valid number.");
             return -1;
         }
-
     }
 }
