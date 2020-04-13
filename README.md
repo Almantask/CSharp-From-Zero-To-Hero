@@ -23,7 +23,6 @@ but if it's 3, it removes 1.
 Any
 Count
 Order
-Select
 Sets
 Union
 Intersection
