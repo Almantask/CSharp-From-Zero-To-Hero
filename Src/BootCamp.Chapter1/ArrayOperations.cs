@@ -11,23 +11,18 @@
         {
             if (IsNullOrEmpty(array)) return;
 
-            bool isSorted;
-            do
+            for (int i = 0; i < array.Length; i++)
             {
-                isSorted = true;
-                for (int i = 0; i < array.Length - 1; i++)
+                for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (array[i] > array[i + 1])
+                    if (array[i] >= array[j])
                     {
-                        int oldIndexValue = array[i + 1];
-                        int newIndexValue = array[i];
-
-                        array[i] = oldIndexValue;
-                        array[i + 1] = newIndexValue;
-                        isSorted = false;
+                        int tempValue = array[i];
+                        array[i] = array[j];
+                        array[j] = tempValue;
                     }
                 }
-            } while (!isSorted);
+            }
         }
 
         /// <summary>
