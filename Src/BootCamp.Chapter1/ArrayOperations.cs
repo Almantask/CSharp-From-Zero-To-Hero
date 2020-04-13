@@ -99,6 +99,26 @@ namespace BootCamp.Chapter1
             return RemoveElement(array, index);
         }
 
+        // Return an array without the value in a specific index.
+        private static int[] RemoveElement(int[] array, int index)
+        {
+            int[] newArray = new int[array.Length - 1];
+
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                if (i >= index)
+                {
+                    newArray[i] = array[i + 1];
+                }
+                else
+                {
+                    newArray[i] = array[i];
+                }
+            }
+
+            return newArray;
+        }
+
         /// <summary>
         /// Inserts a new array element at the start.
         /// </summary>
@@ -156,43 +176,10 @@ namespace BootCamp.Chapter1
             return InsertElement(array, number, index);
         }
 
-        // Check if index parsed is in range.
-        private static bool IsIndexInRange(int[] array, int index)
-        {
-            return (array.Length == 0 && index == 0) || (index >= 0 && index <= (array.Length - 1));
-        }
-
-        // Check if arrays is Null or Empty.
-        private static bool IsNullOrEmpty(int[] array)
-        {
-            return array == null || array.Length == 0;
-        }
-
-        // Return an array without the value in a specific index.
-        private static int[] RemoveElement(int[] array, int index)
-        {
-            int[] newArray = new int[array.Length - 1];
-
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                if (i >= index)
-                {
-                    newArray[i] = array[i + 1];
-                }
-                else
-                {
-                    newArray[i] = array[i];
-                }
-            }
-
-            return newArray;
-        }
-
         // Return an array with a new value in a specific index, all others value are moved by 1 index forward.
         private static int[] InsertElement(int[] array, int element, int index)
         {
             int[] newArray = new int[array.Length + 1];
-            Console.WriteLine($"[LOG] new index size: {newArray.Length}");
 
             for (int i = 0; i < newArray.Length; i++)
             {
@@ -211,6 +198,18 @@ namespace BootCamp.Chapter1
             }
 
             return newArray;
+        }
+
+        // Check if index parsed is in a valid range.
+        private static bool IsIndexInRange(int[] array, int index)
+        {
+            return (array.Length == 0 && index == 0) || (index >= 0 && index <= (array.Length - 1));
+        }
+
+        // Check if arrays is Null or Empty.
+        private static bool IsNullOrEmpty(int[] array)
+        {
+            return array == null || array.Length == 0;
         }
     }
 }
