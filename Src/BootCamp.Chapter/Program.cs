@@ -10,7 +10,7 @@ namespace BootCamp.Chapter
             // Gathering Input:
             // Name
             Console.WriteLine("Enter Name: ");
-            string nm1 = Console.ReadLine();
+            string name1 = Console.ReadLine();
 
             // Age
             Console.WriteLine("Enter Age: ");
@@ -27,12 +27,14 @@ namespace BootCamp.Chapter
             // Calculating BMI
             float bmi1 = weight1 / (height1 * height1) * 10000;
 
-            
+            // Ouput Results:
+            Console.WriteLine($"My name is {name1} and I am {age1} years old, my weight is {weight1} kg, I'm {height1} meters tall and my BMI is {bmi1}");
+
             // Person 2:
             // Gathering Input:
             // Name
             Console.WriteLine("Enter Name: ");
-            string nm2 = Console.ReadLine();
+            string name2 = Console.ReadLine();
 
             // Age
             Console.WriteLine("Enter Age: ");
@@ -49,13 +51,8 @@ namespace BootCamp.Chapter
             // Calculating BMI
             float bmi2 = weight1 / (height1 * height1) * 10000;
 
-
-            // Outputting Results:
-            // Person 1:
-            Console.WriteLine($"My name is {nm1} and I am {age1} years old, my weight is {weight1} kg, I'm {height1} meters tall and my BMI is {bmi1}");
-            
-            // Person 2:
-            Console.WriteLine($"My name is {nm2} and I am {age2} years old, my weight is {weight2} kg, I'm {height2} meters tall and my BMI is {bmi2}");
+            // Ouput Results:
+            Console.WriteLine($"My name is {name2} and I am {age2} years old, my weight is {weight2} kg, I'm {height2} meters tall and my BMI is {bmi2}");
         }
     }
 }
