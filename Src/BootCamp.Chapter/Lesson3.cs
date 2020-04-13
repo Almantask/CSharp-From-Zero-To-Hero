@@ -8,23 +8,23 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-             static void GatherInfo(string userNumber)
-            {
-                Console.WriteLine("\r\nHello! You are the " + userNumber + " user today.");
-                string firstName = PromptString("What is your first name?");
-                string surName = PromptString("What is your surname?");
-                int age = PromptInt("What is your age?");
-                float weight = PromptFloat("How much do you weigh(in kg)?");
-                float height = PromptFloat("How tall are you(in cm)?");
-
-                float BMI = CalculateBmi(weight, height);
-
-                PrintResult(firstName, surName, age, weight, height, BMI);
-            }
             GatherInfo("first");
             GatherInfo("second");
         }
-         public static string PromptString(string message)
+         private static void GatherInfo(string userNumber)
+        {
+            Console.WriteLine("\r\nHello! You are the " + userNumber + " user today.");
+            string firstName = PromptString("What is your first name?");
+            string surName = PromptString("What is your surname?");
+            int age = PromptInt("What is your age?");
+            float weight = PromptFloat("How much do you weigh(in kg)?");
+            float height = PromptFloat("How tall are you(in cm)?");
+
+            float BMI = CalculateBmi(weight, height);
+
+            PrintResult(firstName, surName, age, weight, height, BMI);
+        }
+        public static string PromptString(string message)
         {
             Console.WriteLine(message);
             return Console.ReadLine();
