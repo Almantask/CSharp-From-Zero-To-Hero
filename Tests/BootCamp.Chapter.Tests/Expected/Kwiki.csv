@@ -1,4 +1,4 @@
 ﻿City, Street, Item, DateTime, Price
-Springfield, HoloPapap 2, Sausage, 2020-01-05T20:00:00, 8
-Springfield, HoloPapap 2, Bannana, 2020-01-05T22:00:00, 10
-Springfield HoloPapap 2, Bannana, 2020-01-05T22:00:00, 15
+Springfield, HoloPapap 2, Sausage, 2020-01-05T20:00:00Z, "€8"
+Springfield, HoloPapap 2, Bannana, 2020-01-05T22:00:00Z, "€10"
+Springfield HoloPapap 2, Bannana, 2020-01-05T22:00:00Z, "€15"
