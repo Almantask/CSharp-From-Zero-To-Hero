@@ -16,6 +16,7 @@ namespace BootCamp.Chapter
 
             var splitArray = peopleAndBalances[0].Split(',');
             var decimalArray = ConvertStringArrayToDecimalArray(splitArray[1..]);
+            var highestValueInArray = FindHighestDecimalInArray(decimalArray);
 
             return "";
         }
@@ -30,6 +31,21 @@ namespace BootCamp.Chapter
             }
 
             return decimalArray;
+        }
+
+        private static decimal FindHighestDecimalInArray(decimal[] array)
+        {
+            var currentHighestDecimal = array[0]; //We assume the first value to be the largest decimal in the array
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (currentHighestDecimal < array[i])
+                {
+                    currentHighestDecimal = array[i];
+                }
+            }
+
+            return currentHighestDecimal;
         }
 
         /// <summary>
