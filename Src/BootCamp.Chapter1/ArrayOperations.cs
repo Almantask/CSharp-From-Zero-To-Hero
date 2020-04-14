@@ -63,13 +63,8 @@ namespace BootCamp.Chapter1
                 return array;
             }
             else
-            {                
-                var array2 = new int[array.Length-1];
-                for (int i = 0; i < array.Length-1; i++)
-                {
-                    array2[i] = array[i];
-                }
-                return array2;
+            {
+                return RemoveAt(array, array.Length - 1);
             }
         }
 
@@ -85,12 +80,7 @@ namespace BootCamp.Chapter1
             }
             else
             {
-                var array2 = new int[array.Length - 1];
-                for (int i = 0; i < array2.Length; i++)
-                {
-                    array2[i] = array[i + 1];
-                }
-                return array2;
+                return RemoveAt(array, 0);
             }
         }
 
