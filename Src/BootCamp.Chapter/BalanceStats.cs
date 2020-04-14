@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return $"{personWithHighestBalance[0]} had the most money ever. ¤{largestValueInArrays}."; ;
+            return $"{personWithHighestBalance[0]} had the most money ever. ¤{largestValueInArrays}."; ; // ToDo: Implement FormatArrayToString method to join elements in an array into a string (use String.Join, etc.)
         }
 
         private static decimal[] ConvertStringArrayToDecimalArray(string[] array)
