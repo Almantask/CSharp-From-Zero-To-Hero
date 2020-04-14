@@ -31,6 +31,9 @@ namespace BootCamp.Chapter
                 {
                     personWithHighestBalance = new[] { currentSplitArray[0] };
                     largestValueInArrays = currentLargestValue;
+                } else if (currentLargestValue == largestValueInArrays)
+                {
+                    personWithHighestBalance = AppendString(personWithHighestBalance, currentSplitArray[0]);
                 }
             }
 
@@ -62,6 +65,18 @@ namespace BootCamp.Chapter
             }
 
             return currentHighestDecimal;
+        }
+
+        private static string[] AppendString(string[] array, string stringToAppend)
+        {
+            var returnArray = new string[array.Length + 1];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                returnArray[i] = array[i];
+            }
+            returnArray[^1] = stringToAppend;
+            return returnArray;
         }
 
         /// <summary>
