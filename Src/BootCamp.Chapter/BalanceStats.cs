@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -9,16 +10,31 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null || peopleAndBalances.Length == 0) //ToDo: Implement validation function to make sure it's reusable in other functions as well
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) // ToDo: Implement validation function to make sure it's reusable in other functions as well
             {
                 return "N/A.";
             }
 
-            var splitArray = peopleAndBalances[0].Split(',');
-            var decimalArray = ConvertStringArrayToDecimalArray(splitArray[1..]);
-            var highestValueInArray = FindHighestDecimalInArray(decimalArray);
+            var splitArray = peopleAndBalances[0].Split(','); // We assume that the first array has the highest decimal number in it
+            var decimalArray = ConvertStringArrayToDecimalArray(splitArray);
+            var largestValueInArrays = FindLargestDecimalInArray(decimalArray);
 
-            return "";
+            var personWithHighestBalance = new[] { splitArray[0] }; // We store the name of the first individual
+
+            for (int i = 1; i < peopleAndBalances.Length; i++)
+            {
+                var currentSplitArray = peopleAndBalances[i].Split(',');
+                var currentDecimalArray = ConvertStringArrayToDecimalArray(currentSplitArray);
+                var currentLargestValue = FindLargestDecimalInArray(currentDecimalArray);
+
+                if (currentLargestValue > largestValueInArrays)
+                {
+                    personWithHighestBalance = new[] { currentSplitArray[0] };
+                    largestValueInArrays = currentLargestValue;
+                }
+            }
+
+            return $"{personWithHighestBalance[0]} had the most money ever. ¤{largestValueInArrays}."; ;
         }
 
         private static decimal[] ConvertStringArrayToDecimalArray(string[] array)
@@ -33,7 +49,7 @@ namespace BootCamp.Chapter
             return decimalArray;
         }
 
-        private static decimal FindHighestDecimalInArray(decimal[] array)
+        private static decimal FindLargestDecimalInArray(decimal[] array)
         {
             var currentHighestDecimal = array[0]; //We assume the first value to be the largest decimal in the array
 
