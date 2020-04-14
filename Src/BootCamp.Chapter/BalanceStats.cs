@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Globalization;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
@@ -7,7 +9,27 @@
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) //ToDo: Implement validation function to make sure it's reusable in other functions as well
+            {
+                return "N/A.";
+            }
+
+            var splitArray = peopleAndBalances[0].Split(',');
+            var decimalArray = ConvertStringArrayToDecimalArray(splitArray[1..]);
+
             return "";
+        }
+
+        private static decimal[] ConvertStringArrayToDecimalArray(string[] array)
+        {
+            var decimalArray = new decimal[array.Length];
+
+            for (int i = 0; i < decimalArray.Length; i++)
+            {
+                decimalArray[i] = decimal.TryParse(array[i], NumberStyles.Any, CultureInfo.InvariantCulture, out decimal parsed) ? parsed : 0.0m;
+            }
+
+            return decimalArray;
         }
 
         /// <summary>
