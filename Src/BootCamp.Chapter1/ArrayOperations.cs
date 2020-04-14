@@ -142,14 +142,8 @@ namespace BootCamp.Chapter1
                 return ArrayLengthZero(array, number);                
             }
             else
-            {
-                var array2 = new int[array.Length + 1];
-                array2[0] = number;
-                for (int i = 1; i < array2.Length; i++)
-                {
-                    array2[i] = array[i - 1];
-                }
-                return array2;
+            {  
+                return InsertAt(array, number, 0);
             }
             
         }
