@@ -12,5 +12,10 @@ namespace BootCamp.Chapter
         public string SoldItem { get; set; }
         public DateTime TimeWhenSold { get; set; }
         public decimal TotalPrice { get; set; }
+
+        internal static bool TryParse(string input, out Transaction transaction)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
