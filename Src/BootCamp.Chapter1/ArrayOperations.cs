@@ -167,15 +167,7 @@ namespace BootCamp.Chapter1
             }
             else
             {
-                var array2 = new int[array.Length + 1];
-                
-                for (int i = 0; i < array2.Length - 1; i++)
-                {
-                    array2[i] = array[i];
-                }
-                array2[array2.Length - 1] = number;
-
-                return array2;
+                return InsertAt(array, number, array.Length);
             }
            
         }
@@ -190,8 +182,6 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-
-            // I know I have a lot of repeated code in this homework, but I'm glad it finnaly works!!!
 
             if (array == null && index == 0)
             {
