@@ -11,12 +11,11 @@ namespace BootCamp.Chapter
         {
             _gridClearer = gridClearer;
             grid = toggles;
-
         }
 
         public void Toggle(int x, int y)
         {
-            OutOfBoundsCheck(x, y);
+            CheckIsOutOfBounds(x, y);
             grid[x, y] = !grid[x, y];
             DrawGrid();
         }
@@ -43,15 +42,15 @@ namespace BootCamp.Chapter
             }
         }
 
-        private void OutOfBoundsCheck(int x, int y)
+        private void CheckIsOutOfBounds(int x, int y)
         {
             if (x < 0 || x >= grid.GetLength(0))
             {
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException($"{x} is out of bounds of the grid.");
             }
             if ( y < 0 || y >= grid.GetLength(1))
             {
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException($"{y} is out of bounds of the grid.");
             }
         }
     }

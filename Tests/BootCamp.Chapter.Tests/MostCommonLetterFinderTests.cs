@@ -23,6 +23,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData("abca", 'a')]
         [InlineData("uiopppaaaxxx", 'p')]
         [InlineData("II", 'I')]
+        [InlineData("sfajlasbfklasjksahfksjbjbfkjahbgkfiyugtzvduytwerfgearkjbmnzvjhgliuwyeiuflkjfsjhvbmnxbvjugswugakjhsfksfjhkjbafkujhb", 'j')]
         public void Find_Given_Valid_String_Returns_Expected_Character(string sentence, char expected)
         {
             var mostCommonCharacter = MostCommonLetterFinder.Find(sentence);
