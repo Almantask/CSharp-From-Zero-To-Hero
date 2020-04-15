@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
 
 namespace BootCamp.Chapter
 {
     public class Person
     {
-        //TODO: add missing properties
-        // name,sureName,birthday,gender,country,email,streetAddress
-        // Chrisy,Frise,4/24/1946,Male,Philippines,cfrise0@europa.eu,62895 Troy Parkway
+        private const string separator = ",";
+        private const int numberOfFields = 7;
+        private const string fileHeader = "name,sureName,birthday,gender,country,email,streetAddress";
+
+        //TODO: make a tryParse;
         public string FirstName { get; }
         public string SurName { get; }
         public string Birthday { get; }
@@ -49,5 +52,51 @@ namespace BootCamp.Chapter
             return age;
         }
 
+        public static bool TryParse(string input, out Person person)
+        {
+            person = default;
+
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                return false;
+            }
+
+            string[] splitInput = input.Split(',');
+            if (splitInput.Length != numberOfFields || !IsInputValid(splitInput))
+            {
+                return false;
+            }
+
+            person = new Person(splitInput[0], splitInput[1], splitInput[2], splitInput[3], splitInput[4], splitInput[5], splitInput[6]);
+
+            return true;
+        }
+
+        private static bool IsInputValid(string[] split)
+        {
+            //"name,sureName,birthday,gender,country,email,streetAddress";
+            foreach (string line in split)
+            {
+                if(String.IsNullOrWhiteSpace(line))
+                {
+                    return false;
+                }
+            }
+
+            if (!Tests.IsValidBirthday(split[2]))
+            {
+                return false;
+            }
+            if (!Tests.IsValidGender(split[3]))
+            {
+                return false;
+            }
+            if (!Tests.IsValidEmail(split[5]))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
