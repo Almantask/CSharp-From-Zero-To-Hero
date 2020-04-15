@@ -32,12 +32,12 @@ namespace BootCamp.Chapter
         }
         public static bool IsValidGender(string gender)
         {
-            if (gender != "Male" || gender != "Female")
+            if (gender == "Male" || gender == "Female")
             {
-                return false;
+                return true;
             }
                 
-            return true;
+            return false;
         }
         public static bool IsValidEmail(string email)
         { 
