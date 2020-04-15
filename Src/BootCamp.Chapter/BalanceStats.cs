@@ -15,29 +15,32 @@ namespace BootCamp.Chapter
                 return "N/A.";
             }
 
-            var splitArray = peopleAndBalances[0].Split(','); // We assume that the first array has the highest decimal number in it
-            var decimalArray = ConvertStringArrayToDecimalArray(splitArray);
-            var largestValueInArrays = FindLargestDecimalInArray(decimalArray);
+            var firstAccount = peopleAndBalances[0].Split(',');
+            var accountOwner = firstAccount[0];
+            var accountBalance = ConvertStringArrayToDecimalArray(firstAccount);
+            var highestBalanceEver = FindLargestDecimalInArray(accountBalance); // We assume that the first array/account has the highest balance ever
 
-            var personWithHighestBalance = new[] { splitArray[0] }; // We store the name of the first individual
+            var individualsWithHighestBalanceEver = new[] { accountOwner }; // We store the name of the first individual
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
             {
-                var currentSplitArray = peopleAndBalances[i].Split(',');
-                var currentDecimalArray = ConvertStringArrayToDecimalArray(currentSplitArray);
-                var currentLargestValue = FindLargestDecimalInArray(currentDecimalArray);
+                var currentAccount = peopleAndBalances[i].Split(',');
+                var currentAccountOwner = currentAccount[0];
+                var currentAccountBalance = ConvertStringArrayToDecimalArray(currentAccount);
+                var currentHighestBalance = FindLargestDecimalInArray(currentAccountBalance);
 
-                if (currentLargestValue > largestValueInArrays)
+                if (currentHighestBalance > highestBalanceEver)
                 {
-                    personWithHighestBalance = new[] { currentSplitArray[0] };
-                    largestValueInArrays = currentLargestValue;
-                } else if (currentLargestValue == largestValueInArrays)
+                    individualsWithHighestBalanceEver = new[] { currentAccountOwner };
+                    highestBalanceEver = currentHighestBalance;
+                } 
+                else if (currentHighestBalance == highestBalanceEver)
                 {
-                    personWithHighestBalance = AppendString(personWithHighestBalance, currentSplitArray[0]);
+                    individualsWithHighestBalanceEver = AppendString(individualsWithHighestBalanceEver, currentAccount[0]);
                 }
             }
 
-            return $"{FormatArrayToString(personWithHighestBalance)} had the most money ever. ¤{largestValueInArrays}.";
+            return $"{FormatArrayToString(individualsWithHighestBalanceEver)} had the most money ever. ¤{highestBalanceEver}.";
         }
 
         private static decimal[] ConvertStringArrayToDecimalArray(string[] array)
