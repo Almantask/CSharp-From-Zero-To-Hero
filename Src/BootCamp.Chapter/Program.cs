@@ -14,10 +14,10 @@ namespace BootCamp.Chapter
             float bmi = weight / (height * height /10000);  // division to place decimal where it would be expected for a BMI measurement.
             Console.WriteLine("{0} {1} is {2} years old, weighs {3} kg and is {4} cm tall.", fName, lName, age, weight, height);
             Console.WriteLine("{0}'s BMI is {1}.", fName, bmi);
-            // I spent a week before this learning some C# and read Rob Mile's yellow book, so have applied some of what I learned here. 
+
             Console.ReadKey();
         }
-        public static string GetInput(string a) // Getting started early on method blocks!
+        static string GetInput(string a) // Getting started early on method blocks!
         {
             Console.Write(a);
             var b = Console.ReadLine();
