@@ -6,13 +6,13 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Bmi1();
+            Bmi1(number:1);
 
-            Bmi2();
+            Bmi1(number:2);
         }
-        private static void Bmi1()
+        private static void Bmi1(int number)
         {
-            Console.WriteLine("Person #1:");
+            Console.WriteLine("Person #" + number+ ":" );
 
             Console.Write("Full Name: ");
             string name1 = Console.ReadLine();
@@ -29,28 +29,9 @@ namespace BootCamp.Chapter
             float bmi1 = weight1 / (height1 * height1) * 10000;
 
             Console.WriteLine(name1 + " is " + age1 + " years old, his weight is " + weight1 + " kg, his height is " + height1 + " and his bmi is " + bmi1 + ".");
-        }
-        private static void Bmi2()
-        {
+
             Console.WriteLine(" ");
 
-            Console.WriteLine("Person #2:");
-
-            Console.Write("Full Name: ");
-            string name2 = Console.ReadLine();
-
-            Console.Write("Age: ");
-            int age2 = int.Parse(Console.ReadLine());
-
-            Console.Write("Weight (kg): ");
-            float weight2 = float.Parse(Console.ReadLine());
-
-            Console.Write("Height (cm): ");
-            float height2 = float.Parse(Console.ReadLine());
-
-            float bmi2 = weight2 / (height2 * height2) * 10000;
-
-            Console.WriteLine(name2 + " is " + age2 + " years old, his weight is " + weight2 + " kg, his height is " + height2 + " and his bmi is " + bmi2 + ".");
         }
         
     }
