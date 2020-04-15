@@ -1,0 +1,30 @@
+{
+  "Header": {
+    "Name": "Testing",
+    "Description": "Test",
+    "To": "Students",
+    "Form": "Kaisinel",
+    "OrderedAt": "2020-04-15T20:50:37.9300443+03:00"
+  },
+  "Lines": [
+    {
+      "Amount": 2.0,
+      "Price": 15.1,
+      "Item": {
+        "Name": "Candy",
+        "Description": "Delicious",
+        "DataOfMaking": "2020-04-15T20:50:37.9357868+03:00"
+      }
+    },
+    {
+      "Amount": 1.0,
+      "Price": 1000.0,
+      "Item": {
+        "Name": "Sofa",
+        "Description": "Luxurious Sofa",
+        "DataOfMaking": "2010-04-15T20:50:37.9359019+03:00"
+      }
+    }
+  ]
+}
+

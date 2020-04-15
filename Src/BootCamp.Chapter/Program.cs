@@ -1,4 +1,6 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using System;
+using JSON = BootCamp.Chapter.Examples.Json;
+using XML = BootCamp.Chapter.Examples.Xml;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +8,24 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Example1Demo.Run();
+            DemoJson();
+            DemoXml();
+        }
+
+        private static void DemoJson()
+        {
+            Console.WriteLine("---Json Demos---");
+            JSON.Serialization.SerializeOrderDemo.Run();
+            JSON.Deserialization.DeserializeOrderDemo.Run();
+            JSON.Mapping.MappingDemo.Run();
+        }
+
+        private static void DemoXml()
+        {
+            Console.WriteLine("---Xml Demos---");
+            XML.Serialization.SerializeOrderDemo.Run();
+            XML.Deserialization.DeserializeOrderDemo.Run();
+            XML.Mapping.MappingDemo.Run();
         }
     }
 }
