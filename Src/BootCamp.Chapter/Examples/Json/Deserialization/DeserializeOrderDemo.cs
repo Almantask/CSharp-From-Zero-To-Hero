@@ -1,7 +1,6 @@
 ﻿using System;
 using BootCamp.Chapter.Examples.Json.Common.Models;
 using BootCamp.Chapter.Examples.Json.JsonExtensions;
-using Newtonsoft.Json;
 
 namespace BootCamp.Chapter.Examples.Json.Deserialization
 {

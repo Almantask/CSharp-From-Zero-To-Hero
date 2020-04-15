@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace BootCamp.Chapter.Examples.Xml.Common.Models
 {
@@ -14,7 +13,7 @@ namespace BootCamp.Chapter.Examples.Xml.Common.Models
             sb.AppendLine($"{Header.Name} - {Header.Description}");
             foreach (var line in Lines)
             {
-                sb.AppendLine($"{line.Item.Name}- amount: {line.Amount}, price: {line.Price}");
+                sb.AppendLine($"{line.Item.Nam}- amount: {line.Amount}, price: {line.Price}");
             }
 
             return sb.ToString();

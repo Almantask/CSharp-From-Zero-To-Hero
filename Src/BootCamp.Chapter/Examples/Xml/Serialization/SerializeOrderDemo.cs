@@ -25,7 +25,7 @@ namespace BootCamp.Chapter.Examples.Xml.Serialization
                         Price = 15.1f,
                         Item = new Item
                         {
-                            Name = "Candy",
+                            Nam = "Candy",
                             Description = "Delicious",
                             DataOfMaking = DateTime.Now
                         }
@@ -36,7 +36,7 @@ namespace BootCamp.Chapter.Examples.Xml.Serialization
                         Price = 1000f,
                         Item = new Item
                         {
-                            Name = "Sofa",
+                            Nam = "Sofa",
                             Description = "Luxurious Sofa",
                             DataOfMaking = DateTime.Now.AddYears(-10)
                         }

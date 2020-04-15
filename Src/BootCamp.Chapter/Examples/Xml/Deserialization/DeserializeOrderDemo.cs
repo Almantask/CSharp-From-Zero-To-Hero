@@ -1,5 +1,4 @@
 ﻿using System;
-using BootCamp.Chapter.Examples.Json.Common.Models;
 using Order = BootCamp.Chapter.Examples.Xml.Common.Models.Order;
 
 namespace BootCamp.Chapter.Examples.Xml.Deserialization
