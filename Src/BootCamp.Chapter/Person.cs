@@ -5,11 +5,8 @@ namespace BootCamp.Chapter
 {
     public class Person
     {
-        private const string separator = ",";
         private const int numberOfFields = 7;
-        private const string fileHeader = "name,sureName,birthday,gender,country,email,streetAddress";
 
-        //TODO: make a tryParse;
         public string FirstName { get; }
         public string SurName { get; }
         public string Birthday { get; }
@@ -74,7 +71,6 @@ namespace BootCamp.Chapter
 
         private static bool IsInputValid(string[] split)
         {
-            //"name,sureName,birthday,gender,country,email,streetAddress";
             foreach (string line in split)
             {
                 if(String.IsNullOrWhiteSpace(line))

@@ -59,7 +59,6 @@ namespace BootCamp.Chapter
             {
                 return false;
             }
-
             foreach (string line in splitEmailDot)
             {
                 if (String.IsNullOrWhiteSpace(line))
