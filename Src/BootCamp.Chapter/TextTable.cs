@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -36,76 +37,71 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string Build(string message, int padding)
         {
-            if (message == "") return "";
+            if (string.IsNullOrEmpty(message)) return "";
 
-            var (fixedSpaces, maxLenght) = SplitAndFixSpace(message);
-            var border = $"{Border(maxLenght + (padding * 2))}{Environment.NewLine}";
+            var (messageArray, maxWordLength) = SplitLinesAndPadding(message);
+            var border = $"{BuildBorder(maxWordLength + (padding * 2))}{Environment.NewLine}";
+            var body = BuildBody(messageArray, padding, maxWordLength);
 
-            var newText = $"{border}" +
-                          $"{Middle(fixedSpaces, padding, maxLenght)}" +
-                          $"{border}";
-
-            return newText;
+            return $"{border}{body}{border}";
         }
 
-        private static (string[] fixedSpaces, int maxLenght) SplitAndFixSpace(string message)
+        private static (string[] messageArray, int maxLength) SplitLinesAndPadding(string message)
         {
-
             var arr = message.Split(System.Environment.NewLine);
-            int maxLenght = 0;
+            var maxLength = 0;
 
             foreach (var words in arr)
             {
-                if (words.Length > maxLenght) maxLenght = words.Length;
+                if (words.Length > maxLength) maxLength = words.Length;
             }
 
             for (int i = 0; i < arr.Length; i++)
             {
-                var spacesToAdd = new string(' ', maxLenght - arr[i].Length);
+                var spacesToAdd = new string(' ', maxLength - arr[i].Length);
                 arr[i] += spacesToAdd;
             }
 
-            return (arr, maxLenght);
+            return (arr, maxLength);
         }
 
-        private static string Middle(string[] message, int padding, int maxLenght)
+        private static StringBuilder BuildBody(string[] message, int padding, int maxLength)
         {
-            // Main text to return
-            var text = new System.Text.StringBuilder();
+            var text = new StringBuilder();
 
-            int middleElements = (padding * 2) + 1;
+            var middleElements = (padding * 2) + 1;
             var emptySpace = new string(' ', padding);
 
             for (int i = 1; i <= middleElements; i++)
             {
                 if (i == (middleElements / 2) + 1)
                 {
-                    text.Append(MiddleText(message, emptySpace));
+                    text.Append(BuildMessage(message, emptySpace));
                 }
                 else
                 {
-                    var placebo = new string(' ', maxLenght);
-                    text.Append($"|{emptySpace}{placebo}{emptySpace}|{Environment.NewLine}");
+                    var emptyWord = new string(' ', maxLength);
+                    text.Append($"|{emptySpace}{emptyWord}{emptySpace}|{Environment.NewLine}");
                 }
             }
 
-            return text.ToString();
+            return text;
         }
 
-        private static string MiddleText(string[] array, string emptySpace)
+        private static StringBuilder BuildMessage(string[] array, string emptySpace)
         {
-            var temp = new System.Text.StringBuilder();
+            var temp = new StringBuilder();
             foreach (var words in array)
             {
                 temp.Append($"|{emptySpace}{words}{emptySpace}|{Environment.NewLine}");
             }
 
-            return temp.ToString();
+            return temp;
         }
 
-        private static string Border(int lenght)
+        private static string BuildBorder(int length)
         {
-            var text = new string('-', lenght);
+            var text = new string('-', length);
 
             return $"+{text}+";
         }
