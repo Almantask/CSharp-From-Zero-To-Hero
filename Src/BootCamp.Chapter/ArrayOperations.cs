@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -77,7 +78,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static decimal FindLargestDecimalInArray(decimal[] array)
         {
-            var currentHighestDecimal = array[0]; //We assume the first value to be the largest decimal in the array
+            var currentHighestDecimal = array[0]; // We assume the first value to be the largest decimal in the array
 
             for (int i = 1; i < array.Length; i++)
             {
@@ -88,6 +89,24 @@ namespace BootCamp.Chapter
             }
 
             return currentHighestDecimal;
+        }
+
+        public static decimal FindLargestNegativeChange(decimal[] array)
+        {
+            var largestNegativeChange = 0.0m; // We assume that there's no negative change between array elements
+
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (array[i] > array [i + 1])
+                {
+                    if (Math.Abs(array[i] - array[i + 1]) > largestNegativeChange)
+                    {
+                        largestNegativeChange = (array[i] - array[i + 1]);
+                    }
+                }
+            }
+
+            return largestNegativeChange;
         }
     }
 }

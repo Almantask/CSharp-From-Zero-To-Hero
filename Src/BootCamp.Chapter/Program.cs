@@ -10,7 +10,7 @@
             // - FindRichestPerson
             // - FindMostPoorPerson
 
-            BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances);
+            BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances);
         }
     }
 }
