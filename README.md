@@ -1,6 +1,52 @@
 # C#: From Zero To Hero
 ## Chapter 1. Homework 6: Debugging
 
+## SOLUTION
+
+### Part 1
+
+Breakpoint in `value` Line `50` for each value
+(or even in `Promper.Instance` Line `48` give us all values)
+
+```
+Debug this correctly to move on to part 2 of this homework.
+
+
+What is my first return value?
+Debugger!
+What is my second return value?
+51
+What is my third return value?
+79
+What is my last return value?
+77
+```
+
+### Part 2
+
+Breakpoint on line `71`. I think in this part we only need to go "slow" to get the right passcode.
+
+```
+Welcome to part 2.
+
+
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+-------------------------------
+What's the passcode?
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+
+YOU MAY PROCEED!
+--------------------------------
+From the smaller to the greater,
+From sunrise to sunset,
+From one, learn all.
+--------------------------------
+
+
+If you didn't note the passcode, you should do it now!
+Press enter to continue...
+```
+
 ### Intro
 Debugging is a process of inspecting the state of a running program to figure out what is going on.
 We can pause, inspect or even makes changes in code during debugging.
