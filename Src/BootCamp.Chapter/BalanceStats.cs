@@ -97,7 +97,46 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances))
+                return "N/A.";
+
+            var firstAccount = peopleAndBalances[0].Split(',');
+            var accountOwner = firstAccount[0];
+            var balanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(firstAccount[^1..]);
+            var lowestBalanceEver = ArrayOperations.FindSmallestDecimalInArray(balanceHistory); // We assume that the first account has the smallest balance ever
+
+            var individualsWithLowestBalance = new[] { accountOwner }; // We store the name of the first individual who is assumed to be the poorest
+
+            for (int i = 1; i < peopleAndBalances.Length; i++)
+            {
+                var currentAccount = peopleAndBalances[i].Split(',');
+                var currentAccountOwner = currentAccount[0];
+                var currentBalanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(currentAccount[^1..]);
+                var currentLowestBalance = ArrayOperations.FindSmallestDecimalInArray(currentBalanceHistory);
+
+                if (currentLowestBalance < lowestBalanceEver)
+                {
+                    lowestBalanceEver = currentLowestBalance;
+                    individualsWithLowestBalance = new[] { currentAccountOwner };
+                }
+                else if (currentLowestBalance == lowestBalanceEver)
+                {
+                    individualsWithLowestBalance = ArrayOperations.AppendString(individualsWithLowestBalance, currentAccountOwner);
+                }
+            }
+
+            var formattedLowestBalance = $"¤{lowestBalanceEver}";
+            if (lowestBalanceEver < 0)
+            {
+                formattedLowestBalance = $"-¤{-lowestBalanceEver}";
+            }
+
+            if (individualsWithLowestBalance.Length == 1)
+            {
+                return $"{ArrayOperations.FormatArrayToString(individualsWithLowestBalance)} has the least money. {formattedLowestBalance}.";
+            }
+
+            return $"{ArrayOperations.FormatArrayToString(individualsWithLowestBalance)} have the least money. ¤{lowestBalanceEver}.";
         }
     }
 }

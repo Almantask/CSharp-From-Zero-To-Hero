@@ -102,7 +102,7 @@ namespace BootCamp.Chapter
 
             for (int i = 1; i < array.Length; i++)
             {
-                if (currentSmallestDecimal < array[i])
+                if (currentSmallestDecimal > array[i])
                 {
                     currentSmallestDecimal = array[i];
                 }

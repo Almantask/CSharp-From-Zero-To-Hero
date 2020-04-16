@@ -10,7 +10,7 @@
             // - FindRichestPerson
             // - FindMostPoorPerson
 
-            BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances);
+            BalanceStats.FindMostPoorPerson(new[] { "Tom, 1, 0" });
         }
     }
 }
