@@ -7,21 +7,15 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-
-
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>       
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return "N/A.";
-
             var (peopleNames, money) = ProcessPeopleAndAbalances(peopleAndBalances, "max");
 
-            var listToBuid = AnalisePeopleAndMoney(peopleNames, money, money.Max());
-            var listOfNames = BuildListOfNames(listToBuid.ToString());
-
-            return $"{listOfNames} had the most money ever. {FixMoneyFormat(money.Max())}.";
+            return $"{peopleNames} had the most money ever. {FixMoneyFormat(money)}.";
         }
 
         /// <summary>
@@ -32,12 +26,9 @@ namespace BootCamp.Chapter
             if (IsNullOrEmpty(peopleAndBalances)) return "N/A.";
 
             var (peopleNames, money) = ProcessPeopleAndAbalances(peopleAndBalances, "min");
-            if (money.Min() >= 0) return "N/A.";
+            if (money >= 0) return "N/A.";
 
-            var listToBuid = AnalisePeopleAndMoney(peopleNames, money, money.Min());
-            var listOfNames = BuildListOfNames(listToBuid.ToString());
-
-            return $"{listOfNames} lost the most money. {FixMoneyFormat(money.Min())}.";
+            return $"{peopleNames} lost the most money. {FixMoneyFormat(money)}.";
         }
 
         /// <summary>
@@ -46,13 +37,16 @@ namespace BootCamp.Chapter
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return "N/A.";
+            var (peopleNames, money) = ProcessPeopleAndAbalances(peopleAndBalances, "rich");
 
-            var (peopleNames, money) = ProcessPeopleAndAbalances(peopleAndBalances, "richAndPoor");
+            var isPlural = IsMultiplePeople(peopleNames);
+            var dictionary = new string[]
+            { 
+                (isPlural) ? "are" : "is",          // [0]
+                (isPlural) ? "people" : "person"    // [1]
+            };
 
-            var listToBuid = AnalisePeopleAndMoney(peopleNames, money, money.Max());
-            var listOfNames = BuildListOfNames(listToBuid.ToString());
-
-            return $"{listOfNames} {CheckIfIsPlural(listOfNames)[0]} the richest {CheckIfIsPlural(listOfNames)[1]}. {FixMoneyFormat(money.Max())}.";
+            return $"{peopleNames} {dictionary[0]} the richest {dictionary[1]}. {FixMoneyFormat(money)}.";
         }
 
         /// <summary>
@@ -61,17 +55,22 @@ namespace BootCamp.Chapter
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return "N/A.";
+            var (peopleNames, money) = ProcessPeopleAndAbalances(peopleAndBalances, "poor");
 
-            var (peopleNames, money) = ProcessPeopleAndAbalances(peopleAndBalances, "richAndPoor");
+            var isPlural = IsMultiplePeople(peopleNames);
+            var dictionary = new string[]
+            {
+                (isPlural) ? "have" : "has",        // [0]
+            };
 
-            var listToBuid = AnalisePeopleAndMoney(peopleNames, money, money.Min());
-            var listOfNames = BuildListOfNames(listToBuid.ToString());
-
-            return $"{listOfNames} {CheckIfIsPlural(listOfNames)[2]} the least money. {FixMoneyFormat(money.Min())}.";
+            return $"{peopleNames} {dictionary[0]} the least money. {FixMoneyFormat(money)}.";
         }
 
-        private static (string[] peopleNames, float[] money) ProcessPeopleAndAbalances(string[] peopleAndBalances, string option)
+        private static (StringBuilder peopleNames, float money) ProcessPeopleAndAbalances(string[] peopleAndBalances, string option)
         {
+            var validOptions = new string[] {"max", "min", "rich", "poor"};
+            if (!validOptions.Contains(option)) return (new StringBuilder(), 0);
+
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var peopleNames = new string[peopleAndBalances.Length];
             var money = new float[peopleAndBalances.Length];
@@ -81,33 +80,38 @@ namespace BootCamp.Chapter
 
                 var values = ConvertToArrayOfFloats(peopleInfo[1..]);
                 peopleNames[i] = peopleInfo[0];
-                switch (option)
+
+                if (option == "max")
                 {
-                    case "max":
-                        money[i] = values.Max();
-                        break;
+                    money[i] = values.Max();
+                }
+                else if (option == "min")
+                {
+                    if (values.Length <= 1) continue;
 
-                    case "min":
-                        if (values.Length <= 1) break;
-
-                        var balance = new float[values.Length - 1];
-                        for (int j = 0; j < values.Length - 1; j++)
-                        {
-                            if (j == values.Length - 1) break;
-                            balance[j] = values[j + 1] - values[j];
-                        }
-                        money[i] = balance.Min();
-                        break;
-
-                    case "richAndPoor":
-                        money[i] = values[^1];
-                        break;
+                    var balance = new float[values.Length - 1];
+                    for (int j = 0; j < values.Length - 1; j++)
+                    {
+                        if (j == values.Length - 1) continue;
+                        balance[j] = values[j + 1] - values[j];
+                    }
+                    money[i] = balance.Min();
+                }
+                else if (option == "rich" || option == "poor")
+                {
+                    money[i] = values[^1];
                 }
             }
 
-            return (peopleNames, money);
+            var isMaxValue = (option == "max" || option == "rich");
+            float moneyToAnalyse = (isMaxValue) ? money.Max() : money.Min();
+            var listToBuid = AnalisePeopleAndMoney(peopleNames, money, moneyToAnalyse);
+            var listOfNames = BuildListOfNames(listToBuid.ToString());
+
+            return (listOfNames, moneyToAnalyse);
         }
 
+        // Convert an array of string to array of floats
         private static float[] ConvertToArrayOfFloats(string[] numbers)
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
@@ -133,6 +137,8 @@ namespace BootCamp.Chapter
             return tempArray;
         }
 
+        // Analyse a raw list of name (with join = ", ") and convert to readable
+        // eg.: "John, Will, Mary, " -> "John, Will and Mary
         private static StringBuilder BuildListOfNames(string tempPersonName)
         {
             var text = new StringBuilder();
@@ -154,6 +160,7 @@ namespace BootCamp.Chapter
             return text;
         }
 
+        // Create a raw list of money with same money (if is more than 1)
         private static StringBuilder AnalisePeopleAndMoney(string[] names, float[] money, float moneyToCompare)
         {
             var peoples = new StringBuilder();
@@ -169,28 +176,19 @@ namespace BootCamp.Chapter
             return peoples;
         }
 
-        private static string[] CheckIfIsPlural(StringBuilder names)
-        {
-            string[] plural;
-            if (names.ToString().Contains(",") || names.ToString().Contains(" and "))
-            {
-                plural = new string[] { "are", "people", "have", };
-            }
-            else
-            {
-                plural = new string[] { "is", "person", "has" };
-            }
-
-            return plural;
-        }
-
+        // Fix money format to print. -¤9999 instead of (¤9999) 
         private static string FixMoneyFormat(float value)
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var currencySign = (value < 0) ? "-" : "";
-            var currencySymbol = "¤";
+            var currencySymbol = NumberFormatInfo.CurrentInfo.CurrencySymbol;
 
             return $"{currencySign}{currencySymbol}{Math.Abs(value)}";
+        }
+
+        private static bool IsMultiplePeople(StringBuilder names)
+        {
+            return (names.ToString().Contains(",") || names.ToString().Contains(" and "));
         }
 
         private static bool IsNullOrEmpty(string[] peopleAndBalances)
