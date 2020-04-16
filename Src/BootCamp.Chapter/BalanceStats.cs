@@ -4,6 +4,8 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
+        /// ToDo: refactor most of the functions to remove repetitions.
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
