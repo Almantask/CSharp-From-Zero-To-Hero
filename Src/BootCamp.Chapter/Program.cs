@@ -27,7 +27,7 @@ namespace BootCamp.Chapter1
                    " years old, his weight is " + weight +
                    " kg and his height is " + height + "cm.");
             Console.WriteLine("His BMI is " + bmi);
-
+            //test comment
         }
     }
 }
