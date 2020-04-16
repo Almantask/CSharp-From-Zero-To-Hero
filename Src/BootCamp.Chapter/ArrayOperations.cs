@@ -105,23 +105,5 @@ namespace BootCamp.Chapter
 
             return currentSmallestDecimal;
         }
-
-        public static decimal FindLargestNegativeChange(decimal[] array)
-        {
-            var largestNegativeChange = 0.0m; // We assume that there's no negative change between array elements
-
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                if (array[i] > array [i + 1])
-                {
-                    if (Math.Abs(array[i] - array[i + 1]) > largestNegativeChange)
-                    {
-                        largestNegativeChange = (array[i] - array[i + 1]);
-                    }
-                }
-            }
-
-            return largestNegativeChange;
-        }
     }
 }
