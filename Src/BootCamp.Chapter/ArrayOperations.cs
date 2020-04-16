@@ -91,6 +91,21 @@ namespace BootCamp.Chapter
             return currentHighestDecimal;
         }
 
+        public static decimal FindSmallestDecimalInArray(decimal[] array)
+        {
+            var currentSmallestDecimal = array[0]; // We assume the first value to be the smallest decimal in the array
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (currentSmallestDecimal < array[i])
+                {
+                    currentSmallestDecimal = array[i];
+                }
+            }
+
+            return currentSmallestDecimal;
+        }
+
         public static decimal FindLargestNegativeChange(decimal[] array)
         {
             var largestNegativeChange = 0.0m; // We assume that there's no negative change between array elements
