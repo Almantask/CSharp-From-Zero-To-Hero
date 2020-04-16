@@ -72,7 +72,7 @@ namespace BootCamp.Chapter
         }
 
         /// <summary>
-        /// Takes a decimal array as input and finds the largest value inside it.
+        /// Takes a decimal array as input and returns the largest value inside it.
         /// </summary>
         /// <param name="array">The array that will be iterated through and checked for the largest value.</param>
         /// <returns></returns>
@@ -91,6 +91,11 @@ namespace BootCamp.Chapter
             return currentHighestDecimal;
         }
 
+        /// <summary>
+        /// Takes a decimal array as input and returns the smallest value inside it.
+        /// </summary>
+        /// <param name="array">The array that will be iterated through and checked for the smallest value.</param>
+        /// <returns></returns>
         public static decimal FindSmallestDecimalInArray(decimal[] array)
         {
             var currentSmallestDecimal = array[0]; // We assume the first value to be the smallest decimal in the array

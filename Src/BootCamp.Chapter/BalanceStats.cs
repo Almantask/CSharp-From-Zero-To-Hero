@@ -48,7 +48,6 @@ namespace BootCamp.Chapter
             var firstAccount = peopleAndBalances[0].Split(",");
             var accountOwner = firstAccount[0];
             var balanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(firstAccount);
-            var largestNegativeChange = ArrayOperations.FindLargestNegativeChange(balanceHistory);
 
             return "";
         }
