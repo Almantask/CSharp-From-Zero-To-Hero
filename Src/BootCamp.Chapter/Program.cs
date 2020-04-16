@@ -10,7 +10,7 @@ namespace BootCamp.Chapter1
             float weight = 58.9f;   //in kg
             float height = 167.6f;  //in cm
             string myName = "ComV99";
-            var bmi = weight / ((height * height) / 1000);
+            var bmi = weight / ((height * height) / 10000);
 
             Console.WriteLine(myName + " is " + age +
                    " years old, his weight is " + weight +
@@ -21,7 +21,7 @@ namespace BootCamp.Chapter1
             weight = 12;
             height = 60;
             string otherName = "Todd";
-            bmi = weight / ((height * height) / 1000);
+            bmi = weight / ((height * height) / 10000);
 
             Console.WriteLine(otherName + " is " + age +
                    " years old, his weight is " + weight +
