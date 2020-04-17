@@ -56,7 +56,7 @@ namespace BootCamp.Chapter
                  return 0;
             if (!isNumber)
             {
-                Console.WriteLine($"{intInput} is not a valid number.");
+                Console.WriteLine($"\"{intInput}\" is not a valid number.");
                 return -1;
             }
             
@@ -83,7 +83,7 @@ namespace BootCamp.Chapter
                 return 0;
             if (!isNumber)
             {
-                Console.WriteLine($"{floatInput} is not a valid number.");
+                Console.WriteLine($"\"{floatInput}\" is not a valid number.");
                 return -1;
             }
             return number;
