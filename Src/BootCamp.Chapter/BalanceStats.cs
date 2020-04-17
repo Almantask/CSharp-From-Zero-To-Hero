@@ -4,8 +4,6 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        /// ToDo: refactor most of the functions to remove repetitions.
-
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -14,12 +12,8 @@ namespace BootCamp.Chapter
             if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
 
-            var firstAccount = peopleAndBalances[0].Split(',');
-            var accountOwner = firstAccount[0];
-            var balanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(firstAccount);
-            var highestBalanceEver = ArrayOperations.FindLargestDecimalInArray(balanceHistory); // We assume that the first array/account has the highest balance ever
-
-            var individualsWithHighestBalanceEver = new[] { accountOwner }; // We store the name of the first individual
+            var highestBalanceEver = ProcessFirstAccount(peopleAndBalances, OperationType.FindLargestValue, out string[] names);
+            var individualsWithHighestBalanceEver = names;
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
             {
@@ -32,7 +26,7 @@ namespace BootCamp.Chapter
                 {
                     individualsWithHighestBalanceEver = new[] { currentAccountOwner };
                     highestBalanceEver = currentHighestBalance;
-                } 
+                }
                 else if (currentHighestBalance == highestBalanceEver)
                 {
                     individualsWithHighestBalanceEver = ArrayOperations.AppendString(individualsWithHighestBalanceEver, currentAccount[0]);
@@ -50,17 +44,8 @@ namespace BootCamp.Chapter
             if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
 
-            var firstAccount = peopleAndBalances[0].Split(",");
-            var accountOwner = firstAccount[0];
-            var balanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(firstAccount[1..]);
-            var biggestLoss = 0.0m;
-
-            if (balanceHistory.Length >= 2) // We only want to calculate loss if there are more than 2 transactions in the individual's balance history
-            {
-                biggestLoss = ArrayOperations.FindLargestDecimalInArray(balanceHistory) - ArrayOperations.FindSmallestDecimalInArray(balanceHistory);
-            }
-
-            var individualWithBiggestLoss = new[] { accountOwner };
+            var biggestLoss = ProcessFirstAccount(peopleAndBalances, OperationType.FindBiggestDiscrepancy, out string[] names);
+            var individualWithBiggestLoss = names;
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
             {
@@ -105,12 +90,8 @@ namespace BootCamp.Chapter
             if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
 
-            var firstAccount = peopleAndBalances[0].Split(',');
-            var accountOwner = firstAccount[0];
-            var accountBalance = decimal.TryParse(firstAccount[^1], NumberStyles.Any, CultureInfo.InvariantCulture, out decimal parsed) ? parsed : 0.0m; // No need to parse the whole array, we just need the last element
-            var highestBalance = accountBalance; // We assume that the first array/account holds the richest person
-
-            var richestIndividuals = new[] { accountOwner }; // We store the name of the first individual who is assumed to be the richest
+            var highestBalance = ProcessFirstAccount(peopleAndBalances, OperationType.FindLastValue, out string[] names);
+            var richestIndividuals = names;
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
             {
@@ -134,7 +115,7 @@ namespace BootCamp.Chapter
                 return $"{ArrayOperations.FormatArrayToString(richestIndividuals)} is the richest person. ¤{highestBalance}.";
             }
 
-            return $"{ArrayOperations.FormatArrayToString(richestIndividuals)} are the richest people. ¤{highestBalance}."; 
+            return $"{ArrayOperations.FormatArrayToString(richestIndividuals)} are the richest people. ¤{highestBalance}.";
         }
 
         /// <summary>
@@ -145,14 +126,11 @@ namespace BootCamp.Chapter
             if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
 
-            var firstAccount = peopleAndBalances[0].Split(',');
-            var accountOwner = firstAccount[0];
-            var balanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(firstAccount[^1..]);
-            var lowestBalanceEver = ArrayOperations.FindSmallestDecimalInArray(balanceHistory); // We assume that the first account has the smallest balance ever
-
-            var individualsWithLowestBalance = new[] { accountOwner }; // We store the name of the first individual who is assumed to be the poorest
+            var lowestBalanceEver = ProcessFirstAccount(peopleAndBalances, OperationType.FindSmallestValue, out string[] names);
+            var individualsWithLowestBalance = names;
 
             for (int i = 1; i < peopleAndBalances.Length; i++)
+
             {
                 var currentAccount = peopleAndBalances[i].Split(',');
                 var currentAccountOwner = currentAccount[0];
@@ -182,6 +160,46 @@ namespace BootCamp.Chapter
             }
 
             return $"{ArrayOperations.FormatArrayToString(individualsWithLowestBalance)} have the least money. ¤{lowestBalanceEver}.";
+        }
+
+        /// <summary>
+        /// Process the first element of an inputted string array based on a selected operation type. Returns a decimal and an array of strings.
+        /// </summary>
+        /// <param name="inputArray">The array where the first element should be processed.</param>
+        /// <param name="operationType">The operation type which determines how the passed array will be processed. Available types are: FindLargestValue, FindSmallestValue, FindBiggestDiscrepancy, FindLastValue</param>
+        /// <param name="names">The array of string which will be returned in addition to a decimal.</param>
+        /// <returns></returns>
+        private static decimal ProcessFirstAccount(string[] inputArray, OperationType operationType, out string[] names)
+        {
+            var firstAccount = inputArray[0].Split(',');
+            var accountOwner = firstAccount[0];
+            var balanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(firstAccount[1..]);
+
+            decimal searchedBalance = 0.0m;
+            switch (operationType)
+            {
+                case OperationType.FindLargestValue:
+                    searchedBalance = ArrayOperations.FindLargestDecimalInArray(balanceHistory);
+                    break;
+
+                case OperationType.FindSmallestValue:
+                    searchedBalance = ArrayOperations.FindSmallestDecimalInArray(balanceHistory);
+                    break;
+
+                case OperationType.FindBiggestDiscrepancy:
+                    if (balanceHistory.Length >= 2) // We only want to calculate loss if there are more than 2 transactions in the individual's balance history
+                        searchedBalance = ArrayOperations.FindLargestDecimalInArray(balanceHistory) - ArrayOperations.FindSmallestDecimalInArray(balanceHistory);
+                    else
+                        searchedBalance = 0.0m; // It only makes sense to return a value higher than 0 if there are actual transactions proving that
+                    break;
+
+                case OperationType.FindLastValue:
+                    searchedBalance = balanceHistory[^1];
+                    break;
+            }
+
+            names = new[] { accountOwner };
+            return searchedBalance;
         }
     }
 }

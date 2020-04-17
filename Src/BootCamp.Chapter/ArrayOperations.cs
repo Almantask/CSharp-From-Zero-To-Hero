@@ -111,4 +111,12 @@ namespace BootCamp.Chapter
             return currentSmallestDecimal;
         }
     }
+
+    public enum OperationType
+    {
+        FindLargestValue,
+        FindSmallestValue,
+        FindBiggestDiscrepancy,
+        FindLastValue
+    }
 }
