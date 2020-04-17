@@ -31,17 +31,43 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             Console.WriteLine(message);
-            return Convert.ToInt32(Console.ReadLine());
+            var intInput = Console.ReadLine();
+            bool isNumber = int.TryParse(intInput, out int number);
+
+            if (string.IsNullOrEmpty(intInput))
+                 return 0;
+            if (!isNumber)
+            {
+                Console.WriteLine($"{intInput} is not a valid number.");
+                return -1;
+            }
+            
+            return number;
         }
         public static string PromptString(string message)
         {
             Console.WriteLine(message);
-            return Console.ReadLine();
+            string validateString = Console.ReadLine();
+            if (string.IsNullOrEmpty(validateString))
+            {
+                Console.WriteLine("Name cannot be empty.");
+            }
+            return validateString;
         }
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            return float.Parse(Console.ReadLine());
+            var floatInput = Console.ReadLine();
+            bool isNumber = float.TryParse(floatInput, out float number);
+
+            if (string.IsNullOrEmpty(floatInput))
+                return 0;
+            if (!isNumber)
+            {
+                Console.WriteLine($"{floatInput} is not a valid number.");
+                return -1;
+            }
+            return number;
         }
     }
 }
