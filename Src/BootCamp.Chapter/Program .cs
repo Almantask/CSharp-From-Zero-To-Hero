@@ -8,9 +8,9 @@ namespace BootCamp.Chapter
     class Program
     {
         //test comment
-        static void Main(string[] args)
+        static void Main(string[] _)
         {
-            Lesson3.Demo();
+            Lesson4.Demo();
         }
     }
 }
