@@ -13,19 +13,19 @@ namespace BootCamp.Chapter
         {
             // Put two // in front of the await to comment out Part1And2 once you solved it.
             // Make sure to note down the secret passcode before. You will need it!
-            await Part1And2();
+            //await Part1And2();
             OptionalPart();
         }
 
         // You are not supposed to change anything but "runTests = true" comment here.
         private static void OptionalPart()
         {
-            bool runTests = false;
+            bool runTests = true;
 
             // Uncomment the next line to run your tests only.
             // runTests = true;
 
-            if (runTests)
+            if (!runTests)
             {
                 // Runs your tests.
                 Algorithm.OptionalTestCases();

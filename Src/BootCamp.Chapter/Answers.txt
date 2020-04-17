@@ -1,0 +1,15 @@
+Part 1:
+1) What is my first return value?
+=> Debugger!
+2) What is my second return value?
+=> 51
+3) What is my third return value?
+=> 79
+4) What is my final return value?
+=> 77
+
+Part2:
+Q)What's the passcode?
+=> A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+Q)Type in the 3 words starting with letter 's'
+=> smaller sunrise sunset
