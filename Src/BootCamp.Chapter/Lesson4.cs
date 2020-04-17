@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
             int Age = PromptInt("How old are you?");
             float demoWeight = PromptFloat("How much do you weight in kilo's?");
             float demoHeight = PromptFloat("How tall are you in cm?");
-            float finalBmi = CalculateBmi(DemoHeight, DemoWeight);
+            float finalBmi = CalculateBmi(demoHeight, demoWeight);
 
             Console.WriteLine("-------------------");
             Console.WriteLine(firstName + " " + lastName + " is " + Age + " years old.");
@@ -23,9 +23,27 @@ namespace BootCamp.Chapter
         }
         public static float CalculateBmi(float weight, float height)
         {
+            if (height <= 0 || weight <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
+                if (weight <= 0 && height <= 0)
+                {
+                    Console.WriteLine($"Height cannot be less than zero, but was {height}.");
+                    return -1;
+                }
+                if (height <= 0)
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
+                                
+                return -1;
+            }
+
             var Bmi = weight / height / height;
-            //if needing pounds, use inches instead of cm
-            //var BmiPounds = (Weight / Height / Height) * 703;
             return Bmi;
         }
         public static int PromptInt(string message)
@@ -51,6 +69,7 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(validateString))
             {
                 Console.WriteLine("Name cannot be empty.");
+                return "-";
             }
             return validateString;
         }
