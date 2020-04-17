@@ -47,11 +47,54 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances))
+                return "N/A.";
+
             var firstAccount = peopleAndBalances[0].Split(",");
             var accountOwner = firstAccount[0];
-            var balanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(firstAccount);
+            var balanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(firstAccount[1..]);
+            var biggestLoss = 0.0m;
 
-            return "";
+            if (balanceHistory.Length >= 2) // We only want to calculate loss if there are more than 2 transactions in the individual's balance history
+            {
+                biggestLoss = ArrayOperations.FindLargestDecimalInArray(balanceHistory) - ArrayOperations.FindSmallestDecimalInArray(balanceHistory);
+            }
+
+            var individualWithBiggestLoss = new[] { accountOwner };
+
+            for (int i = 1; i < peopleAndBalances.Length; i++)
+            {
+                var currentAccount = peopleAndBalances[i].Split(',');
+                var currentAccountOwner = currentAccount[0];
+                var currentBalanceHistory = ArrayOperations.ConvertStringArrayToDecimalArray(currentAccount[1..]);
+                var currentBiggestLoss = 0.0m;
+
+                if (currentBalanceHistory.Length >= 2)
+                {
+                    currentBiggestLoss = ArrayOperations.FindLargestDecimalInArray(currentBalanceHistory) - ArrayOperations.FindSmallestDecimalInArray(currentBalanceHistory);
+                }
+                else
+                {
+                    continue;
+                }
+
+                if (currentBiggestLoss > biggestLoss)
+                {
+                    biggestLoss = currentBiggestLoss;
+                    individualWithBiggestLoss = new[] { currentAccountOwner };
+                }
+                else if (currentBiggestLoss == biggestLoss)
+                {
+                    individualWithBiggestLoss = ArrayOperations.AppendString(individualWithBiggestLoss, currentAccountOwner);
+                }
+            }
+
+            if (biggestLoss == 0.0m)
+            {
+                return "N/A.";
+            }
+
+            return $"{ArrayOperations.FormatArrayToString(individualWithBiggestLoss)} lost the most money. -¤{biggestLoss}.";
         }
 
         /// <summary>
