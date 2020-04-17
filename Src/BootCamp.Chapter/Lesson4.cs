@@ -56,7 +56,7 @@ namespace BootCamp.Chapter
                  return 0;
             if (!isNumber)
             {
-                Console.WriteLine($"\"{intInput}\" is not a valid number.");
+                Console.Write($"\"{intInput}\" is not a valid number.");
                 return -1;
             }
             
@@ -68,7 +68,7 @@ namespace BootCamp.Chapter
             string validateString = Console.ReadLine();
             if (string.IsNullOrEmpty(validateString))
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write("Name cannot be empty.");
                 return "-";
             }
             return validateString;
@@ -83,7 +83,7 @@ namespace BootCamp.Chapter
                 return 0;
             if (!isNumber)
             {
-                Console.WriteLine($"\"{floatInput}\" is not a valid number.");
+                Console.Write($"\"{floatInput}\" is not a valid number.");
                 return -1;
             }
             return number;
