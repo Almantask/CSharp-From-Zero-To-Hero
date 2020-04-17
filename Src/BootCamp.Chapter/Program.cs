@@ -9,38 +9,56 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            CalculateBmi(1);
+            Print(1);
 
-            CalculateBmi(2);
+            Print(2);
         }
-        private static void CalculateBmi(int number)
+        private static void Print(int number)
         {
             Console.WriteLine("Person #" + number + ":");
 
             Console.Write("Full Name: ");
-            string name = Console.ReadLine();
-
+            Name();
+            
             Console.Write("Age: ");
-            int age = int.Parse(Console.ReadLine());
+            Age();
 
             Console.Write("Weight (kg): ");
-            float weight = float.Parse(Console.ReadLine());
+            Weight();
 
             Console.Write("Height (cm): ");
-            float height = float.Parse(Console.ReadLine());
+            Height();
 
-            float bmi = weight / (height * height) * 10000;
-
-            Console.WriteLine(name + " is " + age + " years old, his weight is " + weight + " kg, his height is " + height + " and his bmi is " + bmi + ".");
+            Console.WriteLine(Name() + " is " + Age() + " years old, his weight is " + Weight() + " kg, his height is " + Height() + " and his bmi is " + CalculateBmi() + ".");
 
             Console.WriteLine(" ");
 
         }
 
-        static void ConvertToInt(int height) 
-        {
-
-
+        public static float Age() 
+        {           
+            return Convert.ToInt32(Console.ReadLine());
         }
+
+        public static string Name()
+        {           
+            return Convert.ToString(Console.ReadLine());
+        }
+
+        public static float Weight()
+        {            
+            return Convert.ToInt32(Console.ReadLine());
+        }
+
+        public static float Height()
+        {
+            return Convert.ToInt32(Console.ReadLine());
+        }
+        public static float CalculateBmi()
+        {
+            float bmi = Weight() / (Height() * Height()) * 10000;
+            return bmi;
+        }
+
     }
 }

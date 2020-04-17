@@ -16,8 +16,9 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            
+            return Convert.ToInt32(Console.ReadLine());
+          
         }
 
         public static string PromptString(string message)
@@ -34,8 +35,8 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            float bmi = Weight() / (Height() * Height()) * 10000;
+            return bmi;
         }
     }
 }
