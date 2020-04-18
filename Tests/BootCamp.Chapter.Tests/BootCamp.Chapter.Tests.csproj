@@ -40,7 +40,7 @@
     <None Update="Expected\FullDay.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Expected\Kwiki.csv">
+    <None Update="Expected\Kwiki Mart.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Expected\Night.csv">

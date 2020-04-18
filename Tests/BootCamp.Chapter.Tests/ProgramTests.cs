@@ -17,9 +17,19 @@ namespace BootCamp.Chapter.Tests
         [InlineData("nonExisting.csv")]
         public void Main_When_Transactions_File_Empty_Or_Not_Found_Throws_NoTransactionsException(string input)
         {
-            Action action = () => Program.Main(new[] { input });
+            const string cmd = "time";
+
+            Action action = () => Program.Main(new[] { input, cmd, OutputFile });
 
             action.Should().Throw<NoTransactionsFoundException>();
+        }
+
+        [Fact]
+        public void Main_When_Too_Few_Arguments_Throws_InvalidCommandException()
+        {
+            Action action = () => Program.Main(new[] { ValidTransactionsFile });
+
+            action.Should().Throw<InvalidCommandException>();
         }
 
         [Fact]
@@ -27,7 +37,7 @@ namespace BootCamp.Chapter.Tests
         {
             const string cmd = "blablabla";
 
-            Action action = () => Program.Main(new[] { cmd });
+            Action action = () => Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
 
             action.Should().Throw<InvalidCommandException>();
         }
