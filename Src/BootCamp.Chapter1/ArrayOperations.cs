@@ -4,21 +4,18 @@
     {
         public static void Sort(int[] array)
         {
-            if (array != null)
+            if (array != null && array.Length != 0)
             {
-                if (array.Length != 0)
+                int t;
+                for (int i = 0; i < array.Length; i++)
                 {
-                    int t;
-                    for (int i = 0; i < array.Length; i++)
+                    for (int j = i + 1; j < array.Length; j++)
                     {
-                        for (int j = i + 1; j < array.Length; j++)
+                        if (array[j] < array[i])
                         {
-                            if (array[j] < array[i])
-                            {
-                                t = array[i];
-                                array[i] = array[j];
-                                array[j] = t;
-                            }
+                            t = array[i];
+                            array[i] = array[j];
+                            array[j] = t;
                         }
                     }
                 }
@@ -27,34 +24,29 @@
 
         public static void Reverse(int[] array)
         {
-            if(array != null)
+            if (array != null && array.Length != 0)
             {
-                if(array.Length != 0)
+                int t;
+                for (int i = 0; i < array.Length / 2; i++)
                 {
-                    int t;
-                    for (int i = 0; i < array.Length / 2; i++)
-                    {
-                        t = array[i];
-                        array[i] = array[array.Length - i -1];
-                        array[array.Length - i - 1] = t;
-                    }
+                    t = array[i];
+                    array[i] = array[array.Length - i - 1];
+                    array[array.Length - i - 1] = t;
                 }
+
             }
         }
 
         public static int[] RemoveLast(int[] array)
         {
-            if (array != null)
+            if (array != null && array.Length != 0)
             {
-                if (array.Length != 0)
+                int[] updatedArray = new int[array.Length - 1];
+                for (int i = 0; i < array.Length - 1; i++)
                 {
-                    int[] updatedArray = new int[array.Length - 1];
-                    for (int i = 0; i < array.Length - 1; i++)
-                    {
-                        updatedArray[i] = array[i];
-                    }
-                    return updatedArray;
+                    updatedArray[i] = array[i];
                 }
+                return updatedArray;
             }
 
             return array;
@@ -62,31 +54,40 @@
 
         public static int[] RemoveFirst(int[] array)
         {
-            if (array != null)
+            if (array != null && array.Length != 0)
             {
-                if (array.Length != 0)
+                int[] updatedArray = new int[array.Length - 1];
+                for (int i = 0; i < array.Length - 1; i++)
                 {
-                    int[] updatedArray = new int[array.Length - 1];
-                    for (int i = 0; i < array.Length - 1; i++)
-                    {
-                        updatedArray[i] = array[i + 1];
-                    }
-                    return updatedArray;
+                    updatedArray[i] = array[i + 1];
                 }
+                return updatedArray;
             }
 
             return array;
         }
 
-        /// <summary>
-        /// Removes array element at given index.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="index">Index at which array element should be removed.</param>
-        /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
+            if (array != null && array.Length != 0 && index < array.Length && index >= 0)
+            {
+                int[] updatedArray = new int[array.Length - 1];
+                int i = 0;
+                int j = 0;
+                while (i < array.Length)
+                {
+                    if (i != index)
+                    {
+                        updatedArray[j] = array[i];
+                        j++;
+                    }
+
+                    i++;
+                }
+
+                return updatedArray;
+            }
+
             return array;
         }
 
