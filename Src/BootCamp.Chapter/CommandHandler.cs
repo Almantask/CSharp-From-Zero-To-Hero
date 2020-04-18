@@ -9,7 +9,8 @@ namespace BootCamp.Chapter
     {
         private static readonly string[] ValidCommands = new[]
         {
-            "TIME"
+            "TIME",
+            "CITY"
         };
 
         private readonly string[] _commandText;
@@ -40,7 +41,7 @@ namespace BootCamp.Chapter
             return commandText.Length == 2;
         }
 
-        private bool CommandHasArgument() => _commandText.Length == 2;
+        private bool CommandHasArguments() => _commandText.Length >= 2;
 
         internal Action<Stream> ParseCommand()
         {
@@ -51,10 +52,22 @@ namespace BootCamp.Chapter
                 throw new InvalidCommandException();
             }
 
+            if (cmd == "CITY")
+            {
+                var cityArguments = new[] { "CITY", "-MIN", "-MAX", "-MONEY", "-ITEMS" };
+
+                if (_commandText.Intersect(cityArguments).Count() != 3)
+                {
+                    throw new InvalidCommandException();
+                }
+
+                return new CityCommand(_outputFile, _commandText[1], _commandText[2]).ExecuteCommand;
+            }
+
             if (cmd == "TIME")
             {
                 string arg = null; 
-                if (CommandHasArgument())
+                if (CommandHasArguments())
                 {
                     arg = _commandText[1];
                     if(!Regex.IsMatch(arg, @"\d{2}:\d{2}-\d{2}:\d{2}"))
