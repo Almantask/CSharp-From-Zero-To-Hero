@@ -1,4 +1,8 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using System;
+using System.Text;
+using BootCamp.Chapter.Examples.CheckPeopleEquality;
+using BootCamp.Chapter.Examples.CompareFruits;
+using BootCamp.Chapter.Examples.MoneyOperations;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +10,14 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Example1Demo.Run();
+            Console.OutputEncoding = Encoding.UTF8;
+
+            Console.WriteLine("----People---");
+            DemoCheckPeopleEquality.Run();
+            Console.WriteLine("----Money----");
+            DemoAddOrSubstractMoney.Run();
+            Console.WriteLine("----Fruits---");
+            CompareFruitsDemo.Run();
         }
     }
 }
