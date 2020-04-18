@@ -9,7 +9,12 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            int[] result = new int[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                 result[i] = i;
+                
+            }
         }
 
         /// <summary>
