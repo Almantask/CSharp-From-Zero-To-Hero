@@ -57,20 +57,16 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (!IsArrayNullOrEmpty(array))
+            int index;
+            if (array == null)
             {
-                int[] newArray = new int[array.Length - 1];
-
-                for (int i = 0; i < newArray.Length; i++)
-                {
-                    newArray[i] = array[i];
-                }
-                return newArray;
+                index = 0;
             }
             else
             {
-                return array;
+                index = array.Length - 1;
             }
+            return RemoveAt(array, index);
         }
 
         /// <summary>
@@ -79,21 +75,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (!IsArrayNullOrEmpty(array))
-            {
-                int[] newArray = new int[array.Length - 1];
-
-                for (int i = 0; i < newArray.Length; i++)
-                {
-                    newArray[i] = array[i + 1];
-                }
-
-                return newArray;
-            }
-            else
-            {
-                return array;
-            }
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -144,25 +126,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-
-            /*
-            if (IsArrayNullOrEmpty(array))
-            {
-                array = new int[] { number };
-                return array;
-            }
-            else
-            {
-                int[] newArray = new int[array.Length + 1];
-
-                newArray[0] = number;
-                for (int i = 0; i < newArray.Length - 1; i++)
-                {
-                    newArray[i+1] = array[i];
-                }
-                return newArray;
-            }
-            */
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
