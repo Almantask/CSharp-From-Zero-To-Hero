@@ -6,12 +6,14 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string max = "Gavra,Padkin,3/13/1997,Female,Moldova,gpadkin1@marketwatch.com,3550 Hansons Lane";
+            Demo.StartDemo();
+            
+            //string max = "Gavra,Padkin,3/13/1997,Female,Moldova,gpadkin1@marketwatch.com,3550 Hansons Lane";
 
-            if (Person.TryParse(max,out Person person))
-            {
-                Console.WriteLine(person.GetAge());
-            }
+            //if (Person.TryParse(max,out Person person))
+            //{
+            //    Console.WriteLine(person.GetAge());
+            //}
         }
     }
 }
