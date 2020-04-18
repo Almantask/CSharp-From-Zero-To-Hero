@@ -91,16 +91,24 @@
             return array;
         }
 
-        /// <summary>
-        /// Inserts a new array element at the start.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="number">Number to be added.</param>
-        /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array != null && array.Length >= 1)
+            {
+                int[] updatedArray = new int[array.Length + 1];
+                updatedArray[0] = number;
+
+                for (int i = 1; i < updatedArray.Length; i++)
+                {
+                    updatedArray[i] = array[i - 1];
+                    System.Console.WriteLine(updatedArray[i]);
+                }
+
+                return updatedArray;
+            }
+
+            int[] newArray = new int[1] { number };
+            return newArray;
         }
 
         /// <summary>
