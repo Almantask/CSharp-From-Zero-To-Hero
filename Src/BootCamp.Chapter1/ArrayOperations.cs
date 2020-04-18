@@ -101,7 +101,6 @@
                 for (int i = 1; i < updatedArray.Length; i++)
                 {
                     updatedArray[i] = array[i - 1];
-                    System.Console.WriteLine(updatedArray[i]);
                 }
 
                 return updatedArray;
@@ -111,16 +110,24 @@
             return newArray;
         }
 
-        /// <summary>
-        /// Inserts a new array element at the end.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="number">Number to be added.</param>
-        /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
+
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array != null && array.Length >= 1)
+            {
+                int[] updatedArray = new int[array.Length + 1];
+                updatedArray[updatedArray.Length - 1] = number;
+
+                for (int i = updatedArray.Length - 2; i > 0; i--)
+                {
+                    updatedArray[i] = array[i];
+                }
+
+                return updatedArray;
+            }
+
+            int[] newArray = new int[1] { number };
+            return newArray;
         }
 
         /// <summary>
