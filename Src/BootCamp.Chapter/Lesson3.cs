@@ -11,11 +11,8 @@ namespace BootCamp.Chapter
         public static float IsNumber(string input)
         {
             var isEmpty = String.IsNullOrEmpty(input);
-           
             if (isEmpty) return 0f;
             
-            if ((input) == "0") return 0f;
-
             var isNumber = float.TryParse(input, out var result);
             if (!isNumber) 
             {
@@ -27,7 +24,7 @@ namespace BootCamp.Chapter
             return result;
         }
         
-        public static string GetString(string message)
+        public static string PromptString(string message)
         {
             Console.WriteLine(message);
             
@@ -44,7 +41,7 @@ namespace BootCamp.Chapter
             return input;
         }
        
-        public static int GetInt(string message)
+        public static int PromptInt(string message)
         {
             Console.WriteLine(message);
             
@@ -57,7 +54,7 @@ namespace BootCamp.Chapter
             return (result);
         }
        
-        public static float GetFloat(string message)
+        public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
             
@@ -68,16 +65,16 @@ namespace BootCamp.Chapter
             return isFloat;
         }
 
-        public static float Bmi(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             string heightError = ("Height cannot be equal or less than zero, but was " + height);
             string weightError = ("Weight cannot be equal or less than zero, but was " + weight);
             string failedCalc = ("Failed calculating BMI. Reason:");
 
-            bool isW0OrLess = ((weight) <= 0);
-            bool isH0OrLess = ((height) <= 0);
+            bool isWeight0OrLess = ((weight) <= 0);
+            bool isHeight0OrLess = ((height) <= 0);
 
-            if (isH0OrLess && isW0OrLess)
+            if (isHeight0OrLess && isWeight0OrLess)
             {
                 Console.WriteLine(failedCalc);
                 Console.WriteLine(weightError + '.' + Environment.NewLine + "Height cannot be less than zero, but was " + height + '.');
@@ -85,14 +82,14 @@ namespace BootCamp.Chapter
                 return -1f;
             }
 
-            if (isW0OrLess)
+            if (isWeight0OrLess)
             {
                 Console.WriteLine(failedCalc);
                 Console.WriteLine(weightError + '.');
                 return -1f;
             }
 
-            if (isH0OrLess)
+            if (isHeight0OrLess)
             {
                 Console.WriteLine(failedCalc);
                 Console.WriteLine(heightError + '.');
@@ -108,12 +105,12 @@ namespace BootCamp.Chapter
         {
             static void GatherAndPrint(string userNo)
             {
-                string name = GetString("Hello " + userNo + " user! What's your name?");
-                string surname = GetString("Great, and what's your surname?");
-                int age = GetInt("Amazing, and how old are you?");
-                float weight = GetFloat("Cool, and what's your weight?");
-                float height = GetFloat("Groovie, and how tall are you (in meters)?");
-                float bmi = Bmi(weight, height);
+                string name = PromptString("Hello " + userNo + " user! What's your name?");
+                string surname = PromptString("Great, and what's your surname?");
+                int age = PromptInt("Amazing, and how old are you?");
+                float weight = PromptFloat("Cool, and what's your weight?");
+                float height = PromptFloat("Groovie, and how tall are you (in meters)?");
+                float bmi = CalculateBmi(weight, height);
 
                 Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
                 Console.WriteLine("Based on this information, your BMI is " + bmi);
