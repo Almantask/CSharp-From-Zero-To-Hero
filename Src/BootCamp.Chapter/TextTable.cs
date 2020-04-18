@@ -37,37 +37,37 @@ namespace BootCamp.Chapter
             return sbTable.ToString();
         }
 
-        private static void AppendLinesWithContent(string[] inputArray, StringBuilder textTable, int maxLength, int padding)
+        private static void AppendLinesWithContent(string[] inputArray, StringBuilder sbTable, int maxLength, int padding)
         {
             for (int i = 0; i < inputArray.Length; i++)
             {
-                textTable.Append(verticalBorder).Append(String.Empty.PadRight(padding));
-                textTable.Append($"{inputArray[i].PadRight(maxLength)}");
-                textTable.Append(String.Empty.PadRight(padding)).Append(verticalBorder);
-                textTable.Append(Environment.NewLine);
+                sbTable.Append(verticalBorder).Append(String.Empty.PadRight(padding));
+                sbTable.Append($"{inputArray[i].PadRight(maxLength)}");
+                sbTable.Append(String.Empty.PadRight(padding)).Append(verticalBorder);
+                sbTable.Append(Environment.NewLine);
             }
         }
 
-        private static void AppendEmptyLines(StringBuilder textTable, int maxLength, int padding)
+        private static void AppendEmptyLines(StringBuilder sbTable, int maxLength, int padding)
         {
             for (int j = 0; j < padding; j++)
             {
-                textTable.Append(verticalBorder);
-                textTable.Append(String.Empty.PadRight(maxLength + 2 * padding));
-                textTable.Append(verticalBorder);
-                textTable.Append(Environment.NewLine);
+                sbTable.Append(verticalBorder);
+                sbTable.Append(String.Empty.PadRight(maxLength + 2 * padding));
+                sbTable.Append(verticalBorder);
+                sbTable.Append(Environment.NewLine);
             }
         }
 
-        private static void AppendHorizontalBorder(StringBuilder textTable, int width)
+        private static void AppendHorizontalBorder(StringBuilder sbTable, int width)
         {
-            textTable.Append(cornerPiece);
+            sbTable.Append(cornerPiece);
             for (int i = 1; i <= width; i++)
             {
-                textTable.Append(horizontalBorder);
+                sbTable.Append(horizontalBorder);
             }
-            textTable.Append(cornerPiece);
-            textTable.Append(Environment.NewLine);
+            sbTable.Append(cornerPiece);
+            sbTable.Append(Environment.NewLine);
         }
 
         private static int GetMaxLength(string[] inputArray)
