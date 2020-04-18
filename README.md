@@ -14,7 +14,7 @@ All transactions within the shops are known: what, when, where and for how much 
 
 Create a command line program that accepts the following arguments, 
 
-`programname "path/to/input" "command" "path/to/output"`. The "command" format will be specified in the requirements below.
+`programname "path/to/input" "command" "path/to/output"`. The "command" format will be specified in the requirements below (`in parantheses`).
 
 You need to generate the following reports:  
 
@@ -28,10 +28,10 @@ Support getting items sold count and money earned for a selected range of hours 
 2) What city (can be parsed from address) earned the most/least money and what city sold the most/least items? (`city [-min/-max] [-items/-money]`)
 
 --- Extra challenge:
-  
+
 3) Daily money earned for specific shop. (`daily Shop Name`)
 
-4) What items were sold in what shop, at what price and when (file, named after shop). Can get a specific shop as well. (`full`)
+4) What items were sold in what shop, at what price and when (file, named after shop).  (`full`)
 
 Results should be printed to a file in .csv format.
 
