@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter
 {
-    internal class Transaction
+    public class Transaction
     {
         public string ShopName { get; set; }
         public string City { get; set; }
