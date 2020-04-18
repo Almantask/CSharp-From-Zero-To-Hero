@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace BootCamp.Chapter
 {
-    static class AccountProcessor
+    public static class AccountProcessor
     {
         /// <summary>
         /// Process the first element of an inputted string array based on a selected operation type. Returns a decimal and an array of strings.
