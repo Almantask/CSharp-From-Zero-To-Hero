@@ -45,9 +45,9 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             
-            string int1 = Console.ReadLine();
+            string number = Console.ReadLine();
             
-            var isInt = IsNumber(int1);
+            var isInt = IsNumber(number);
             
             int result = Convert.ToInt32(isInt);
             
@@ -58,9 +58,9 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             
-            string float1 = Console.ReadLine();
+            string number = Console.ReadLine();
             
-            var isFloat = IsNumber(float1);
+            var isFloat = IsNumber(number);
            
             return isFloat;
         }
@@ -103,21 +103,25 @@ namespace BootCamp.Chapter
        
         public static void Demo()
         {
-            static void GatherAndPrint(string userNo)
-            {
-                string name = PromptString("Hello " + userNo + " user! What's your name?");
-                string surname = PromptString("Great, and what's your surname?");
-                int age = PromptInt("Amazing, and how old are you?");
-                float weight = PromptFloat("Cool, and what's your weight?");
-                float height = PromptFloat("Groovie, and how tall are you (in meters)?");
-                float bmi = CalculateBmi(weight, height);
+            Process2PersonInfo();
+        }
+        
+        static void ProcessPersonInfo(string userNo)
+        {
+            string name = PromptString("Hello " + userNo + " user! What's your name?");
+            string surname = PromptString("Great, and what's your surname?");
+            int age = PromptInt("Amazing, and how old are you?");
+            float weight = PromptFloat("Cool, and what's your weight?");
+            float height = PromptFloat("Groovie, and how tall are you (in meters)?");
+            float bmi = CalculateBmi(weight, height);
 
-                Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
-                Console.WriteLine("Based on this information, your BMI is " + bmi);
-            }
-
-            GatherAndPrint("first");
-            GatherAndPrint("second");
+            Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
+            Console.WriteLine("Based on this information, your BMI is " + bmi);
+        }
+        static void Process2PersonInfo()
+        {
+            ProcessPersonInfo("first");
+            ProcessPersonInfo("second");
         }
     }
 }
