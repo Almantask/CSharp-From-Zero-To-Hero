@@ -144,6 +144,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
+
+            /*
             if (IsArrayNullOrEmpty(array))
             {
                 array = new int[] { number };
@@ -160,6 +162,7 @@ namespace BootCamp.Chapter1
                 }
                 return newArray;
             }
+            */
         }
 
         /// <summary>
@@ -170,22 +173,16 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (IsArrayNullOrEmpty(array))
+            int index;
+            if (array == null)
             {
-                array = new int[] { number };
-                return array;
+                index = 0;
             }
             else
             {
-                int[] newArray = new int[array.Length + 1];
-
-                newArray[newArray.Length-1] = number;
-                for (int i = 0; i < newArray.Length - 1; i++)
-                {
-                    newArray[i] = array[i];
-                }
-                return newArray;
+                index = array.Length;
             }
+            return InsertAt(array, number, index);
         }
 
         /// <summary>
@@ -200,7 +197,7 @@ namespace BootCamp.Chapter1
             if (!IsArrayNullOrEmpty(array))
             {
                 // Index out of bounds
-                if (index < 0 || index >= array.Length)
+                if (index < 0 || index > array.Length)
                 {
                     return array;
                 }
@@ -208,7 +205,7 @@ namespace BootCamp.Chapter1
                 int[] newArray = new int[array.Length + 1];
                 bool isAdded = false;
 
-                for (int i = 0; i < newArray.Length - 1; i++)
+                for (int i = 0; i < newArray.Length; i++)
                 {
                     if (i == index)
                     {
