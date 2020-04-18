@@ -3,22 +3,64 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BootCamp.Chapter
 {
     internal class TimeCommand
     {
-        private FileInfo _outputFile;
+        private static readonly TimeSpan OneDay = new TimeSpan(24, 0, 0);
 
-        public TimeCommand(FileInfo outputFile)
+        private FileInfo _outputFile;
+        private readonly TimeSpan _beginning;
+        private readonly TimeSpan _end;
+
+        public TimeCommand(FileInfo outputFile, string argument)
         {
             _outputFile = outputFile ?? throw new ArgumentNullException(nameof(outputFile));
+
+            if (argument != null)
+            {
+                var matches = Regex.Matches(argument, @"(\d{2}:\d{2})-(\d{2}:\d{2})");
+                _beginning = TimeSpan.Parse(matches[0].Groups[1].Value);
+                _end = TimeSpan.Parse(matches[0].Groups[2].Value);
+            }
+
+            if (_end == default)
+            {
+                _end = _end.Add(OneDay);
+            }
+
+            if (_beginning > _end)
+            {
+                throw new InvalidCommandException();
+            }
+
+            if (_beginning > OneDay)
+            {
+                throw new InvalidCommandException();
+            }
+
+            if (_end > OneDay)
+            {
+                throw new InvalidCommandException();
+            }
+        }
+
+        internal IEnumerable<Transaction> FilterTimeOfDay(IEnumerable<Transaction> transactions)
+        {
+            if (_beginning == default && _end == default)
+            {
+                return transactions;
+            }
+
+            return transactions.Where(x => _beginning <= x.Time.TimeOfDay && x.Time.TimeOfDay <= _end);
         }
 
         internal void ExecuteCommand(Stream stream)
         {
             var transactionStream = new TransactionStream(stream);
-            var transactions = transactionStream.ReadTransactionUntilEnd().ToArray();
+            var transactions = FilterTimeOfDay(transactionStream.ReadTransactionUntilEnd()).ToArray();
 
             var transactionsByHours = transactions.ToLookup(x => x.Time.Hour);
             var earningsByHour = GetEarningsByHour(transactions);
@@ -50,10 +92,15 @@ namespace BootCamp.Chapter
             outputText.Write($"Rush hour: {rushHour:00}");
         }
 
-        private static IDictionary<int, IList<decimal>> GetEarningsByHour(IEnumerable<Transaction> transactions)
+        private IDictionary<int, IList<decimal>> GetEarningsByHour(IEnumerable<Transaction> transactions)
         {
+            var beginningHour = (int)_beginning.TotalHours;
+            var endHour = (int)_end.TotalHours;
+
             var earningsByHour = new Dictionary<int, IList<decimal>>(
-                Enumerable.Range(0, 24).Select(x => new KeyValuePair<int, IList<decimal>>(x, new List<decimal>()))
+                Enumerable.Range(beginningHour, endHour - beginningHour)
+                    .Select(x => new KeyValuePair<int, IList<decimal>>(x, new List<decimal>())
+                )
             );
 
            var transactionsByDay = transactions.GroupBy(x => x.Time.Date);

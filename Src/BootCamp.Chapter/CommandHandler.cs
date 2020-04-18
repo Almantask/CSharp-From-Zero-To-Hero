@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BootCamp.Chapter
 {
@@ -39,6 +40,8 @@ namespace BootCamp.Chapter
             return commandText.Length == 2;
         }
 
+        private bool CommandHasArgument() => _commandText.Length == 2;
+
         internal Action<Stream> ParseCommand()
         {
             string cmd = _commandText[0];
@@ -50,7 +53,17 @@ namespace BootCamp.Chapter
 
             if (cmd == "TIME")
             {
-                return new TimeCommand(_outputFile).ExecuteCommand;
+                string arg = null; 
+                if (CommandHasArgument())
+                {
+                    arg = _commandText[1];
+                    if(!Regex.IsMatch(arg, @"\d{2}:\d{2}-\d{2}:\d{2}"))
+                    {
+                        throw new InvalidCommandException();
+                    }
+                } 
+
+                return new TimeCommand(_outputFile, arg).ExecuteCommand;
             }
 
             return null;
