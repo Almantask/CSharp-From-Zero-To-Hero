@@ -1,16 +1,15 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // Print each of the statistical output using Text Table with padding 3:
-            // - FindHighestBalanceEver
-            // - FindPersonWithBiggestLoss
-            // - FindRichestPerson
-            // - FindMostPoorPerson
-
-            BalanceStats.FindPersonWithBiggestLoss(new[] { "Tom, 1, 0" });
+            Console.Write(TextTable.Build(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances), 3));
+            Console.Write(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances), 3));
+            Console.Write(TextTable.Build(BalanceStats.FindRichestPerson(PeoplesBalances.Balances), 3));
+            Console.Write(TextTable.Build(BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances), 3));
         }
     }
 }
