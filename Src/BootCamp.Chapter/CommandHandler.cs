@@ -10,10 +10,11 @@ namespace BootCamp.Chapter
         private static readonly string[] ValidCommands = new[]
         {
             "TIME",
-            "CITY"
+            "CITY", 
+            "DAILY"
         };
 
-        private readonly string[] _commandText;
+        private readonly CommandArgument[] _commandText;
         private readonly FileInfo _outputFile;
 
         public CommandHandler(string[] commandText)
@@ -33,7 +34,7 @@ namespace BootCamp.Chapter
                 _outputFile = new FileInfo(commandText[1]);
             }
 
-            _commandText = commandText[0].ToUpperInvariant().Split(' ');
+            _commandText = commandText[0].Split(' ').Select(x => new CommandArgument(x)).ToArray();
         }
 
         private static bool OutputFileArgumentProvided(string[] commandText)
@@ -45,7 +46,7 @@ namespace BootCamp.Chapter
 
         internal Action<Stream> ParseCommand()
         {
-            string cmd = _commandText[0];
+            var cmd = _commandText[0].NormalizedArgument;
 
             if (!ValidCommands.Contains(cmd))
             {
@@ -56,27 +57,41 @@ namespace BootCamp.Chapter
             {
                 var cityArguments = new[] { "CITY", "-MIN", "-MAX", "-MONEY", "-ITEMS" };
 
-                if (_commandText.Intersect(cityArguments).Count() != 3)
+                if (_commandText.Select(x => x.NormalizedArgument).Intersect(cityArguments).Count() != 3)
                 {
-                    throw new InvalidCommandException();
+                    throw new InvalidCommandException(); 
                 }
 
-                return new CityCommand(_outputFile, _commandText[1], _commandText[2]).ExecuteCommand;
+                var command = new CityCommand(_outputFile, _commandText[1].NormalizedArgument, _commandText[2].NormalizedArgument);
+                return command.ExecuteCommand;
             }
 
             if (cmd == "TIME")
             {
-                string arg = null; 
+                CommandArgument arg = null; 
                 if (CommandHasArguments())
                 {
                     arg = _commandText[1];
-                    if(!Regex.IsMatch(arg, @"\d{2}:\d{2}-\d{2}:\d{2}"))
+                    if(!Regex.IsMatch(arg.Argument, @"\d{2}:\d{2}-\d{2}:\d{2}"))
                     {
                         throw new InvalidCommandException();
                     }
                 } 
 
                 return new TimeCommand(_outputFile, arg).ExecuteCommand;
+            }
+
+            if (cmd == "DAILY")
+            {
+                if (!CommandHasArguments())
+                {
+                    throw new InvalidCommandException();
+                }
+
+                var shopName = string.Join(" ", _commandText[1..].Select(x => x.Argument));
+
+                return new DailyCommand(_outputFile, shopName).ExecuteCommand;
+                //var arg = new CommandArgument(_commandText[1])
             }
 
             return null;

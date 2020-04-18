@@ -15,13 +15,13 @@ namespace BootCamp.Chapter
         private readonly TimeSpan _beginning;
         private readonly TimeSpan _end;
 
-        public TimeCommand(FileInfo outputFile, string argument)
+        public TimeCommand(FileInfo outputFile, CommandArgument argument)
         {
             _outputFile = outputFile ?? throw new ArgumentNullException(nameof(outputFile));
 
             if (argument != null)
             {
-                var matches = Regex.Matches(argument, @"(\d{2}:\d{2})-(\d{2}:\d{2})");
+                var matches = Regex.Matches(argument.Argument, @"(\d{2}:\d{2})-(\d{2}:\d{2})");
                 _beginning = TimeSpan.Parse(matches[0].Groups[1].Value);
                 _end = TimeSpan.Parse(matches[0].Groups[2].Value);
             }
@@ -89,7 +89,7 @@ namespace BootCamp.Chapter
 
             var rushHour = reportLines.OrderByDescending(x => x.Earned).First().Hour;
 
-            outputText.Write($"Rush hour: {rushHour:00}");
+            outputText.WriteLine($"Rush hour: {rushHour:00}");
         }
 
         private IDictionary<int, IList<decimal>> GetEarningsByHour(IEnumerable<Transaction> transactions)
