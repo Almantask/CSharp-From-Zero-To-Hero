@@ -6,6 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello World!");
+
             // name, surname, age, weight, height input
             Console.Write("Please input first name: ");
             string name = Console.ReadLine();
@@ -19,12 +21,16 @@ namespace BootCamp.Chapter
             float heightInCm = float.Parse(Console.ReadLine());
 
             // result write line
-            Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weightInKg + " kg and his height is " + heightInCm + " cm.");
+            Console.Write(name + " " + surname + " is " + age + " years old," );
+            Console.WriteLine(" his weight is " + weightInKg + " kg and his height is " + heightInCm + " cm.");
 
-            //BMI (body-mass index) calculator , height needs to be in m not cm so divided by 100
-            float bmi = weightInKg / (heightInCm/100 * heightInCm/100);
+            // convert cm to m for BMI
+            float heightInM = heightInCm/100;
+
+            //BMI (body-mass index) calculator
+            float bmi = weightInKg / (heightInM * heightInM);
             
-           Console.WriteLine(name + "'s body-mass index (BMI) is " + bmi);
+            Console.WriteLine(name + "'s body-mass index (BMI) is " + bmi);
 
 
         }
