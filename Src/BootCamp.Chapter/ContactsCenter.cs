@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 
 namespace BootCamp.Chapter
 {
@@ -10,7 +10,30 @@ namespace BootCamp.Chapter
 
         public ContactsCenter(string peopleFile)
         {
-            // load people
+            _people = new List<Person>();
+            if (string.IsNullOrWhiteSpace(peopleFile) || !File.Exists(peopleFile))
+            {
+                throw new Exception($"The {nameof(peopleFile)} you gave does not exist.");
+            }
+            else
+            {
+                LoadPeople(peopleFile);
+            }
+        }
+
+        private void LoadPeople(string peopleFile)
+        {
+            //TODO LoadPoeple
+            string[] peoples = File.ReadAllText(peopleFile).Split(Environment.NewLine);
+
+            foreach (string personLine in peoples)
+            {
+                if (Person.TryParse(personLine, out Person person))
+                {
+                    _people.Add(person);
+                }
+
+            }
         }
 
         /// <summary>

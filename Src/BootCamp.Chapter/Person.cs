@@ -6,6 +6,8 @@ namespace BootCamp.Chapter
     public class Person
     {
         private const int numberOfFields = 7;
+        private const string header = "name,sureName,birthday,gender,country,email,streetAddress";
+
 
         public string FirstName { get; }
         public string SurName { get; }
@@ -53,7 +55,7 @@ namespace BootCamp.Chapter
         {
             person = default;
 
-            if (String.IsNullOrWhiteSpace(input))
+            if (String.IsNullOrWhiteSpace(input) || input == header)
             {
                 return false;
             }
@@ -93,6 +95,11 @@ namespace BootCamp.Chapter
             }
 
             return true;
+        }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {SurName} Born on {Birthday} Is a {Gender} Lives in {Country} adres is {StreetAddress} to get in contact with use {Email}.";
         }
     }
 }

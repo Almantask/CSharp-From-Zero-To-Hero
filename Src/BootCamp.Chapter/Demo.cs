@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
-    
+
     public class Demo
     {
         //TODO mo this using events-based user input.
@@ -16,6 +14,7 @@ namespace BootCamp.Chapter
         //d) Application closed
         Dictionary<string, ConsoleKey> consoleOptions = new Dictionary<string, ConsoleKey>();
         public event LogEventHandler logger;
+        private ContactsCenter center;
 
         public Demo()
         {
@@ -77,24 +76,50 @@ namespace BootCamp.Chapter
         {
             Console.Clear();
             logger(this, new LoggerArgs { Message = "Demo Started" });
+            center = new ContactsCenter(@"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\MOCK_DATA.csv");
             Console.ReadKey();
         }
         public void APressed()
         {
             Console.Clear();
             logger(this, new LoggerArgs { Message = "Demo A" });
+
+            List<Person> persons = center.Filter(PeoplePredicates.IsA);
+
+            foreach (Person p in persons)
+            {
+                p.ToString();
+            }
+
             Console.ReadKey();
         }
         public void BPressed()
         {
             Console.Clear();
+
             logger(this, new LoggerArgs { Message = "Demo B" });
+
+            List<Person> persons = center.Filter(PeoplePredicates.IsB);
+
+            foreach (Person p in persons)
+            {
+                p.ToString();
+            }
+
             Console.ReadKey();
         }
         public void CPressed()
         {
             Console.Clear();
             logger(this, new LoggerArgs { Message = "Demo C" });
+
+            List<Person> persons = center.Filter(PeoplePredicates.IsB);
+
+            foreach (Person p in persons)
+            {
+                p.ToString();
+            }
+
             Console.ReadKey();
         }
         public void EscapePressed()
