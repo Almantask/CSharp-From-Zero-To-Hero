@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
             Console.Write("Please input last name: ");
             var surname = Console.ReadLine();
             Console.Write("Please input age: ");
-            float age = float.Parse(Console.ReadLine());
+            int age = int.Parse(Console.ReadLine());
             Console.Write("Please input weight: ");
             float weight = float.Parse(Console.ReadLine());
             Console.Write("Please input height: ");
