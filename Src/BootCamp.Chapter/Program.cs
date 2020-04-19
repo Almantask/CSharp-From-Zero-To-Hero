@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -12,19 +11,21 @@ namespace BootCamp.Chapter
             var message2 =
                 "Frase. Frase é todo enunciado de sentido completo, podendo ser formada por uma só palavra ou por várias, podendo ter verbos ou não.";
 
-            var encrypted = CaesarCipher.Encrypt(message, 10);
-            var decrypted = CaesarCipher.Decrypt(encrypted, 10);
+            PrintEncDec(message, 230);
+            PrintEncDec(message2, 10);
+            
+        }
+
+        private static void PrintEncDec(string message, byte shift)
+        {
+            var encrypted = CaesarCipher.Encrypt(message, shift);
+            var decrypted = CaesarCipher.Decrypt(encrypted, shift);
+            Console.WriteLine("ENCRYPTED");
             Console.WriteLine(encrypted);
             Console.WriteLine("-----------------------------------");
+            Console.WriteLine("DECRYPTED");
             Console.WriteLine(decrypted);
             Console.WriteLine("==============================================================================");
-            
-            var encrypted2 = CaesarCipher.Encrypt(message2, 230);
-            var decrypted2 = CaesarCipher.Decrypt(encrypted2, 230);
-            Console.WriteLine(encrypted2);
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine(decrypted2);
-            
         }
     }
 }
