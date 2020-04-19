@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public static class ArrowMovement
     {
@@ -18,7 +14,14 @@ namespace BootCamp.Chapter
         /// <returns>One of the arrow characters. '↥' by default.</returns>
         public static char GetIndicator(char symbol)
         {
-            return '-';
+            return char.ToLower(symbol) switch
+            {
+                'w' => '↥',
+                'a' => '↤',
+                's' => '↧',
+                'd' => '↦',
+                _ => '↥'
+            };
         }
     }
 }
