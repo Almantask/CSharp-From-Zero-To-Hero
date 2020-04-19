@@ -13,10 +13,21 @@
             {
                 return;
             }
+
+            int temp;
             int[] result = new int[array.Length];
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                 result[i] = i;
+                for (int i2 = i + 1; i2 < array.Length; i2++)
+                {
+                    if (array[i2] < array[i])
+                    {
+                        temp = array[i];
+                        array[i] = array[i2];
+                        array[i2] = temp;
+                    }
+                }
+                //result[i] = i;
                 
             }
         }
