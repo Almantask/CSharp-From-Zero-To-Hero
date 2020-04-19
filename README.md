@@ -6,6 +6,9 @@ Nearly every single program needs variables.
 A variable has a name, type and value. They are used to carry some small state (value) throughout the program.
 The whole point of variables is to be consumed.
 We consume variables by passing them into functions.
+#### Finding missing pieces (Console)
+Often, lesson won't cover 100% of material needed for finishing homework. But this is a representation of real life, where you constantly have to get the missing pieces (most likely through googling). The missing pieces in this homework are:
+```Console.ReadLine`` and ```int.Parse`` or ``double.Parse``. 
 #### Visual Studio
 IDE is an environment where all the programming is done. 
 It offers all the needed tools: 
