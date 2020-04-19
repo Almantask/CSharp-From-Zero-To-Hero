@@ -17,6 +17,25 @@ It's all  done through unit tests.
 For now, you won't have to write tests, but you will have to pass them to see if your code works.
 So pay attention to what tests are red and fix them.
 ### Task
+#### Code
+1) Fork https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter1/Homework/3
+2) Take homework 2 code, place it in the forked branch and refactor it using functions. There should be as little duplicate code as possible (there should be functions for:
+- Calculating BMI (weight comes in kg, height comes in meters),
+- Prompt for input and converting it to int (print message for request, read console input and return converted input to int), 
+- Prompt for input and converting it to string (print message for request, read console input and return input),
+- Prompt for input and converting it to float (print message for request, read console input and return converted input to float).
+3) Put all the function you made into the right places in Checks.cs class. Run tests, make sure you pass all the tests
+4) Put all program.cs logic to Lesson3.cs. Call it from main function. Program class should look like this:
+```
+public class Program
+{
+  static void Main(string[] args)
+  {
+    Lesson3.Demo();
+  }
+} 
+```
+#### Guide
 1) Open the Homework 3:
   * Choose the Chapter1/Homework/3 branch in the bottom right.
     * If it is not there already:
