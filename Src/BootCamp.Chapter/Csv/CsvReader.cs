@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BootCamp.Chapter.Csv
 {
-    public class CsvReader : CsvModel
+    public class CsvReader : CsvBase
     {
         public CsvReader(string filePath) : base(filePath)
         {

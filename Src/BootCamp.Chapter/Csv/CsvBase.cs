@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BootCamp.Chapter.Csv
 {
-    public class CsvModel
+    public class CsvBase
     {
         protected string FilePath { get; set; }
         protected CsvDelimiter Delimiter { get; set; }
@@ -13,7 +13,7 @@ namespace BootCamp.Chapter.Csv
         protected CsvRow Header { get; set; } = new CsvRow();
         protected List<CsvRow> Rows { get; set; } = new List<CsvRow>();
 
-        public CsvModel(string filePath)
+        public CsvBase(string filePath)
         {
             FilePath = filePath ?? throw new ArgumentNullException($"filePath cannot be null");
 
@@ -23,7 +23,7 @@ namespace BootCamp.Chapter.Csv
             }
         }
 
-        public CsvModel(string filePath, CsvDelimiter delimiter, bool hasHeader)
+        public CsvBase(string filePath, CsvDelimiter delimiter, bool hasHeader)
         {
             FilePath = filePath ?? throw new ArgumentNullException($"filePath cannot be null");
 
