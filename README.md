@@ -41,6 +41,14 @@ You will be learning all of the above throughout this homework.
   * Check the bc-announcements channel for related stuff.
 
 ### Task
+#### Code
+Read name, surename, age, weight (in kg) and height (in cm) from console.  
+1) Print all the info based on the example message below:  
+```Tom Jefferson is 19 years old, his weight is 50 kg and his height is 156.5 cm.```
+
+2) Calculate and print body-mass index (BMI)  
+3) Do 1 and 2 for another person.
+#### Github
 * Fork https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter1/Homework/1And2
   * Open the link.
   * Click the fork button in the upper right.
