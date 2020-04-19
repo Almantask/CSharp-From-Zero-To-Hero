@@ -7,12 +7,7 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!");
 
-            //TODO: Finish Later
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!"); 
-            Console.WriteLine("Hello World!");
         }
     }
 }
