@@ -6,7 +6,7 @@ using System.Text;
 namespace BootCamp.Chapter
 {
     
-    public static class Demo
+    public class Demo
     {
         //TODO mo this using events-based user input.
         //Display controls, handle input presses for for the following events:
@@ -14,20 +14,25 @@ namespace BootCamp.Chapter
         //b) Example selected(from 2) a, b, c)
         //c) DemoEnded
         //d) Application closed
-        public static void StartDemo()
+        Dictionary<string, ConsoleKey> consoleOptions = new Dictionary<string, ConsoleKey>();
+        public event LogEventHandler logger;
+
+        public Demo()
         {
-            Dictionary<string, ConsoleKey> consoleOptions = new Dictionary<string, ConsoleKey>();
             consoleOptions.Add("Start", ConsoleKey.Enter);
             consoleOptions.Add("A", ConsoleKey.A);
             consoleOptions.Add("B", ConsoleKey.B);
             consoleOptions.Add("C", ConsoleKey.C);
             consoleOptions.Add("Close", ConsoleKey.Escape);
-
+        }
+        public void StartDemo()
+        {
+            logger(this, new LoggerArgs { Message = "Demo Started" });
             MainMenu(consoleOptions);
             ReadKeys(consoleOptions);
         }
 
-        private static void MainMenu(Dictionary<string, ConsoleKey> consoleOptions)
+        private void MainMenu(Dictionary<string, ConsoleKey> consoleOptions)
         {
 
             Console.Clear();
@@ -37,7 +42,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static void ReadKeys(Dictionary<string, ConsoleKey> consoleOptions)
+        private void ReadKeys(Dictionary<string, ConsoleKey> consoleOptions)
         {
             ConsoleKeyInfo key = new ConsoleKeyInfo();
 
@@ -68,34 +73,34 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static void StartPressed()
+        public void StartPressed()
         {
             Console.Clear();
-            Console.WriteLine("Enter");
+            logger(this, new LoggerArgs { Message = "Demo Started" });
             Console.ReadKey();
         }
-        public static void APressed()
+        public void APressed()
         {
             Console.Clear();
-            Console.WriteLine("A");
+            logger(this, new LoggerArgs { Message = "Demo A" });
             Console.ReadKey();
         }
-        public static void BPressed()
+        public void BPressed()
         {
             Console.Clear();
-            Console.WriteLine("B");
+            logger(this, new LoggerArgs { Message = "Demo B" });
             Console.ReadKey();
         }
-        public static void CPressed()
+        public void CPressed()
         {
             Console.Clear();
-            Console.WriteLine("C");
+            logger(this, new LoggerArgs { Message = "Demo C" });
             Console.ReadKey();
         }
-        public static void EscapePressed()
+        public void EscapePressed()
         {
             Console.Clear();
-            Console.WriteLine("Escape");
+            logger(this, new LoggerArgs { Message = "Demo Exit" });
             Console.ReadKey();
             Environment.Exit(0);
         }
