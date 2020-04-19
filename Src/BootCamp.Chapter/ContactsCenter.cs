@@ -23,7 +23,6 @@ namespace BootCamp.Chapter
 
         private void LoadPeople(string peopleFile)
         {
-            //TODO LoadPoeple
             string[] peoples = File.ReadAllText(peopleFile).Split(Environment.NewLine);
 
             if (peoples.Length == 1)

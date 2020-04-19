@@ -11,11 +11,12 @@ namespace BootCamp.Chapter
         public Logger(Demo demo)
         {
             Demo = demo;
-            Demo.logger += (object sender, LoggerArgs args) =>
+            Demo.logEventHandler += (object sender, LoggerArgs args) =>
             {
                 LogToConsole(args.Message);
             };
         }
+
         public void LogToConsole(string message)
         {
             Console.WriteLine(message);
