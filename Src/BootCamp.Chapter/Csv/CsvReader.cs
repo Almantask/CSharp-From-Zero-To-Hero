@@ -16,7 +16,7 @@ namespace BootCamp.Chapter.Csv
         {
         }
 
-        public List<CsvRow> ReadFile()
+        public IEnumerable<CsvRow> ReadAllRows()
         {
             var rows = new List<CsvRow>();
 
@@ -40,6 +40,11 @@ namespace BootCamp.Chapter.Csv
                     var row = new CsvRow(line.Split((char)Delimiter));
                     rows.Add(row);
                 }
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"{ex.FileName} was not found");
+                throw;
             }
             finally
             {
