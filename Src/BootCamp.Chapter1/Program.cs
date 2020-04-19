@@ -1,9 +1,12 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     class Program
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
