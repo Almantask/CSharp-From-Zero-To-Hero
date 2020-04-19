@@ -6,38 +6,43 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string name1 = ("Tom Jefferson");
-            int age1 = 19;
-            double weight1 = 50;
-            double height1 = 156.5;
+            Console.WriteLine("Hi, welcome to my BMI calculator can you start by telling me your name?");
+            string name1 = Console.ReadLine();
+
+            Console.WriteLine("Hi" + " " + name1 + ", " + "Can you tell me your age please?");
+            int age1 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Great you are " + age1 + " years old, now can you tell me your weight in kg please?");
+            double weight1 = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("And lastly, Can you tell me your height in cm please?");
+            double height1 = double.Parse(Console.ReadLine());
+
             double height1Meters = height1 / 100;
             double height1MetersSquared = height1Meters * height1Meters;
-            double bmiTom = weight1 / height1MetersSquared;
+            double bmi1 = weight1 / height1MetersSquared;
 
-            Console.WriteLine(name1 + " " + "is" + " " + age1 + " " + "years old" + "," + " " + "he weighs" +  " " + weight1 + "kg and is" + " " + height1 + "cm" + " " + "tall");
-            Console.WriteLine("Meaning he has a BMI of" + " " + bmiTom);
-            Console.WriteLine("Let's see what your BMI is by entering in your details below");
+            Console.WriteLine("Ok, based on the information you have provided your BMI is" + " " + bmi1);
 
-            Console.WriteLine("What is your name?");
-            string name = Console.ReadLine();
+            Console.WriteLine("Now can I please ask the second person the same questions to determine their BMI?");
 
-            Console.WriteLine("How old are you?");
-            var age = Console.ReadLine();
-            int ageNumber = Convert.ToInt32(age);
+            Console.WriteLine("Hi, welcome to my BMI calculator can you start by telling me your name?");
+            string name2 = Console.ReadLine();
 
-            Console.WriteLine("How much do you weigh in kg?");
-            var weight = Console.ReadLine();
-            double weightKg = Convert.ToDouble(weight);
+            Console.WriteLine("Hi" + " " + name2 + ", " + "Can you tell me your age please?");
+            int age2 = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("How tall are you in cm?");
-            var height = Console.ReadLine();
-            double heightcm = Convert.ToDouble(height);
+            Console.WriteLine("Great you are " + age2 + " years old, now can you tell me your weight in kg please?");
+            double weight2 = double.Parse(Console.ReadLine());
 
-            double heightMeters = heightcm / 100.0;
-            double heightMetersSquared = heightMeters * heightMeters;
-            double bmi = weightKg / heightMetersSquared;
+            Console.WriteLine("And lastly, Can you tell me your height in cm please?");
+            double height2 = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Thank you for using my BMI calculator," + " " + name + " " + "your BMI is" + " " + bmi);
+            double height2Meters = height2 / 100;
+            double height2MetersSquared = height2Meters * height2Meters;
+            double bmi2 = weight2 / height2MetersSquared;
+
+            Console.WriteLine("Ok, based on the information you have provided your BMI is" + " " + bmi2);
         }
     }
 }
