@@ -7,11 +7,11 @@ namespace BootCamp.Chapter.Csv
 {
     public class CsvBase
     {
+        public CsvRow Header { get; protected set; } = new CsvRow();
+
         protected string FilePath { get; set; }
         protected CsvDelimiter Delimiter { get; set; }
         protected bool HasHeader { get; set; }
-        protected CsvRow Header { get; set; } = new CsvRow();
-        protected List<CsvRow> Rows { get; set; } = new List<CsvRow>();
 
         public CsvBase(string filePath)
         {
@@ -25,8 +25,33 @@ namespace BootCamp.Chapter.Csv
                 throw new ArgumentException("filePath cannot be null or empty");
             }
 
+            FilePath = filePath;
             Delimiter = delimiter;
             HasHeader = hasHeader;
+        }
+
+        protected string BuildCsvRow(CsvRow csvRow)
+        {
+            var builder = new StringBuilder();
+
+            var firstColumn = true;
+
+            foreach (var value in csvRow)
+            {
+                if (value != null)
+                {
+                    if (!firstColumn)
+                    {
+                        builder.Append(Delimiter);
+                    }
+
+                    builder.Append(value);
+
+                    firstColumn = false;
+                }
+            }
+
+            return builder.ToString();
         }
     }
 }
