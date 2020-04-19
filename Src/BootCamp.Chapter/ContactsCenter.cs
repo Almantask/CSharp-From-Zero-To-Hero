@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
             _people = new List<Person>();
             if (string.IsNullOrWhiteSpace(peopleFile) || !File.Exists(peopleFile))
             {
-                throw new Exception($"The {nameof(peopleFile)} you gave does not exist.");
+                throw new FileNotFoundException($"The {nameof(peopleFile)} you gave does not exist.");
             }
             else
             {
@@ -25,6 +25,11 @@ namespace BootCamp.Chapter
         {
             //TODO LoadPoeple
             string[] peoples = File.ReadAllText(peopleFile).Split(Environment.NewLine);
+
+            if (peoples.Length == 1)
+            {
+                throw new Exception($"{peopleFile} was Empty");
+            }
 
             foreach (string personLine in peoples)
             {
