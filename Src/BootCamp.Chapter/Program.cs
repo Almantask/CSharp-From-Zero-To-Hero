@@ -53,8 +53,6 @@ namespace BootCamp.Chapter
             bmi = weightkg / (meter * meter);
             bmi2 = weightkg2 / (meter * meter);
 
-            Console.WriteLine(meter);
-            Console.WriteLine(meter2);
             Console.WriteLine("Output:");
             Console.WriteLine(name + " " + surname + " is " + age + " years old, " + "his weight is " + weightkg + " kg " + "and his height is " + heightcm + " cm.");
             Console.WriteLine("BMI: " + bmi);
