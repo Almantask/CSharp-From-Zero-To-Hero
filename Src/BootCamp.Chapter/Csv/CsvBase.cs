@@ -16,11 +16,6 @@ namespace BootCamp.Chapter.Csv
         public CsvBase(string filePath)
         {
             FilePath = filePath;
-
-            if (!File.Exists(FilePath))
-            {
-                throw new FileNotFoundException(filePath);
-            }
         }
 
         public CsvBase(string filePath, CsvDelimiter delimiter, bool hasHeader)
@@ -28,11 +23,6 @@ namespace BootCamp.Chapter.Csv
             if (!filePath.IsValid())
             {
                 throw new ArgumentException("filePath cannot be null or empty");
-            }
-
-            if (!File.Exists(FilePath))
-            {
-                throw new FileNotFoundException(filePath);
             }
 
             Delimiter = delimiter;
