@@ -130,40 +130,38 @@
             return newArray;
         }
 
-        /// <summary>
-        /// Inserts a new array element at the specified index.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="number">Number to be added.</param>
-        /// <param name="index">Index at which array element should be added.</param>
-        /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array != null && array.Length != 0 && index < array.Length && index >= 0)
+            if (array == null)
             {
-                int[] updatedArray = new int[array.Length + 1];
-                int i = 0;
-                int j = 0;
-                while (i < updatedArray.Length)
-                {
-                    if (i != index)
-                    {
-                        updatedArray[j] = array[i];
-                    }
-                    else
-                    {
-                        updatedArray[j] = number;
-                        i++;
-                    }
-                    i++;
-                    j++;
-                }
-
-                return updatedArray;
+                int[] newArray = new int[1] { number };
+                return newArray;
+            }
+            if (index < 0 || index > array.Length)
+            {
+                return new int[0];
             }
 
-            int[] newArray = new int[1] { number };
-            return newArray;
+            int[] updatedArray = new int[array.Length + 1];
+            int i = 0;
+            int j = 0;
+            while (j < updatedArray.Length)
+            {
+                if (i != index)
+                {
+                    updatedArray[j] = array[i];
+                }
+                else
+                {
+                    updatedArray[j] = number;
+                    j++;
+                }
+                i++;
+                j++;
+            }
+
+            return updatedArray;
+
         }
     }
 }
