@@ -6,7 +6,17 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            //Can this method work for both Tom Jefferson and the second person?
+            string name1 = ("Tom Jefferson");
+            int age1 = 19;
+            double weight1 = 50;
+            double height1 = 156.5;
+            double height1Meters = height1 / 100;
+            double height1MetersSquared = height1Meters * height1Meters;
+            double bmiTom = weight1 / height1MetersSquared;
+
+            Console.WriteLine(name1 + " " + "is" + " " + age1 + " " + "years old" + "," + " " + "he weighs" +  " " + weight1 + "kg and is" + " " + height1 + "cm" + " " + "tall");
+            Console.WriteLine("Meaning he has a BMI of" + " " + bmiTom);
+            Console.WriteLine("Let's see what your BMI is by entering in your details below");
 
             Console.WriteLine("What is your name?");
             string name = Console.ReadLine();
@@ -27,7 +37,7 @@ namespace BootCamp.Chapter
             double heightMetersSquared = heightMeters * heightMeters;
             double bmi = weightKg / heightMetersSquared;
 
-            Console.WriteLine("Thank you for using my BMI calculator," + " " + (name) + " " + "your BMI is" + " " + (bmi));
+            Console.WriteLine("Thank you for using my BMI calculator," + " " + name + " " + "your BMI is" + " " + bmi);
         }
     }
 }
