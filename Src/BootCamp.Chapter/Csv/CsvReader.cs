@@ -30,11 +30,13 @@ namespace BootCamp.Chapter.Csv
 
                 if (HasHeader)
                 {
-                    TryParseRow(line, out CsvRow csvRow);
-                    Header = csvRow;
+                    if (TryParseRow(reader?.ReadLine(), out CsvRow header))
+                    {
+                        Header = header;
+                    }
                 }
 
-                while ((line = reader.ReadLine()) != null)
+                while ((line = reader.ReadLine()).IsValid())
                 {
                     if (TryParseRow(line, out CsvRow csvRow))
                     {

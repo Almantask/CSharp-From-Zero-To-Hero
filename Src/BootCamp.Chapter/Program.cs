@@ -16,12 +16,12 @@ namespace BootCamp.Chapter
 
             var rows = testReader.ReadAllRows();
 
-            foreach (var row in rows)
+            foreach (var row in rows.Skip(950))
             {
                 row.Print(CsvDelimiter.Pipe);
             }
-
-            testWriter.WriteRows(rows.Skip(500));
+            testReader.Header.Print(CsvDelimiter.Pipe);
+            testWriter.WriteRows(rows.Skip(900), testReader.Header);
         }
     }
 }
