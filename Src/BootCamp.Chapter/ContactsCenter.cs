@@ -46,7 +46,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public List<Person> Filter(Predicate<Person> predicate)
         {
-            // MY COMMENT  predicate doesnt do anything untill called, just like delegate.
+            // predicate doesnt do anything untill called, just like delegate.
             // Assing what it must do first, for example with a lambda.
             //predicate = p => p.Age > 18;
             var people = new List<Person>();
