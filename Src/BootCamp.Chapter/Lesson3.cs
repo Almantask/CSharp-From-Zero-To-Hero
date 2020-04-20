@@ -4,17 +4,22 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    /// <summary>
-    /// Test class is used to test your implementation.
-    /// Each homework will have a set of steps that you will have to do.
-    /// You can name your functions however you want, but to validate your solution, place them here.
-    /// DO NOT CALL FUNCTIONS FROM TESTS CLASS
-    /// DO NOT IMPLEMENT FUNCTIONS IN TESTS CLASS
-    /// TESTS CLASS FUNCTIONS SHOULD ALL HAVE 1 LINE OF CODE
-    /// </summary>
-    public static class Checks
+    class Lesson3
     {
-        public static int PromptInt(string message)
+
+        public static void Demo()
+        {
+            string name = PromptString("Enter your Name: ");
+            string surname = PromptString("Enter your Surname: ");
+            int age = PromptInt("Enter your age: ");
+            float weightkg = PromptFloat("Enter your weight(kg): ");
+            float heightcm = PromptFloat("Enter your height(cm): ");
+            float heightm = heightcm / 100;
+            float bmi = CalculateBmi(weightkg, heightm);
+            Console.WriteLine(bmi);
+        }
+
+         public static int PromptInt(string message)
         {
             Console.Write(message);
             int age = int.Parse(Console.ReadLine());
@@ -37,8 +42,9 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weightkg, float heightm)
         {
-            float bmi = weightkg / (heightm * heightm);
+            float bmi = weightkg / (heightm * heightm);    
             return bmi;
         }
+
     }
 }
