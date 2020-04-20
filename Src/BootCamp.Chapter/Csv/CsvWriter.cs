@@ -51,7 +51,7 @@ namespace BootCamp.Chapter.Csv
             {
                 writer = new StreamWriter(FilePath);
 
-                if (HasHeader && header.Count != 0)
+                if (HasHeader && header?.Count != 0)
                 {
                     writer.WriteLine(BuildCsvRow(header));
                 }
