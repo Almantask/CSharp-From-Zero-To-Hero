@@ -2,7 +2,11 @@
 ## Chapter 3. Homework 7: Delegates
 
 ### Intro
-TODO: add intro  
+In C# functions are first class- meaning which they can be treated as parameters and be assigned to a variable.
+This is quite useful, because it allows us to make extensible code form the outside.
+Delegate almost replaces an interface in FP (functional programming) fashion, but to each- their own.
+Another important benefit of delegates is events! We can start or stop listening to events and completely
+decouple our code that way.
 
 ### Task
 1) There a a file people.cs  
