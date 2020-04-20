@@ -6,7 +6,7 @@ namespace BootCamp.Chapter.Csv
 {
     public class CsvBase
     {
-        public CsvRow Header { get; set; } = new CsvRow();
+        public CsvRow Header { get; protected set; } = new CsvRow();
         public CsvDelimiter Delimiter { get; protected set; } = CsvDelimiter.Comma;
 
         protected string FilePath { get; set; }
@@ -39,7 +39,7 @@ namespace BootCamp.Chapter.Csv
                 return false;
             }
 
-            var builder = new StringBuilder("");
+            var builder = new StringBuilder();
             var hasQuotes = false;
 
             foreach (var field in inputLine)

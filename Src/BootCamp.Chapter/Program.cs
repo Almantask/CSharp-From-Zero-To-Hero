@@ -13,14 +13,23 @@ namespace BootCamp.Chapter
 
             var testReader = new CsvReader("Input/Transactions.csv", CsvDelimiter.Comma, true);
             var testWriter = new CsvWriter("test_write.csv", CsvDelimiter.Pipe, true);
-
             var rows = testReader.ReadAllRows();
 
             foreach (var row in rows.Skip(950))
             {
                 row.Print(testReader.Delimiter);
             }
-            testWriter.WriteRows(rows.Skip(900), testReader.Header);
+            testWriter.WriteAllRows(rows.Skip(900), testReader.Header);
+
+            var readWriter = new CsvReader("test_write.csv", CsvDelimiter.Pipe, false);
+            rows = readWriter.ReadAllRows();
+
+            Console.Clear();
+
+            foreach (var row in rows)
+            {
+                row.Print(readWriter.Delimiter);
+            }
         }
     }
 }

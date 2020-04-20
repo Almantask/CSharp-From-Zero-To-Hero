@@ -15,7 +15,7 @@ namespace BootCamp.Chapter.Csv
         {
         }
 
-        public void WriteRows(IEnumerable<CsvRow> csvRows)
+        public void WriteAllRows(IEnumerable<CsvRow> csvRows)
         {
             if (csvRows?.Count() == 0)
             {
@@ -38,7 +38,7 @@ namespace BootCamp.Chapter.Csv
             }
         }
 
-        public void WriteRows(IEnumerable<CsvRow> csvRows, CsvRow header)
+        public void WriteAllRows(IEnumerable<CsvRow> csvRows, CsvRow header)
         {
             if (csvRows?.Count() == 0 || header?.Count == 0)
             {
