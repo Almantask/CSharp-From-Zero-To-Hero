@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -14,6 +13,7 @@ namespace BootCamp.Chapter
             ShowMainMenu(consoleOptions);
             ReadKeys(consoleOptions);
         }
+
         private void ShowMainMenu(Dictionary<string, ConsoleKey> consoleOptions)
         {
             Console.Clear();
@@ -87,10 +87,10 @@ namespace BootCamp.Chapter
         public void BPressed()
         {
             Console.Clear();
-
             OnMenuKeyPressed(this, new LoggerArgs { Message = "Demo B" });
 
             List<Person> persons = center.Filter(PeoplePredicates.IsB);
+
             foreach (Person p in persons)
             {
                 Console.WriteLine(p.ToString());

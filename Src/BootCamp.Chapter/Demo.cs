@@ -7,11 +7,11 @@ namespace BootCamp.Chapter
     public class Demo
     {
         Dictionary<string, ConsoleKey> consoleOptions = new Dictionary<string, ConsoleKey>();
-        Menu Menu;
+        Menu menu;
 
         public Demo(Menu menu)
         {
-            Menu = menu;
+            this.menu = menu;
             // Dont forget to add a case in ReadKey().
             consoleOptions.Add("Start", ConsoleKey.Enter);
             consoleOptions.Add("A", ConsoleKey.A);
@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
         }
         public void StartDemo()
         {
-            Menu.Start(consoleOptions);
+            menu.Start(consoleOptions);
         }
     }
 }

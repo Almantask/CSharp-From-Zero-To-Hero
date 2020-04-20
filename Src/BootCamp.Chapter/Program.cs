@@ -12,7 +12,6 @@ namespace BootCamp.Chapter
             Logger log = new Logger(menu);
 
             demo.StartDemo();
-
         }
     }
 }
