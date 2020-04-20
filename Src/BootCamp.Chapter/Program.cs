@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
             Menu menu = new Menu();
             Demo demo = new Demo(menu);
 
-            Logger log = new Logger(demo, menu);
+            Logger log = new Logger(menu);
 
             demo.StartDemo();
 
