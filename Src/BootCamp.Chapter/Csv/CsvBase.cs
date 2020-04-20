@@ -30,39 +30,39 @@ namespace BootCamp.Chapter.Csv
             HasHeader = hasHeader;
         }
 
-        protected bool TryParseRow(string stringDelimited, out CsvRow csvRow)
+        protected bool TryParseRow(string inputLine, out CsvRow csvRow)
         {
             csvRow = new CsvRow();
 
-            if (!stringDelimited.IsValid())
+            if (!inputLine.IsValid())
             {
                 return false;
             }
 
             var builder = new StringBuilder("");
-            var inQuotes = false;
+            var hasQuotes = false;
 
-            for (var i = 0; i < stringDelimited.Length; i++)
+            foreach (var field in inputLine)
             {
-                if (stringDelimited[i] == '\"')
+                if (field == '\"')
                 {
-                    inQuotes = !inQuotes;
+                    hasQuotes = !hasQuotes;
                 }
-                else if (stringDelimited[i] == (char)Delimiter)
+                else if (field == (char)Delimiter)
                 {
-                    if (!inQuotes)
+                    if (!hasQuotes)
                     {
                         csvRow.Add(builder.ToString());
                         builder.Clear();
                     }
                     else
                     {
-                        builder.Append(stringDelimited[i]);
+                        builder.Append(field);
                     }
                 }
                 else
                 {
-                    builder.Append(stringDelimited[i]);
+                    builder.Append(field);
                 }
             }
             csvRow.Add(builder.ToString());
@@ -76,8 +76,8 @@ namespace BootCamp.Chapter.Csv
                 throw new ArgumentNullException($"csvRow cannot be null or empty");
             }
 
-            var builder = new StringBuilder();
             var firstColumn = true;
+            var builder = new StringBuilder();
 
             foreach (var field in csvRow)
             {
@@ -89,11 +89,9 @@ namespace BootCamp.Chapter.Csv
                     }
 
                     builder.Append(field);
-
                     firstColumn = false;
                 }
             }
-
             return builder.ToString();
         }
     }

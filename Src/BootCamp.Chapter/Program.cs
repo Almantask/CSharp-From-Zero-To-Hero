@@ -18,9 +18,8 @@ namespace BootCamp.Chapter
 
             foreach (var row in rows.Skip(950))
             {
-                row.Print(CsvDelimiter.Pipe);
+                row.Print(testReader.Delimiter);
             }
-            testReader.Header.Print(CsvDelimiter.Pipe);
             testWriter.WriteRows(rows.Skip(900), testReader.Header);
         }
     }
