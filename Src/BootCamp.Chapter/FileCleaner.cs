@@ -17,15 +17,23 @@ namespace BootCamp.Chapter
         public static void Clean(string dirtyFile, string cleanedFile)
         {
             if (string.IsNullOrEmpty(dirtyFile)) File.WriteAllText(cleanedFile, "");
+            if (!File.Exists(dirtyFile) || string.IsNullOrEmpty(cleanedFile)) throw new ArgumentException($"File \"{Path.GetFullPath(dirtyFile)}\" does not exist.");
+            
             const string corruptedCharacter = "_";
-
             var fileToAnalysis = File.ReadAllText(dirtyFile);
-
+            
             // Fix file corruption
             var fileFixed = fileToAnalysis.Replace(corruptedCharacter, "");
             ValidateBalancesFile(fileFixed);
 
-            File.WriteAllText(cleanedFile, fileFixed);
+            try
+            {
+                File.WriteAllText(cleanedFile, fileFixed);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidBalancesException($"{Path.GetFullPath(cleanedFile)} cannot be saved to disk.", ex);
+            }
         }
         
         public static void ValidateBalancesFile(string balance)

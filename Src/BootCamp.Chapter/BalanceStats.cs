@@ -36,11 +36,9 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
             var balances = FindPeopleBalancesByOption(peopleAndBalances, "rich");
-            var dictionary = new string[]
-            {
-                (balances[1] == "1") ? "are" : "is",
-                (balances[1] == "1") ? "people" : "person"
-            };
+            var dictionary = new string[2];
+            dictionary[0] = (balances[1] == "1") ? "are" : "is";
+            dictionary[1] = (balances[1] == "1") ? "people" : "person";
 
             return $"{balances[0]} {dictionary[0]} the richest {dictionary[1]}. {balances[2]}.";
         }
@@ -52,10 +50,8 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
             var balances = FindPeopleBalancesByOption(peopleAndBalances, "poor");
-            var dictionary = new string[]
-            {
-                (balances[1] == "1") ? "have" : "has",
-            };
+            var dictionary = new string[1];
+            dictionary[0] = (balances[1] == "1") ? "have" : "has";
 
             return $"{balances[0]} {dictionary[0]} the least money. {balances[2]}.";
         }
@@ -120,18 +116,18 @@ namespace BootCamp.Chapter
         {
             var emptyStrings = numbers.Count(value => string.IsNullOrEmpty(value) || value == " ");
 
-            var tempArray = new decimal[numbers.Length - emptyStrings];
+            var decimalArray = new decimal[numbers.Length - emptyStrings];
             var newIndex = 0;
             foreach (var currency in numbers)
             {
                 if (string.IsNullOrEmpty(currency)) continue;
                 if (!decimal.TryParse(currency, NumberStyles.Currency, CultureInfo.GetCultureInfo(Constants.CultureLocale), out var value)) continue;
 
-                tempArray[newIndex] = value;
+                decimalArray[newIndex] = value;
                 newIndex++;
             }
 
-            return tempArray;
+            return decimalArray;
         }
 
         private static string[] ProcessNameAndValue(string[] namesData, decimal?[] moneyData, string option)
