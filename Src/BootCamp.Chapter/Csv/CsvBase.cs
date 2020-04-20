@@ -12,6 +12,7 @@ namespace BootCamp.Chapter.Csv
         protected string FilePath { get; set; }
         protected CsvDelimiter Delimiter { get; set; }
         protected bool HasHeader { get; set; }
+        protected IList<CsvRow> Rows { get; set; } = new List<CsvRow>();
 
         public CsvBase(string filePath)
         {
@@ -32,20 +33,24 @@ namespace BootCamp.Chapter.Csv
 
         protected string BuildCsvRow(CsvRow csvRow)
         {
-            var builder = new StringBuilder();
+            if (csvRow is null || csvRow.Count == 0)
+            {
+                throw new ArgumentNullException($"csvRow cannot be null or empty");
+            }
 
+            var builder = new StringBuilder();
             var firstColumn = true;
 
-            foreach (var value in csvRow)
+            foreach (var field in csvRow)
             {
-                if (value != null)
+                if (field != null)
                 {
                     if (!firstColumn)
                     {
                         builder.Append((char)Delimiter);
                     }
 
-                    builder.Append(value);
+                    builder.Append(field);
 
                     firstColumn = false;
                 }
