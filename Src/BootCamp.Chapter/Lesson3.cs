@@ -4,9 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class Lesson3
+    public class Lesson3
     {
-
         public static void Demo()
         {
             string name = PromptString("Enter your Name: ");
@@ -16,7 +15,9 @@ namespace BootCamp.Chapter
             float heightcm = PromptFloat("Enter your height(cm): ");
             float heightm = heightcm / 100;
             float bmi = CalculateBmi(weightkg, heightm);
-            Console.WriteLine(bmi);
+            //Tom Jefferson is 19 years old, his weight is 50 kg and his height is 156.5 cm. 
+            Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weightkg + " kg and his height is " + heightcm + " cm. His BMI is " + bmi);
+            Console.WriteLine();
         }
 
          public static int PromptInt(string message)
