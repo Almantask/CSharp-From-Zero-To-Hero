@@ -17,6 +17,8 @@ namespace BootCamp.Chapter
         public string Email { get; }
         public string StreetAddress { get; }
 
+        public int Age => GetAge();
+
         public Person(string name, string surName, string birthday, string gender, string country, string email, string streetAddress)
         {
             FirstName = name;
@@ -28,7 +30,7 @@ namespace BootCamp.Chapter
             StreetAddress = streetAddress;
         }
 
-        public int GetAge()
+        private int GetAge()
         {
             string now = DateTime.Now.ToString().Split(' ')[0];
             int day = int.Parse(now.Split('/')[0]);
