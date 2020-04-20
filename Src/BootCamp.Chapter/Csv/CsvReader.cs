@@ -35,14 +35,11 @@ namespace BootCamp.Chapter.Csv
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    var row = new CsvRow(line.Split((char)Delimiter));
-                    Rows.Add(row);
+                    if (TryParseRow(line, out CsvRow csvRow))
+                    {
+                        Rows.Add(csvRow);
+                    }
                 }
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"{ex.FileName} was not found");
-                throw;
             }
             finally
             {

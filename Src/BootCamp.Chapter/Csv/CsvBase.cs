@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 
 namespace BootCamp.Chapter.Csv
@@ -29,6 +28,45 @@ namespace BootCamp.Chapter.Csv
             FilePath = filePath;
             Delimiter = delimiter;
             HasHeader = hasHeader;
+        }
+
+        protected bool TryParseRow(string stringDelimited, out CsvRow csvRow)
+        {
+            csvRow = new CsvRow();
+
+            if (!stringDelimited.IsValid())
+            {
+                return false;
+            }
+
+            var builder = new StringBuilder("");
+            var inQuotes = false;
+
+            for (var i = 0; i < stringDelimited.Length; i++)
+            {
+                if (stringDelimited[i] == '\"')
+                {
+                    inQuotes = !inQuotes;
+                }
+                else if (stringDelimited[i] == (char)Delimiter)
+                {
+                    if (!inQuotes)
+                    {
+                        csvRow.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                    else
+                    {
+                        builder.Append(stringDelimited[i]);
+                    }
+                }
+                else
+                {
+                    builder.Append(stringDelimited[i]);
+                }
+            }
+            csvRow.Add(builder.ToString());
+            return true;
         }
 
         protected string BuildCsvRow(CsvRow csvRow)
