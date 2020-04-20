@@ -7,6 +7,10 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             /*
+             * 
+             * public static List<T>(this List<T> list)
+             * shuffle the list.
+             * 
             //TODO. Create an extension method to shuffle elements inside a collection.
             //TODO Make your own LINQ method! Create a method SnapFingers which works like LINQ methods, takes a predicate and removes exactly half of all the elements in the collection. If it's not even number, it should remove 1 less.
             For example:
