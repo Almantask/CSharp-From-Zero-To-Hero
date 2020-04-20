@@ -13,23 +13,12 @@
             {
                 return;
             }
-
-            int temp;
             int[] result = new int[array.Length];
             for (int i = 0; i < array.Length - 1; i++)
             {
-                for (int i2 = i + 1; i2 < array.Length; i2++)
-                {
-                    if (array[i2] < array[i])
-                    {
-                        temp = array[i];
-                        array[i] = array[i2];
-                        array[i2] = temp;
-                    }
-                }
-                //result[i] = i;
-                
+                result[i] = i;
             }
+            //return result;
         }
 
         /// <summary>
@@ -49,8 +38,11 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            return RemoveAt(array, array.Length -1 );
         }
 
         /// <summary>
@@ -59,8 +51,11 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -71,8 +66,26 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            if (index > array.Length - 1 || index < 0)
+            {
+                return array;
+            }
+            var Array2 = new int[array.Length - 1];
+            int j = 0;
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (i == index)
+                {
+                    j++;
+                }
+                Array2[i] = array[j];
+                j++;
+            }
+            return Array2;
         }
 
         /// <summary>
@@ -83,6 +96,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
+
             // ToDo: implement.
             return array;
         }
