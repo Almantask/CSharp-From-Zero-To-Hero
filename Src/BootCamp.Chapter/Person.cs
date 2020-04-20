@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
         {
             FirstName = name;
             SurName = surName;
-            Birthday = ConvertToDateDime(birthday);
+            Birthday = ConvertStringToDateDime(birthday);
             Gender = gender;
             Country = country;
             Email = email;
@@ -32,17 +32,12 @@ namespace BootCamp.Chapter
 
         private int GetAge()
         {
-            string now = DateTime.Now.ToString().Split(' ')[0];
-            int day = int.Parse(now.Split('/')[0]);
-            int month = int.Parse(now.Split('/')[1]);
-            int year = int.Parse(now.Split('/')[2]);
-
-            int age = year - Birthday.Year;
-            if (Birthday.Month > month)
+            int age = DateTime.Now.Year - Birthday.Year;
+            if (Birthday.Month > DateTime.Now.Month)
             {
                 age--;
             }
-            else if (Birthday.Month == month && Birthday.Day > day)
+            else if (Birthday.Month == DateTime.Now.Month && Birthday.Day > DateTime.Now.Day)
             {
                 age--;
             }
@@ -69,7 +64,7 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private DateTime ConvertToDateDime(string date)
+        private DateTime ConvertStringToDateDime(string date)
         {
             int day = int.Parse(date.Split('/')[1]);
             int month = int.Parse(date.Split('/')[0]);

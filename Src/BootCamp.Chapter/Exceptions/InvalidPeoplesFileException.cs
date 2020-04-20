@@ -6,10 +6,8 @@ namespace BootCamp.Chapter.Exceptions
 {
     public class InvalidPeoplesFileException : Exception
     {
-        public string Message { get; set; }
-        public InvalidPeoplesFileException(string msg)
+        public InvalidPeoplesFileException(string msg) : base(msg)
         {
-            Message = msg;
         }
     }
 }
