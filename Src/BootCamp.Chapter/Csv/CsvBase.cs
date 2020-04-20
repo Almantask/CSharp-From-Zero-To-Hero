@@ -42,7 +42,7 @@ namespace BootCamp.Chapter.Csv
                 {
                     if (!firstColumn)
                     {
-                        builder.Append(Delimiter);
+                        builder.Append((char)Delimiter);
                     }
 
                     builder.Append(value);
