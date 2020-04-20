@@ -4,11 +4,6 @@ using System.Linq;
 
 namespace BootCamp.Chapter
 {
-    public static class Constants
-    {
-        public const string Nothing = "N/A.";
-    }
-
     public static class BalanceStats
     {
         /// <summary>
@@ -130,7 +125,7 @@ namespace BootCamp.Chapter
             foreach (var currency in numbers)
             {
                 if (string.IsNullOrEmpty(currency)) continue;
-                if (!decimal.TryParse(currency, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-GB"), out var value)) continue;
+                if (!decimal.TryParse(currency, NumberStyles.Currency, CultureInfo.GetCultureInfo(Constants.CultureLocale), out var value)) continue;
 
                 tempArray[newIndex] = value;
                 newIndex++;

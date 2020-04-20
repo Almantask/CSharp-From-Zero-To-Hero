@@ -44,7 +44,7 @@ namespace BootCamp.Chapter
                     if(string.IsNullOrWhiteSpace(stats[i])) continue;
                     try
                     {
-                        _ = decimal.Parse(stats[i], NumberStyles.Currency, CultureInfo.GetCultureInfo("en-GB"));
+                        _ = decimal.Parse(stats[i], NumberStyles.Currency, CultureInfo.GetCultureInfo(Constants.CultureLocale));
                     }
                     catch
                     {
