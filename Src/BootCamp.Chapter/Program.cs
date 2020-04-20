@@ -5,12 +5,11 @@ using Console = System.Console;
 
 namespace BootCamp.Chapter
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
-        {
-            Lesson3.Demo();
-            Lesson3.Demo();
+        { 
+            Lesson4.Demo();
         }
     }
 }
