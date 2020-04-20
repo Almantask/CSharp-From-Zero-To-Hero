@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
 
             if (peoples.Length == 1)
             {
-                throw new Exception($"{peopleFile} was Empty");
+                throw new Exceptions.InvalidPeoplesFileException($"{peopleFile} was Empty");
             }
 
             foreach (string personLine in peoples)
