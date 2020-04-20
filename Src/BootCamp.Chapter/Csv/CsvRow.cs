@@ -13,5 +13,9 @@ namespace BootCamp.Chapter.Csv
         public CsvRow(IEnumerable<string> collection) : base(collection)
         {
         }
+
+        public CsvRow(params string[] collection) : base(collection)
+        {
+        }
     }
 }

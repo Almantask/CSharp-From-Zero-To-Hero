@@ -8,9 +8,9 @@ namespace BootCamp.Chapter.Csv
     public class CsvBase
     {
         public CsvRow Header { get; protected set; } = new CsvRow();
+        public CsvDelimiter Delimiter { get; protected set; }
 
         protected string FilePath { get; set; }
-        protected CsvDelimiter Delimiter { get; set; }
         protected bool HasHeader { get; set; }
         protected IList<CsvRow> Rows { get; set; } = new List<CsvRow>();
 

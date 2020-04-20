@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BootCamp.Chapter.Csv;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,7 @@ namespace BootCamp.Chapter
 {
     public static class IEnumerableExtensions
     {
-        public static string ToStringFormated<T>(this IEnumerable<T> enumerableInput, char delimiter)
+        public static string ToStringFormated<T>(this IEnumerable<T> enumerableInput, CsvDelimiter delimiter)
         {
             if (enumerableInput is null)
             {
@@ -23,7 +24,7 @@ namespace BootCamp.Chapter
                 {
                     if (!firstColumn)
                     {
-                        builder.Append(delimiter);
+                        builder.Append((char)delimiter);
                     }
 
                     builder.Append(item);
@@ -35,7 +36,7 @@ namespace BootCamp.Chapter
             return builder.ToString();
         }
 
-        public static void Print<T>(this IEnumerable<T> enumerableInput, char delimiter)
+        public static void Print<T>(this IEnumerable<T> enumerableInput, CsvDelimiter delimiter)
         {
             if (enumerableInput is null)
             {

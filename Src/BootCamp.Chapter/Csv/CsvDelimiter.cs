@@ -2,10 +2,10 @@
 {
     public enum CsvDelimiter
     {
-        Tab = '\t',
-        Space = ' ',
         Comma = ',',
+        Tab = '\t',
         Colon = ';',
-        Pipe = '|'
+        Pipe = '|',
+        Space = ' '
     }
 }

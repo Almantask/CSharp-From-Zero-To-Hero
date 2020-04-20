@@ -30,12 +30,12 @@ namespace BootCamp.Chapter.Csv
 
                 if (HasHeader)
                 {
-                    Header = new CsvRow(reader.ReadLine().Split((char)Delimiter));
+                    Header = new CsvRow(reader.ReadLine().Split((char)Delimiter).ToList());
                 }
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    var row = new CsvRow(line.Split((char)Delimiter));
+                    var row = new CsvRow(line.Split((char)Delimiter).ToList());
                     Rows.Add(row);
                 }
             }
