@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -96,6 +96,5 @@ namespace BootCamp.Chapter
 
             return maxLength;
         }
-
     }
 }

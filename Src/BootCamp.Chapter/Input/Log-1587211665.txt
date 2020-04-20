@@ -1,0 +1,11 @@
+BootCamp.Chapter.InvalidBalancesException: [Name] has non-latin character valid for name.
+   at BootCamp.Chapter.FileCleaner.CheckData(String line) in C:\Users\Jean\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\FileCleaner.cs:line 118
+   at BootCamp.Chapter.FileCleaner.Clean(String dirtyFile, String cleanedFile) in C:\Users\Jean\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\FileCleaner.cs:line 46
+File:Balances.corrupted, Line:901
+Sydney Godehard.sf,£220.02,-£19.30,-£169.84,£285.64,-£54.04,-£297.22,£239.32,-£84.92,£162.12,£258.62,£258.62,£343.54,-£220.02,£281.78,-£243.18,-£150.54
+
+BootCamp.Chapter.InvalidBalancesException: [Name] has non-latin character valid for name.
+   at BootCamp.Chapter.FileCleaner.CheckData(String line) in C:\Users\Jean\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\FileCleaner.cs:line 118
+   at BootCamp.Chapter.FileCleaner.Clean(String dirtyFile, String cleanedFile) in C:\Users\Jean\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\FileCleaner.cs:line 46
+File:Balances.corrupted, Line:949
+Barbie Pankhurst.,-£254.14,-£206.98,£28.82,-£259.38,-£120.52,£75.98,-£191.26,£162.44,-£151.96,£235.80,-£78.60,£167.68,-£199.12,-£70.74,£167.68,-£225.32,-£151.96,£55.02,-£217.46,-£96.94,-£172.92,£0.00,£170.30,-£193.88,£31.44
