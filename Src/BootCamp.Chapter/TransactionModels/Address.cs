@@ -4,7 +4,9 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class CommandOptionsModel
+    public class Address
     {
+        public string City { get; set; }
+        public string Street { get; set; }
     }
 }
