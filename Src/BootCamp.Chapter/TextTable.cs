@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -41,64 +40,61 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(message)) return "";
             if (padding < 0) throw new ArgumentOutOfRangeException($"Padding cannot be negative. (value: \"{padding}\")");
 
-            var main = InitializeMain(message, out var maxLength);
-            BuildMainLines(padding, main, maxLength);
-            var paddingLines = BuildPaddingLines(padding, maxLength);
-            var border = $"+{GenSpaces((padding * 2 + maxLength), '-')}+";
+            var messageByLine = message.Split(Environment.NewLine);
+            var maxLength = FindMaxLength(messageByLine);
+            var borderSize = padding * 2 + maxLength;
 
-            return $"{BuildFinalMessage(border, paddingLines, main)}{Environment.NewLine}";
+            // Build message
+            var tableMessage = new StringBuilder();
+            tableMessage.AppendLine(BuildBorder(borderSize, '+', '-'));
+            if (padding > 0) tableMessage.Append(BuildPaddingBorder(borderSize, padding));
+            tableMessage.Append(BuildMainMessage(messageByLine, padding, maxLength));
+            if (padding > 0) tableMessage.Append(BuildPaddingBorder(borderSize, padding));
+            tableMessage.AppendLine(BuildBorder(borderSize, '+', '-'));
+
+            return tableMessage.ToString();
         }
 
-        private static List<string> InitializeMain(string message, out int maxLength)
+        private static string BuildMainMessage(string[] messageByLine, int padding, int maxLength)
         {
-            var main = new List<string>();
-            maxLength = 0;
-            foreach (var line in message.Split($"{Environment.NewLine}"))
+            var message = new StringBuilder();
+            foreach (var line in messageByLine)
+            {
+                var main = $"{line}{new string(' ', maxLength - line.Length)}";
+                var outerBorder = new string(' ', padding);
+                message.AppendLine($"|{outerBorder}{main}{outerBorder}|");
+            }
+
+            return message.ToString();
+        }
+
+        private static string BuildBorder(int length, char outer, char inner)
+        {
+            var border = $"{outer}{new string(inner, length)}{outer}";
+
+            return border;
+        }
+
+        private static string BuildPaddingBorder(int borderSize, int padding)
+        {
+            var border = new StringBuilder();
+            for (var i = 0; i < padding; i++)
+            {
+                border.AppendLine(BuildBorder(borderSize, '|', ' '));
+            }
+
+            return border.ToString();
+        }
+
+        private static int FindMaxLength(string[] message)
+        {
+            var maxLength = 0;
+            foreach (var line in message)
             {
                 if (line.Length > maxLength) maxLength = line.Length;
-                main.Add(line);
             }
 
-            return main;
-        }
-
-        private static void BuildMainLines(int padding, List<string> main, int maxLength)
-        {
-            for (var i = 0; i <= main.Count - 1; i++)
-            {
-                var length = maxLength - main[i].Length;
-                var temp = main[i] + GenSpaces(length);
-
-                main[i] = $"|{GenSpaces(padding)}{temp}{GenSpaces(padding)}|";
-            }
-        }
-
-        private static List<string> BuildPaddingLines(int padding, int maxLength)
-        {
-            var paddingLines = new List<string>();
-            for (var i = 1; i <= padding; i++)
-            {
-                paddingLines.Add($"|{GenSpaces(padding)}{GenSpaces(maxLength)}{GenSpaces(padding)}|");
-            }
-
-            return paddingLines;
-        }
-
-        private static string BuildFinalMessage(string border, List<string> paddingLines, List<string> main)
-        {
-            var totalMessage = new List<string>();
-            totalMessage.Add(border);
-            totalMessage.AddRange(paddingLines);
-            totalMessage.AddRange(main);
-            totalMessage.AddRange(paddingLines);
-            totalMessage.Add(border);
-
-            return string.Join(Environment.NewLine, totalMessage);
-        }
-
-        private static string GenSpaces(int length, char symbol = ' ')
-        {
-            return new string(symbol, length);
+            return maxLength;
         }
     }
 }

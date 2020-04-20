@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System;
 using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace BootCamp.Chapter
 {
+    public static class Constants
+    {
+        public const string Nothing = "N/A.";
+    }
+
     public static class BalanceStats
     {
         /// <summary>
@@ -16,25 +17,21 @@ namespace BootCamp.Chapter
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
-            Thread.CurrentThread.CurrentCulture = Config.Culture();
+            var balances = FindPeopleBalancesByOption(peopleAndBalances, "max");
 
-            var (names, money, isPlural) = ReturnNamesMoneyAndIsPlural(peopleAndBalances, "max");
-
-            return $"{names} had the most money ever. {FixMoneyFormat(money)}.";
+            return $"{balances[0]} had the most money ever. {balances[2]}.";
         }
-        
+
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
-            Thread.CurrentThread.CurrentCulture = Config.Culture();
+            var balances = FindPeopleBalancesByOption(peopleAndBalances, "loss");
+            if (balances[0] == Constants.Nothing) return balances[0];
 
-            var (names, money, isPlural) = ReturnNamesMoneyAndIsPlural(peopleAndBalances, "min");
-            if (money >= 0) return "N/A.";
-
-            return $"{names} lost the most money. {FixMoneyFormat(money)}.";
+            return $"{balances[0]} lost the most money. {balances[2]}.";
         }
 
         /// <summary>
@@ -43,16 +40,14 @@ namespace BootCamp.Chapter
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
-            Thread.CurrentThread.CurrentCulture = Config.Culture();
-
-            var (names, money, isPlural) = ReturnNamesMoneyAndIsPlural(peopleAndBalances, "rich");
+            var balances = FindPeopleBalancesByOption(peopleAndBalances, "rich");
             var dictionary = new string[]
             {
-                (isPlural) ? "are" : "is",          // [0]
-                (isPlural) ? "people" : "person"    // [1]
+                (balances[1] == "1") ? "are" : "is",
+                (balances[1] == "1") ? "people" : "person"
             };
 
-            return $"{names} {dictionary[0]} the richest {dictionary[1]}. {FixMoneyFormat(money)}.";
+            return $"{balances[0]} {dictionary[0]} the richest {dictionary[1]}. {balances[2]}.";
         }
 
         /// <summary>
@@ -61,153 +56,108 @@ namespace BootCamp.Chapter
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
-            Thread.CurrentThread.CurrentCulture = Config.Culture();
-
-            var (names, money, isPlural) = ReturnNamesMoneyAndIsPlural(peopleAndBalances, "poor");
+            var balances = FindPeopleBalancesByOption(peopleAndBalances, "poor");
             var dictionary = new string[]
             {
-                (isPlural) ? "have" : "has",        // [0]
+                (balances[1] == "1") ? "have" : "has",
             };
 
-            return $"{names} {dictionary[0]} the least money. {FixMoneyFormat(money)}.";
+            return $"{balances[0]} {dictionary[0]} the least money. {balances[2]}.";
         }
-
-        private static (string names, decimal money, bool isPlural) ReturnNamesMoneyAndIsPlural(string[] peopleAndBalances, string option)
+        
+        private static string[] FindPeopleBalancesByOption(string[] balances, string option)
         {
-            if (!IsOptionValid(option)) throw new Exception($"{option} is not a valid option for function ProcessPeopleBalance().");
+            if (!IsOptionValid(option)) throw new InvalidBalancesException($"{option} is not a valid option.");
+            FileCleaner.ValidateBalancesFile(string.Join(Environment.NewLine, balances));
 
-            var (name, money) = ProcessPeopleBalance(peopleAndBalances, option);
-            var people = new List<string>();
-            var moneyToCompare = (option == "max" || option == "rich") ? money.Max() : money.Min();
+            var nameData = new string[balances.Length];
+            var moneyData = new decimal?[balances.Length];
 
-            for (var i = 0; i < money.Count; i++)
+            for (var i = 0; i < nameData.Length; i++)
             {
-                if (money[i] == moneyToCompare) people.Add(name[i]);
-            }
-
-            var (processedNames, isPlural) = ProcessName(people);
-
-            return (processedNames, moneyToCompare, isPlural);
-        }
-
-        private static (List<string> name, List<decimal>) ProcessPeopleBalance(string[] peopleAndBalances, string option)
-        {
-            var nameList = new List<string>();
-            var moneyProcessed = new List<decimal>();
-            for (var i = 0; i < peopleAndBalances.Length; i++)
-            {
-                try
+                var data = balances[i].Split(",");
+                // Save name
+                nameData[i] = data[0];
+                var balanceHistory = ConvertToArrayOfDecimal(data[1..]);
+                // Save money value based on option
+                if (balanceHistory.Length == 0)
                 {
-                    var moneyList = CheckData(peopleAndBalances[i], out var name);
-                    if (string.IsNullOrEmpty(name)) throw new Exception(Constants.GenericMessageError);
-
-                    switch (option)
-                    {
-                        case "max" when moneyList.Count == 0:
-                            continue;
-                        case "max":
-                            moneyProcessed.Add(moneyList.Max());
-                            break;
-                        case "min" when moneyList.Count == 0:
-                            continue;
-                        case "min":
-                            moneyProcessed.Add(CheckBalance(moneyList, option));
-                            break;
-                        case "rich":
-                        case "poor":
-                        {
-                            if (moneyList.Count < 1) continue;
-                            moneyProcessed.Add(moneyList[^1]);
-                            break;
-                        }
-                    }
-
-                    nameList.Add(name);
-                }
-                catch (Exception ex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(ex);
-                    Console.WriteLine($"The following data from index: {i} is not valid, skipping.");
-                    Console.WriteLine($"\"{peopleAndBalances[i]}\"");
-                    Console.ResetColor();
+                    moneyData[i] = null;
                     continue;
                 }
+                moneyData[i] = ProcessDataByOption(balanceHistory, option);
             }
-
-            if (nameList.Count != moneyProcessed.Count || nameList == null || moneyProcessed == null || nameList.Count == 0 || moneyProcessed.Count == 0)
-            {
-                throw new Exception($"Something went very wrong in function ProcessPeopleBalance().");
-            }
-            return (nameList, moneyProcessed);
+            if (option == "loss" && (decimal)moneyData.Min() >= 0) return new string[]{Constants.Nothing};
+            
+            return ProcessNameAndValue(nameData, moneyData, option);
         }
 
-        private static decimal CheckBalance(List<decimal> moneyList, string option)
+        private static decimal ProcessDataByOption(decimal[] balanceHistory, string option)
         {
-            var balance = new List<decimal>();
-            if (moneyList.Count == 1) return moneyList[0];
-            for (var i = 0; i < moneyList.Count - 1; i++)
+            switch (option)
             {
-                balance.Add(moneyList[i+1] - moneyList[i]);
+                case "max":
+                    return balanceHistory.Max();
+                case "loss":
+                    return CalculateNetGain(balanceHistory).Min();
+                case "rich":
+                case "poor":
+                    return balanceHistory[^1];
+                default:
+                    return 0;
             }
-
-            return option switch
-            {
-                "max" => balance.Max(),
-                "min" => balance.Min(),
-                _ => 0
-            };
         }
 
-        private static List<decimal> CheckData(string line, out string name)
+        private static decimal[] CalculateNetGain(decimal[] moneyList)
         {
-            const string emptyLine = "Line is null or empty.";
-            const string emptyName = "Name of account not found.";
-            const string nonLatin = "[Name] has non-latin character valid for name.";
-            const string moneyError = "Error in money registry.";
-            name = null;
+            if (moneyList.Length == 1) return moneyList;
+            var balanceNetGain = new decimal[moneyList.Length-1];
 
-            var data = line.Split(",");
-            if (data.Length == 0) throw new InvalidBalancesException(emptyLine);
-            if (data[0] == "" || string.IsNullOrWhiteSpace(data[0])) throw new InvalidBalancesException(emptyName);
-            if (!Regex.IsMatch(data[0], Constants.AllCommonLatinLetters)) throw new InvalidBalancesException(nonLatin);
-
-            var moneyList = new List<decimal>();
-
-            var successAttempts = 0;
-            for (var i = 1; i < data.Length; i++)
+            for (var i = 0; i < balanceNetGain.Length; i++)
             {
-                if (data[i] == "" || string.IsNullOrWhiteSpace(data[i]))
-                {
-                    successAttempts++;
-                    continue;
-                }
-                var isMoney = decimal.TryParse(data[i], NumberStyles.Currency, CultureInfo.CurrentCulture, out var money);
-                if (!isMoney) throw new InvalidBalancesException($"{moneyError} | \"{data[i]}\" not valid {money}");
-
-                moneyList.Add(money);
-                successAttempts++;
+                balanceNetGain[i] = moneyList[i + 1] - moneyList[i];
             }
 
-            if (successAttempts != data.Length - 1) throw new InvalidBalancesException($"{Constants.GenericMessageError} | Function: CheckData()"); //False -> fallback
-
-            name = data[0];
-            return moneyList;
+            return balanceNetGain;
         }
 
-        private static (string names, bool isPlural) ProcessName(List<string> names)
+        private static decimal[] ConvertToArrayOfDecimal(string[] numbers)
         {
-            if (names.Count == 1) return (names[0], false);
+            var emptyStrings = numbers.Count(value => string.IsNullOrEmpty(value) || value == " ");
 
-            var first = string.Join(", ", names.Take(names.Count() - 1));
-            var last = $" and {names.Last()}";
+            var tempArray = new decimal[numbers.Length - emptyStrings];
+            var newIndex = 0;
+            foreach (var currency in numbers)
+            {
+                if (string.IsNullOrEmpty(currency)) continue;
+                if (!decimal.TryParse(currency, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-GB"), out var value)) continue;
 
-            return ($"{first}{last}", true);
+                tempArray[newIndex] = value;
+                newIndex++;
+            }
 
+            return tempArray;
+        }
+
+        private static string[] ProcessNameAndValue(string[] namesData, decimal?[] moneyData, string option)
+        {
+            var isMaxValue = option == "max" || option == "rich";
+            var moneyToCompare = (isMaxValue) ? (decimal)moneyData.Max() : (decimal)moneyData.Min();
+            var indexOfNames = moneyData.Select((b, i) => b == moneyToCompare ? i : -1).Where(i => i != -1).ToArray();
+
+            var names = namesData[indexOfNames[0]];
+            if (indexOfNames.Length == 1) return new string[] { names, "0", FixMoneyFormat(moneyToCompare) };
+            for (var i = 1; i < indexOfNames.Length - 1; i++)
+            {
+                names += $", {namesData[indexOfNames[i]]}";
+            }
+            names += $" and {namesData[indexOfNames[^1]]}";
+            return new string[] { names, "1", FixMoneyFormat(moneyToCompare) };
         }
 
         private static string FixMoneyFormat(decimal value)
         {
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var currencySign = (value < 0) ? "-" : "";
             const string currencySymbol = "¤";
 
@@ -221,7 +171,7 @@ namespace BootCamp.Chapter
 
         private static bool IsOptionValid(string option)
         {
-            var validOptions = new string[] { "max", "min", "rich", "poor" };
+            var validOptions = new string[] { "max", "loss", "rich", "poor" };
             return (validOptions.Contains(option));
         }
     }
