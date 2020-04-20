@@ -8,29 +8,53 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine("Hello World!");
 
-            // name, surname, age, weight, height input
+            //First person
             Console.Write("Please input first name: ");
-            string name = Console.ReadLine();
+            string name1 = Console.ReadLine();
             Console.Write("Please input last name: ");
-            string surname = Console.ReadLine();
+            string surname1 = Console.ReadLine();
             Console.Write("Please input age: ");
-            int age = int.Parse(Console.ReadLine());
+            int age1 = int.Parse(Console.ReadLine());
             Console.Write("Please input weight in kg: ");
-            float weightInKg = float.Parse(Console.ReadLine());
+            float weightKg1 = float.Parse(Console.ReadLine());
             Console.Write("Please input height in cm: ");
-            float heightInCm = float.Parse(Console.ReadLine());
+            float heightCm1 = float.Parse(Console.ReadLine());
 
-            // result write line
-            Console.Write(name + " " + surname + " is " + age + " years old," );
-            Console.WriteLine(" his weight is " + weightInKg + " kg and his height is " + heightInCm + " cm.");
+            //Result output
+            Console.Write(name1 + " " + surname1 + " is " + age1 + " years old," );
+            Console.WriteLine(" his weight is " + weightKg1 + " kg and his height is " + heightCm1 + " cm.");
 
-            // convert cm to m for BMI
-            float heightInM = heightInCm/100;
+            //Convert cm to m for BMI
+            float heightM1 = heightCm1/100;
 
             //BMI (body-mass index) calculator
-            float bmi = weightInKg / (heightInM * heightInM);
-            
-            Console.WriteLine(name + "'s body-mass index (BMI) is " + bmi);
+            float bmi1 = weightKg1 / (heightM1 * heightM1);
+            Console.WriteLine(name1 + "'s body-mass index (BMI) is " + bmi1);
+
+            //Second person
+            Console.Write("Please input first name: ");
+            string name2 = Console.ReadLine();
+            Console.Write("Please input last name: ");
+            string surname2 = Console.ReadLine();
+            Console.Write("Please input age: ");
+            int age2 = int.Parse(Console.ReadLine());
+            Console.Write("Please input weight in kg: ");
+            float weightKg2 = float.Parse(Console.ReadLine());
+            Console.Write("Please input height in cm: ");
+            float heightCm2 = float.Parse(Console.ReadLine());
+
+            //Result output
+            Console.Write(name2 + " " + surname2 + " is " + age2 + " years old,");
+            Console.WriteLine(" his weight is " + weightKg2 + " kg and his height is " + heightCm2 + " cm.");
+
+            //Convert cm to m for BMI
+            float heightM2 = heightCm2 / 100;
+
+            //BMI (body-mass index) calculator
+            float bmi2 = weightKg2 / (heightM2 * heightM2);
+            Console.WriteLine(name2 + "'s body-mass index (BMI) is " + bmi2);
+
+
 
 
         }
