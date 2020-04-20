@@ -6,10 +6,10 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Menu menu = new Menu();
+            Demo demo = new Demo(menu);
 
-            Demo demo = new Demo();
-
-            Logger log = new Logger(demo);
+            Logger log = new Logger(demo, menu);
 
             demo.StartDemo();
 

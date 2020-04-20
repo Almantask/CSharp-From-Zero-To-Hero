@@ -6,12 +6,14 @@ namespace BootCamp.Chapter
 {
     public class Logger
     {
-        public Demo Demo { get;}
+        public Demo Demo { get; }
+        public Menu Menu { get; }
 
-        public Logger(Demo demo)
+        public Logger(Demo demo, Menu menu)
         {
             Demo = demo;
-            Demo.OnMenuKeyPressed += (object sender, LoggerArgs args) =>
+            Menu = menu;
+            menu.OnMenuKeyPressed += (object sender, LoggerArgs args) =>
             {
                 LogToConsole(args.Message);
             };
