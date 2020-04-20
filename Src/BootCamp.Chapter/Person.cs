@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
 
         public string FirstName { get; }
         public string SurName { get; }
-        public string Birthday { get; }
+        public DateTime Birthday { get; }
         public string Gender { get; }
         public string Country { get; }
         public string Email { get; }
@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
         {
             FirstName = name;
             SurName = surName;
-            Birthday = birthday;
+            Birthday = ConvertToDateDime(birthday);
             Gender = gender;
             Country = country;
             Email = email;
@@ -35,16 +35,12 @@ namespace BootCamp.Chapter
             int month = int.Parse(now.Split('/')[1]);
             int year = int.Parse(now.Split('/')[2]);
 
-            int birthDay = int.Parse(Birthday.Split('/')[1]);
-            int birthMonth = int.Parse(Birthday.Split('/')[0]);
-            int birthYear = int.Parse(Birthday.Split('/')[2]);
-
-            int age = year - birthYear;
-            if (birthMonth > month)
+            int age = year - Birthday.Year;
+            if (Birthday.Month > month)
             {
                 age--;
             }
-            else if (birthMonth == month && birthDay > day)
+            else if (Birthday.Month == month && Birthday.Day > day)
             {
                 age--;
             }
@@ -71,6 +67,15 @@ namespace BootCamp.Chapter
             return true;
         }
 
+        private DateTime ConvertToDateDime(string date)
+        {
+            int day = int.Parse(date.Split('/')[1]);
+            int month = int.Parse(date.Split('/')[0]);
+            int year = int.Parse(date.Split('/')[2]);
+
+            return new DateTime(year, month, day);
+        }
+
         private static bool IsInputValid(string[] split)
         {
             foreach (string line in split)
@@ -81,15 +86,15 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (!Tests.IsValidBirthday(split[2]))
+            if (!Validator.IsValidBirthday(split[2]))
             {
                 return false;
             }
-            if (!Tests.IsValidGender(split[3]))
+            if (!Validator.IsValidGender(split[3]))
             {
                 return false;
             }
-            if (!Tests.IsValidEmail(split[5]))
+            if (!Validator.IsValidEmail(split[5]))
             {
                 return false;
             }

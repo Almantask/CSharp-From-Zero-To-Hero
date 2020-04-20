@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
     public class Demo
     {
         Dictionary<string, ConsoleKey> consoleOptions = new Dictionary<string, ConsoleKey>();
-        public event LogEventHandler logEventHandler;
+        public event LogEventHandler OnMenuKeyPressed;
         private ContactsCenter center;
 
         public Demo()
@@ -76,14 +76,14 @@ namespace BootCamp.Chapter
         public void StartPressed()
         {
             Console.Clear();
-            logEventHandler(this, new LoggerArgs { Message = "Demo Started" });
+            OnMenuKeyPressed(this, new LoggerArgs { Message = "Demo Started" });
             center = new ContactsCenter(@"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\MOCK_DATA.csv");
             Console.ReadKey();
         }
         public void APressed()
         {
             Console.Clear();
-            logEventHandler(this, new LoggerArgs { Message = "Demo A" });
+            OnMenuKeyPressed(this, new LoggerArgs { Message = "Demo A" });
 
             List<Person> persons = center.Filter(PeoplePredicates.IsA);
 
@@ -98,7 +98,7 @@ namespace BootCamp.Chapter
         {
             Console.Clear();
 
-            logEventHandler(this, new LoggerArgs { Message = "Demo B" });
+            OnMenuKeyPressed(this, new LoggerArgs { Message = "Demo B" });
 
             List<Person> persons = center.Filter(PeoplePredicates.IsB);
             foreach (Person p in persons)
@@ -111,7 +111,7 @@ namespace BootCamp.Chapter
         public void CPressed()
         {
             Console.Clear();
-            logEventHandler(this, new LoggerArgs { Message = "Demo C" });
+            OnMenuKeyPressed(this, new LoggerArgs { Message = "Demo C" });
 
             List<Person> persons = center.Filter(PeoplePredicates.IsB);
 
@@ -125,7 +125,7 @@ namespace BootCamp.Chapter
         public void EscapePressed()
         {
             Console.Clear();
-            logEventHandler(this, new LoggerArgs { Message = "Demo Exit" });
+            OnMenuKeyPressed(this, new LoggerArgs { Message = "Demo Exit" });
             Console.ReadKey();
             Environment.Exit(0);
         }

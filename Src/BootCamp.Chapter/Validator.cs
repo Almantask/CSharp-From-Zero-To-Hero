@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter
 {
-    public static class Tests
+    public static class Validator
     {
         public static bool IsValidBirthday(string birthday)
         {

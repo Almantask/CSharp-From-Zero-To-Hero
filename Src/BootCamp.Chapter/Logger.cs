@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
         public Logger(Demo demo)
         {
             Demo = demo;
-            Demo.logEventHandler += (object sender, LoggerArgs args) =>
+            Demo.OnMenuKeyPressed += (object sender, LoggerArgs args) =>
             {
                 LogToConsole(args.Message);
             };
