@@ -16,16 +16,26 @@ namespace BootCamp.Chapter.Csv
         {
         }
 
-        public void WriteRows(List<CsvRow> csvRows)
+        public void WriteRows(IEnumerable<CsvRow> csvRows)
         {
-            if (csvRows?.Count == 0)
+            if (csvRows?.Count() == 0)
             {
                 throw new ArgumentException("csvRows cannot be null or empty");
             }
 
-            foreach (var row in csvRows)
+            StreamWriter writer = null;
+            try
             {
-                AppendRow(row);
+                writer = new StreamWriter(FilePath);
+
+                foreach (var row in csvRows)
+                {
+                    writer.WriteLine(BuildCsvRow(row));
+                }
+            }
+            finally
+            {
+                writer?.Close();
             }
         }
 
@@ -39,7 +49,7 @@ namespace BootCamp.Chapter.Csv
             StreamWriter writer = null;
             try
             {
-                writer = new StreamWriter(FilePath, true);
+                writer = new StreamWriter(FilePath);
 
                 if (HasHeader && header.Count != 0)
                 {
