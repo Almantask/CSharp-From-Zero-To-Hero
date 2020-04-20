@@ -115,15 +115,15 @@ namespace BootCamp.Chapter
                 }
             }
 
-            if (!Validator.IsValidBirthday(split[2]))
+            if (!Validator.IsValidBirthday(split[(int)FieldsOrder.birthday]))
             {
                 return false;
             }
-            if (!Validator.IsValidGender(split[3]))
+            if (!Validator.IsValidGender(split[(int)FieldsOrder.gender]))
             {
                 return false;
             }
-            if (!Validator.IsValidEmail(split[5]))
+            if (!Validator.IsValidEmail(split[(int)FieldsOrder.email]))
             {
                 return false;
             }
