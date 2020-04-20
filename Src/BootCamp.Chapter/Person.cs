@@ -3,6 +3,16 @@ using System;
 
 namespace BootCamp.Chapter
 {
+    enum FieldsOrder
+    {
+        name,
+        surName,
+        birthday,
+        gender,
+        country,
+        email,
+        streetAddress
+    }
     public class Person
     {
         private const int numberOfFields = 7;
@@ -19,6 +29,16 @@ namespace BootCamp.Chapter
 
         public int Age => GetAge();
 
+        /// <summary>
+        ///  create a person with the following properties.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="surName"></param>
+        /// <param name="birthday"></param>
+        /// <param name="gender"></param>
+        /// <param name="country"></param>
+        /// <param name="email"></param>
+        /// <param name="streetAddress"></param>
         public Person(string name, string surName, string birthday, string gender, string country, string email, string streetAddress)
         {
             FirstName = name;
@@ -59,16 +79,28 @@ namespace BootCamp.Chapter
                 return false;
             }
 
-            person = new Person(splitInput[0], splitInput[1], splitInput[2], splitInput[3], splitInput[4], splitInput[5], splitInput[6]);
+            //"name,sureName,birthday,gender,country,email,streetAddress";
+            person = new Person(
+                splitInput[(int)FieldsOrder.name], 
+                splitInput[(int)FieldsOrder.surName], 
+                splitInput[(int)FieldsOrder.birthday], 
+                splitInput[(int)FieldsOrder.gender], 
+                splitInput[(int)FieldsOrder.country], 
+                splitInput[(int)FieldsOrder.email], 
+                splitInput[(int)FieldsOrder.streetAddress]);
 
             return true;
         }
 
         private DateTime ConvertStringToDateDime(string date)
         {
-            int day = int.Parse(date.Split('/')[1]);
-            int month = int.Parse(date.Split('/')[0]);
-            int year = int.Parse(date.Split('/')[2]);
+            const int dayIndex = 1;
+            const int monthIndex = 0;
+            const int yearIndex = 2;
+
+            int day = int.Parse(date.Split('/')[dayIndex]);
+            int month = int.Parse(date.Split('/')[monthIndex]);
+            int year = int.Parse(date.Split('/')[yearIndex]);
 
             return new DateTime(year, month, day);
         }
