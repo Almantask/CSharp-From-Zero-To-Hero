@@ -18,8 +18,6 @@ namespace BootCamp.Chapter.Csv
 
         public IEnumerable<CsvRow> ReadAllRows()
         {
-            var rows = new List<CsvRow>();
-
             var line = string.Empty;
             StreamReader reader = null;
             try
@@ -38,7 +36,7 @@ namespace BootCamp.Chapter.Csv
                 while ((line = reader.ReadLine()) != null)
                 {
                     var row = new CsvRow(line.Split((char)Delimiter));
-                    rows.Add(row);
+                    Rows.Add(row);
                 }
             }
             catch (FileNotFoundException ex)
@@ -51,7 +49,7 @@ namespace BootCamp.Chapter.Csv
                 reader?.Close();
             }
 
-            return rows;
+            return Rows;
         }
     }
 }
