@@ -21,5 +21,15 @@ namespace BootCamp.Chapter
 
             return new string(charArray);
         }
+
+        public static string AddQuotes(this string input)
+        {
+            if (!input.IsValid())
+            {
+                throw new ArgumentException("input cannot be null or empty");
+            }
+
+            return $@"""{input}""";
+        }
     }
 }
