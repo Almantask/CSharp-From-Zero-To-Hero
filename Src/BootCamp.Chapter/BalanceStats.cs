@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Linq;
-using System.Text;
-using Microsoft.VisualBasic;
 
 namespace BootCamp.Chapter
 {
@@ -13,7 +9,7 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
             var balances = CreateBalanceDatabase(peopleAndBalances);
-            var highestBalanceEver = balances.GetMaxBalance();
+            var highestBalanceEver = balances.GetHighestBalanceEver();
             if (IsNullOrEmpty(highestBalanceEver)) return Constants.Nothing;
 
             return $"{highestBalanceEver[0]} had the most money ever. {highestBalanceEver[1]}.";
@@ -23,7 +19,7 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
             var balances = CreateBalanceDatabase(peopleAndBalances);
-            var personWithBiggestLoss = balances.GetMaxLoss();
+            var personWithBiggestLoss = balances.GetPersonWithBiggestLoss();
             if (IsNullOrEmpty(personWithBiggestLoss)) return Constants.Nothing;
 
             return $"{personWithBiggestLoss[0]} lost the most money. {personWithBiggestLoss[1]}.";
@@ -55,20 +51,20 @@ namespace BootCamp.Chapter
             return $"{mostPoorPerson[0]} {dictionary[0]} the least money. {mostPoorPerson[1]}.";
         }
 
-        private static BalanceDatabase CreateBalanceDatabase(string[] peopleAndBalances)
+        private static Balances CreateBalanceDatabase(string[] peopleAndBalances)
         {
-            var balances = new BalanceDatabase();
+            var balances = new Balances();
 
             foreach (var personStats in peopleAndBalances)
             {
-                var stats = personStats.Split(", ");
+                var stats = personStats.Split(",");
                 var name = stats[0];
                 ValidateName(name);
 
                 var balanceInfo = new decimal[0];
                 if (stats.LongLength > 1)balanceInfo = ConvertToArrayOfDecimal(stats[1..]);
 
-                balances.AddNewPerson(name, balanceInfo.ToList());
+                balances.AddAccount(name, balanceInfo);
             }
             return balances;
         }
