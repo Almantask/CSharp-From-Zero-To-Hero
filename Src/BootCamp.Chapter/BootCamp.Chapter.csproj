@@ -7,6 +7,9 @@
 
   <ItemGroup>
     <None Update="Input\Transactions.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\TransactionsBig.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
