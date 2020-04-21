@@ -65,7 +65,7 @@ namespace BootCamp.Chapter.Csv
                     builder.Append(field);
                 }
             }
-            csvRow.Add(builder.ToString());
+            csvRow.Add(builder.ToString().Trim());
             return true;
         }
 
@@ -73,7 +73,7 @@ namespace BootCamp.Chapter.Csv
         {
             if (csvRow is null || csvRow.Count == 0)
             {
-                throw new ArgumentNullException($"csvRow cannot be null or empty");
+                throw new ArgumentException("csvRow cannot be null or empty");
             }
 
             var firstColumn = true;
@@ -85,7 +85,7 @@ namespace BootCamp.Chapter.Csv
                 {
                     if (!firstColumn)
                     {
-                        builder.Append((char)Delimiter);
+                        builder.Append((char)Delimiter).Append(" ");
                     }
 
                     builder.Append(field);

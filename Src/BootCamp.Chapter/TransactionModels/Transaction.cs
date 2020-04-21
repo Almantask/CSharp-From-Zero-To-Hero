@@ -41,9 +41,9 @@ namespace BootCamp.Chapter
                 return false;
             }
 
-            transaction.Shop = new Shop() { Name = input[0], Address = new Address() { City = input[1], Street = input[2] } };
-            transaction.Item = new Item() { Name = input[3], Price = decimal.Parse(input[5], NumberStyles.Currency, Culture.Input) };
-            transaction.DateTime = DateTime.ParseExact(input[4], Culture.Input.DateTimeFormat.FullDateTimePattern, Culture.Input);
+            transaction.Shop = new Shop() { Name = input[0].Trim(), Address = new Address() { City = input[1].Trim(), Street = input[2].Trim() } };
+            transaction.Item = new Item() { Name = input[3].Trim(), Price = decimal.Parse(input[5].Trim(), NumberStyles.Currency, Culture.Input) };
+            transaction.DateTime = DateTime.ParseExact(input[4].Trim(), Culture.Input.DateTimeFormat.FullDateTimePattern, Culture.Input);
 
             return true;
         }
