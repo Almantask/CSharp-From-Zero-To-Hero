@@ -7,11 +7,11 @@ namespace BootCamp.Chapter.Csv
 {
     public class CsvWriter : CsvBase
     {
-        public CsvWriter(string filePath) : base(filePath)
+        public CsvWriter(string fileName) : base(fileName)
         {
         }
 
-        public CsvWriter(string filePath, CsvDelimiter delimiter, bool hasHeader) : base(filePath, delimiter, hasHeader)
+        public CsvWriter(string fileName, CsvDelimiter delimiter, bool hasHeader) : base(fileName, delimiter, hasHeader)
         {
         }
 
@@ -25,7 +25,7 @@ namespace BootCamp.Chapter.Csv
             StreamWriter writer = null;
             try
             {
-                writer = new StreamWriter(FilePath);
+                writer = new StreamWriter(FileName);
 
                 foreach (var row in csvRows)
                 {
@@ -48,7 +48,7 @@ namespace BootCamp.Chapter.Csv
             StreamWriter writer = null;
             try
             {
-                writer = new StreamWriter(FilePath);
+                writer = new StreamWriter(FileName);
 
                 if (HasHeader && header?.Count != 0)
                 {
@@ -76,7 +76,7 @@ namespace BootCamp.Chapter.Csv
             StreamWriter writer = null;
             try
             {
-                writer = new StreamWriter(FilePath, true);
+                writer = new StreamWriter(FileName, true);
                 writer.WriteLine(BuildCsvRow(row));
             }
             finally

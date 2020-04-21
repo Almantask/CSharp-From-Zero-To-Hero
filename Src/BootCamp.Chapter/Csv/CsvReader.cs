@@ -5,11 +5,11 @@ namespace BootCamp.Chapter.Csv
 {
     public class CsvReader : CsvBase
     {
-        public CsvReader(string filePath) : base(filePath)
+        public CsvReader(string fileName) : base(fileName)
         {
         }
 
-        public CsvReader(string filePath, CsvDelimiter delimiter, bool hasHeader) : base(filePath, delimiter, hasHeader)
+        public CsvReader(string fileName, CsvDelimiter delimiter, bool hasHeader) : base(fileName, delimiter, hasHeader)
         {
         }
 
@@ -19,7 +19,7 @@ namespace BootCamp.Chapter.Csv
             StreamReader reader = null;
             try
             {
-                reader = new StreamReader(FilePath);
+                reader = new StreamReader(FileName);
                 if (reader.EndOfStream)
                 {
                     throw new NoTransactionsFoundException();

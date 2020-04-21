@@ -9,23 +9,23 @@ namespace BootCamp.Chapter.Csv
         public CsvRow Header { get; protected set; } = new CsvRow();
         public CsvDelimiter Delimiter { get; protected set; } = CsvDelimiter.Comma;
 
-        protected string FilePath { get; set; }
+        protected string FileName { get; set; }
         protected bool HasHeader { get; set; }
         protected IList<CsvRow> Rows { get; set; } = new List<CsvRow>();
 
-        public CsvBase(string filePath)
+        public CsvBase(string fileName)
         {
-            FilePath = filePath;
+            FileName = fileName;
         }
 
-        public CsvBase(string filePath, CsvDelimiter delimiter, bool hasHeader)
+        public CsvBase(string fileName, CsvDelimiter delimiter, bool hasHeader)
         {
-            if (!filePath.IsValid())
+            if (!fileName.IsValid())
             {
                 throw new ArgumentException("filePath cannot be null or empty");
             }
 
-            FilePath = filePath;
+            FileName = fileName;
             Delimiter = delimiter;
             HasHeader = hasHeader;
         }
