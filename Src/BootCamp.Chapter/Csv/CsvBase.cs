@@ -30,39 +30,39 @@ namespace BootCamp.Chapter.Csv
             HasHeader = hasHeader;
         }
 
-        protected bool TryParseRow(string inputLine, out CsvRow csvRow)
+        protected bool TryParseRow(string input, out CsvRow csvRow)
         {
             csvRow = new CsvRow();
 
-            if (!inputLine.IsValid())
+            if (!input.IsValid())
             {
                 return false;
             }
 
             var builder = new StringBuilder();
-            var hasQuotes = false;
+            var isQuote = false;
 
-            foreach (var field in inputLine)
+            foreach (var letter in input)
             {
-                if (field == '\"')
+                if (letter == '\"')
                 {
-                    hasQuotes = !hasQuotes;
+                    isQuote = !isQuote;
                 }
-                else if (field == (char)Delimiter)
+                else if (letter == (char)Delimiter)
                 {
-                    if (!hasQuotes)
+                    if (!isQuote)
                     {
                         csvRow.Add(builder.ToString());
                         builder.Clear();
                     }
                     else
                     {
-                        builder.Append(field);
+                        builder.Append(letter);
                     }
                 }
                 else
                 {
-                    builder.Append(field);
+                    builder.Append(letter);
                 }
             }
             csvRow.Add(builder.ToString().Trim());
@@ -75,7 +75,7 @@ namespace BootCamp.Chapter.Csv
             {
                 throw new ArgumentException("csvRow cannot be null or empty");
             }
-
+            const char spaceChar = ' ';
             var firstColumn = true;
             var builder = new StringBuilder();
 
@@ -85,7 +85,7 @@ namespace BootCamp.Chapter.Csv
                 {
                     if (!firstColumn)
                     {
-                        builder.Append((char)Delimiter).Append(" ");
+                        builder.Append((char)Delimiter).Append(spaceChar);
                     }
 
                     builder.Append(field);
