@@ -16,26 +16,72 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            bool isValidAge;
+            Console.WriteLine(message);
+            string ageString = Console.ReadLine();
+            isValidAge = string.IsNullOrEmpty(ageString);
+            if (isValidAge) return 0;
+            isValidAge = int.TryParse(ageString, out int age);
+            if (!isValidAge || age < 0)
+            {
+                Console.Write((char)34 + ageString + (char)34 + " is not a valid number.");
+                return -1;
+            }
+            return age;
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            bool isInvalidName;
+            Console.WriteLine(message);
+            string name = Console.ReadLine();
+            isInvalidName = string.IsNullOrEmpty(name);
+            if (isInvalidName)
+            {
+                Console.Write("Name cannot be empty.");
+                return "-";
+            }
+            return name;
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            bool isValidMeasurement;
+            Console.WriteLine(message);
+            string measurementString = Console.ReadLine();
+            isValidMeasurement = string.IsNullOrEmpty(measurementString);
+            if (isValidMeasurement) return 0;
+            isValidMeasurement = float.TryParse(measurementString, out var measurement);
+            if (!isValidMeasurement)
+            {
+                Console.Write((char)34 + measurementString + (char)34 + " is not a valid number.");
+                return -1;
+            }
+            return measurement;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            if (height <= 0 && weight <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:" + Environment.NewLine + "Weight cannot be equal or less than zero, but was " + weight + ".");
+                Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
+                return -1;
+            }
+            else if (height <= 0 && weight > 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:" + Environment.NewLine + "Height cannot be equal or less than zero, but was " + height + ".");
+                return -1;
+            }
+            else if (height > 0 && weight <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:" + Environment.NewLine + "Weight cannot be equal or less than zero, but was " + weight + ".");
+                return -1;
+            }
+            float heightInMetersSquared = height;
+            heightInMetersSquared *= heightInMetersSquared;
+            var bodyMassIndex = weight / heightInMetersSquared;
+            return bodyMassIndex;
         }
     }
 }
