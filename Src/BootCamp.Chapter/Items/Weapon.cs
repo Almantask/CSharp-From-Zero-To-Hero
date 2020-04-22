@@ -1,16 +1,16 @@
 ﻿namespace BootCamp.Chapter.Items
 {
-    public class Weapon
+    public class Weapon : Item
     {
-        private string _name;
-        private decimal _price;
-        private float _weight;
+        private float _baseAttack;
 
-        public Weapon(string name, decimal price, float weight)
+        public float GetBaseAttack()
         {
-            _name = name;
-            _price = price;
-            _weight = weight;
+            return _baseAttack;
+        }
+        public Weapon(string name, decimal price, float weight, float baseAttack) : base(name, price, weight)
+        {
+            _baseAttack = baseAttack;
         }
     }
 }
