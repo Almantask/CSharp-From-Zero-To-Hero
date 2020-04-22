@@ -9,8 +9,11 @@ namespace BootCamp.Chapter
 {
     class Program
     {
+        private const string CorruptedFile = @"..\..\..\Input\Balances.corrupted";
+
         static void Main(string[] args)
         {
+            //var fixedFile = FileCleaner.TestClean(CorruptedFile);
         }
     }
 }

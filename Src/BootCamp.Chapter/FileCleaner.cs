@@ -16,5 +16,19 @@ namespace BootCamp.Chapter
         {
             File.WriteAllText(cleanedFile, "a");
         }
+
+        public static string[] TestClean(string fileToClean)
+        {
+            var corruptedLines = File.ReadAllLines(fileToClean);
+            var fixedLines = new string[corruptedLines.Length];
+
+            for (int i = 0; i < corruptedLines.Length; i++)
+            {
+                var fixedLine = corruptedLines[i].Replace("_", "");
+                fixedLines[i] = fixedLine;
+            }
+
+            return fixedLines;
+        }
     }
 }
