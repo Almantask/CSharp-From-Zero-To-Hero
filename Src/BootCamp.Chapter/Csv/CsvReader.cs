@@ -13,6 +13,10 @@ namespace BootCamp.Chapter.Csv
         {
         }
 
+        public CsvReader(string fileName, CsvDelimiter delimiter, bool hasHeader, bool hasFooter) : base(fileName, delimiter, hasHeader, hasFooter)
+        {
+        }
+
         public IEnumerable<CsvRow> ReadAllRows()
         {
             var line = string.Empty;
