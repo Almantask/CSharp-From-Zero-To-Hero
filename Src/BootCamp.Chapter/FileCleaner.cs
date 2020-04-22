@@ -26,6 +26,12 @@ namespace BootCamp.Chapter
                 fixedLines[i] = fixedLine;
             }
 
+            if (fixedLines.Length == 0)
+            {
+                File.WriteAllText(cleanedFile, "");
+                return;
+            }
+
             using (var stream = File.OpenWrite(cleanedFile))
             using (StreamWriter writer = new StreamWriter(stream))
             {
