@@ -36,26 +36,27 @@ namespace BootCamp.Chapter
             var timeFileName = string.Empty;
             var fullDay = new TimeInterval(new TimeSpan(0, 0, 0), new TimeSpan(23, 59, 59));
             var nightTime = new TimeInterval(new TimeSpan(20, 0, 0), new TimeSpan(23, 59, 59));
+
             var timeHeader = new CsvRow { "Hour", "Count", "Earned" };
-            var hoursList = new List<string> { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
-                "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
 
             if (timeInterval.Equals(fullDay))
             {
                 timeFileName = $"FullDay{fileExtension}";
             }
-            if (timeInterval.Equals(nightTime))
+            else if (timeInterval.Equals(nightTime))
             {
                 timeFileName = $"Night{fileExtension}";
+            }
+            else
+            {
+                timeFileName = $"{timeInterval.Start}-{timeInterval.End}{fileExtension}";
             }
 
             var queryResult = from transaction in transactions
                               where timeInterval.Contains(transaction.DateTime.TimeOfDay)
-                              select new CsvRow
-                               {
-                                   transaction.DateTime.Hour.ToString(),
-                                   transaction.Item.Price.ToString()
-                               };
+                              orderby transaction.DateTime.Hour ascending
+                              select new CsvRow { transaction.DateTime.Hour.ToString("00"),
+                                  transaction.Item.Price.ToString("C", Culture.Output.NumberFormat).AddQuotes() };
 
             var timeWriter = new CsvWriter(timeFileName, CsvDelimiter.Comma, true);
             timeWriter.WriteAllRows(queryResult, timeHeader);
