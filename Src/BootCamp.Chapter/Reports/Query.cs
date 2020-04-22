@@ -66,12 +66,11 @@ namespace BootCamp.Chapter
 
             var rushHour = $"Rush hour: {query.OrderByDescending(field => field.Earned).FirstOrDefault()?.Hour}";
             var csvResult = from earning in query
-                            select new CsvRow
-                         {
+                            select new CsvRow {
                              earning.Hour.ToString("00"),
                              earning.Count.ToString(),
-                             earning.Earned.ToString("C", Culture.Output).AddQuotes()
-                         };
+                             earning.Earned.ToString("C", Culture.Output).AddQuotes() };
+
             var timeWriter = new CsvWriter(timeFileName, CsvDelimiter.Comma, true, true);
             timeWriter.WriteAllRows(csvResult, timeHeader, rushHour);
         }
@@ -80,18 +79,18 @@ namespace BootCamp.Chapter
         {
             var earningsByHour = new Dictionary<int, List<decimal>>(
                 Enumerable.Range(timeInterval.Start.Hours, timeInterval.TotalHours)
-                    .Select(field => new KeyValuePair<int, List<decimal>>(field, new List<decimal>())
+                    .Select(x => new KeyValuePair<int, List<decimal>>(x, new List<decimal>())
                 )
             );
 
-            var transactionsByDay = transactions.GroupBy(x => x.DateTime);
+            var transactionsByDay = transactions.GroupBy(record => record.DateTime);
 
             foreach (var daysTransactions in transactionsByDay)
             {
-                var queryByHour = daysTransactions.GroupBy(field => field.DateTime.Hour);
+                var queryByHour = daysTransactions.GroupBy(record => record.DateTime.Hour);
                 foreach (var hour in queryByHour)
                 {
-                    earningsByHour[hour.Key]?.Add(hour.Sum(field => field.Item.Price));
+                    earningsByHour[hour.Key]?.Add(hour.Sum(record => record.Item.Price));
                 }
             }
 
