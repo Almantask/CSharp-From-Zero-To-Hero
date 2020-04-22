@@ -14,50 +14,55 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
+        public const int InvalidInt = -1;
+        public const float InvalidFloat = -1;
+        public const string InvalidString = "-";
+        public const string myStrQuote = "\"";
+
         public static int PromptInt(string message)
-        {
-            bool isValidAge;
+        {   
             Console.WriteLine(message);
-            string ageString = Console.ReadLine();
-            isValidAge = string.IsNullOrEmpty(ageString);
-            if (isValidAge) return 0;
-            isValidAge = int.TryParse(ageString, out int age);
-            if (!isValidAge || age < 0)
+            string intString = Console.ReadLine();
+            if (string.IsNullOrEmpty(intString)) return 0;
+
+           bool isValidInt = int.TryParse(intString, out int ValidInt);
+            if (!isValidInt || ValidInt < 0)
             {
-                Console.Write((char)34 + ageString + (char)34 + " is not a valid number.");
-                return -1;
+                Console.Write(myStrQuote + intString + myStrQuote + " is not a valid number.");
+                return InvalidInt;
             }
-            return age;
+            
+            return ValidInt;
         }
 
         public static string PromptString(string message)
         {
-            bool isInvalidName;
             Console.WriteLine(message);
-            string name = Console.ReadLine();
-            isInvalidName = string.IsNullOrEmpty(name);
-            if (isInvalidName)
+            string validString = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(validString))
             {
                 Console.Write("Name cannot be empty.");
-                return "-";
+                return InvalidString;
             }
-            return name;
+
+            return validString;
         }
 
         public static float PromptFloat(string message)
         {
-            bool isValidMeasurement;
             Console.WriteLine(message);
-            string measurementString = Console.ReadLine();
-            isValidMeasurement = string.IsNullOrEmpty(measurementString);
-            if (isValidMeasurement) return 0;
-            isValidMeasurement = float.TryParse(measurementString, out var measurement);
-            if (!isValidMeasurement)
+            string floatString = Console.ReadLine();
+            if (string.IsNullOrEmpty(floatString)) return 0;
+
+            bool isValidFloat = float.TryParse(floatString, out var validFloat);
+            if (!isValidFloat)
             {
-                Console.Write((char)34 + measurementString + (char)34 + " is not a valid number.");
-                return -1;
+                Console.Write(myStrQuote + floatString + myStrQuote + " is not a valid number.");
+                return InvalidFloat;
             }
-            return measurement;
+
+            return validFloat;
         }
 
         public static float CalculateBmi(float weight, float height)
