@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Xml;
 
 namespace BootCamp.Chapter
 {
-    /// <summary>
-    /// Test class is used to test your implementation.
-    /// Each homework will have a set of steps that you will have to do.
-    /// You can name your functions however you want, but to validate your solution, place them here.
-    /// DO NOT CALL FUNCTIONS FROM TESTS CLASS
-    /// DO NOT IMPLEMENT FUNCTIONS IN TESTS CLASS
-    /// TESTS CLASS FUNCTIONS SHOULD ALL HAVE 1 LINE OF CODE
-    /// </summary>
-    public static class Checks
+    public class Lesson4
     {
+        public static void Demo()
+        {
+            ProcessPersonBMI();
+            ProcessPersonBMI();
+        }
         public const int InvalidInt = -1;
         public const string InvalidString = "-";
         public const float InvalidFloat = -1;
         public static int PromptInt(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
             var input = Console.ReadLine();
             bool ValidInt;
             if (String.IsNullOrEmpty(input)) return 0;
@@ -35,19 +31,19 @@ namespace BootCamp.Chapter
 
         public static string PromptString(string message)
         {
-            Console.WriteLine(message);
-            var input = Console.ReadLine();
-            if (String.IsNullOrEmpty(input))
-            {
-                Console.Write("Name cannot be empty.");
-                return InvalidString;
-            }
-            return input;
+                Console.Write(message);
+                var input = Console.ReadLine();
+                if (String.IsNullOrEmpty(input))
+                {
+                    Console.Write("Name cannot be empty.");
+                    return InvalidString;
+                }
+                return input;
         }
 
         public static float PromptFloat(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
             var input = Console.ReadLine();
             if (String.IsNullOrEmpty(input)) return 0;
             bool ValidFloat = float.TryParse(input, out var bmiInfo);
@@ -82,6 +78,19 @@ namespace BootCamp.Chapter
             }
             float bmi = weightkg / heightcm / heightcm;
             return bmi;
+        }
+
+        public static void ProcessPersonBMI()
+        {
+            string name = PromptString("Enter your Name: ");
+            string surname = PromptString("Enter your Surname: ");
+            int age = PromptInt("Enter your age: ");
+            float weightkg = PromptFloat("Enter your weight(kg): ");
+            float heightcm = PromptFloat("Enter your height(cm): ");
+            float heightm = heightcm / 100;
+            float bmi = CalculateBmi(weightkg, heightm); 
+            Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weightkg + " kg and his height is " + heightcm + " cm. His BMI is " + bmi);
+            Console.WriteLine();
         }
     }
 }
