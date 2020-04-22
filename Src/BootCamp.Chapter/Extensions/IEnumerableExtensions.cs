@@ -1,12 +1,18 @@
 ﻿using BootCamp.Chapter.Csv;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
     public static class IEnumerableExtensions
     {
+        public static decimal AverageOrZero(this IEnumerable<decimal> input)
+        {
+            return input.Any() ? input.Average() : 0m;
+        }
+
         public static string ToStringFormated<T>(this IEnumerable<T> enumerableInput, CsvDelimiter delimiter)
         {
             if (enumerableInput is null)
