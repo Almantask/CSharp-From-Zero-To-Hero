@@ -15,11 +15,11 @@ namespace BootCamp.Chapter
             End = end;
         }
 
-        public TimeSpan TotalTime
+        public int TotalHours
         {
             get
             {
-                return End - Start;
+                return End.Hours - Start.Hours + 1;
             }
         }
 

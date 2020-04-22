@@ -25,13 +25,14 @@ namespace BootCamp.Chapter
                 if (Transaction.TryParse(row, out Transaction transaction))
                 {
                     transactions.Add(transaction);
-                    row.Print(CsvDelimiter.Comma);
+                    //row.Print(CsvDelimiter.Comma);
                 }
             }
 
             //Console.ReadLine();
             Query.Shop(transactions, "Wallmart");
-            Query.Time(transactions, new TimeInterval(new TimeSpan(0, 0, 0), new TimeSpan(23, 59, 59)));
+            Query.Shop(transactions, "Kwiki Mart");
+            Query.Time(transactions, new TimeInterval(new TimeSpan(09, 00, 00), new TimeSpan(23, 59, 59)));
 
             //var test = from row in rows
             //           where row[0] == "Kwiki Mart"

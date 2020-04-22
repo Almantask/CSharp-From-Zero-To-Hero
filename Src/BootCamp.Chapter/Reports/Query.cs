@@ -10,6 +10,7 @@ namespace BootCamp.Chapter
     public static class Query
     {
         private const string fileExtension = ".csv";
+        private static readonly string timeSeparator = Culture.Output.DateTimeFormat.TimeSeparator;
 
         public static void Shop(List<Transaction> transactions, string name)
         {
@@ -23,8 +24,8 @@ namespace BootCamp.Chapter
                                  transaction.Shop.Address.City,
                                  transaction.Shop.Address.Street,
                                  transaction.Item.Name,
-                                 transaction.DateTime.ToString(Culture.Output.DateTimeFormat.FullDateTimePattern),
-                                 transaction.Item.Price.ToString("C", Culture.Output.NumberFormat).AddQuotes()
+                                 transaction.DateTime.ToString(Culture.Output),
+                                 transaction.Item.Price.ToString("C", Culture.Output).AddQuotes()
                               };
 
             var shopWriter = new CsvWriter(shopFileName, CsvDelimiter.Comma, true);
@@ -35,7 +36,7 @@ namespace BootCamp.Chapter
         {
             var timeFileName = string.Empty;
             var fullDay = new TimeInterval(new TimeSpan(0, 0, 0), new TimeSpan(23, 59, 59));
-            var nightTime = new TimeInterval(new TimeSpan(20, 0, 0), new TimeSpan(23, 59, 59));
+            var nightTime = new TimeInterval(new TimeSpan(19, 59, 59), new TimeSpan(23, 59, 59));
 
             var timeHeader = new CsvRow { "Hour", "Count", "Earned" };
 
@@ -49,17 +50,52 @@ namespace BootCamp.Chapter
             }
             else
             {
-                timeFileName = $"{timeInterval.Start}-{timeInterval.End}{fileExtension}";
+                timeFileName = $"{timeInterval.Start.ToString().Replace(timeSeparator, "")}-{timeInterval.End.ToString().Replace(timeSeparator, "")}{fileExtension}";
             }
 
-            var queryResult = from transaction in transactions
-                              where timeInterval.Contains(transaction.DateTime.TimeOfDay)
-                              orderby transaction.DateTime.Hour ascending
-                              select new CsvRow { transaction.DateTime.Hour.ToString("00"),
-                                  transaction.Item.Price.ToString("C", Culture.Output.NumberFormat).AddQuotes() };
+            var transactionsByHours = transactions.ToLookup(x => x.DateTime.Hour);
+            var earningsByHour = GetEarningsByHour(transactions, timeInterval);
 
-            var timeWriter = new CsvWriter(timeFileName, CsvDelimiter.Comma, true);
-            timeWriter.WriteAllRows(queryResult, timeHeader);
+            var query = from earning in earningsByHour
+                        select new
+                        {
+                            Hour = earning.Key,
+                            Count = transactionsByHours[earning.Key].Count(),
+                            Earned = earningsByHour[earning.Key].AverageOrZero()
+                        };
+
+            var rushHour = $"Rush hour: {query.OrderByDescending(field => field.Earned).FirstOrDefault()?.Hour}";
+            var csvResult = from earning in query
+                            select new CsvRow
+                         {
+                             earning.Hour.ToString("00"),
+                             earning.Count.ToString(),
+                             earning.Earned.ToString("C", Culture.Output).AddQuotes()
+                         };
+            var timeWriter = new CsvWriter(timeFileName, CsvDelimiter.Comma, true, true);
+            timeWriter.WriteAllRows(csvResult, timeHeader, rushHour);
+        }
+
+        private static Dictionary<int, List<decimal>> GetEarningsByHour(List<Transaction> transactions, TimeInterval timeInterval)
+        {
+            var earningsByHour = new Dictionary<int, List<decimal>>(
+                Enumerable.Range(timeInterval.Start.Hours, timeInterval.TotalHours)
+                    .Select(field => new KeyValuePair<int, List<decimal>>(field, new List<decimal>())
+                )
+            );
+
+            var transactionsByDay = transactions.GroupBy(x => x.DateTime);
+
+            foreach (var daysTransactions in transactionsByDay)
+            {
+                var queryByHour = daysTransactions.GroupBy(field => field.DateTime.Hour);
+                foreach (var hour in queryByHour)
+                {
+                    earningsByHour[hour.Key]?.Add(hour.Sum(field => field.Item.Price));
+                }
+            }
+
+            return earningsByHour;
         }
     }
 }
