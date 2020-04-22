@@ -17,28 +17,35 @@ namespace BootCamp.Chapter
         private static void DemoCsv()
         {
             var testReader = new CsvReader("Input/Transactions.csv", CsvDelimiter.Comma, true);
-            var testWriter = new CsvWriter("test_write.csv", CsvDelimiter.Pipe, true);
             var rows = testReader.ReadAllRows();
             var transactions = new List<Transaction>();
 
-            foreach (var row in rows.Skip(950))
+            foreach (var row in rows)
             {
                 if (Transaction.TryParse(row, out Transaction transaction))
                 {
                     transactions.Add(transaction);
-                    //row.Print(CsvDelimiter.Comma);
+                    row.Print(CsvDelimiter.Comma);
                 }
             }
+
             //Console.ReadLine();
+            Query.Shop(transactions, "Wallmart");
+            Query.Time(transactions, new TimeInterval(new TimeSpan(0, 0, 0), new TimeSpan(23, 59, 59)));
 
-            var citys = from transaction in transactions
-                        where transaction.Shop.Address.City == "London"
-                        select new { Shop = transaction.Shop.Name, Item = transaction.Item.Name, Price = transaction.Item.Price, DateTime = transaction.DateTime };
-            var test = from row in rows
-                       where row[0] == "Lidl"
-                       select row;
+            //var test = from row in rows
+            //           where row[0] == "Kwiki Mart"
+            //           select row;
 
-            test.Print(CsvDelimiter.Colon);
+            //foreach (var row in test)
+            //{
+            //    row.Print(CsvDelimiter.Comma);
+            //}
+
+            //foreach (var shop in shops)
+            //{
+            //    shop.Print(CsvDelimiter.Comma);
+            //}
         }
     }
 }
