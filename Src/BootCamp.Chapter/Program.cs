@@ -13,52 +13,55 @@ namespace BootCamp.Chapter
 
             Print(2);
         }
-        private static void Print(int number)
+
+        static float CalculateBmi(float weight,float height)
+        {   
+            return weight / height / height * 10000f;
+
+
+        }
+        public static void Print(int number)
         {
             Console.WriteLine("Person #" + number + ":");
 
-            Console.Write("Full Name: ");
-            Name();
-            
-            Console.Write("Age: ");
-            Age();
+            //input
+            var name = PromptString("Full Name: ");
 
-            Console.Write("Weight (kg): ");
-            Weight();
+            var age = PromptInt("Age: ");
 
-            Console.Write("Height (cm): ");
-            Height();
+            var weight = PromptFloat("Weight (kg): ");
 
-            Console.WriteLine(Name() + " is " + Age() + " years old, his weight is " + Weight() + " kg, his height is " + Height() + " and his bmi is " + CalculateBmi() + ".");
+            var height = PromptFloat("Height (cm): ");
 
+
+            //output
             Console.WriteLine(" ");
-
+            Console.WriteLine(name + " is " + age + " years old, his weight is " + weight + " kg, his height is " + height + " and his bmi is " + CalculateBmi(weight,height) + ".");
+            Console.WriteLine(" ");
         }
-
-        public static float Age() 
-        {           
-            return Convert.ToInt32(Console.ReadLine());
-        }
-
-        public static string Name()
-        {           
-            return Convert.ToString(Console.ReadLine());
-        }
-
-        public static float Weight()
-        {            
-            return Convert.ToInt32(Console.ReadLine());
-        }
-
-        public static float Height()
+        public static int PromptInt(string message)
         {
-            return Convert.ToInt32(Console.ReadLine());
+            Console.Write(message);
+            var input = Console.ReadLine();
+            return int.Parse(input);
+
         }
-        public static float CalculateBmi()
+
+        public static string PromptString(string message)
         {
-            float bmi = Weight() / (Height() * Height()) * 10000;
-            return bmi;
+            Console.Write(message);
+            var input = Console.ReadLine();
+            return input;
         }
+
+        public static float PromptFloat(string message)
+        {
+            Console.Write(message);
+            var input = Console.ReadLine();
+            return float.Parse(input);
+
+        }
+
 
     }
 }
