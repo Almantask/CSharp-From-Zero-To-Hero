@@ -8,27 +8,11 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            // Person 1 Input (name, age, weight, height)
-            var name1 = PromptString("Name: ");
-            var age1 = PromptInt("Age: ");
-            var weight1 = PromptFloat("Weight: ");
-            var height1 = PromptFloat("Height: ");
-            
-            // Person 1 Output (bmi)   
-            Console.WriteLine($"My name is {name1}, I am {age1} years old, my weight is {weight1}, " +
-                $"I'm {height1} meters tall and my BMI is {CalculateBMI(weight1, height1)}");
-
-            // Person 2 Input (name, age, weight, height)
-            var name2 = PromptString("Name: ");
-            var age2 = PromptInt("Age: ");
-            var weight2 = PromptFloat("Weight: ");
-            var height2 = PromptFloat("Height: ");
-
-            // Person 2 Output (bmi)   
-            Console.WriteLine($"My name is {name2}, I am {age2} years old, my weight is {weight2}, " +
-                $"I'm {height2} meters tall and my BMI is {CalculateBMI(weight2, height2)}");
+            // Calculates 2 people's BMIs
+            CalculateBMIPerson();
+            CalculateBMIPerson();
         }
-        
+       
         // Takes the weight and height and returns BMI
         public static float CalculateBMI(float weight, float height)
         {
@@ -57,6 +41,19 @@ namespace BootCamp.Chapter
             Console.Write(message);
             var input = Console.ReadLine();
             return float.Parse(input);
+        }
+
+        static void CalculateBMIPerson()
+        {
+            // Input Information (name, age, weight, height)
+            var name = PromptString("Name: ");
+            var age = PromptInt("Age: ");
+            var weight = PromptFloat("Weight: ");
+            var height = PromptFloat("Height: ");
+
+            // Output (bmi)   
+            Console.WriteLine($"My name is {name}, I am {age} years old, my weight is {weight}, " +
+                $"I'm {height} meters tall and my BMI is {CalculateBMI(weight, height)}");
         }
     }
 }
