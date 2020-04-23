@@ -10,17 +10,12 @@ namespace BootCamp.Chapter
         {
             Random random = new Random();
             List<T> newList = new List<T>();
-            bool[] listNumberUsed = new bool[list.Count];
 
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < list.Count;)
             {
                 int number = random.Next(0, list.Count);
-                while (listNumberUsed[number])
-                {
-                    number = random.Next(0, list.Count);
-                }
                 newList.Add(list[number]);
-                listNumberUsed[number] = true;
+                list.RemoveAt(number);
             }
 
             return newList;
