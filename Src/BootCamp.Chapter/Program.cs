@@ -10,7 +10,16 @@ namespace BootCamp.Chapter
 
             //ShuffleTest();
 
-            
+            int[] i = new int[] { 1, 2, 3, 4};
+
+            var newi = i.SnapFingers();
+
+            foreach (int a in newi)
+            {
+                Console.Write($"{a}, ");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
 
 
             /*
