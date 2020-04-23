@@ -16,8 +16,8 @@ namespace BootCamp.Chapter
 
         static float CalculateBmi(float weight,float height)
         {   
-            return weight / height / height * 10000f;
-
+            return weight / height / height *1f ;
+            
 
         }
         public static void Print(int number)
@@ -31,7 +31,7 @@ namespace BootCamp.Chapter
 
             var weight = PromptFloat("Weight (kg): ");
 
-            var height = PromptFloat("Height (cm): ");
+            var height = PromptFloat("Height (m): ");
 
 
             //output
