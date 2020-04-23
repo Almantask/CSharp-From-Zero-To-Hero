@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -6,13 +7,28 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            List<int> intList = new List<int>();
+
+            intList.Add(1);
+            intList.Add(2);
+            intList.Add(3);
+            intList.Add(4);
+            intList.Add(5);
+
+            intList = intList.Shuffle();
+
+            foreach (int i in intList)
+            {
+                Console.WriteLine($"{i}, ");
+            }
+
+
+
             /*
              * 
-             * public static List<T>(this List<T> list)
-             * shuffle the list.
-             * 
-            //TODO. Create an extension method to shuffle elements inside a collection.
-            //TODO Make your own LINQ method! Create a method SnapFingers which works like LINQ methods, takes a predicate and removes exactly half of all the elements in the collection. If it's not even number, it should remove 1 less.
+            //TODO Make your own LINQ method!
+            Create a method SnapFingers which works like LINQ methods, takes a predicate and removes exactly half of all the elements in the collection.
+            If it's not even number, it should remove 1 less.
             For example:
             if it's 2, it removes 1;
             if it's 4, it removes 2;
