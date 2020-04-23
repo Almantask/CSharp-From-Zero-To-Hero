@@ -1,44 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
     public class Balances
     {
         private readonly List<PersonalAccount> _account = new List<PersonalAccount>();
-        private List<decimal> _balances = new List<decimal>();
 
-        public string[] GetHighestBalanceEver()
+        public PersonalAccount[] GetAllBalances()
+        {
+            return _account.ToArray();
+        }
+
+        public PersonalAccount[] GetHighestBalanceEver()
         {
             return FindHighestBalanceEver();
         }
         
-        public string[] GetPersonWithBiggestLoss()
+        public PersonalAccount[] GetPersonWithBiggestLoss()
         {
             return FindPersonWithBiggestLoss();
         }
 
-        public string[] GetMostPoorPerson()
+        public PersonalAccount[] GetMostPoorPerson()
         {
             return FindMostPoorPerson();
         }
 
-        public string[] GetRichestPerson()
+        public PersonalAccount[] GetRichestPerson()
         {
             return FindRichestPerson();
         }
 
-        public string GetPersonBalance(string name)
+        public PersonalAccount GetPersonBalance(string name)
         {
             return ExportPersonBalanceByName(name);
-        }
-
-        public string GetAllBalances()
-        {
-            return ExportAllBalances();
         }
 
         // Ctr
@@ -65,8 +61,8 @@ namespace BootCamp.Chapter
 
             return -1;
         }
-
-        private string[] FindHighestBalanceEver()
+        
+        private PersonalAccount[] FindHighestBalanceEver()
         {
             var highestBalance = new decimal?[_account.Count];
             for (var i = 0; i < _account.Count; i++)
@@ -75,14 +71,12 @@ namespace BootCamp.Chapter
             }
             var moneyValue = highestBalance.Max();
             if (moneyValue == null) return null;
-
             var indexOfNames = highestBalance.Select((b, i) => b == moneyValue ? i : -1).Where(i => i != -1).ToArray();
-            var names = ProcessName(indexOfNames);
-
-            return new[] { names, ConvertCurrencyToString(moneyValue) };
+            
+            return BuildAccountListByIndex(indexOfNames);
         }
         
-        private string[] FindPersonWithBiggestLoss()
+        private PersonalAccount[] FindPersonWithBiggestLoss()
         {
             var biggestLoss = new decimal?[_account.Count];
             for (var i = 0; i < _account.Count; i++)
@@ -91,14 +85,12 @@ namespace BootCamp.Chapter
             }
             var moneyValue = biggestLoss.Min();
             if (moneyValue == null) return null;
-
             var indexOfNames = biggestLoss.Select((b, i) => b == moneyValue ? i : -1).Where(i => i != -1).ToArray();
-            var names = ProcessName(indexOfNames);
-
-            return new[] { names, ConvertCurrencyToString(moneyValue) };
+                        
+            return BuildAccountListByIndex(indexOfNames);
         }
 
-        private string[] FindMostPoorPerson()
+        private PersonalAccount[] FindMostPoorPerson()
         {
             var mostPoor = new decimal?[_account.Count];
             for (var i = 0; i < _account.Count; i++)
@@ -108,17 +100,14 @@ namespace BootCamp.Chapter
 
             var moneyValue = mostPoor.Min();
             if (moneyValue == null) return null;
-
             var indexOfNames = mostPoor.Select((b, i) => b == moneyValue ? i : -1).Where(i => i != -1).ToArray();
-            var names = ProcessName(indexOfNames);
-
-            return new[] { names, ConvertCurrencyToString(moneyValue) };
+            
+            return BuildAccountListByIndex(indexOfNames);
         }
 
-        private string[] FindRichestPerson()
+        private PersonalAccount[] FindRichestPerson()
         {
             var richest = new decimal?[_account.Count];
-
             for (var i = 0; i < _account.Count; i++)
             {
                 richest[i] = _account[i].GetLatestBalance();
@@ -126,82 +115,29 @@ namespace BootCamp.Chapter
 
             var moneyValue = richest.Max();
             if (moneyValue == null) return null;
-
             var indexOfNames = richest.Select((b, i) => b == moneyValue ? i : -1).Where(i => i != -1).ToArray();
-            var names = ProcessName(indexOfNames);
-
-            return new[] { names, ConvertCurrencyToString(moneyValue) };
+            
+            return BuildAccountListByIndex(indexOfNames);
         }
 
-        private string ExportPersonBalanceByName(string name)
+        private PersonalAccount ExportPersonBalanceByName(string name)
         {
             var index = FindPersonIndexByName(name);
-            if (index == -1) return "Account name not found";
+            if (index == -1) return null;
 
-            var account = _account[index];
-            var userName = account.GetName();
-            var personalBalance = ConvertBalanceToString(account);
-
-            return $"{userName},{personalBalance}";
+            return _account[index];
         }
-
-        private string ExportAllBalances()
+        
+        private PersonalAccount[] BuildAccountListByIndex(int[] indexes)
         {
-            var balance = new StringBuilder();
-
-            foreach (var account in _account)
+            var accounts = new PersonalAccount[indexes.Length];
+            for (var i = 0; i < indexes.Length; i++)
             {
-                var userName = account.GetName();
-                var userBalances = ConvertBalanceToString(account);
-                balance.AppendLine($"{userName},{userBalances}");
+                var accIndex = indexes[i];
+                accounts[i] = _account[accIndex];
             }
 
-            return balance.ToString();
-        }
-
-        //Utilities
-        private string ConvertBalanceToString(PersonalAccount account)
-        {
-            var userBalances = new StringBuilder();
-            if (!IsNullOrEmpty(account.GetBalances()))
-            {
-                userBalances.AppendJoin(',', account.GetBalances());
-            }
-
-            return userBalances.ToString();
-        }
-
-        private string ProcessName(int[] arrayIndex)
-        {
-            const string commaJoin = ", ";
-            const string andJoin = " and ";
-            var names = new StringBuilder();
-
-            for (var i = 0; i < arrayIndex.Length; i++)
-            {
-                var name = _account[arrayIndex[i]].GetName();
-                var join = "";
-                if (i == arrayIndex.Length - 1 && i != 0) join = andJoin;
-                else if (i > 0) join = commaJoin;
-
-                names.Append(join + name);
-            }
-
-            return names.ToString();
-        }
-
-        private string ConvertCurrencyToString(decimal? value)
-        {
-            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo(Constants.CultureLocale);
-
-            var currencySign = (value < 0) ? "-" : "";
-
-            return $"{currencySign}{Constants.CurrencySymbol}{Math.Abs(value.Value)}";
-        }
-
-        private bool IsNullOrEmpty(decimal[] value)
-        {
-            return value == null || value.Length == 0;
+            return accounts;
         }
     }
 }

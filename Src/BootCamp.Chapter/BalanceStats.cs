@@ -1,5 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -7,54 +9,64 @@ namespace BootCamp.Chapter
     {
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
+            if (IsNullOrEmpty(peopleAndBalances)) return Constants.NotAvailable;
             var balances = CreateBalanceDatabase(peopleAndBalances);
             var highestBalanceEver = balances.GetHighestBalanceEver();
-            if (IsNullOrEmpty(highestBalanceEver)) return Constants.Nothing;
+            if (highestBalanceEver == null) return Constants.NotAvailable;
 
-            return $"{highestBalanceEver[0]} had the most money ever. {highestBalanceEver[1]}.";
+            var names = ProcessName(highestBalanceEver);
+            var money = highestBalanceEver[0].GetMaxBalance();
+
+            return $"{names} had the most money ever. {ConvertCurrencyToString(money)}.";
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
+            if (IsNullOrEmpty(peopleAndBalances)) return Constants.NotAvailable;
             var balances = CreateBalanceDatabase(peopleAndBalances);
             var personWithBiggestLoss = balances.GetPersonWithBiggestLoss();
-            if (IsNullOrEmpty(personWithBiggestLoss)) return Constants.Nothing;
-
-            return $"{personWithBiggestLoss[0]} lost the most money. {personWithBiggestLoss[1]}.";
+            if (personWithBiggestLoss == null) return Constants.NotAvailable;
+            
+            var names = ProcessName(personWithBiggestLoss);
+            var money = personWithBiggestLoss[0].GetMinNetGain();
+            
+            return $"{names} lost the most money. {ConvertCurrencyToString(money)}.";
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
+            if (IsNullOrEmpty(peopleAndBalances)) return Constants.NotAvailable;
             var balances = CreateBalanceDatabase(peopleAndBalances);
             var richestPerson = balances.GetRichestPerson();
-            if (IsNullOrEmpty(richestPerson)) return Constants.Nothing;
-
+            if (richestPerson == null) return Constants.NotAvailable;
+            
+            var names = ProcessName(richestPerson);
+            var money = richestPerson[0].GetLatestBalance();
             var dictionary = new string[2];
-            dictionary[0] = (IsMultiplePeople(richestPerson[0])) ? "are" : "is";
-            dictionary[1] = (IsMultiplePeople(richestPerson[0])) ? "people" : "person";
-            return $"{richestPerson[0]} {dictionary[0]} the richest {dictionary[1]}. {richestPerson[1]}.";
+            dictionary[0] = (IsMultiplePeople(names)) ? "are" : "is";
+            dictionary[1] = (IsMultiplePeople(names)) ? "people" : "person";
+            
+            return $"{names} {dictionary[0]} the richest {dictionary[1]}. {ConvertCurrencyToString(money)}.";
         }
 
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            if (IsNullOrEmpty(peopleAndBalances)) return Constants.Nothing;
+            if (IsNullOrEmpty(peopleAndBalances)) return Constants.NotAvailable;
             var balances = CreateBalanceDatabase(peopleAndBalances);
             var mostPoorPerson = balances.GetMostPoorPerson();
-            if (IsNullOrEmpty(mostPoorPerson)) return Constants.Nothing;
-
+            if (mostPoorPerson == null) return Constants.NotAvailable;
+            
+            var names = ProcessName(mostPoorPerson);
+            var money = mostPoorPerson[0].GetLatestBalance();
             var dictionary = new string[1];
-            dictionary[0] = (IsMultiplePeople(mostPoorPerson[0])) ? "have" : "has";
+            dictionary[0] = (IsMultiplePeople(names)) ? "have" : "has";
 
-            return $"{mostPoorPerson[0]} {dictionary[0]} the least money. {mostPoorPerson[1]}.";
+            return $"{names} {dictionary[0]} the least money. {ConvertCurrencyToString(money)}.";
         }
 
         private static Balances CreateBalanceDatabase(string[] peopleAndBalances)
         {
             var balances = new Balances();
-
             foreach (var personStats in peopleAndBalances)
             {
                 var stats = personStats.Split(",");
@@ -66,6 +78,7 @@ namespace BootCamp.Chapter
 
                 balances.AddAccount(name, balanceInfo);
             }
+            
             return balances;
         }
 
@@ -108,6 +121,35 @@ namespace BootCamp.Chapter
         private static bool IsNullOrEmpty(string[] peopleAndBalances)
         {
             return (peopleAndBalances == null || peopleAndBalances.Length == 0);
+        }
+        
+        //Utilities
+        private static string ProcessName(PersonalAccount[] accounts)
+        {
+            const string commaJoin = ", ";
+            const string andJoin = " and ";
+            var names = new StringBuilder();
+
+            for (var i = 0; i < accounts.Length; i++)
+            {
+                var name = accounts[i].GetName();
+                var join = "";
+                if (i == accounts.Length - 1 && i != 0) join = andJoin;
+                else if (i > 0) join = commaJoin;
+
+                names.Append(join + name);
+            }
+
+            return names.ToString();
+        }
+
+        private static string ConvertCurrencyToString(decimal? value)
+        {
+            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo(Constants.CultureLocale);
+
+            var currencySign = (value < 0) ? "-" : "";
+
+            return $"{currencySign}{Constants.CurrencySymbol}{Math.Abs(value.Value)}";
         }
     }
 }
