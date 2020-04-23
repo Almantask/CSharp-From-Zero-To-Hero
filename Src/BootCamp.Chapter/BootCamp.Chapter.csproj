@@ -6,8 +6,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Computer\Ms\" />
     <Folder Include="Computer\Mac\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Parts.cs" />
+    <Compile Remove="Parts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Parts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Parts\**" />
   </ItemGroup>
 
 </Project>
