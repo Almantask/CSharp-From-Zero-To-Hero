@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        public static string FindHighestBalanceEver(string[] peopleAndBalances)
+        public static string FindHighestBalanceEver(Person[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.NotAvailable;
             var balances = CreateBalanceDatabase(peopleAndBalances);
@@ -20,7 +19,7 @@ namespace BootCamp.Chapter
             return $"{names} had the most money ever. {ConvertCurrencyToString(money)}.";
         }
 
-        public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        public static string FindPersonWithBiggestLoss(Person[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.NotAvailable;
             var balances = CreateBalanceDatabase(peopleAndBalances);
@@ -33,7 +32,7 @@ namespace BootCamp.Chapter
             return $"{names} lost the most money. {ConvertCurrencyToString(money)}.";
         }
 
-        public static string FindRichestPerson(string[] peopleAndBalances)
+        public static string FindRichestPerson(Person[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.NotAvailable;
             var balances = CreateBalanceDatabase(peopleAndBalances);
@@ -42,14 +41,13 @@ namespace BootCamp.Chapter
             
             var names = ProcessName(richestPerson);
             var money = richestPerson[0].GetLatestBalance();
-            var dictionary = new string[2];
-            dictionary[0] = (IsMultiplePeople(names)) ? "are" : "is";
-            dictionary[1] = (IsMultiplePeople(names)) ? "people" : "person";
+            var areOrIs = IsMultiplePeople(names) ? "are" : "is";
+            var peopleOrPerson = IsMultiplePeople(names) ? "people" : "person";
             
-            return $"{names} {dictionary[0]} the richest {dictionary[1]}. {ConvertCurrencyToString(money)}.";
+            return $"{names} {areOrIs} the richest {peopleOrPerson}. {ConvertCurrencyToString(money)}.";
         }
 
-        public static string FindMostPoorPerson(string[] peopleAndBalances)
+        public static string FindMostPoorPerson(Person[] peopleAndBalances)
         {
             if (IsNullOrEmpty(peopleAndBalances)) return Constants.NotAvailable;
             var balances = CreateBalanceDatabase(peopleAndBalances);
@@ -58,71 +56,22 @@ namespace BootCamp.Chapter
             
             var names = ProcessName(mostPoorPerson);
             var money = mostPoorPerson[0].GetLatestBalance();
-            var dictionary = new string[1];
-            dictionary[0] = (IsMultiplePeople(names)) ? "have" : "has";
+            var haveOrHas = (IsMultiplePeople(names)) ? "have" : "has";
 
-            return $"{names} {dictionary[0]} the least money. {ConvertCurrencyToString(money)}.";
+            return $"{names} {haveOrHas} the least money. {ConvertCurrencyToString(money)}.";
         }
-
-        private static Balances CreateBalanceDatabase(string[] peopleAndBalances)
+        
+        private static Balances CreateBalanceDatabase(Person[] peopleAndBalances)
         {
             var balances = new Balances();
-            foreach (var personStats in peopleAndBalances)
+            foreach (var person in peopleAndBalances)
             {
-                var stats = personStats.Split(",");
-                var name = stats[0];
-                ValidateName(name);
-
-                var balanceInfo = new decimal[0];
-                if (stats.LongLength > 1)balanceInfo = ConvertToArrayOfDecimal(stats[1..]);
-
-                balances.AddAccount(name, balanceInfo);
+                balances.AddAccount(person.GetName(), person.GetBalances());
             }
             
             return balances;
         }
 
-        private static decimal[] ConvertToArrayOfDecimal(string[] numbers)
-        {
-            var emptyStrings = numbers.Count(value => string.IsNullOrEmpty(value) || value == " ");
-
-            var decimalArray = new decimal[numbers.Length - emptyStrings];
-            var newIndex = 0;
-            foreach (var currency in numbers)
-            {
-                if (string.IsNullOrEmpty(currency)) continue;
-                if (!decimal.TryParse(currency, NumberStyles.Currency, CultureInfo.GetCultureInfo(Constants.CultureLocale), out var value)) continue;
-
-                decimalArray[newIndex] = value;
-                newIndex++;
-            }
-
-            return decimalArray;
-        }
-
-        private static void ValidateName(string name)
-        {
-            var whiteList = new[]
-            {
-                ' ',
-                '-',
-                '\''
-            };
-
-            var isValid = name.All(letter => char.IsLetter(letter) || whiteList.Contains(letter));
-            if (!isValid) throw new InvalidBalancesException($"{name} is an invalid name.");
-        }
-
-        private static bool IsMultiplePeople(string names)
-        {
-            return names.Contains(",") || names.Contains(" and ");
-        }
-
-        private static bool IsNullOrEmpty(string[] peopleAndBalances)
-        {
-            return (peopleAndBalances == null || peopleAndBalances.Length == 0);
-        }
-        
         //Utilities
         private static string ProcessName(PersonalAccount[] accounts)
         {
@@ -150,6 +99,16 @@ namespace BootCamp.Chapter
             var currencySign = (value < 0) ? "-" : "";
 
             return $"{currencySign}{Constants.CurrencySymbol}{Math.Abs(value.Value)}";
+        }
+        
+        private static bool IsMultiplePeople(string names)
+        {
+            return names.Contains(",") || names.Contains(" and ");
+        }
+
+        private static bool IsNullOrEmpty(Person[] peopleAndBalances)
+        {
+            return (peopleAndBalances == null || peopleAndBalances.Length == 0);
         }
     }
 }

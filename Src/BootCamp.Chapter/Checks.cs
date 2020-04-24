@@ -8,23 +8,27 @@ namespace BootCamp.Chapter
     // This class is used to have a freedom of design, but with tests applied.
     public static class Checks
     {
-        public static string FindMostPoorPerson(string[] peopleAndBalances)
+        public static string FindMostPoorPerson(string[] people)
         {
+            var peopleAndBalances = PeoplesBalances.CreatePeopleDatabase(people);
             return BalanceStats.FindMostPoorPerson(peopleAndBalances);
         }
 
-        public static string FindRichestPerson(string[] peopleAndBalances)
+        public static string FindRichestPerson(string[] people)
         {
+            var peopleAndBalances = PeoplesBalances.CreatePeopleDatabase(people);
             return BalanceStats.FindRichestPerson(peopleAndBalances);
         }
 
-        public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        public static string FindPersonWithBiggestLoss(string[] people)
         {
+            var peopleAndBalances = PeoplesBalances.CreatePeopleDatabase(people);
             return BalanceStats.FindPersonWithBiggestLoss(peopleAndBalances);
         }
 
-        public static string FindHighestBalanceEver(string[] peopleAndBalances)
+        public static string FindHighestBalanceEver(string[] people)
         {
+            var peopleAndBalances = PeoplesBalances.CreatePeopleDatabase(people);
             return BalanceStats.FindHighestBalanceEver(peopleAndBalances);
         }
 

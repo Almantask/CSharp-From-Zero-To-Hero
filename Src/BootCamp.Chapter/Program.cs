@@ -7,17 +7,21 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            const string inFile = @"Input\Balances.corrupted";
-            const string outFile = @"Input\Balances.txt";
-            FileCleaner.Clean(inFile, outFile);
+            CleanCorruptedFile();
+            DisplayTextTable();
+            ShowPeopleBalances(PeoplesBalances.Balances());
 
-            var table = TextTable.Build($"Hello{Environment.NewLine}World!!", 5);
-            Console.WriteLine(table);
+            var file = File.ReadAllLines(@"Input\Balances.txt");
+            var peopleAndBalances = PeoplesBalances.CreatePeopleDatabase(file);
+            ShowPeopleBalances(peopleAndBalances);
+        }
 
-            var highestBalanceEver = BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances);
-            var personWithBiggestLoss = BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances);
-            var richestPerson = BalanceStats.FindRichestPerson(PeoplesBalances.Balances);
-            var mostPoorPerson = BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances);
+        private static void ShowPeopleBalances(Person[] peopleAndBalances)
+        {
+            var highestBalanceEver = BalanceStats.FindHighestBalanceEver(peopleAndBalances);
+            var personWithBiggestLoss = BalanceStats.FindPersonWithBiggestLoss(peopleAndBalances);
+            var richestPerson = BalanceStats.FindRichestPerson(peopleAndBalances);
+            var mostPoorPerson = BalanceStats.FindMostPoorPerson(peopleAndBalances);
 
             Console.WriteLine(TextTable.Build(highestBalanceEver, 3));
             Console.WriteLine(TextTable.Build(personWithBiggestLoss, 3));
@@ -25,19 +29,19 @@ namespace BootCamp.Chapter
             Console.WriteLine(TextTable.Build(mostPoorPerson, 3));
 
             Console.WriteLine("=========================================================================");
+        }
 
-            var openFile = File.ReadAllLines(outFile);
+        private static void DisplayTextTable()
+        {
+            var table = TextTable.Build($"Hello{Environment.NewLine}World!!", 5);
+            Console.WriteLine(table);
+        }
 
-            var highestBalanceEver2 = BalanceStats.FindHighestBalanceEver(openFile);
-            var personWithBiggestLoss2 = BalanceStats.FindPersonWithBiggestLoss(openFile);
-            var richestPerson2 = BalanceStats.FindRichestPerson(openFile);
-            var mostPoorPerson2 = BalanceStats.FindMostPoorPerson(openFile);
-
-            Console.WriteLine(TextTable.Build(highestBalanceEver2, 3));
-            Console.WriteLine(TextTable.Build(personWithBiggestLoss2, 3));
-            Console.WriteLine(TextTable.Build(richestPerson2, 3));
-            Console.WriteLine(TextTable.Build(mostPoorPerson2, 3));
-
+        private static void CleanCorruptedFile()
+        {
+            const string inFile = @"Input\Balances.corrupted";
+            const string outFile = @"Input\Balances.txt";
+            FileCleaner.Clean(inFile, outFile);
         }
     }
 }
