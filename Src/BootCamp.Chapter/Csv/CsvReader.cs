@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace BootCamp.Chapter.Csv
 {
@@ -19,25 +21,16 @@ namespace BootCamp.Chapter.Csv
 
         public IEnumerable<CsvRow> ReadAllRows()
         {
-            var line = string.Empty;
-            StreamReader reader = null;
             try
             {
-                reader = new StreamReader(FileName);
-                if (reader.EndOfStream)
+                var reader = File.ReadLines(FileName);
+
+                if (reader?.Any() == false)
                 {
                     throw new NoTransactionsFoundException();
                 }
 
-                if (HasHeader)
-                {
-                    if (TryParseRow(reader?.ReadLine(), out CsvRow header))
-                    {
-                        Header = header;
-                    }
-                }
-
-                while ((line = reader.ReadLine()).IsValid())
+                foreach (var line in PopulateLines(reader))
                 {
                     if (TryParseRow(line, out CsvRow csvRow))
                     {
@@ -45,12 +38,40 @@ namespace BootCamp.Chapter.Csv
                     }
                 }
             }
-            finally
+            catch
             {
-                reader?.Close();
+                throw;
             }
 
             return Rows;
+        }
+
+        private IEnumerable<string> PopulateLines(IEnumerable<string> lines)
+        {
+            if (lines?.Any() != true)
+            {
+                throw new ArgumentException("lines cannot be null or empty");
+            }
+
+            if (HasHeader && HasFooter)
+            {
+                return lines.Skip(1).SkipLast(1);
+            }
+            else if (HasHeader)
+            {
+                TryParseRow(lines?.First(), out CsvRow header);
+                Header = header;
+                return lines.Skip(1);
+            }
+            else if (HasFooter)
+            {
+                Footer = lines?.Last();
+                return lines.SkipLast(1);
+            }
+            else
+            {
+                return lines;
+            }
         }
     }
 }

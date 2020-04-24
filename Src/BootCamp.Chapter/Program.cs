@@ -18,19 +18,28 @@ namespace BootCamp.Chapter
         {
             var testReader = new CsvReader("Input/Transactions.csv", CsvDelimiter.Comma, true);
             var rows = testReader.ReadAllRows();
-            var transactions = new List<Transaction>();
+            var transactions = PopulateTransactions(rows);
 
             rows.Enumerate(x => x.Print(CsvDelimiter.Colon));
 
+            Query.Shop(transactions, "Wallmart");
+            Query.Shop(transactions, "Kwiki Mart");
+            Query.Time(transactions, new TimeInterval(new TimeSpan(00, 00, 00), new TimeSpan(23, 59, 59)));
+
+            var reader = new CsvReader("FullDay.csv", CsvDelimiter.Comma, false, false);
+            var readerRows = reader.ReadAllRows();
+            readerRows.Enumerate(x => x.Print(CsvDelimiter.Pipe));
+        }
+
+        private static List<Transaction> PopulateTransactions(IEnumerable<CsvRow> rows)
+        {
+            var transactions = new List<Transaction>();
             foreach (var row in rows)
             {
                 _ = Transaction.TryParse(row, out Transaction transaction);
                 transactions.Add(transaction);
             }
-
-            Query.Shop(transactions, "Wallmart");
-            Query.Shop(transactions, "Kwiki Mart");
-            Query.Time(transactions, new TimeInterval(new TimeSpan(19, 00, 00), new TimeSpan(23, 59, 59)));
+            return transactions;
         }
     }
 }
