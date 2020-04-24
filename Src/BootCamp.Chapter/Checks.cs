@@ -39,7 +39,7 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            return weight / height / height * 10000f;
+            return weight / height / height * 1f;
         }
     }
 }
