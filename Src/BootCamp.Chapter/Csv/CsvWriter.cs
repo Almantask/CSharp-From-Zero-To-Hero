@@ -26,19 +26,15 @@ namespace BootCamp.Chapter.Csv
                 throw new ArgumentException("csvRows cannot be null or empty");
             }
 
-            StreamWriter writer = null;
+            var lines = PopulateRows(csvRows);
+
             try
             {
-                writer = new StreamWriter(FileName);
-
-                foreach (var row in csvRows)
-                {
-                    writer.WriteLine(BuildCsvRow(row));
-                }
+                File.WriteAllLines(FileName, lines);
             }
-            finally
+            catch
             {
-                writer?.Close();
+                throw;
             }
         }
 
@@ -49,57 +45,48 @@ namespace BootCamp.Chapter.Csv
                 throw new ArgumentException("csvRows or header cannot be null or empty");
             }
 
-            StreamWriter writer = null;
+            var lines = PopulateRows(csvRows);
+
+            if (HasHeader && header?.Count != 0)
+            {
+                lines.Insert(0, BuildCsvRow(header));
+            }
+
             try
             {
-                writer = new StreamWriter(FileName);
-
-                if (HasHeader && header?.Count != 0)
-                {
-                    writer.WriteLine(BuildCsvRow(header));
-                }
-
-                foreach (var row in csvRows)
-                {
-                    writer.WriteLine(BuildCsvRow(row));
-                }
+                File.WriteAllLines(FileName, lines);
             }
-            finally
+            catch
             {
-                writer?.Close();
+                throw;
             }
         }
 
         public void WriteAllRows(IEnumerable<CsvRow> csvRows, CsvRow header, string footer)
         {
-            if (csvRows?.Count() == 0 || header?.Count == 0 || footer?.Count() == 0)
+            if (csvRows?.Count() == 0 || header?.Count == 0 || footer?.Length == 0)
             {
                 throw new ArgumentException("csvRows, header and footer cannot be null or empty");
             }
 
-            StreamWriter writer = null;
+            var lines = PopulateRows(csvRows);
+
+            if (HasHeader && header?.Count != 0)
+            {
+                lines.Insert(0, BuildCsvRow(header));
+            }
+            if (HasFooter && footer.IsValid())
+            {
+                lines.Add(footer);
+            }
+
             try
             {
-                writer = new StreamWriter(FileName);
-
-                if (HasHeader && header?.Count != 0)
-                {
-                    writer?.WriteLine(BuildCsvRow(header));
-                }
-
-                foreach (var row in csvRows)
-                {
-                    writer?.WriteLine(BuildCsvRow(row));
-                }
-
-                if (HasFooter && footer.Length != 0)
-                {
-                    writer?.WriteLine(footer);
-                }
+                File.WriteAllLines(FileName, lines);
             }
-            finally
+            catch
             {
-                writer?.Close();
+                throw;
             }
         }
 
@@ -120,6 +107,23 @@ namespace BootCamp.Chapter.Csv
             {
                 writer?.Close();
             }
+        }
+
+        private IList<string> PopulateRows(IEnumerable<CsvRow> csvRows)
+        {
+            if (csvRows?.Count() == 0)
+            {
+                throw new ArgumentException("csvRows cannot be null or empty");
+            }
+
+            var lines = new List<string>();
+
+            foreach (var row in csvRows)
+            {
+                lines.Add(BuildCsvRow(row));
+            }
+
+            return lines;
         }
     }
 }
