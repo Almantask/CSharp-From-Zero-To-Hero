@@ -15,8 +15,11 @@ namespace BootCamp.Chapter
 
         static void Main(string[] args)
         {
-            //var cleanLines = File.ReadAllLines(FixedFilePath);
-            FileCleaner.Clean(CorruptedFilePath, FixedFilePath);
+            var fixedLines = FileUtilities.MakeContentParsable(FixedFilePath, "£");
+            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(fixedLines), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(fixedLines), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(fixedLines), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(fixedLines), 3));
         }
     }
 }

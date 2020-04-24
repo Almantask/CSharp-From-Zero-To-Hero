@@ -78,6 +78,8 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static decimal FindLargestDecimalInArray(decimal[] array)
         {
+            if (array.Length == 0) return 0.0m; // We return 0.0m if there are no values to compare in the passed decimal array
+
             var currentHighestDecimal = array[0]; // We assume the first value to be the largest decimal in the array
 
             for (int i = 1; i < array.Length; i++)
@@ -98,6 +100,8 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static decimal FindSmallestDecimalInArray(decimal[] array)
         {
+            if (array.Length == 0) return 0.0m; // We return 0.0m if there are no values to compare in the passed decimal array
+
             var currentSmallestDecimal = array[0]; // We assume the first value to be the smallest decimal in the array
 
             for (int i = 1; i < array.Length; i++)

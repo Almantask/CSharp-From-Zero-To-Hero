@@ -6,9 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Input\Balances.empty">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Input\Balances.clean">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

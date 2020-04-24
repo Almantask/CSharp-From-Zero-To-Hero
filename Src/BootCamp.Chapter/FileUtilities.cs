@@ -8,6 +8,25 @@ namespace BootCamp.Chapter
 {
     class FileUtilities
     {
+        public static string[] MakeContentParsable(string inputFilePath, string stringToReplace)
+        {
+            if (File.Exists(inputFilePath))
+            {
+                var inputLines = File.ReadAllLines(inputFilePath);
+                var parsableLines = new string[inputLines.Length];
+
+                for (int i = 0; i < inputLines.Length; i++)
+                {
+                    var parsableLine = inputLines[i].Replace(stringToReplace, "");
+                    parsableLines[i] = parsableLine;
+                }
+
+                return parsableLines;
+            }
+
+            return new string[] { "" };
+        }
+
         public static void ValidateFile(string inputFilePath, CultureInfo cultureLocale)
         {
             if (File.Exists(inputFilePath))
