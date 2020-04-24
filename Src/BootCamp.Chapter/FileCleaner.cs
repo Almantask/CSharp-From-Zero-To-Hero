@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -17,29 +18,38 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {
-            var corruptedLines = File.ReadAllLines(dirtyFile);
-            var fixedLines = new string[corruptedLines.Length];
-
-            for (int i = 0; i < corruptedLines.Length; i++)
+            if (File.Exists(dirtyFile))
             {
-                var fixedLine = corruptedLines[i].Replace(CorruptedChar, ReplacementChar);
-                fixedLines[i] = fixedLine;
-            }
+                var corruptedLines = File.ReadAllLines(dirtyFile);
+                var fixedLines = new string[corruptedLines.Length];
 
-            if (fixedLines.Length == 0)
-            {
-                File.WriteAllText(cleanedFile, "");
-                return;
-            }
-
-            using (var stream = File.OpenWrite(cleanedFile))
-            using (StreamWriter writer = new StreamWriter(stream))
-            {
-                for (int i = 0; i < fixedLines.Length - 1; i++) // We write lines all the way until the last line to avoid adding a linebreak at the end of the file
+                for (int i = 0; i < corruptedLines.Length; i++)
                 {
-                    writer.WriteLine(fixedLines[i]);
+                    var fixedLine = corruptedLines[i].Replace(CorruptedChar, ReplacementChar);
+                    fixedLines[i] = fixedLine;
                 }
-                writer.Write(fixedLines[fixedLines.Length - 1]); // We add the last line without a linebreak at the end
+
+                if (fixedLines.Length == 0)
+                {
+                    File.WriteAllText(cleanedFile, "");
+                    return;
+                }
+
+                using (var stream = File.OpenWrite(cleanedFile))
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    for (int i = 0; i < fixedLines.Length - 1; i++) // We write lines all the way until the last line to avoid adding a linebreak at the end of the file
+                    {
+                        writer.WriteLine(fixedLines[i]);
+                    }
+                    writer.Write(fixedLines[fixedLines.Length - 1]); // We add the last line without a linebreak at the end
+                }
+
+                FileUtilities.ValidateFile(cleanedFile, CultureInfo.GetCultureInfo("en-GB"));
+            }
+            else
+            {
+                throw new System.ArgumentException($"File: \"{Path.GetFullPath(dirtyFile)}\", does not exist.");
             }
         }
     }

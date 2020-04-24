@@ -9,14 +9,13 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        private const string CorruptedFilePath = @"..\..\..\Input\Balances.empty";
+        private const string CorruptedFilePath = @"..\..\..\Input\Balances.corrupted";
         private const string FixedFilePath = @"..\..\..\Input\Balances.fixed";
         private const int padding = 3;
 
         static void Main(string[] args)
         {
             //var cleanLines = File.ReadAllLines(FixedFilePath);
-
             FileCleaner.Clean(CorruptedFilePath, FixedFilePath);
         }
     }
