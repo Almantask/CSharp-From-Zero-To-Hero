@@ -20,17 +20,17 @@ namespace BootCamp.Chapter
             var rows = testReader.ReadAllRows();
             var transactions = new List<Transaction>();
 
+            rows.Enumerate(x => x.Print(CsvDelimiter.Colon));
+
             foreach (var row in rows)
             {
-                if (Transaction.TryParse(row, out Transaction transaction))
-                {
-                    transactions.Add(transaction);
-                }
+                _ = Transaction.TryParse(row, out Transaction transaction);
+                transactions.Add(transaction);
             }
 
             Query.Shop(transactions, "Wallmart");
             Query.Shop(transactions, "Kwiki Mart");
-            Query.Time(transactions, new TimeInterval(new TimeSpan(09, 00, 00), new TimeSpan(23, 59, 59)));
+            Query.Time(transactions, new TimeInterval(new TimeSpan(19, 00, 00), new TimeSpan(23, 59, 59)));
         }
     }
 }

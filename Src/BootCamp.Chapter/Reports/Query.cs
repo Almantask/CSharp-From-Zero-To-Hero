@@ -60,21 +60,23 @@ namespace BootCamp.Chapter
                         select new
                         {
                             Hour = earning.Key,
-                            Count = transactionsByHours[earning.Key].Count(),
-                            Earned = earningsByHour[earning.Key].AverageOrZero()
+                            Count = transactionsByHours[earning.Key]?.Count(),
+                            Earned = earningsByHour[earning.Key]?.AverageOrZero()
                         };
 
-            var rushHour = $"Rush hour: {query.OrderByDescending(field => field.Earned).FirstOrDefault()?.Hour}";
+            var rushHour = $"Rush hour: {query.OrderByDescending(field => field.Earned).First()?.Hour}";
+
             var csvResult = from earning in query
                             select new CsvRow {
                              earning.Hour.ToString("00"),
                              earning.Count.ToString(),
-                             earning.Earned.ToString("C", Culture.Output).AddQuotes() };
+                             earning.Earned?.ToString("C", Culture.Output).AddQuotes() };
 
             var timeWriter = new CsvWriter(timeFileName, CsvDelimiter.Comma, true, true);
             timeWriter.WriteAllRows(csvResult, timeHeader, rushHour);
         }
 
+        // this part eluded me until I saw a PR from a mentor and I shamelessly stole it
         private static Dictionary<int, List<decimal>> GetEarningsByHour(List<Transaction> transactions, TimeInterval timeInterval)
         {
             var earningsByHour = new Dictionary<int, List<decimal>>(
