@@ -40,6 +40,7 @@ namespace BootCamp.Chapter.Csv
             }
             catch
             {
+                // TODO: add some logic here
                 throw;
             }
 
