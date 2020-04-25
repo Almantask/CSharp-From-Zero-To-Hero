@@ -16,7 +16,6 @@ namespace BootCamp.Chapter
         {
             do
             {
-                
                 // Get info for BMI calculator
                 Print.Log.Info("Body-mass index (BMI) calculator");
                 Print.Log.Log("What is your first name?");
