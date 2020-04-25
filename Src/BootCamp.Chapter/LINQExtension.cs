@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -17,12 +15,12 @@ namespace BootCamp.Chapter
                 i++;
             }
             int k = 0;
-            int middle = i / 2 + i % 2;
+            int middle = (i / 2) + (i % 2);
             foreach (var element in source)
             {
                 list.Add(element);
                 k++;
-                if (k == middle )
+                if (k == middle)
                 {
                     break;
                 }
