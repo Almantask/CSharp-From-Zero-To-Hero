@@ -8,30 +8,37 @@ namespace BootCamp.Chapter
     {
         public static void Main()
         {
+            /* REMOVE COMMENT LINE TO START ANY OF THE DEMO's!
+             */
+
             //ShuffleTest();
             //SnapFingersTest();
             //AnyDemo();
             //CountDemo();
             //OrderByDemo();
             //UnionDemo();
-            IntersectDemo();
+            //IntersectDemo();
+            //SubstractionDemo();
+        }
+        private static void SubstractionDemo()
+        {
+            var list1 = CreateCollection();
+            List<Item> items = new List<Item>();
 
-            /*
-            //TODO Create any collection of any elements you want and do a demo for LINQ:
-            Any Done
-            Count Done
-            Order Done
+            items.Add(new Item("Sword", 10, 5));
+            items.Add(new Item("Shield", 5, 10));
+            items.Add(new Item("new Axe", 20, 10));
 
-            Sets ----
+            var union = list1.Except(items);
 
-            Union Done
-            Intersection 
-            Subtraction
-            */
+            foreach (Item item in union)
+            {
+
+                Console.WriteLine($"{item.Name} Costs {item.Price} and weighs {item.Weight}.");
+            }
         }
         private static void IntersectDemo()
         {
-            //TODO finish SetsDemo.
             var list1 = CreateCollection();
             List<Item> items = new List<Item>();
 
@@ -49,7 +56,6 @@ namespace BootCamp.Chapter
         }
         private static void UnionDemo()
         {
-            //TODO finish SetsDemo.
             var list1 = CreateCollection();
             List<Item> items = new List<Item>();
 
