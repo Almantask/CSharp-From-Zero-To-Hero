@@ -13,7 +13,8 @@ namespace BootCamp.Chapter
             //AnyDemo();
             //CountDemo();
             //OrderByDemo();
-            UnionDemo();
+            //UnionDemo();
+            IntersectDemo();
 
             /*
             //TODO Create any collection of any elements you want and do a demo for LINQ:
@@ -27,6 +28,24 @@ namespace BootCamp.Chapter
             Intersection 
             Subtraction
             */
+        }
+        private static void IntersectDemo()
+        {
+            //TODO finish SetsDemo.
+            var list1 = CreateCollection();
+            List<Item> items = new List<Item>();
+
+            items.Add(new Item("Sword", 10, 5));
+            items.Add(new Item("Shield", 5, 10));
+            items.Add(new Item("new Axe", 20, 10));
+
+            var union = list1.Intersect(items);
+
+            foreach (Item item in union)
+            {
+
+                Console.WriteLine($"{item.Name} Costs {item.Price} and weighs {item.Weight}.");
+            }
         }
         private static void UnionDemo()
         {
