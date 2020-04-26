@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
             Console.WriteLine();
             if (isString) 
             {
-                Console.Write("Name cannot be empty");
+                Console.Write("Name cannot be empty.");
                 return "-"; 
             }
             else { return input; }
