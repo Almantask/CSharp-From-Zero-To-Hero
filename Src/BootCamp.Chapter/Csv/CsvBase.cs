@@ -48,33 +48,5 @@ namespace BootCamp.Chapter.Csv
             HasHeader = hasHeader;
             HasFooter = hasFooter;
         }
-
-        protected string BuildCsvRow(CsvRow csvRow)
-        {
-            if (csvRow is null || csvRow.Count == 0)
-            {
-                throw new ArgumentException("csvRow cannot be null or empty");
-            }
-            const char spaceChar = ' ';
-            var firstColumn = true;
-            var builder = new StringBuilder();
-
-            foreach (var field in csvRow)
-            {
-                if (field != null)
-                {
-                    if (!firstColumn)
-                    {
-                        builder
-                            .Append((char)Delimiter)
-                            .Append(spaceChar);
-                    }
-
-                    builder.Append(field);
-                    firstColumn = false;
-                }
-            }
-            return builder.ToString();
-        }
     }
 }

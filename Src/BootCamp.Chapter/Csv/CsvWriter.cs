@@ -50,7 +50,7 @@ namespace BootCamp.Chapter.Csv
 
             if (HasHeader && header?.Count != 0)
             {
-                lines.Insert(0, BuildCsvRow(header));
+                lines.Insert(0, CsvRow.Build(header, Delimiter));
             }
 
             try
@@ -75,7 +75,7 @@ namespace BootCamp.Chapter.Csv
 
             if (HasHeader && header?.Count != 0)
             {
-                lines.Insert(0, BuildCsvRow(header));
+                lines.Insert(0, CsvRow.Build(header, Delimiter));
             }
             if (HasFooter && footer.IsValid())
             {
@@ -104,7 +104,7 @@ namespace BootCamp.Chapter.Csv
             try
             {
                 writer = new StreamWriter(FileName, true);
-                writer.WriteLine(BuildCsvRow(row));
+                writer.WriteLine(CsvRow.Build(row, Delimiter));
             }
             catch (FileNotFoundException ex)
             {
@@ -133,7 +133,7 @@ namespace BootCamp.Chapter.Csv
 
             foreach (var row in csvRows)
             {
-                lines.Add(BuildCsvRow(row));
+                lines.Add(CsvRow.Build(row, Delimiter));
             }
 
             return lines;
