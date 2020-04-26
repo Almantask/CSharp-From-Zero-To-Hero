@@ -67,7 +67,7 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void Main_When_Valid_DailyRevenue_Command_Creates_File_And_Writes_Revenue_For_Each_Day_Of_Week()
         {
-            const string cmd = "Daily Kwiki Mart";
+            const string cmd = @"Daily ""Kwiki Mart""";
 
             Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
 
