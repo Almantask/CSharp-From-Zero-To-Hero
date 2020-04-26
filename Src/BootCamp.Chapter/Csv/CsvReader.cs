@@ -32,7 +32,7 @@ namespace BootCamp.Chapter.Csv
 
                 foreach (var line in PopulateLines(reader))
                 {
-                    if (TryParseRow(line, out CsvRow csvRow))
+                    if (TryParse(line, out CsvRow csvRow))
                     {
                         Rows.Add(csvRow);
                     }
@@ -56,17 +56,20 @@ namespace BootCamp.Chapter.Csv
 
             if (HasHeader && HasFooter)
             {
+                TryParse(lines?.First(), out CsvRow header);
+                Header = header;
+                Footer = lines?.Last().Trim();
                 return lines.Skip(1).SkipLast(1);
             }
             else if (HasHeader)
             {
-                TryParseRow(lines?.First(), out CsvRow header);
+                TryParse(lines?.First(), out CsvRow header);
                 Header = header;
                 return lines.Skip(1);
             }
             else if (HasFooter)
             {
-                Footer = lines?.Last();
+                Footer = lines?.Last().Trim();
                 return lines.SkipLast(1);
             }
             else

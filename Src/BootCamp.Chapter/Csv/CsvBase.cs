@@ -49,7 +49,7 @@ namespace BootCamp.Chapter.Csv
             HasFooter = hasFooter;
         }
 
-        protected bool TryParseRow(string input, out CsvRow csvRow)
+        protected bool TryParse(string input, out CsvRow csvRow)
         {
             csvRow = new CsvRow();
 
