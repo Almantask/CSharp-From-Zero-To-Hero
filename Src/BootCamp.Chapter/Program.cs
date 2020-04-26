@@ -10,13 +10,17 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
-            if (args.Length > 0)
+            if (args.Length == 0)
             {
                 throw new InvalidCommandException("no arguments provided");
             }
 
             Console.OutputEncoding = Encoding.Unicode;
-            DemoCsv();
+
+            const string cmd = @"Daily ""Kwiki Mart""";
+            Console.WriteLine(cmd);
+
+            CommandLine.TryParse(args, out _);
         }
 
         private static void DemoCsv()
