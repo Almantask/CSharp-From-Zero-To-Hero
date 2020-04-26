@@ -15,15 +15,15 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine("[APPLE ROBOT SYSTEM]");
             var macFactory = new MacFactory();
-            macFactory.Assemble();
+            var newMac = macFactory.Assemble();
             Console.WriteLine("Assembly complete!");
         }
         
         private static void AssemblyPc()
         {
             Console.WriteLine("[MICROSOFT ROBOT SYSTEM]");
-            var macFactory = new MacFactory();
-            macFactory.Assemble();
+            var msFactory = new MsFactory();
+            var newPc = msFactory.Assemble();
             Console.WriteLine("Assembly complete!");
         }
     }
