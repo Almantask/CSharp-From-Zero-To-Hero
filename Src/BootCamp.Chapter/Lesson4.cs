@@ -6,81 +6,130 @@ namespace BootCamp.Chapter
 {
     class Lesson4
     {
-        public static void Demo()
-        {
-            // Calculates 2 people's BMIs
-            CalculateBMIPerson();
-            CalculateBMIPerson();
-        }
-       
-        // Takes the weight and height and returns BMI
-        public static float CalculateBMI(float weight, float height)
-        {
-            float isWeight = ParseFloat(weight);
-            float isHeight = ParseFloat(height);
-            bool isFail = false;
-
-            if (isWeight == -1)
-            {
-                Console.WriteLine("Failed Calcuating BMI.  Reason: ");
-                isFail = true;
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
-            }
-            if (isHeight == -1)
-            {
-                if (isFail == true) { Console.WriteLine($"Height cannot be equal or less than zero, but was {height}"); }
-                else
-                {
-                    Console.WriteLine("Failed Calculating BMI.  Reason:");
-                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}");
-                }
-            }
-            
-            return weight / (height * height);
-        }
-
-        // Prompts the user for an input, converts it to an integer and returns it
+        // Validates Number Input
         public static int PromptInt(string message)
         {
             Console.Write(message);
             var input = Console.ReadLine();
-            return ParseNumber(input);
+            int num;
+            bool isInt = int.TryParse(input, out num);
+            if (!isInt) { return -1; }
+            else if (num == 0) { return 0; }
+            else { return num; }
         }
 
-        // Prompts the user for a string and returns it (default is a string)
+        // Validates String Input
         public static string PromptString(string message)
         {
             Console.Write(message);
             var input = Console.ReadLine();
-            var parseInput = ParseString(input);
-            if (parseInput.Equals("-"))
-            {
-                Console.WriteLine("Name cannot be empty");
-                return "-";
-            }
+            bool isEmpty = string.IsNullOrEmpty(input);
+            if (!isEmpty) { return "-"; }
             else { return input; }
         }
 
-        // Prompts the user for an input, converts it and returns a float
-        public static float PromptFloat(string message)
+        public static bool ValidateBMI(float weight, float height)
         {
-            Console.Write(message);
-            var input = Console.ReadLine();
-            return ParseFloat(input);
+            bool isWeight = true;
+            bool isHeight = true;
+            
+            if (height <= 0) { isHeight = false; }
+            if (weight <= 0) { isWeight = false; }
+            if (!isWeight && !isHeight)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                return false;
+            }
+            else if (!isWeight)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                return false;
+            }
+            else if (!isHeight)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                return false;
+            }
+            else { return true; }
         }
 
         static void CalculateBMIPerson()
         {
             // Input Information (name, age, weight, height)
             var name = PromptString("Name: ");
+            if (name.Equals("-")) 
+            { 
+                Console.WriteLine("Name cannot be empty.");
+                return;
+            }
+            
             var age = PromptInt("Age: ");
             var weight = PromptFloat("Weight: ");
             var height = PromptFloat("Height: ");
+            var isValidBMI = ValidateBMI(weight, height);
+            if (!isValidBMI) { return; }
 
             // Output (bmi)   
             Console.WriteLine($"My name is {name}, I am {age} years old, my weight is {weight}, " +
                 $"I'm {height} meters tall and my BMI is {CalculateBMI(weight, height)}");
         }
+
+        public static float CalculateBMI(float weight, float height)
+        {
+            var isValidBMI = ValidateBMI(weight, height);
+            if (!isValidBMI) { return -1; }
+            
+            return weight / (height * height);
+        }
+
+
+
+
+
+
+
+        public static void Demo()
+        {
+            // Calculates 2 people's BMIs
+            CalculateBMIPerson();
+            CalculateBMIPerson();
+        }
+
+        
+        
+        
+
+        public static float PromptFloat(string message)
+        {
+            Console.Write(message);
+            var input = Console.ReadLine();
+            float num;
+            bool isFloat = float.TryParse(input, out num);
+            if (!isFloat) { return -1; }
+            else { return num; }
+        }
+
+
+
+
+
+
+        // Takes the weight and height and returns BMI
+        
+
+        // Prompts the user for an input, converts it to an integer and returns it
+        
+
+        
+
+        // Prompts the user for an input, converts it and returns a float
+        
+
+        
 
         static int ParseNumber(string input)
         {
