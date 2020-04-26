@@ -16,5 +16,15 @@ namespace BootCamp.Chapter
             Price = price;
             Weight = weight;
         }
+        public bool Equals(Item other)
+        {
+            if (other is null)
+                return false;
+
+            return this.Name == other.Name && this.Price == other.Price && this.Weight == other.Weight;
+        }
+
+        public override bool Equals(object obj) => Equals(obj as Item);
+        public override int GetHashCode() => (Name, Price, Weight).GetHashCode();
     }
 }

@@ -13,29 +13,34 @@ namespace BootCamp.Chapter
             //AnyDemo();
             //CountDemo();
             //OrderByDemo();
-            SetsDemo();
+            UnionDemo();
 
             /*
             //TODO Create any collection of any elements you want and do a demo for LINQ:
             Any Done
             Count Done
             Order Done
-            Sets 
-            Union 
+
+            Sets ----
+
+            Union Done
             Intersection 
             Subtraction
             */
         }
-        private static void SetsDemo()
+        private static void UnionDemo()
         {
             //TODO finish SetsDemo.
             var list1 = CreateCollection();
+            List<Item> items = new List<Item>();
 
-            var set = from item in list1
-                      from name in item.Name.Distinct()
-                      select item;
+            items.Add(new Item("Sword", 10, 5));
+            items.Add(new Item("Shield", 5, 10));
+            items.Add(new Item("new Axe", 20, 10));
 
-            foreach (Item item in set)
+            var union = list1.Union(items);
+
+            foreach (Item item in union)
             {
 
                 Console.WriteLine($"{item.Name} Costs {item.Price} and weighs {item.Weight}.");
