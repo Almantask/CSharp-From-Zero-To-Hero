@@ -49,45 +49,6 @@ namespace BootCamp.Chapter.Csv
             HasFooter = hasFooter;
         }
 
-        protected bool TryParse(string input, out CsvRow csvRow)
-        {
-            csvRow = new CsvRow();
-
-            if (!input.IsValid())
-            {
-                return false;
-            }
-
-            var builder = new StringBuilder();
-            var isQuote = false;
-
-            foreach (var letter in input)
-            {
-                if (letter == '\"')
-                {
-                    isQuote = !isQuote;
-                }
-                else if (letter == (char)Delimiter)
-                {
-                    if (!isQuote)
-                    {
-                        csvRow.Add(builder.ToString());
-                        builder.Clear();
-                    }
-                    else
-                    {
-                        builder.Append(letter);
-                    }
-                }
-                else
-                {
-                    builder.Append(letter);
-                }
-            }
-            csvRow.Add(builder.ToString().Trim());
-            return true;
-        }
-
         protected string BuildCsvRow(CsvRow csvRow)
         {
             if (csvRow is null || csvRow.Count == 0)
@@ -104,7 +65,9 @@ namespace BootCamp.Chapter.Csv
                 {
                     if (!firstColumn)
                     {
-                        builder.Append((char)Delimiter).Append(spaceChar);
+                        builder
+                            .Append((char)Delimiter)
+                            .Append(spaceChar);
                     }
 
                     builder.Append(field);
