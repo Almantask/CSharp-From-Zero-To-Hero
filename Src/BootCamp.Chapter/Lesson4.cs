@@ -38,9 +38,10 @@ namespace BootCamp.Chapter
             Console.Write(message);
             string input = Console.ReadLine();
             bool isFloat = float.TryParse(input, out float num);
+            Console.WriteLine();
             if (!isFloat)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
             else { return num; }
