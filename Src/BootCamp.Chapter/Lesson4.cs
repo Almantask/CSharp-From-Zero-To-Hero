@@ -26,9 +26,10 @@ namespace BootCamp.Chapter
             Console.Write(message);
             string input = Console.ReadLine();
             bool isString = string.IsNullOrEmpty(input);
-            if (!isString) 
+            Console.WriteLine();
+            if (isString) 
             {
-                Console.WriteLine("Name cannot be empty");
+                Console.Write("Name cannot be empty");
                 return "-"; 
             }
             else { return input; }
