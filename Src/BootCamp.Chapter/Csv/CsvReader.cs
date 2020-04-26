@@ -40,7 +40,7 @@ namespace BootCamp.Chapter.Csv
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine($"{ex.FileName} was not found}");
+                Console.WriteLine($"{ex.FileName} was not found");
                 throw;
             }
 
