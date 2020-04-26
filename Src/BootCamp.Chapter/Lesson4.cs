@@ -106,12 +106,17 @@ namespace BootCamp.Chapter
 
         }
 
-        static float ParseFloat (float number)
+        static float ParseFloat (string input)
         {
-            // If the number is less than or equal to 0, return -1
-            if (number <= 0) { return -1;  }
+            float num;
+            bool isFloat = float.TryParse(input, out num);
+            
+            // If it's not a float, return -1
+            if (!isFloat) { return -1; }
+            // If the number is less than or equal to 0, return -1 (or if it's not a float)
+            if (num <= 0) { return -1;  }
             // Otherwise, we have valid input, return it!
-            else { return number;  }
+            else { return num;  }
         }
     }
 }
