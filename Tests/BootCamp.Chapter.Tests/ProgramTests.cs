@@ -47,8 +47,8 @@ namespace BootCamp.Chapter.Tests
         {
             const string cmd = "time";
 
-            Program.Main(new []{ValidTransactionsFile, cmd, OutputFile});
-            
+            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
+
             const string expectedOutput = "Expected/FullDay.csv";
             AssertMatchingContents(expectedOutput, OutputFile);
         }
@@ -70,16 +70,16 @@ namespace BootCamp.Chapter.Tests
             const string cmd = "Daily Kwiki Mart";
 
             Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
-            
+
             const string expectedOutput = "Expected/DailyKwiki.csv";
             AssertMatchingContents(expectedOutput, OutputFile);
         }
 
         [Theory]
-        [InlineData("city -money -max", "Expected/CityItemsMax.csv")]
+        [InlineData("city -money -max", "Expected/CityMoneyMax.csv")]
         [InlineData("city -money -min", "Expected/CityItemsMin.csv")]
-        [InlineData("city -items -max", "Expected/CityMoneyMax.csv")]
-        [InlineData("city -items -min", "Expected/CityMoneyMin.csv")]
+        [InlineData("city -items -max", "Expected/CityMoneyMin.csv")]
+        [InlineData("city -items -min", "Expected/CityItemsMax.csv")]
         public void Main_When_Valid_MinMax_Command_With_Returns_Expected_Cities_With_Min_Max(string cmd, string expectedOutput)
         {
             Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
@@ -92,7 +92,7 @@ namespace BootCamp.Chapter.Tests
         {
             const string cmd = "full";
 
-            Program.Main(new []{ValidTransactionsFile, cmd});
+            Program.Main(new[] { ValidTransactionsFile, cmd });
 
             using (new AssertionScope())
             {
