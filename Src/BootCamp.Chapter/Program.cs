@@ -10,6 +10,11 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
+            if (args.Length > 0)
+            {
+                throw new InvalidCommandException("no arguments provided");
+            }
+
             Console.OutputEncoding = Encoding.Unicode;
             DemoCsv();
         }

@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandOptionsModel\" />
     <Folder Include="Reports\Templates\" />
   </ItemGroup>
 </Project>
