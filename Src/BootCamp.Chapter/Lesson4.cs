@@ -11,9 +11,10 @@ namespace BootCamp.Chapter
             Console.Write(message);
             string input = Console.ReadLine();
             bool isNumber = int.TryParse(input, out int num);
+            Console.WriteLine();
             if (!isNumber) 
             {
-                Console.WriteLine("${input} is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 return -1; 
             }
             else if (num == 0) { return 0; }
@@ -44,6 +45,7 @@ namespace BootCamp.Chapter
                 Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
+            else if (num <= 0) { return -1; }
             else { return num; }
         }
 
