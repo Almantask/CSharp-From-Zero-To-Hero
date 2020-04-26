@@ -32,8 +32,9 @@ namespace BootCamp.Chapter.Csv
             {
                 File.WriteAllLines(FileName, lines);
             }
-            catch
+            catch (IOException ex)
             {
+                Console.WriteLine($"IOException source {ex.Source}");
                 throw;
             }
         }
@@ -56,9 +57,9 @@ namespace BootCamp.Chapter.Csv
             {
                 File.WriteAllLines(FileName, lines);
             }
-            catch
+            catch (IOException ex)
             {
-                // TODO: add some logic here
+                Console.WriteLine($"IOException source {ex.Source}");
                 throw;
             }
         }
@@ -85,8 +86,9 @@ namespace BootCamp.Chapter.Csv
             {
                 File.WriteAllLines(FileName, lines);
             }
-            catch
+            catch (IOException ex)
             {
+                Console.WriteLine($"IOException source {ex.Source}");
                 throw;
             }
         }
@@ -103,6 +105,16 @@ namespace BootCamp.Chapter.Csv
             {
                 writer = new StreamWriter(FileName, true);
                 writer.WriteLine(BuildCsvRow(row));
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"{ex.FileName} was not found}");
+                throw;
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"IOException source {ex.Source}");
+                throw;
             }
             finally
             {

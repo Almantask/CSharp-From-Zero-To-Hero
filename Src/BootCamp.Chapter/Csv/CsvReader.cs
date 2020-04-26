@@ -38,9 +38,9 @@ namespace BootCamp.Chapter.Csv
                     }
                 }
             }
-            catch
+            catch (FileNotFoundException ex)
             {
-                // TODO: add some logic here
+                Console.WriteLine($"{ex.FileName} was not found}");
                 throw;
             }
 
