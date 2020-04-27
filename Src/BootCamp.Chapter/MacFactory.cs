@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using BootCamp.Chapter.Computer;
 using BootCamp.Chapter.Computer.Parts;
 
@@ -7,20 +6,6 @@ namespace BootCamp.Chapter
 {
     public class MacFactory : Factory
     {
-        public DesktopComputer Assemble()
-        {
-            var mac = new DesktopComputer();
-
-            InstallBody(mac);
-            InstallRam(mac);
-            InstallCpu(mac);
-            InstallGpu(mac);
-            InstallHard(mac);
-            InstallMotherboard(mac);
-            
-            return mac;
-        }
-
         public override void InstallBody(DesktopComputer mac)
         {
             var macBody = new Body(147, "Mac Body Pro™");
@@ -62,10 +47,9 @@ namespace BootCamp.Chapter
             PrintAssemblingStatus(mac.GetMotherboard());
         }
         
-        private void PrintAssemblingStatus(Component component)
+        public override void PrintAssemblingStatus(Component component)
         {
-            Console.WriteLine($"Assembling: [ID = {component.GetId()}] [NAME = {component.GetName()}]");
-            Thread.Sleep(200);
+            Console.WriteLine($"Assembling Premium: [ID = {component.GetId()}] [NAME = {component.GetName()}]");
         }
     }
 }

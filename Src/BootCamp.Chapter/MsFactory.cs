@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using BootCamp.Chapter.Computer;
 using BootCamp.Chapter.Computer.Parts;
 
@@ -7,20 +6,6 @@ namespace BootCamp.Chapter
 {
     public class MsFactory : Factory
     {
-        public DesktopComputer Assemble()
-        {
-            var pc = new DesktopComputer();
-
-            InstallBody(pc);
-            InstallRam(pc);
-            InstallCpu(pc);
-            InstallGpu(pc);
-            InstallHard(pc);
-            InstallMotherboard(pc);
-            
-            return pc;
-        }
-
         public override void InstallBody(DesktopComputer pc)
         {
             var pcBody = new Body(87, "Generic Case");
@@ -62,10 +47,9 @@ namespace BootCamp.Chapter
             PrintAssemblingStatus(pc.GetMotherboard());
         }
         
-        private void PrintAssemblingStatus(Component component)
+        public override void PrintAssemblingStatus(Component component)
         {
             Console.WriteLine($"Assembling: [ID = {component.GetId()}] [NAME = {component.GetName()}]");
-            Thread.Sleep(200);
         }
     }
 }

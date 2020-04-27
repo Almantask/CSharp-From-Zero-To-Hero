@@ -22,8 +22,8 @@ namespace BootCamp.Chapter
         private static void AssemblyPc()
         {
             Console.WriteLine("[MICROSOFT ROBOT SYSTEM]");
-            var macFactory = new MacFactory();
-            macFactory.Assemble();
+            var msFactory = new MsFactory();
+            msFactory.Assemble();
             Console.WriteLine("Assembly complete!");
         }
     }
