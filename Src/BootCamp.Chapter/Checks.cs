@@ -14,42 +14,40 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
-        public static int ParseInt(string input)
+
+        public static int PromptInt(string input)
         {
-            bool isNumber = int.TryParse( input, out var output);
-            if (output < 0) return -1;
+
+            bool isNumber = int.TryParse(input, out var output);
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
             if (!isNumber) return -1;
 
             else
             {
                 return output;
             }
-        }
-
-        public static string ParseName(string input)
-        {
-            bool isEmpty = string.IsNullOrEmpty(input);
-
-            if (isEmpty) return "x";
-
-            else
-            {
-                return input;
-            }
 
         }
 
-        public static string Empty(string input)
+
+
+        public static string PromptString(string input)
         {
-            bool isEmpty = string.IsNullOrEmpty(input);
-
-            if (isEmpty) return input = null;
-
-            else
+            if (string.IsNullOrEmpty(input))
             {
-                return input;
+                return "-";
             }
+            else return null;
+        }
 
+        public static float PromptFloat(string message)
+        {
+            Console.Write(message);
+            var input = Console.ReadLine();
+            return float.Parse(input);
 
         }
 
@@ -57,7 +55,7 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
-            return weight / height / height * 1f;
+            return weight / height / height;
         }
     }
 }
