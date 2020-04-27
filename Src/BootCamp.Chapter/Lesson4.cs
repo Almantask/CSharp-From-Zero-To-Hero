@@ -12,7 +12,6 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
             if (string.IsNullOrEmpty(input)) 
             {
-                Console.WriteLine();
                 return 0; 
             }
             bool isNumber = int.TryParse(input, out int num);
@@ -43,7 +42,6 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
             if (string.IsNullOrEmpty(input)) 
             {
-                Console.WriteLine();
                 return 0; 
             }
             bool isFloat = float.TryParse(input, out float num);
