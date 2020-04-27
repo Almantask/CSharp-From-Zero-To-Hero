@@ -7,40 +7,15 @@ namespace BootCamp.Chapter.Logger
     {
         private readonly string _file;
 
-        public void Log(string message)
+        public void Logger(string message, Log.Level logLevel)
         {
-            File.AppendAllText(_file, $"{message}{Environment.NewLine}");
+            var messageToLog = logLevel.Equals(Log.Level.Log) ? message : $"[{logLevel}] {message}";
+            File.AppendAllText(_file, messageToLog + Environment.NewLine);
         }
-
-        public void Info(string message)
-        {
-            Print(message, "INFO");
-        }
-
-        public void Warn(string message)
-        {
-            Print(message, "WARNING");
-        }
-
-        public void Error(string message)
-        {
-            Print(message, "ERROR");
-        }
-
-        public void Fatal(string message)
-        {
-            Print(message, "FATAL");
-        }
-
+        
         public FileLogger(string file)
         {
             _file = file;
-        }
-
-        private void Print(string message, string level)
-        {
-            var log = $"{level} {message}{Environment.NewLine}";
-            File.AppendAllText(_file, log);
         }
     }
 }

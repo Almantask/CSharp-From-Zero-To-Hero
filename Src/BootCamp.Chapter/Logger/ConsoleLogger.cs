@@ -1,43 +1,32 @@
 using System;
-using System.Threading;
 
 namespace BootCamp.Chapter.Logger
 {
     public class ConsoleLogger : ILogger
     {
-        public void Log(string message)
+        public void Logger(string message, Log.Level logLevel)
         {
-            Console.WriteLine(message);
-        }
-
-        public void Info(string message)
-        {
-            Print(message, "INFO", ConsoleColor.DarkCyan);
-        }
-
-        public void Warn(string message)
-        {
-            Print(message, "WARNING", ConsoleColor.DarkYellow);
-        }
-
-        public void Error(string message)
-        {
-            Print(message, "ERROR", ConsoleColor.Red);
-        }
-
-        public void Fatal(string message)
-        {
-            Print(message, "FATAL", ConsoleColor.DarkMagenta);
-        }
-
-        private void Print(string message, string level, ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-            Console.Write($"[{level}] ");
-            Console.ResetColor();
+            if (!logLevel.Equals(Log.Level.Log))
+            {
+                Console.ForegroundColor = LogColor(logLevel);
+                Console.Write($"[{logLevel}] ");
+                Console.ResetColor();
+            }
             Console.Write(message);
             Console.WriteLine();
-            Thread.Sleep(5);
+        }
+        
+        private ConsoleColor LogColor(Log.Level logLevel)
+        {
+            return logLevel switch
+            {
+                Log.Level.Log => ConsoleColor.White,
+                Log.Level.Info => ConsoleColor.DarkCyan,
+                Log.Level.Warn => ConsoleColor.DarkYellow,
+                Log.Level.Error => ConsoleColor.Red,
+                Log.Level.Fatal => ConsoleColor.DarkMagenta,
+                _ => ConsoleColor.White
+            };
         }
     }
 }

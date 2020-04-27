@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Logger\Debug.cs" />
+    <Compile Remove="Logger\LogLevel.cs" />
+  </ItemGroup>
+
 </Project>
