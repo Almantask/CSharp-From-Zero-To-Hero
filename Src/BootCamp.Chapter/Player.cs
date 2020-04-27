@@ -53,65 +53,65 @@ namespace BootCamp.Chapter
         public void EquipHead(Headpiece head)
         {
             if(!HasAvailableCarryCapacity(head)) return;
-            _equipment.SetHead(head);
+            _equipment.Head = head;
         }
-
+        
         public void EquipChest(Chestpiece chestpiece)
         {
             if(!HasAvailableCarryCapacity(chestpiece)) return;
-            _equipment.SetChest(chestpiece);
+            _equipment.Chest = chestpiece;
         }
-
+        
         public void EquipShoulder(Shoulderpiece shoulderpiece, bool isLeft)
         {
             if(!HasAvailableCarryCapacity(shoulderpiece)) return;
             if (isLeft)
             {
-                _equipment.SetLeftShoulder(shoulderpiece);
+                _equipment.LeftShoulder = shoulderpiece;
             }
             else
             {
-                _equipment.SetRightShoulder(shoulderpiece);
+                _equipment.RightShoulder = shoulderpiece;
             }
         }
-
+        
         public void EquipLeg(Legspiece legspiece)
         {
             if(!HasAvailableCarryCapacity(legspiece)) return;
-            _equipment.SetLeg(legspiece);
+            _equipment.Legs = legspiece;
         }
-
+        
         public void EquipArm(Armpiece armpiece, bool isLeft)
         {
             if(!HasAvailableCarryCapacity(armpiece)) return;
             if (isLeft)
             {
-                _equipment.SetLeftArm(armpiece);
+                _equipment.LeftArm = armpiece;
             }
             else
             {
-                _equipment.SetRightArm(armpiece);
+                _equipment.RightArm = armpiece;
             }
         }
-
+        
         public void EquipGloves(Gloves gloves)
         {
             if(!HasAvailableCarryCapacity(gloves)) return;
-            _equipment.SetGloves(gloves);
+            _equipment.Gloves =gloves;
         }
         
         public void EquipWeapon(Weapon weapon)
         {
             if(!HasAvailableCarryCapacity(weapon)) return;
-            _equipment.SetWeapon(weapon);
+            _equipment.Weapon = weapon;
         }
-
+        
         private bool HasAvailableCarryCapacity(Item item)
         {
             if (item == null) return true;
-            var currentWeight = _equipment.GetTotalWeight();
+            var currentWeight = _equipment.Weight;
             var newWeight = currentWeight + item.Weight;
-
+        
             return newWeight <= MaxCarryCapacity;
         }
         #endregion

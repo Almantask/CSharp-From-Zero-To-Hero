@@ -7,105 +7,117 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
-        private Weapon _weapon;
-        private Headpiece _head;
-        private Chestpiece _chest;
-        private Shoulderpiece _leftShoulder;
-        private Shoulderpiece _rightShoulder;
-        private Legspiece _legs;
-        private Armpiece _leftArm;
-        private Armpiece _rightArm;
-        private Gloves _gloves;
+        public Weapon Weapon { get; set; }
+        public Headpiece Head { get; set; }
+        public Chestpiece Chest { get; set; }
+        public Shoulderpiece LeftShoulder { get; set; }
+        public Shoulderpiece RightShoulder { get; set; }
+        public Legspiece Legs { get; set; }
+        public Armpiece LeftArm { get; set; }
+        public Armpiece RightArm { get; set; }
+        public Gloves Gloves { get; set; }
         
-        private float _weight = 0;
-        private float _defense = 0;
-        private float _attack = 0;
-        
-        public void SetWeapon(Weapon weapon)
+        private float _weight;
+        private float _defense;
+        private float _attack;
+
+        public float Weight
         {
-            // Update attack
-            _attack = (_weapon == null) ? 0 : _weapon.BaseAttack;
+            get
+            {
+                UpdateWeight();
+                return _weight;
+            }
+        }
+        
+        public float Defense
+        {
+            get
+            {
+                UpdateDefense();
+                return _weight;
+            }
+        }
+        
+        public float Attack
+        {
+            get
+            {
+                UpdateAttack();
+                return _weight;
+            }
+        }
+        
+        private Weapon[] ListOfWeapons()
+        {
+            var weapons = new Weapon[]
+            {
+                Weapon
+            };
             
-            // Update weight
-            var oldWeight = (_weapon == null) ? 0 : _weapon.Weight;
-            var newWeight = (weapon == null) ? 0 : weapon.Weight;
-            _weight += newWeight - oldWeight;
-            
-            _weapon = weapon;
-        }
-        
-        public void SetHead(Headpiece head)
-        {
-            UpdateEquippedArmourInfo(_head, head);
-            _head = head;
-        }
-        
-        public void SetChest(Chestpiece chestpiece)
-        {
-            UpdateEquippedArmourInfo(_chest, chestpiece);
-            _chest = chestpiece;
-        }
-        
-        public void SetLeftShoulder(Shoulderpiece should)
-        {
-            UpdateEquippedArmourInfo(_leftShoulder, should);
-            _leftShoulder = should;
-        }
-        
-        public void SetRightShoulder(Shoulderpiece shoulder)
-        {
-            UpdateEquippedArmourInfo(_rightShoulder, shoulder);
-            _rightShoulder = shoulder;
-        }
-        
-        public void SetLeg(Legspiece legs)
-        {
-            UpdateEquippedArmourInfo(_legs, legs);
-            _legs = legs;
-        }
-        
-        public void SetLeftArm(Armpiece arm)
-        {
-            UpdateEquippedArmourInfo(_leftArm, arm);
-            _leftArm = arm;
+            return weapons;
         }
 
-        public void SetRightArm(Armpiece arm)
+        private Armour[] ListOfArmours()
         {
-            UpdateEquippedArmourInfo(_rightArm, arm);
-            _rightArm = arm;
+            var armours = new Armour[]
+            {
+                Head,
+                Chest,
+                LeftShoulder,
+                RightShoulder,
+                Legs,
+                LeftArm,
+                RightArm,
+                Gloves
+            };
+
+            return armours;
         }
-        
-        public void SetGloves(Gloves gloves)
+
+        private void UpdateWeight()
         {
-            UpdateEquippedArmourInfo(_gloves, gloves);
-            _gloves = gloves;
+            float totalWeight = 0;
+            foreach (var armour in ListOfArmours())
+            {
+                if (armour == null) continue;
+                var armourWeight = armour.Weight;
+                totalWeight += armourWeight;
+            }
+            foreach (var weapon in ListOfWeapons())
+            {
+                if (weapon == null) continue;
+                var weaponWeight = weapon.Weight;
+                totalWeight += weaponWeight;
+            }
+
+            _weight = totalWeight;
         }
-        
-        private void UpdateEquippedArmourInfo(Armour oldItem, Armour newItem)
+
+        private void UpdateDefense()
         {
-            var oldDefense = (oldItem == null) ? 0 : oldItem.BaseDefense;
-            var newDefense = (newItem == null) ? 0 : newItem.BaseDefense;
-            _defense += newDefense - oldDefense;
-            
-            var oldWeight = (oldItem == null) ? 0 : oldItem.Weight;
-            var newWeight = (newItem == null) ? 0 : newItem.Weight;
-            _weight += newWeight - oldWeight;
+            float totalDefense = 0;
+            foreach (var armour in ListOfArmours())
+            {
+                if (armour == null) continue;
+                var armourDefense = armour.BaseDefense;
+                totalDefense += armourDefense;
+            }
+
+            _defense = totalDefense;
         }
-        
-        public float GetTotalWeight()
+
+        private void UpdateAttack()
         {
-            return _weight;
-        }
-        
-        public float GetTotalDefense()
-        {
-            return _defense;
-        }
-        
-        public float GetTotalAttack()
-        {
-            return _attack;
+            float totalAttack = 0;
+            foreach (var weapon in ListOfWeapons())
+            {
+                if (weapon == null) continue;
+                var weaponDefense = weapon.BaseAttack;
+                totalAttack += weaponDefense;
+            }
+
+            _attack = totalAttack;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace BootCamp.Chapter
             Items = new List<Item>();
         }
 
+        // I dont know how to make a getter property with arguments or even if it is possible.
         public List<Item> GetItems(string name)
         {
             return FindItemByName(name);
