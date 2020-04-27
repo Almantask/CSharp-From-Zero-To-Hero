@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace BootCamp.Chapter.Logger
 {
-    public class LogConsole : ILogger
+    public class ConsoleLogger : ILogger
     {
         public void Log(string message)
         {

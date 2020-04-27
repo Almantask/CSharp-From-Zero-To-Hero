@@ -3,7 +3,7 @@ using System.IO;
 
 namespace BootCamp.Chapter.Logger
 {
-    public class LogFile : ILogger
+    public class FileLogger : ILogger
     {
         private readonly string _file;
 
@@ -32,7 +32,7 @@ namespace BootCamp.Chapter.Logger
             Print(message, "FATAL");
         }
 
-        public LogFile(string file)
+        public FileLogger(string file)
         {
             _file = file;
         }
