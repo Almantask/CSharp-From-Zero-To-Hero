@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Computer\Mac\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Parts.cs" />
     <Compile Remove="Parts\**" />
   </ItemGroup>
