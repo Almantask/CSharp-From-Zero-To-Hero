@@ -6,14 +6,32 @@ namespace BootCamp.Chapter
 {
     public static class BinaryConverter
     {
+        private const int OnBit = 1;
+        private const int OffBit = 0;
+
         public static long ToInteger(string binary)
         {
-            return 0;
+            var integer = 0;
+
+            if (!string.IsNullOrEmpty(binary))
+                integer = Convert.ToInt32(binary, 2);
+
+            return integer;
         }
 
         public static string ToBinary(long number)
         {
-            return "";
+            var stringBuilder = new StringBuilder();
+
+            while (number / 2 != 0)
+            {
+                var remainder = number % 2;
+                stringBuilder.Insert(0, remainder); // We insert the remainder to the beginning of the StringBuilder
+                number /= 2;
+            }
+
+            stringBuilder.Insert(0, number == 0 ? OffBit : OnBit); // We insert 1 bit at the beginning of the StringBuilder
+            return stringBuilder.ToString();
         }
     }
 }
