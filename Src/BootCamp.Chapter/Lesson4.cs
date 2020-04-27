@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             string input = Console.ReadLine();
             if (string.IsNullOrEmpty(input)) 
             {
@@ -16,33 +16,30 @@ namespace BootCamp.Chapter
                 return 0; 
             }
             bool isNumber = int.TryParse(input, out int num);
-            Console.WriteLine();
             if (!isNumber) 
             {
                 Console.Write($"\"{input}\" is not a valid number.");
                 return -1; 
             }
-            else if (num == 0) { return 0; }
-            else { return num; }
+            else if (num == 0) return 0;
+            else return num; 
         }
 
         public static string PromptString(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             string input = Console.ReadLine();
-            bool isString = string.IsNullOrEmpty(input);
-            Console.WriteLine();
-            if (isString) 
+            if (string.IsNullOrEmpty(input)) 
             {
                 Console.Write("Name cannot be empty.");
                 return "-"; 
             }
-            else { return input; }
+            else return input;
         }
 
         public static float PromptFloat(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             string input = Console.ReadLine();
             if (string.IsNullOrEmpty(input)) 
             {
@@ -50,14 +47,13 @@ namespace BootCamp.Chapter
                 return 0; 
             }
             bool isFloat = float.TryParse(input, out float num);
-            Console.WriteLine();
             if (!isFloat)
             {
                 Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
-            else if (num <= 0) { return -1; }
-            else { return num; }
+            else if (num <= 0) return -1;
+            else return num;
         }
 
         public static float CalculateBMI(float weight, float height)
