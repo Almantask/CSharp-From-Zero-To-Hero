@@ -11,11 +11,7 @@ namespace BootCamp.Chapter.Csv
         {
         }
 
-        public CsvWriter(string fileName, CsvDelimiter delimiter, bool hasHeader) : base(fileName, delimiter, hasHeader)
-        {
-        }
-
-        public CsvWriter(string fileName, CsvDelimiter delimiter, bool hasHeader, bool hasFooter) : base(fileName, delimiter, hasHeader, hasFooter)
+        public CsvWriter(string fileName, CsvDelimiter delimiter, bool hasHeader, bool hasFooter = default) : base(fileName, delimiter, hasHeader, hasFooter)
         {
         }
 
@@ -28,15 +24,7 @@ namespace BootCamp.Chapter.Csv
 
             var lines = PopulateRows(csvRows);
 
-            try
-            {
-                File.WriteAllLines(FileName, lines);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine($"IOException source {ex.Source}");
-                throw;
-            }
+            WriteToFile(lines);
         }
 
         public void WriteAllRows(IEnumerable<CsvRow> csvRows, CsvRow header)
@@ -53,15 +41,7 @@ namespace BootCamp.Chapter.Csv
                 lines.Insert(0, CsvRow.Build(header, Delimiter));
             }
 
-            try
-            {
-                File.WriteAllLines(FileName, lines);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine($"IOException source {ex.Source}");
-                throw;
-            }
+            WriteToFile(lines);
         }
 
         public void WriteAllRows(IEnumerable<CsvRow> csvRows, CsvRow header, string footer)
@@ -82,15 +62,7 @@ namespace BootCamp.Chapter.Csv
                 lines.Add(footer);
             }
 
-            try
-            {
-                File.WriteAllLines(FileName, lines);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine($"IOException source {ex.Source}");
-                throw;
-            }
+            WriteToFile(lines);
         }
 
         public void AppendRow(CsvRow row)
@@ -137,6 +109,19 @@ namespace BootCamp.Chapter.Csv
             }
 
             return lines;
+        }
+
+        private void WriteToFile(IList<string> lines)
+        {
+            try
+            {
+                File.WriteAllLines(FileName, lines);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"IOException source {ex.Source}");
+                throw;
+            }
         }
     }
 }

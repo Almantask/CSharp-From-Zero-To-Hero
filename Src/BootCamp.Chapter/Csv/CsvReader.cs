@@ -11,11 +11,7 @@ namespace BootCamp.Chapter.Csv
         {
         }
 
-        public CsvReader(string fileName, CsvDelimiter delimiter, bool hasHeader) : base(fileName, delimiter, hasHeader)
-        {
-        }
-
-        public CsvReader(string fileName, CsvDelimiter delimiter, bool hasHeader, bool hasFooter) : base(fileName, delimiter, hasHeader, hasFooter)
+        public CsvReader(string fileName, CsvDelimiter delimiter, bool hasHeader, bool hasFooter = default) : base(fileName, delimiter, hasHeader, hasFooter)
         {
         }
 

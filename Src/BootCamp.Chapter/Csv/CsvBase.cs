@@ -24,19 +24,7 @@ namespace BootCamp.Chapter.Csv
             FileName = fileName;
         }
 
-        public CsvBase(string fileName, CsvDelimiter delimiter, bool hasHeader)
-        {
-            if (!fileName.IsValid())
-            {
-                throw new ArgumentException("fileName cannot be null or empty");
-            }
-
-            FileName = fileName;
-            Delimiter = delimiter;
-            HasHeader = hasHeader;
-        }
-
-        public CsvBase(string fileName, CsvDelimiter delimiter, bool hasHeader, bool hasFooter)
+        public CsvBase(string fileName, CsvDelimiter delimiter, bool hasHeader, bool hasFooter = default)
         {
             if (!fileName.IsValid())
             {
