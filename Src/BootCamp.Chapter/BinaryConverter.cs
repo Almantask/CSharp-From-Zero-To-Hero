@@ -14,8 +14,17 @@ namespace BootCamp.Chapter
             var integer = 0;
 
             if (!string.IsNullOrEmpty(binary))
-                integer = Convert.ToInt32(binary, 2);
-
+            {
+                try
+                {
+                    integer = Convert.ToInt32(binary, 2);
+                }
+                catch (Exception)
+                {
+                    throw new InvalidBinaryNumberException(binary);
+                }
+            }
+                
             return integer;
         }
 
@@ -30,7 +39,7 @@ namespace BootCamp.Chapter
                 number /= 2;
             }
 
-            stringBuilder.Insert(0, number == 0 ? OffBit : OnBit); // We insert 1 bit at the beginning of the StringBuilder
+            stringBuilder.Insert(0, number == 0 ? OffBit : OnBit); // We insert 1 bit at the beginning of the StringBuilder if the number we're trying to convert is not 0
             return stringBuilder.ToString();
         }
     }

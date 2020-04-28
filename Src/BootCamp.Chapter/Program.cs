@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +7,10 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(BinaryConverter.ToInteger("01"));
+            int UpArrow = '\u21A6';
+            Console.WriteLine(BinaryConverter.ToInteger("10"));
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Console.WriteLine("\u21A6");
         }
     }
 }
