@@ -7,11 +7,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(BinaryConverter.ToBinary(-1));
-            int UpArrow = '\u21A6';
+            Console.WriteLine(BinaryConverter.ToBinary(512));
             Console.WriteLine(BinaryConverter.ToInteger("10101"));
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
-            Console.WriteLine("\u21A6");
+
+            Console.OutputEncoding = System.Text.Encoding.Unicode; // Just for testing ArrowMovement.GetIndicator
+            Console.WriteLine(ArrowMovement.GetIndicator(Console.ReadKey(true).KeyChar)); 
         }
     }
 }
