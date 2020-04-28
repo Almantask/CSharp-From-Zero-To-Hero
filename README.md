@@ -16,4 +16,24 @@ In UK address can be defined like this:
    UNITED KINGDOM      [country name]  
 Postal office in UK has been having a problem for awhile now, that some mails have been duplicated (sent twice or more).
 Find which postal office (by postal code) had the biggest amount of duplicates.  
-Overload equality check operators, implicit operator from address to string. 
+Overload equality check operators, implicit operator from address to string.  
+
+Addresses will be written in the following format:
+```
+Nildram Ltd
+Ardenham Court
+Oxford Road
+AYLESBURY
+BUCKINGHAMSHIRE
+HP19 3EQ 
+UNITED KINGDOM
+
+Nildram Ltd
+Ardenham Court
+Oxford Road
+AYLESBURY
+BUCKINGHAMSHIRE
+HP19 3EQ 
+UNITED KINGDOM
+```
+Here you can see two addresses, which will be considered duplicate.
