@@ -9,20 +9,59 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var name = PrintString();
-            Console.WriteLine(name);
+            Console.Write("Full Name: ");
+            var inputName = Console.ReadLine();
+            var errorName = ErrorString(inputName);
 
-            var age = PrintInt("Age: ", "Age");
-            Console.WriteLine(age);
+            if (errorName == null)
+            {
 
-            float weight = PrintInt("Weight (kg): ", "Weight");
-            Console.WriteLine(weight);
+            }
+            else
+            {
+                Console.WriteLine(errorName);
+            }
 
-            float height = PrintInt("Height (m): ", "Height");
-            Console.WriteLine(height);
-           
-            var bmi = CalculateBmi(name, age, weight, height);
+            Console.Write("Age: ");
+            var inputAge = Console.ReadLine();
+            var errorAge = ErrorInt("Age", inputAge);
+            if (errorAge == null)
+            {
+
+            }
+            else
+            {
+                Console.WriteLine(errorAge);
+            }
+
+            Console.Write("Weight (kg): ");
+            var inputWeight = Console.ReadLine();
+            var errorWeight = ErrorFloat(inputWeight, "Weight");
+            if (errorWeight == null)
+            {
+
+            }
+            else
+            {
+                Console.WriteLine(errorWeight);
+            }
+
+            Console.Write("Height (m): ");
+            var inputHeight = Console.ReadLine();
+            var errorHeight = ErrorFloat(inputHeight, "Height");
+            if (errorHeight == null)
+            {
+
+            }
+            else
+            {
+                Console.WriteLine(errorHeight);
+            }
+
+            var bmi = CalculateBmi(inputName, inputAge, inputWeight, inputHeight);
+            Console.WriteLine(bmi);
         }
+       
         //Error messages for strings
         static string ErrorString(string input)
         {
@@ -45,19 +84,7 @@ namespace BootCamp.Chapter
             }
             else return input;
         }
-        //returns error message if there is an error and returns null if there is no error
-        static string PrintString()
-        {
-            Console.Write("Full Name: ");
-            var input = Console.ReadLine();
-            var error = ErrorString(input);
-            
-            if (error == null) return null;
-            else
-            {
-                return error;
-            }
-        }
+      
         //Returns error message if there is an error, if there isn't it returns null
         static string PrintInt(string message, string errorName)
         {
@@ -85,15 +112,24 @@ namespace BootCamp.Chapter
             }
         }
         //checks if any of the variables needed to calculate bmi is less than 0
-        static float BmiError(float weight, float height)
+        static float BmiErrorWeight(float weight)
         {
-            if (weight <= 0) return -0;
-            if (height <= 0) return -1;
-            if (height >= 0) return 0;
-            else if (weight >= 0) return 0;
+            
+            if (weight <= 0) return -1;
+            
+            
             else
             {
-                return -2;
+                return 0;
+            }
+        }
+        static float BmiErrorHeight(float height)
+        {
+            if (height <= 0) return -1;
+
+            else
+            {
+                return 0;
             }
         }
 
@@ -101,35 +137,40 @@ namespace BootCamp.Chapter
         static string BmiErroMessages(float weight, float height)
         {
             var errorMsg = "Failed calculating BMI. Reason: ";
-            var error = BmiError(weight, height);
+            var errorWeight = BmiErrorWeight(weight);
+            var errorHeight = BmiErrorHeight(height);
             var errorMsg1 = errorMsg + "Weight cannot be equal or less than zero, but was " + weight;
             var errorMsg2 = errorMsg + "Height cannot be equal or less than zero, but was " + height;
 
-            if (error == -0) return errorMsg1;
-            else if (error == -1) return errorMsg2;
-            else if (error == -2) return errorMsg1 + "\n" + errorMsg2;
+            if (errorWeight == -1) return errorMsg1;
+            if (errorHeight == -1) return errorMsg2;
+            
+
             else
             {
                 return null;
             }
         }
-        static string CalculateBmi(string name, string age, float weight, float height)
+        static string CalculateBmi(string name, string age, string weight, string height)
         {
-            var bmi = weight / height / height;
-            var error = BmiErroMessages(weight, height);
+
+            var parsedWeight = float.Parse(weight);
+            var parsedHeight = float.Parse(height);
+            float bmi =( parsedWeight / parsedHeight / parsedHeight);
+            var error = BmiErroMessages(parsedWeight, parsedHeight);
             var printBmi = name + " is " + age + " years old, his weight is " + weight + " kg, his height is " + height + " and his bmi is " + bmi;
 
-            if (error == null) return printBmi ;
+            if (error == null) return printBmi;
             else
             {
                 return error;
             }
         }
-        
+
         //returns -1 if input is not a number, returns 0 if it is empty and returns output if there isn't a problem
         public static int PromptInt(string input)
         {
-           
+
             bool isNumber = int.TryParse(input, out var output);
             if (string.IsNullOrEmpty(input))
             {
@@ -143,6 +184,37 @@ namespace BootCamp.Chapter
             }
 
         }
+        
+        static float PromptFloat(string input)
+        {
+            bool isNumber = float.TryParse(input, out var output);
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+            if (!isNumber) return -1;
+
+            else
+            {
+                return output;
+            }
+        }
+
+        static string ErrorFloat(string input, string error)
+        {
+            var variable = PromptFloat(input);
+            var error1 = input + " is not a number";
+            var error2 = error + " cannot be empty";
+
+            if (variable == -1) return error1;
+            else if (variable == 0) return error2;
+            else
+            {
+                return null;
+            }
+        }
+
+
 
 
 
