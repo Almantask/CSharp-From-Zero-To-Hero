@@ -11,25 +11,29 @@ namespace BootCamp.Chapter
 
         public static long ToInteger(string binary)
         {
-            var integer = 0;
+            var result = 0; // We assume that the resulting number will be 0
 
-            if (!string.IsNullOrEmpty(binary))
+            if (string.IsNullOrEmpty(binary)) return result;
+            
+            var indexofLastBit = binary.Length - 1;
+            var exponent = 0; // The numerical place of a bit going from right to the left which is used in calculating the result
+
+            for (int i = indexofLastBit; i >= 0; i--)
             {
-                try
-                {
-                    integer = Convert.ToInt32(binary, 2);
-                }
-                catch (Exception)
-                {
-                    throw new InvalidBinaryNumberException(binary);
-                }
+                int currentBit = (int) Char.GetNumericValue(binary[i]);
+                if (currentBit != OffBit && currentBit != OnBit) throw new InvalidBinaryNumberException(binary); // Numbers other than 0 and 1 are not allowed
+
+                result += currentBit * (int) (MathF.Pow(2, exponent));
+                exponent++; // As we go to the next bit, we increment the exponent
             }
                 
-            return integer;
+            return result;
         }
 
         public static string ToBinary(long number)
         {
+            if (number < 0) throw new ArgumentOutOfRangeException($"Negative numbers cannot be converted to binary and your input number was: {number}");
+
             var stringBuilder = new StringBuilder();
 
             while (number / 2 != 0)
