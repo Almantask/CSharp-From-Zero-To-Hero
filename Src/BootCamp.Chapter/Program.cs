@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using Console = System.Console;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BootCamp.Chapter
+
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Lesson3.Demo();
         }
     }
 }
