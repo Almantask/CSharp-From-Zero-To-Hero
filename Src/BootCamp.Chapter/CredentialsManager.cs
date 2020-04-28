@@ -14,7 +14,6 @@ namespace BootCamp.Chapter
             _credentialsFile = credentialsFile;
         }
 
-        // TODO: load credentials and check for equality.
         public bool Login(Credentials credentials)
         {
             if (!IsUserRegistered(credentials.Username, out var password)) return false;
@@ -28,7 +27,11 @@ namespace BootCamp.Chapter
         /// <param name="credentials"></param>
         public void Register(Credentials credentials)
         {
-            if (IsUserRegistered(credentials.Username, out _)) return;
+            if (IsUserRegistered(credentials.Username, out _))
+            {
+                Console.WriteLine("Username already taken.");
+                return;
+            }
 
             
             var loginInfo = $"{credentials.Username},{credentials.Password}";

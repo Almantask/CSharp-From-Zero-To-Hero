@@ -3,7 +3,6 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    // TODO: make a struct and add validation and other needed methods (if needed)
     public readonly struct Credentials
     {
         public string Username { get; }
@@ -19,7 +18,6 @@ namespace BootCamp.Chapter
             Password = EncryptPassword(password);
         }
         
-        // TODO: Implement properly.
         public static bool TryParse(string input, out Credentials credentials)
         {
             credentials = default;
