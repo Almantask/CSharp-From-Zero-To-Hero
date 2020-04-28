@@ -10,19 +10,23 @@ namespace BootCamp.Chapter
         {
             for (int i = 0; i < 2; i++)
             {
-                var name = promptStringValue("Name: ");
-                int age = promptIntValue("Age: ");
-
-                float weight = promptFloatValue("Weight [Kg]: ");
-                float height = promptFloatValue("Height [Cm]: ");
-
-                float bmiheight = height / 100;
-                float bmi = BmiCalculated(weight, bmiheight);
-
-                Console.WriteLine($"{name} is {age} years old, their weight is {weight} kg and their height is {height} cm. Therefore, making their BMI [Body Mass Index] {bmi}.\n\n");
+                PersonsBmiProcess();
             }
-        }
 
+        }
+        public static void PersonsBmiProcess()
+        {
+            var name = promptStringValue("Name: ");
+            int age = promptIntValue("Age: ");
+
+            float weight = promptFloatValue("Weight [Kg]: ");
+            float height = promptFloatValue("Height [Cm]: ");
+
+            float bmiheight = height / 100;
+            float bmi = bmiCalculated(weight, bmiheight);
+
+            Console.WriteLine($"{name} is {age} years old, their weight is {weight} kg and their height is {height} cm. Therefore, making their BMI [Body Mass Index] {bmi}.\n");
+        }
         public static int promptIntValue(string message)
         {
             Console.Write(message);
@@ -46,13 +50,11 @@ namespace BootCamp.Chapter
 
             return promptFloatValue;
         }
-
-        public static float BmiCalculated(float weight, float bmiheight)
+        public static float bmiCalculated(float weight, float bmiheight)
         {
             float bmi = weight / (bmiheight * bmiheight);
 
             return bmi;
         }
-
     }
 }
