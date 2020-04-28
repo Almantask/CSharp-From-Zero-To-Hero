@@ -11,11 +11,11 @@ namespace BootCamp.Chapter
             var menu = new InteractiveMenu();
             var option = menu.Build(menuOptions);
 
-            if (option == 0) LoginMenu();
-            if (option == 1) RegisterMenu();
+            if (option == 0) DisplayLoginMenu();
+            if (option == 1) DisplayRegisterMenu();
         }
 
-        private void RegisterMenu()
+        private void DisplayRegisterMenu()
         {
             Console.Clear();
             Console.WriteLine("Enter your username,password | Eg. \"foo,bar\"");
@@ -31,7 +31,7 @@ namespace BootCamp.Chapter
             manager.Register(credential);
         }
 
-        private void LoginMenu()
+        private void DisplayLoginMenu()
         {
             Console.WriteLine("Enter your username:");
             var username = Console.ReadLine();
