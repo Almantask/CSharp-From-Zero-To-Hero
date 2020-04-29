@@ -142,14 +142,26 @@ namespace BootCamp.Chapter
             var errorMsg1 = errorMsg + "Weight cannot be equal or less than zero, but was " + weight;
             var errorMsg2 = errorMsg + "Height cannot be equal or less than zero, but was " + height;
 
-            if (errorWeight == -1) return errorMsg1;
-            if (errorHeight == -1) return errorMsg2;
-            
+            if (errorWeight == -1) 
+                if (errorHeight == -1) return errorMsg1 + "\n" + errorMsg2;
+                else
+                {
+                    return errorMsg1;
+                }
 
-            else
-            {
-                return null;
-            }
+            if (errorHeight == -1)
+                if (errorWeight == -1) return errorMsg1 + "\n" + errorMsg2;
+                else
+                {
+                    return errorMsg2;
+                }
+
+
+
+                else
+                {
+                    return null;
+                }
         }
         static string CalculateBmi(string name, string age, string weight, string height)
         {
