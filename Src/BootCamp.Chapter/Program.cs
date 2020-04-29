@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
         {
             // Put two // in front of the await to comment out Part1And2 once you solved it.
             // Make sure to note down the secret passcode before. You will need it!
-            await Part1And2();
+            //await Part1And2();
             OptionalPart();
         }
 
@@ -41,7 +41,7 @@ namespace BootCamp.Chapter
         // You are not supposed to change anything in this function.
         private static async Task Part1And2()
         {
-            Console.WriteLine("Debug this correctly to move on to part 2 of this homework.");
+          /*  Console.WriteLine("Debug this correctly to move on to part 2 of this homework.");
             Console.WriteLine();
             Console.WriteLine();
 
@@ -52,11 +52,11 @@ namespace BootCamp.Chapter
                 do
                 {
                     Console.WriteLine(question);
-                } while (!Prompter.Instance.IsCorrectAnswer(Console.ReadLine()));
+                }while (!Prompter.Instance.IsCorrectAnswer(Console.ReadLine()));
             }
 
             Console.WriteLine();
-            Console.WriteLine();
+          */  Console.WriteLine();
             Console.WriteLine("Welcome to part 2.");
             Console.WriteLine();
             Console.WriteLine();
