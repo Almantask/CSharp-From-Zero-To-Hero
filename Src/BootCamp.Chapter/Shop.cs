@@ -33,7 +33,7 @@ namespace BootCamp.Chapter
         
         public decimal Buy(Item item)
         {
-            var itemPrice = item.Price;
+            var itemPrice = item?.Price ?? throw new ArgumentNullException(nameof(item));
             if (Money < itemPrice) return 0m;
             Money -= itemPrice;
             return itemPrice;

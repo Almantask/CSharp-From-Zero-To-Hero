@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     public class Item
     {
@@ -8,6 +10,7 @@
         
         public Item(string name, decimal price, float weight)
         {
+            if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
             Name = name;
             Price = price;
             Weight = weight;

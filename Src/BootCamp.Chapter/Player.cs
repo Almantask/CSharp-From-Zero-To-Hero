@@ -18,6 +18,7 @@ namespace BootCamp.Chapter
         
         public Player(string name, int hp, int strength)
         {
+            if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
             _name = name;
             _hp = hp;
             _strength = strength;
