@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -17,14 +18,15 @@ namespace BootCamp.Chapter
 
         public void Add(Item item)
         {
-            if(item == null) return;
+            if(item is null) throw new ArgumentNullException(nameof(item));
             _inventory.AddItem(item);
         }
 
         public void Remove(string name)
         {
-            var item = _inventory.GetItems(name);
-            if (item == null) return;
+            var itemName = name ?? throw new ArgumentNullException(nameof(name));
+            var item = _inventory.GetItems(itemName);
+            if (item is null) return;
             
             _inventory.RemoveItem(item[0]);
         }
@@ -39,9 +41,10 @@ namespace BootCamp.Chapter
 
         public Item Sell(string item)
         {
-            if (item == null) return null;
-            var itemToSell = _inventory.GetItems(item);
-            if (itemToSell == null) return null;
+            var itemName = item ?? throw new ArgumentNullException(nameof(item));
+            
+            var itemToSell = _inventory.GetItems(itemName);
+            if (itemToSell is null) return null;
             
             _inventory.RemoveItem(itemToSell[0]);
             Money += itemToSell[0].Price;

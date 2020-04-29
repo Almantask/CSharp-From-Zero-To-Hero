@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BootCamp.Chapter.Items;
 
 namespace BootCamp.Chapter
@@ -34,16 +35,22 @@ namespace BootCamp.Chapter
         
         public void AddItem(Item item)
         {
+            if (item is null) throw new ArgumentNullException(nameof(item));
             _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
+            if(item is null) throw new ArgumentNullException(nameof(item));
             _inventory.RemoveItem(item);
         }
 
+        // string.IsNullOrEmpty(name) fits better than
+        // if (name is null) throw new ArgumentException();
+        // var itemName = name ?? throw new ArgumentException();
         public List<Item> GetItems(string name)
         {
+            if (string.IsNullOrEmpty(name)) throw new ArgumentException("Searched item name is empty or empty.");
             return _inventory.GetItems(name);
         }
         
@@ -108,7 +115,7 @@ namespace BootCamp.Chapter
         
         private bool HasAvailableCarryCapacity(Item item)
         {
-            if (item == null) return true;
+            if (item is null) return true;
             var currentWeight = _equipment.Weight;
             var newWeight = currentWeight + item.Weight;
         

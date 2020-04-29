@@ -2,9 +2,6 @@
 
 namespace BootCamp.Chapter
 {
-    /// <summary>
-    /// Extra assignment. 
-    /// </summary>
     public class Equipment
     {
         public Weapon Weapon { get; set; }
@@ -80,15 +77,11 @@ namespace BootCamp.Chapter
             float totalWeight = 0;
             foreach (var armour in ListOfArmours())
             {
-                if (armour == null) continue;
-                var armourWeight = armour.Weight;
-                totalWeight += armourWeight;
+                totalWeight += armour?.Weight ?? 0;
             }
             foreach (var weapon in ListOfWeapons())
             {
-                if (weapon == null) continue;
-                var weaponWeight = weapon.Weight;
-                totalWeight += weaponWeight;
+                totalWeight += weapon?.Weight ?? 0;
             }
 
             _weight = totalWeight;
@@ -99,9 +92,7 @@ namespace BootCamp.Chapter
             float totalDefense = 0;
             foreach (var armour in ListOfArmours())
             {
-                if (armour == null) continue;
-                var armourDefense = armour.BaseDefense;
-                totalDefense += armourDefense;
+                totalDefense += armour?.BaseDefense ?? 0;
             }
 
             _defense = totalDefense;
@@ -112,9 +103,7 @@ namespace BootCamp.Chapter
             float totalAttack = 0;
             foreach (var weapon in ListOfWeapons())
             {
-                if (weapon == null) continue;
-                var weaponDefense = weapon.BaseAttack;
-                totalAttack += weaponDefense;
+                totalAttack += weapon?.BaseAttack ?? 0;
             }
 
             _attack = totalAttack;
