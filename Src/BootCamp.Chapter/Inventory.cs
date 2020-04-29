@@ -1,35 +1,41 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Inventory
     {
-        private Item[] _items;
-        public Item[] GetItems()
-        {
-            return new Item[0];
-        }
+        public List<Item> Items { get; }
 
         public Inventory()
         {
-            _items = new Item[0];
+            Items = new List<Item>();
         }
 
-        public Item[] GetItems(string name)
+        // I dont know how to make a getter property with arguments or even if it is possible.
+        public List<Item> GetItems(string name)
         {
-            return new Item[0];
+            return FindItemByName(name);
         }
 
         public void AddItem(Item item)
         {
-
+            Items.Add(item);
         }
 
-        /// <summary>
-        /// Removes item matching criteria by item.
-        /// Does nothing if no such item exists
-        /// </summary>
         public void RemoveItem(Item item)
         {
+            Items.Remove(item);
+        }
 
+        private List<Item> FindItemByName(string name)
+        {
+            var foundItems = new List<Item>();
+            foreach (var item in Items)
+            {
+                if (item.Name.Equals(name)) foundItems.Add(item);
+            }
+            
+            return foundItems;
         }
     }
 }

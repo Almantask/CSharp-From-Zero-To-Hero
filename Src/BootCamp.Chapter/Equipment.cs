@@ -7,85 +7,117 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
-        private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
-        {
+        public Weapon Weapon { get; set; }
+        public Headpiece Head { get; set; }
+        public Chestpiece Chest { get; set; }
+        public Shoulderpiece LeftShoulder { get; set; }
+        public Shoulderpiece RightShoulder { get; set; }
+        public Legspiece Legs { get; set; }
+        public Armpiece LeftArm { get; set; }
+        public Armpiece RightArm { get; set; }
+        public Gloves Gloves { get; set; }
+        
+        private float _weight;
+        private float _defense;
+        private float _attack;
 
+        public float Weight
+        {
+            get
+            {
+                UpdateWeight();
+                return _weight;
+            }
+        }
+        
+        public float Defense
+        {
+            get
+            {
+                UpdateDefense();
+                return _weight;
+            }
+        }
+        
+        public float Attack
+        {
+            get
+            {
+                UpdateAttack();
+                return _weight;
+            }
+        }
+        
+        private Weapon[] ListOfWeapons()
+        {
+            var weapons = new Weapon[]
+            {
+                Weapon
+            };
+            
+            return weapons;
         }
 
-        private Headpiece _head;
-        public void SetHead(Headpiece head)
+        private Armour[] ListOfArmours()
         {
+            var armours = new Armour[]
+            {
+                Head,
+                Chest,
+                LeftShoulder,
+                RightShoulder,
+                Legs,
+                LeftArm,
+                RightArm,
+                Gloves
+            };
 
+            return armours;
         }
 
-        private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
+        private void UpdateWeight()
         {
+            float totalWeight = 0;
+            foreach (var armour in ListOfArmours())
+            {
+                if (armour == null) continue;
+                var armourWeight = armour.Weight;
+                totalWeight += armourWeight;
+            }
+            foreach (var weapon in ListOfWeapons())
+            {
+                if (weapon == null) continue;
+                var weaponWeight = weapon.Weight;
+                totalWeight += weaponWeight;
+            }
 
+            _weight = totalWeight;
         }
 
-        private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece should)
+        private void UpdateDefense()
         {
+            float totalDefense = 0;
+            foreach (var armour in ListOfArmours())
+            {
+                if (armour == null) continue;
+                var armourDefense = armour.BaseDefense;
+                totalDefense += armourDefense;
+            }
 
+            _defense = totalDefense;
         }
 
-        private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
+        private void UpdateAttack()
         {
+            float totalAttack = 0;
+            foreach (var weapon in ListOfWeapons())
+            {
+                if (weapon == null) continue;
+                var weaponDefense = weapon.BaseAttack;
+                totalAttack += weaponDefense;
+            }
 
-        }
-
-        private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
-        {
-
-        }
-
-        private Armpiece _leftArm;
-        public void SetLeftArmp(Armpiece arm)
-        {
-
-        }
-
-        private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
-        {
-
-        }
-
-        private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
-        {
-
-        }
-
-        /// <summary>
-        /// Gets total weight of armour.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalWeight()
-        {
-            return 0;
-        }
-
-        /// <summary>
-        /// Returns sums of defense stat of all armour pieces.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalDefense()
-        {
-            return 0;
-        }
-
-        /// <summary>
-        /// Returns damage done by weapon.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalAttack()
-        {
-            return 0;
+            _attack = totalAttack;
         }
     }
 }
