@@ -1,6 +1,8 @@
 ﻿namespace BootCamp.Chapter.Subjects
 {
-    // Leave it empty, because subjects are unrelated. Just for simulation
-    // Alternatively use base Subject class.
-    public interface ISubject { }
+    public interface ISubject
+    {
+        public string Title { get; }
+        public string Content { get; }
+    }
 }

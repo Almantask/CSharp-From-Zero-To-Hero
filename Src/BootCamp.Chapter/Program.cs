@@ -1,7 +1,4 @@
-﻿using System;
-using BootCamp.Chapter.Students;
-using BootCamp.Chapter.Subjects;
-using BootCamp.Chapter.Teachers;
+﻿using BootCamp.Chapter.Demo;
 
 namespace BootCamp.Chapter
 {
@@ -9,6 +6,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            var lecture1 = new ProgrammingLecture();
+            
+            lecture1.ApplyLecture();
         }
     }
 }

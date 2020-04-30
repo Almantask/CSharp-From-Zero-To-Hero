@@ -1,11 +1,13 @@
-﻿using BootCamp.Chapter.Subjects;
+﻿using System;
+using BootCamp.Chapter.Subjects;
 using BootCamp.Chapter.Teachers;
 
 namespace BootCamp.Chapter.Students
 {
     public interface IStudent
     {
-        long Id { get; }
+        string Name { get; }
+        Guid Id { get; }
 
         void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
             where TTeacher : ITeacher<TSubject>

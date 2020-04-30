@@ -2,7 +2,10 @@
 
 namespace BootCamp.Chapter.Teachers
 {
-    public class UniversityTeacher : Teacher<ISubject>
+    public class UniversityTeacher<TSubject> : Teacher<TSubject> where TSubject : ISubject
     {
+        public UniversityTeacher(string name) : base(name)
+        {
+        }
     }
 }
