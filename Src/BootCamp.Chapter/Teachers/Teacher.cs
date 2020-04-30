@@ -23,5 +23,3 @@ namespace BootCamp.Chapter.Teachers
         }
     }
 }
-    
-    
