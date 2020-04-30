@@ -4,6 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
+    // ToDo: Change code so it only allows letters from an alphabet.
+
     /// <summary>
     /// Caesar cipher which supports all ASCII character (256 in total)
     /// </summary>
@@ -11,32 +13,34 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
-            if (message == null)
-                return null;
+            return ApplyCipher(message, shift);
+        }
 
-            if (message == string.Empty)
-                return string.Empty;
+        public static string Decrypt(string message, byte shift)
+        {
+            return ApplyCipher(message, -shift);
+        }
 
-            var bytes = new byte[message.Length];
+        public static string ApplyCipher(string inputMessage, int shift)
+        {
+            if (string.IsNullOrEmpty(inputMessage)) return inputMessage;
 
-            for (int i = 0; i < message.Length; i++)
+            var bytes = new byte[inputMessage.Length];
+            var encoding = Encoding.GetEncoding("ISO-8859-1");
+
+            for (int i = 0; i < inputMessage.Length; i++)
             {
-                var currentChar = message[i];
+                var currentChar = inputMessage[i];
                 var convertedByte = Convert.ToByte(currentChar);
-                byte shiftedByte = (byte) (convertedByte + shift);
+                var shiftedByte = (byte)(convertedByte + shift);
 
                 bytes[i] = shiftedByte;
             }
 
             var result = Encoding.ASCII.GetChars(bytes);
-            message = new string(result);
+            inputMessage = new string(result);
 
-            return message;
-        }
-
-        public static string Decrypt(string message, byte shift)
-        {
-            return message;
+            return encoding.GetString(bytes);
         }
     }
 }
