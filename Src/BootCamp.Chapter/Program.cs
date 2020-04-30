@@ -6,7 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            var test = CaesarCipher.Encrypt("Test", 2);
+            Console.WriteLine(test);
         }
     }
 }
