@@ -6,6 +6,43 @@ namespace BootCamp.Chapter
 {
     class Lesson4
     {
+        public static void Demo()
+        {
+            CalculateBMIPerson();
+            CalculateBMIPerson();
+        }
+
+        static void CalculateBMIPerson()
+        {
+            var name = PromptString("Name: ");
+            while (name == "-")
+            {
+                name = PromptString("Name: ");
+            }
+
+            var age = PromptInt("Age: ");
+            while (age == 0 || age == -1)
+            {
+                age = PromptInt("Age: ");
+            }
+
+            var weight = PromptFloat("Weight: ");
+            while (weight == 0 || weight == -1)
+            {
+                weight = PromptFloat("Weight: ");
+            }
+
+            var height = PromptFloat("Height: ");
+            while (height == 0 || height == -1)
+            {
+                height = PromptFloat("Height: ");
+            }
+
+            var BMI = CalculateBMI(weight, height);
+
+            Console.WriteLine($"My name is {name}, I am {age} years old, my weight is {weight}, my height is {height} and my BMI is {BMI}");
+        }
+        
         public static int PromptInt(string message)
         {
             Console.WriteLine(message);
