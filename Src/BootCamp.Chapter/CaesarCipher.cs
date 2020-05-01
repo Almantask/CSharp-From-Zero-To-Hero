@@ -11,36 +11,40 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class CaesarCipher
     {
+        private const char UpperA = 'A';
+        private const char LowerA = 'a';
+        private const int numberofKeys = 26;
+
         public static string Encrypt(string message, byte shift)
         {
-            return ApplyCipher(message, shift);
+            return CiperMessage(message, shift);
         }
 
         public static string Decrypt(string message, byte shift)
         {
-            return ApplyCipher(message, -shift);
+            return CiperMessage(message, 26 - shift);
         }
 
-        public static string ApplyCipher(string inputMessage, int shift)
+        private static string CiperMessage(string inputMessage, int shift)
         {
             if (string.IsNullOrEmpty(inputMessage)) return inputMessage;
 
-            var bytes = new byte[inputMessage.Length];
-            var encoding = Encoding.GetEncoding("ISO-8859-1");
+            var output = new StringBuilder();
 
-            for (int i = 0; i < inputMessage.Length; i++)
+            foreach (var character in inputMessage)
             {
-                var currentChar = inputMessage[i];
-                var convertedByte = Convert.ToByte(currentChar);
-                var shiftedByte = (byte)(convertedByte + shift);
-
-                bytes[i] = shiftedByte;
+                output.Append(CiperChar(character, shift));
             }
 
-            var result = Encoding.ASCII.GetChars(bytes);
-            inputMessage = new string(result);
+            return output.ToString();
+        }
 
-            return encoding.GetString(bytes);
+        private static char CiperChar(char character, int key)
+        {
+            if (!char.IsLetter(character)) return character;
+
+            char offset = char.IsUpper(character) ? UpperA : LowerA;
+            return (char)((((character + key) - offset) % numberofKeys) + offset);
         }
     }
 }

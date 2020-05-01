@@ -8,10 +8,10 @@ namespace BootCamp.Chapter
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            var test = CaesarCipher.Encrypt("If he had anything confidential to say, he wrote it in cipher, that is, by so changing the order of the letters of the alphabet, that not a word could be made out.", 230);
+            var test = CaesarCipher.Encrypt("This is a test sentencew ZZZZZZ 2312 123! 3###asdasd $$;, asd12!!", 1);
             Console.WriteLine(test);
 
-            var test2 = CaesarCipher.Decrypt(test, 230);
+            var test2 = CaesarCipher.Decrypt(test, 1);
             Console.WriteLine(test2);
         }
     }
