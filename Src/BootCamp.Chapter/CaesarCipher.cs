@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
 
         public static string Decrypt(string message, byte shift)
         {
-            return CiperMessage(message, 26 - shift);
+            return CiperMessage(message, numberofKeys - shift);
         }
 
         private static string CiperMessage(string inputMessage, int shift)
