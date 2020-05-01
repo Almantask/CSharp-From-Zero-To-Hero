@@ -6,34 +6,41 @@ namespace BootCamp.Chapter
     {
         private readonly bool[][] _toggles;
         private readonly IGridClearer _gridClearer;
+        private readonly int _rowsLength;
+        private readonly int _columnsLength;
 
         public ToggleableGridJagged(bool[][] toggles, IGridClearer gridClearer)
         {
             _toggles = toggles;
             _gridClearer = gridClearer;
+            _rowsLength = toggles.Length;
+            _columnsLength = toggles[0].Length;
         }
 
         public void Toggle(int x, int y)
         {
             _toggles[x][y] = !_toggles[x][y];
-            _gridClearer.Clear();
             PrintTable();
         }
         
         private void PrintTable()
         {
-            var rowsLength = _toggles.Length;
-            var columnsLength = _toggles[0].Length;
-            for (var x = 0; x < rowsLength; x++)
+            _gridClearer.Clear();
+            for (var row = 0; row < _rowsLength; row++)
             {
-                for (var y = 0; y < columnsLength; y++)
+                for (var column = 0; column < _columnsLength; column++)
                 {
-                    var message = _toggles[x][y] ? "■" : " ";
+                    var message = GetToggleStatus(row, column) ? "■" : " ";
                     Console.Write(message);
                 }
-
-                if (x != rowsLength - 1) Console.Write(Environment.NewLine);
+                
+                if (row != _rowsLength - 1) Console.Write(Environment.NewLine);
             }
+        }
+        
+        private bool GetToggleStatus(int row, int column)
+        {
+            return _toggles[row][column];
         }
     }
 }
