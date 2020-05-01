@@ -9,6 +9,13 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Print(1);
+            Print(2);
+        }
+        static void Print(int number)
+        {
+            Console.WriteLine("Person #" + number);
+
             Console.Write("Full Name: ");
             var inputName = Console.ReadLine();
             var errorName = ErrorString(inputName);
@@ -61,7 +68,6 @@ namespace BootCamp.Chapter
             var bmi = CalculateBmi(inputName, inputAge, inputWeight, inputHeight);
             Console.WriteLine(bmi);
         }
-       
         //Error messages for strings
         static string ErrorString(string input)
         {
@@ -170,7 +176,7 @@ namespace BootCamp.Chapter
             var parsedHeight = float.Parse(height);
             float bmi =( parsedWeight / parsedHeight / parsedHeight);
             var error = BmiErroMessages(parsedWeight, parsedHeight);
-            var printBmi = name + " is " + age + " years old, his weight is " + weight + " kg, his height is " + height + " and his bmi is " + bmi;
+            var printBmi = name + " is " + age + " years old, his weight is " + weight + " kg, his height is " + height + "m and his bmi is " + bmi;
 
             if (error == null) return printBmi;
             else
