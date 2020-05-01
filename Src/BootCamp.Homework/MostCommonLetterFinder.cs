@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Homework
 {
-    public static class MostCommonLetterFinder
+    public class MostCommonLetterFinder
     {
-        public static char Find(string sentence)
+        public char Find(string sentence)
         {
             if (string.IsNullOrEmpty(sentence) || sentence == " ") throw new ArgumentNullException();
             
@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
             return mostCommonLetter;
         }
 
-        private static Dictionary<char, int> CountLetters(string sentence)
+        private Dictionary<char, int> CountLetters(string sentence)
         {
             var countSentenceLetters = new Dictionary<char, int>();
 

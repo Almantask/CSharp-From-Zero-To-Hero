@@ -1,4 +1,4 @@
-﻿namespace BootCamp.Chapter
+﻿namespace BootCamp.Homework
 {
     public interface IGridClearer
     {
