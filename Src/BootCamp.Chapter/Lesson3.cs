@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
 
         public static string PromptString(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
             var input = Console.ReadLine();
 
             if (string.IsNullOrEmpty(input))
@@ -35,12 +35,12 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
             }
-            return Console.ReadLine();
+            return input;
         }
 
         public static int PromptInt(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
             var input = Console.ReadLine();
             bool isNumber = int.TryParse(input, out var age);
 
@@ -61,7 +61,7 @@ namespace BootCamp.Chapter
 
         public static float PromptFloat(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
             return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture.NumberFormat);
         }
 
