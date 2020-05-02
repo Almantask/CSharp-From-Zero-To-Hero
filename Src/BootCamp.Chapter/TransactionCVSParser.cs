@@ -6,11 +6,11 @@ using System.Text;
 namespace BootCamp.Chapter
 {
    
-    class TransactionCVSParser
+    public class TransactionCVSParser
     {
-        private readonly List<Transaction> _transactions;
+        public readonly List<Transaction> Transactions;
 
-        TransactionCVSParser(string transctionFile)
+        public TransactionCVSParser(string transctionFile)
         {
             if (!File.Exists(transctionFile))
             {
@@ -18,7 +18,7 @@ namespace BootCamp.Chapter
             }
             var contents = File.ReadAllLines(transctionFile); 
 
-            _transactions = default;
+            Transactions = new List<Transaction>() ;
 
             for (int i = 1; i < contents.Length; i++)
             {
@@ -26,7 +26,7 @@ namespace BootCamp.Chapter
 
                 if (isValid)
                 {
-                    _transactions.Add(transaction);
+                    Transactions.Add(transaction);
                 }
             }
 
