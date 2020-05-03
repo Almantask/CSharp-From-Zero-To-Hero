@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -11,28 +13,36 @@ namespace BootCamp.Chapter
         {
             var transactionByHour = transactions.GroupBy(x => x.TimeWhenSold.Hour).ToList();
             var earningsByHour = GetEarningsByHour(transactions);
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            var encoding = new UTF8Encoding();
 
-            var reportLines = earningsByHour.Select(x => new
+            var reportLines = transactionByHour.Select(x => new
             {
                 Hour = x.Key,
                 Count = transactionByHour[x.Key].Count(),
                 AverageByHour = earningsByHour[x.Key].Average()
             }).ToArray();
 
-            Console.WriteLine("Hour, Count, Earned");
+            var sortedReportLines = reportLines.OrderBy(x => x.Hour); 
 
-            foreach (var line in reportLines)
+            var file = @"Output\time.csv"; 
+
+            File.WriteAllText(file,$"Hour, Count, Earned, {Environment.NewLine}");
+
+            foreach (var line in sortedReportLines)
             {
                 var moneyString = $"\"{line.AverageByHour:c}\"";
-
-                Console.Write(line.Hour.ToString("00"));
-                Console.Write(", ");
-                Console.Write(line.Count);
-                Console.Write(", ");
-                Console.Write(moneyString.ToString(CultureInfo.CreateSpecificCulture("en-GB")));
-                Console.Write(Environment.NewLine);
+                
+                File.AppendAllText(file, line.Hour.ToString("00"));
+                File.AppendAllText(file, ", ");
+                File.AppendAllText(file, line.Count.ToString());
+                File.AppendAllText(file, ", ");
+                File.AppendAllText(file, moneyString.ToString(CultureInfo.CreateSpecificCulture("en-GB")), encoding); 
+                File.AppendAllText(file, Environment.NewLine);
             }
+
+            var rushHour = reportLines.OrderByDescending(x => x.AverageByHour).First().Hour;
+
+            File.AppendAllText(file,$"Rush hour: {rushHour:00}");
         }
 
         private static IDictionary<int, IList<decimal>> GetEarningsByHour(List<Transaction> transactions)
