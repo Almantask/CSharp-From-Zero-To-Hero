@@ -40,14 +40,22 @@ namespace BootCamp.Chapter
 
             string[] splitInput = input.Split(',');
 
+            if (!(splitInput.Length == 7 || splitInput.Length == 6))
+            {
+                return false;
+            }
+
             //Trim all the Strings
             for (int i = 0; i < splitInput.Length; i++)
             {
                 splitInput[i] = splitInput[i].Trim();
             }
 
-            //Price gets Split into 2 so i reattach them
-            splitInput[(int)fields.price] = splitInput[(int)fields.price] + "," + splitInput[(int)fields.price + 1];
+            if ( splitInput.Length == 7)
+            {
+                //Price gets Split into 2 so i reattach them
+                splitInput[(int)fields.price] = splitInput[(int)fields.price] + "," + splitInput[(int)fields.price + 1];
+            }
 
             DateTime sellDateTime;
             if (!DateTime.TryParse(splitInput[(int)fields.dateTime], out sellDateTime))
@@ -91,7 +99,7 @@ namespace BootCamp.Chapter
 
         public override string ToString()
         {
-            return $"{ShopName} - {City} - {Street} sold {Item} at {DateTime} for {Price.ToString("C2", CultureInfo.CurrentCulture)}";
+            return $"{ShopName} - {City} - {Street} sold {Item} at {DateTime} for {Price.ToString("C2", CultureInfo.CurrentCulture)}";//  for time with Z .ToString("s") + "Z"
         }
     }
 }

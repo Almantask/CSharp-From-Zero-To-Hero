@@ -9,6 +9,13 @@ namespace BootCamp.Chapter
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
             TestTransactionTryParse();
+
+            var reports = ReportsManager.ReadTransaction(@"C:\Users\Max\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\bin\Debug\netcoreapp3.1\Input\Transactions.csv");
+
+            foreach (var report in reports)
+            {
+                Console.WriteLine(report.ToString());
+            }
         }
 
         private static void TestTransactionTryParse()
