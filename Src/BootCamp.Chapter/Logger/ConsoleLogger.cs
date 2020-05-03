@@ -4,9 +4,9 @@ namespace BootCamp.Chapter.Logger
 {
     public class ConsoleLogger : ILogger
     {
-        public void Logger(string message, Log.Level logLevel)
+        public void Logger(string message, LogLevel logLevel)
         {
-            if (!logLevel.Equals(Log.Level.Log))
+            if (!logLevel.Equals(LogLevel.Log))
             {
                 Console.ForegroundColor = LogColor(logLevel);
                 Console.Write($"[{logLevel}] ");
@@ -16,15 +16,15 @@ namespace BootCamp.Chapter.Logger
             Console.WriteLine();
         }
         
-        private ConsoleColor LogColor(Log.Level logLevel)
+        private ConsoleColor LogColor(LogLevel logLevel)
         {
             return logLevel switch
             {
-                Log.Level.Log => ConsoleColor.White,
-                Log.Level.Info => ConsoleColor.DarkCyan,
-                Log.Level.Warn => ConsoleColor.DarkYellow,
-                Log.Level.Error => ConsoleColor.Red,
-                Log.Level.Fatal => ConsoleColor.DarkMagenta,
+                LogLevel.Log => ConsoleColor.White,
+                LogLevel.Info => ConsoleColor.DarkCyan,
+                LogLevel.Warn => ConsoleColor.DarkYellow,
+                LogLevel.Error => ConsoleColor.Red,
+                LogLevel.Fatal => ConsoleColor.DarkMagenta,
                 _ => ConsoleColor.White
             };
         }
