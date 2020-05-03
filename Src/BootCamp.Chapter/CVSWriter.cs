@@ -1,16 +1,14 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Cryptography.X509Certificates;
 
 namespace BootCamp.Chapter
 {
-    public class CVSWriter
+    public static class CVSWriter
     {
-        string file = @"Output\time.csv"; 
+        public static void WriteCityData(string file, string headertext, string outcome)
+        {
+            File.WriteAllText(file, outcome); 
 
-        public void Write(string text) => File.WriteAllText(file, text);
-
-       
+        }
     }
 }

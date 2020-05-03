@@ -2,7 +2,7 @@
   "profiles": {
     "BootCamp.Chapter": {
       "commandName": "Project",
-      "commandLineArgs": "time 20:00-00:00",
+      "commandLineArgs": "\"Input/Transactions.csv\" \"city money max\" \"output/cityMin.csv\"",
       "environmentVariables": {
         "Key": "Value"
       }

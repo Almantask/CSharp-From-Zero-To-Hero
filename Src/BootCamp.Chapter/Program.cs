@@ -6,8 +6,7 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
-            var parser = new TransactionCVSParser(@"Input/Transactions.csv");
-            TimeStatics.CalculateTimeReport(parser.Transactions); 
+            ConsoleArgumentsParser.ArgumentsParser(args); 
         }
     }
 }
