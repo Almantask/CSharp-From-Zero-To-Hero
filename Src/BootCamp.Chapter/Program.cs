@@ -29,6 +29,10 @@ namespace BootCamp.Chapter
             float BMI1 = person1Weight / ((person1Height / 100) * (person1Height / 100));
             Console.WriteLine("BMI for " + person1Name + ": " + BMI1 + "\n");
 
+
+
+
+
             // Obtain information from second person
             Console.Write("First Name: ");
             string person2Name = Console.ReadLine();
