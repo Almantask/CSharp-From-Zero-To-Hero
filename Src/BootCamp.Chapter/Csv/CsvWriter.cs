@@ -65,35 +65,6 @@ namespace BootCamp.Chapter.Csv
             WriteToFile(lines);
         }
 
-        public void AppendRow(CsvRow row)
-        {
-            if (row?.Count == 0)
-            {
-                throw new ArgumentException("row cannot be null or empty");
-            }
-
-            StreamWriter writer = null;
-            try
-            {
-                writer = new StreamWriter(FileName, true);
-                writer.WriteLine(CsvRow.Build(row, Delimiter));
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"{ex.FileName} was not found");
-                throw;
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine($"IOException source {ex.Source}");
-                throw;
-            }
-            finally
-            {
-                writer?.Close();
-            }
-        }
-
         private IList<string> PopulateRows(IEnumerable<CsvRow> csvRows)
         {
             if (csvRows?.Count() == 0)

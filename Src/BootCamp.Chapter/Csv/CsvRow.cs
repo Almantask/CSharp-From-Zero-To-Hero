@@ -14,11 +14,11 @@ namespace BootCamp.Chapter.Csv
         {
         }
 
-        public static bool TryParse(string input, CsvDelimiter delimiter, out CsvRow csvRow)
+        public static bool TryParse(string inputString, CsvDelimiter delimiter, out CsvRow csvRow)
         {
             csvRow = new CsvRow();
 
-            if (!input.IsValid())
+            if (!inputString.IsValid())
             {
                 return false;
             }
@@ -26,13 +26,13 @@ namespace BootCamp.Chapter.Csv
             var builder = new StringBuilder();
             var isQuote = false;
 
-            foreach (var letter in input)
+            foreach (var inputChar in inputString)
             {
-                if (letter == '\"')
+                if (inputChar == '\"')
                 {
                     isQuote = !isQuote;
                 }
-                else if (letter == (char)delimiter)
+                else if (inputChar == (char)delimiter)
                 {
                     if (!isQuote)
                     {
@@ -41,12 +41,12 @@ namespace BootCamp.Chapter.Csv
                     }
                     else
                     {
-                        builder.Append(letter);
+                        builder.Append(inputChar);
                     }
                 }
                 else
                 {
-                    builder.Append(letter);
+                    builder.Append(inputChar);
                 }
             }
             csvRow.Add(builder.ToString().Trim());
