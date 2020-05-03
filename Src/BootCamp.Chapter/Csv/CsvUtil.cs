@@ -7,7 +7,7 @@ namespace BootCamp.Chapter.Csv
     {
         public static List<string> GetPropertiesName(object inputObject)
         {
-            List<string> propertyList = new List<string>();
+            var propertyList = new List<string>();
 
             if (inputObject != null)
             {
