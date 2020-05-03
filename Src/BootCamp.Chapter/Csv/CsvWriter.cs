@@ -38,7 +38,7 @@ namespace BootCamp.Chapter.Csv
 
             if (HasHeader && header?.Count != 0)
             {
-                lines.Insert(0, CsvRow.Build(header, Delimiter));
+                lines.Insert(0, CsvRow.ToString(header, Delimiter));
             }
 
             WriteToFile(lines);
@@ -55,7 +55,7 @@ namespace BootCamp.Chapter.Csv
 
             if (HasHeader && header?.Count != 0)
             {
-                lines.Insert(0, CsvRow.Build(header, Delimiter));
+                lines.Insert(0, CsvRow.ToString(header, Delimiter));
             }
             if (HasFooter && footer.IsValid())
             {
@@ -76,7 +76,7 @@ namespace BootCamp.Chapter.Csv
 
             foreach (var row in csvRows)
             {
-                lines.Add(CsvRow.Build(row, Delimiter));
+                lines.Add(CsvRow.ToString(row, Delimiter));
             }
 
             return lines;

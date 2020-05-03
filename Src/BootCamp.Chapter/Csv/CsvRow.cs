@@ -53,7 +53,7 @@ namespace BootCamp.Chapter.Csv
             return true;
         }
 
-        public static string Build(CsvRow csvRow, CsvDelimiter delimiter)
+        public static string ToString(CsvRow csvRow, CsvDelimiter delimiter)
         {
             if (csvRow is null || csvRow.Count == 0)
             {
@@ -65,18 +65,15 @@ namespace BootCamp.Chapter.Csv
 
             foreach (var field in csvRow)
             {
-                if (field != null)
+                if (!firstColumn)
                 {
-                    if (!firstColumn)
-                    {
-                        builder
-                            .Append((char)delimiter)
-                            .Append(spaceChar);
-                    }
-
-                    builder.Append(field);
-                    firstColumn = false;
+                    builder
+                        .Append((char)delimiter)
+                        .Append(spaceChar);
                 }
+
+                builder.Append(field);
+                firstColumn = false;
             }
             return builder.ToString();
         }
