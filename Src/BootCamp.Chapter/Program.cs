@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using BootCamp.Chapter.Demo;
 
 namespace BootCamp.Chapter
 {
@@ -7,13 +8,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var demo = new Demos();
+            demo.Run();
 
-            var contacts = new ContactsCenter(@"Input/MOCK_DATA.csv");
-
-            var hue = contacts.Filter(PeoplePredicates.IsA);
-
-            Console.Read();
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
 
         }
     }

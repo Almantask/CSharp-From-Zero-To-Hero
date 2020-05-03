@@ -7,9 +7,7 @@ namespace BootCamp.Chapter
 {
     public class ContactsCenter
     {
-        private readonly List<Person> _people = new List<Person>();
-
-        public List<Person> People => _people;
+        public List<Person> People { get; } = new List<Person>();
 
         public ContactsCenter(string peopleFile)
         {
@@ -27,7 +25,7 @@ namespace BootCamp.Chapter
                 var personInfo= person.Split(",");
 
                 if (person.Contains('\"')) personInfo = SplitQuotaCase(personInfo);
-                if (personInfo.Length != 7) throw new ArgumentOutOfRangeException(nameof(person));
+                if (personInfo.Length != 7) throw new ArgumentOutOfRangeException(nameof(personInfo));
                 
                 var name = personInfo[0];
                 var sureName = personInfo[1];
@@ -37,9 +35,7 @@ namespace BootCamp.Chapter
                 var email = personInfo[5];
                 var streetAddress = personInfo[6];
                 
-                _people.Add(new Person(name, sureName, birthday, gender, country, email, streetAddress));
-
-                var newPerson = new Person(name, sureName, birthday, gender, country, email, streetAddress);
+                People.Add(new Person(name, sureName, birthday, gender, country, email, streetAddress));
             }
         }
 
@@ -50,20 +46,20 @@ namespace BootCamp.Chapter
         public List<Person> Filter(Predicate<Person> predicate)
         {
             var people = new List<Person>();
-            foreach (var person in _people)
+            foreach (var person in People)
             {
                 if (predicate(person))
                 {
                     people.Add(person);
                 }
             }
-            // ToDo: implement applying filter.
+            
             return people;
         }
         
         private string[] SplitQuotaCase(string[] personInfo)
         {
-            var newPersonInfo = new List<string>();
+            var updatedPersonInfo = new List<string>();
             
             var hasFoundQuota = false;
             var quotaLine = new StringBuilder();
@@ -80,7 +76,7 @@ namespace BootCamp.Chapter
                     else
                     {
                         quotaLine.Append(info[..^1]);
-                        newPersonInfo.Add(quotaLine.ToString());
+                        updatedPersonInfo.Add(quotaLine.ToString());
                         quotaLine = new StringBuilder();
                         hasFoundQuota = false;
                     }
@@ -91,11 +87,11 @@ namespace BootCamp.Chapter
                 }
                 else
                 {
-                    newPersonInfo.Add(info);
+                    updatedPersonInfo.Add(info);
                 } 
             }
 
-            return newPersonInfo.ToArray();
+            return updatedPersonInfo.ToArray();
         }
     }
 }
