@@ -8,8 +8,14 @@ namespace BootCamp.Chapter
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            TestTransactionTryParse();
+            ArgsReader.Read(args);
 
+            //TestTransactionTryParse();
+            //TestReportsManager();
+        }
+
+        private static void TestReportsManager()
+        {
             var reports = ReportsManager.ReadTransaction(@"C:\Users\Max\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\bin\Debug\netcoreapp3.1\Input\Transactions.csv");
 
             foreach (var report in reports)
