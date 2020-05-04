@@ -16,8 +16,8 @@ namespace BootCamp.Chapter
         internal static bool TryParse(string input, out Transaction transaction)
         {
 
-            var splittedData = mySplit(input); 
-            var isValid = DateTime.TryParse(splittedData[4], out DateTime date);
+            var splittedData = mySplit(input);
+            var isValid = DateTime.TryParse(splittedData[4], CultureInfo.CurrentCulture, DateTimeStyles.AdjustToUniversal, out DateTime date); 
 
             if (!isValid)
             {

@@ -1,54 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Text;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BootCamp.Chapter
 {
     public static class TimeStatics
     {
-        public static void CalculateTimeReport(List<Transaction> transactions)
+        public static List<OutputTime> CalculateTimeReport(List<Transaction> transactions, TimeSpan beginTime, TimeSpan endTime)
         {
-            var transactionByHour = transactions.GroupBy(x => x.TimeWhenSold.Hour).ToList();
-            var earningsByHour = GetEarningsByHour(transactions);
-            var encoding = new UTF8Encoding();
+            //var filteronTime = transactions.Where(x => x.TimeWhenSold.TimeOfDay >= beginTime && x.TimeWhenSold.TimeOfDay <= endTime).ToList(); 
+            var transactionsByHours = transactions.ToLookup(x => x.TimeWhenSold.Hour);
+            var earningsByHour = GetEarningsByHour(transactions, beginTime, endTime);
 
-            var reportLines = transactionByHour.Select(x => new
+            var reportLines = earningsByHour.Select(x => new OutputTime
             {
                 Hour = x.Key,
-                Count = transactionByHour[x.Key].Count(),
-                AverageByHour = earningsByHour[x.Key].Average()
-            }).ToArray();
+                Count =  transactionsByHours[x.Key].Count(),
+                Average = earningsByHour[x.Key].Count != 0 ? earningsByHour[x.Key].Average() : 0m
+            });
 
-            var sortedReportLines = reportLines.OrderBy(x => x.Hour); 
+            var sortedReportLines = reportLines.OrderBy(x => x.Hour).ToList();
 
-            var file = @"Output\time.csv"; 
-
-            File.WriteAllText(file,$"Hour, Count, Earned, {Environment.NewLine}");
-
-            foreach (var line in sortedReportLines)
-            {
-                var moneyString = $"\"{line.AverageByHour:c}\"";
-                
-                File.AppendAllText(file, line.Hour.ToString("00"));
-                File.AppendAllText(file, ", ");
-                File.AppendAllText(file, line.Count.ToString());
-                File.AppendAllText(file, ", ");
-                File.AppendAllText(file, moneyString.ToString(CultureInfo.CreateSpecificCulture("en-GB")), encoding); 
-                File.AppendAllText(file, Environment.NewLine);
-            }
-
-            var rushHour = reportLines.OrderByDescending(x => x.AverageByHour).First().Hour;
-
-            File.AppendAllText(file,$"Rush hour: {rushHour:00}");
+            return sortedReportLines;
         }
 
-        private static IDictionary<int, IList<decimal>> GetEarningsByHour(List<Transaction> transactions)
+        private static IDictionary<int, IList<decimal>> GetEarningsByHour(List<Transaction> transactions, TimeSpan beginTime, TimeSpan endTime)
         {
+            var beginningHour = (int)beginTime.TotalHours;
+            
+            if (endTime == default)
+            {
+                endTime = endTime.Add(new TimeSpan(24, 0, 0)); 
+            }
+
+            var endHour = (int)endTime.TotalHours ;
+
+            if (endHour == 23)
+            {
+                endHour = endHour + 1; 
+            }
+
             var earningsByHour = new Dictionary<int, IList<decimal>>(
-               Enumerable.Range(0, 24)
+               Enumerable.Range( beginningHour, endHour - beginningHour )
                    .Select(x => new KeyValuePair<int, IList<decimal>>(x, new List<decimal>())
                )
            );
