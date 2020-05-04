@@ -25,6 +25,12 @@ namespace BootCamp.Chapter
 
             Shop newShop = new Shop(500.0m);
             newShop.Add(newChestpiece);
+
+            Weapon sword = new Weapon("Frostmourne", 55.5m, 4.5f, 15.0f);
+            Player newPlayer = new Player("Arthas Menethil", 50, 10, new Inventory(), new Equipment());
+            newPlayer.Equip(sword);
+
+            var test = "kecske";
         }
     }
 }
