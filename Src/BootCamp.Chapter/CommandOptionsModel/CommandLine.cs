@@ -54,5 +54,3 @@ namespace BootCamp.Chapter
         }
     }
 }
-
-// TODO: better names for class members
