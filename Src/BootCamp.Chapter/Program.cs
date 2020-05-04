@@ -8,10 +8,17 @@ namespace BootCamp.Chapter
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
+            //TestArgs();
+
             ArgsReader.Read(args);
 
             //TestTransactionTryParse();
             //TestReportsManager();
+        }
+
+        private static void TestArgs()
+        {
+            string[] command = new string[] { @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.csv", "time", "test.csv" };
         }
 
         private static void TestReportsManager()

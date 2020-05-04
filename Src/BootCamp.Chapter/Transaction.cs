@@ -16,13 +16,12 @@ namespace BootCamp.Chapter
         }
 
         // Shop,City,Street,Item,DateTime,Price
-        private string ShopName { get; }
-
-        private string City { get; }
-        private string Street { get; }
-        private string Item { get; }
-        private DateTime DateTime { get; }
-        private decimal Price { get; }
+        public string ShopName { get; }
+        public string City { get; }
+        public string Street { get; }
+        public string Item { get; }
+        public DateTime DateTime { get; }
+        public decimal Price { get; }
 
         private Transaction(string name, string city, string street, string item, DateTime dateTime, decimal price)
         {
@@ -58,7 +57,7 @@ namespace BootCamp.Chapter
             }
 
             DateTime sellDateTime;
-            if (!DateTime.TryParse(splitInput[(int)fields.dateTime], out sellDateTime))
+            if (!DateTime.TryParse(splitInput[(int)fields.dateTime], CultureInfo.CurrentCulture, DateTimeStyles.AdjustToUniversal,  out sellDateTime))
             {
                 Console.WriteLine($"Could not Read {nameof(DateTime)}");
                 return false;
