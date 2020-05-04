@@ -22,6 +22,9 @@ namespace BootCamp.Chapter
             newInventory.AddItem(newChestpiece);
 
             newInventory.RemoveItem(newChestpiece);
+
+            Shop newShop = new Shop(500.0m);
+            newShop.Add(newChestpiece);
         }
     }
 }
