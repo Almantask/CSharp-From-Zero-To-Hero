@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Inventory newInventory = new Inventory(10);
+            Inventory newInventory = new Inventory();
             newInventory.AddItem(new Gloves("Gloves of Torment", 15.5m, 2.5f, 5.0f));
             newInventory.AddItem(new Chestpiece("Breastplate of the Vanquisher", 15.5m, 2.5f, 5.0f));
             newInventory.AddItem(new Gloves("Gloves of Torment", 15.5m, 2.5f, 5.0f));

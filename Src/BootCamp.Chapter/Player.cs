@@ -18,17 +18,34 @@ namespace BootCamp.Chapter
         private const int baseCarryWeight = 30;
 
         private string _name;
+
+        public string GetName()
+        {
+            return _name;
+        }
+
         private int _hp;
+
+        public int GetHP()
+        {
+            return _hp;
+        }
 
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
         /// </summary>
         private int _strenght;
 
+        public int GetStrength()
+        {
+            return _strenght;
+        }
+
         /// <summary>
         /// Player items. There can be multiple of items with same name.
         /// </summary>
         private Inventory _inventory;
+
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
@@ -36,6 +53,15 @@ namespace BootCamp.Chapter
 
         public Player()
         {
+            _inventory = new Inventory();
+        }
+
+        public Player(string name, int hp, int strength, Inventory inventory)
+        {
+            _name = name;
+            _hp = hp;
+            _strenght = strength;
+            _inventory = inventory;
         }
 
         /// <summary>
@@ -43,7 +69,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public Item[] GetItems()
         {
-            return new Item[0];
+            return _inventory.GetItems();
         }
 
         /// <summary>
@@ -51,11 +77,12 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
@@ -64,7 +91,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItem(name);
         }
 
         #region Extra challenge: Equipment

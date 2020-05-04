@@ -2,6 +2,8 @@
 {
     public class Inventory
     {
+        private const int defaultInventorySize = 10;
+
         private Item[] _items;
 
         public Item[] GetItems()
@@ -23,15 +25,25 @@
             return _remainingSpace;
         }
 
-        public Inventory(int size)
+        public Inventory()
         {
-            _size = size;
-            _items = new Item[size];
-            _remainingSpace = size;
+            _size = defaultInventorySize;
+            _remainingSpace = defaultInventorySize;
+            _items = new Item[defaultInventorySize];
         }
 
         public Item[] GetItem(string name)
         {
+            if (GetRemainingSpace() == GetSize()) return new Item[0];
+
+            foreach (var item in _items)
+            {
+                if (item.GetName() == name)
+                {
+                    return new Item[] { item };
+                }
+            }
+
             return new Item[0];
         }
 
@@ -57,7 +69,10 @@
         public void RemoveItem(Item item)
         {
             if (InventoryContains(item, out int index))
+            {
                 _items[index] = null;
+                _remainingSpace++;
+            }
         }
 
         /// <summary>
@@ -69,6 +84,8 @@
         public bool InventoryContains(Item itemToCheck, out int index)
         {
             index = 0;
+
+            if (GetRemainingSpace() == GetSize()) return false;
 
             for (int i = 0; i < GetSize(); i++)
             {
