@@ -6,7 +6,22 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Armpiece testItem = new Armpiece("Shoulders of Rage", 25.13m, 15.0f, 12.5f);
+            Inventory newInventory = new Inventory(10);
+            newInventory.AddItem(new Gloves("Gloves of Torment", 15.5m, 2.5f, 5.0f));
+            newInventory.AddItem(new Chestpiece("Breastplate of the Vanquisher", 15.5m, 2.5f, 5.0f));
+            newInventory.AddItem(new Gloves("Gloves of Torment", 15.5m, 2.5f, 5.0f));
+            newInventory.AddItem(new Weapon("Sword of Despair", 55.5m, 4.5f, 15.0f));
+            newInventory.AddItem(new Gloves("Gloves of Torment", 15.5m, 2.5f, 5.0f));
+
+            newInventory.AddItem(new Chestpiece("Breastplate of the Vanquisher", 15.5m, 2.5f, 5.0f));
+            newInventory.AddItem(new Gloves("Gloves of Torment", 15.5m, 2.5f, 5.0f));
+            newInventory.AddItem(new Weapon("Sword of Despair", 55.5m, 4.5f, 15.0f));
+            newInventory.AddItem(new Gloves("Gloves of Torment", 15.5m, 2.5f, 5.0f));
+
+            Chestpiece newChestpiece = new Chestpiece("Chainmail of Valor", 12.5m, 10.0f, 20.0f);
+            newInventory.AddItem(newChestpiece);
+
+            newInventory.RemoveItem(newChestpiece);
         }
     }
 }
