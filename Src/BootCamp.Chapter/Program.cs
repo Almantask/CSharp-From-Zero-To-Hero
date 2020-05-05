@@ -6,7 +6,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ColorfulConsole.Print("Every program will start with this.", ConsoleColor.Blue);
+            ColorfulConsole.Print("This is a fun story.", ConsoleColor.Green);
+            ColorfulConsole.Print("But it had to end now.", ConsoleColor.Red);
+            Console.ReadLine();
+
         }
     }
 }
