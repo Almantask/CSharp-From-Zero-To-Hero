@@ -31,9 +31,14 @@ namespace BootCamp.Chapter
             return transactions;
         }
 
-        public static void WriteTransaction(string path, string toBeWritten)
+        public static void WriteTransaction(string path, IEnumerable<String> toBeWritten)
         {
-            //TODO make WriteTransaction
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
+            }
+
+            File.WriteAllLines(path+".csv", toBeWritten);
         }
 
         private static void CheckFilePathForRead(string path)

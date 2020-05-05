@@ -40,16 +40,19 @@ namespace BootCamp.Chapter
             ArgsChecksLength(args);
             List<Transaction> transactions = ReportsManager.ReadTransaction(args[(int)ArgsNumber.FileToRead]);
             string[] command = ReadCommand(args[(int)ArgsNumber.command]);
+            IEnumerable<String> toBeWritten = default;
 
             switch (command[0])
             {
                 case timeCommand:
-                    RunTimeCommand(command, transactions);
+                    toBeWritten = RunTimeCommand(command, transactions);
                     break;
                 case cityCommand:
-                    RunCityCommand(command, transactions);
+                    toBeWritten = RunCityCommand(command, transactions);
                     break;
             }
+
+            ReportsManager.WriteTransaction(args[2], toBeWritten);
         }
 
         private static string[] ReadCommand(string command)
@@ -79,7 +82,7 @@ namespace BootCamp.Chapter
 
         }
 
-        private static void RunTimeCommand(string[] command, List<Transaction> transactions)
+        private static IEnumerable<String> RunTimeCommand(string[] command, List<Transaction> transactions)
         {
             //TODO RunTimeCommand
             /*
@@ -92,14 +95,15 @@ namespace BootCamp.Chapter
             //"time 11:00-17:00"
             if (command.Length == 1)
             {
-                Time(transactions);
+                return Time(transactions);
             }
             else if (command.Length == 2)
             {
                 if(IsHoursCorrect(command[1], out DateTime[] times))
                 {
-                    Time(transactions, times);
+                   return Time(transactions, times);
                 }
+                throw new InvalidCommandException($"{command[0]} has the wrong Times.");
             }
             else
             {
@@ -114,44 +118,34 @@ namespace BootCamp.Chapter
             throw new NotImplementedException();
         }
 
-        private static void Time(List<Transaction> transactions)
+        private static IEnumerable<String> Time(List<Transaction> transactions)
         {
             const string topRow = "Hour, Count, Earned";
 
-            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new
+            //var soldByTime =
+            return transactions.GroupBy(t => t.DateTime.Hour).Select(z => new
             {
 
                time = z.First().DateTime.Hour.ToString(),
                count = z.Count().ToString(),
                earned =  z.Sum(x => x.Price).ToString()
-            }
+            }.ToString()
             ).ToList();
 
-            Console.WriteLine(soldByTime);
-
             //TODO finish Time FIRTST!!!!!
-            /*
-            List<ResultLine> result = Lines
-            .GroupBy(l => l.ProductCode)
-            .Select(cl => new ResultLine
-            {
-           ProductName = cl.First().Name,
-            Quantity = cl.Count().ToString(),
-              Price = cl.Sum(c => c.Price).ToString(),
-            }).ToList();
-         */
 
 
         }
-        private static void Time(List<Transaction> transactions, DateTime[] times)
+        private static IEnumerable<String> Time(List<Transaction> transactions, DateTime[] times)
         {
-
+            //TODO Time With Time
+            throw new NotImplementedException();
         }
-        private static void RunCityCommand(string[] command, List<Transaction> transactions)
+        private static IEnumerable<String> RunCityCommand(string[] command, List<Transaction> transactions)
         {
             //TODO RunCityCommand
             //What city(can be parsed from address) earned the most / least money and what city sold the most / least items ? (city[-min / -max][-items / -money])
-
+            throw new NotImplementedException();
         }
         private static void ArgsChecksLength(string[] args)
         {
