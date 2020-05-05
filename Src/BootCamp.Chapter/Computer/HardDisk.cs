@@ -3,14 +3,12 @@
     public class HardDisk : Component
     {
         private int _rpm;
-
         public int GetRPM()
         {
             return _rpm;
         }
 
         private int _capacity;
-
         public int GetCapacity()
         {
             return _capacity;

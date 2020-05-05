@@ -3,21 +3,18 @@
     public class Ram : Component
     {
         private RamType _ramType;
-
         public RamType GetRamType()
         {
             return _ramType;
         }
 
         private int _frequency;
-
         public int GetFrequency()
         {
             return _frequency;
         }
 
         private string _casLatency;
-
         public string GetCasLatency()
         {
             return _casLatency;

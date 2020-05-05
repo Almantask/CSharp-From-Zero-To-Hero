@@ -9,7 +9,6 @@ namespace BootCamp.Chapter.Computer
     public class Body : Component
     {
         private CaseDesign _design;
-
         public CaseDesign GetDesign()
         {
             return _design;

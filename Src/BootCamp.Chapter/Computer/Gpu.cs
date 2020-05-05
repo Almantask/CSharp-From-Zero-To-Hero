@@ -3,35 +3,30 @@
     public class Gpu : Component
     {
         private string _chipsetManufacturer;
-
         public string GetChipsetManufacturer()
         {
             return _chipsetManufacturer;
         }
 
         private GPUMemoryType _memoryType;
-
         public GPUMemoryType GetMemoryType()
         {
             return _memoryType;
         }
 
         private int _memorySize;
-
         public int GetMemorySize()
         {
             return _memorySize;
         }
 
         private int _memoryClock;
-
         public int GetMemoryClock()
         {
             return _memoryClock;
         }
 
         private int _gpuClock;
-
         public int GetGpuClock()
         {
             return _gpuClock;

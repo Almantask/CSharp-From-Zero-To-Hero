@@ -3,21 +3,18 @@
     public class Motherboard : Component
     {
         private string _chipset;
-
         public string GetChipset()
         {
             return _chipset;
         }
 
         private string _chipsetManufacturer;
-
         public string GetChipsetManufacturer()
         {
             return _chipsetManufacturer;
         }
 
         private SocketType _socket;
-
         public SocketType GetSocket()
         {
             return _socket;

@@ -7,21 +7,18 @@ namespace BootCamp.Chapter.Computer
     public abstract class Component
     {
         private string _id;
-
         public string GetID()
         {
             return _id;
         }
 
         private string _manufacturer;
-
         public string GetManufacturer()
         {
             return _manufacturer;
         }
 
         private string _modelName;
-
         public string GetModelName()
         {
             return _modelName;

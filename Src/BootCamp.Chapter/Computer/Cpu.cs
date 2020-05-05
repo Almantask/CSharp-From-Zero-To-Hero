@@ -3,28 +3,24 @@
     public class Cpu : Component
     {
         private SocketType _socket;
-
         public SocketType GetSocket()
         {
             return _socket;
         }
 
         private int _cores;
-
         public int GetCores()
         {
             return _cores;
         }
 
         private int _threads;
-
         public int GetThreads()
         {
             return _threads;
         }
 
         private int _clockSpeed;
-
         public int GetClockSpeed()
         {
             return _clockSpeed;
