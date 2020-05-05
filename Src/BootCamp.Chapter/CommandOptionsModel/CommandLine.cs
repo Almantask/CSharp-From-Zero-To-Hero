@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvLib;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -48,7 +49,7 @@ namespace BootCamp.Chapter
             else
             {
                 Console.WriteLine(commandLine.InputFile);
-                Console.WriteLine(result.ToStringFormated(Csv.CsvDelimiter.Pipe));
+                Console.WriteLine(result.ToStringFormated(CsvDelimiter.Pipe));
                 Console.WriteLine(commandLine.OutputFile);
             }
         }

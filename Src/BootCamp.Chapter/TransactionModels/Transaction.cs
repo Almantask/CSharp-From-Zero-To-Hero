@@ -1,4 +1,4 @@
-﻿using BootCamp.Chapter.Csv;
+﻿using CsvLib;
 using BootCamp.Chapter.Models;
 using System;
 using System.Collections.Generic;
@@ -24,12 +24,12 @@ namespace BootCamp.Chapter
             DateTime = dateTime;
         }
 
-        public string ToStringFormated(CsvDelimiter delimiter)
+        public string ToStringFormated(char delimiter)
         {
-            return $"{Shop.Name}{(char)delimiter}{Shop.Address.City}{(char)delimiter}" +
-                $"{Shop.Address.Street}{(char)delimiter}{Item.Name}{(char)delimiter}" +
+            return $"{Shop.Name}{delimiter}{Shop.Address.City}{delimiter}" +
+                $"{Shop.Address.Street}{delimiter}{Item.Name}{delimiter}" +
                 $"{DateTime.ToString(Culture.Output.DateTimeFormat.FullDateTimePattern)}" +
-                $@"{(char)delimiter}""{Item.Price.ToString("C", Culture.Output.NumberFormat)}""";
+                $@"{delimiter}""{Item.Price.ToString("C", Culture.Output.NumberFormat)}""";
         }
 
         public static bool TryParse(CsvRow input, out Transaction transaction)

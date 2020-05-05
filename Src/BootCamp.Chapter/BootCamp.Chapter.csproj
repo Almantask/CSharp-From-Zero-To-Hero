@@ -17,4 +17,8 @@
   <ItemGroup>
     <Folder Include="Reports\Templates\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CsvLib\CsvLib.csproj" />
+  </ItemGroup>
 </Project>

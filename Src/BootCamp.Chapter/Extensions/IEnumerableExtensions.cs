@@ -1,9 +1,9 @@
-﻿using BootCamp.Chapter.Csv;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CsvLib;
 
 namespace BootCamp.Chapter
 {
@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
             return input.Any() ? input.Average() : 0m;
         }
 
-        public static string ToStringFormated<T>(this IEnumerable<T> enumerableInput, CsvDelimiter delimiter)
+        public static string ToStringFormated<T>(this IEnumerable<T> enumerableInput, char delimiter)
         {
             if (enumerableInput?.Any() != true)
             {
@@ -44,7 +44,7 @@ namespace BootCamp.Chapter
                 {
                     if (!firstColumn)
                     {
-                        builder.Append((char)delimiter);
+                        builder.Append(delimiter);
                     }
 
                     builder.Append(item);
@@ -56,7 +56,7 @@ namespace BootCamp.Chapter
             return builder.ToString();
         }
 
-        public static void Print<T>(this IEnumerable<T> enumerableInput, CsvDelimiter delimiter)
+        public static void Print<T>(this IEnumerable<T> enumerableInput, char delimiter)
         {
             if (enumerableInput?.Any() != true)
             {
