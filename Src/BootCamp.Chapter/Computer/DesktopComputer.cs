@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter.Computer
+﻿using System;
+
+namespace BootCamp.Chapter.Computer
 {
     public class DesktopComputer
     {
