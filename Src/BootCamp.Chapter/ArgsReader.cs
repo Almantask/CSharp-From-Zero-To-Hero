@@ -118,10 +118,28 @@ namespace BootCamp.Chapter
         {
             const string topRow = "Hour, Count, Earned";
 
-            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour);
+            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new
+            {
+
+               time = z.First().DateTime.Hour.ToString(),
+               count = z.Count().ToString(),
+               earned =  z.Sum(x => x.Price).ToString()
+            }
+            ).ToList();
+
             Console.WriteLine(soldByTime);
 
             //TODO finish Time FIRTST!!!!!
+            /*
+            List<ResultLine> result = Lines
+            .GroupBy(l => l.ProductCode)
+            .Select(cl => new ResultLine
+            {
+           ProductName = cl.First().Name,
+            Quantity = cl.Count().ToString(),
+              Price = cl.Sum(c => c.Price).ToString(),
+            }).ToList();
+         */
 
 
         }
