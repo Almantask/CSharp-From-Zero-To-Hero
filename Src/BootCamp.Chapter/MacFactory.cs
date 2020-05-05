@@ -5,11 +5,38 @@ using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
-    public class MacFactory
+    public class MacFactory : Factory
     {
-        public DesktopComputer Assemble()
+        public MacFactory(string owningCompany) : base(owningCompany) { }
+
+        protected override void PrepareBody(DesktopComputer computer)
         {
-            return new DesktopComputer();
+
+        }
+
+        protected override void InstallMotherboard(DesktopComputer computer)
+        {
+
+        }
+
+        protected override void InstallCpu(DesktopComputer computer)
+        {
+
+        }
+
+        protected override void InstallGpu(DesktopComputer computer)
+        {
+
+        }
+
+        protected override void InstallRam(DesktopComputer computer)
+        {
+
+        }
+
+        protected override void InstallHardDisk(DesktopComputer computer)
+        {
+
         }
     }
 }

@@ -2,6 +2,13 @@
 {
     public class DesktopComputer
     {
+        private string _assembledBy;
+
+        public string GetManufacturer()
+        {
+            return _assembledBy;
+        }
+
         private Body _body;
         public Body GetBody()
         {
