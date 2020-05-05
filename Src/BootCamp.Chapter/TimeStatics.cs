@@ -9,9 +9,15 @@ namespace BootCamp.Chapter
     {
         public static List<OutputTime> CalculateTimeReport(List<Transaction> transactions, TimeSpan beginTime, TimeSpan endTime)
         {
-            //var filteronTime = transactions.Where(x => x.TimeWhenSold.TimeOfDay >= beginTime && x.TimeWhenSold.TimeOfDay <= endTime).ToList(); 
-            var transactionsByHours = transactions.ToLookup(x => x.TimeWhenSold.Hour);
-            var earningsByHour = GetEarningsByHour(transactions, beginTime, endTime);
+            if (endTime == new TimeSpan(0, 0, 0))
+            {
+                endTime = new TimeSpan(24, 0, 0); 
+            }
+            
+            var filteronTime = transactions.Where(x => x.TimeWhenSold.TimeOfDay >= beginTime && x.TimeWhenSold.TimeOfDay <= endTime).ToList(); 
+            
+            var transactionsByHours = filteronTime.ToLookup(x => x.TimeWhenSold.Hour);
+            var earningsByHour = GetEarningsByHour(filteronTime, beginTime, endTime);
 
             var reportLines = earningsByHour.Select(x => new OutputTime
             {
