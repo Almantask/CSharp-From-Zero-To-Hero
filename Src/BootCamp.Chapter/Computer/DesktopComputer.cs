@@ -9,6 +9,11 @@
             return _assembledBy;
         }
 
+        public void SetManufacturer(string assembledBy)
+        {
+            _assembledBy = assembledBy;
+        }
+
         private Body _body;
         public Body GetBody()
         {
@@ -56,12 +61,12 @@
         }
 
         private HardDisk _hard;
-        public HardDisk GetHardDisk()
+        public HardDisk GetHard()
         {
             return _hard;
         }
 
-        public void SetHardDisk(HardDisk hardDisk)
+        public void SetHard(HardDisk hardDisk)
         {
             _hard = hardDisk;
         }

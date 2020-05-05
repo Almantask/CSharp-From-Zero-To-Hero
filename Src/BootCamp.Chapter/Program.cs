@@ -7,7 +7,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            
+            MsFactory msFactory = new MsFactory();
+            DesktopComputer msComputer = msFactory.Assemble();
+            var test = "debug";
         }
     }
 }

@@ -7,23 +7,15 @@ namespace BootCamp.Chapter
 {
     public abstract class Factory
     {
-        private string _owningCompany;
-        public string GetOwningCompany()
-        {
-            return _owningCompany;
-        }
+        protected Factory() { }
 
-        protected Factory(string owningCompany)
-        {
-            _owningCompany = owningCompany;
-        }
-
-        protected DesktopComputer Assemble()
+        public DesktopComputer Assemble()
         {
             DesktopComputer computer = new DesktopComputer();
             PrepareBody(computer);
             InstallMotherboard(computer);
             InstallCpu(computer);
+            InstallGpu(computer);
             InstallRam(computer);
             InstallHardDisk(computer);
 
