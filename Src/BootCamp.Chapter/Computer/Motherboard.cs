@@ -16,14 +16,14 @@
             return _chipsetManufacturer;
         }
 
-        private string _socket;
+        private SocketType _socket;
 
-        public string GetSocket()
+        public SocketType GetSocket()
         {
             return _socket;
         }
 
-        public Motherboard(string id, string manufacturer, string modelName, string chipset, string chipsetManufacturer, string socket) : base (id, manufacturer, modelName)
+        public Motherboard(string id, string manufacturer, string modelName, string chipset, string chipsetManufacturer, SocketType socket) : base (id, manufacturer, modelName)
         {
             _chipset = chipset;
             _chipsetManufacturer = chipset;

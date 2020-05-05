@@ -47,4 +47,11 @@
             _gpuClock = gpuClock;
         }
     }
+
+    public enum GPUMemoryType
+    {
+        GDDR5,
+        GDDR5X,
+        GDDR6
+    }
 }

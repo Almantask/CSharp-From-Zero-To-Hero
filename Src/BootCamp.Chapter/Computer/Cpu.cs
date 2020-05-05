@@ -2,9 +2,9 @@
 {
     public class Cpu : Component
     {
-        private string _socket;
+        private SocketType _socket;
 
-        public string GetSocket()
+        public SocketType GetSocket()
         {
             return _socket;
         }
@@ -30,7 +30,7 @@
             return _clockSpeed;
         }
 
-        public Cpu(string id, string manufacturer, string modelName, string socket, int cores, int threads, int clockSpeed) : base (id, manufacturer, modelName)
+        public Cpu(string id, string manufacturer, string modelName, SocketType socket, int cores, int threads, int clockSpeed) : base (id, manufacturer, modelName)
         {
             _socket = socket;
             _cores = cores;
