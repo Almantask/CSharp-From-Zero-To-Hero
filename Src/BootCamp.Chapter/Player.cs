@@ -18,6 +18,12 @@ namespace BootCamp.Chapter
         private const int baseCarryWeight = 30;
 
         private float _maxCarryCapacity;
+
+        public float GetCarryCapacity()
+        {
+            return _maxCarryCapacity;
+        }
+
         private string _name;
 
         public string GetName()
@@ -51,6 +57,11 @@ namespace BootCamp.Chapter
         /// Needed only for the extra task.
         /// </summary>
         private Equipment _equipment;
+
+        public Equipment GetEquipment()
+        {
+            return _equipment;
+        }
 
         public Player()
         {

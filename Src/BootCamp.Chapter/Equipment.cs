@@ -16,12 +16,12 @@ namespace BootCamp.Chapter
         {
             if (weapon == null) return;
             
-            _totalAttackValue = (weapon == null) ? weapon.GetAttackValue() : 0.0f;
+            _totalAttackValue = (weapon == null) ? 0.0f : weapon.GetAttackValue();
 
             var currentWeight = (_weapon == null) ? 0.0f : weapon.GetWeight();
             var newWeight = (weapon == null) ? 0.0f : weapon.GetWeight();
 
-            _totalCombinedWeight += currentWeight - newWeight;
+            _totalCombinedWeight += newWeight - currentWeight;
             _weapon = weapon;
         }
 
@@ -108,7 +108,7 @@ namespace BootCamp.Chapter
             return _totalAttackValue;
         }
 
-        public void RefreshArmorStatistics(Armor currentArmor, Armor newArmor)
+        private void RefreshArmorStatistics(Armor currentArmor, Armor newArmor)
         {
             var currentDefenseValue = (currentArmor == null) ? 0.0f : currentArmor.GetDefenseValue();
             var newDefenseValue = (newArmor == null) ? 0.0f : newArmor.GetDefenseValue();
