@@ -9,9 +9,9 @@
             return _chipsetManufacturer;
         }
 
-        private string _memoryType;
+        private GPUMemoryType _memoryType;
 
-        public string GetMemoryType()
+        public GPUMemoryType GetMemoryType()
         {
             return _memoryType;
         }
@@ -38,7 +38,7 @@
         }
 
 
-        public Gpu(string id, string manufacturer, string modelName, string chipsetManufacturer, string memoryType, int memorySize, int memoryClock, int gpuClock) : base (id, manufacturer, modelName)
+        public Gpu(string id, string manufacturer, string modelName, string chipsetManufacturer, GPUMemoryType memoryType, int memorySize, int memoryClock, int gpuClock) : base (id, manufacturer, modelName)
         {
             _chipsetManufacturer = chipsetManufacturer;
             _memoryType = memoryType;
