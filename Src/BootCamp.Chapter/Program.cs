@@ -14,8 +14,6 @@ namespace BootCamp.Chapter
             Console.WriteLine("\nApple Inc. factory:");
             MacFactory macFactory = new MacFactory();
             DesktopComputer macComputer = macFactory.Assemble(); // In a real world application, assemble should take a list of components and assemble the computer based in that input.
-
-            
         }
     }
 }
