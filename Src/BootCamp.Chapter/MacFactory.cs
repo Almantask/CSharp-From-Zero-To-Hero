@@ -7,6 +7,8 @@ namespace BootCamp.Chapter
 {
     public class MacFactory : Factory
     {
+        private const string manufacturer = "Apple Inc.";
+
         public MacFactory() { }
 
         protected override void PrepareBody(DesktopComputer computer)
@@ -43,6 +45,11 @@ namespace BootCamp.Chapter
         {
             HardDisk hardDisk = new HardDisk("MZ-76Q1T0BW", "Samsung", "SAMSUNG 1TB 860 QVO", 550, 1024);
             computer.SetHard(hardDisk);
+        }
+
+        protected override void TagManufacturer(DesktopComputer computer)
+        {
+            computer.SetManufacturer(manufacturer);
         }
     }
 }

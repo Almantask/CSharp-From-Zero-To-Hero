@@ -18,6 +18,7 @@ namespace BootCamp.Chapter
             InstallGpu(computer);
             InstallRam(computer);
             InstallHardDisk(computer);
+            TagManufacturer(computer);
 
             return computer;
         }
@@ -28,5 +29,6 @@ namespace BootCamp.Chapter
         protected abstract void InstallGpu(DesktopComputer computer);
         protected abstract void InstallRam(DesktopComputer computer);
         protected abstract void InstallHardDisk(DesktopComputer computer);
+        protected abstract void TagManufacturer(DesktopComputer computer);
     }
 }
