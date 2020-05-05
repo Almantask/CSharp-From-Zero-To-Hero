@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -122,19 +123,51 @@ namespace BootCamp.Chapter
         {
             const string topRow = "Hour, Count, Earned";
 
-            //var soldByTime =
-            return transactions.GroupBy(t => t.DateTime.Hour).Select(z => new
+            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new TimeNumberEarned
             {
 
-               time = z.First().DateTime.Hour.ToString(),
-               count = z.Count().ToString(),
-               earned =  z.Sum(x => x.Price).ToString()
-            }.ToString()
+               Time = z.First().DateTime.Hour,
+               Number = z.Count(),
+               Earned =  z.Sum(x => x.Price)
+            }
             ).ToList();
 
-            //TODO finish Time FIRTST!!!!!
+            return CreateTabel(topRow, soldByTime, 0, 24);
+        }
+        private static IEnumerable<String> CreateTabel(string topRow, IEnumerable<TimeNumberEarned> soldByTime, int startTime, int EndTime)
+        {
+            List<String> toBeWritten = new List<string>();
 
+            //00, 0, "0,00 €"
+            toBeWritten.Add(topRow);
+            int rushHour = 0;
+            decimal mostEarned = Decimal.MinValue;
+            for (int i = startTime; i < EndTime; i++)
+            {
+                int count = 0;
+                decimal earned = 0;
 
+                foreach (TimeNumberEarned timeNumberEarned in soldByTime)
+                {
+                    if(timeNumberEarned.Time == i)
+                    {
+                        
+                        count = timeNumberEarned.Number;
+                        earned = timeNumberEarned.Earned;
+                        if (mostEarned < earned)
+                        {
+                            mostEarned = earned;
+                            rushHour = i;
+                        }
+                    }
+                }
+                toBeWritten.Add($"{i.ToString("D2")}, {count}, \"{earned.ToString("C2", CultureInfo.CurrentCulture)}\"");
+            }
+
+            //Rush hour: 22
+            toBeWritten.Add($"Rush hour: {rushHour}");
+
+            return toBeWritten;
         }
         private static IEnumerable<String> Time(List<Transaction> transactions, DateTime[] times)
         {
