@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,7 +11,21 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            for (int i = 1; i < array.Length; i++)
+            {
+                for (int x = i; x > 0; x--)
+                {
+                    if (array[x] < array[x - 1])
+                    {
+                        int temp = array[x];
+                        array[x] = array[x - 1];
+                        array[x - 1] = temp;
+                    } 
+                    else {
+                        break;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -90,6 +106,11 @@
         {
             // ToDo: implement.
             return array;
+        }
+
+        internal static bool Sort()
+        {
+            throw new NotImplementedException();
         }
     }
 }
