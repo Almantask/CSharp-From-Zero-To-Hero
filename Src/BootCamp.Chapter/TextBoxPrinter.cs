@@ -17,7 +17,7 @@
 
             if (requiredAtributeTextTable != null)
             {
-                return TablePrinter.DisplayTable(new TablePrinter(obj.ToString(), requiredAtributeTextTable.Padding, requiredAtributeTextTable.SideTop, requiredAtributeTextTable.SideLeft, requiredAtributeTextTable.Corner));
+                return TablePrinter.DisplayTable(new TablePrinter(obj.ToString(), requiredAtributeTextTable));
             }
             else if (requiredAttributeTextable != null)
             {

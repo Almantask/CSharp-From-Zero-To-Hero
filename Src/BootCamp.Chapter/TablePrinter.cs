@@ -10,7 +10,7 @@ namespace BootCamp.Chapter
         private readonly char _sideTop;
         private readonly char _sideLeft;
         private readonly char _corner;
-
+       
         public TablePrinter(string text)
         {
             _text = text;
@@ -20,12 +20,12 @@ namespace BootCamp.Chapter
             _corner = '+';
         }
 
-        public TablePrinter(string text, int padding, char sideTop, char sideLeft, char corner) : this(text)
+        public TablePrinter(string text, TextTable requiredAtributeTextTable) : this(text)
         {
-            _padding = padding;
-            _sideTop = sideTop;
-            _sideLeft = sideLeft;
-            _corner = corner;
+            _padding = requiredAtributeTextTable.Padding;
+            _sideTop = requiredAtributeTextTable.SideTop;
+            _sideLeft = requiredAtributeTextTable.SideLeft;
+            _corner = requiredAtributeTextTable.Corner; 
         }
 
         public static string DisplayTable(TablePrinter printer)
