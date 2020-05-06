@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     // This should have the following attribute
-    // [Textable]
+    [Textable]
     public class Car
     {
+        [Textable]
         public string Brand { get; }
+
+        [Textable]
         public string Name { get; }
 
         public Car(string brand, string name)

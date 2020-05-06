@@ -1,5 +1,5 @@
-using System;
 using FluentAssertions;
+using System;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
