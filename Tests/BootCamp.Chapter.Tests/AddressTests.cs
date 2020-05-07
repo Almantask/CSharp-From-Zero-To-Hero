@@ -36,7 +36,7 @@ namespace BootCamp.Chapter.Tests
             var address1 = new Address("asd6", "asd1", "aa2", "aa3", "aa4", "aa5");
             var address2 = new Address("asd0", "asd1", "aa2", "aa3", "aa4", "aa5");
 
-            var areEqual = address2 == address2;
+            var areEqual = address1 == address2;
 
             areEqual.Should().BeFalse();
         }
