@@ -4,9 +4,9 @@ using System.Text;
 
 namespace BootCamp.Chapter.Logging
 {
-    public interface ILogger
+    public enum LogTarget
     {
-        void Log(string message);
-        void LogError(string message);
+        File,
+        Console
     }
 }
