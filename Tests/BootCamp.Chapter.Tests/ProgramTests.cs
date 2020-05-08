@@ -9,12 +9,12 @@ namespace BootCamp.Chapter.Tests
     // You don't have to be here for a long time.
     public class ProgramTests : IDisposable
     {
-        private const string ValidTransactionsFile = "Input/Transactions.csv";
+        private const string ValidTransactionsFile = "Input/Transactions.json";
         private readonly string OutputFile = Guid.NewGuid().ToString();
 
         [Theory]
-        [InlineData("Input/Empty.csv")]
-        [InlineData("nonExisting.csv")]
+        [InlineData("Input/Empty.json")]
+        [InlineData("nonExisting.json")]
         public void Main_When_Transactions_File_Empty_Or_Not_Found_Throws_NoTransactionsException(string input)
         {
             Action action = () => Program.Main(new[] { input });
@@ -33,26 +33,53 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void Main_When_Valid_Time_Command_Creates_File_And_Writes_Stats_For_Every_Hour()
+        public void Main_When_Valid_Time_Command_Creates_JSONFile_And_Writes_Stats_For_Every_Hour()
         {
             const string cmd = "time";
 
             Program.Main(new []{ValidTransactionsFile, cmd, OutputFile});
             
-            const string expectedOutput = "Expected/FullDay.csv";
+            const string expectedOutput = "Expected/FullDay.json";
+
             AssertMatchingContents(expectedOutput, OutputFile);
         }
 
         [Fact]
-        public void Main_When_Valid_Time_Command_With_Range_Creates_File_And_Writes_Stats_For_Every_Hour_Belonging_To_Range()
+        public void Main_When_Valid_Time_Command_Creates_XMLFile_And_Writes_Stats_For_Every_Hour()
+        {
+            const string cmd = "time";
+
+            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
+
+            const string expectedOutput = "Expected/FullDay.xml";
+
+            AssertMatchingContents(expectedOutput, OutputFile);
+        }
+
+
+
+        [Fact]
+        public void Main_When_Valid_Time_Command_With_Range_Creates_JSONFile_And_Writes_Stats_For_Every_Hour_Belonging_To_Range()
         {
             const string cmd = "time 20:00-00:00";
 
             Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
 
-            const string expectedOutput = "Expected/Night.csv";
+            const string expectedOutput = "Expected/Night.json";
             AssertMatchingContents(expectedOutput, OutputFile);
         }
+
+        [Fact]
+        public void Main_When_Valid_Time_Command_With_Range_Creates_XMLFile_And_Writes_Stats_For_Every_Hour_Belonging_To_Range()
+        {
+            const string cmd = "time 20:00-00:00";
+
+            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
+
+            const string expectedOutput = "Expected/Night.xml";
+            AssertMatchingContents(expectedOutput, OutputFile);
+        }
+
 
         [Fact]
         public void Main_When_Valid_DailyRevenue_Command_Creates_File_And_Writes_Revenue_For_Each_Day_Of_Week()
@@ -78,7 +105,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void Main_When_Valid_Full_Command_Creates_Files_Based_On_Shop_With_All_Transactions()
+        public void Main_When_Valid_Full_Command_Creates_JSONFiles_Based_On_Shop_With_All_Transactions()
         {
             const string cmd = "full";
 
@@ -86,9 +113,24 @@ namespace BootCamp.Chapter.Tests
 
             using (new AssertionScope())
             {
-                AssertMatchingContents("Expected/Aibe.csv", "Aibe.csv");
-                AssertMatchingContents("Expected/Kwiki Mart.csv", "Kwiki Mart.csv");
-                AssertMatchingContents("Expected/Wallmart.csv", "Wallmart.csv");
+                AssertMatchingContents("Expected/Aibe.csv", "Aibe.json");
+                AssertMatchingContents("Expected/Kwiki Mart.csv", "Kwiki Mart.json");
+                AssertMatchingContents("Expected/Wallmart.csv", "Wallmart.json");
+            }
+        }
+
+        [Fact]
+        public void Main_When_Valid_Full_Command_Creates_XMLFiles_Based_On_Shop_With_All_Transactions()
+        {
+            const string cmd = "full";
+
+            Program.Main(new[] { ValidTransactionsFile, cmd });
+
+            using (new AssertionScope())
+            {
+                AssertMatchingContents("Expected/Aibe.csv", "Aibe.xml");
+                AssertMatchingContents("Expected/Kwiki Mart.csv", "Kwiki Mart.xml");
+                AssertMatchingContents("Expected/Wallmart.csv", "Wallmart.xml");
             }
         }
 

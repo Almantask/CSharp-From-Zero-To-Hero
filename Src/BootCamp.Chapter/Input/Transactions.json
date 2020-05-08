@@ -1,0 +1,8002 @@
+[
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Bread - Granary Small Pull",
+    "DateTime": "2020-04-25T10:32:16Z",
+    "Price": "€64,90"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Wine - White, Pinot Grigio",
+    "DateTime": "2020-04-13T18:57:32Z",
+    "Price": "€92,70"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Beans - Yellow",
+    "DateTime": "2020-04-25T18:48:52Z",
+    "Price": "€29,08"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Halibut - Steaks",
+    "DateTime": "2020-04-07T02:30:45Z",
+    "Price": "€63,73"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Onions - Cippolini",
+    "DateTime": "2020-04-14T23:54:44Z",
+    "Price": "€3,38"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Pork - Liver",
+    "DateTime": "2020-04-16T23:48:35Z",
+    "Price": "€31,41"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Bread - White, Unsliced",
+    "DateTime": "2020-04-29T07:20:40Z",
+    "Price": "€20,76"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Bandage - Fexible 1x3",
+    "DateTime": "2020-04-04T14:18:06Z",
+    "Price": "€42,52"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Red Cod Fillets - 225g",
+    "DateTime": "2020-04-03T21:40:56Z",
+    "Price": "€65,68"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Appetizer - Chicken Satay",
+    "DateTime": "2020-04-25T16:14:04Z",
+    "Price": "€81,03"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Alize Red Passion",
+    "DateTime": "2020-04-17T18:59:38Z",
+    "Price": "€35,78"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Bread - Hamburger Buns",
+    "DateTime": "2020-04-24T11:57:53Z",
+    "Price": "€81,65"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Lamb - Ground",
+    "DateTime": "2020-04-12T10:25:38Z",
+    "Price": "€14,06"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Rice - Wild",
+    "DateTime": "2020-04-12T16:51:25Z",
+    "Price": "€98,53"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Oven Mitts 17 Inch",
+    "DateTime": "2020-04-06T17:34:02Z",
+    "Price": "€61,48"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Beef - Tenderlion, Center Cut",
+    "DateTime": "2020-04-12T11:40:07Z",
+    "Price": "€21,02"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Plate - Foam, Bread And Butter",
+    "DateTime": "2020-04-04T17:45:12Z",
+    "Price": "€61,94"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pasta - Penne Primavera, Single",
+    "DateTime": "2020-04-22T12:33:20Z",
+    "Price": "€45,16"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Wine - Blue Nun Qualitatswein",
+    "DateTime": "2020-04-02T07:15:05Z",
+    "Price": "€32,52"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Soup - Cream Of Broccoli, Dry",
+    "DateTime": "2020-04-25T07:01:07Z",
+    "Price": "€72,78"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Lettuce - Curly Endive",
+    "DateTime": "2020-04-12T13:30:45Z",
+    "Price": "€8,26"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - Toasted Head",
+    "DateTime": "2020-04-29T11:24:59Z",
+    "Price": "€29,60"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Potatoes - Idaho 80 Count",
+    "DateTime": "2020-04-03T10:43:55Z",
+    "Price": "€71,96"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Tea - Herbal Orange Spice",
+    "DateTime": "2020-04-18T16:42:14Z",
+    "Price": "€67,66"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Iced Tea - Lemon, 460 Ml",
+    "DateTime": "2020-04-22T10:18:57Z",
+    "Price": "€24,81"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pork - Loin, Boneless",
+    "DateTime": "2020-04-09T17:16:39Z",
+    "Price": "€48,01"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Turkey - Breast, Boneless Sk On",
+    "DateTime": "2020-04-28T17:34:40Z",
+    "Price": "€23,59"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Pasta - Fusili Tri - Coloured",
+    "DateTime": "2020-04-10T15:38:11Z",
+    "Price": "€52,73"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Chicken - Whole Fryers",
+    "DateTime": "2020-04-28T15:06:58Z",
+    "Price": "€25,34"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Appetizer - Chicken Satay",
+    "DateTime": "2020-04-27T11:45:28Z",
+    "Price": "€63,06"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cookie Trail Mix",
+    "DateTime": "2020-04-20T03:37:25Z",
+    "Price": "€25,85"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Filter - Coffee",
+    "DateTime": "2020-04-20T17:28:34Z",
+    "Price": "€6,86"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Bread - Olive Dinner Roll",
+    "DateTime": "2020-04-11T08:48:29Z",
+    "Price": "€20,98"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Flour - Pastry",
+    "DateTime": "2020-04-27T16:19:29Z",
+    "Price": "€18,60"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Tendrils - Baby Pea, Organic",
+    "DateTime": "2020-04-06T17:18:00Z",
+    "Price": "€28,85"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Water - Perrier",
+    "DateTime": "2020-04-23T19:58:44Z",
+    "Price": "€51,75"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Star Fruit",
+    "DateTime": "2020-04-10T00:54:28Z",
+    "Price": "€92,52"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Devonshire Cream",
+    "DateTime": "2020-04-01T16:21:42Z",
+    "Price": "€19,89"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Lettuce - Treviso",
+    "DateTime": "2020-04-08T15:37:06Z",
+    "Price": "€80,80"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Sauce - Caesar Dressing",
+    "DateTime": "2020-04-11T19:25:29Z",
+    "Price": "€64,22"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Beer - Original Organic Lager",
+    "DateTime": "2020-04-17T23:33:09Z",
+    "Price": "€85,42"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Carrots - Jumbo",
+    "DateTime": "2020-04-27T16:35:59Z",
+    "Price": "€45,79"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Bread Country Roll",
+    "DateTime": "2020-04-03T03:41:44Z",
+    "Price": "€24,60"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Smoked Tongue",
+    "DateTime": "2020-04-28T02:10:22Z",
+    "Price": "€46,04"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Kiwi",
+    "DateTime": "2020-04-08T07:10:26Z",
+    "Price": "€8,71"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cookie - Dough Variety",
+    "DateTime": "2020-04-12T05:32:37Z",
+    "Price": "€78,85"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Ham - Cooked",
+    "DateTime": "2020-04-04T02:33:47Z",
+    "Price": "€24,28"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Silicone Parch. 16.3x24.3",
+    "DateTime": "2020-04-12T09:16:15Z",
+    "Price": "€5,85"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Soup Campbells Beef With Veg",
+    "DateTime": "2020-04-08T20:50:33Z",
+    "Price": "€92,19"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Soup - Cream Of Potato / Leek",
+    "DateTime": "2020-04-06T22:35:18Z",
+    "Price": "€78,04"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Artichoke - Hearts, Canned",
+    "DateTime": "2020-04-21T01:24:55Z",
+    "Price": "€86,72"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Chips - Assorted",
+    "DateTime": "2020-04-14T10:30:22Z",
+    "Price": "€17,61"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Pork - Butt, Boneless",
+    "DateTime": "2020-04-02T20:22:36Z",
+    "Price": "€98,57"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Juice - Apple, 1.36l",
+    "DateTime": "2020-04-23T00:20:12Z",
+    "Price": "€81,88"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Soup - Knorr, Chicken Noodle",
+    "DateTime": "2020-04-22T03:01:10Z",
+    "Price": "€73,04"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Bonito Flakes - Toku Katsuo",
+    "DateTime": "2020-04-04T02:00:32Z",
+    "Price": "€36,06"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Extract - Almond",
+    "DateTime": "2020-04-17T08:02:56Z",
+    "Price": "€21,74"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Cup - 3.5oz, Foam",
+    "DateTime": "2020-04-04T11:34:16Z",
+    "Price": "€81,13"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Berry Brulee",
+    "DateTime": "2020-04-16T07:25:16Z",
+    "Price": "€82,65"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Teriyaki Sauce",
+    "DateTime": "2020-04-25T00:31:06Z",
+    "Price": "€46,14"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Calypso - Strawberry Lemonade",
+    "DateTime": "2020-04-13T08:19:28Z",
+    "Price": "€96,00"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Wine - White, Colubia Cresh",
+    "DateTime": "2020-04-19T15:01:38Z",
+    "Price": "€38,49"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Lettuce - Escarole",
+    "DateTime": "2020-04-04T12:28:07Z",
+    "Price": "€98,65"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Yams",
+    "DateTime": "2020-04-24T05:01:53Z",
+    "Price": "€60,58"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Sugar - Splenda Sweetener",
+    "DateTime": "2020-04-07T15:30:15Z",
+    "Price": "€50,61"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Garlic Powder",
+    "DateTime": "2020-04-03T23:28:55Z",
+    "Price": "€85,46"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Relish",
+    "DateTime": "2020-04-12T08:22:04Z",
+    "Price": "€54,70"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Cheese Cloth No 60",
+    "DateTime": "2020-04-25T05:28:04Z",
+    "Price": "€22,31"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Muffin - Mix - Strawberry Rhubarb",
+    "DateTime": "2020-04-01T22:31:56Z",
+    "Price": "€90,54"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Veal - Liver",
+    "DateTime": "2020-04-07T00:20:32Z",
+    "Price": "€36,90"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Vinegar - Balsamic",
+    "DateTime": "2020-04-06T20:22:29Z",
+    "Price": "€92,13"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Brownies - Two Bite, Chocolate",
+    "DateTime": "2020-04-08T00:42:25Z",
+    "Price": "€24,27"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bread - Kimel Stick Poly",
+    "DateTime": "2020-04-09T20:38:42Z",
+    "Price": "€73,87"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Vinegar - Champagne",
+    "DateTime": "2020-04-03T14:15:28Z",
+    "Price": "€37,54"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Turkey - Breast, Bone - In",
+    "DateTime": "2020-04-25T17:27:42Z",
+    "Price": "€65,92"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Bread - Olive",
+    "DateTime": "2020-04-06T11:08:07Z",
+    "Price": "€46,63"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Yoghurt Tubes",
+    "DateTime": "2020-04-05T03:57:13Z",
+    "Price": "€78,61"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Shiraz Wolf Blass Premium",
+    "DateTime": "2020-04-02T07:13:09Z",
+    "Price": "€64,47"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Bagelers",
+    "DateTime": "2020-04-29T12:05:33Z",
+    "Price": "€90,17"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Southern Comfort",
+    "DateTime": "2020-04-01T09:56:23Z",
+    "Price": "€25,13"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Rice Pilaf, Dry,package",
+    "DateTime": "2020-04-22T02:23:45Z",
+    "Price": "€97,68"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Lettuce - Romaine, Heart",
+    "DateTime": "2020-04-19T03:32:11Z",
+    "Price": "€29,41"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Lettuce - Belgian Endive",
+    "DateTime": "2020-04-23T14:50:05Z",
+    "Price": "€55,81"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Beer - Maudite",
+    "DateTime": "2020-04-15T00:25:30Z",
+    "Price": "€33,12"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Beets - Candy Cane, Organic",
+    "DateTime": "2020-04-18T12:59:28Z",
+    "Price": "€41,65"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Seedlings - Clamshell",
+    "DateTime": "2020-04-10T21:44:57Z",
+    "Price": "€65,49"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Pastry - Apple Muffins - Mini",
+    "DateTime": "2020-04-10T18:31:00Z",
+    "Price": "€81,94"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beef - Outside, Round",
+    "DateTime": "2020-04-02T06:37:47Z",
+    "Price": "€2,43"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beef - Texas Style Burger",
+    "DateTime": "2020-04-07T15:40:28Z",
+    "Price": "€82,84"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Wine - Prem Select Charddonany",
+    "DateTime": "2020-04-25T23:18:03Z",
+    "Price": "€13,75"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sauce - Chili",
+    "DateTime": "2020-04-13T20:26:21Z",
+    "Price": "€83,55"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Mcgillicuddy Vanilla Schnap",
+    "DateTime": "2020-04-15T01:06:07Z",
+    "Price": "€51,08"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Oil - Cooking Spray",
+    "DateTime": "2020-04-06T06:44:54Z",
+    "Price": "€3,38"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Fond - Chocolate",
+    "DateTime": "2020-04-04T13:19:30Z",
+    "Price": "€85,59"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Urban Zen Drinks",
+    "DateTime": "2020-04-08T20:21:41Z",
+    "Price": "€58,64"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pie Filling - Pumpkin",
+    "DateTime": "2020-04-21T06:02:33Z",
+    "Price": "€31,94"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Sword Pick Asst",
+    "DateTime": "2020-04-15T15:00:54Z",
+    "Price": "€25,22"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - Savigny - Les - Beaune",
+    "DateTime": "2020-04-29T16:04:17Z",
+    "Price": "€80,25"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Shrimp - Prawn",
+    "DateTime": "2020-04-09T10:28:46Z",
+    "Price": "€97,09"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "V8 - Vegetable Cocktail",
+    "DateTime": "2020-04-11T13:45:26Z",
+    "Price": "€63,96"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cranberries - Frozen",
+    "DateTime": "2020-04-18T12:33:39Z",
+    "Price": "€33,27"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - White, Gewurtzraminer",
+    "DateTime": "2020-04-05T03:08:12Z",
+    "Price": "€89,33"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Venison - Liver",
+    "DateTime": "2020-04-10T00:02:52Z",
+    "Price": "€75,75"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Pasta - Spaghetti, Dry",
+    "DateTime": "2020-04-14T18:25:03Z",
+    "Price": "€3,79"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Tamarind Paste",
+    "DateTime": "2020-04-23T13:02:55Z",
+    "Price": "€6,20"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Scallops - U - 10",
+    "DateTime": "2020-04-15T02:11:37Z",
+    "Price": "€63,05"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Burger Veggie",
+    "DateTime": "2020-04-02T07:21:06Z",
+    "Price": "€57,53"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Syrup - Chocolate",
+    "DateTime": "2020-04-06T02:36:28Z",
+    "Price": "€62,93"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beef - Ox Tongue",
+    "DateTime": "2020-04-18T02:56:24Z",
+    "Price": "€4,24"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Chips - Doritos",
+    "DateTime": "2020-04-26T21:15:19Z",
+    "Price": "€51,05"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Bananas",
+    "DateTime": "2020-04-12T13:26:07Z",
+    "Price": "€7,22"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bread Ww Cluster",
+    "DateTime": "2020-04-24T11:42:54Z",
+    "Price": "€48,78"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Mushroom - White Button",
+    "DateTime": "2020-04-06T15:33:06Z",
+    "Price": "€92,67"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Quinoa",
+    "DateTime": "2020-04-22T16:18:42Z",
+    "Price": "€63,35"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Cinnamon - Stick",
+    "DateTime": "2020-04-01T04:13:00Z",
+    "Price": "€59,36"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Turkey Leg With Drum And Thigh",
+    "DateTime": "2020-04-20T02:51:06Z",
+    "Price": "€22,12"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Puree - Mocha",
+    "DateTime": "2020-04-09T20:42:29Z",
+    "Price": "€54,07"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Toamtoes 6x7 Select",
+    "DateTime": "2020-04-16T19:36:10Z",
+    "Price": "€25,40"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beer - Camerons Auburn",
+    "DateTime": "2020-04-23T21:05:59Z",
+    "Price": "€23,08"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Scallops - In Shell",
+    "DateTime": "2020-04-15T08:01:00Z",
+    "Price": "€97,21"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Lettuce - Spring Mix",
+    "DateTime": "2020-04-07T21:56:58Z",
+    "Price": "€65,08"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Beer - Upper Canada Light",
+    "DateTime": "2020-04-10T17:20:07Z",
+    "Price": "€99,98"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Kirsch - Schloss",
+    "DateTime": "2020-04-06T09:07:51Z",
+    "Price": "€91,23"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Peas - Pigeon, Dry",
+    "DateTime": "2020-04-10T02:32:33Z",
+    "Price": "€14,90"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sauce - Demi Glace",
+    "DateTime": "2020-04-09T18:01:10Z",
+    "Price": "€44,85"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Tea - Green",
+    "DateTime": "2020-04-09T14:59:52Z",
+    "Price": "€89,06"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bread - Roll, Whole Wheat",
+    "DateTime": "2020-04-26T08:01:46Z",
+    "Price": "€60,93"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Wine - Delicato Merlot",
+    "DateTime": "2020-04-02T07:21:46Z",
+    "Price": "€38,39"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Waffle Stix",
+    "DateTime": "2020-04-18T15:17:44Z",
+    "Price": "€56,13"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Juice Peach Nectar",
+    "DateTime": "2020-04-13T09:58:46Z",
+    "Price": "€31,70"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Fennel",
+    "DateTime": "2020-04-13T03:05:23Z",
+    "Price": "€22,68"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Laundry - Bag Cloth",
+    "DateTime": "2020-04-17T12:57:45Z",
+    "Price": "€75,66"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Hummus - Spread",
+    "DateTime": "2020-04-24T16:31:10Z",
+    "Price": "€96,39"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Corn Meal",
+    "DateTime": "2020-04-05T02:25:03Z",
+    "Price": "€21,27"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Spinach - Packaged",
+    "DateTime": "2020-04-25T03:24:25Z",
+    "Price": "€76,47"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Chocolate - Pistoles, White",
+    "DateTime": "2020-04-03T08:22:32Z",
+    "Price": "€8,10"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Apples - Sliced / Wedge",
+    "DateTime": "2020-04-20T06:27:15Z",
+    "Price": "€14,50"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Sachet",
+    "DateTime": "2020-04-11T13:15:36Z",
+    "Price": "€95,80"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Pork - Smoked Back Bacon",
+    "DateTime": "2020-04-25T20:49:37Z",
+    "Price": "€56,94"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Island Oasis - Strawberry",
+    "DateTime": "2020-04-16T00:47:39Z",
+    "Price": "€91,10"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Red, Lurton Merlot De",
+    "DateTime": "2020-04-13T22:51:04Z",
+    "Price": "€95,49"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Lamb - Shoulder",
+    "DateTime": "2020-04-05T15:02:30Z",
+    "Price": "€20,81"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Longos - Grilled Chicken With",
+    "DateTime": "2020-04-14T11:21:01Z",
+    "Price": "€70,18"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Water - San Pellegrino",
+    "DateTime": "2020-04-06T22:53:59Z",
+    "Price": "€11,16"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Extract - Raspberry",
+    "DateTime": "2020-04-11T19:45:09Z",
+    "Price": "€29,64"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Sausage - Andouille",
+    "DateTime": "2020-04-15T16:00:43Z",
+    "Price": "€82,17"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pastry - Apple Large",
+    "DateTime": "2020-04-10T21:39:39Z",
+    "Price": "€65,22"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Rice - Jasmine Sented",
+    "DateTime": "2020-04-23T07:56:15Z",
+    "Price": "€82,94"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Creme De Menthe Green",
+    "DateTime": "2020-04-13T07:35:30Z",
+    "Price": "€12,33"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bacon Strip Precooked",
+    "DateTime": "2020-04-20T13:28:25Z",
+    "Price": "€95,40"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Longos - Chicken Caeser Salad",
+    "DateTime": "2020-04-23T18:15:03Z",
+    "Price": "€12,75"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Melon - Cantaloupe",
+    "DateTime": "2020-04-22T21:35:48Z",
+    "Price": "€95,89"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beer - Blue",
+    "DateTime": "2020-04-03T20:41:21Z",
+    "Price": "€92,27"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Jam - Apricot",
+    "DateTime": "2020-04-23T08:39:48Z",
+    "Price": "€81,92"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Chocolate - Pistoles, Lactee, Milk",
+    "DateTime": "2020-04-26T03:36:48Z",
+    "Price": "€62,33"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pork - Bacon, Sliced",
+    "DateTime": "2020-04-20T01:24:53Z",
+    "Price": "€98,42"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Rum - Light, Captain Morgan",
+    "DateTime": "2020-04-23T22:14:55Z",
+    "Price": "€36,26"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Cheese - Fontina",
+    "DateTime": "2020-04-14T06:13:11Z",
+    "Price": "€82,39"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Sour Puss Raspberry",
+    "DateTime": "2020-04-28T17:59:40Z",
+    "Price": "€18,86"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Cherries - Maraschino,jar",
+    "DateTime": "2020-04-04T23:09:30Z",
+    "Price": "€28,67"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Table Cloth 62x120 Colour",
+    "DateTime": "2020-04-07T15:12:40Z",
+    "Price": "€9,75"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Compound - Strawberry",
+    "DateTime": "2020-04-28T14:05:15Z",
+    "Price": "€13,95"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Sambuca - Ramazzotti",
+    "DateTime": "2020-04-27T01:47:25Z",
+    "Price": "€74,83"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cheese - Provolone",
+    "DateTime": "2020-04-04T17:20:53Z",
+    "Price": "€25,28"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Wine - Fat Bastard Merlot",
+    "DateTime": "2020-04-17T12:26:57Z",
+    "Price": "€76,02"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Everfresh Products",
+    "DateTime": "2020-04-16T06:56:43Z",
+    "Price": "€24,23"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Avocado",
+    "DateTime": "2020-04-17T18:07:13Z",
+    "Price": "€45,75"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Energy Drink Red Bull",
+    "DateTime": "2020-04-09T14:02:59Z",
+    "Price": "€44,14"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Blackberries",
+    "DateTime": "2020-04-24T17:39:16Z",
+    "Price": "€2,28"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Bread - 10 Grain",
+    "DateTime": "2020-04-02T17:34:21Z",
+    "Price": "€46,94"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Temperature Recording Station",
+    "DateTime": "2020-04-27T01:23:01Z",
+    "Price": "€64,27"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Cake - Mini Cheesecake",
+    "DateTime": "2020-04-22T05:45:05Z",
+    "Price": "€89,24"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Icecream - Dstk Strw Chseck",
+    "DateTime": "2020-04-04T05:18:48Z",
+    "Price": "€98,18"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Lettuce - Sea / Sea Asparagus",
+    "DateTime": "2020-04-24T05:09:11Z",
+    "Price": "€88,61"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Bread Ww Cluster",
+    "DateTime": "2020-04-09T22:35:17Z",
+    "Price": "€56,09"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "French Pastries",
+    "DateTime": "2020-04-18T18:07:31Z",
+    "Price": "€42,62"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Chinese Lemon Pork",
+    "DateTime": "2020-04-17T22:56:53Z",
+    "Price": "€70,71"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Flounder - Fresh",
+    "DateTime": "2020-04-14T08:54:58Z",
+    "Price": "€88,32"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Mushroom - Porcini, Dry",
+    "DateTime": "2020-04-04T00:52:40Z",
+    "Price": "€91,26"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Tea - Black Currant",
+    "DateTime": "2020-04-20T02:26:43Z",
+    "Price": "€59,62"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Chicken Breast Wing On",
+    "DateTime": "2020-04-22T15:14:24Z",
+    "Price": "€37,18"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cinnamon Rolls",
+    "DateTime": "2020-04-14T12:46:04Z",
+    "Price": "€1,10"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Juice - Orange, 341 Ml",
+    "DateTime": "2020-04-26T19:12:42Z",
+    "Price": "€95,52"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Garbage Bags - Clear",
+    "DateTime": "2020-04-18T05:06:27Z",
+    "Price": "€9,75"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Chocolate - Chips Compound",
+    "DateTime": "2020-04-05T22:57:08Z",
+    "Price": "€43,57"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Turkey - Breast, Double",
+    "DateTime": "2020-04-14T05:47:10Z",
+    "Price": "€91,90"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Dish Towel",
+    "DateTime": "2020-04-16T17:09:02Z",
+    "Price": "€57,39"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Tea - Mint",
+    "DateTime": "2020-04-11T07:00:03Z",
+    "Price": "€43,77"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Milk - Chocolate 250 Ml",
+    "DateTime": "2020-04-04T03:58:53Z",
+    "Price": "€80,23"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Mushroom - Portebello",
+    "DateTime": "2020-04-17T06:11:50Z",
+    "Price": "€87,95"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Lamb Leg - Bone - In Nz",
+    "DateTime": "2020-04-27T08:24:43Z",
+    "Price": "€82,60"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Chocolate - Feathers",
+    "DateTime": "2020-04-06T19:13:17Z",
+    "Price": "€21,52"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Beer - True North Lager",
+    "DateTime": "2020-04-24T00:59:47Z",
+    "Price": "€3,54"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Chocolate - Dark",
+    "DateTime": "2020-04-07T12:55:44Z",
+    "Price": "€73,10"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Wine - Red, Gallo, Merlot",
+    "DateTime": "2020-04-01T18:55:34Z",
+    "Price": "€12,89"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Shiratamako - Rice Flour",
+    "DateTime": "2020-04-09T12:29:00Z",
+    "Price": "€40,60"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Onions - Red",
+    "DateTime": "2020-04-12T13:55:10Z",
+    "Price": "€74,00"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Sour Puss - Tangerine",
+    "DateTime": "2020-04-15T16:28:27Z",
+    "Price": "€74,28"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Table Cloth 81x81 Colour",
+    "DateTime": "2020-04-10T12:01:24Z",
+    "Price": "€15,50"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Juice - Mango",
+    "DateTime": "2020-04-25T15:05:36Z",
+    "Price": "€55,51"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Table Cloth 54x54 White",
+    "DateTime": "2020-04-06T18:29:50Z",
+    "Price": "€26,54"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Water - Spring Water 500ml",
+    "DateTime": "2020-04-07T22:01:51Z",
+    "Price": "€8,02"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Chicken - White Meat With Tender",
+    "DateTime": "2020-04-21T21:23:57Z",
+    "Price": "€87,13"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Coffee - Beans, Whole",
+    "DateTime": "2020-04-24T00:08:58Z",
+    "Price": "€43,33"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Oats Large Flake",
+    "DateTime": "2020-04-14T04:32:06Z",
+    "Price": "€26,01"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Appetizer - Mango Chevre",
+    "DateTime": "2020-04-15T04:10:29Z",
+    "Price": "€29,22"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Beef - Tenderloin Tails",
+    "DateTime": "2020-04-04T20:59:51Z",
+    "Price": "€12,78"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Creme De Cacao White",
+    "DateTime": "2020-04-23T08:10:56Z",
+    "Price": "€52,61"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Chocolate - Feathers",
+    "DateTime": "2020-04-11T10:06:55Z",
+    "Price": "€96,01"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Coffee - Almond Amaretto",
+    "DateTime": "2020-04-29T08:17:20Z",
+    "Price": "€93,97"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Chocolate Bar - Reese Pieces",
+    "DateTime": "2020-04-18T21:30:53Z",
+    "Price": "€81,41"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sauce - Black Current, Dry Mix",
+    "DateTime": "2020-04-12T03:22:17Z",
+    "Price": "€20,21"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Vacuum Bags 12x16",
+    "DateTime": "2020-04-16T18:41:16Z",
+    "Price": "€48,21"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Chips Potato Reg 43g",
+    "DateTime": "2020-04-25T08:55:51Z",
+    "Price": "€84,01"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pail With Metal Handle 16l White",
+    "DateTime": "2020-04-12T14:02:49Z",
+    "Price": "€44,84"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Icecream - Dstk Super Cone",
+    "DateTime": "2020-04-27T18:50:15Z",
+    "Price": "€21,37"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Sprouts - Corn",
+    "DateTime": "2020-04-06T23:16:39Z",
+    "Price": "€9,35"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Filo Dough",
+    "DateTime": "2020-04-05T09:59:38Z",
+    "Price": "€96,50"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Milk - 2% 250 Ml",
+    "DateTime": "2020-04-09T10:14:25Z",
+    "Price": "€68,01"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Seaweed Green Sheets",
+    "DateTime": "2020-04-07T20:08:00Z",
+    "Price": "€14,56"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Wine - Cotes Du Rhone Parallele",
+    "DateTime": "2020-04-28T23:07:35Z",
+    "Price": "€16,56"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Chocolate - Liqueur Cups With Foil",
+    "DateTime": "2020-04-14T18:09:07Z",
+    "Price": "€99,82"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Tarts Assorted",
+    "DateTime": "2020-04-24T01:27:27Z",
+    "Price": "€68,64"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Coffee - Dark Roast",
+    "DateTime": "2020-04-29T08:02:08Z",
+    "Price": "€70,32"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Emulsifier",
+    "DateTime": "2020-04-29T20:35:16Z",
+    "Price": "€80,53"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Sauce - Ranch Dressing",
+    "DateTime": "2020-04-12T20:21:23Z",
+    "Price": "€41,45"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Winzer Krems Gruner",
+    "DateTime": "2020-04-19T20:21:49Z",
+    "Price": "€35,78"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cup - Translucent 7 Oz Clear",
+    "DateTime": "2020-04-21T02:36:12Z",
+    "Price": "€77,37"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pork Loin Bine - In Frenched",
+    "DateTime": "2020-04-18T04:00:51Z",
+    "Price": "€90,44"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Shrimp - Baby, Cold Water",
+    "DateTime": "2020-04-26T01:30:45Z",
+    "Price": "€7,58"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Wine - White, Pelee Island",
+    "DateTime": "2020-04-15T15:20:10Z",
+    "Price": "€78,81"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Wine - Hardys Bankside Shiraz",
+    "DateTime": "2020-04-27T07:26:21Z",
+    "Price": "€6,02"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cheese - Goat",
+    "DateTime": "2020-04-05T15:45:20Z",
+    "Price": "€43,06"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Quail - Jumbo",
+    "DateTime": "2020-04-09T20:26:26Z",
+    "Price": "€80,41"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Whmis Spray Bottle Graduated",
+    "DateTime": "2020-04-02T22:54:21Z",
+    "Price": "€47,12"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Tea - Green",
+    "DateTime": "2020-04-01T06:33:44Z",
+    "Price": "€40,06"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Beets",
+    "DateTime": "2020-04-12T08:43:35Z",
+    "Price": "€90,46"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Roe - Flying Fish",
+    "DateTime": "2020-04-17T08:33:54Z",
+    "Price": "€88,36"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Shrimp - Black Tiger 8 - 12",
+    "DateTime": "2020-04-17T02:11:15Z",
+    "Price": "€87,61"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Muffin - Zero Transfat",
+    "DateTime": "2020-04-26T17:26:00Z",
+    "Price": "€28,59"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Neckerchief Blck",
+    "DateTime": "2020-04-27T01:21:18Z",
+    "Price": "€14,09"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Beer - Sleemans Honey Brown",
+    "DateTime": "2020-04-20T16:22:07Z",
+    "Price": "€20,51"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Raspberries - Fresh",
+    "DateTime": "2020-04-21T07:17:58Z",
+    "Price": "€0,81"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Broom Handle",
+    "DateTime": "2020-04-13T11:42:20Z",
+    "Price": "€91,25"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Buffalo - Striploin",
+    "DateTime": "2020-04-20T07:41:52Z",
+    "Price": "€73,87"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Soup - Campbells, Creamy",
+    "DateTime": "2020-04-20T10:58:27Z",
+    "Price": "€72,97"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Cheese - Wine",
+    "DateTime": "2020-04-09T02:02:27Z",
+    "Price": "€27,78"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Soup - Campbells Chili Veg",
+    "DateTime": "2020-04-09T16:34:42Z",
+    "Price": "€74,37"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Nantucket Pine Orangebanana",
+    "DateTime": "2020-04-11T22:51:21Z",
+    "Price": "€93,61"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Beans - Black Bean, Dry",
+    "DateTime": "2020-04-21T22:01:23Z",
+    "Price": "€61,22"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - Fontanafredda Barolo",
+    "DateTime": "2020-04-08T19:06:23Z",
+    "Price": "€26,00"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Pepper - Gypsy Pepper",
+    "DateTime": "2020-04-13T01:58:47Z",
+    "Price": "€46,33"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Table Cloth 62x120 White",
+    "DateTime": "2020-04-24T03:59:25Z",
+    "Price": "€7,70"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Pork - Bacon Cooked Slcd",
+    "DateTime": "2020-04-23T03:59:26Z",
+    "Price": "€62,10"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Beans - Fine",
+    "DateTime": "2020-04-24T00:46:51Z",
+    "Price": "€74,57"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Beef - Sushi Flat Iron Steak",
+    "DateTime": "2020-04-16T19:27:53Z",
+    "Price": "€25,85"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Oil - Margarine",
+    "DateTime": "2020-04-10T08:46:36Z",
+    "Price": "€94,16"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Tea - Honey Green Tea",
+    "DateTime": "2020-04-27T04:46:07Z",
+    "Price": "€59,30"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Soupcontfoam16oz 116con",
+    "DateTime": "2020-04-22T06:09:00Z",
+    "Price": "€42,66"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Onion Powder",
+    "DateTime": "2020-04-08T11:39:59Z",
+    "Price": "€28,22"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Basil - Dry, Rubbed",
+    "DateTime": "2020-04-12T08:41:20Z",
+    "Price": "€40,76"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Fish - Base, Bouillion",
+    "DateTime": "2020-04-09T22:10:26Z",
+    "Price": "€85,98"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sea Bass - Fillets",
+    "DateTime": "2020-04-14T19:36:38Z",
+    "Price": "€41,30"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Extract - Lemon",
+    "DateTime": "2020-04-27T09:27:12Z",
+    "Price": "€45,02"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Coconut - Creamed, Pure",
+    "DateTime": "2020-04-26T10:30:27Z",
+    "Price": "€8,64"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Baking Powder",
+    "DateTime": "2020-04-01T20:08:27Z",
+    "Price": "€63,63"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Bar Mix - Lime",
+    "DateTime": "2020-04-20T21:28:47Z",
+    "Price": "€47,02"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Flour - Teff",
+    "DateTime": "2020-04-01T00:19:45Z",
+    "Price": "€40,69"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pastry - Banana Muffin - Mini",
+    "DateTime": "2020-04-06T12:10:12Z",
+    "Price": "€57,90"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Fennel - Seeds",
+    "DateTime": "2020-04-12T13:48:46Z",
+    "Price": "€91,78"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Yogurt - Peach, 175 Gr",
+    "DateTime": "2020-04-13T17:56:18Z",
+    "Price": "€5,65"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Rabbit - Whole",
+    "DateTime": "2020-04-02T00:02:00Z",
+    "Price": "€42,33"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Stock - Veal, Brown",
+    "DateTime": "2020-04-16T02:15:29Z",
+    "Price": "€98,45"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Bok Choy - Baby",
+    "DateTime": "2020-04-21T08:32:33Z",
+    "Price": "€24,06"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Blue Curacao - Marie Brizard",
+    "DateTime": "2020-04-01T15:57:13Z",
+    "Price": "€35,19"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Chocolate Eclairs",
+    "DateTime": "2020-04-29T10:53:14Z",
+    "Price": "€53,18"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sugar - White Packet",
+    "DateTime": "2020-04-15T22:24:36Z",
+    "Price": "€18,14"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Flour Pastry Super Fine",
+    "DateTime": "2020-04-10T11:50:26Z",
+    "Price": "€6,32"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Soup - Canadian Pea, Dry Mix",
+    "DateTime": "2020-04-24T01:26:00Z",
+    "Price": "€56,42"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Bread - Roll, Canadian Dinner",
+    "DateTime": "2020-04-10T21:57:38Z",
+    "Price": "€88,49"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sprouts - Pea",
+    "DateTime": "2020-04-21T21:03:57Z",
+    "Price": "€96,05"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Chick Peas - Canned",
+    "DateTime": "2020-04-02T03:04:59Z",
+    "Price": "€51,24"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Mushrooms - Black, Dried",
+    "DateTime": "2020-04-07T14:14:13Z",
+    "Price": "€10,64"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Rappini - Andy Boy",
+    "DateTime": "2020-04-10T13:14:16Z",
+    "Price": "€78,21"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Mushroom - Crimini",
+    "DateTime": "2020-04-19T00:59:19Z",
+    "Price": "€58,30"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - Casillero Del Diablo",
+    "DateTime": "2020-04-17T00:00:50Z",
+    "Price": "€38,18"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Tea - Camomele",
+    "DateTime": "2020-04-13T16:52:08Z",
+    "Price": "€37,39"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Blue Curacao - Marie Brizard",
+    "DateTime": "2020-04-06T16:23:02Z",
+    "Price": "€32,89"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Appetizer - Veg Assortment",
+    "DateTime": "2020-04-29T04:56:48Z",
+    "Price": "€25,84"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Truffle Cups - Brown",
+    "DateTime": "2020-04-03T12:21:47Z",
+    "Price": "€72,24"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Lid Coffeecup 12oz D9542b",
+    "DateTime": "2020-04-07T14:53:36Z",
+    "Price": "€58,11"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Pepper - Scotch Bonnet",
+    "DateTime": "2020-04-28T03:22:05Z",
+    "Price": "€65,38"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Bread - Pain Au Liat X12",
+    "DateTime": "2020-04-10T13:09:12Z",
+    "Price": "€74,50"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Cookies - Englishbay Wht",
+    "DateTime": "2020-04-16T18:57:50Z",
+    "Price": "€49,07"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pasta - Fettuccine, Dry",
+    "DateTime": "2020-04-23T01:15:12Z",
+    "Price": "€14,58"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pastry - Plain Baked Croissant",
+    "DateTime": "2020-04-09T09:35:05Z",
+    "Price": "€45,80"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Tea - Green",
+    "DateTime": "2020-04-21T01:10:50Z",
+    "Price": "€92,14"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Cod - Black Whole Fillet",
+    "DateTime": "2020-04-21T22:14:43Z",
+    "Price": "€92,22"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beans - Fine",
+    "DateTime": "2020-04-25T16:02:09Z",
+    "Price": "€89,64"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Flour - So Mix Cake White",
+    "DateTime": "2020-04-28T04:19:57Z",
+    "Price": "€89,73"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Sauce - Marinara",
+    "DateTime": "2020-04-29T04:59:34Z",
+    "Price": "€36,86"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Pork - Bacon, Sliced",
+    "DateTime": "2020-04-11T01:54:00Z",
+    "Price": "€17,92"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Bacardi Mojito",
+    "DateTime": "2020-04-01T19:22:34Z",
+    "Price": "€98,82"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Tomatoes - Vine Ripe, Red",
+    "DateTime": "2020-04-25T10:39:30Z",
+    "Price": "€99,27"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Pork - Loin, Center Cut",
+    "DateTime": "2020-04-24T08:19:28Z",
+    "Price": "€17,05"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Teriyaki Sauce",
+    "DateTime": "2020-04-13T17:46:26Z",
+    "Price": "€71,32"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Duck - Whole",
+    "DateTime": "2020-04-03T07:58:56Z",
+    "Price": "€65,23"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Spaghetti Squash",
+    "DateTime": "2020-04-10T05:45:25Z",
+    "Price": "€6,66"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Wine - Acient Coast Caberne",
+    "DateTime": "2020-04-18T01:58:10Z",
+    "Price": "€13,50"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Tray - 16in Rnd Blk",
+    "DateTime": "2020-04-01T19:31:22Z",
+    "Price": "€73,95"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bread Crumbs - Panko",
+    "DateTime": "2020-04-16T14:00:47Z",
+    "Price": "€39,40"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Icecream - Dibs",
+    "DateTime": "2020-04-23T06:31:10Z",
+    "Price": "€13,20"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Mushroom - White Button",
+    "DateTime": "2020-04-15T12:46:24Z",
+    "Price": "€45,80"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Sauce - Gravy, Au Jus, Mix",
+    "DateTime": "2020-04-19T12:55:03Z",
+    "Price": "€48,73"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Beer - True North Lager",
+    "DateTime": "2020-04-23T03:23:23Z",
+    "Price": "€62,20"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Milk - Homo",
+    "DateTime": "2020-04-07T15:56:25Z",
+    "Price": "€44,09"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Pate - Peppercorn",
+    "DateTime": "2020-04-09T04:45:45Z",
+    "Price": "€77,19"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Sloe Gin - Mcguinness",
+    "DateTime": "2020-04-24T02:46:16Z",
+    "Price": "€90,28"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Table Cloth 62x114 White",
+    "DateTime": "2020-04-15T16:50:01Z",
+    "Price": "€68,96"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Pork - Bacon,back Peameal",
+    "DateTime": "2020-04-01T04:22:11Z",
+    "Price": "€76,08"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Worcestershire Sauce",
+    "DateTime": "2020-04-03T00:02:38Z",
+    "Price": "€60,05"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Salt And Pepper Mix - Black",
+    "DateTime": "2020-04-20T14:53:28Z",
+    "Price": "€36,68"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Shrimp - 16/20, Peeled Deviened",
+    "DateTime": "2020-04-09T07:43:50Z",
+    "Price": "€91,45"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beans - Black Bean, Dry",
+    "DateTime": "2020-04-20T12:42:33Z",
+    "Price": "€56,95"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Soup V8 Roasted Red Pepper",
+    "DateTime": "2020-04-24T00:20:39Z",
+    "Price": "€23,31"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Sage - Rubbed",
+    "DateTime": "2020-04-19T06:46:45Z",
+    "Price": "€26,09"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Fenngreek Seed",
+    "DateTime": "2020-04-17T18:46:59Z",
+    "Price": "€11,97"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Sole - Dover, Whole, Fresh",
+    "DateTime": "2020-04-13T00:43:37Z",
+    "Price": "€46,50"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Lotus Root",
+    "DateTime": "2020-04-19T01:11:08Z",
+    "Price": "€14,18"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Beef - Tenderloin - Aa",
+    "DateTime": "2020-04-10T09:10:21Z",
+    "Price": "€99,49"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pork - Loin, Boneless",
+    "DateTime": "2020-04-26T02:40:08Z",
+    "Price": "€17,96"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bread - Granary Small Pull",
+    "DateTime": "2020-04-21T04:22:58Z",
+    "Price": "€44,44"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Sprouts Dikon",
+    "DateTime": "2020-04-18T08:29:04Z",
+    "Price": "€86,73"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bandage - Finger Cots",
+    "DateTime": "2020-04-10T02:42:06Z",
+    "Price": "€33,35"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pickles - Gherkins",
+    "DateTime": "2020-04-27T08:52:40Z",
+    "Price": "€31,58"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Muffin Mix - Oatmeal",
+    "DateTime": "2020-04-17T23:14:22Z",
+    "Price": "€39,77"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pate - Liver",
+    "DateTime": "2020-04-25T06:18:40Z",
+    "Price": "€77,59"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Pork - Bacon, Double Smoked",
+    "DateTime": "2020-04-16T04:55:09Z",
+    "Price": "€40,36"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Flour Pastry Super Fine",
+    "DateTime": "2020-04-10T04:37:42Z",
+    "Price": "€87,47"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Wine - Baron De Rothschild",
+    "DateTime": "2020-04-08T18:46:46Z",
+    "Price": "€47,65"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Spice - Paprika",
+    "DateTime": "2020-04-12T21:59:00Z",
+    "Price": "€24,01"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Longos - Grilled Salmon With Bbq",
+    "DateTime": "2020-04-18T09:21:36Z",
+    "Price": "€16,62"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Pie Filling - Cherry",
+    "DateTime": "2020-04-05T01:16:36Z",
+    "Price": "€87,04"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Ecolab - Mikroklene 4/4 L",
+    "DateTime": "2020-04-02T15:55:15Z",
+    "Price": "€74,14"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Sauce - Vodka Blush",
+    "DateTime": "2020-04-21T07:25:46Z",
+    "Price": "€95,29"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Sauce - Rosee",
+    "DateTime": "2020-04-25T23:31:35Z",
+    "Price": "€28,38"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Jameson Irish Whiskey",
+    "DateTime": "2020-04-25T05:03:37Z",
+    "Price": "€16,62"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Napkin - Cocktail,beige 2 - Ply",
+    "DateTime": "2020-04-26T18:06:26Z",
+    "Price": "€53,37"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Nougat - Paste / Cream",
+    "DateTime": "2020-04-10T09:33:27Z",
+    "Price": "€39,38"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pastry - Chocolate Chip Muffin",
+    "DateTime": "2020-04-02T13:39:27Z",
+    "Price": "€20,02"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - White, Schroder And Schyl",
+    "DateTime": "2020-04-11T01:22:06Z",
+    "Price": "€73,50"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Beer - Sleemans Cream Ale",
+    "DateTime": "2020-04-23T00:28:40Z",
+    "Price": "€52,56"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Sproutsmustard Cress",
+    "DateTime": "2020-04-09T00:42:59Z",
+    "Price": "€62,49"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pastry - Chocolate Chip Muffin",
+    "DateTime": "2020-04-18T04:56:55Z",
+    "Price": "€54,97"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Bar Mix - Pina Colada, 355 Ml",
+    "DateTime": "2020-04-10T04:49:38Z",
+    "Price": "€23,47"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Wine - Sicilia Igt Nero Avola",
+    "DateTime": "2020-04-10T08:40:16Z",
+    "Price": "€17,29"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Clam Nectar",
+    "DateTime": "2020-04-11T00:30:58Z",
+    "Price": "€27,09"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - Soave Folonari",
+    "DateTime": "2020-04-16T07:30:31Z",
+    "Price": "€61,54"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Blue Curacao - Marie Brizard",
+    "DateTime": "2020-04-29T07:54:15Z",
+    "Price": "€41,56"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Wine - Shiraz South Eastern",
+    "DateTime": "2020-04-26T20:55:38Z",
+    "Price": "€17,57"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Bacardi Limon",
+    "DateTime": "2020-04-14T18:45:10Z",
+    "Price": "€11,87"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Bread - Bistro Sour",
+    "DateTime": "2020-04-12T04:49:01Z",
+    "Price": "€16,50"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Melon - Honey Dew",
+    "DateTime": "2020-04-11T17:28:36Z",
+    "Price": "€74,70"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Broom - Corn",
+    "DateTime": "2020-04-10T02:14:05Z",
+    "Price": "€57,41"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Muffin Mix - Oatmeal",
+    "DateTime": "2020-04-03T17:09:36Z",
+    "Price": "€15,53"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Jello - Assorted",
+    "DateTime": "2020-04-16T21:50:31Z",
+    "Price": "€22,63"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Cardamon Ground",
+    "DateTime": "2020-04-26T23:48:46Z",
+    "Price": "€69,97"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pur Source",
+    "DateTime": "2020-04-01T18:37:46Z",
+    "Price": "€13,36"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Tea - Apple Green Tea",
+    "DateTime": "2020-04-12T01:05:41Z",
+    "Price": "€77,38"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Vodka - Moskovskaya",
+    "DateTime": "2020-04-02T09:41:09Z",
+    "Price": "€4,36"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Lid - 16 Oz And 32 Oz",
+    "DateTime": "2020-04-26T14:53:20Z",
+    "Price": "€87,56"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Napkin Colour",
+    "DateTime": "2020-04-25T01:31:18Z",
+    "Price": "€69,34"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Longos - Cheese Tortellini",
+    "DateTime": "2020-04-18T20:32:22Z",
+    "Price": "€89,83"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Yoghurt Tubes",
+    "DateTime": "2020-04-03T20:59:57Z",
+    "Price": "€93,37"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pork - Bacon, Double Smoked",
+    "DateTime": "2020-04-11T10:27:08Z",
+    "Price": "€26,94"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Bread - Multigrain Oval",
+    "DateTime": "2020-04-04T02:23:07Z",
+    "Price": "€62,59"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Ginger - Fresh",
+    "DateTime": "2020-04-08T04:02:11Z",
+    "Price": "€98,77"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Juice - Ocean Spray Cranberry",
+    "DateTime": "2020-04-22T07:34:10Z",
+    "Price": "€29,49"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Daves Island Stinger",
+    "DateTime": "2020-04-13T10:22:36Z",
+    "Price": "€83,70"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Champagne - Brights, Dry",
+    "DateTime": "2020-04-04T15:22:02Z",
+    "Price": "€94,70"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Potatoes - Instant, Mashed",
+    "DateTime": "2020-04-25T08:01:56Z",
+    "Price": "€65,55"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Scampi Tail",
+    "DateTime": "2020-04-05T15:05:38Z",
+    "Price": "€43,86"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Pie Filling - Apple",
+    "DateTime": "2020-04-19T00:39:46Z",
+    "Price": "€2,51"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Compound - Pear",
+    "DateTime": "2020-04-09T10:35:10Z",
+    "Price": "€54,82"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Chocolate - Milk, Callets",
+    "DateTime": "2020-04-25T21:18:17Z",
+    "Price": "€50,44"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Chocolate - Milk Coating",
+    "DateTime": "2020-04-02T14:00:28Z",
+    "Price": "€92,35"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Sobe - Cranberry Grapefruit",
+    "DateTime": "2020-04-24T07:48:36Z",
+    "Price": "€28,82"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Snapple Lemon Tea",
+    "DateTime": "2020-04-13T07:52:14Z",
+    "Price": "€95,24"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Beans - Kidney White",
+    "DateTime": "2020-04-10T16:55:44Z",
+    "Price": "€16,88"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Banana Turning",
+    "DateTime": "2020-04-26T10:21:01Z",
+    "Price": "€56,74"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Salt - Rock, Course",
+    "DateTime": "2020-04-04T14:03:14Z",
+    "Price": "€48,50"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Milk - Skim",
+    "DateTime": "2020-04-28T12:16:13Z",
+    "Price": "€28,55"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Cumin - Ground",
+    "DateTime": "2020-04-06T17:09:14Z",
+    "Price": "€82,61"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Wine - Saint Emilion Calvet",
+    "DateTime": "2020-04-21T21:19:26Z",
+    "Price": "€84,44"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Truffle Cups Green",
+    "DateTime": "2020-04-19T08:50:55Z",
+    "Price": "€86,32"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Flour - Rye",
+    "DateTime": "2020-04-12T17:43:42Z",
+    "Price": "€63,77"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Pasta - Fusili, Dry",
+    "DateTime": "2020-04-22T06:00:15Z",
+    "Price": "€16,22"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Puree - Pear",
+    "DateTime": "2020-04-06T18:06:59Z",
+    "Price": "€21,48"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cookies Almond Hazelnut",
+    "DateTime": "2020-04-08T17:08:50Z",
+    "Price": "€52,97"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Coffee - Hazelnut Cream",
+    "DateTime": "2020-04-14T04:47:53Z",
+    "Price": "€16,62"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Galliano",
+    "DateTime": "2020-04-09T16:49:51Z",
+    "Price": "€67,75"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Cocktail Napkin Blue",
+    "DateTime": "2020-04-20T14:35:40Z",
+    "Price": "€84,80"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Soup - Campbells - Chicken Noodle",
+    "DateTime": "2020-04-26T03:04:33Z",
+    "Price": "€46,59"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bag - Bread, White, Plain",
+    "DateTime": "2020-04-19T02:25:44Z",
+    "Price": "€89,58"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Tea - Darjeeling, Azzura",
+    "DateTime": "2020-04-23T08:33:02Z",
+    "Price": "€30,43"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Longos - Chicken Caeser Salad",
+    "DateTime": "2020-04-20T07:32:52Z",
+    "Price": "€34,02"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pate - Peppercorn",
+    "DateTime": "2020-04-10T07:07:48Z",
+    "Price": "€61,97"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Bread Crumbs - Japanese Style",
+    "DateTime": "2020-04-13T12:06:09Z",
+    "Price": "€44,64"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pickles - Gherkins",
+    "DateTime": "2020-04-08T18:59:15Z",
+    "Price": "€41,24"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Parsnip",
+    "DateTime": "2020-04-20T02:17:21Z",
+    "Price": "€32,32"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Veal - Provimi Inside",
+    "DateTime": "2020-04-16T14:30:08Z",
+    "Price": "€86,95"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pasta - Fusili Tri - Coloured",
+    "DateTime": "2020-04-29T09:59:45Z",
+    "Price": "€92,90"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Beer - Heinekin",
+    "DateTime": "2020-04-10T22:52:02Z",
+    "Price": "€6,97"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Olive - Spread Tapenade",
+    "DateTime": "2020-04-20T04:38:11Z",
+    "Price": "€49,96"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Cookies - Assorted",
+    "DateTime": "2020-04-29T13:56:50Z",
+    "Price": "€29,64"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Beef - Sushi Flat Iron Steak",
+    "DateTime": "2020-04-16T02:54:44Z",
+    "Price": "€84,74"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Syrup - Monin, Amaretta",
+    "DateTime": "2020-04-27T01:23:35Z",
+    "Price": "€17,41"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Mangostein",
+    "DateTime": "2020-04-12T22:56:07Z",
+    "Price": "€82,84"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Eel Fresh",
+    "DateTime": "2020-04-03T14:17:24Z",
+    "Price": "€60,50"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Molasses - Fancy",
+    "DateTime": "2020-04-29T03:07:34Z",
+    "Price": "€1,93"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cake Slab",
+    "DateTime": "2020-04-10T00:46:51Z",
+    "Price": "€15,05"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Cheese Cloth No 60",
+    "DateTime": "2020-04-11T08:03:05Z",
+    "Price": "€72,08"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Creme De Banane - Marie",
+    "DateTime": "2020-04-13T02:55:43Z",
+    "Price": "€70,73"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Pastry - Plain Baked Croissant",
+    "DateTime": "2020-04-25T19:43:30Z",
+    "Price": "€40,08"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Ecolab - Hand Soap Form Antibac",
+    "DateTime": "2020-04-13T19:05:28Z",
+    "Price": "€12,72"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Veal - Striploin",
+    "DateTime": "2020-04-26T22:20:18Z",
+    "Price": "€75,70"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Beef - Shank",
+    "DateTime": "2020-04-25T13:15:53Z",
+    "Price": "€4,82"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pie Shells 10",
+    "DateTime": "2020-04-04T01:15:38Z",
+    "Price": "€63,87"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Sesame Seed Black",
+    "DateTime": "2020-04-03T07:02:35Z",
+    "Price": "€42,60"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - Pinot Noir Stoneleigh",
+    "DateTime": "2020-04-06T18:22:38Z",
+    "Price": "€80,49"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Macaroons - Homestyle Two Bit",
+    "DateTime": "2020-04-20T09:48:07Z",
+    "Price": "€9,22"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Grapefruit - White",
+    "DateTime": "2020-04-17T16:33:36Z",
+    "Price": "€97,40"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Beans - Wax",
+    "DateTime": "2020-04-08T11:48:27Z",
+    "Price": "€91,90"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "V8 - Berry Blend",
+    "DateTime": "2020-04-13T17:27:03Z",
+    "Price": "€64,60"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Couscous",
+    "DateTime": "2020-04-02T23:17:06Z",
+    "Price": "€73,98"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Tea - Herbal - 6 Asst",
+    "DateTime": "2020-04-02T11:02:33Z",
+    "Price": "€48,11"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Lamb Tenderloin Nz Fr",
+    "DateTime": "2020-04-19T21:47:45Z",
+    "Price": "€99,25"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Fish - Base, Bouillion",
+    "DateTime": "2020-04-29T05:44:12Z",
+    "Price": "€19,47"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cake - Cheese Cake 9 Inch",
+    "DateTime": "2020-04-10T10:12:38Z",
+    "Price": "€58,46"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Nut - Pine Nuts, Whole",
+    "DateTime": "2020-04-05T16:54:39Z",
+    "Price": "€93,95"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Beef Striploin Aaa",
+    "DateTime": "2020-04-23T08:42:53Z",
+    "Price": "€12,07"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Juice - Ocean Spray Cranberry",
+    "DateTime": "2020-04-14T07:17:57Z",
+    "Price": "€62,62"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bag - Bread, White, Plain",
+    "DateTime": "2020-04-12T21:37:42Z",
+    "Price": "€5,27"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Pastry - Choclate Baked",
+    "DateTime": "2020-04-17T23:18:43Z",
+    "Price": "€37,05"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Chicken - Whole Fryers",
+    "DateTime": "2020-04-20T23:57:47Z",
+    "Price": "€82,48"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Muffin Hinge Container 6",
+    "DateTime": "2020-04-24T02:27:35Z",
+    "Price": "€61,39"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Apricots Fresh",
+    "DateTime": "2020-04-08T04:07:48Z",
+    "Price": "€86,43"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Coffee - Frthy Coffee Crisp",
+    "DateTime": "2020-04-25T12:21:49Z",
+    "Price": "€42,51"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Syrup - Golden, Lyles",
+    "DateTime": "2020-04-28T08:33:54Z",
+    "Price": "€56,26"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Hardys Bankside Shiraz",
+    "DateTime": "2020-04-16T10:25:49Z",
+    "Price": "€16,96"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Marzipan 50/50",
+    "DateTime": "2020-04-18T05:52:32Z",
+    "Price": "€98,61"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Bagel - Sesame Seed Presliced",
+    "DateTime": "2020-04-21T19:09:59Z",
+    "Price": "€18,81"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sugar - Cubes",
+    "DateTime": "2020-04-20T07:29:00Z",
+    "Price": "€34,96"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Shrimp - Black Tiger 8 - 12",
+    "DateTime": "2020-04-14T18:58:22Z",
+    "Price": "€35,32"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Bread - Hot Dog Buns",
+    "DateTime": "2020-04-22T19:28:07Z",
+    "Price": "€33,00"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Parasol Pick Stir Stick",
+    "DateTime": "2020-04-06T04:39:44Z",
+    "Price": "€16,63"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - Cotes Du Rhone",
+    "DateTime": "2020-04-08T23:04:10Z",
+    "Price": "€82,19"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Bagelers - Cinn / Brown",
+    "DateTime": "2020-04-05T03:55:27Z",
+    "Price": "€50,83"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Cheese - Grana Padano",
+    "DateTime": "2020-04-27T19:33:51Z",
+    "Price": "€75,22"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Coffee Cup 16oz Foam",
+    "DateTime": "2020-04-04T15:16:40Z",
+    "Price": "€90,07"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Mushroom - Enoki, Fresh",
+    "DateTime": "2020-04-24T04:13:25Z",
+    "Price": "€48,16"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Carbonated Water - White Grape",
+    "DateTime": "2020-04-24T02:10:22Z",
+    "Price": "€24,46"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bacardi Breezer - Tropical",
+    "DateTime": "2020-04-16T07:17:32Z",
+    "Price": "€80,70"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Peppercorns - Pink",
+    "DateTime": "2020-04-25T10:32:14Z",
+    "Price": "€70,80"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Miso Paste White",
+    "DateTime": "2020-04-24T10:20:40Z",
+    "Price": "€13,59"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Lambcasing",
+    "DateTime": "2020-04-27T18:06:18Z",
+    "Price": "€65,56"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Fish - Base, Bouillion",
+    "DateTime": "2020-04-17T14:19:58Z",
+    "Price": "€68,64"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Sobe - Cranberry Grapefruit",
+    "DateTime": "2020-04-20T21:55:13Z",
+    "Price": "€20,64"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Squid - U 5",
+    "DateTime": "2020-04-24T01:46:56Z",
+    "Price": "€80,52"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cucumber - English",
+    "DateTime": "2020-04-26T17:13:21Z",
+    "Price": "€43,40"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Flower - Carnations",
+    "DateTime": "2020-04-06T08:24:19Z",
+    "Price": "€97,68"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Food Colouring - Blue",
+    "DateTime": "2020-04-10T19:05:51Z",
+    "Price": "€34,93"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Wine - Conde De Valdemar",
+    "DateTime": "2020-04-28T19:01:22Z",
+    "Price": "€89,06"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sauce - Bernaise, Mix",
+    "DateTime": "2020-04-12T22:32:34Z",
+    "Price": "€76,12"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Lettuce - Radicchio",
+    "DateTime": "2020-04-10T12:54:23Z",
+    "Price": "€96,04"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Island Oasis - Strawberry",
+    "DateTime": "2020-04-11T17:37:56Z",
+    "Price": "€70,53"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Cookies Almond Hazelnut",
+    "DateTime": "2020-04-23T21:49:20Z",
+    "Price": "€61,74"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Couscous",
+    "DateTime": "2020-04-05T22:45:46Z",
+    "Price": "€66,02"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Crackers - Trio",
+    "DateTime": "2020-04-27T12:36:47Z",
+    "Price": "€75,02"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Anchovy Fillets",
+    "DateTime": "2020-04-07T00:07:02Z",
+    "Price": "€22,03"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Chives - Fresh",
+    "DateTime": "2020-04-02T22:05:51Z",
+    "Price": "€9,55"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Beer - Sleeman Fine Porter",
+    "DateTime": "2020-04-03T16:25:12Z",
+    "Price": "€72,28"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Mushroom - Shitake, Dry",
+    "DateTime": "2020-04-12T13:35:36Z",
+    "Price": "€4,31"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Water - Mineral, Natural",
+    "DateTime": "2020-04-03T22:19:33Z",
+    "Price": "€0,81"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pheasants - Whole",
+    "DateTime": "2020-04-16T08:13:19Z",
+    "Price": "€36,11"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Nori Sea Weed - Gold Label",
+    "DateTime": "2020-04-23T02:40:00Z",
+    "Price": "€5,67"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Lamb - Whole Head Off,nz",
+    "DateTime": "2020-04-17T08:30:36Z",
+    "Price": "€25,67"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Crackers - Trio",
+    "DateTime": "2020-04-07T05:21:06Z",
+    "Price": "€31,68"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Sobe - Tropical Energy",
+    "DateTime": "2020-04-01T11:56:19Z",
+    "Price": "€67,04"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bacardi Limon",
+    "DateTime": "2020-04-16T00:43:41Z",
+    "Price": "€21,02"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Coffee - Egg Nog Capuccino",
+    "DateTime": "2020-04-08T00:15:27Z",
+    "Price": "€37,46"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Appetiser - Bought",
+    "DateTime": "2020-04-29T21:35:11Z",
+    "Price": "€46,13"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Gingerale - Schweppes, 355 Ml",
+    "DateTime": "2020-04-14T10:01:40Z",
+    "Price": "€56,86"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Higashimaru Usukuchi Soy",
+    "DateTime": "2020-04-12T18:43:03Z",
+    "Price": "€24,12"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Cake - Pancake",
+    "DateTime": "2020-04-17T03:01:30Z",
+    "Price": "€94,91"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Celery Root",
+    "DateTime": "2020-04-04T13:41:17Z",
+    "Price": "€54,78"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Sauce - Cranberry",
+    "DateTime": "2020-04-24T13:00:07Z",
+    "Price": "€76,88"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Skewers - Bamboo",
+    "DateTime": "2020-04-01T02:53:25Z",
+    "Price": "€3,67"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Honey - Lavender",
+    "DateTime": "2020-04-07T01:38:51Z",
+    "Price": "€3,04"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Magnotta Bel Paese Red",
+    "DateTime": "2020-04-22T02:16:42Z",
+    "Price": "€87,40"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Eggplant - Asian",
+    "DateTime": "2020-04-10T21:06:49Z",
+    "Price": "€92,68"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Olives - Nicoise",
+    "DateTime": "2020-04-15T19:39:40Z",
+    "Price": "€47,77"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Duck - Whole",
+    "DateTime": "2020-04-19T13:43:19Z",
+    "Price": "€38,68"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Pail - 4l White, With Handle",
+    "DateTime": "2020-04-18T22:57:11Z",
+    "Price": "€51,20"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Lady Fingers",
+    "DateTime": "2020-04-19T20:04:52Z",
+    "Price": "€88,91"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Tuna - Bluefin",
+    "DateTime": "2020-04-10T18:13:13Z",
+    "Price": "€43,72"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Tuna - Loin",
+    "DateTime": "2020-04-09T19:02:31Z",
+    "Price": "€18,74"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Wine - Spumante Bambino White",
+    "DateTime": "2020-04-27T06:03:31Z",
+    "Price": "€69,20"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Trout - Hot Smkd, Dbl Fillet",
+    "DateTime": "2020-04-17T09:20:24Z",
+    "Price": "€93,84"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Coconut - Creamed, Pure",
+    "DateTime": "2020-04-12T20:30:46Z",
+    "Price": "€88,09"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Eggplant - Regular",
+    "DateTime": "2020-04-08T15:27:11Z",
+    "Price": "€9,16"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "The Pop Shoppe - Black Cherry",
+    "DateTime": "2020-04-02T18:22:58Z",
+    "Price": "€36,41"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Wine - Red, Metus Rose",
+    "DateTime": "2020-04-27T14:39:32Z",
+    "Price": "€17,76"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cookie - Oatmeal",
+    "DateTime": "2020-04-08T03:19:41Z",
+    "Price": "€77,07"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Tea - Lemon Scented",
+    "DateTime": "2020-04-22T03:45:33Z",
+    "Price": "€5,01"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Jam - Marmalade, Orange",
+    "DateTime": "2020-04-28T17:23:34Z",
+    "Price": "€59,06"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Canadian Emmenthal",
+    "DateTime": "2020-04-21T11:39:48Z",
+    "Price": "€35,66"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Oven Mitts 17 Inch",
+    "DateTime": "2020-04-13T15:00:10Z",
+    "Price": "€89,33"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Mushroom - Morel Frozen",
+    "DateTime": "2020-04-17T07:04:12Z",
+    "Price": "€97,17"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Couscous",
+    "DateTime": "2020-04-27T01:58:28Z",
+    "Price": "€37,11"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Mahi Mahi",
+    "DateTime": "2020-04-02T08:05:29Z",
+    "Price": "€46,88"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bagels Poppyseed",
+    "DateTime": "2020-04-20T09:34:14Z",
+    "Price": "€87,93"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Salami - Genova",
+    "DateTime": "2020-04-23T04:52:34Z",
+    "Price": "€29,72"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Garam Marsala",
+    "DateTime": "2020-04-26T19:37:55Z",
+    "Price": "€6,84"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Icecream - Dstk Cml And Fdg",
+    "DateTime": "2020-04-17T02:03:36Z",
+    "Price": "€3,90"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Eggplant - Asian",
+    "DateTime": "2020-04-13T21:08:07Z",
+    "Price": "€79,20"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Cafe Royale",
+    "DateTime": "2020-04-17T19:29:29Z",
+    "Price": "€67,36"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Bread - Italian Roll With Herbs",
+    "DateTime": "2020-04-12T22:24:28Z",
+    "Price": "€22,02"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Trout - Hot Smkd, Dbl Fillet",
+    "DateTime": "2020-04-29T19:26:07Z",
+    "Price": "€80,39"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Wasabi Powder",
+    "DateTime": "2020-04-27T12:11:58Z",
+    "Price": "€54,79"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Onions - Pearl",
+    "DateTime": "2020-04-16T15:42:02Z",
+    "Price": "€20,83"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Urban Zen Drinks",
+    "DateTime": "2020-04-02T14:40:18Z",
+    "Price": "€54,59"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - Barbera Alba Doc 2001",
+    "DateTime": "2020-04-28T13:00:50Z",
+    "Price": "€26,85"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Soave Folonari",
+    "DateTime": "2020-04-01T19:39:57Z",
+    "Price": "€87,94"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Butter Ripple - Phillips",
+    "DateTime": "2020-04-26T08:14:14Z",
+    "Price": "€26,92"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pork - Inside",
+    "DateTime": "2020-04-09T14:03:09Z",
+    "Price": "€27,32"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Orange Roughy 6/8 Oz",
+    "DateTime": "2020-04-16T03:18:01Z",
+    "Price": "€47,93"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Brandy Cherry - Mcguinness",
+    "DateTime": "2020-04-08T00:35:51Z",
+    "Price": "€22,18"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Soup - Campbells - Tomato",
+    "DateTime": "2020-04-14T20:39:28Z",
+    "Price": "€76,36"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Devonshire Cream",
+    "DateTime": "2020-04-09T05:54:01Z",
+    "Price": "€68,40"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Danishes - Mini Raspberry",
+    "DateTime": "2020-04-21T16:19:46Z",
+    "Price": "€59,56"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Syrup - Monin - Passion Fruit",
+    "DateTime": "2020-04-29T01:14:56Z",
+    "Price": "€6,68"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Broom - Angled",
+    "DateTime": "2020-04-19T11:12:53Z",
+    "Price": "€57,31"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Tomato Puree",
+    "DateTime": "2020-04-20T20:44:15Z",
+    "Price": "€14,16"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Couscous",
+    "DateTime": "2020-04-13T15:22:45Z",
+    "Price": "€61,91"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Mushroom - Shitake, Fresh",
+    "DateTime": "2020-04-16T16:21:00Z",
+    "Price": "€41,04"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Beef Tenderloin Aaa",
+    "DateTime": "2020-04-01T08:27:33Z",
+    "Price": "€8,72"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Pineapple - Canned, Rings",
+    "DateTime": "2020-04-19T20:05:54Z",
+    "Price": "€59,91"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Turnip - White",
+    "DateTime": "2020-04-18T03:05:51Z",
+    "Price": "€96,22"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Tea - Green",
+    "DateTime": "2020-04-18T21:36:47Z",
+    "Price": "€73,48"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Buffalo - Striploin",
+    "DateTime": "2020-04-17T05:38:01Z",
+    "Price": "€21,72"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Pumpkin",
+    "DateTime": "2020-04-12T02:48:25Z",
+    "Price": "€88,44"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Squid - Breaded",
+    "DateTime": "2020-04-10T05:46:45Z",
+    "Price": "€56,68"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beef - Montreal Smoked Brisket",
+    "DateTime": "2020-04-19T10:06:25Z",
+    "Price": "€81,54"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Lettuce - Curly Endive",
+    "DateTime": "2020-04-05T06:14:22Z",
+    "Price": "€1,69"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pepper - Cayenne",
+    "DateTime": "2020-04-04T00:24:16Z",
+    "Price": "€87,55"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Taro Root",
+    "DateTime": "2020-04-11T20:29:33Z",
+    "Price": "€97,23"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Tofu - Firm",
+    "DateTime": "2020-04-08T14:20:37Z",
+    "Price": "€73,95"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Rosemary - Dry",
+    "DateTime": "2020-04-10T11:23:31Z",
+    "Price": "€83,19"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Eggplant - Regular",
+    "DateTime": "2020-04-01T13:33:53Z",
+    "Price": "€39,09"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Nutmeg - Ground",
+    "DateTime": "2020-04-23T11:30:03Z",
+    "Price": "€44,94"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Appetizer - Tarragon Chicken",
+    "DateTime": "2020-04-13T22:02:58Z",
+    "Price": "€91,00"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Cranberries - Frozen",
+    "DateTime": "2020-04-22T16:47:13Z",
+    "Price": "€8,60"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Longos - Grilled Chicken With",
+    "DateTime": "2020-04-24T06:49:54Z",
+    "Price": "€12,95"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Melon - Watermelon, Seedless",
+    "DateTime": "2020-04-28T08:37:19Z",
+    "Price": "€28,04"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Island Oasis - Pina Colada",
+    "DateTime": "2020-04-12T18:43:44Z",
+    "Price": "€85,15"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Milk 2% 500 Ml",
+    "DateTime": "2020-04-19T12:11:45Z",
+    "Price": "€93,78"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Crab - Imitation Flakes",
+    "DateTime": "2020-04-06T04:02:34Z",
+    "Price": "€79,83"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cheese - Brie, Cups 125g",
+    "DateTime": "2020-04-05T11:56:07Z",
+    "Price": "€35,04"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Sauce - Thousand Island",
+    "DateTime": "2020-04-27T15:02:00Z",
+    "Price": "€17,22"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Butter - Pod",
+    "DateTime": "2020-04-10T05:40:56Z",
+    "Price": "€80,97"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Chocolate - Compound Coating",
+    "DateTime": "2020-04-01T20:29:57Z",
+    "Price": "€15,10"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Spaghetti Squash",
+    "DateTime": "2020-04-28T00:47:53Z",
+    "Price": "€35,06"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Clam Nectar",
+    "DateTime": "2020-04-13T11:07:09Z",
+    "Price": "€87,41"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Spice - Onion Powder Granulated",
+    "DateTime": "2020-04-21T13:30:47Z",
+    "Price": "€78,14"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Wine - Prem Select Charddonany",
+    "DateTime": "2020-04-27T18:30:09Z",
+    "Price": "€37,93"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Beef - Striploin Aa",
+    "DateTime": "2020-04-20T22:03:53Z",
+    "Price": "€90,00"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Snapple - Iced Tea Peach",
+    "DateTime": "2020-04-23T17:52:19Z",
+    "Price": "€53,03"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Wine - Red, Black Opal Shiraz",
+    "DateTime": "2020-04-02T15:41:36Z",
+    "Price": "€71,51"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Sauce - Apple, Unsweetened",
+    "DateTime": "2020-04-04T15:14:59Z",
+    "Price": "€46,50"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Ecolab - Hand Soap Form Antibac",
+    "DateTime": "2020-04-03T23:24:23Z",
+    "Price": "€59,07"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Chef Hat 20cm",
+    "DateTime": "2020-04-10T17:25:08Z",
+    "Price": "€29,53"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Calypso - Strawberry Lemonade",
+    "DateTime": "2020-04-17T10:05:43Z",
+    "Price": "€3,10"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Anchovy Fillets",
+    "DateTime": "2020-04-29T17:10:52Z",
+    "Price": "€54,18"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Paper - Brown Paper Mini Cups",
+    "DateTime": "2020-04-07T06:40:57Z",
+    "Price": "€18,18"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Wine - Rioja Campo Viejo",
+    "DateTime": "2020-04-20T21:01:56Z",
+    "Price": "€33,02"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Ice Cream Bar - Oreo Sandwich",
+    "DateTime": "2020-04-14T10:03:49Z",
+    "Price": "€82,11"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Snapple - Mango Maddness",
+    "DateTime": "2020-04-29T22:06:37Z",
+    "Price": "€22,64"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Extract - Raspberry",
+    "DateTime": "2020-04-20T16:32:10Z",
+    "Price": "€92,27"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Milk - Homo",
+    "DateTime": "2020-04-11T22:15:59Z",
+    "Price": "€14,78"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pasta - Fettuccine, Egg, Fresh",
+    "DateTime": "2020-04-21T08:13:29Z",
+    "Price": "€2,32"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Red Currant Jelly",
+    "DateTime": "2020-04-17T08:17:49Z",
+    "Price": "€59,11"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Trueblue - Blueberry Cranberry",
+    "DateTime": "2020-04-25T18:56:58Z",
+    "Price": "€17,96"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Rice - 7 Grain Blend",
+    "DateTime": "2020-04-28T14:32:07Z",
+    "Price": "€15,03"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Longos - Greek Salad",
+    "DateTime": "2020-04-02T22:38:35Z",
+    "Price": "€33,11"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Cabbage - Nappa",
+    "DateTime": "2020-04-02T04:18:53Z",
+    "Price": "€14,44"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Tamarind Paste",
+    "DateTime": "2020-04-14T19:03:40Z",
+    "Price": "€95,72"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Bagel - Everything",
+    "DateTime": "2020-04-19T14:37:08Z",
+    "Price": "€83,94"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Dried Figs",
+    "DateTime": "2020-04-06T14:20:44Z",
+    "Price": "€35,58"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Flavouring - Raspberry",
+    "DateTime": "2020-04-16T09:03:17Z",
+    "Price": "€83,30"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Soup Campbells",
+    "DateTime": "2020-04-07T17:42:35Z",
+    "Price": "€20,40"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Artichoke - Hearts, Canned",
+    "DateTime": "2020-04-20T17:37:13Z",
+    "Price": "€83,10"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - Pinot Grigio Collavini",
+    "DateTime": "2020-04-14T11:25:28Z",
+    "Price": "€48,32"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Shrimp - 16/20, Peeled Deviened",
+    "DateTime": "2020-04-01T04:22:00Z",
+    "Price": "€91,48"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Juice - Tomato, 10 Oz",
+    "DateTime": "2020-04-01T19:00:04Z",
+    "Price": "€11,10"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Lettuce - Sea / Sea Asparagus",
+    "DateTime": "2020-04-02T09:04:26Z",
+    "Price": "€26,19"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Tea - Orange Pekoe",
+    "DateTime": "2020-04-12T17:37:36Z",
+    "Price": "€0,99"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Lighter - Bbq",
+    "DateTime": "2020-04-15T04:35:56Z",
+    "Price": "€12,06"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Madeira",
+    "DateTime": "2020-04-29T22:49:28Z",
+    "Price": "€27,97"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Pear - Asian",
+    "DateTime": "2020-04-27T11:43:04Z",
+    "Price": "€87,22"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Salt And Pepper Mix - White",
+    "DateTime": "2020-04-25T15:10:08Z",
+    "Price": "€27,69"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Loquat",
+    "DateTime": "2020-04-11T10:18:35Z",
+    "Price": "€63,10"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Longos - Chicken Caeser Salad",
+    "DateTime": "2020-04-05T19:18:26Z",
+    "Price": "€10,92"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Coffee Cup 16oz Foam",
+    "DateTime": "2020-04-07T11:40:54Z",
+    "Price": "€49,62"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Soup - Campbells Mac N Cheese",
+    "DateTime": "2020-04-26T10:51:31Z",
+    "Price": "€92,89"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Rice - Long Grain",
+    "DateTime": "2020-04-05T18:56:32Z",
+    "Price": "€92,89"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Veal - Slab Bacon",
+    "DateTime": "2020-04-27T15:30:26Z",
+    "Price": "€18,97"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Mushroom - Chanterelle, Dry",
+    "DateTime": "2020-04-25T06:05:43Z",
+    "Price": "€68,69"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Lamb - Whole, Fresh",
+    "DateTime": "2020-04-23T20:15:00Z",
+    "Price": "€68,37"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Lemonade - Strawberry, 591 Ml",
+    "DateTime": "2020-04-11T19:36:50Z",
+    "Price": "€57,08"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Coffee Beans - Chocolate",
+    "DateTime": "2020-04-16T07:13:40Z",
+    "Price": "€14,18"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Liqueur Banana, Ramazzotti",
+    "DateTime": "2020-04-18T20:49:14Z",
+    "Price": "€12,10"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Sauce - Balsamic Viniagrette",
+    "DateTime": "2020-04-06T18:12:14Z",
+    "Price": "€26,52"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Pumpkin - Seed",
+    "DateTime": "2020-04-28T04:55:11Z",
+    "Price": "€5,57"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Wine - Red, Marechal Foch",
+    "DateTime": "2020-04-02T05:18:18Z",
+    "Price": "€66,13"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Soup - Campbells Bean Medley",
+    "DateTime": "2020-04-15T08:40:34Z",
+    "Price": "€42,75"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Lettuce - Romaine",
+    "DateTime": "2020-04-26T06:57:37Z",
+    "Price": "€18,38"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Tuna - Loin",
+    "DateTime": "2020-04-03T23:45:02Z",
+    "Price": "€41,16"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Swordfish Loin Portions",
+    "DateTime": "2020-04-07T03:50:58Z",
+    "Price": "€51,75"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Piping Jelly - All Colours",
+    "DateTime": "2020-04-02T12:42:15Z",
+    "Price": "€21,63"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Longos - Greek Salad",
+    "DateTime": "2020-04-14T16:37:21Z",
+    "Price": "€88,43"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Aspic - Light",
+    "DateTime": "2020-04-13T05:17:37Z",
+    "Price": "€0,91"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Chinese Foods - Chicken",
+    "DateTime": "2020-04-11T02:32:46Z",
+    "Price": "€77,29"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Sprite, Diet - 355ml",
+    "DateTime": "2020-04-08T18:55:03Z",
+    "Price": "€77,19"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Cape Capensis - Fillet",
+    "DateTime": "2020-04-13T20:30:48Z",
+    "Price": "€55,01"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Vector Energy Bar",
+    "DateTime": "2020-04-29T09:39:15Z",
+    "Price": "€77,10"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Puree - Blackcurrant",
+    "DateTime": "2020-04-11T19:24:29Z",
+    "Price": "€90,69"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Onions - Spanish",
+    "DateTime": "2020-04-05T20:41:32Z",
+    "Price": "€13,90"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Peppercorns - Green",
+    "DateTime": "2020-04-19T14:03:25Z",
+    "Price": "€86,90"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Mushroom - Chanterelle, Dry",
+    "DateTime": "2020-04-29T21:06:56Z",
+    "Price": "€31,24"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Potatoes - Yukon Gold, 80 Ct",
+    "DateTime": "2020-04-07T19:07:06Z",
+    "Price": "€9,64"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Tortillas - Flour, 10",
+    "DateTime": "2020-04-20T21:54:46Z",
+    "Price": "€62,38"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Langers - Ruby Red Grapfruit",
+    "DateTime": "2020-04-29T22:30:33Z",
+    "Price": "€35,40"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Sesame Seed Black",
+    "DateTime": "2020-04-10T16:16:43Z",
+    "Price": "€12,45"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Oranges - Navel, 72",
+    "DateTime": "2020-04-16T09:02:10Z",
+    "Price": "€88,23"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Table Cloth 90x90 Colour",
+    "DateTime": "2020-04-24T07:07:49Z",
+    "Price": "€84,23"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Danishes - Mini Raspberry",
+    "DateTime": "2020-04-02T22:15:45Z",
+    "Price": "€68,73"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Peas - Frozen",
+    "DateTime": "2020-04-21T00:52:23Z",
+    "Price": "€12,15"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Wine - Fat Bastard Merlot",
+    "DateTime": "2020-04-29T14:28:14Z",
+    "Price": "€10,03"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Apple - Delicious, Golden",
+    "DateTime": "2020-04-04T07:34:39Z",
+    "Price": "€72,58"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Salami - Genova",
+    "DateTime": "2020-04-13T14:23:04Z",
+    "Price": "€13,03"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Soup - Campbells Mushroom",
+    "DateTime": "2020-04-02T10:45:01Z",
+    "Price": "€3,95"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Pail - 15l White, With Handle",
+    "DateTime": "2020-04-09T19:16:23Z",
+    "Price": "€59,56"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Bread - Rolls, Rye",
+    "DateTime": "2020-04-22T08:42:25Z",
+    "Price": "€6,19"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Melon - Cantaloupe",
+    "DateTime": "2020-04-20T17:51:30Z",
+    "Price": "€42,76"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Ice - Clear, 300 Lb For Carving",
+    "DateTime": "2020-04-01T19:54:38Z",
+    "Price": "€24,12"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pepper - Red, Finger Hot",
+    "DateTime": "2020-04-09T11:29:40Z",
+    "Price": "€89,71"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Beans - Wax",
+    "DateTime": "2020-04-14T10:21:36Z",
+    "Price": "€97,86"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Eggplant - Regular",
+    "DateTime": "2020-04-13T08:09:53Z",
+    "Price": "€23,53"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Cheese - Parmesan Grated",
+    "DateTime": "2020-04-08T21:51:22Z",
+    "Price": "€75,59"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Loquat",
+    "DateTime": "2020-04-15T06:06:30Z",
+    "Price": "€56,76"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - Segura Viudas Aria Brut",
+    "DateTime": "2020-04-07T01:33:57Z",
+    "Price": "€78,19"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Muffin Hinge Container 6",
+    "DateTime": "2020-04-19T12:58:06Z",
+    "Price": "€96,28"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Bread - Flat Bread",
+    "DateTime": "2020-04-04T03:25:03Z",
+    "Price": "€0,64"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Transfer Sheets",
+    "DateTime": "2020-04-04T20:48:52Z",
+    "Price": "€29,45"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Shrimp - 21/25, Peel And Deviened",
+    "DateTime": "2020-04-22T09:01:44Z",
+    "Price": "€90,45"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Dasheen",
+    "DateTime": "2020-04-02T11:03:36Z",
+    "Price": "€52,11"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Rice Wine - Aji Mirin",
+    "DateTime": "2020-04-08T06:15:05Z",
+    "Price": "€49,63"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Cherries - Frozen",
+    "DateTime": "2020-04-17T17:52:30Z",
+    "Price": "€68,84"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Napkin - Beverge, White 2 - Ply",
+    "DateTime": "2020-04-08T18:26:46Z",
+    "Price": "€52,07"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Table Cloth 144x90 White",
+    "DateTime": "2020-04-21T11:54:30Z",
+    "Price": "€88,85"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Sandwich Wrap",
+    "DateTime": "2020-04-06T22:40:59Z",
+    "Price": "€39,14"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Puree - Mango",
+    "DateTime": "2020-04-09T12:25:48Z",
+    "Price": "€44,98"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Table Cloth 144x90 White",
+    "DateTime": "2020-04-28T18:53:21Z",
+    "Price": "€81,66"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Apple - Fuji",
+    "DateTime": "2020-04-13T11:02:00Z",
+    "Price": "€26,63"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Mangostein",
+    "DateTime": "2020-04-11T15:21:37Z",
+    "Price": "€67,20"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Sole - Fillet",
+    "DateTime": "2020-04-08T12:26:13Z",
+    "Price": "€24,82"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Lid Tray - 16in Dome",
+    "DateTime": "2020-04-21T06:09:21Z",
+    "Price": "€27,60"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Lemon Balm - Fresh",
+    "DateTime": "2020-04-10T07:21:44Z",
+    "Price": "€43,56"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Pate - Peppercorn",
+    "DateTime": "2020-04-28T15:45:43Z",
+    "Price": "€31,28"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pie Shells 10",
+    "DateTime": "2020-04-29T22:16:18Z",
+    "Price": "€81,38"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Truffle - Whole Black Peeled",
+    "DateTime": "2020-04-08T05:21:32Z",
+    "Price": "€16,00"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Bread Cranberry Foccacia",
+    "DateTime": "2020-04-04T03:27:22Z",
+    "Price": "€92,92"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Barossa Valley Estate",
+    "DateTime": "2020-04-10T09:44:14Z",
+    "Price": "€91,37"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Chocolate Bar - Oh Henry",
+    "DateTime": "2020-04-01T11:11:33Z",
+    "Price": "€50,92"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Lobster - Canned Premium",
+    "DateTime": "2020-04-13T12:38:26Z",
+    "Price": "€16,08"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Sugar - Invert",
+    "DateTime": "2020-04-16T09:45:14Z",
+    "Price": "€80,95"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Browning Caramel Glace",
+    "DateTime": "2020-04-17T22:51:17Z",
+    "Price": "€85,53"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Higashimaru Usukuchi Soy",
+    "DateTime": "2020-04-10T10:59:28Z",
+    "Price": "€41,30"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pork Ham Prager",
+    "DateTime": "2020-04-23T19:37:24Z",
+    "Price": "€9,20"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Thyme - Lemon, Fresh",
+    "DateTime": "2020-04-27T16:36:51Z",
+    "Price": "€88,13"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Tea - Jasmin Green",
+    "DateTime": "2020-04-27T05:05:19Z",
+    "Price": "€29,04"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Potatoes - Peeled",
+    "DateTime": "2020-04-08T15:33:40Z",
+    "Price": "€48,06"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Cheese - St. Andre",
+    "DateTime": "2020-04-05T06:24:40Z",
+    "Price": "€34,56"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Irish Cream - Baileys",
+    "DateTime": "2020-04-13T22:09:29Z",
+    "Price": "€3,80"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Dawn Professionl Pot And Pan",
+    "DateTime": "2020-04-13T04:46:48Z",
+    "Price": "€89,80"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pork - Ground",
+    "DateTime": "2020-04-16T02:51:01Z",
+    "Price": "€98,07"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Wine - Mas Chicet Rose, Vintage",
+    "DateTime": "2020-04-01T01:42:13Z",
+    "Price": "€91,47"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pork - Backs - Boneless",
+    "DateTime": "2020-04-26T18:16:33Z",
+    "Price": "€98,31"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Bread - Flat Bread",
+    "DateTime": "2020-04-20T12:11:21Z",
+    "Price": "€8,67"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pasta - Ravioli",
+    "DateTime": "2020-04-19T16:30:57Z",
+    "Price": "€72,81"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Lotus Leaves",
+    "DateTime": "2020-04-02T06:22:28Z",
+    "Price": "€50,94"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pepsi, 355 Ml",
+    "DateTime": "2020-04-24T22:39:18Z",
+    "Price": "€75,21"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Magnotta Bel Paese Red",
+    "DateTime": "2020-04-26T08:22:24Z",
+    "Price": "€67,71"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Kiwano",
+    "DateTime": "2020-04-19T01:30:50Z",
+    "Price": "€70,67"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bread - Rolls, Rye",
+    "DateTime": "2020-04-08T01:38:37Z",
+    "Price": "€9,17"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Bread - Pain Au Liat X12",
+    "DateTime": "2020-04-24T00:41:14Z",
+    "Price": "€59,97"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Pork - European Side Bacon",
+    "DateTime": "2020-04-05T09:59:37Z",
+    "Price": "€47,91"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Lobster - Tail 6 Oz",
+    "DateTime": "2020-04-04T17:15:32Z",
+    "Price": "€75,02"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Chef Hat 25cm",
+    "DateTime": "2020-04-19T15:02:07Z",
+    "Price": "€60,89"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Appetizer - Spring Roll, Veg",
+    "DateTime": "2020-04-25T02:23:42Z",
+    "Price": "€33,07"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Steampan Lid",
+    "DateTime": "2020-04-24T18:12:18Z",
+    "Price": "€41,41"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bread Base - Italian",
+    "DateTime": "2020-04-22T00:02:15Z",
+    "Price": "€0,21"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Puree - Mango",
+    "DateTime": "2020-04-10T00:50:16Z",
+    "Price": "€65,93"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Tart Shells - Savory, 3",
+    "DateTime": "2020-04-21T02:47:05Z",
+    "Price": "€79,13"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Orange Roughy 6/8 Oz",
+    "DateTime": "2020-04-05T23:55:04Z",
+    "Price": "€73,47"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Salmon Steak - Cohoe 6 Oz",
+    "DateTime": "2020-04-05T17:36:37Z",
+    "Price": "€48,58"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bread - Multigrain, Loaf",
+    "DateTime": "2020-04-13T07:06:20Z",
+    "Price": "€52,48"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cookie Dough - Peanut Butter",
+    "DateTime": "2020-04-14T08:37:56Z",
+    "Price": "€64,87"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Calypso - Black Cherry Lemonade",
+    "DateTime": "2020-04-28T10:49:27Z",
+    "Price": "€90,96"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Parasol Pick Stir Stick",
+    "DateTime": "2020-04-16T08:15:44Z",
+    "Price": "€83,95"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Garbag Bags - Black",
+    "DateTime": "2020-04-16T08:56:29Z",
+    "Price": "€64,17"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Sogrape Mateus Rose",
+    "DateTime": "2020-04-02T17:21:01Z",
+    "Price": "€21,56"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Higashimaru Usukuchi Soy",
+    "DateTime": "2020-04-22T00:42:41Z",
+    "Price": "€14,45"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Quail - Whole, Bone - In",
+    "DateTime": "2020-04-10T14:26:09Z",
+    "Price": "€27,88"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beer - Creemore",
+    "DateTime": "2020-04-20T23:42:55Z",
+    "Price": "€12,31"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Soup - Beef, Base Mix",
+    "DateTime": "2020-04-26T15:57:40Z",
+    "Price": "€94,53"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Breakfast Quesadillas",
+    "DateTime": "2020-04-21T17:57:38Z",
+    "Price": "€59,38"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Smoked Tongue",
+    "DateTime": "2020-04-21T10:54:41Z",
+    "Price": "€79,03"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Lobster - Tail 6 Oz",
+    "DateTime": "2020-04-14T22:10:47Z",
+    "Price": "€10,47"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Veal - Loin",
+    "DateTime": "2020-04-07T15:05:58Z",
+    "Price": "€12,52"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Chilli Paste, Sambal Oelek",
+    "DateTime": "2020-04-13T04:34:59Z",
+    "Price": "€94,68"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Pomello",
+    "DateTime": "2020-04-08T08:35:11Z",
+    "Price": "€11,23"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Whmis - Spray Bottle Trigger",
+    "DateTime": "2020-04-27T11:56:04Z",
+    "Price": "€63,23"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Rum - Coconut, Malibu",
+    "DateTime": "2020-04-13T20:56:24Z",
+    "Price": "€66,54"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Cookie Dough - Chocolate Chip",
+    "DateTime": "2020-04-16T15:21:21Z",
+    "Price": "€33,23"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Bagel - Whole White Sesame",
+    "DateTime": "2020-04-13T15:20:04Z",
+    "Price": "€66,57"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Creme De Banane - Marie",
+    "DateTime": "2020-04-29T21:39:43Z",
+    "Price": "€54,66"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Cardamon Ground",
+    "DateTime": "2020-04-14T12:17:35Z",
+    "Price": "€41,69"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Quiche Assorted",
+    "DateTime": "2020-04-22T23:27:11Z",
+    "Price": "€49,47"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Grapefruit - White",
+    "DateTime": "2020-04-03T13:12:29Z",
+    "Price": "€8,24"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Foil - 4oz Custard Cup",
+    "DateTime": "2020-04-22T12:13:25Z",
+    "Price": "€26,72"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Soup - Boston Clam Chowder",
+    "DateTime": "2020-04-29T07:05:57Z",
+    "Price": "€17,30"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Table Cloth 53x53 White",
+    "DateTime": "2020-04-11T17:54:35Z",
+    "Price": "€30,74"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Persimmons",
+    "DateTime": "2020-04-26T08:46:39Z",
+    "Price": "€18,45"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Island Oasis - Lemonade",
+    "DateTime": "2020-04-19T12:28:22Z",
+    "Price": "€11,88"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Chickensplit Half",
+    "DateTime": "2020-04-10T15:14:42Z",
+    "Price": "€8,83"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Cranberries - Fresh",
+    "DateTime": "2020-04-13T09:52:07Z",
+    "Price": "€8,62"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bread - Crusty Italian Poly",
+    "DateTime": "2020-04-27T15:25:24Z",
+    "Price": "€14,30"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Mushroom - White Button",
+    "DateTime": "2020-04-03T04:03:14Z",
+    "Price": "€45,61"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Bread Base - Goodhearth",
+    "DateTime": "2020-04-06T00:59:28Z",
+    "Price": "€92,61"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Grenadillo",
+    "DateTime": "2020-04-20T18:05:05Z",
+    "Price": "€26,67"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Coffee - Egg Nog Capuccino",
+    "DateTime": "2020-04-07T21:45:26Z",
+    "Price": "€54,67"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Table Cloth - 53x69 Colour",
+    "DateTime": "2020-04-01T09:31:00Z",
+    "Price": "€12,16"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Pork - Tenderloin, Frozen",
+    "DateTime": "2020-04-28T11:35:37Z",
+    "Price": "€40,57"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Wine - White, Cooking",
+    "DateTime": "2020-04-21T05:39:11Z",
+    "Price": "€87,09"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Foam Espresso Cup Plain White",
+    "DateTime": "2020-04-05T13:30:08Z",
+    "Price": "€85,60"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Veal - Knuckle",
+    "DateTime": "2020-04-26T04:28:07Z",
+    "Price": "€85,53"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Mix Pina Colada",
+    "DateTime": "2020-04-13T04:54:26Z",
+    "Price": "€96,00"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Crab - Back Fin Meat, Canned",
+    "DateTime": "2020-04-19T15:33:50Z",
+    "Price": "€48,56"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Cheese - Woolwich Goat, Log",
+    "DateTime": "2020-04-17T23:38:51Z",
+    "Price": "€85,66"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Peller Estates Late",
+    "DateTime": "2020-04-26T02:02:08Z",
+    "Price": "€25,97"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bowl 12 Oz - Showcase 92012",
+    "DateTime": "2020-04-28T23:43:58Z",
+    "Price": "€5,22"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Crackers - Soda / Saltins",
+    "DateTime": "2020-04-14T07:19:01Z",
+    "Price": "€80,09"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Creme De Banane - Marie",
+    "DateTime": "2020-04-16T03:53:46Z",
+    "Price": "€20,46"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - Stoneliegh Sauvignon",
+    "DateTime": "2020-04-23T12:14:28Z",
+    "Price": "€67,66"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Yogurt - French Vanilla",
+    "DateTime": "2020-04-22T09:00:01Z",
+    "Price": "€20,55"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Spice - Montreal Steak Spice",
+    "DateTime": "2020-04-29T04:00:42Z",
+    "Price": "€66,49"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Sauerkraut",
+    "DateTime": "2020-04-14T04:54:50Z",
+    "Price": "€20,34"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Steampan - Half Size Shallow",
+    "DateTime": "2020-04-03T08:31:09Z",
+    "Price": "€57,30"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Sauce - Soy Low Sodium - 3.87l",
+    "DateTime": "2020-04-20T06:28:27Z",
+    "Price": "€40,90"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Noodles - Steamed Chow Mein",
+    "DateTime": "2020-04-25T18:05:24Z",
+    "Price": "€54,40"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Appetizer - Tarragon Chicken",
+    "DateTime": "2020-04-04T17:45:14Z",
+    "Price": "€7,29"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Cake - Cheese Cake 9 Inch",
+    "DateTime": "2020-04-29T23:08:58Z",
+    "Price": "€80,96"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Bacon Strip Precooked",
+    "DateTime": "2020-04-22T17:43:50Z",
+    "Price": "€96,45"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pickles - Gherkins",
+    "DateTime": "2020-04-12T23:24:09Z",
+    "Price": "€17,37"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Fuji Apples",
+    "DateTime": "2020-04-10T19:36:23Z",
+    "Price": "€18,51"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Olives - Green, Pitted",
+    "DateTime": "2020-04-01T12:47:08Z",
+    "Price": "€41,17"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Wine - Manischewitz Concord",
+    "DateTime": "2020-04-11T17:15:35Z",
+    "Price": "€48,02"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Garam Marsala",
+    "DateTime": "2020-04-24T14:34:35Z",
+    "Price": "€17,06"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Fork - Plastic",
+    "DateTime": "2020-04-24T17:21:58Z",
+    "Price": "€95,75"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Pasta - Cheese / Spinach Bauletti",
+    "DateTime": "2020-04-06T08:03:42Z",
+    "Price": "€40,35"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Bread Crumbs - Panko",
+    "DateTime": "2020-04-14T04:44:26Z",
+    "Price": "€56,97"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Soup - Campbells, Butternut",
+    "DateTime": "2020-04-22T11:55:37Z",
+    "Price": "€91,07"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cookies Cereal Nut",
+    "DateTime": "2020-04-16T23:42:39Z",
+    "Price": "€2,89"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Juice - Cranberry, 341 Ml",
+    "DateTime": "2020-04-05T23:19:46Z",
+    "Price": "€62,67"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Beef - Tender Tips",
+    "DateTime": "2020-04-25T19:17:01Z",
+    "Price": "€49,57"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Beer - Fruli",
+    "DateTime": "2020-04-19T12:18:57Z",
+    "Price": "€75,38"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Flour - All Purpose",
+    "DateTime": "2020-04-26T18:28:13Z",
+    "Price": "€41,17"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Juice - Mango",
+    "DateTime": "2020-04-17T14:20:47Z",
+    "Price": "€33,66"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Tobasco Sauce",
+    "DateTime": "2020-04-07T10:15:49Z",
+    "Price": "€34,46"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Appetizer - Sausage Rolls",
+    "DateTime": "2020-04-16T02:24:12Z",
+    "Price": "€46,17"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Table Cloth 62x114 White",
+    "DateTime": "2020-04-28T14:44:23Z",
+    "Price": "€93,80"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Wine - Pinot Noir Stoneleigh",
+    "DateTime": "2020-04-06T05:40:14Z",
+    "Price": "€85,22"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Squash - Pepper",
+    "DateTime": "2020-04-15T02:07:53Z",
+    "Price": "€51,69"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Squid - Tubes / Tenticles 10/20",
+    "DateTime": "2020-04-10T23:55:34Z",
+    "Price": "€77,92"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Tea - Honey Green Tea",
+    "DateTime": "2020-04-14T10:18:03Z",
+    "Price": "€77,09"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Salmon - Atlantic, No Skin",
+    "DateTime": "2020-04-05T17:13:06Z",
+    "Price": "€73,77"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Momiji Oroshi Chili Sauce",
+    "DateTime": "2020-04-01T20:53:23Z",
+    "Price": "€67,35"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Crab - Meat",
+    "DateTime": "2020-04-07T06:35:54Z",
+    "Price": "€70,23"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Lemonade - Island Tea, 591 Ml",
+    "DateTime": "2020-04-07T10:04:29Z",
+    "Price": "€48,44"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Lettuce - Frisee",
+    "DateTime": "2020-04-16T22:43:02Z",
+    "Price": "€12,72"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "The Pop Shoppe Pinapple",
+    "DateTime": "2020-04-01T06:11:20Z",
+    "Price": "€32,70"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Corn Meal",
+    "DateTime": "2020-04-27T22:18:40Z",
+    "Price": "€22,40"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Fish - Atlantic Salmon, Cold",
+    "DateTime": "2020-04-19T13:22:15Z",
+    "Price": "€72,66"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Flour - Whole Wheat",
+    "DateTime": "2020-04-07T11:35:23Z",
+    "Price": "€49,41"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Tamarillo",
+    "DateTime": "2020-04-13T11:51:18Z",
+    "Price": "€63,89"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Figs",
+    "DateTime": "2020-04-04T12:38:55Z",
+    "Price": "€51,13"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Meldea Green Tea Liquor",
+    "DateTime": "2020-04-10T19:46:45Z",
+    "Price": "€45,31"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pasta - Cannelloni, Sheets, Fresh",
+    "DateTime": "2020-04-24T15:48:49Z",
+    "Price": "€19,79"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Muskox - French Rack",
+    "DateTime": "2020-04-27T03:08:57Z",
+    "Price": "€39,57"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Container - Clear 32 Oz",
+    "DateTime": "2020-04-25T21:38:23Z",
+    "Price": "€43,45"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Bread - 10 Grain",
+    "DateTime": "2020-04-16T21:36:24Z",
+    "Price": "€17,63"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Cookie Dough - Oatmeal Rasin",
+    "DateTime": "2020-04-15T03:36:12Z",
+    "Price": "€25,52"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Mushroom - Oyster, Fresh",
+    "DateTime": "2020-04-26T00:33:48Z",
+    "Price": "€7,20"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Veal - Inside Round / Top, Lean",
+    "DateTime": "2020-04-16T05:59:20Z",
+    "Price": "€25,84"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Muffin Mix - Oatmeal",
+    "DateTime": "2020-04-29T03:17:26Z",
+    "Price": "€8,61"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Oil - Sunflower",
+    "DateTime": "2020-04-22T15:48:09Z",
+    "Price": "€99,00"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Wine - Toasted Head",
+    "DateTime": "2020-04-12T17:21:31Z",
+    "Price": "€73,96"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Pepsi, 355 Ml",
+    "DateTime": "2020-04-06T21:44:01Z",
+    "Price": "€10,34"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Sour Puss Raspberry",
+    "DateTime": "2020-04-02T13:50:23Z",
+    "Price": "€57,45"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Wine - Conde De Valdemar",
+    "DateTime": "2020-04-16T07:45:25Z",
+    "Price": "€15,78"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Straw - Regular",
+    "DateTime": "2020-04-29T00:48:53Z",
+    "Price": "€54,38"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Island Oasis - Magarita Mix",
+    "DateTime": "2020-04-05T15:18:43Z",
+    "Price": "€90,48"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Pork - Loin, Bone - In",
+    "DateTime": "2020-04-18T21:06:50Z",
+    "Price": "€51,72"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Beef - Ox Tongue",
+    "DateTime": "2020-04-06T08:31:19Z",
+    "Price": "€1,34"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Sambuca - Opal Nera",
+    "DateTime": "2020-04-20T00:00:21Z",
+    "Price": "€55,23"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Tray - Foam, Square 4 - S",
+    "DateTime": "2020-04-03T05:38:40Z",
+    "Price": "€45,94"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Milk - Condensed",
+    "DateTime": "2020-04-13T08:39:05Z",
+    "Price": "€29,37"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Breakfast Quesadillas",
+    "DateTime": "2020-04-12T17:19:31Z",
+    "Price": "€44,29"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Guava",
+    "DateTime": "2020-04-27T13:51:50Z",
+    "Price": "€29,49"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Wine - Magnotta, Merlot Sr Vqa",
+    "DateTime": "2020-04-01T04:22:49Z",
+    "Price": "€49,50"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Appetizer - Assorted Box",
+    "DateTime": "2020-04-01T23:56:13Z",
+    "Price": "€31,65"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Bread - Bistro Sour",
+    "DateTime": "2020-04-10T15:02:51Z",
+    "Price": "€12,91"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Chick Peas - Dried",
+    "DateTime": "2020-04-16T10:50:02Z",
+    "Price": "€68,58"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Tomatoes - Cherry",
+    "DateTime": "2020-04-11T00:04:23Z",
+    "Price": "€41,51"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Cinnamon - Stick",
+    "DateTime": "2020-04-17T10:54:59Z",
+    "Price": "€38,22"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Veal - Round, Eye Of",
+    "DateTime": "2020-04-05T10:15:09Z",
+    "Price": "€93,82"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Squid - U - 10 Thailand",
+    "DateTime": "2020-04-15T15:35:08Z",
+    "Price": "€61,15"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Bread - Rolls, Rye",
+    "DateTime": "2020-04-12T16:19:10Z",
+    "Price": "€25,27"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Noodles - Cellophane, Thin",
+    "DateTime": "2020-04-07T08:02:55Z",
+    "Price": "€48,15"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Tuna - Loin",
+    "DateTime": "2020-04-13T02:17:48Z",
+    "Price": "€8,71"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Sauce - Marinara",
+    "DateTime": "2020-04-07T20:58:13Z",
+    "Price": "€34,63"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Beets - Mini Golden",
+    "DateTime": "2020-04-15T09:12:45Z",
+    "Price": "€91,29"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Dried Cranberries",
+    "DateTime": "2020-04-06T19:32:19Z",
+    "Price": "€18,04"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Fish - Halibut, Cold Smoked",
+    "DateTime": "2020-04-03T10:47:13Z",
+    "Price": "€42,25"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Instant Coffee",
+    "DateTime": "2020-04-10T08:43:02Z",
+    "Price": "€47,99"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Appetizer - Mini Egg Roll, Shrimp",
+    "DateTime": "2020-04-25T03:15:42Z",
+    "Price": "€23,27"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Wine - Barbera Alba Doc 2001",
+    "DateTime": "2020-04-06T14:06:36Z",
+    "Price": "€50,99"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Poppy Seed",
+    "DateTime": "2020-04-13T02:40:28Z",
+    "Price": "€3,54"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Kiwi",
+    "DateTime": "2020-04-14T02:14:26Z",
+    "Price": "€63,04"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Nori Sea Weed - Gold Label",
+    "DateTime": "2020-04-04T05:22:22Z",
+    "Price": "€39,39"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Ice Cream Bar - Drumstick",
+    "DateTime": "2020-04-15T17:04:40Z",
+    "Price": "€56,76"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Apple - Fuji",
+    "DateTime": "2020-04-10T17:12:22Z",
+    "Price": "€70,58"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Yams",
+    "DateTime": "2020-04-04T00:06:23Z",
+    "Price": "€41,99"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Soup - Campbells - Chicken Noodle",
+    "DateTime": "2020-04-13T15:52:32Z",
+    "Price": "€72,07"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Parasol Pick Stir Stick",
+    "DateTime": "2020-04-06T18:37:56Z",
+    "Price": "€88,96"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Chilli Paste, Sambal Oelek",
+    "DateTime": "2020-04-29T21:29:36Z",
+    "Price": "€53,24"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Beer - Blue Light",
+    "DateTime": "2020-04-18T06:19:53Z",
+    "Price": "€87,34"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - Casablanca Valley",
+    "DateTime": "2020-04-15T00:19:41Z",
+    "Price": "€35,66"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Bread Roll Foccacia",
+    "DateTime": "2020-04-26T10:44:21Z",
+    "Price": "€15,84"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Lettuce - Boston Bib - Organic",
+    "DateTime": "2020-04-28T18:12:38Z",
+    "Price": "€39,70"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Chilli Paste, Sambal Oelek",
+    "DateTime": "2020-04-03T19:26:30Z",
+    "Price": "€80,16"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Cake - Mini Cheesecake",
+    "DateTime": "2020-04-22T11:44:42Z",
+    "Price": "€60,18"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Garlic - Peeled",
+    "DateTime": "2020-04-17T03:24:02Z",
+    "Price": "€17,65"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Ocean Spray - Kiwi Strawberry",
+    "DateTime": "2020-04-07T01:34:48Z",
+    "Price": "€2,87"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Chocolate Eclairs",
+    "DateTime": "2020-04-16T23:58:02Z",
+    "Price": "€87,08"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Tuna - Yellowfin",
+    "DateTime": "2020-04-23T21:45:38Z",
+    "Price": "€78,87"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Quail - Eggs, Fresh",
+    "DateTime": "2020-04-07T21:14:07Z",
+    "Price": "€95,20"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Lettuce Romaine Chopped",
+    "DateTime": "2020-04-09T15:52:52Z",
+    "Price": "€48,50"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "The Pop Shoppe - Grape",
+    "DateTime": "2020-04-16T20:16:12Z",
+    "Price": "€29,64"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Tabasco Sauce, 2 Oz",
+    "DateTime": "2020-04-13T08:41:12Z",
+    "Price": "€8,53"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Dome Lid Clear P92008h",
+    "DateTime": "2020-04-23T06:02:55Z",
+    "Price": "€72,78"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Cookies - Assorted",
+    "DateTime": "2020-04-16T07:29:37Z",
+    "Price": "€15,84"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - Alicanca Vinho Verde",
+    "DateTime": "2020-04-03T20:45:45Z",
+    "Price": "€15,05"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Latex Rubber Gloves Size 9",
+    "DateTime": "2020-04-11T20:23:06Z",
+    "Price": "€78,96"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Buttons",
+    "DateTime": "2020-04-07T09:00:10Z",
+    "Price": "€31,78"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cheese - Goat",
+    "DateTime": "2020-04-19T03:30:51Z",
+    "Price": "€21,69"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Creamers - 10%",
+    "DateTime": "2020-04-12T22:06:03Z",
+    "Price": "€33,80"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Chicken - Whole",
+    "DateTime": "2020-04-25T19:22:41Z",
+    "Price": "€90,14"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Cleaner - Pine Sol",
+    "DateTime": "2020-04-21T12:48:49Z",
+    "Price": "€18,25"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Cheese - Cottage Cheese",
+    "DateTime": "2020-04-11T04:52:18Z",
+    "Price": "€96,22"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Wine - White, Gewurtzraminer",
+    "DateTime": "2020-04-07T22:12:57Z",
+    "Price": "€17,16"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Energy - Boo - Koo",
+    "DateTime": "2020-04-07T01:39:32Z",
+    "Price": "€96,29"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Vermouth - Sweet, Cinzano",
+    "DateTime": "2020-04-08T22:23:41Z",
+    "Price": "€50,76"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Muffin Batt - Choc Chk",
+    "DateTime": "2020-04-05T04:51:14Z",
+    "Price": "€43,52"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Muffin Batt - Choc Chk",
+    "DateTime": "2020-04-27T08:55:10Z",
+    "Price": "€84,84"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Ice Cream - Chocolate",
+    "DateTime": "2020-04-07T10:57:11Z",
+    "Price": "€28,86"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Beets - Candy Cane, Organic",
+    "DateTime": "2020-04-27T21:03:38Z",
+    "Price": "€63,33"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Juice - Pineapple, 48 Oz",
+    "DateTime": "2020-04-29T06:33:31Z",
+    "Price": "€54,31"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Beef - Tongue, Fresh",
+    "DateTime": "2020-04-24T11:01:15Z",
+    "Price": "€34,23"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Bagelers - Cinn / Brown",
+    "DateTime": "2020-04-26T03:22:06Z",
+    "Price": "€44,41"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Ecolab Digiclean Mild Fm",
+    "DateTime": "2020-04-04T14:41:52Z",
+    "Price": "€2,20"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Cookies - Englishbay Oatmeal",
+    "DateTime": "2020-04-24T23:24:21Z",
+    "Price": "€63,89"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Water, Tap",
+    "DateTime": "2020-04-16T11:27:42Z",
+    "Price": "€13,26"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Tea - Decaf 1 Cup",
+    "DateTime": "2020-04-15T22:36:01Z",
+    "Price": "€44,19"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Soup Campbells Beef With Veg",
+    "DateTime": "2020-04-29T08:21:31Z",
+    "Price": "€50,61"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cod - Salted, Boneless",
+    "DateTime": "2020-04-02T12:22:41Z",
+    "Price": "€41,21"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Nut - Hazelnut, Whole",
+    "DateTime": "2020-04-12T09:28:42Z",
+    "Price": "€71,76"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Evaporated Milk - Skim",
+    "DateTime": "2020-04-08T07:45:12Z",
+    "Price": "€67,04"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Mushroom Morel Fresh",
+    "DateTime": "2020-04-23T19:44:34Z",
+    "Price": "€19,51"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Milk - Homo",
+    "DateTime": "2020-04-12T22:24:05Z",
+    "Price": "€79,00"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Durian Fruit",
+    "DateTime": "2020-04-05T14:13:59Z",
+    "Price": "€99,38"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Ecolab Digiclean Mild Fm",
+    "DateTime": "2020-04-10T18:58:16Z",
+    "Price": "€39,50"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Juice - Orange, Concentrate",
+    "DateTime": "2020-04-13T19:09:25Z",
+    "Price": "€93,21"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Bread - Rolls, Corn",
+    "DateTime": "2020-04-29T22:49:02Z",
+    "Price": "€61,20"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Apple - Custard",
+    "DateTime": "2020-04-09T02:40:43Z",
+    "Price": "€60,46"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Eggs - Extra Large",
+    "DateTime": "2020-04-12T17:03:25Z",
+    "Price": "€35,08"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Beer - Upper Canada Lager",
+    "DateTime": "2020-04-20T06:52:29Z",
+    "Price": "€76,94"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Chervil - Fresh",
+    "DateTime": "2020-04-13T16:37:55Z",
+    "Price": "€29,50"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Cookies - Englishbay Wht",
+    "DateTime": "2020-04-06T16:05:52Z",
+    "Price": "€0,38"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Coffee Beans - Chocolate",
+    "DateTime": "2020-04-01T03:51:28Z",
+    "Price": "€28,16"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Crackers - Water",
+    "DateTime": "2020-04-11T13:01:09Z",
+    "Price": "€63,45"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Water - Mineral, Carbonated",
+    "DateTime": "2020-04-19T16:14:17Z",
+    "Price": "€15,09"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Nescafe - Frothy French Vanilla",
+    "DateTime": "2020-04-04T03:55:03Z",
+    "Price": "€98,94"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - Rosso Toscano Igt",
+    "DateTime": "2020-04-21T04:26:26Z",
+    "Price": "€32,13"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Scallops - Live In Shell",
+    "DateTime": "2020-04-23T20:32:05Z",
+    "Price": "€44,16"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Bagel - Everything Presliced",
+    "DateTime": "2020-04-27T20:11:25Z",
+    "Price": "€10,11"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Green Tea Refresher",
+    "DateTime": "2020-04-15T13:54:27Z",
+    "Price": "€87,52"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Table Cloth 81x81 Colour",
+    "DateTime": "2020-04-04T08:02:42Z",
+    "Price": "€36,73"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Beef Ground Medium",
+    "DateTime": "2020-04-24T15:59:42Z",
+    "Price": "€43,82"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Tortillas - Flour, 12",
+    "DateTime": "2020-04-03T05:25:15Z",
+    "Price": "€79,90"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Molasses - Fancy",
+    "DateTime": "2020-04-19T10:54:13Z",
+    "Price": "€2,36"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Carbonated Water - Strawberry",
+    "DateTime": "2020-04-15T09:59:32Z",
+    "Price": "€93,96"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Sprite - 355 Ml",
+    "DateTime": "2020-04-07T15:45:04Z",
+    "Price": "€64,85"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Milk - Chocolate 250 Ml",
+    "DateTime": "2020-04-25T12:23:03Z",
+    "Price": "€38,61"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Veal - Round, Eye Of",
+    "DateTime": "2020-04-02T06:24:56Z",
+    "Price": "€78,86"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Shrimp - 100 / 200 Cold Water",
+    "DateTime": "2020-04-24T12:12:02Z",
+    "Price": "€73,09"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Nougat - Paste / Cream",
+    "DateTime": "2020-04-26T23:40:03Z",
+    "Price": "€61,60"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Muffin Orange Individual",
+    "DateTime": "2020-04-19T23:44:09Z",
+    "Price": "€42,31"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Cake - Dulce De Leche",
+    "DateTime": "2020-04-09T08:47:44Z",
+    "Price": "€12,72"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Pepper - Chipotle, Canned",
+    "DateTime": "2020-04-12T14:47:34Z",
+    "Price": "€57,65"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Veal - Striploin",
+    "DateTime": "2020-04-16T16:44:52Z",
+    "Price": "€97,27"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Blueberries - Frozen",
+    "DateTime": "2020-04-18T09:25:02Z",
+    "Price": "€42,99"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Coconut - Shredded, Unsweet",
+    "DateTime": "2020-04-18T22:18:16Z",
+    "Price": "€74,20"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Rice Pilaf, Dry,package",
+    "DateTime": "2020-04-29T23:54:16Z",
+    "Price": "€16,92"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Sauce - Demi Glace",
+    "DateTime": "2020-04-19T09:40:33Z",
+    "Price": "€64,15"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Corn Kernels - Frozen",
+    "DateTime": "2020-04-14T00:18:35Z",
+    "Price": "€66,98"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Beets - Candy Cane, Organic",
+    "DateTime": "2020-04-29T19:43:02Z",
+    "Price": "€21,82"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Veal - Inside, Choice",
+    "DateTime": "2020-04-10T12:10:06Z",
+    "Price": "€10,65"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Creme De Menth - White",
+    "DateTime": "2020-04-13T09:20:05Z",
+    "Price": "€7,41"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Soup - Campbells Asian Noodle",
+    "DateTime": "2020-04-24T10:08:01Z",
+    "Price": "€44,11"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Peach - Fresh",
+    "DateTime": "2020-04-19T15:28:20Z",
+    "Price": "€99,97"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Jolt Cola",
+    "DateTime": "2020-04-24T02:04:16Z",
+    "Price": "€8,68"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Jicama",
+    "DateTime": "2020-04-26T18:48:26Z",
+    "Price": "€32,29"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Beef Cheek Fresh",
+    "DateTime": "2020-04-07T23:28:14Z",
+    "Price": "€52,37"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Bread - Bagels, Mini",
+    "DateTime": "2020-04-27T05:05:46Z",
+    "Price": "€13,00"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Squid - Tubes / Tenticles 10/20",
+    "DateTime": "2020-04-09T13:38:01Z",
+    "Price": "€56,49"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Cake - Cake Sheet Macaroon",
+    "DateTime": "2020-04-25T06:42:36Z",
+    "Price": "€81,63"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Black Currants",
+    "DateTime": "2020-04-01T07:53:56Z",
+    "Price": "€62,22"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Chocolate - Liqueur Cups With Foil",
+    "DateTime": "2020-04-04T22:19:36Z",
+    "Price": "€43,21"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cheese - Goat With Herbs",
+    "DateTime": "2020-04-10T20:18:21Z",
+    "Price": "€38,14"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Kellogs Special K Cereal",
+    "DateTime": "2020-04-14T03:02:52Z",
+    "Price": "€85,00"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Magnotta - Red, Baco",
+    "DateTime": "2020-04-22T06:52:09Z",
+    "Price": "€63,17"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Cake Circle, Paprus",
+    "DateTime": "2020-04-26T01:43:45Z",
+    "Price": "€42,37"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Tart - Lemon",
+    "DateTime": "2020-04-20T00:02:21Z",
+    "Price": "€86,43"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Wine - Alicanca Vinho Verde",
+    "DateTime": "2020-04-29T17:59:40Z",
+    "Price": "€98,31"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Pail For Lid 1537",
+    "DateTime": "2020-04-23T05:21:39Z",
+    "Price": "€48,63"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Iced Tea - Lemon, 340ml",
+    "DateTime": "2020-04-25T02:17:15Z",
+    "Price": "€50,59"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Beer - Sleemans Honey Brown",
+    "DateTime": "2020-04-17T10:40:26Z",
+    "Price": "€86,25"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Nut - Walnut, Chopped",
+    "DateTime": "2020-04-13T08:34:43Z",
+    "Price": "€2,70"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Crackers Cheez It",
+    "DateTime": "2020-04-04T15:57:02Z",
+    "Price": "€32,72"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Veal - Striploin",
+    "DateTime": "2020-04-15T16:52:37Z",
+    "Price": "€82,93"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Oil - Hazelnut",
+    "DateTime": "2020-04-02T14:40:34Z",
+    "Price": "€46,78"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Flower - Commercial Spider",
+    "DateTime": "2020-04-03T20:18:19Z",
+    "Price": "€16,74"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Tomato Paste",
+    "DateTime": "2020-04-17T18:25:18Z",
+    "Price": "€84,20"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Marjoram - Fresh",
+    "DateTime": "2020-04-03T02:58:02Z",
+    "Price": "€70,88"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Parsley - Dried",
+    "DateTime": "2020-04-18T12:15:36Z",
+    "Price": "€23,92"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Wine - Red, Colio Cabernet",
+    "DateTime": "2020-04-12T02:05:03Z",
+    "Price": "€29,08"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Coffee - Egg Nog Capuccino",
+    "DateTime": "2020-04-11T00:17:53Z",
+    "Price": "€67,60"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Curry Powder",
+    "DateTime": "2020-04-23T00:21:20Z",
+    "Price": "€89,79"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Bouillion - Fish",
+    "DateTime": "2020-04-03T17:35:31Z",
+    "Price": "€60,01"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Capon - Breast, Double, Wing On",
+    "DateTime": "2020-04-18T17:06:45Z",
+    "Price": "€93,12"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Raspberries - Fresh",
+    "DateTime": "2020-04-05T19:06:20Z",
+    "Price": "€55,08"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Ginsing - Fresh",
+    "DateTime": "2020-04-05T16:01:31Z",
+    "Price": "€90,78"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Wine - Red, Lurton Merlot De",
+    "DateTime": "2020-04-22T01:05:11Z",
+    "Price": "€48,01"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Clams - Canned",
+    "DateTime": "2020-04-20T05:39:45Z",
+    "Price": "€1,04"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Cheese - Mozzarella",
+    "DateTime": "2020-04-13T22:03:01Z",
+    "Price": "€10,41"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Cheese - Goat",
+    "DateTime": "2020-04-10T11:09:04Z",
+    "Price": "€75,20"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Mussels - Cultivated",
+    "DateTime": "2020-04-12T14:25:53Z",
+    "Price": "€91,20"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Chocolate Liqueur - Godet White",
+    "DateTime": "2020-04-15T22:53:32Z",
+    "Price": "€23,57"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Beer - Labatt Blue",
+    "DateTime": "2020-04-04T02:19:17Z",
+    "Price": "€2,88"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Beans - French",
+    "DateTime": "2020-04-26T23:01:34Z",
+    "Price": "€77,66"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Langers - Ruby Red Grapfruit",
+    "DateTime": "2020-04-18T01:21:23Z",
+    "Price": "€27,09"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Island Oasis - Mango Daiquiri",
+    "DateTime": "2020-04-13T00:25:59Z",
+    "Price": "€55,54"
+  },
+  {
+    "Shop": "Playtech",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Fireball Whisky",
+    "DateTime": "2020-04-24T20:11:05Z",
+    "Price": "€91,82"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Shark - Loin",
+    "DateTime": "2020-04-19T15:40:29Z",
+    "Price": "€68,97"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Jicama",
+    "DateTime": "2020-04-04T00:05:32Z",
+    "Price": "€71,05"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Brussels",
+    "Street": "Freedom",
+    "Item": "Steam Pan Full Lid",
+    "DateTime": "2020-04-03T01:51:09Z",
+    "Price": "€55,86"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Freedom",
+    "Item": "Heavy Duty Dust Pan",
+    "DateTime": "2020-04-18T00:10:13Z",
+    "Price": "€72,10"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Veal - Tenderloin, Untrimmed",
+    "DateTime": "2020-04-18T01:16:50Z",
+    "Price": "€22,32"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "London",
+    "Street": "Freedom",
+    "Item": "Vanilla Beans",
+    "DateTime": "2020-04-27T12:22:55Z",
+    "Price": "€31,18"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "Brussels",
+    "Street": "Laisves",
+    "Item": "Maintenance Removal Charge",
+    "DateTime": "2020-04-22T08:21:24Z",
+    "Price": "€65,73"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "New York",
+    "Street": "Laisves",
+    "Item": "Wine - Pinot Noir Pond Haddock",
+    "DateTime": "2020-04-04T17:10:45Z",
+    "Price": "€49,61"
+  },
+  {
+    "Shop": "Ebay",
+    "City": "London",
+    "Street": "George's",
+    "Item": "Cookies - Englishbay Chochip",
+    "DateTime": "2020-04-02T00:19:50Z",
+    "Price": "€80,19"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "London",
+    "Street": "Laisves",
+    "Item": "Yams",
+    "DateTime": "2020-04-27T23:38:19Z",
+    "Price": "€70,35"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "Brussels",
+    "Street": "George's",
+    "Item": "Yogurt - Strawberry, 175 Gr",
+    "DateTime": "2020-04-22T23:37:44Z",
+    "Price": "€83,25"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Tomatoes - Hot House",
+    "DateTime": "2020-04-11T05:56:53Z",
+    "Price": "€13,83"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Calypso - Pineapple Passion",
+    "DateTime": "2020-04-24T01:30:17Z",
+    "Price": "€67,08"
+  },
+  {
+    "Shop": "Lidl",
+    "City": "New York",
+    "Street": "George's",
+    "Item": "Soup - Campbells Mac N Cheese",
+    "DateTime": "2020-04-27T00:04:27Z",
+    "Price": "€13,30"
+  }
+]

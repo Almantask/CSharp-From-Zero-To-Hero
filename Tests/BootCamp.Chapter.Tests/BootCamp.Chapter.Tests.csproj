@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Expected\Aibe.csv">
+    <None Update="Expected\Aibe.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Expected\CityItemsMax.csv">
@@ -34,19 +34,19 @@
     <None Update="Expected\CityMoneyMin.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Expected\DailyKwiki.csv">
+    <None Update="Expected\DailyKwiki.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Expected\FullDay.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Expected\Kwiki.csv">
+    <None Update="Expected\Kwiki.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Expected\Night.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Expected\Wallmart.csv">
+    <None Update="Expected\Wallmart.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Input\Empty.json">

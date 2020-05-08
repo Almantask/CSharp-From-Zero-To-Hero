@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <row>
+    <City>Springfield</City>
+    <Street>HoloPapap 2</Street>
+    <Item>Sausage</Item>
+    <DateTime>2020-01-05T20:00:00Z</DateTime>
+    <Price>€8</Price>
+  </row>
+  <row>
+    <City>Springfield</City>
+    <Street>HoloPapap 2</Street>
+    <Item>Bannana</Item>
+    <DateTime>2020-01-05T22:00:00Z</DateTime>
+    <Price>€10</Price>
+  </row>
+  <row>
+    <City>Springfield HoloPapap 2</City>
+    <Street>Bannana</Street>
+    <Item>2020-01-05T22:00:00Z</Item>
+    <DateTime>€15</DateTime>
+    <Price></Price>
+  </row>
+</root>

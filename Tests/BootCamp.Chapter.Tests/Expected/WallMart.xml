@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <row>
+    <City>London</City>
+    <Street>ANC 54</Street>
+    <Item>Sausage</Item>
+    <DateTime>2020-01-07T23:00:00Z</DateTime>
+    <Price>€9</Price>
+  </row>
+  <row>
+    <City>Lonon</City>
+    <Street>ANC 54</Street>
+    <Item>Bannana</Item>
+    <DateTime>2020-01-08T23:00:00Z</DateTime>
+    <Price>€12</Price>
+  </row>
+  <row>
+    <City>London</City>
+    <Street>ANC 54</Street>
+    <Item>Toy Car</Item>
+    <DateTime>2020-01-06T20:00:00Z</DateTime>
+    <Price>€11</Price>
+  </row>
+</root> 
