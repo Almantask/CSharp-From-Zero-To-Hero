@@ -1,8 +1,4 @@
-﻿using BootCamp.Chapter.Logging;
-using System;
-using System.Collections.Generic;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     class Program
     {
