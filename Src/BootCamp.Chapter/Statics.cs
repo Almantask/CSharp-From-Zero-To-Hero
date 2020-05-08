@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Security.Cryptography.X509Certificates;
 
 namespace BootCamp.Chapter
 {
     internal class Statics
     {
-        internal static string FindPostOfficeWithMostErrors(List<Address> data)
+        internal static void FindPostOfficeWithMostErrors(List<Address> data)
         {
             var FoundOffices = new Dictionary<string, int>();
 
@@ -17,16 +15,14 @@ namespace BootCamp.Chapter
                 if (FoundOffices.ContainsKey(address.PostalCode))
                 {
                     continue;
-
                 }
 
                 var count = data.Count(x => x == address);
 
-                FoundOffices.Add(address.PostalCode, count); 
+                FoundOffices.Add(address.PostalCode, count);
             }
 
-            return FoundOffices.OrderByDescending(x => x.Value).First().Key; 
+            Console.WriteLine($"PostOffice with the most errors is: {FoundOffices.OrderByDescending(x => x.Value).First().Key}");
         }
-
     }
 }

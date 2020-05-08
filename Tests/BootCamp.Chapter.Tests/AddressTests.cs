@@ -1,6 +1,6 @@
-using System;
 using FluentAssertions;
 using FluentAssertions.Execution;
+using System;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -43,7 +43,7 @@ namespace BootCamp.Chapter.Tests
 
         [Fact]
         public void TryParse_When_Valid_AddressString_Returns_True_Out_Address()
-        { 
+        {
             var addressString = "Nildram Ltd" + Environment.NewLine +
                                 "Ardenham Court" + Environment.NewLine +
                                 "Oxford Road" + Environment.NewLine +
