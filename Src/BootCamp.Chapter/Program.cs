@@ -39,7 +39,7 @@ namespace BootCamp.Chapter
 
             Console.Write("Caroline Jackson's total BMI is: " + (Math.Round(CarolinebmiResult, 1)));
             Console.Write(" at the age of 43 years.");
-
+             
             Console.WriteLine();
             Console.WriteLine();
 
