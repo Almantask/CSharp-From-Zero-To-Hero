@@ -8,16 +8,18 @@ namespace BootCamp.Chapter.Logging
     public class FileLogger : ILogger
     {
         private readonly string _logName = $"{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}.log";
-        private const string logsFolder = @"../../LogFiles/";
+        private const string logsFolder = @"..\..\..\LogFiles\";
 
         public void Log(string message)
         {
-            File.AppendAllText($"{logsFolder}{_logName}", message);
+            message = $"{DateTime.Now} - {message}";
+            File.AppendAllText($"{logsFolder}{_logName}", message + Environment.NewLine);
         }
 
         public void LogError(string message)
         {
-            File.AppendAllText($"{logsFolder}{_logName}", $"Error Encountered: {message}");
+            message = $"{ DateTime.Now} - Error Encountered: {message}";
+            File.AppendAllText($"{logsFolder}{_logName}", message + Environment.NewLine);
         }
     }
 }
