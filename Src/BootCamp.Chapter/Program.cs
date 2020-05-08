@@ -1,5 +1,6 @@
 ﻿using BootCamp.Chapter.Logging;
 using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -7,15 +8,29 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            ConsoleLogger consoleLogger = new ConsoleLogger();
-            consoleLogger.Log("Application started");
-            consoleLogger.LogError("Critical failure");
-            consoleLogger.Log("Closing application");
+            ILogger[] loggers = new ILogger[]
+            {
+                new ConsoleLogger(),
+                new FileLogger()
+            };
 
-            FileLogger fileLogger = new FileLogger();
-            fileLogger.Log("Application started");
-            fileLogger.LogError("Critical failure");
-            fileLogger.Log("Closing application");
+            UseLoggers(loggers, "Application Started", true);
+        }
+
+
+        private static void UseLoggers(ILogger[] loggers, string message, bool isError)
+        {
+            foreach (var logger in loggers)
+            {
+                if (isError)
+                {
+                    logger.LogError(message);
+                }
+                else
+                {
+                    logger.Log(message);
+                }
+            }
         }
     }
 }
