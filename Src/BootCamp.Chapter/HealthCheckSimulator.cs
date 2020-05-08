@@ -15,6 +15,8 @@ namespace BootCamp.Chapter
             Person user = new Person(); //We create our test subject
             ConsolePrompter.WelcomeUser();
             SetPersonalDetails(user, sessionLogger);
+
+            Console.WriteLine($"BMI equals: {BMICalculator.CalculateBMI(user, sessionLogger)}");
         }
 
         private static Logger SetupLogger()
@@ -56,10 +58,10 @@ namespace BootCamp.Chapter
             var age = ConsolePrompter.PromptInt("Please enter your age: ", logger);
             person.Age = age;
 
-            var height = ConsolePrompter.PromptFloat("Please enter your height: ", logger);
+            var height = ConsolePrompter.PromptFloat("Please enter your height (in meters, i.e.: 1,8): ", logger);
             person.Height = height;
 
-            var weight = ConsolePrompter.PromptFloat("Please enter your weight: ", logger);
+            var weight = ConsolePrompter.PromptFloat("Please enter your weight (in kg, i.e: 80,5): ", logger);
             person.Weight = weight;
         }
 
