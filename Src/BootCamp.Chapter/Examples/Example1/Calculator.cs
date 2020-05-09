@@ -4,11 +4,11 @@ using System.Text;
 
 namespace BootCamp.Chapter.Examples.Example1
 {
-    public static class Example1Demo
+    public static class Calculator
     {
-        public static void Run()
+        public static int Sum(string numbers)
         {
-
+            return 0;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Example1Demo.Run();
+            
         }
     }
 }
