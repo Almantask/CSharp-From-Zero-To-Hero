@@ -6,7 +6,8 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
-
+            var parser = new TransactionJsonParser(@"Input/Transactions.json");
+            Console.WriteLine("gelukt");
         }
     }
 }
