@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BootCamp.Chapter": {
+      "commandName": "Project",
+      "commandLineArgs": "\"Input/Transactions.json\" \"time 10:00 - 17:00\"  \"Output/city.json\""
+    }
+  }
+}
