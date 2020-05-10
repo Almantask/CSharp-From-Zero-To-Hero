@@ -38,7 +38,7 @@ namespace BootCamp.Chapter
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
             }
 
-            File.WriteAllLines(path+".csv", toBeWritten);
+            File.WriteAllLines(path, toBeWritten);
         }
 
         private static void CheckFilePathForRead(string path)

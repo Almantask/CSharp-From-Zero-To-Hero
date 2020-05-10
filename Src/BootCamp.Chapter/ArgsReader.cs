@@ -128,7 +128,7 @@ namespace BootCamp.Chapter
 
                Time = z.First().DateTime.Hour,
                Number = z.Count(),
-               Earned =  z.Sum(x => x.Price)
+               Earned =  z.Sum(x => x.Price) / z.Select(x => x.DateTime.Date).Distinct().Count()
             }
             ).ToList();
 
