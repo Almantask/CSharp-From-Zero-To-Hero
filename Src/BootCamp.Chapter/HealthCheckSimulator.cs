@@ -7,8 +7,7 @@ namespace BootCamp.Chapter
     {
         public static void Run()
         {
-            Logger sessionLogger = SetupLogger();
-
+            var sessionLogger = ConsolePrompter.SetupSession();
             Person user = new Person(); //We create our test subject
             ConsolePrompter.WelcomeUser();
             SetPersonalDetails(user, sessionLogger);
@@ -16,35 +15,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"BMI equals: {BMICalculator.CalculateBMI(user, sessionLogger)}");
         }
 
-        private static Logger SetupLogger()
-        {
-            Console.Write("Please select where would you like to log for this session. 0 = Console, 1 = Logfile: ");
-            int logDestination;
-
-            if (int.TryParse(Console.ReadLine(), out int result))
-            {
-                logDestination = result;
-            }
-            else
-            {
-                Console.WriteLine("Invalid value, defaulting to 'Console'.");
-                return new Logger(LogTarget.Console);
-            }
-
-            switch (logDestination)
-            {
-                case 0:
-                    return new Logger(LogTarget.Console);
-
-                case 1:
-                    return new Logger(LogTarget.File);
-
-                default:
-                    return new Logger(LogTarget.Console);
-            }
-        }
-
-        private static void SetPersonalDetails(Person person, Logger logger)
+        private static void SetPersonalDetails(Person person, ILogger logger)
         {
             var firstName = ConsolePrompter.PromptString("Please enter your First Name: ", logger);
             person.FirstName = firstName;

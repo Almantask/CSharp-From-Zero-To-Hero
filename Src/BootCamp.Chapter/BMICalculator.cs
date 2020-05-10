@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
     {
         private const string BmiCalculationError = "Failed calculating BMI. Reason:";
 
-        public static float CalculateBMI(Person person, Logger logger)
+        public static float CalculateBMI(Person person, ILogger logger)
         {
             if (person == null) throw new ArgumentNullException();
 

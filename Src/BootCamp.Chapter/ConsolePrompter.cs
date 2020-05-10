@@ -5,6 +5,26 @@ namespace BootCamp.Chapter
 {
     public static class ConsolePrompter
     {
+        public static ILogger SetupSession()
+        {
+            Console.Write("Please select where would you like to log for this session. 0 = Console, 1 = Logfile: ");
+
+            //We set up our logger with via LoggerFactory
+            if (int.TryParse(Console.ReadLine(), out int result))
+            {
+                if (result == 1)
+                    return LoggerFactory.CreateFileLogger();
+
+                else
+                    return LoggerFactory.CreateConsoleLogger();
+            }
+            else
+            {
+                Console.WriteLine("Invalid value, defaulting to 'Console'.");
+                return LoggerFactory.CreateConsoleLogger();
+            }
+        }
+
         public static void WelcomeUser()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -12,14 +32,14 @@ namespace BootCamp.Chapter
             Console.ResetColor();
         }
 
-        public static string PromptString(string prompt, Logger logger)
+        public static string PromptString(string prompt, ILogger logger)
         {
             logger.Log("Gathering user information...");
             Console.Write(prompt);
             return Console.ReadLine();
         }
 
-        public static int PromptInt(string prompt, Logger logger)
+        public static int PromptInt(string prompt, ILogger logger)
         {
             logger.Log("Gathering user information...");
 
@@ -32,17 +52,12 @@ namespace BootCamp.Chapter
                     return result;
                 }
 
-                if (logger.GetLogTarget() == "Console")
-                {
-                    logger.LogError("Invalid Value. Please enter another number!");
-                    continue;
-                }
-
-                Console.WriteLine("Invalid Value. Please enter another number!");
+                logger.LogError("Invalid Value. Please enter another number!");
+                continue;
             }
         }
 
-        public static float PromptFloat(string prompt, Logger logger)
+        public static float PromptFloat(string prompt, ILogger logger)
         {
             logger.Log("Gathering user information...");
 
@@ -55,13 +70,8 @@ namespace BootCamp.Chapter
                     return result;
                 }
 
-                if (logger.GetLogTarget() == "Console")
-                {
-                    logger.LogError("Incorrect format provided. Please try again!");
-                    continue;
-                }
-
-                Console.WriteLine("Incorrect format provided. Please try again!");
+                logger.LogError("Incorrect format provided. Please try again!");
+                continue;
             }
         }
     }
