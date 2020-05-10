@@ -14,7 +14,7 @@ namespace BootCamp.Chapter
         {
             get
             {
-                return (Weight / (Height * Height));
+                return Math.Round((Weight / (Height * Height)), 3);
             }
         }
         public DateTime Time { get; set; }
@@ -28,7 +28,5 @@ namespace BootCamp.Chapter
             this.Height = height;
             this.Time = time;
         }
-
-        // TODO add ToString overide
     }
 }
