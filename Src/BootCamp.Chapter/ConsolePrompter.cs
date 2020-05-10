@@ -12,9 +12,11 @@ namespace BootCamp.Chapter
             //We set up our logger with via LoggerFactory
             if (int.TryParse(Console.ReadLine(), out int result))
             {
+                // UserInput 1 equals to FileLogger
                 if (result == 1)
                     return LoggerFactory.CreateFileLogger();
 
+                // All other Inputs default to ConsoleLogger
                 else
                     return LoggerFactory.CreateConsoleLogger();
             }
