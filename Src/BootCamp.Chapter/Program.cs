@@ -1,5 +1,4 @@
 ﻿using System;
-using BootCamp.Chapter.Examples;
 
 namespace BootCamp.Chapter
 {

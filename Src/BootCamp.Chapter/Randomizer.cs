@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BootCamp.Chapter.Examples
+namespace BootCamp.Chapter
 {
     public interface IRandomiser
     {

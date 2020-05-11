@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BootCamp.Chapter.Examples.Cards
+namespace BootCamp.Chapter
 {
     public static class ListExtensions
     {

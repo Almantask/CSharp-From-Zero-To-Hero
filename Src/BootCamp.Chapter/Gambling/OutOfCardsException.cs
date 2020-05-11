@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BootCamp.Chapter.Examples.Cards
+namespace BootCamp.Chapter.Gambling
 {
     public class OutOfCardsException : Exception
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BootCamp.Chapter.Gambling.Poker
+namespace BootCamp.Chapter.Gambling
 {
     public interface IGame
     {

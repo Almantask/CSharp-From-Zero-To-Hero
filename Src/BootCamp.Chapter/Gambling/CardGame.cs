@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BootCamp.Chapter.Gambling.Poker
+namespace BootCamp.Chapter.Gambling
 {
     public abstract class CardGame : IGame
     {
