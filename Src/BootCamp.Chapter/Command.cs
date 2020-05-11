@@ -80,7 +80,7 @@ namespace BootCamp.Chapter
                         }
                     }
                 }
-                toBeWritten.Add($"{i.ToString("D2")}, {count}, \"{earned.ToString("C2", CultureInfo.CurrentCulture)}\"");
+                toBeWritten.Add($"{i.ToString("D2")}, {count}, \"{earned.ToString("C2", CultureInfo.GetCultureInfo("lt-LT"))}\"");
             }
 
             //Rush hour: 22
