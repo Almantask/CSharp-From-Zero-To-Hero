@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BootCamp.Chapter.Gambling;
 
 namespace BootCamp.Chapter.Examples.Cards
 {

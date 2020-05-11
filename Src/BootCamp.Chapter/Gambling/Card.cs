@@ -1,4 +1,4 @@
-﻿namespace BootCamp.Chapter.Examples.Cards
+﻿namespace BootCamp.Chapter.Gambling
 {
     public struct Card
     {
