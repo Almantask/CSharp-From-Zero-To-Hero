@@ -5,11 +5,7 @@ namespace BootCamp.Chapter
 {
     public static class ArgsReader
     {
-        //TODO finish ArgsReader
         /*
-        You need to generate the following reports:
-
-        By time (time)
         What city (can be parsed from address) earned the most/least money and what city sold the most/least items? (city [-min/-max] [-items/-money])
         --- Extra challenge:
 
