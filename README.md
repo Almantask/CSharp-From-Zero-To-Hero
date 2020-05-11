@@ -16,5 +16,7 @@ For example a transfer of funds not only involves your balance being updated, bu
 Such checks and more, can only be verified by **mocks**. Use them when you want to setup custom test behaviour and verify the amount of time a method was called.
 DO NOT test mocks, just use them to escape existing abstracted dependencies (whatever virtual methods).
 
+Time to continue the journey of unit testing code. Try to use mocks where one class depends on another class (interface).
+
 #### Task
 Unit test ``/Gambling/Games``.
