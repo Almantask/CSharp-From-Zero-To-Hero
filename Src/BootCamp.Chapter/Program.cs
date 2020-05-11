@@ -1,4 +1,5 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using System;
+using BootCamp.Chapter.Examples;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +7,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Example1Demo.Run();
+            Console.WriteLine(Randomizer.Instance.Next(5));
         }
     }
 }
