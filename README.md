@@ -17,4 +17,4 @@ Such checks and more, can only be verified by **mocks**. Use them when you want 
 DO NOT test mocks, just use them to escape existing abstracted dependencies (whatever virtual methods).
 
 #### Task
-Refer to ``/Examples/Cards`` and unit test all source files in the folder.
+Unit test ``/Gambling/Games``.
