@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using BootCamp.Chapter.Gambling;
+using BootCamp.Chapter.Examples;
+using BootCamp.Chapter.Examples.Cards;
 
-namespace BootCamp.Chapter.Examples.Cards
+namespace BootCamp.Chapter.Gambling
 {
     public interface IDeck
     {
@@ -19,7 +21,7 @@ namespace BootCamp.Chapter.Examples.Cards
 
         public Deck(IEnumerable<Card> cards)
         {
-            _cards = cards.ToList();
+            _cards = cards?.ToList() ?? throw new ArgumentNullException(nameof(cards));
         }
 
         public Card DrawFromTop() => DrawAt(CurrentCardIndex);

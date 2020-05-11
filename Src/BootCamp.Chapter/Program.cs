@@ -7,7 +7,6 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Randomizer.Instance.Next(5));
         }
     }
 }
