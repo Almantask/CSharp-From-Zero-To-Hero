@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
 {
     public static class Command
     {
-        public static IEnumerable<String> RunTimeCommand(string[] command, List<Transaction> transactions)
+        public static IEnumerable<String> GetTimeReport(string[] command, List<Transaction> transactions)
         {
             //TODO RunTimeCommand
             /*
@@ -19,13 +19,15 @@ namespace BootCamp.Chapter
             Support getting items sold count and money earned for a selected range of hours as well.
             */
             //"time 11:00-17:00"
+            DateTime[] times = new DateTime[2] { new DateTime(2020, 01, 01, 00, 00, 00), new DateTime(2020, 01, 01, 23, 00, 00) };
+
             if (command.Length == 1)
             {
-                return GroupedByTime(transactions);
+                return GroupedByTime(transactions, times);
             }
             else if (command.Length == 2)
             {
-                if (IsHoursValid(command[1], out DateTime[] times))
+                if (IsHoursValid(command[1], out times))
                 {
                     return GroupedByTime(transactions, times);
                 }
@@ -37,22 +39,6 @@ namespace BootCamp.Chapter
             }
 
         }
-
-        private static IEnumerable<String> GroupedByTime(List<Transaction> transactions)
-        {
-            const string topRow = "Hour, Count, Earned";
-
-            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new TimeNumberEarned
-            {
-
-                Time = z.First().DateTime.Hour,
-                Number = z.Count(),
-                Earned = z.Sum(x => x.Price) / z.Select(x => x.DateTime.Date).Distinct().Count()
-            }
-            ).ToList();
-
-            return CreateTabel(topRow, soldByTime, 0, 24);
-        }
         private static IEnumerable<String> CreateTabel(string topRow, IEnumerable<TimeNumberEarned> soldByTime, int startTime, int EndTime)
         {
             List<String> toBeWritten = new List<string>();
@@ -61,7 +47,7 @@ namespace BootCamp.Chapter
             toBeWritten.Add(topRow);
             int rushHour = 0;
             decimal mostEarned = Decimal.MinValue;
-            for (int i = startTime; i < EndTime; i++)
+            for (int i = startTime; i <= EndTime; i++)
             {
                 int count = 0;
                 decimal earned = 0;
@@ -90,10 +76,20 @@ namespace BootCamp.Chapter
         }
         private static IEnumerable<String> GroupedByTime(List<Transaction> transactions, DateTime[] times)
         {
-            //TODO Time With Time
-            throw new NotImplementedException();
+            const string topRow = "Hour, Count, Earned";
+
+            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new TimeNumberEarned
+            {
+
+                Time = z.First().DateTime.Hour,
+                Number = z.Count(),
+                Earned = z.Sum(x => x.Price) / z.Select(x => x.DateTime.Date).Distinct().Count()
+            }
+            ).ToList();
+
+            return CreateTabel(topRow, soldByTime, times[0].Hour, times[1].Hour);
         }
-        public static IEnumerable<String> RunCityCommand(string[] command, List<Transaction> transactions)
+        public static IEnumerable<String> GetCityReport(string[] command, List<Transaction> transactions)
         {
             //TODO RunCityCommand
             //What city(can be parsed from address) earned the most / least money and what city sold the most / least items ? (city[-min / -max][-items / -money])
@@ -112,6 +108,10 @@ namespace BootCamp.Chapter
                 {
                     return false;
                 }
+            }
+            if (times[1].Hour == 0)
+            {
+                times[1] = new DateTime(2020, 01, 01, 23, 00, 00);
             }
 
             return true;

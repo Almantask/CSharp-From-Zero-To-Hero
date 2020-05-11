@@ -39,10 +39,10 @@ namespace BootCamp.Chapter
             switch (commandArr[0])
             {
                 case timeCommand:
-                    toBeWritten = Command.RunTimeCommand(commandArr, transactions);
+                    toBeWritten = Command.GetTimeReport(commandArr, transactions);
                     break;
                 case cityCommand:
-                    toBeWritten = Command.RunCityCommand(commandArr, transactions);
+                    toBeWritten = Command.GetCityReport(commandArr, transactions);
                     break;
             }
 
