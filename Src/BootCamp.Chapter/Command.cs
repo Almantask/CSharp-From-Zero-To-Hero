@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
             }
             else if (command.Length == 2)
             {
-                if (IsHoursCorrect(command[1], out DateTime[] times))
+                if (IsHoursValid(command[1], out DateTime[] times))
                 {
                     return GroupedByTime(transactions, times);
                 }
@@ -100,10 +100,21 @@ namespace BootCamp.Chapter
             throw new NotImplementedException();
         }
 
-        private static bool IsHoursCorrect(string hours, out DateTime[] times)
+        private static bool IsHoursValid(string hours, out DateTime[] times)
         {
-            //TODO IsHoursCorrect()
-            throw new NotImplementedException();
+            //TODO IsHoursCorrect() 11:00-17:00
+            string[] timesString = hours.Split('-');
+            times = new DateTime[2];
+
+            for ( int i = 0; i < 2; i++)
+            {
+                if(!DateTime.TryParse(timesString[i], out times[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

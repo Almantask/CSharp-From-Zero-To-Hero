@@ -8,7 +8,6 @@ namespace BootCamp.Chapter
 {
     public static class ReportsManager
     {
-        //TODO ReportsManager static or not ?
         public static List<Transaction> ReadTransaction(string path)
         {
             CheckFilePathForRead(path);
