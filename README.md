@@ -19,4 +19,5 @@ DO NOT test mocks, just use them to escape existing abstracted dependencies (wha
 Time to continue the journey of unit testing code. Try to use mocks where one class depends on another class (interface).
 
 #### Task
-Unit test ``/Gambling/Games``.
+Unit test ``/Gambling/Games``.  
+Bonus: implement poker combo logic.
