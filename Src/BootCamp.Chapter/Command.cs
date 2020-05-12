@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
     public static class Command
     {
-        public static IEnumerable<String> GetTimeReport(string[] command, List<Transaction> transactions)
+        public static IEnumerable<String> CreateTimeReport(string[] command, List<Transaction> transactions)
         {
             DateTime[] times = new DateTime[2] { new DateTime(2020, 01, 01, 00, 00, 00), new DateTime(2020, 01, 01, 23, 00, 00) };
 
@@ -45,16 +44,92 @@ namespace BootCamp.Chapter
             }
             ).ToList();
 
-            return CreateTabel(topRow, soldByTime, times[0].Hour, times[1].Hour);
+            return CreateTabelForSoldByTime(topRow, soldByTime, times[0].Hour, times[1].Hour);
         }
-        public static IEnumerable<String> GetCityReport(string[] command, List<Transaction> transactions)
+
+        public static IEnumerable<String> CreateCityReport(string[] command, List<Transaction> transactions)
         {
+            const string money = "-money";
+            const string items = "-items";
+            const string min = "-min";
+            const string max = "-max";
+
+            if (command.Length != 3)
+            {
+                throw new InvalidCommandException($"{command[0]} has the wrong amount of parameters.");
+            }
+
+            if (command[1] == items)
+            {
+                if (command[2] == min)
+                {
+                    return FindItemsMin(transactions);
+                }
+                else if (command[2] == max)
+                {
+                    return FindItemsMax(transactions);
+                }
+                else
+                {
+                    throw new InvalidCommandException($"{command[2]} is not a valid parameter.");
+                }
+            }
+            else if (command[1] == money)
+            {
+                if (command[2] == min)
+                {
+                    return FindMoneyMin(transactions);
+                }
+                else if (command[2] == max)
+                {
+                    return FindMoneyMax(transactions);
+                }
+                else
+                {
+                    throw new InvalidCommandException($"{command[2]} is not a valid parameter.");
+                }
+            }
+            else
+            {
+                throw new InvalidCommandException($"{command[1]} is not a valid parameter.");
+            }
+
             //TODO RunCityCommand
             //What city(can be parsed from address) earned the most / least money and what city sold the most / least items ? (city[-min / -max][-items / -money])
+        }
+        private static IEnumerable<String> FindItemsMin(List<Transaction> transactions)
+        {
+            throw new NotImplementedException();
+        }
+        private static IEnumerable<String> FindItemsMax(List<Transaction> transactions)
+        {
+            // group by value and count frequency
+            var groupedcity = from i in transactions
+                              group i.City by i.City into g
+                              select new {  g.Key, Count = g.Count() };
+
+            // compute the maximum frequency
+            int whatsTheFrequencyKenneth = groupedcity.Max(g => g.Count);
+
+            // find the values with that frequency
+            var toReturn = from i in groupedcity
+                           where i.Count == whatsTheFrequencyKenneth
+                           select i.Key.Trim();
+
+            return toReturn;
+
+            //return groupedcity.Where(g => g.Count == whatsTheFrequencyKenneth).Select(g => new {g.Key.Select) });
+        }
+        private static IEnumerable<String> FindMoneyMin(List<Transaction> transactions)
+        {
+            throw new NotImplementedException();
+        }
+        private static IEnumerable<String> FindMoneyMax(List<Transaction> transactions)
+        {
             throw new NotImplementedException();
         }
 
-        private static IEnumerable<String> CreateTabel(string topRow, IEnumerable<TimeNumberEarned> soldByTime, int startTime, int EndTime)
+        private static IEnumerable<String> CreateTabelForSoldByTime(string topRow, IEnumerable<TimeNumberEarned> soldByTime, int startTime, int EndTime)
         {
             List<String> toBeWritten = new List<string>();
 
@@ -102,9 +177,9 @@ namespace BootCamp.Chapter
             string[] timesString = hours.Split('-');
             times = new DateTime[2];
 
-            for ( int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
-                if(!DateTime.TryParse(timesString[i], out times[i]))
+                if (!DateTime.TryParse(timesString[i], out times[i]))
                 {
                     return false;
                 }
