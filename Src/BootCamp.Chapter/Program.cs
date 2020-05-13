@@ -6,12 +6,10 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
-
-            //TestArgs();
-
             ArgsReader.Read(args);
 
+            //Console.OutputEncoding = System.Text.Encoding.Unicode;
+            //TestArgs();
             //TestTransactionTryParse();
             //TestReportsManager();
         }

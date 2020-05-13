@@ -29,22 +29,6 @@ namespace BootCamp.Chapter
             {
                 throw new InvalidCommandException($"{command[0]} has to many parameters.");
             }
-
-        }
-        private static IEnumerable<String> GroupedByTime(List<Transaction> transactions, DateTime[] times)
-        {
-            const string topRow = "Hour, Count, Earned";
-
-            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new TimeNumberEarned
-            {
-
-                Time = z.First().DateTime.Hour,
-                Number = z.Count(),
-                Earned = z.Sum(x => x.Price) / z.Select(x => x.DateTime.Date).Distinct().Count()
-            }
-            ).ToList();
-
-            return CreateTabelForSoldByTime(topRow, soldByTime, times[0].Hour, times[1].Hour);
         }
 
         public static IEnumerable<String> CreateCityReport(string[] command, List<Transaction> transactions)
@@ -86,6 +70,22 @@ namespace BootCamp.Chapter
                 throw new InvalidCommandException($"{command[1]} is not a valid parameter.");
             }
         }
+
+        private static IEnumerable<String> GroupedByTime(List<Transaction> transactions, DateTime[] times)
+        {
+            const string topRow = "Hour, Count, Earned";
+
+            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new TimeNumberEarned
+            {
+                Time = z.First().DateTime.Hour,
+                Number = z.Count(),
+                Earned = z.Sum(x => x.Price) / z.Select(x => x.DateTime.Date).Distinct().Count()
+            }
+            ).ToList();
+
+            return CreateTabelForSoldByTime(topRow, soldByTime, times[0].Hour, times[1].Hour);
+        }
+
         private static IEnumerable<String> FindMoneyMaxOrMin(List<Transaction> transactions, string maxOrMin)
         {
             /*
@@ -94,8 +94,8 @@ namespace BootCamp.Chapter
                               select new { g.Key, Total = g.Sum(i => i.Price) };
 
             */
-            var groupedcity = transactions.GroupBy(i => i.City).Select(g => new { g.Key, Total = g.Sum(i => i.Price) });
-
+            var groupedcity = transactions.GroupBy(i => i.City)
+                                          .Select(g => new { g.Key, Total = g.Sum(i => i.Price) });
 
             decimal itemsPerCityMaxOrMin = maxOrMin == "-max" ? groupedcity.Max(g => g.Total) : groupedcity.Min(g => g.Total);
 
@@ -104,6 +104,7 @@ namespace BootCamp.Chapter
                            select i.Key.Trim();
             return toReturn;
         }
+
         private static IEnumerable<String> FindItemsMaxOrMin(List<Transaction> transactions, string maxOrMin)
         {
             var groupedcity = from i in transactions
@@ -145,7 +146,6 @@ namespace BootCamp.Chapter
                 {
                     if (timeNumberEarned.Time == i)
                     {
-
                         count = timeNumberEarned.Number;
                         earned = timeNumberEarned.Earned;
                         if (mostEarned < earned)
