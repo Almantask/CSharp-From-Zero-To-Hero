@@ -36,13 +36,13 @@ namespace BootCamp.Chapter
             {
                 case timeCommand:
                     toBeWritten = Command.CreateTimeReport(commandArr, transactions);
+                    ReportsManager.WriteTimeTransaction(args[fileToWrite], toBeWritten);
                     break;
                 case cityCommand:
                     toBeWritten = Command.CreateCityReport(commandArr, transactions);
+                    ReportsManager.WriteCityTransaction(args[fileToWrite], toBeWritten);
                     break;
             }
-
-            ReportsManager.WriteTransaction(args[fileToWrite], toBeWritten);
         }
 
         private static string[] ReadCommand(string command)

@@ -30,7 +30,7 @@ namespace BootCamp.Chapter
             return transactions;
         }
 
-        public static void WriteTransaction(string path, IEnumerable<String> toBeWritten)
+        public static void WriteTimeTransaction(string path, IEnumerable<String> toBeWritten)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
@@ -38,6 +38,18 @@ namespace BootCamp.Chapter
             }
 
             File.WriteAllLines(path, toBeWritten);
+        }
+        public static void WriteCityTransaction(string path, IEnumerable<String> toBeWritten)
+        {
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
+            }
+
+            foreach (String line in toBeWritten)
+            {
+                File.WriteAllText(path, line);
+            }
         }
 
         private static void CheckFilePathForRead(string path)
