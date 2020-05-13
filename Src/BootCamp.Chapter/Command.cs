@@ -61,13 +61,9 @@ namespace BootCamp.Chapter
 
             if (command[1] == items)
             {
-                if (command[2] == min)
+                if (command[2] == min || command[2] == max)
                 {
-                    return FindItemsMin(transactions);
-                }
-                else if (command[2] == max)
-                {
-                    return FindItemsMax(transactions);
+                    return FindItemsMaxOrMin(transactions, command[2]);
                 }
                 else
                 {
@@ -76,13 +72,9 @@ namespace BootCamp.Chapter
             }
             else if (command[1] == money)
             {
-                if (command[2] == min)
+                if (command[2] == min || command[2] == max)
                 {
-                    return FindMoneyMin(transactions);
-                }
-                else if (command[2] == max)
-                {
-                    return FindMoneyMax(transactions);
+                    return FindMoneyMaxOrMin(transactions, command[2]);
                 }
                 else
                 {
@@ -93,40 +85,37 @@ namespace BootCamp.Chapter
             {
                 throw new InvalidCommandException($"{command[1]} is not a valid parameter.");
             }
+        }
+        private static IEnumerable<String> FindMoneyMaxOrMin(List<Transaction> transactions, string maxOrMin)
+        {
+            /*
+            var groupedcity = from i in transactions
+                              group i by i.City into g
+                              select new { g.Key, Total = g.Sum(i => i.Price) };
 
-            //TODO RunCityCommand
-            //What city(can be parsed from address) earned the most / least money and what city sold the most / least items ? (city[-min / -max][-items / -money])
+            */
+            var groupedcity = transactions.GroupBy(i => i.City).Select(g => new { g.Key, Total = g.Sum(i => i.Price) });
+
+
+            decimal itemsPerCityMaxOrMin = maxOrMin == "-max" ? groupedcity.Max(g => g.Total) : groupedcity.Min(g => g.Total);
+
+            var toReturn = from i in groupedcity
+                           where i.Total == itemsPerCityMaxOrMin
+                           select i.Key.Trim();
+            return toReturn;
         }
-        private static IEnumerable<String> FindItemsMin(List<Transaction> transactions)
+        private static IEnumerable<String> FindItemsMaxOrMin(List<Transaction> transactions, string maxOrMin)
         {
-            throw new NotImplementedException();
-        }
-        private static IEnumerable<String> FindItemsMax(List<Transaction> transactions)
-        {
-            // group by value and count frequency
             var groupedcity = from i in transactions
                               group i.City by i.City into g
-                              select new {  g.Key, Count = g.Count() };
+                              select new { g.Key, Count = g.Count() };
 
-            // compute the maximum frequency
-            int whatsTheFrequencyKenneth = groupedcity.Max(g => g.Count);
+            int itemsPerCityMaxOrMin = maxOrMin == "-max" ? groupedcity.Max(g => g.Count) : groupedcity.Min(g => g.Count);
 
-            // find the values with that frequency
             var toReturn = from i in groupedcity
-                           where i.Count == whatsTheFrequencyKenneth
+                           where i.Count == itemsPerCityMaxOrMin
                            select i.Key.Trim();
-
             return toReturn;
-
-            //return groupedcity.Where(g => g.Count == whatsTheFrequencyKenneth).Select(g => new {g.Key.Select) });
-        }
-        private static IEnumerable<String> FindMoneyMin(List<Transaction> transactions)
-        {
-            throw new NotImplementedException();
-        }
-        private static IEnumerable<String> FindMoneyMax(List<Transaction> transactions)
-        {
-            throw new NotImplementedException();
         }
 
         private static IEnumerable<String> CreateTabelForSoldByTime(string topRow, IEnumerable<TimeNumberEarned> soldByTime, int startTime, int EndTime)
