@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using BootCamp.Chapter.Exceptions;
 using BootCamp.Chapter.Objects;
 
 namespace BootCamp.Chapter
@@ -43,7 +44,7 @@ namespace BootCamp.Chapter
             var isDateTimeValid = DateTimeOffset.TryParse(rowSplit[4], CurrentCultureInfo, DateTimeStyles.None, out var dateTime);
             var isPriceValid = decimal.TryParse(rowSplit[5],NumberStyles.Any, CurrentCultureInfo, out var price);
             // TODO: better exception.
-            if (!isDateTimeValid && !isPriceValid) throw new ArgumentException();
+            if (!isDateTimeValid && !isPriceValid) throw new NoTransactionsFoundException();
             
             return new Transaction(shop, city, street, item, dateTime, price);
         }

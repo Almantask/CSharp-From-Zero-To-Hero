@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using BootCamp.Chapter.CvsProcessors;
+using BootCamp.Chapter.Exceptions;
 
 namespace BootCamp.Chapter
 {
@@ -9,8 +7,6 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
-            var commands = "".Split(new char[] {' '}, 2);
-
             if (args == null || args.Length < 2 || args.Length > 3)
             {
                 Console.WriteLine("Invalid format");
@@ -19,8 +15,15 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Commands: city, time, daily");
                 throw new InvalidCommandException();
             }
-            
-            ArgumentParser.Parse(args);
+
+            if (args.Length == 2)
+            {
+                ArgumentReader.ReadTwoArgs(args);
+            }
+            else
+            {
+                ArgumentReader.ReadThreeArgs(args);
+            }
         }
     }
 }

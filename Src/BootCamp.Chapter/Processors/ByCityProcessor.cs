@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using BootCamp.Chapter.Objects;
 
-namespace BootCamp.Chapter.CvsProcessors
+namespace BootCamp.Chapter.Processors
 {
-    public static class ByCity
+    public static class ByCityProcessor
     {
         public static string CheckByCity(IEnumerable<Transaction> transactions, string command)
         {
@@ -15,7 +15,6 @@ namespace BootCamp.Chapter.CvsProcessors
             {
                 Commands.Items => GetCityNameByItems(transactions, arguments),
                 Commands.Money => GetCityNameByMoney(transactions, arguments)
-                // ,_ => 
             };
 
             return result;
@@ -40,7 +39,6 @@ namespace BootCamp.Chapter.CvsProcessors
             {
                 Commands.Max => data.Last(),
                 Commands.Min => data.First()
-                // ,_ => throw new Exception()
             };
             
             return result.City;
@@ -63,13 +61,11 @@ namespace BootCamp.Chapter.CvsProcessors
                     }
                 )
                 .OrderBy(n => n.Money);
-
-            // TODO: Better Exception
+            
             var result = arguments[1] switch
             {
                 Commands.Max => data.Last(),
                 Commands.Min => data.First()
-                // ,_ => throw new Exception()
             };
             
             return result.City;

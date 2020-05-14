@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using BootCamp.Chapter.Exceptions;
 using BootCamp.Chapter.Objects;
 
-namespace BootCamp.Chapter.CvsProcessors
+namespace BootCamp.Chapter.Processors
 {
-    public static class ByTime
+    public static class ByTimeProcessor
     {
-        private static CultureInfo CurrentCultureInfo => CultureInfo.GetCultureInfo("lt-LT");
-        
         public static string CheckByTime(IEnumerable<Transaction> transactions, string command)
         {
             var timeInterval = GetTimeInterval(command);
@@ -70,12 +69,11 @@ namespace BootCamp.Chapter.CvsProcessors
                     }
             
                     // 20, 4, "9,00 €"
-                    summary.AppendLine($"{i:D2}, {count}, \"{earns.ToString("C", CurrentCultureInfo)}\"");
-                    // summary.AppendLine($"{i:D2}, {count}, \"{earns:C}\"");
+                    summary.AppendLine($"{i:D2}, {count}, \"{earns.ToString("C", Config.CultureInfo)}\"");
                 }
                 else
                 {
-                    summary.AppendLine($"{i:D2}, {0}, \"{0.ToString("C", CurrentCultureInfo)}\"");
+                    summary.AppendLine($"{i:D2}, {0}, \"{0.ToString("C", Config.CultureInfo)}\"");
                 }
             }
             
@@ -93,9 +91,9 @@ namespace BootCamp.Chapter.CvsProcessors
             if (interval.Length != 2) throw new InvalidCommandException();
 
             var isBeginValid =
-                DateTimeOffset.TryParse(interval[0], CurrentCultureInfo, DateTimeStyles.None, out var timeBegin);
+                DateTimeOffset.TryParse(interval[0], Config.CultureInfo, DateTimeStyles.None, out var timeBegin);
             var isEndValid =
-                DateTimeOffset.TryParse(interval[1], CurrentCultureInfo, DateTimeStyles.None, out var timeEnd);
+                DateTimeOffset.TryParse(interval[1], Config.CultureInfo, DateTimeStyles.None, out var timeEnd);
             if (!isBeginValid && !isEndValid) throw new InvalidCommandException();
             
             var timeBeginHour = timeBegin.Hour;
