@@ -5,10 +5,10 @@ namespace BootCamp.Chapter
 {
     class Statistics
     {
-        private double highestBalanceEver;
-        private double personWithBiggestLoss;
-        private double richestPerson;
-        private double mostPoorPerson;
+        private decimal highestBalanceEver;
+        private decimal personWithBiggestLoss;
+        private decimal richestPerson;
+        private decimal mostPoorPerson;
         private string highestBalanceEverName;
         private string personWithBiggestLossName;
         private string richestPersonName;

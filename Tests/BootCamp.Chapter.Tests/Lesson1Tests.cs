@@ -33,7 +33,7 @@ namespace BootCamp.Chapter.Tests
         {
             Action action = () => Checks.Clean(file, "AnyFile");
 
-            action.Should().Throw<InvalidBalancesException>();
+            action.Should().Throw<ArgumentException>();
         }
 
         [Theory]

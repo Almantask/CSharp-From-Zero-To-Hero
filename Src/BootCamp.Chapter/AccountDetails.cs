@@ -5,16 +5,16 @@ namespace BootCamp.Chapter
 {
     class AccountDetails
     {
-        private string _accountName;
-        private List<double> _accountBalanceHistory;
-        private double highestBalance;
-        private double biggestLoss;
+        private readonly string _accountName;
+        private List<decimal> _accountBalanceHistory;
+        private decimal highestBalance;
+        private decimal biggestLoss;
 
 
         public AccountDetails(string name)
         {
             _accountName = name;
-            _accountBalanceHistory = new List<double>();
+            _accountBalanceHistory = new List<decimal>();
             highestBalance = 0;
             biggestLoss = 0;
         }
@@ -24,14 +24,14 @@ namespace BootCamp.Chapter
             return _accountName;
         }
 
-        public void AddBalance(double balance)
+        public void AddBalance(decimal balance)
         {
             _accountBalanceHistory.Add(balance);
             highestBalance = Math.Max(balance, highestBalance);
             biggestLoss = Math.Min(balance, biggestLoss);
         }
 
-        public double CurrentBalance()
+        public decimal CurrentBalance()
         {
             if(_accountBalanceHistory.Count != 0)
             {
@@ -44,12 +44,12 @@ namespace BootCamp.Chapter
             
         }
 
-        public double HighestBalance()
+        public decimal HighestBalance()
         {
             return highestBalance;
         }
 
-        public double BiggestLoss()
+        public decimal BiggestLoss()
         {
             return biggestLoss;
         }

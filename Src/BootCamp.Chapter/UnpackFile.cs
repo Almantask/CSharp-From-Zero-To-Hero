@@ -32,12 +32,12 @@ namespace BootCamp.Chapter
                         if (curBalance[0] == '-')
                         {
                             curBalance = line.Split(',')[i].Trim('-', '£');
-                            accountName.AddBalance(-double.Parse(curBalance));
+                            accountName.AddBalance(-decimal.Parse(curBalance));
                         }
                         else
                         {
                             curBalance = line.Split(',')[i].Trim('£');
-                            accountName.AddBalance(double.Parse(curBalance));
+                            accountName.AddBalance(decimal.Parse(curBalance));
                         }
                         
                     }
