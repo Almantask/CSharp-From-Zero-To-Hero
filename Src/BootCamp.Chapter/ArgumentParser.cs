@@ -18,13 +18,13 @@ namespace BootCamp.Chapter
             var mainCommand = arguments[0];
             var secondaryCommand = arguments.Length == 2 ? arguments[1] : "";
 
-            var outputCsv = mainCommand.ToLower() switch
+            string outputCsv = mainCommand.ToLower() switch
             {
                 "time" => ByTime.CheckByTime(transactions, secondaryCommand),
                 "daily" => throw new NotImplementedException(),
-                "city" => throw new NotImplementedException(),
+                "city" => ByCity.CheckByCity(transactions, secondaryCommand),
                 "full" => throw new NotImplementedException(),
-                _ => default
+                _ => throw new InvalidCommandException()
             };
 
             try

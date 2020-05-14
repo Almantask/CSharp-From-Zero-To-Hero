@@ -5,6 +5,10 @@
         Time,
         City,
         Daily,
-        Full
+        Full,
+        Max,
+        Min,
+        Items,
+        Money
     }
 }

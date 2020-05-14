@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine("Invalid format");
                 Console.WriteLine("\"path/to/input\" \"command\" \"path/to/output\"");
-                Environment.Exit(1);
+                throw new InvalidCommandException();
             }
             
             ArgumentParser.Parse(args);
