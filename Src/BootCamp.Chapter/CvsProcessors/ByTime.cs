@@ -19,7 +19,6 @@ namespace BootCamp.Chapter.CvsProcessors
                 .GroupBy
                 (
                     transaction => transaction.DateTime,
-                    transaction => transaction,
                     (date, values) =>
                     {
                         var transaction = values.ToList();
@@ -34,7 +33,6 @@ namespace BootCamp.Chapter.CvsProcessors
                 .GroupBy
                 (
                     transaction => transaction.Date.Hour,
-                    transaction => transaction,
                     (hour, values) =>
                     {
                         var transaction =  values.ToList();

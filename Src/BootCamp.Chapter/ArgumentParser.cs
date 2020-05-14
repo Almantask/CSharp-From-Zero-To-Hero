@@ -13,29 +13,23 @@ namespace BootCamp.Chapter
         public static void Parse(string[] args)
         {
             var transactions = CsvReader.Read(args[0]);
-            
             var arguments = args[1].Split(new char[] {' '}, 2);
+            
             var mainCommand = arguments[0];
+            if (args.Length == 2 && mainCommand.ToLower() != "full") throw new InvalidCommandException();
             var secondaryCommand = arguments.Length == 2 ? arguments[1] : "";
 
             string outputCsv = mainCommand.ToLower() switch
             {
                 "time" => ByTime.CheckByTime(transactions, secondaryCommand),
-                "daily" => throw new NotImplementedException(),
+                "daily" => Daily.CheckShopDailyByName(transactions, secondaryCommand),
                 "city" => ByCity.CheckByCity(transactions, secondaryCommand),
                 "full" => throw new NotImplementedException(),
                 _ => throw new InvalidCommandException()
             };
 
-            try
-            {
-                File.WriteAllText(args[2], outputCsv);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            var outputFilePath = args[2];
+            File.WriteAllText(outputFilePath, outputCsv);
         }
     }
 }

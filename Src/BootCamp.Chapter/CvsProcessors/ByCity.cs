@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using BootCamp.Chapter.Objects;
 
 namespace BootCamp.Chapter.CvsProcessors
 {
-    public class ByCity
+    public static class ByCity
     {
-        private static CultureInfo CurrentCultureInfo => CultureInfo.GetCultureInfo("lt-LT");
-        
         public static string CheckByCity(IEnumerable<Transaction> transactions, string command)
         {
             var arguments = GetCommands(command);
@@ -28,7 +25,6 @@ namespace BootCamp.Chapter.CvsProcessors
         {
             var data = transactions
                 .GroupBy(n => n.City,
-                    transaction => transaction,
                     (city, values) =>
                     {
                         var transaction = values.ToList();
@@ -46,6 +42,7 @@ namespace BootCamp.Chapter.CvsProcessors
                 Commands.Min => data.First()
                 // ,_ => throw new Exception()
             };
+            
             return result.City;
         }
 
@@ -55,7 +52,6 @@ namespace BootCamp.Chapter.CvsProcessors
                 .GroupBy
                 (
                     n => n.City,
-                    transaction => transaction,
                     (city, values) =>
                     {
                         var transaction = values.ToList();
@@ -75,6 +71,7 @@ namespace BootCamp.Chapter.CvsProcessors
                 Commands.Min => data.First()
                 // ,_ => throw new Exception()
             };
+            
             return result.City;
         }
 
@@ -107,8 +104,6 @@ namespace BootCamp.Chapter.CvsProcessors
                 default:
                     throw new ArgumentException();
             }
-
-            
 
             return returnList;
         }
