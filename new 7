@@ -1,0 +1,107 @@
+
+# Coding standards
+## Solution layout
+- Source code is located at `/Src` folder
+- Tests are located at `/Tests` folder
+- Building blocks of solution, that are not infrastructure specific are placed in `/SharedKernel/PaintedProsthetics.SharedKernel.cs`
+- Prefer to organize files modular (no folders for enums, interfaces, exceptions, unless they are truly unrelated to anything and should be shared like that)
+## Variables & Types
+- Use `var` in all cases, except where it's unclear what the type is
+- Avoid using `dynamic`
+- Prefer `enum` over `const` for collections of constants
+- One letter variables should be avoid in all cases, except LINQ. For example: `people.Where(p => p.Name == "Tom")`
+## Naming
+- Name projects with `PaintedProsthetics.` prefix
+- Namespaces should match the folder they are at, except for root folder
+- Method, type, constant names- Pascal Case. `ForExample` 
+- Private fields: start with underscore, followed by camel Case.`_forExample``
+- Local variables- camel Case. `forExample`
+- For abreviations, use Pascal Case as well. For example `Bmi`
+- For models with matching names, but different projects, should not have a suffix. Instead, use namespace alias. For example:
+```cs
+using Domain1 = Domain1.Models;
+using Domain2 = Domain2.Models;
+
+var itemDomain1 = new Domain1.Models.Item();
+var itemDomain2 = new Domain2.Models.Item(); 
+```
+## Exceptions
+- Prefer to throw custom exceptions
+- Validate method input against null and throw `ArgumentNullException(nameof(arg))`
+- Add as much contextual detail as possible to exceptions
+- If exception is intercepted and nothing is done- rethrow it withuto passing caught exception `throw`
+- If generic exception is caught, but you can give more detail, throw a custom exception with more detail
+## Class
+### Layout
+From top to bottom: nested types, const, properties, fields, properties, constructor, methods.
+- For same category, static goes above
+- Static above non static
+ - abstract above static
+- Public above protected, above private
+- Always specify access modifier
+### Logic
+- Constructor should prevent object creation in impossible state
+- Domain class properties should have logic with validation in them
+- Infrastructure class properties should be have data annotations for validation
+- Object to manage its' own state
+- Depend on abstraction, whenever possible
+-
+## Constants
+- Constants must be in scope that they are relevant. If used by:
+    - one method- method scope as private
+    - multiple methods- class scope as private
+    - multiple classes- project scope in separate file as public 
+    - multiple projects- `PaintedPorsthetics.SharedKernel` as public
+    - Don't place constants in a single file named constants (ever)
+    - No magic numbers. Replace them with constants
+## Comments
+Comments should be kept at minimum. Since code itself says what it does, comment should answer question **why** code does something. Asking this is uncommon, so should be comments.
+### Use comments when:
+- Unclear business logic
+- Code cannot express what is happening
+- Explaining a workaround
+- Creating interfaces, classes, structs and other types
+- On methods and their input/output, where it's unclear
+- For controller methods (to generate documentation via swagger)
+- Use `<see cref="ClassName">` for specifying related class or variable name
+- Use xml docs (type `/` 3 times)
+- Use `<inheritdoc/>` for inheriting parent comments
+## Testing
+### What should be tested?
+- Everything must be either unit tested or integration-testested (or both)
+- This includes high level infrastructure as well
+- For controller methods we might apply standards tests as well
+- For clients, we might use automation tools like Selenium
+### Test project
+- Test projects are named with `.Tests` suffix
+### Test suite
+- Create a test suite per class or function. Based on target under test, add ``Tests`` suffix to the test suite.
+For example ``Foo`` and ``FooTests``
+- Test both success and failure scenarios
+- Test edge cases
+### Test case
+- Preferably, tests should have 3 steps: arrange, act assert (min: act, assert)
+- Test name should include the 3 steps: what is called, with what parameters (if any), what is the expectation. For example: `Stop_ClosesDbConnection`
+- Use `Given` to specify arguments passed in test that matter. For example: `Sum_Given_TwoIntegers_Returns_SumOfIntegers`
+- Use `When` to specify preconditions. for example: `Stop_When_NotRunning_DoesNotThrow()`
+- Test implementation and not abstraction
+- Use `[Fact]` when testing logic that has the same outcome regardless of input
+- Use `[Theory]` when testing logic that depends on input
+- If you have multiple similar facts, consider consolidating that to one theory and multiple parameters
+### Testing libraries
+- Don't use native assertion library. Use `FluentAssertions`
+- For creating test input, use `AutoFixture`
+- In many cases with multiple asserts, we do not want to fail after the first assertion failed. In those cases, use `AssertionScope`.
+For example:
+```cs
+using(new AssertionScope())
+{
+  cartItems.Should().Contain(item);
+  cartItems.Should().HaveCount(2);
+}
+```
+### Postman
+- Used for manual testing WebApi
+- For every controller method, there should be a Postman request
+- Split postan suites by sub-domain
+- Try to provide description for each request
