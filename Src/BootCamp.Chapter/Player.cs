@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -16,76 +17,37 @@ namespace BootCamp.Chapter
         /// Everyone can carry this much weight at least.
         /// </summary>
         private const int baseCarryWeight = 30;
-
-        private float _maxCarryCapacity;
-
-        public float GetCarryCapacity()
-        {
-            return _maxCarryCapacity;
-        }
-
-        private string _name;
-
-        public string GetName()
-        {
-            return _name;
-        }
-
-        private int _hp;
-
-        public int GetHP()
-        {
-            return _hp;
-        }
-
-        /// <summary>
-        /// Each point of strength allows extra 10 kg to carry.
-        /// </summary>
-        private int _strenght;
-
-        public int GetStrength()
-        {
-            return _strenght;
-        }
-
-        /// <summary>
-        /// Player items. There can be multiple of items with same name.
-        /// </summary>
         private Inventory _inventory;
 
-        /// <summary>
-        /// Needed only for the extra task.
-        /// </summary>
-        private Equipment _equipment;
-
-        public Equipment GetEquipment()
-        {
-            return _equipment;
-        }
+        public float MaxCarryCapacity { get; private set; }
+        public string Name { get; private set; }
+        public int Hp { get; private set; }
+        public int Strength { get; private set; }
+        public Equipment Equipment { get; private set; }
 
         public Player()
         {
             _inventory = new Inventory();
-            _equipment = new Equipment();
-            _maxCarryCapacity = baseCarryWeight;
+            Equipment = new Equipment();
+            MaxCarryCapacity = baseCarryWeight;
         }
 
         public Player(string name, int hp, int strength, Inventory inventory, Equipment equipment)
         {
-            _name = name;
-            _hp = hp;
-            _strenght = strength;
+            Name = name;
+            Hp = hp;
+            Strength = strength;
+            MaxCarryCapacity = baseCarryWeight + Strength * 10;
             _inventory = inventory;
-            _equipment = equipment;
-            _maxCarryCapacity = baseCarryWeight + _strenght * 10;
+            Equipment = equipment;
         }
 
         /// <summary>
         /// Gets all items from player's inventory
         /// </summary>
-        public Item[] GetItems()
+        public List<Item> GetItems()
         {
-            return _inventory.GetItems();
+            return _inventory.Items;
         }
 
         /// <summary>
@@ -119,13 +81,13 @@ namespace BootCamp.Chapter
         public void Equip(Headpiece head)
         {
             if (IsOverEncumbered(head)) return;
-            _equipment.SetHead(head);
+            Equipment.Headpiece = head;
         }
 
         public void Equip(Chestpiece chestpiece)
         {
             if (IsOverEncumbered(chestpiece)) return;
-            _equipment.SetChest(chestpiece);
+            Equipment.SetChest(chestpiece);
         }
 
         public void Equip(Shoulderpiece shoulderpiece, bool isLeft)
@@ -134,18 +96,18 @@ namespace BootCamp.Chapter
 
             if (isLeft)
             {
-                _equipment.SetLeftShoulder(shoulderpiece);
+                Equipment.SetLeftShoulder(shoulderpiece);
             }
             else
             {
-                _equipment.SetRightShoulder(shoulderpiece);
+                Equipment.SetRightShoulder(shoulderpiece);
             }
         }
 
         public void Equip(Legspiece legspiece)
         {
             if (IsOverEncumbered(legspiece)) return;
-            _equipment.SetLeg(legspiece);
+            Equipment.SetLeg(legspiece);
         }
 
         public void Equip(Armpiece armpiece, bool isLeft)
@@ -154,33 +116,33 @@ namespace BootCamp.Chapter
 
             if (isLeft)
             {
-                _equipment.SetLeftArm(armpiece);
+                Equipment.SetLeftArm(armpiece);
             }
             else
             {
-                _equipment.SetRightArm(armpiece);
+                Equipment.SetRightArm(armpiece);
             }
         }
 
         public void Equip(Gloves gloves)
         {
             if (IsOverEncumbered(gloves)) return;
-            _equipment.SetGloves(gloves);
+            Equipment.SetGloves(gloves);
         }
 
         public void Equip(Weapon weapon)
         {
             if (IsOverEncumbered(weapon)) return;
-            _equipment.SetWeapon(weapon);
+            Equipment.Weapon = weapon;
         }
 
         public bool IsOverEncumbered(Item item)
         {
             if (item == null) return true;
-            var currentWeight = _equipment.GetTotalWeight();
-            var newWeight = currentWeight + item.GetWeight();
+            var currentWeight = Equipment.TotalCombinedWeight;
+            var newWeight = currentWeight + item.Weight;
 
-            return newWeight > _maxCarryCapacity;
+            return newWeight > MaxCarryCapacity;
         }
         #endregion
     }

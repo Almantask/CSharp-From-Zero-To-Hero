@@ -1,15 +1,13 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private decimal _money;
-
-        public decimal GetMoney()
-        {
-            return _money;
-        }
-
         private Inventory _inventory;
+
+        public decimal Money { get; private set; }
+        public List<Item> Items { get; private set; }
 
         public Shop()
         {
@@ -19,12 +17,7 @@
         public Shop(decimal money)
         {
             _inventory = new Inventory();
-            _money = money;
-        }
-
-        public Item[] GetItems()
-        {
-            return _inventory.GetItems();
+            Money = money;
         }
 
         /// <summary>
@@ -58,11 +51,11 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            if (GetMoney() < item.GetPrice()) return 0m;
+            if (Money < item.Price) return 0m;
 
             _inventory.RemoveItem(item);
-            _money -= item.GetPrice();
-            return item.GetPrice();
+            Money -= item.Price;
+            return item.Price;
         }
 
         /// <summary>
@@ -80,7 +73,7 @@
 
             if (_inventory.InventoryContains(itemToSell[0], out int index))
             {
-                _money += itemToSell[0].GetPrice();
+                Money += itemToSell[0].Price;
                 return itemToSell[0];
             }
 

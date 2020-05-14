@@ -14,8 +14,8 @@ namespace BootCamp.Chapter
         // This code is ugly but it properly displays the stats of the player after items are equipped.
         private static void EquipItems_And_DisplayStatistics(Player player)
         {
-            Console.WriteLine($"New player '{player.GetName()}' has been created.");
-            Console.WriteLine($"Stats# HP: {player.GetHP()} | STR: {player.GetStrength()} | Max Carry Capacity: {player.GetCarryCapacity()} \n");
+            Console.WriteLine($"New player '{player.Name}' has been created.");
+            Console.WriteLine($"Stats# HP: {player.Hp} | STR: {player.Strength} | Max Carry Capacity: {player.MaxCarryCapacity} \n");
 
             Weapon sword = new Weapon("Frostmourne", 55.5m, 4.5f, 15.0f);
             player.Equip(sword);
@@ -46,13 +46,13 @@ namespace BootCamp.Chapter
         {
             if (player.IsOverEncumbered(item))
             {
-                Console.WriteLine($"'{player.GetName()}' tried equipping '{item.GetName()}'. Equipping failed: '{item.GetName()}' is too heavy ({item.GetWeight()}kg > {player.GetCarryCapacity()} max carry capacity)");
+                Console.WriteLine($"'{player.Name}' tried equipping '{item.Name}'. Equipping failed: '{item.Name}' is too heavy ({item.Weight}kg > {player.MaxCarryCapacity} max carry capacity)");
                 return;
             }
 
-            Console.Write($"'{player.GetName()}' has equipped '{item.GetName()}'");
-            Console.WriteLine($" - the weight of items he's carrying has increased to {player.GetEquipment().GetTotalWeight()} kg");
-            Console.WriteLine($"Stats# Total Weight Carried: {player.GetEquipment().GetTotalWeight()}kg | Total Defense: {player.GetEquipment().GetTotalDefense()} | Total Attack: {player.GetEquipment().GetTotalAttack()} \n");
+            Console.Write($"'{player.Name}' has equipped '{item.Name}'");
+            Console.WriteLine($" - the weight of items he's carrying has increased to {player.Equipment.TotalCombinedWeight} kg");
+            Console.WriteLine($"Stats# Total Weight Carried: {player.Equipment.TotalCombinedWeight}kg | Total Defense: {player.Equipment.TotalDefenseValue} | Total Attack: {player.Equipment.TotalAttackValue} \n");
         }
     }
 }

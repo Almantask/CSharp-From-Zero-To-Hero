@@ -7,29 +7,43 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
-        private float _totalAttackValue;
-        private float _totalDefenseValue;
-        private float _totalCombinedWeight;
+        public float TotalAttackValue { get; private set; }
+        public float TotalDefenseValue { get; private set; }
+        public float TotalCombinedWeight { get; private set; }
 
         private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
+        public Weapon Weapon
         {
-            if (weapon == null) return;
+            get
+            {
+                return _weapon;
+            }
+            set
+            {
+                if (value == null) return;
 
-            _totalAttackValue = (weapon == null) ? 0.0f : weapon.GetAttackValue();
+                TotalAttackValue = (value == null) ? 0.0f : value.AttackValue;
 
-            var currentWeight = (_weapon == null) ? 0.0f : weapon.GetWeight();
-            var newWeight = (weapon == null) ? 0.0f : weapon.GetWeight();
+                var currentWeight = (_weapon == null) ? 0.0f : Weapon.Weight;
+                var newWeight = (value == null) ? 0.0f : value.Weight;
 
-            _totalCombinedWeight += newWeight - currentWeight;
-            _weapon = weapon;
+                TotalCombinedWeight += newWeight - currentWeight;
+                _weapon = value;
+            }
         }
 
-        private Headpiece _head;
-        public void SetHead(Headpiece head)
+        private Headpiece _headpiece;
+        public Headpiece Headpiece
         {
-            RefreshArmorStatistics(_head, head);
-            _head = head;
+            get
+            {
+                return _headpiece;
+            }
+            set
+            {
+                RefreshArmorStatistics(_headpiece, value);
+                _headpiece = value;
+            }
         }
 
         private Chestpiece _chest;
@@ -81,44 +95,17 @@ namespace BootCamp.Chapter
             _gloves = gloves;
         }
 
-        /// <summary>
-        /// Gets total weight of armour.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalWeight()
-        {
-            return _totalCombinedWeight;
-        }
-
-        /// <summary>
-        /// Returns sums of defense stat of all armour pieces.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalDefense()
-        {
-            return _totalDefenseValue;
-        }
-
-        /// <summary>
-        /// Returns damage done by weapon.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalAttack()
-        {
-            return _totalAttackValue;
-        }
-
         private void RefreshArmorStatistics(Armor currentArmor, Armor newArmor)
         {
-            var currentDefenseValue = (currentArmor == null) ? 0.0f : currentArmor.GetDefenseValue();
-            var newDefenseValue = (newArmor == null) ? 0.0f : newArmor.GetDefenseValue();
+            var currentDefenseValue = (currentArmor == null) ? 0.0f : currentArmor.DefenseValue;
+            var newDefenseValue = (newArmor == null) ? 0.0f : newArmor.DefenseValue;
 
-            _totalDefenseValue += newDefenseValue - currentDefenseValue;
+            TotalDefenseValue += newDefenseValue - currentDefenseValue;
 
-            var currentWeight = (currentArmor == null) ? 0.0f : currentArmor.GetWeight();
-            var newWeight = (newArmor == null) ? 0.0f : newArmor.GetWeight();
+            var currentWeight = (currentArmor == null) ? 0.0f : currentArmor.Weight;
+            var newWeight = (newArmor == null) ? 0.0f : newArmor.Weight;
 
-            _totalCombinedWeight += newWeight - currentWeight;
+            TotalCombinedWeight += newWeight - currentWeight;
         }
     }
 }

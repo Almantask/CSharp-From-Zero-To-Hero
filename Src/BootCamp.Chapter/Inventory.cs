@@ -1,44 +1,29 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Inventory
     {
         private const int defaultInventorySize = 10;
 
-        private Item[] _items;
-
-        public Item[] GetItems()
-        {
-            return _items;
-        }
-
-        private int _size;
-
-        public int GetSize()
-        {
-            return _size;
-        }
-
-        private int _remainingSpace;
-
-        public int GetRemainingSpace()
-        {
-            return _remainingSpace;
-        }
+        public List<Item> Items { get; private set; }
+        public int Size { get; private set; }
+        public int RemainingSpace { get; set; }
 
         public Inventory()
         {
-            _size = defaultInventorySize;
-            _remainingSpace = defaultInventorySize;
-            _items = new Item[defaultInventorySize];
+            Size = defaultInventorySize;
+            RemainingSpace = defaultInventorySize;
+            Items = new List<Item>(defaultInventorySize);
         }
 
         public Item[] GetItem(string name)
         {
-            if (GetRemainingSpace() == GetSize()) return new Item[0];
+            if (RemainingSpace == Size) return new Item[0];
 
-            foreach (var item in _items)
+            foreach (var item in Items)
             {
-                if (item.GetName() == name)
+                if (item.Name == name)
                 {
                     return new Item[] { item };
                 }
@@ -49,14 +34,14 @@
 
         public void AddItem(Item item)
         {
-            if (GetRemainingSpace() == 0) return;
+            if (RemainingSpace == 0) return;
 
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < Size; i++)
             {
-                if (_items[i] == null)
+                if (Items[i] == null)
                 {
-                    _items[i] = item;
-                    _remainingSpace--;
+                    Items[i] = item;
+                    RemainingSpace--;
                     break;
                 }
             }
@@ -70,8 +55,8 @@
         {
             if (InventoryContains(item, out int index))
             {
-                _items[index] = null;
-                _remainingSpace++;
+                Items[index] = null;
+                RemainingSpace++;
             }
         }
 
@@ -85,11 +70,11 @@
         {
             index = 0;
 
-            if (GetRemainingSpace() == GetSize()) return false;
+            if (RemainingSpace == Size) return false;
 
-            for (int i = 0; i < GetSize(); i++)
+            for (int i = 0; i < Size; i++)
             {
-                if (_items[i].GetName() == itemToCheck.GetName())
+                if (Items[i].Name == itemToCheck.Name)
                 {
                     index = i;
                     return true;

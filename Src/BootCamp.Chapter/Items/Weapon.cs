@@ -2,16 +2,11 @@
 {
     public class Weapon : Item
     {
-        private float _attackValue;
-
-        public float GetAttackValue()
-        {
-            return _attackValue;
-        }
+        public float AttackValue { get; private set; }
 
         public Weapon(string name, decimal price, float weight, float attackValue) : base(name, price, weight)
         {
-            _attackValue = attackValue;
+            AttackValue = attackValue;
         }
     }
 }

@@ -6,16 +6,11 @@ namespace BootCamp.Chapter.Items
 {
     public class Armor : Item
     {
-        private float _defenseValue;
-
-        public float GetDefenseValue()
-        {
-            return _defenseValue;
-        }
+        public float DefenseValue { get; private set; }
 
         public Armor(string name, decimal price, float weight, float defenseValue) : base(name, price, weight)
         {
-            _defenseValue = defenseValue;
+            DefenseValue = defenseValue;
         }
     }
 }
