@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System.ComponentModel;
 
 namespace BootCamp.Chapter
 {
@@ -47,52 +48,101 @@ namespace BootCamp.Chapter
         }
 
         private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
+        public Chestpiece Chestpiece
         {
-            RefreshArmorStatistics(_chest, chestpiece);
-            _chest = chestpiece;
+            get
+            {
+                return _chest;
+            }
+            set
+            {
+                RefreshArmorStatistics(_chest, value);
+                _chest = value;
+            }
         }
 
         private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece shoulder)
+        public Shoulderpiece LeftShoulderpiece
         {
-            RefreshArmorStatistics(_leftShoulder, shoulder);
-            _leftShoulder = shoulder;
+            get
+            {
+                return _leftShoulder;
+            }
+            set
+            {
+                RefreshArmorStatistics(_leftShoulder, value);
+                _leftShoulder = value;
+            }
         }
 
         private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
+        public Shoulderpiece RightShoulderpiece
         {
-            RefreshArmorStatistics(_rightShoulder, shoulder);
-            _rightShoulder = shoulder;
+            get
+            {
+                return _rightShoulder;
+            }
+            set
+            {
+                RefreshArmorStatistics(_rightShoulder, value);
+                _rightShoulder = value;
+            }
         }
 
         private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
+        public Legspiece Legspiece
         {
-            RefreshArmorStatistics(_legs, legs);
-            _legs = legs;
+            get
+            {
+                return _legs;
+            }
+            set
+            {
+                RefreshArmorStatistics(_legs, value);
+                _legs = value;
+            }
         }
 
         private Armpiece _leftArm;
-        public void SetLeftArm(Armpiece arm)
+        public Armpiece LeftArm
         {
-            RefreshArmorStatistics(_leftArm, arm);
-            _leftArm = arm;
+            get
+            {
+                return _leftArm;
+            }
+            set
+            {
+                RefreshArmorStatistics(_leftArm, value);
+                _leftArm = value;
+            }
         }
 
         private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
+        public Armpiece RightArm
         {
-            RefreshArmorStatistics(_rightArm, arm);
-            _rightArm = arm;
+            get
+            {
+                return _rightArm;
+            }
+            set
+            {
+                RefreshArmorStatistics(_rightArm, value);
+                _rightArm = value;
+            }
         }
 
         private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
+        public Gloves Gloves
         {
-            RefreshArmorStatistics(_gloves, gloves);
-            _gloves = gloves;
+            get
+            {
+                return _gloves;
+            }
+            set
+            {
+                RefreshArmorStatistics(_gloves, value);
+                _gloves = value;
+            }
         }
 
         private void RefreshArmorStatistics(Armor currentArmor, Armor newArmor)

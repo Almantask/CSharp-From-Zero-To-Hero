@@ -87,7 +87,7 @@ namespace BootCamp.Chapter
         public void Equip(Chestpiece chestpiece)
         {
             if (IsOverEncumbered(chestpiece)) return;
-            Equipment.SetChest(chestpiece);
+            Equipment.Chestpiece = chestpiece;
         }
 
         public void Equip(Shoulderpiece shoulderpiece, bool isLeft)
@@ -96,18 +96,18 @@ namespace BootCamp.Chapter
 
             if (isLeft)
             {
-                Equipment.SetLeftShoulder(shoulderpiece);
+                Equipment.LeftShoulderpiece = shoulderpiece;
             }
             else
             {
-                Equipment.SetRightShoulder(shoulderpiece);
+                Equipment.RightShoulderpiece = shoulderpiece;
             }
         }
 
         public void Equip(Legspiece legspiece)
         {
             if (IsOverEncumbered(legspiece)) return;
-            Equipment.SetLeg(legspiece);
+            Equipment.Legspiece = legspiece;
         }
 
         public void Equip(Armpiece armpiece, bool isLeft)
@@ -116,18 +116,18 @@ namespace BootCamp.Chapter
 
             if (isLeft)
             {
-                Equipment.SetLeftArm(armpiece);
+                Equipment.LeftArm = armpiece;
             }
             else
             {
-                Equipment.SetRightArm(armpiece);
+                Equipment.RightArm = armpiece;
             }
         }
 
         public void Equip(Gloves gloves)
         {
             if (IsOverEncumbered(gloves)) return;
-            Equipment.SetGloves(gloves);
+            Equipment.Gloves = gloves;
         }
 
         public void Equip(Weapon weapon)
