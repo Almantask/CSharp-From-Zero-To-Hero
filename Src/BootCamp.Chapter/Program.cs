@@ -8,6 +8,7 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             Player playerOne = new Player("Arthas Menethil", 50, 10, new Inventory(), new Equipment());
+            
             EquipItems_And_DisplayStatistics(playerOne);
         }
 

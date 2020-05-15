@@ -4,19 +4,17 @@ namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private Inventory _inventory;
-
+        public Inventory Inventory { get; private set; }
         public decimal Money { get; private set; }
-        public List<Item> Items { get; private set; }
 
         public Shop()
         {
-            _inventory = new Inventory();
+            Inventory = new Inventory();
         }
 
         public Shop(decimal money)
         {
-            _inventory = new Inventory();
+            Inventory = new Inventory();
             Money = money;
         }
 
@@ -26,9 +24,9 @@ namespace BootCamp.Chapter
         /// </summary>
         public void Add(Item item)
         {
-            if (_inventory.InventoryContains(item, out int index)) return;
+            if (Inventory.Items.Contains(item) || item is null) return;
 
-            _inventory.AddItem(item);
+            Inventory.AddItem(item);
         }
 
         /// <summary>
@@ -38,9 +36,10 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            Item[] itemToRemove = _inventory.GetItem(name);
+            Item[] itemToRemove = Inventory.GetItem(name);
 
-            _inventory.RemoveItem(itemToRemove[0]);
+            if (itemToRemove.Length == 0) return;
+            Inventory.RemoveItem(itemToRemove[0]);
         }
 
         /// <summary>
@@ -53,7 +52,7 @@ namespace BootCamp.Chapter
         {
             if (Money < item.Price) return 0m;
 
-            _inventory.RemoveItem(item);
+            Inventory.RemoveItem(item);
             Money -= item.Price;
             return item.Price;
         }
@@ -69,9 +68,9 @@ namespace BootCamp.Chapter
         /// </returns>
         public Item Sell(string item)
         {
-            Item[] itemToSell = _inventory.GetItem(item);
+            Item[] itemToSell = Inventory.GetItem(item);
 
-            if (_inventory.InventoryContains(itemToSell[0], out int index))
+            if (Inventory.Items.Contains(itemToSell[0]))
             {
                 Money += itemToSell[0].Price;
                 return itemToSell[0];

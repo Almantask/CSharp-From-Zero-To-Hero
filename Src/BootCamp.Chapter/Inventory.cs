@@ -36,15 +36,8 @@ namespace BootCamp.Chapter
         {
             if (RemainingSpace == 0) return;
 
-            for (int i = 0; i < Size; i++)
-            {
-                if (Items[i] == null)
-                {
-                    Items[i] = item;
-                    RemainingSpace--;
-                    break;
-                }
-            }
+            Items.Add(item);
+            RemainingSpace--;
         }
 
         /// <summary>
@@ -53,35 +46,11 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(Item item)
         {
-            if (InventoryContains(item, out int index))
+            if (Items.Contains(item))
             {
-                Items[index] = null;
+                Items.Remove(item);
                 RemainingSpace++;
             }
-        }
-
-        /// <summary>
-        /// Checks whether the inventory contains an item and returns true or false. If true, it also returns the index of the item in the inventory.
-        /// </summary>
-        /// <param name="itemToCheck"></param>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public bool InventoryContains(Item itemToCheck, out int index)
-        {
-            index = 0;
-
-            if (RemainingSpace == Size) return false;
-
-            for (int i = 0; i < Size; i++)
-            {
-                if (Items[i].Name == itemToCheck.Name)
-                {
-                    index = i;
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }
