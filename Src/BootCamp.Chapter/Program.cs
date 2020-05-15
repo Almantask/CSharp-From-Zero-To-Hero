@@ -4,9 +4,11 @@
     {
         static void Main()
         {
+            FileCleaner cleaningfile = new FileCleaner();
+            cleaningfile.CleaningCorruptedFile();
             Statistics statistics = new Statistics();
             statistics.CalculateStats();
-            statistics.DisplayStats();                    
+            statistics.DisplayStats();    
         }
     }
 }

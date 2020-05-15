@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace BootCamp.Chapter
 {
@@ -37,10 +38,10 @@ namespace BootCamp.Chapter
 
         public void DisplayStats()
         {
-            Console.WriteLine($"{highestBalanceEverName}: {highestBalanceEver}");
-            Console.WriteLine($"{personWithBiggestLossName}: {personWithBiggestLoss}");
-            Console.WriteLine($"{richestPersonName}: {richestPerson}");
-            Console.WriteLine($"{mostPoorPersonName}: {mostPoorPerson}");
+            Console.WriteLine($"{highestBalanceEverName}: {ToCurrency(highestBalanceEver)}");
+            Console.WriteLine($"{personWithBiggestLossName}: {ToCurrency(personWithBiggestLoss)}");
+            Console.WriteLine($"{richestPersonName}: {ToCurrency(richestPerson)}");
+            Console.WriteLine($"{mostPoorPersonName}: {ToCurrency(mostPoorPerson)}");
         }
 
         private void HighestBalanceEver(List<AccountDetails> accountDetails, int i)
@@ -81,6 +82,21 @@ namespace BootCamp.Chapter
             {
                 mostPoorPersonName = name;
                 mostPoorPerson = Math.Min(currBal, mostPoorPerson);
+            }
+        }
+
+        private string ToCurrency(decimal number)
+        {
+            var decToStr = $"{number}";
+
+            if (number < 0)
+            {
+                return decToStr.Insert(1, "£");
+
+            }
+            else
+            {
+                return decToStr.Insert(0, "£");
             }
         }
     }

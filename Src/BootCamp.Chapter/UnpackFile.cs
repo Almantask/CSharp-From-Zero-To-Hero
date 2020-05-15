@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
 
         private void OpenFile()
         {
-            string path = @"..\..\..\Input\Balances.clean";
+            string path = @"..\..\..\Input\Balances.cleaned";
             using (var reader = File.OpenText(path))
             {
                 var line = reader.ReadLine();
