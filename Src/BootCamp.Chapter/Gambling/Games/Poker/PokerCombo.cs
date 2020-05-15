@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BootCamp.Chapter.Gambling.Poker
 {
@@ -34,8 +32,8 @@ namespace BootCamp.Chapter.Gambling.Poker
             Score = score;
         }
 
-        public static bool operator >(PokerCombo combo1, PokerCombo combo2) 
-            => combo1.Set > combo2.Set || 
+        public static bool operator >(PokerCombo combo1, PokerCombo combo2)
+            => combo1.Set > combo2.Set ||
                (combo1.Set == combo2.Set) && combo1.Score > combo2.Score;
 
         public static bool operator <(PokerCombo combo1, PokerCombo combo2)
@@ -46,7 +44,7 @@ namespace BootCamp.Chapter.Gambling.Poker
             => combo1.Set == combo2.Set &&
                combo1.Score == combo2.Score;
 
-        public static bool operator !=(PokerCombo combo1, PokerCombo combo2) 
+        public static bool operator !=(PokerCombo combo1, PokerCombo combo2)
             => !(combo1 == combo2);
 
         public static int CalculateRoyalFlushScore(IEnumerable<Card> cards)

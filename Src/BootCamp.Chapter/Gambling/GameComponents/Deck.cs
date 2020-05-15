@@ -7,8 +7,11 @@ namespace BootCamp.Chapter.Gambling
     public interface IDeck
     {
         Card DrawFromTop();
+
         Card DrawRandom();
+
         Card DrawAt(int index);
+
         void Shuffle();
     }
 

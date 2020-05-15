@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
     {
         private readonly Random _random;
 
-        private static readonly Lazy<IRandomiser> 
+        private static readonly Lazy<IRandomiser>
             _instance = new Lazy<IRandomiser>
                 (() => new Randomizer());
 

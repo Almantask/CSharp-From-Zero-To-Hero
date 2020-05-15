@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BootCamp.Chapter.Gambling
 {
@@ -14,6 +12,7 @@ namespace BootCamp.Chapter.Gambling
         }
 
         public virtual void AddCards(params Card[] cards) => Cards.AddRange(cards);
+
         public IEnumerable<Card> Reveal() => Cards;
     }
 }
