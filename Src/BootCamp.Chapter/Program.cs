@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BootCamp.Chapter.Examples.UserMenu.v1;
 
 namespace BootCamp.Chapter
 {

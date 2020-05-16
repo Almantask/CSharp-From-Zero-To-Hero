@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Examples.UserMenu.v1
 {
     public static class UserMenu
     {
