@@ -1,0 +1,23 @@
+[
+  {
+    "City": "Springfield",
+    "Street": "HoloPapap 2",
+    "Item": "Sausage",
+    "DateTime": "2020-01-05T20:00:00Z",
+    "Price": "€8"
+  },
+  {
+    "City": "Springfield",
+    "Street": "HoloPapap 2",
+    "Item": "Bannana",
+    "DateTime": "2020-01-05T22:00:00Z",
+    "Price": "€10"
+  },
+  {
+    "City": "Springfield HoloPapap 2",
+    "Street": "Bannana",
+    "Item": "2020-01-05T22:00:00Z",
+    "DateTime": "€15",
+    "Price": ""
+  }
+]
