@@ -20,7 +20,7 @@ namespace BootCamp.Chapter.Tests
         {
             var deck = new Deck(new List<Card>() { });
 
-            Assert.Throws<OutOfCardsException>(() => deck.DrawFromTop());
+            Assert.Throws<ArgumentOutOfRangeException>(() => deck.DrawFromTop());
         }
 
         [Theory]
@@ -32,11 +32,28 @@ namespace BootCamp.Chapter.Tests
             Assert.Equal(expected, actual);
         }
 
-        // DrawRandom cannot be tested because it needed a mock and we did not learn that on lesson1.
+        [Fact]
+        public void DrawRandom_Given_List_One_Card_Returns_That_Card()
+        {
+            var deck = new Deck(new List<Card>() {new Card(Card.Suites.Diamonds, Card.Ranks.Eight)});
+            var expected = new Card(Card.Suites.Diamonds, Card.Ranks.Eight);
+
+            var actual = deck.DrawRandom();
+
+            Assert.Equal(expected, actual); 
+
+        }
+
+        [Fact]
+        public void DrawRandom_Empty_List_Throws_OutOfCardExpection()
+        {
+            var deck = new Deck(new List<Card>() {});
+           
+            Assert.Throws<OutOfCardsException>(() => deck.DrawRandom()); 
+
+        }
 
         // Shuffle cannot be tested because there is not way I can make a test that always returns the same.
-
-        // ValidateDeckSize cannot be tested because the method is private.
 
         public static IEnumerable<object[]> deckExpectations
         {

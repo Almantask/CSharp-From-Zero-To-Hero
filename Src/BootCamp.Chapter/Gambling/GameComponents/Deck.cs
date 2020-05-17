@@ -38,7 +38,7 @@ namespace BootCamp.Chapter.Gambling
             return card;
         }
 
-        public void Shuffle() => _cards.Shuffle();
+       public void Shuffle() => _cards.Shuffle();
 
         private void ValidateDeckSize(int index)
         {
