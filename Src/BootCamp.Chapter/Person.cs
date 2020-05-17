@@ -5,7 +5,7 @@ using System.Text;
 namespace BootCamp.Chapter
 {
     // This should have the following attribute
-    [TextTable(1, '=', 'x', '*')]
+    [Textable(1, '=', 'x', '*')]
     public class Person
     {
         public string Name { get; }
