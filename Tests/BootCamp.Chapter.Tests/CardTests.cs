@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Gambling;
+using System.Linq.Expressions;
 using Xunit;
 using static BootCamp.Chapter.Gambling.Card;
 
@@ -6,27 +7,16 @@ namespace BootCamp.Chapter.Tests
 {
     public class CardTests
     {
-        private readonly Card card;
-        private readonly Suites expectedSuite = Suites.Diamonds;
-        private readonly Ranks expectedRank = Ranks.Eight;
-
-        public CardTests()
-        {
-            card = new Card(expectedSuite, expectedRank);
-        }
-
-        [Fact]
-        public void Card_When_Given_Suite_Sets_Suite() => Assert.Equal(expectedSuite, card.Suite);
-
-        [Fact]
-        public void Card_When_Given_Suite_Sets_Ranks() => Assert.Equal(expectedRank, card.Rank);
-
         [Fact]
         public void Card_When_Equivalent_Cards_Returns_True()
         {
-            var other = new Card(expectedSuite, expectedRank);
+            var card1 = new Card(Suites.Clubs, Ranks.Ace);
+            var card2 = new Card(Suites.Clubs, Ranks.Ace);
+            var expected = true;
 
-            Assert.Equal(card, other);
+            var actual = card1.Equals(card2); 
+
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
