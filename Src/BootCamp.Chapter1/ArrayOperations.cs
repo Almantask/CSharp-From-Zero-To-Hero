@@ -70,9 +70,9 @@ namespace BootCamp.Chapter1
         {
             int[] newArray = new int[array.Length - 1];
 
-            for (int i = 1; i < array.Length; i++)
+            for (int i = 0; i < newArray.Length; i++)
             {
-                newArray[i] = array[i];
+                newArray[i] = array[i + 1];
             }
 
             return newArray;
@@ -86,7 +86,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            int[] newArray = new int[array.Lenth - 1];
+            int[] newArray = new int[array.Length - 1];
 
             for (int i = 0; i < index; i++)
             {
@@ -161,7 +161,7 @@ namespace BootCamp.Chapter1
 
             for (int i = index + 1; i < newArray.Length; i++)
             {
-                newArray[i] = array[i + 1];
+                newArray[i] = array[i - 1];
             }
 
             return newArray;
