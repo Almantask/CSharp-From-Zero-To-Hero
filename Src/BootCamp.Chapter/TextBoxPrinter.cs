@@ -1,26 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace BootCamp.Chapter
 {
-    /*
-     * public class ImportantItem
-    {
-        public ImportantItem()
-        {
-            var print = AttributesGetter.GetClassAttribute<PrintAttribute>(GetType());
-            if (print != null)
-            {
-                Console.WriteLine(print.Message);
-            }
-        }
-    }
-    */
-
     public static class TextBoxPrinter
     {
-        // TODO: Implement.
         public static string Print(object obj)
         {
             var atri = AttributesGetter.GetClassAttribute<TextableAttribute>(obj.GetType());
@@ -33,10 +17,9 @@ namespace BootCamp.Chapter
                 return obj.ToString();
             }
         }
+
         public static string MakePadding(string message, int padding = 0, char horizontal = '-', char vertical = '|', char corner = '+')
         {
-            //[TextTable(padding, sideTop, sideLeft, corner]
-
             string[] splitmessage = message.Split(Environment.NewLine);
             int height = splitmessage.Length + (padding * 2) + 1;
             int width = 0;
@@ -49,6 +32,7 @@ namespace BootCamp.Chapter
                 }
             }
             width += (padding * 2) + 1;
+
             return MakeTabel();
 
             string MakeTabel()
@@ -58,7 +42,6 @@ namespace BootCamp.Chapter
                 {
                     for (int kWidth = 0; kWidth <= width; kWidth++)
                     {
-
                         if (IsThisCorner(iHeight, kWidth))
                         {
                             final.Append(corner);
@@ -80,7 +63,10 @@ namespace BootCamp.Chapter
                             final.Append(" ");
                         }
                     }
-                    final.Append(Environment.NewLine);
+                    if (iHeight <= height - 1)
+                    {
+                        final.Append(Environment.NewLine);
+                    }
                 }
 
                 return final.ToString();
