@@ -1,6 +1,7 @@
 ﻿using BootCamp.Chapter.Gambling;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -12,7 +13,11 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void New_Given_Null_List_Throws_NullArgumentException()
         {
-            Assert.Throws<ArgumentNullException>(() => new Deck(null));
+            Deck deck = null;
+
+            Action action = () => new Deck(null);
+
+            Assert.Throws<ArgumentNullException>(action);
         }
 
         [Fact]
@@ -20,7 +25,9 @@ namespace BootCamp.Chapter.Tests
         {
             var deck = new Deck(new List<Card>() { });
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => deck.DrawFromTop());
+            Action action = () => deck.DrawFromTop(); 
+
+            Assert.Throws<ArgumentOutOfRangeException>(action);
         }
 
         [Theory]
@@ -49,11 +56,12 @@ namespace BootCamp.Chapter.Tests
         {
             var deck = new Deck(new List<Card>() {});
            
-            Assert.Throws<OutOfCardsException>(() => deck.DrawRandom()); 
+             Action action =  () => deck.DrawRandom(); 
+             Assert.Throws<OutOfCardsException>(action); 
 
         }
 
-        // Shuffle cannot be tested because there is not way I can make a test that always returns the same.
+        
 
         public static IEnumerable<object[]> deckExpectations
         {
