@@ -5,7 +5,7 @@ using System.Text;
 namespace BootCamp.Chapter
 {
     // This should have the following attribute
-    // [Textable]
+    [Textable]
     public class Car
     {
         public string Brand { get; }

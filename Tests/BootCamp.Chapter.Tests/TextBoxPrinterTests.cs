@@ -25,8 +25,8 @@ namespace BootCamp.Chapter.Tests
             var text = TextBoxPrinter.Print(item);
 
             text.Should().Be("+------+" + Environment.NewLine +
-                                    "|BMW X6|" + Environment.NewLine +
-                                    "+------+");
+                             "|BMW X6|" + Environment.NewLine +
+                             "+------+");
         }
 
         [Fact]
@@ -37,10 +37,10 @@ namespace BootCamp.Chapter.Tests
             var text = TextBoxPrinter.Print(item);
 
             text.Should().Be("*===========*" + Environment.NewLine +
-                                    "x           x" + Environment.NewLine +
-                                    "x Bill - 12 x" + Environment.NewLine +
-                                    "x           x" + Environment.NewLine +
-                                    "*===========*");
+                             "x           x" + Environment.NewLine +
+                             "x Bill - 12 x" + Environment.NewLine +
+                             "x           x" + Environment.NewLine +
+                             "*===========*");
         }
     }
 }
