@@ -6,29 +6,32 @@ namespace BootCamp.Chapter
     {
         private const string timeCommand = "time";
         private const string cityCommand = "city";
-        private const int fileToRead = 0;
-        private const int command = 1;
-        private const int fileToWrite = 2;
+        private const int fileToReadInt = 0;
+        private const int commandInt = 1;
+        private const int fileToWriteInt = 2;
 
         public static void Read(string[] args)
         {
             ArgsChecksLength(args);
-            string[] commandArr = ReadCommand(args[command]);
+            string[] commandArr = ReadCommand(args[commandInt]);
 
-            List<Transaction> transactions = ReportsManager.ReadTransaction(args[fileToRead]);
+            List<Transaction> transactions = ReportsManager.ReadTransaction(args[fileToReadInt]);
+
+            ICommand command = default;
 
             switch (commandArr[0])
             {
                 case timeCommand:
-                    var toBeWritten = Command.CreateTimeReport(commandArr, transactions);
-                    ReportsManager.WriteTimeTransaction(args[fileToWrite], toBeWritten);
+                    command = new TimeCommand();
                     break;
 
                 case cityCommand:
-                    toBeWritten = Command.CreateCityReport(commandArr, transactions);
-                    ReportsManager.WriteCityTransaction(args[fileToWrite], toBeWritten);
+                    command = new CityCommand();
                     break;
             }
+
+            var toBeWritten = command.CreateReport(commandArr, transactions);
+            command.WriteToCSV(args[fileToWriteInt], toBeWritten);
         }
 
         private static string[] ReadCommand(string command)
