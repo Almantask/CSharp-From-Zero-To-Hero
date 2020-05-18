@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
 
         public static void Read(string[] args)
         {
-            ArgsChecksLength(args);
+            CheckArgsLength(args);
             string[] commandArr = ReadCommand(args[commandInt]);
 
             List<Transaction> transactions = ReportsManager.ReadTransaction(args[fileToReadInt]);
@@ -60,7 +60,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static void ArgsChecksLength(string[] args)
+        private static void CheckArgsLength(string[] args)
         {
             if (args == null || args.Length != 3)
             {
