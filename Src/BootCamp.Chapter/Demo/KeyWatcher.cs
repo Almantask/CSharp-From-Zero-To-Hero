@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter.Demo
 {
-    public class KeyWatcher
+    public static class KeyWatcher
     {
         public static void PressedKey(object sender, EventArgs e)
         {
@@ -11,13 +11,13 @@ namespace BootCamp.Chapter.Demo
             switch (key)
             {
                 case ConsoleKey.A:
-                    DemoCreateDB.OnValidChoice(PeoplePredicates.IsA);
+                    ContactsDBGenerator.OnValidChoice(PeoplePredicates.IsA);
                     break;
                 case ConsoleKey.B:
-                    DemoCreateDB.OnValidChoice(PeoplePredicates.IsB);
+                    ContactsDBGenerator.OnValidChoice(PeoplePredicates.IsB);
                     break;
                 case ConsoleKey.C:
-                    DemoCreateDB.OnValidChoice(PeoplePredicates.IsC);
+                    ContactsDBGenerator.OnValidChoice(PeoplePredicates.IsC);
                     break;
                 default:
                     Console.WriteLine("Invalid Option");

@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter.Demo
 {
-    public class DemoCreateDB
+    public static class ContactsDBGenerator
     {
         public static void OnValidChoice(Predicate<Person> predicate)
         {

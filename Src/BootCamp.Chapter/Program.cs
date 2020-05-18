@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var demo = new Demos();
+            var demo = new DelegateDemo();
             demo.Run();
 
             Console.WriteLine("Press any key to continue...");

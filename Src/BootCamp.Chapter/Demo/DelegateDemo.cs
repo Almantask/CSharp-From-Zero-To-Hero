@@ -2,14 +2,14 @@
 
 namespace BootCamp.Chapter.Demo
 {
-    public class Demos
+    public class DelegateDemo
     {
         public event EventHandler ProgramStatus;
         public event EventHandler KeyPressed;
 
-        public Demos()
+        public DelegateDemo()
         {
-            ProgramStatus += Status.ShowStatus;
+            ProgramStatus += Demo.ProgramStatus.ShowStatus;
             KeyPressed += KeyWatcher.PressedKey;
         }
         
@@ -25,7 +25,7 @@ namespace BootCamp.Chapter.Demo
         {
             ProgramStatus?.Invoke("Shutting down...", null);
             KeyPressed -= KeyWatcher.PressedKey;
-            ProgramStatus -= Status.ShowStatus;
+            ProgramStatus -= Demo.ProgramStatus.ShowStatus;
         }
         
         private ConsoleKey GetUserChoice()

@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter.Demo
 {
-    public class Status
+    public static class ProgramStatus
     {
         public static void ShowStatus(object sender, EventArgs e)
         {
