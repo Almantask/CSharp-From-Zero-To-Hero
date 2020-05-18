@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using BootCamp.Chapter.Objects;
 
-namespace BootCamp.Chapter.Processors
+namespace BootCamp.Chapter.TransactionProcessors
 {
     public static class DailyProcessor
     {
         public static string CheckShopDailyByName(IEnumerable<Transaction> transactions, string storeName)
         {
-            var data = transactions
+            var transactionDatabase = transactions
                 .Where(n => n.Shop.Equals(storeName))
                 .GroupBy(n => n.DateTime.Day,
                     (date, values) =>
@@ -23,7 +23,7 @@ namespace BootCamp.Chapter.Processors
                         );
                     });
             
-            return GetShopSummary(data);
+            return GetShopSummary(transactionDatabase);
         }
 
         private static string GetShopSummary(IEnumerable<DailySummary> data)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BootCamp.Chapter.Objects;
 
-namespace BootCamp.Chapter.Processors
+namespace BootCamp.Chapter.TransactionProcessors
 {
     public static class ByCityProcessor
     {
@@ -22,7 +22,7 @@ namespace BootCamp.Chapter.Processors
 
         private static string GetCityNameByItems(IEnumerable<Transaction> transactions, List<Commands> arguments)
         {
-            var data = transactions
+            var transactionDatabase = transactions
                 .GroupBy(n => n.City,
                     (city, values) =>
                     {
@@ -37,8 +37,8 @@ namespace BootCamp.Chapter.Processors
             
             var result = arguments[1] switch
             {
-                Commands.Max => data.Last(),
-                Commands.Min => data.First()
+                Commands.Max => transactionDatabase.Last(),
+                Commands.Min => transactionDatabase.First()
             };
             
             return result.City;

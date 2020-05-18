@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using BootCamp.Chapter.Objects;
 
-namespace BootCamp.Chapter.Processors
+namespace BootCamp.Chapter.TransactionProcessors
 {
     public static class FullProcessor
     {
         public static void ExportFullSummary(IEnumerable<Transaction> transactions)
         {
-            var data = transactions
+            var transactionDatabase = transactions
                 .GroupBy(n => n.Shop)
                 .Select(n => n.ToList());
 
-            foreach (var transaction in data)
+            foreach (var transaction in transactionDatabase)
             {
                 GetShopSummary(transaction);
             }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BootCamp.Chapter.Objects
+﻿namespace BootCamp.Chapter.Objects
 {
     public readonly struct SummaryByTime
     {

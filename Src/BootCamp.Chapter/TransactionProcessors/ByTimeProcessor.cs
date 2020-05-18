@@ -6,7 +6,7 @@ using System.Text;
 using BootCamp.Chapter.Exceptions;
 using BootCamp.Chapter.Objects;
 
-namespace BootCamp.Chapter.Processors
+namespace BootCamp.Chapter.TransactionProcessors
 {
     public static class ByTimeProcessor
     {
@@ -14,7 +14,7 @@ namespace BootCamp.Chapter.Processors
         {
             var timeInterval = GetTimeInterval(command);
             
-            var data = transactions
+            var transactionDatabase = transactions
                 .GroupBy
                 (
                     transaction => transaction.DateTime,
@@ -45,7 +45,7 @@ namespace BootCamp.Chapter.Processors
                 )
                 .ToDictionary(key => key.Hour);
 
-            return BuildSummaryByTime(data, timeInterval);
+            return BuildSummaryByTime(transactionDatabase, timeInterval);
         }
 
         private static string BuildSummaryByTime(Dictionary<int, SummaryByTime> data,
@@ -87,13 +87,13 @@ namespace BootCamp.Chapter.Processors
         {
             if (string.IsNullOrEmpty(command)) return new List<int> {0, 23};
             
-            var interval = command.Split('-');
-            if (interval.Length != 2) throw new InvalidCommandException();
+            var timeInterval = command.Split('-');
+            if (timeInterval.Length != 2) throw new InvalidCommandException();
 
             var isBeginValid =
-                DateTimeOffset.TryParse(interval[0], Config.CultureInfo, DateTimeStyles.None, out var timeBegin);
+                DateTimeOffset.TryParse(timeInterval[0], Config.CultureInfo, DateTimeStyles.None, out var timeBegin);
             var isEndValid =
-                DateTimeOffset.TryParse(interval[1], Config.CultureInfo, DateTimeStyles.None, out var timeEnd);
+                DateTimeOffset.TryParse(timeInterval[1], Config.CultureInfo, DateTimeStyles.None, out var timeEnd);
             if (!isBeginValid && !isEndValid) throw new InvalidCommandException();
             
             var timeBeginHour = timeBegin.Hour;

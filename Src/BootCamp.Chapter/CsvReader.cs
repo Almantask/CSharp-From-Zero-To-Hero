@@ -11,8 +11,6 @@ namespace BootCamp.Chapter
 {
     public static class CsvReader
     {
-        private static CultureInfo CurrentCultureInfo => CultureInfo.GetCultureInfo("lt-LT");
-
         public static IEnumerable<Transaction> Read(string file)
         {
             if (string.IsNullOrEmpty(file)) throw new ArgumentNullException(nameof(file));
@@ -41,8 +39,8 @@ namespace BootCamp.Chapter
             var street = rowSplit[2];
             var item = rowSplit[3];
             
-            var isDateTimeValid = DateTimeOffset.TryParse(rowSplit[4], CurrentCultureInfo, DateTimeStyles.None, out var dateTime);
-            var isPriceValid = decimal.TryParse(rowSplit[5],NumberStyles.Any, CurrentCultureInfo, out var price);
+            var isDateTimeValid = DateTimeOffset.TryParse(rowSplit[4], Config.CultureInfo, DateTimeStyles.None, out var dateTime);
+            var isPriceValid = decimal.TryParse(rowSplit[5],NumberStyles.Any, Config.CultureInfo, out var price);
             // TODO: better exception.
             if (!isDateTimeValid && !isPriceValid) throw new NoTransactionsFoundException();
             

@@ -1,6 +1,6 @@
 ﻿namespace BootCamp.Chapter.Objects
 {
-    public class CityByItems
+    public readonly struct CityByItems
     {
         public string City { get; }
         public int Count { get; }
