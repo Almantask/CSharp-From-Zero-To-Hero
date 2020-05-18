@@ -6,54 +6,64 @@ namespace BootCamp.Chapter
 {
     internal class CityCommand : ICommand
     {
-        public IEnumerable<string> CreateReport(string[] command, List<Transaction> transactions)
+        private string _Path;
+        private string[] _Command;
+        private List<Transaction> _Transactions;
+
+        public CityCommand(string path, string[] command, List<Transaction> transactions)
+        {
+            _Path = path;
+            _Command = command;
+            _Transactions = transactions;
+        }
+
+        public void Execute()
+        {
+            var toBeWritten = CreateReport();
+            WriteToCSV(toBeWritten);
+        }
+        public IEnumerable<string> CreateReport()
         {
             const string money = "-money";
             const string items = "-items";
             const string min = "-min";
             const string max = "-max";
 
-            if (command.Length != 3)
+            if (_Command.Length != 3)
             {
-                throw new InvalidCommandException($"{command[0]} has the wrong amount of parameters.");
+                throw new InvalidCommandException($"{_Command[0]} has the wrong amount of parameters.");
             }
 
-            if (command[1] == items)
+            if (_Command[1] == items)
             {
-                if (command[2] == min || command[2] == max)
+                if (_Command[2] == min || _Command[2] == max)
                 {
-                    return FindItemsMaxOrMin(transactions, command[2]);
+                    return FindItemsMaxOrMin(_Transactions, _Command[2]);
                 }
                 else
                 {
-                    throw new InvalidCommandException($"{command[2]} is not a valid parameter.");
+                    throw new InvalidCommandException($"{_Command[2]} is not a valid parameter.");
                 }
             }
-            else if (command[1] == money)
+            else if (_Command[1] == money)
             {
-                if (command[2] == min || command[2] == max)
+                if (_Command[2] == min || _Command[2] == max)
                 {
-                    return FindMoneyMaxOrMin(transactions, command[2]);
+                    return FindMoneyMaxOrMin(_Transactions, _Command[2]);
                 }
                 else
                 {
-                    throw new InvalidCommandException($"{command[2]} is not a valid parameter.");
+                    throw new InvalidCommandException($"{_Command[2]} is not a valid parameter.");
                 }
             }
             else
             {
-                throw new InvalidCommandException($"{command[1]} is not a valid parameter.");
+                throw new InvalidCommandException($"{_Command[1]} is not a valid parameter.");
             }
         }
 
         private static IEnumerable<String> FindMoneyMaxOrMin(List<Transaction> transactions, string maxOrMin)
         {
-            /*
-            var groupedcity = from i in transactions
-                              group i by i.City into g
-                              select new { g.Key, Total = g.Sum(i => i.Price) };
-
-            */
             var groupedcity = transactions.GroupBy(i => i.City)
                                           .Select(g => new { g.Key, Total = g.Sum(i => i.Price) });
 
@@ -79,9 +89,9 @@ namespace BootCamp.Chapter
             return toReturn;
         }
 
-        public void WriteToCSV(string path, IEnumerable<string> toBeWritten)
+        public void WriteToCSV(IEnumerable<string> toBeWritten)
         {
-            ReportsManager.WriteCityTransaction(path, toBeWritten);
+            ReportsManager.WriteCityTransaction(_Path, toBeWritten);
         }
     }
 }

@@ -7,33 +7,50 @@ namespace BootCamp.Chapter
 {
     internal class TimeCommand : ICommand
     {
-        public IEnumerable<string> CreateReport(string[] command, List<Transaction> transactions)
+        private string _Path;
+        private string[] _Command;
+        private List<Transaction> _Transactions;
+
+        public TimeCommand(string path, string[] command, List<Transaction> transactions)
+        {
+            _Path = path;
+            _Command = command;
+            _Transactions = transactions;
+        }
+
+        public void Execute()
+        {
+            var toBeWritten = CreateReport();
+            WriteToCSV(toBeWritten);
+        }
+
+        public IEnumerable<string> CreateReport()
         {
             DateTime[] times = new DateTime[2] { new DateTime(2020, 01, 01, 00, 00, 00), new DateTime(2020, 01, 01, 23, 00, 00) };
 
-            if (command.Length == 1)
+            if (_Command.Length == 1)
             {
                 //Time Command given without any times uses whole day.
-                return GroupedByTime(transactions, times);
+                return GroupedByTime(_Transactions, times);
             }
-            else if (command.Length == 2)
+            else if (_Command.Length == 2)
             {
                 //Time Command given with times only gives a report within time frame.
-                if (IsHoursValid(command[1], out times))
+                if (IsHoursValid(_Command[1], out times))
                 {
-                    return GroupedByTime(transactions, times);
+                    return GroupedByTime(_Transactions, times);
                 }
-                throw new InvalidCommandException($"{command[0]} has the wrong Times.");
+                throw new InvalidCommandException($"{_Command[0]} has the wrong Times.");
             }
             else
             {
-                throw new InvalidCommandException($"{command[0]} has to many parameters.");
+                throw new InvalidCommandException($"{_Command[0]} has to many parameters.");
             }
         }
 
         private static IEnumerable<String> GroupedByTime(List<Transaction> transactions, DateTime[] times)
         {
-            const string topRow = "Hour, Count, Earned";
+            const string headers = "Hour, Count, Earned";
 
             var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new TimeNumberEarned
             {
@@ -43,7 +60,7 @@ namespace BootCamp.Chapter
             }
             ).ToList();
 
-            return CreateTabelForSoldByTime(topRow, soldByTime, times[0].Hour, times[1].Hour);
+            return CreateTabelForSoldByTime(headers, soldByTime, times[0].Hour, times[1].Hour);
         }
 
         private static IEnumerable<String> CreateTabelForSoldByTime(string topRow, IEnumerable<TimeNumberEarned> soldByTime, int startTime, int EndTime)
@@ -109,9 +126,9 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        public void WriteToCSV(string path, IEnumerable<string> toBeWritten)
+        public void WriteToCSV(IEnumerable<string> toBeWritten)
         {
-            ReportsManager.WriteTimeTransaction(path, toBeWritten);
+            ReportsManager.WriteTimeTransaction(_Path, toBeWritten);
         }
     }
 }

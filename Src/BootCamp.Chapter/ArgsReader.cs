@@ -22,16 +22,15 @@ namespace BootCamp.Chapter
             switch (commandArr[0])
             {
                 case timeCommand:
-                    command = new TimeCommand();
+                    command = new TimeCommand(args[fileToWriteInt], commandArr, transactions);
                     break;
 
                 case cityCommand:
-                    command = new CityCommand();
+                    command = new CityCommand(args[fileToWriteInt], commandArr, transactions);
                     break;
             }
 
-            var toBeWritten = command.CreateReport(commandArr, transactions);
-            command.WriteToCSV(args[fileToWriteInt], toBeWritten);
+            command.Execute();
         }
 
         private static string[] ReadCommand(string command)
