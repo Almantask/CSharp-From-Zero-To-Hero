@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
             var toBeWritten = CreateReport();
             WriteToCSV(toBeWritten);
         }
-        public IEnumerable<string> CreateReport()
+        private IEnumerable<string> CreateReport()
         {
             const string money = "-money";
             const string items = "-items";
@@ -89,7 +89,7 @@ namespace BootCamp.Chapter
             return toReturn;
         }
 
-        public void WriteToCSV(IEnumerable<string> toBeWritten)
+        private void WriteToCSV(IEnumerable<string> toBeWritten)
         {
             ReportsManager.WriteCityTransaction(_Path, toBeWritten);
         }

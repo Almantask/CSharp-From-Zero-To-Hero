@@ -24,7 +24,7 @@ namespace BootCamp.Chapter
             WriteToCSV(toBeWritten);
         }
 
-        public IEnumerable<string> CreateReport()
+        private IEnumerable<string> CreateReport()
         {
             DateTime[] times = new DateTime[2] { new DateTime(2020, 01, 01, 00, 00, 00), new DateTime(2020, 01, 01, 23, 00, 00) };
 
@@ -126,7 +126,7 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        public void WriteToCSV(IEnumerable<string> toBeWritten)
+        private void WriteToCSV(IEnumerable<string> toBeWritten)
         {
             ReportsManager.WriteTimeTransaction(_Path, toBeWritten);
         }
