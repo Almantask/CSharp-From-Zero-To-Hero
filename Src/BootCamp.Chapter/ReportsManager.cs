@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
 {
     public static class ReportsManager
     {
-        public static List<Transaction> ReadTransaction(string path)
+        public static List<Transaction> ReadTransactionFile(string path)
         {
             CheckFilePathForRead(path);
             List<Transaction> transactions = new List<Transaction>();

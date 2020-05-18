@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
 
         private static void TestReportsManager()
         {
-            var reports = ReportsManager.ReadTransaction(@"C:\Users\Max\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\bin\Debug\netcoreapp3.1\Input\Transactions.csv");
+            var reports = ReportsManager.ReadTransactionFile(@"C:\Users\Max\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\bin\Debug\netcoreapp3.1\Input\Transactions.csv");
 
             foreach (var report in reports)
             {

@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
             CheckArgsLength(args);
             string[] commandArr = ReadAndCheckCommand(args[commandInt]);
 
-            List<Transaction> transactions = ReportsManager.ReadTransaction(args[fileToReadInt]);
+            List<Transaction> transactions = ReportsManager.ReadTransactionFile(args[fileToReadInt]);
 
             ICommand command = default;
 
