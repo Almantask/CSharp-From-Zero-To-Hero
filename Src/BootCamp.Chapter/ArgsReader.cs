@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
         public static void Read(string[] args)
         {
             CheckArgsLength(args);
-            string[] commandArr = ReadCommand(args[commandInt]);
+            string[] commandArr = ReadAndCheckCommand(args[commandInt]);
 
             List<Transaction> transactions = ReportsManager.ReadTransaction(args[fileToReadInt]);
 
@@ -33,7 +33,7 @@ namespace BootCamp.Chapter
             command.Execute();
         }
 
-        private static string[] ReadCommand(string command)
+        private static string[] ReadAndCheckCommand(string command)
         {
             if (string.IsNullOrWhiteSpace(command))
             {
