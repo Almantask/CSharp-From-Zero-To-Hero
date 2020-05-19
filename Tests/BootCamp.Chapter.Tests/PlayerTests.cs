@@ -11,7 +11,7 @@ namespace BootCamp.Chapter.Tests
 
         public PlayerTests()
         {
-            _player = new Player();
+            _player = new Player("");
         }
 
         [Fact]

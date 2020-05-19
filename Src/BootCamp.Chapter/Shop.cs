@@ -1,23 +1,22 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Linq.Expressions;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
         private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
-
-        private Inventory _inventory;
-
-        public Shop()
-        {
-
-        }
+        private ShopInventory _inventory;
 
         public Shop(decimal money)
         {
             _money = money;
+            _inventory = new ShopInventory();
+        }
+
+        public decimal GetMoney()
+        {
+            return _money;
         }
 
         public Item[] GetItems()
@@ -31,6 +30,14 @@
         /// </summary>
         public void Add(Item item)
         {
+            try
+            {
+                _inventory.AddItem(item);
+            }
+            catch (InventoryIsFullException msg)
+            {
+                Console.WriteLine(msg);
+            }
         }
 
         /// <summary>
@@ -40,6 +47,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            _inventory.RemoveItem(name);
         }
 
         /// <summary>
@@ -50,7 +58,18 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            if (GetMoney() >= item.GetPrice())
+            {
+                Add(item);
+                _money -= item.GetPrice();
+                Console.WriteLine($"{item.GetName()} was sold to the Shop!");
+                return item.GetPrice();
+            }
+            else
+            {
+                Console.WriteLine("The Shop cannot afford to buy that item!");
+                return 0;
+            }
         }
 
         /// <summary>
@@ -64,7 +83,19 @@
         /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            if (Array.Exists(_inventory.GetItems(), element => element.GetName().Equals(item)))
+            {
+                _money += _inventory.GetItem(item).GetPrice();
+                var itemSold = _inventory.GetItem(item);
+                _inventory.RemoveItem(_inventory.GetItem(item));
+                Console.WriteLine("Item is sold!");
+                return itemSold;
+            }
+            else
+            {
+                Console.WriteLine("That item was not in the Shop!");
+                return null;
+            }
         }
     }
 }
