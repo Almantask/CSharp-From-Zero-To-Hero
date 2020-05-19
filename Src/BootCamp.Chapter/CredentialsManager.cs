@@ -22,5 +22,10 @@ namespace BootCamp.Chapter
         {
             
         }
+
+        private void AddUser(Credentials credentials)
+        {
+
+        }
     }
 }
