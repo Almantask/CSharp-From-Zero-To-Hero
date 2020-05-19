@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
 
         static void Main(string[] args)
         {
-            Credentials credentialsOne = new Credentials("csutika", "another18");
+            Credentials credentialsOne = new Credentials("Tom", "Tom123");
             Credentials credentialsTwo = new Credentials("Adam", "Kl6627");
             Credentials credentialsThree = new Credentials("David", "HJk1##88ba");
 
