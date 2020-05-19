@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using System.IO;
+using BootCamp.Chapter.Exceptions;
 
 namespace BootCamp.Chapter
 {
@@ -25,7 +27,13 @@ namespace BootCamp.Chapter
 
         private void AddUser(Credentials credentials)
         {
+            if (!File.Exists(_credentialsFile))
+                throw new InvalidDatabaseFileException("Database file does not exist or cannot be reached.");
 
+            using (StreamWriter streamWriter = new StreamWriter(_credentialsFile, true))
+            {
+                streamWriter.WriteLine(credentials.ToString());
+            }
         }
     }
 }
