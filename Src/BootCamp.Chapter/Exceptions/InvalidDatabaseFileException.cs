@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter.Exceptions
 {
-    class InvalidDatabaseFileException : Exception
+    public class InvalidDatabaseFileException : Exception
     {
         public InvalidDatabaseFileException() : base() { }
 

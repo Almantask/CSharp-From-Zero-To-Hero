@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
     {
         public readonly string Username;
         public readonly string Password;
-        private const string Delimiter = ":";
+        private const string Delimiter = ",";
 
         public Credentials(string username, string password)
         {
@@ -28,11 +28,12 @@ namespace BootCamp.Chapter
                 return false;
 
             var values = input.Split(Delimiter);
-            var isValid = String.IsNullOrWhiteSpace(values[0]) && String.IsNullOrWhiteSpace(values[1]);
+            var isValid = !String.IsNullOrWhiteSpace(values[0]) || !String.IsNullOrWhiteSpace(values[1]);
 
             if (!isValid)
                 return false;
 
+            credentials = new Credentials(values[0], values[1]);
             return true;
         }
 
