@@ -55,7 +55,7 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine("Invalid height! Please try again");
                 Console.WriteLine("Height (cm):");
-                age = Console.ReadLine();
+                height = Console.ReadLine();
             }
 
             double BMI = weightDouble / ((heightDouble/100) * (heightDouble / 100));
