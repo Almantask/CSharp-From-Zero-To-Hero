@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using System.Data;
 
 namespace BootCamp.Chapter
 {
@@ -8,6 +8,7 @@ namespace BootCamp.Chapter
     {
         public readonly string Username;
         public readonly string Password;
+        private const string Delimiter = ":";
 
         public Credentials(string username, string password)
         {
@@ -22,7 +23,17 @@ namespace BootCamp.Chapter
         public static bool TryParse(string input, out Credentials credentials)
         {
             credentials = default;
-            return false;
+
+            if (String.IsNullOrWhiteSpace(input))
+                return false;
+
+            var values = input.Split(Delimiter);
+            var isValid = String.IsNullOrWhiteSpace(values[0]) && String.IsNullOrWhiteSpace(values[1]);
+
+            if (!isValid)
+                return false;
+
+            return true;
         }
 
         public bool Equals(Credentials other)
@@ -32,7 +43,7 @@ namespace BootCamp.Chapter
 
         public override string ToString()
         {
-            return $"{Username}:{Password}";
+            return $"{Username}{Delimiter}{Password}";
         }
 
         public static bool operator ==(Credentials leftExpression, Credentials rightExpression)
