@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Text;
+
+namespace BootCamp.Chapter
 {
     public class CredentialsManager
     {
@@ -18,7 +20,7 @@
         // TODO: store credentials in credentials file.
         public void Register(Credentials credentials)
         {
-
+            
         }
     }
 }

@@ -11,6 +11,13 @@ namespace BootCamp.Chapter
             Credentials credentialsThree = new Credentials("David", "HJk1##88ba");
 
             Console.WriteLine(credentialsOne != credentialsTwo);
+            Console.WriteLine(credentialsOne.ToString());
+
+            var password = Console.ReadLine();
+            Console.WriteLine(password);
+
+            var encodedPassword = Encoder.Encode(password);
+            Console.WriteLine(encodedPassword);
         }
     }
 }

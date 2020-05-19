@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
         public Credentials(string username, string password)
         {
             if (String.IsNullOrWhiteSpace(username) || String.IsNullOrWhiteSpace(password))
-                throw new ArgumentException($"{nameof(username)} or {nameof(password)} is not valid.");
+                throw new ArgumentException($"{nameof(username)} or {nameof(password)} cannot be null or empty.");
 
             Username = username;
             Password = password;
@@ -25,9 +25,14 @@ namespace BootCamp.Chapter
             return false;
         }
 
-        public bool Equals([AllowNull] Credentials other)
+        public bool Equals(Credentials other)
         {
             return Username == other.Username && Password == other.Password;
+        }
+
+        public override string ToString()
+        {
+            return $"{Username}:{Password}";
         }
 
         public static bool operator ==(Credentials leftExpression, Credentials rightExpression)
