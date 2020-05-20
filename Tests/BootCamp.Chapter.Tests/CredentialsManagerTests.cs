@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using BootCamp.Chapter.Exceptions;
 using FluentAssertions;
 using Xunit;
 
@@ -10,7 +11,7 @@ namespace BootCamp.Chapter.Tests
     public class CredentialsManagerTests
     {
         private const string EmptyFile = @"Input/Files/EmptyCredentials.txt";
-        private const string FileWtihSingleCredential = @"Input/Files/TomTom123Credentials.txt";
+        private const string FileWithSingleCredentials = @"Input/Files/TomTom123Credentials.txt";
 
         [Theory]
         [InlineData("")]
@@ -36,7 +37,7 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void Login_When_Credentials_File_Contains_The_Credentials_Returns_True()
         {
-            var credentialsManager = new CredentialsManager(FileWtihSingleCredential);
+            var credentialsManager = new CredentialsManager(FileWithSingleCredentials);
             var credentials = new Credentials("Tom", "Tom123");
 
             var isLoggedIn = credentialsManager.Login(credentials);
@@ -44,21 +45,50 @@ namespace BootCamp.Chapter.Tests
             isLoggedIn.Should().BeTrue();
         }
 
-        [Theory]
-        [InlineData(EmptyFile)]
-        [InlineData(FileWtihSingleCredential)]
-        public void Register_Appends_Comma_Separated_Credentials(string credentialsFile)
+        [Fact]
+        public void Register_When_Credentials_File_Empty_Appends_Comma_Separated_Credentials()
         {
-            var credentialsManager = new CredentialsManager(credentialsFile);
-            var credentials = new Credentials("Tom", "Tom123");
-            var oldContents = File.ReadAllLines(credentialsFile);
+            var credentialsManager = new CredentialsManager(EmptyFile);
+            var credentials = new Credentials("Hello", "Kai");
+            var encodedCredentials = new Credentials(credentials.Username, Encoder.Encode(credentials.Password));
+ 
+            credentialsManager.Register(credentials);
+
+            GetCredentials(EmptyFile)
+                .Should().Contain(encodedCredentials)
+                .And.HaveCount(1);
+        }
+
+        [Fact]
+        public void Register_Appends_Comma_Separated_Credentials()
+        {
+            var credentialsManager = new CredentialsManager(FileWithSingleCredentials);
+            var credentials = new Credentials("Hello", "Kai");
+            var encodedCredentials = new Credentials(credentials.Username, Encoder.Encode(credentials.Password));
+            var oldContents = GetCredentials(FileWithSingleCredentials);
 
             credentialsManager.Register(credentials);
 
+            GetCredentials(FileWithSingleCredentials)
+                .Should().Contain(encodedCredentials)
+                .And.HaveCount(oldContents.Count + 1);
+        }
 
-            File.ReadAllLines(credentialsFile)
-                .Should().Contain(oldContents)
-                .And.HaveCount(oldContents.Length + 1);
+        private List<Credentials> GetCredentials(string credentialsFile)
+        {
+            var credentialsList = new List<Credentials>();
+
+            using (StreamReader streamReader = new StreamReader(credentialsFile))
+            {
+                string currentLine;
+                while ((currentLine = streamReader.ReadLine()) != null)
+                {
+                    if (Credentials.TryParse(currentLine, out Credentials credentials))
+                        credentialsList.Add(credentials);
+                }
+            }
+
+            return credentialsList;
         }
 
         private static string ToHexedString(byte[] bytes)

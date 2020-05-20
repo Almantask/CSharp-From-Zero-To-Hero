@@ -28,6 +28,10 @@ namespace BootCamp.Chapter
                 return false;
 
             var values = input.Split(Delimiter);
+
+            if (values.Length == 0 || values.Length == 1)
+                return false;
+
             var isValid = !String.IsNullOrWhiteSpace(values[0]) || !String.IsNullOrWhiteSpace(values[1]);
 
             if (!isValid)

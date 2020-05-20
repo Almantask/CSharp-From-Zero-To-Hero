@@ -2,6 +2,7 @@
 using System.IO;
 using BootCamp.Chapter.Exceptions;
 using System.Collections.Generic;
+using System;
 
 namespace BootCamp.Chapter
 {
@@ -11,6 +12,9 @@ namespace BootCamp.Chapter
 
         public CredentialsManager(string credentialsFile)
         {
+            if (string.IsNullOrWhiteSpace(credentialsFile))
+                throw new ArgumentException("Credentials file cannot be null.");
+
             _credentialsFile = credentialsFile;
         }
 
