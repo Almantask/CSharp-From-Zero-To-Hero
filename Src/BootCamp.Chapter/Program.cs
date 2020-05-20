@@ -1,4 +1,6 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using System;
+using AutoFixture;
+using BootCamp.Chapter.AutofixtureExamples;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +8,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Example1Demo.Run();
+            //GeneratingRandomData.Run();
+            //ConsistentData.Run();
+            BuildingComplexModels.Run();
         }
     }
 }
