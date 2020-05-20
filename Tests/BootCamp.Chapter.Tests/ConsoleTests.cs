@@ -1,10 +1,10 @@
-﻿using System;
+﻿using BootCamp.Chapter.Tests.Utils;
+using System;
 using System.IO;
-using BootCamp.Chapter.Tests.Utils;
 
 namespace BootCamp.Chapter.Tests
 {
-    public class ConsoleTests: IDisposable
+    public class ConsoleTests : IDisposable
     {
         /// <summary>
         /// Disposes console output file and returns its' contents.
