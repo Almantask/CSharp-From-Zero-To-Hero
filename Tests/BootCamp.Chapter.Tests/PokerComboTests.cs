@@ -1,7 +1,4 @@
 ﻿using BootCamp.Chapter.Gambling.Poker;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -16,7 +13,7 @@ namespace BootCamp.Chapter.Tests
 
             var actual = set1 < set2;
 
-            Assert.True(actual); 
+            Assert.True(actual);
         }
 
         [Fact]
@@ -70,6 +67,39 @@ namespace BootCamp.Chapter.Tests
             var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 2);
 
             var actual = set1 == set2;
+
+            Assert.False(actual);
+        }
+
+        [Fact]
+        public void Greater__Given_Set1_Is_Greater_Set2_Returns_True()
+        {
+            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 12);
+            var set2 = new PokerCombo(PokerCombo.Sets.Flush, 12);
+
+            var actual = set1 > set2;
+
+            Assert.True(actual);
+        }
+
+        [Fact]
+        public void Greater__Given_Set1_Is_Equal_Set2_But_Set1_Higher_Score_Returns_True()
+        {
+            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 12);
+            var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 1);
+
+            var actual = set1 > set2;
+
+            Assert.True(actual);
+        }
+
+        [Fact]
+        public void Greater__Given_Set1_Is_Smaller_Set2_Returns_False()
+        {
+            var set1 = new PokerCombo(PokerCombo.Sets.Flush, 1);
+            var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 12);
+
+            var actual = set1 > set2;
 
             Assert.False(actual);
         }
