@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
 
 namespace BootCamp.Chapter1
 {
@@ -7,8 +9,35 @@ namespace BootCamp.Chapter1
         static void Main(string[] args)
         {
 
-           var array = new int[] {1,2,3,4,5 };
-           
+            var newValue  = 5;
+            var index = 3;
+            
+            
+            var array = new int[] { 1, 2, 3, 4, 5 };
+            for (var i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine($" the index {i} of Array has as value {array[i]}");
+            }
+            var newArray = new int[array.Length+1];
+            if (array.Length < newArray.Length)
+            {
+                Console.WriteLine("newArray es mas grande");
+            }
+            for(var i = 0; i < array.Length + 1; i++)
+            {
+                if (i < index - 1)
+                    newArray[i] = array[i];
+                else if (i == index - 1)
+                    newArray[i] = newValue;
+                else
+                    newArray[i] = array[i - 1];
+            }
+            foreach(var i in newArray)
+            {
+                Console.WriteLine($"newArray is {i} ");
+            }
+            
+
 
         }
 
@@ -76,6 +105,11 @@ namespace BootCamp.Chapter1
         public static int[] InsertAt(int[] array, int number, int index)
         {
             if (array == null || array.Length == 0) return array;
+            for(var i = 0; i < array.Length; i++)
+            { 
+                
+            }
+
             return array;
         }
     }
