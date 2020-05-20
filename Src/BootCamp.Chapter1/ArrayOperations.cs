@@ -19,16 +19,22 @@ namespace BootCamp.Chapter1
         /// If array empty or null- don't do anything.
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
-        public static void Reverse(ref int[] array)
+        public static void Reverse(int[] array)
         {
-            int[] reverseArray = new int[array.Length];
-
-            for (int i = 0; i < array.Length; i++)
+            if (array != null)
             {
-                reverseArray[i] = array[array.Length - (i + 1)];
-            }
+                int[] reverseArray = new int[array.Length];
 
-            array = reverseArray;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    reverseArray[i] = array[array.Length - (i + 1)];
+                }
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = reverseArray[i];
+                }
+            }
         }
 
         /// <summary>
