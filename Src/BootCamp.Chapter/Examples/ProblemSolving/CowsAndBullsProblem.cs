@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Examples.ProblemSolving
 {
     public static class CowsAndBullsProblem
     {

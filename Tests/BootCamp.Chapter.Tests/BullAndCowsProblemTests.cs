@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BootCamp.Chapter.Examples.ProblemSolving;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
