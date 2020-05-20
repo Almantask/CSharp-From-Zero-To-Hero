@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System.Runtime.CompilerServices;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -17,9 +19,16 @@
         /// If array empty or null- don't do anything.
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
-        public static void Reverse(int[] array)
+        public static void Reverse(ref int[] array)
         {
-            // ToDo: implement.
+            int[] reverseArray = new int[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                reverseArray[i] = array[array.Length - (i + 1)];
+            }
+
+            array = reverseArray;
         }
 
         /// <summary>
