@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using BootCamp.Chapter.Tests.Utils;
 using FluentAssertions;
 using Xunit;
