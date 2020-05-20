@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+using System.Linq;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,7 +12,20 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0) return;
+            int result = 0;
+            for (var i = 0; i < array.Length - 1 ; i++)
+            {
+                for (var j = i + 1; j < array.Length; j++)
+                {
+                    if (array[j] < array[i])
+                    {
+                        result = array[i];
+                        array[i] = array[j];
+                        array[j] = result;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -19,7 +35,12 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0) return;
+            Array.Reverse(array);
+            for(var i = 0; i < array.Length / 2; i++)
+            {
+                var temp = array[i];
+            }
         }
 
         /// <summary>
@@ -29,8 +50,7 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            return array;            
         }
 
         /// <summary>
