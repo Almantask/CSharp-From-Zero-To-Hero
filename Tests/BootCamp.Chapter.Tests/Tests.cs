@@ -9,13 +9,15 @@ namespace BootCamp.Chapter.Tests
 {
     public class Tests
     {
+        //TODO Add test for DrawRandom
         /*
+         * all public methodes.
             Card DrawFromTop();
             Card DrawRandom();
             Card DrawAt(int index);
             void Shuffle();
          */
-        private List<Card> FullDeckOfCards()
+        private static List<Card> FullDeckOfCards()
         {
             List<Card> cardsDeck = new List<Card>();
             foreach (Card.Suites suite in (Card.Suites[])Enum.GetValues(typeof(Card.Suites)))
@@ -47,6 +49,39 @@ namespace BootCamp.Chapter.Tests
 
             action.Should().Throw<OutOfCardsException>();
         }
+
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(100)]
+        public void DrawAt_Out_Of_Index_Should_Throw_Out_Of_Range(int index)
+        {
+            //Arrange
+            List<Card> cards = FullDeckOfCards();
+            IDeck deck = new Deck(cards);
+
+            //Act
+            Action action = () => deck.DrawAt(index);
+
+            //Assert
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Fact]
+        public void DrawAt_Index_Within_Range_should_Give_Correct_Card()
+        {
+            //Arrange
+            List<Card> cards = FullDeckOfCards();
+            IDeck deck = new Deck(cards);
+
+            //Act
+            Card pickedCard = deck.DrawAt(1);
+
+            //Assert wich is better and why?
+            Assert.Equal(cards[1], pickedCard);
+            //pickedCard.Should().Be(cards[index]);
+        }
+
+
         [Fact]
         public void DrawFromTop_Should_Give_Last_Card_In_List()
         {
