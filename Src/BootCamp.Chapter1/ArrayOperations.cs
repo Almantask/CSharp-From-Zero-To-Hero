@@ -51,7 +51,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            return array;
+            if (array == null || array.Length == 0) return array;
+            return RemoveAt(array,array.Length - 1);
         }
 
         /// <summary>
@@ -60,8 +61,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0) return array;
+            return RemoveAt(array,0);
         }
 
         /// <summary>
@@ -96,8 +97,13 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                int[] newArray = new[] {number};
+                return newArray;
+            }
+            int[] tempArray = InsertAt(array, number, 0);
+            return tempArray;
         }
 
         /// <summary>
@@ -108,8 +114,14 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            int arrayLength = 0;
+            if (array != null && array.Length != 0)
+            {
+                arrayLength = array.Length;
+            }
+
+            int[] resultArray = InsertAt(array, number, arrayLength);
+            return resultArray;
         }
 
         /// <summary>
@@ -132,9 +144,10 @@ namespace BootCamp.Chapter1
                 return newArray;
             }
       
-            var tempArray = new int[array.Length + 1];
+            var tempArray = new int[array.Length + 1] ;
+            
                      
-            for (var i = 0; i < array.Length; i++)
+            for (var i = 0; i < tempArray.Length; i++)
             {
                 if (i < index)
                     tempArray[i] = array[i];
