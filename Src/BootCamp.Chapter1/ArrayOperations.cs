@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace BootCamp.Chapter1
@@ -14,7 +15,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0) return;
             int result = 0;
-            for (var i = 0; i < array.Length - 1 ; i++)
+            for (var i = 0; i < array.Length - 1; i++)
             {
                 for (var j = i + 1; j < array.Length; j++)
                 {
@@ -37,7 +38,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0) return;
             Array.Reverse(array);
-            for(var i = 0; i < array.Length / 2; i++)
+            for (var i = 0; i < array.Length / 2; i++)
             {
                 var temp = array[i];
             }
@@ -50,7 +51,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            return array;            
+            return array;
         }
 
         /// <summary>
@@ -108,8 +109,32 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                if (array != null && array.Length == 0 && index != 0)
+                {
+                    return array;
+                }
+
+                int[] newArray = new[] {number};
+                return newArray;
+            }
+      
+            var tempArray = new int[array.Length + 1];
+                     
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (i < index)
+                    tempArray[i] = array[i];
+                else if (i == index)
+                    tempArray[i] = number;
+                else
+                    tempArray[i] = array[i - 1];
+            }
+            
+            return tempArray;
+            
         }
     }
 }
+
