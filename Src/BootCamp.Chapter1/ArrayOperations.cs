@@ -28,7 +28,7 @@ namespace BootCamp.Chapter1
                     }
                 }
             }
-            
+
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace BootCamp.Chapter1
                 int[] arrayWithoutLastIndex = new int[array.Length - 1];
                 for (int i = array.Length - 2; i >= 0; i--)
                 {
-                    arrayWithoutLastIndex[i] = array[i+1];
+                    arrayWithoutLastIndex[i] = array[i + 1];
                 }
                 return arrayWithoutLastIndex;
             }
@@ -101,7 +101,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array != null && array.Length > 0 && index >=0 && index < array.Length)
+            if (array != null && array.Length > 0 && index >= 0 && index < array.Length)
             {
                 int[] arrayWithoutSpecifiedIndex = new int[array.Length - 1];
                 for (int i = 0; i < array.Length - 1; i++)
@@ -120,7 +120,7 @@ namespace BootCamp.Chapter1
             }
             return array;
         }
-
+        // public void int testMethod{"<>"}
         /// <summary>
         /// Inserts a new array element at the start.
         /// </summary>
@@ -129,8 +129,15 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            int[] arrayAddFirstIndex = array == null ? new int[1] : new int[array.Length + 1];
+
+            arrayAddFirstIndex[0] = number;
+            for (int i = 0; i < (array == null ? 0 : array.Length) ; i++)
+            {
+                arrayAddFirstIndex[i + 1] = array[i];
+            }
+
+            return arrayAddFirstIndex;
         }
 
         /// <summary>
