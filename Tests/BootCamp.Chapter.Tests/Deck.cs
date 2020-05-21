@@ -7,7 +7,7 @@ using Xunit;
 
 namespace BootCamp.Chapter.Tests
 {
-    public class Tests
+    public class Deck
     {
         private static List<Card> FullDeckOfCards()
         {
@@ -27,7 +27,7 @@ namespace BootCamp.Chapter.Tests
         {
             List<Card> cards = null;
 
-            Action action = () => new Deck(cards);
+            Action action = () => new Gambling.Deck(cards);
 
             action.Should().Throw<ArgumentNullException>();
         }
@@ -35,7 +35,7 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void Draw_When_Deck_Has_No_Cards_Should_Throw_OutOfCardsException()
         {
-            IDeck deck = new Deck(new List<Card>());
+            IDeck deck = new Gambling.Deck(new List<Card>());
 
             Action action = () => deck.DrawFromTop();
 
@@ -49,7 +49,7 @@ namespace BootCamp.Chapter.Tests
         {
             //Arrange
             List<Card> cards = FullDeckOfCards();
-            IDeck deck = new Deck(cards);
+            IDeck deck = new Gambling.Deck(cards);
 
             //Act
             Action action = () => deck.DrawAt(index);
@@ -63,7 +63,7 @@ namespace BootCamp.Chapter.Tests
         {
             //Arrange
             List<Card> cards = FullDeckOfCards();
-            IDeck deck = new Deck(cards);
+            IDeck deck = new Gambling.Deck(cards);
 
             //Act
             Card pickedCard = deck.DrawAt(1);
@@ -81,7 +81,7 @@ namespace BootCamp.Chapter.Tests
             Card lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
             List<Card> cards = new List<Card>();
             cards.Add(lastCard);
-            IDeck deck = new Deck(cards);
+            IDeck deck = new Gambling.Deck(cards);
 
             deck.DrawFromTop();
             Action action = () => deck.DrawAt(0);
@@ -96,7 +96,7 @@ namespace BootCamp.Chapter.Tests
             Card lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
             List<Card> cards = FullDeckOfCards();
             cards.Add(lastCard);
-            IDeck deck = new Deck(cards);
+            IDeck deck = new Gambling.Deck(cards);
 
             //Act
             Card cardDrawn = deck.DrawFromTop();
@@ -110,7 +110,7 @@ namespace BootCamp.Chapter.Tests
         {
             //Arrange
             List<Card> cards = FullDeckOfCards();
-            IDeck deck = new Deck(FullDeckOfCards());
+            IDeck deck = new Gambling.Deck(FullDeckOfCards());
 
             //Act
             deck.Shuffle();
