@@ -148,8 +148,16 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            int[] arrayAddLastIndex = array == null ? new int[1] : new int[array.Length + 1];
+
+            arrayAddLastIndex[array == null ? 0 : (arrayAddLastIndex.Length - 1)] = number;
+
+            for (int i = 0; i < (array == null ? 0 : array.Length); i++)
+            {
+                arrayAddLastIndex[i] = array[i];
+            }
+
+            return arrayAddLastIndex;
         }
 
         /// <summary>
