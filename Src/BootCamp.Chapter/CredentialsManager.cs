@@ -21,6 +21,15 @@ namespace BootCamp.Chapter
         // TODO: load credentials and check for equality.
         public bool Login(Credentials credentials)
         {
+            var encodedUser = new Credentials(credentials.Username, Encoder.Encode(credentials.Password));
+            var allCredentials = GetCredentials();
+
+            foreach (var registeredUser in allCredentials)
+            {
+                if (registeredUser == encodedUser)
+                    return true;
+            }
+
             return false;
         }
 
