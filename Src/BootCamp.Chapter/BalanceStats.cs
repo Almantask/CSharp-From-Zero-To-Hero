@@ -1,7 +1,6 @@
 ﻿using BootCamp.Chapter.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -16,11 +15,11 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
-            List<Person> people = DataToObject(peopleAndBalances);
-            var topBalance = people.Max(b => b.Balances.Max());
-            var topPerson = people.Where(b => b.Balances.Contains(topBalance)).ToList();
 
-            return $"{GenerateNameString(topPerson)} had the most money ever. {ConvertBalanceToText(topBalance)}.";
+            List<Person> people = DataToObject(peopleAndBalances);
+            var highestBalance = people.Where(p => p.Balances.Contains(people.Max(b => b.Balances.Max()))).ToList();
+
+            return $"{GenerateNameString(highestBalance)} had the most money ever. {ConvertBalanceToText(highestBalance.Max(b => b.Balances.Max()))}.";
         }
 
         /// <summary>
@@ -30,6 +29,7 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
+
             List<Person> people = DataToObject(peopleAndBalances);
 
             Single highestLoss = 0;
@@ -42,13 +42,10 @@ namespace BootCamp.Chapter
                 }
             }
 
-            List<Person> personHighLoss = null;
             if (highestLoss == 0)
                 return "N/A.";
-            else
-            {
-                personHighLoss = people.Where(l => (l.Balances.Max() - l.Balances.LastOrDefault()) * -1 == highestLoss).ToList();
-            }
+
+            List<Person> personHighLoss = people.Where(l => (l.Balances.Max() - l.Balances.LastOrDefault()) * -1 == highestLoss).ToList();
 
             return $"{GenerateNameString(personHighLoss)} lost the most money. {ConvertBalanceToText(highestLoss)}.";
         }
@@ -60,8 +57,10 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
+
             List<Person> people = DataToObject(peopleAndBalances);
             var richestPerson = people.Where(p => p.Balances.LastOrDefault() == people.Max(x => x.Balances.LastOrDefault())).ToList();
+
             if (richestPerson.Count > 1)
                 return $"{GenerateNameString(richestPerson)} are the richest people. {ConvertBalanceToText(richestPerson.FirstOrDefault().Balances.LastOrDefault())}.";
             else
@@ -77,8 +76,10 @@ namespace BootCamp.Chapter
         {
             if (IsArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
+
             List<Person> people = DataToObject(peopleAndBalances);
-            var mostPoorPerson = people.Where(p => p.Balances.LastOrDefault() == people.Min(x => x.Balances.LastOrDefault())).ToList();            
+            var mostPoorPerson = people.Where(p => p.Balances.LastOrDefault() == people.Min(x => x.Balances.LastOrDefault())).ToList();
+
             if (mostPoorPerson.Count > 1)
                 return $"{GenerateNameString(mostPoorPerson)} have the least money. {ConvertBalanceToText(mostPoorPerson.FirstOrDefault().Balances.LastOrDefault())}.";
             else

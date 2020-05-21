@@ -38,10 +38,10 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string Build(string message, int padding)
         {
-            if (string.IsNullOrEmpty(message)) 
+            if (string.IsNullOrEmpty(message))
                 return "";
             var (stringArray, stringMaxLength) = SplitAndGetMaxLength(message);
-            var border = $"{CreateBorder(stringMaxLength + (padding *2))}{Environment.NewLine}";
+            var border = $"{CreateBorder(stringMaxLength + (padding * 2))}{Environment.NewLine}";
             var body = $"{BuildBody(stringArray, padding, stringMaxLength)}";
 
             var table = $"{border}{body}{border}";
@@ -64,7 +64,7 @@ namespace BootCamp.Chapter
         private static string CreateBorder(int length)
         {
             var border = new StringBuilder();
-            border.Append('+').Append('-', length).Append('+');            
+            border.Append('+').Append('-', length).Append('+');
             return border.ToString();
         }
 
@@ -94,13 +94,13 @@ namespace BootCamp.Chapter
         private static StringBuilder BuildMessage(string[] array, string emptySpace, int longestWord)
         {
             var message = new StringBuilder();
-            
+
             foreach (var words in array)
             {
                 string fillEmptySpace = string.Empty;
                 if (words.Length != longestWord)
                     fillEmptySpace = new StringBuilder().Append(' ', longestWord - words.Length).ToString();
-                
+
                 message.Append($"|{emptySpace}{words}{emptySpace}{fillEmptySpace}|{Environment.NewLine}");
             }
 

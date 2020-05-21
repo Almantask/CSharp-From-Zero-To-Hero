@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         {
             // Print each of the statistical output using Text Table with padding 3:
             // - FindHighestBalanceEver
-            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances),3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances), 3));
             // - FindPersonWithBiggestLoss
             Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances), 3));
             // - FindRichestPerson
