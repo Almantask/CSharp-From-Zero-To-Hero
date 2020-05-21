@@ -132,7 +132,7 @@ namespace BootCamp.Chapter1
             int[] arrayAddFirstIndex = array == null ? new int[1] : new int[array.Length + 1];
 
             arrayAddFirstIndex[0] = number;
-            for (int i = 0; i < (array == null ? 0 : array.Length) ; i++)
+            for (int i = 0; i < (array == null ? 0 : array.Length); i++)
             {
                 arrayAddFirstIndex[i + 1] = array[i];
             }
@@ -169,7 +169,33 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
+            int[] arrayAddSpecifiedIndex = array == null ? new int[1] : new int[array.Length + 1];
+
+            if (index >= 0 && index <= (array == null ? 0 : array.Length))
+            {
+                if (array == null || array.Length == 0)
+                {
+                    arrayAddSpecifiedIndex[0] = number;
+                    return arrayAddSpecifiedIndex;
+                }
+
+                if (index > 0)
+                {
+                    for (int i = 0; i < index; i++)
+                    {
+                        arrayAddSpecifiedIndex[i] = array[i];
+                    }
+                }
+
+                arrayAddSpecifiedIndex[index] = number;
+
+                for (int i = index; i < array.Length; i++)
+                {
+                    arrayAddSpecifiedIndex[i + 1] = array[i];
+                }
+                return arrayAddSpecifiedIndex;
+            }
+
             return array;
         }
     }
