@@ -9,14 +9,6 @@ namespace BootCamp.Chapter.Tests
 {
     public class Tests
     {
-        //TODO Add test for DrawRandom
-        /*
-         * all public methodes.
-            Card DrawFromTop();
-            Card DrawRandom();
-            Card DrawAt(int index);
-            void Shuffle();
-         */
         private static List<Card> FullDeckOfCards()
         {
             List<Card> cardsDeck = new List<Card>();
