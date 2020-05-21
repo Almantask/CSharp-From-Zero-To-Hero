@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootCamp.Chapter", "Src\Boo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootCamp.Chapter.Tests", "Tests\BootCamp.Chapter.Tests\BootCamp.Chapter.Tests.csproj", "{955C76C7-582C-4C12-A253-0551A59E630A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork1", "..\..\..\Desktop\Home work\HomeWork1\HomeWork1\HomeWork1.csproj", "{CD362CDB-6760-4CFE-A000-D3C359C08C34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{955C76C7-582C-4C12-A253-0551A59E630A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{955C76C7-582C-4C12-A253-0551A59E630A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{955C76C7-582C-4C12-A253-0551A59E630A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD362CDB-6760-4CFE-A000-D3C359C08C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD362CDB-6760-4CFE-A000-D3C359C08C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD362CDB-6760-4CFE-A000-D3C359C08C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD362CDB-6760-4CFE-A000-D3C359C08C34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
