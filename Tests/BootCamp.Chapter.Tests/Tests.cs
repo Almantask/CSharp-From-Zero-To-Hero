@@ -81,6 +81,21 @@ namespace BootCamp.Chapter.Tests
             //pickedCard.Should().Be(cards[index]);
         }
 
+        [Fact]
+        public void Deck_With_1_Card_Should_After_DrawFromTop_Throw_OutOfCardsException_When_DrawAt_0()
+        {
+            //Test if DrawFromTop actually removes a card from deck.
+
+            Card lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
+            List<Card> cards = new List<Card>();
+            cards.Add(lastCard);
+            IDeck deck = new Deck(cards);
+
+            deck.DrawFromTop();
+            Action action = () => deck.DrawAt(0);
+
+            action.Should().Throw<OutOfCardsException>();
+        }
 
         [Fact]
         public void DrawFromTop_Should_Give_Last_Card_In_List()
