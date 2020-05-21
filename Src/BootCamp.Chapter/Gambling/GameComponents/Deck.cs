@@ -39,9 +39,14 @@ namespace BootCamp.Chapter.Gambling
 
         private void ValidateDeckSize(int index)
         {
-            if (index >= _cards.Count)
+            
+            if (_cards.Count == 0)
             {
-                throw new OutOfCardsException(index, _cards.Count);
+                throw new OutOfCardsException();
+            }
+            if (index < 0 || index >= _cards.Count)
+            {
+                throw new IndexOutOfRangeException($"Cant pick a card at index {index} becouse deck size is {_cards.Count} and cant be less than 0");
             }
         }
     }

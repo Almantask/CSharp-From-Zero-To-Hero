@@ -63,7 +63,7 @@ namespace BootCamp.Chapter.Tests
             Action action = () => deck.DrawAt(index);
 
             //Assert
-            action.Should().Throw<ArgumentOutOfRangeException>();
+            action.Should().Throw<IndexOutOfRangeException>();
         }
 
         [Fact]
@@ -97,6 +97,7 @@ namespace BootCamp.Chapter.Tests
             //Assert
             cardDrawn.Should().Be(lastCard);
         }
+
         [Fact]
         public void Shuffle_Should_Return_Different_Order()
         {
