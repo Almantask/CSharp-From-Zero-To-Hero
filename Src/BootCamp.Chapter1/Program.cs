@@ -8,9 +8,34 @@ namespace BootCamp.Chapter1
     {
         static void Main(string[] args)
         {
-            
+
+            var index = 3;
+            var array = new int[] {1, 0, -1, 3};
+            if (array == null || array.Length == 0) Console.WriteLine("Array es null o esta vacio");
+
+            var tempArray = array.Length - 1;
+            var arrayRemovedAtIndex = new int[tempArray];
+
+            for (var i = 0; i < tempArray; i++)
+            {
+                if (i < array.Length)
+                    arrayRemovedAtIndex[i] = array[i];
+                if (i >= index)
+                    arrayRemovedAtIndex[i] = array[i + 1];
+
+            }
+
+            foreach (var i in arrayRemovedAtIndex)
+            {
+                Console.WriteLine($"tempArray es {i}");
+            }
 
         }
+
+
+
+
+        
 
         public static void Sort(int[] array)
         {
@@ -76,18 +101,29 @@ namespace BootCamp.Chapter1
         public static int[] InsertAt(int[] array, int number, int index)
         {
 
-            if (array == null || array.Length == 0) return array;
+            if (array == null || array.Length == 0)
+            {
+                if (array != null && array.Length == 0 && index != 0)
+                {
+                    return array;
+                }
+
+                var newArray = new[] {number};
+                return newArray;
+            }
+      
             var tempArray = new int[array.Length + 1];
+                     
             for (var i = 0; i < array.Length; i++)
-            { tempArray[i] = array[i];
-                if (i < index - 1)
-                    tempArray[i] = array.Length - 1;
-                else if(array[i] == index - 1)
+            {
+                if (i < index)
+                    tempArray[i] = array[i];
+                else if (i == index)
                     tempArray[i] = number;
                 else
                     tempArray[i] = array[i - 1];
             }
-
+            
             return tempArray;
         }
     }
