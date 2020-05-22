@@ -1,4 +1,4 @@
-﻿<<<<<<< Chapter1/Homework/1And2
+﻿﻿<<<<<<< Chapter1/Homework/1And2
 ﻿# C#: From Zero To Hero 
 # The vision
 "Programming is hard". Yes, but not harder than running a marathon for a person has never run. It's not harder than 
@@ -86,4 +86,3 @@ Read name, surename, age, weight (in kg) and height (in cm) from console.
   * Give your pull request a meaningful title and description.
   * Click create.
 * Pass all Pull Request checks (mentor review, Codacy review) 
->>>>>>> Chapter1/Homework/1And2
