@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             string firstName = "Mert Efe";
             string surName = "Isikgor";
