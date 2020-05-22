@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
             int age = 24;
             double weight = 85; 
             double height = 1.81; 
-            double BMI = weight / (height * height);
+            double BMI = weight / (height * height); 
 
             string name = "Cagan";
             string lastName = "Satir";
