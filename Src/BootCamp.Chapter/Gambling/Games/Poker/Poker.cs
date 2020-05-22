@@ -39,7 +39,7 @@ namespace BootCamp.Chapter.Gambling.Poker
                 playersWithCombos.Add(player, combo);
             }
 
-            var playersByScore = playersWithCombos.OrderByDescending(kvp => kvp.Value);
+            var playersByScore = playersWithCombos.OrderByDescending(kvp => kvp.Key);
             var highestScore = playersByScore.First().Value;
 
             var winners = playersByScore.Where(p => p.Value == highestScore)

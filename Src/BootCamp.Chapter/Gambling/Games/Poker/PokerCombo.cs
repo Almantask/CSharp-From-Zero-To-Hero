@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace BootCamp.Chapter.Gambling.Poker
@@ -9,9 +10,9 @@ namespace BootCamp.Chapter.Gambling.Poker
     /// Other combos have a score, which is based on how high the cards make them.
     /// If combo is not existing, score is 0.
     /// </summary>
-    public class PokerCombo
+    public class PokerCombo : IComparable<PokerCombo>, IComparable
     {
-        public enum Sets
+        public enum Sets 
         {
             HighCard,
             Pair,
@@ -51,12 +52,12 @@ namespace BootCamp.Chapter.Gambling.Poker
 
         public static int CalculateRoyalFlushScore(IEnumerable<Card> cards)
         {
-            return 0;
+            return 12;
         }
 
         public static int CalculateStraightFlushScore(IEnumerable<Card> cards)
         {
-            return 0;
+            return 11;
         }
 
         public static int CalculateFourOfAKindScore(IEnumerable<Card> cards)
@@ -97,6 +98,38 @@ namespace BootCamp.Chapter.Gambling.Poker
         public static int CalculateHighCardScore(IEnumerable<Card> cards)
         {
             return 0;
+        }
+
+        public int CompareTo(PokerCombo other)some
+        {
+            if (this.Score < other.Score)
+            {
+                return -1;
+            }
+            
+            if (this.Score == other.Score)
+            {
+                return 0; 
+            }
+
+            return 1; 
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PokerCombo combo &&
+                   Set == combo.Set &&
+                   Score == combo.Score;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Set, Score);
+        }
+
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace BootCamp.Chapter.Gambling
     public abstract class CardGame : IGame
     {
         public IReadOnlyList<Player> Players => _players;
-        private readonly List<Player> _players;
+        private readonly List<Player> _players = new List<Player>();
 
         public void AddPlayer(Player player)
         {
