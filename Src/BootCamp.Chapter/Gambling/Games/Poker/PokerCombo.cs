@@ -100,7 +100,7 @@ namespace BootCamp.Chapter.Gambling.Poker
             return 0;
         }
 
-        public int CompareTo(PokerCombo other)some
+        public int CompareTo(PokerCombo other)
         {
             if (this.Score < other.Score)
             {
