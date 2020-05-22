@@ -74,15 +74,6 @@ namespace BootCamp.Chapter.Tests
             newCards.Should().Contain(cards).And.NotEqual(cards);
         }
 
-        private static IDeck BuildDeckOfCards()
-        {
-            List<Card> cards = FullDeckOfCards();
-            List<Card> cards2 = FullDeckOfCards();
-            var cards3 = cards.Concat(cards2);
-
-            return new Gambling.Deck(cards3);
-        }
-
         [Fact]
         public void DrawAt_Index_Within_Range_should_Give_Correct_Card()
         {
@@ -147,7 +138,7 @@ namespace BootCamp.Chapter.Tests
             shuffledDeck.Reverse();
 
             //Assert
-            Assert.NotEqual(shuffledDeck, cards);
+            shuffledDeck.Should().Contain(cards).And.NotEqual(cards);
         }
     }
 }
