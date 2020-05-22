@@ -2,6 +2,7 @@
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -56,6 +57,30 @@ namespace BootCamp.Chapter.Tests
 
             //Assert
             action.Should().Throw<IndexOutOfRangeException>();
+        }
+
+        [Fact]
+        public void DrawRandom_52_Times_Test()
+        {
+            List<Card> cards = FullDeckOfCards();
+            IDeck deck = new Gambling.Deck(cards);
+            List<Card> newCards = new List<Card>();
+
+            for (int i = 0; i < 52; i++)
+            {
+                newCards.Add(deck.DrawRandom());
+            }
+
+            newCards.Should().Contain(cards).And.NotEqual(cards);
+        }
+
+        private static IDeck BuildDeckOfCards()
+        {
+            List<Card> cards = FullDeckOfCards();
+            List<Card> cards2 = FullDeckOfCards();
+            var cards3 = cards.Concat(cards2);
+
+            return new Gambling.Deck(cards3);
         }
 
         [Fact]
