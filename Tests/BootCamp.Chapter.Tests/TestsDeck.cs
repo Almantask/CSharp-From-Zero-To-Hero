@@ -8,7 +8,7 @@ using Xunit;
 
 namespace BootCamp.Chapter.Tests
 {
-    public class Deck
+    public class TestsDeck
     {
         private static List<Card> FullDeckOfCards()
         {
