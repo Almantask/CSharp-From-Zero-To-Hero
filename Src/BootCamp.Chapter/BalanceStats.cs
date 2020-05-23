@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace BootCamp.Chapter
 {
@@ -13,6 +14,7 @@ namespace BootCamp.Chapter
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             decimal highestBalance = 0;
+
             foreach (Person person in GetPeople(peopleAndBalances))
             {
                 if (person.Balance.Max() > highestBalance)
@@ -28,7 +30,21 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            decimal biggestLoss = 0;
+            string personWithBiggestLoss = null;
+            foreach (Person person in GetPeople(peopleAndBalances))
+            {
+                for (int i = 1; i < person.Balance.Count; i++)
+                {
+                    decimal currentLoss = person.Balance[i - 1] - person.Balance[i];
+                    if (currentLoss > biggestLoss)
+                    {
+                        biggestLoss = currentLoss;
+                        personWithBiggestLoss = person.Name;
+                    }
+                }
+            }
+            return personWithBiggestLoss;
         }
 
         /// <summary>
