@@ -52,7 +52,15 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+           List<Person> people = GetPeople(peopleAndBalances);
+           foreach (Person person in people)
+           {
+               if (person.Balance.Contains(decimal.Parse(FindHighestBalanceEver(peopleAndBalances))))
+               {
+                   return person.Name;
+               }
+           }
+           return "";
         }
 
         /// <summary>
