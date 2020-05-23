@@ -11,9 +11,10 @@ namespace BootCamp.Chapter
             // - FindPersonWithBiggestLoss
             // - FindRichestPerson
             // - FindMostPoorPerson
-            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances), 3));
-            BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances);
-            BalanceStats.FindRichestPerson(PeoplesBalances.Balances);
+            TextTable.Build(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances), 3);
+            TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances), 3);
+            TextTable.Build(BalanceStats.FindRichestPerson(PeoplesBalances.Balances), 3);
+            TextTable.Build(BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances), 3);
 
         }
     }

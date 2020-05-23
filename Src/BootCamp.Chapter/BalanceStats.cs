@@ -107,17 +107,27 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            decimal lowerBalance = 0;
-            string mostPoorPerson = "";
+            if (isArrayNullOrEmpty(peopleAndBalances))
+                return "N/A.";
+            var ListOfPeople = GetPeople(peopleAndBalances);
+
+            decimal lowerBalance = GetPeople(peopleAndBalances)[0].Balance[^1];
+            List<string> mostPoorPerson = new List<string>();
 
             foreach (Person person in GetPeople(peopleAndBalances))
             {
                 if (person.Balance[^1] < lowerBalance)
                 {
                     lowerBalance = person.Balance[^1];
+                    mostPoorPerson.Clear();
+                    mostPoorPerson.Add(person.Name);
+                }
+                else if (person.Balance[^1] == lowerBalance)
+                {
+                    mostPoorPerson.Add(person.Name);
                 }
             }
-            return mostPoorPerson;
+            return $"{FormatName(mostPoorPerson)} {(mostPoorPerson.Count > 1 ? "have the least money." : "has the least money.")} {(lowerBalance >= 0 ? null : "-")}¤{(Math.Abs(lowerBalance).ToString())}.";
         }
 
         public static List<Person> GetPeople(string[] peopleAndBalances)
