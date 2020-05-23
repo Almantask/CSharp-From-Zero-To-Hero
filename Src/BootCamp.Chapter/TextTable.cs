@@ -153,8 +153,6 @@ namespace BootCamp.Chapter
             {
                 return words[0].Length;
             }
-            
-
             return 0;
         }
     }

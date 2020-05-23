@@ -1,4 +1,9 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
@@ -7,7 +12,15 @@
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            decimal highestBalance = 0;
+            foreach (Person person in GetPeople(peopleAndBalances))
+            {
+                if (person.Balance.Max() > highestBalance)
+                {
+                    highestBalance = person.Balance.Max();
+                }
+            }
+            return highestBalance.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -32,6 +45,27 @@
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             return "";
+        }
+
+        public static List<Person> GetPeople(string[] peopleAndBalances)
+        {
+            List<Person> People = new List<Person>();
+            foreach (string peopleAndBalance in peopleAndBalances)
+            {
+                var irregularArray = peopleAndBalance.Split(',');
+                Person person = new Person();
+                person.Name = irregularArray[0];
+                for (int i = 1; i < irregularArray.Length; i++)
+                {
+                    decimal balance;
+                    if (decimal.TryParse(irregularArray[i], NumberStyles.Any, new CultureInfo("en-US"), out balance))
+                    {
+                        person.Balance.Add(balance);
+                    }
+                }
+                People.Add(person);
+            }
+            return People;
         }
     }
 }
