@@ -11,24 +11,19 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if (array != null)
+            if (array == null)
+                return;
+            
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                int temp;
-
-                for (int i = 0; i < array.Length - 1; i++)
+                for (int j = (i + 1); j < array.Length; j++)
                 {
-                    for (int j = (i + 1); j < array.Length; j++)
+                    if (array[i] > array[j])
                     {
-                        if (array[i] > array[j])
-                        {
-                            temp = array[i];
-                            array[i] = array[j];
-                            array[j] = temp;
-                        }
+                        Swap(array, i, j);
                     }
                 }
             }
-
         }
 
         /// <summary>
@@ -61,17 +56,11 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array != null && array.Length > 0)
-            {
-                int[] arrayWithoutLastIndex = new int[array.Length - 1];
-                for (int i = 0; i < array.Length - 1; i++)
-                {
-                    arrayWithoutLastIndex[i] = array[i];
-                }
-                return arrayWithoutLastIndex;
-            }
+            if (array == null)
+                return null;
+            
+            return RemoveAt(array, array.Length - 1);
 
-            return array;
         }
 
         /// <summary>
@@ -80,17 +69,9 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array != null && array.Length > 0)
-            {
-                int[] arrayWithoutLastIndex = new int[array.Length - 1];
-                for (int i = array.Length - 2; i >= 0; i--)
-                {
-                    arrayWithoutLastIndex[i] = array[i + 1];
-                }
-                return arrayWithoutLastIndex;
-            }
-
-            return array;
+            if (array == null)
+                return null;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -129,15 +110,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            int[] arrayAddFirstIndex = array == null ? new int[1] : new int[array.Length + 1];
-
-            arrayAddFirstIndex[0] = number;
-            for (int i = 0; i < (array == null ? 0 : array.Length); i++)
-            {
-                arrayAddFirstIndex[i + 1] = array[i];
-            }
-
-            return arrayAddFirstIndex;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -148,16 +121,10 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            int[] arrayAddLastIndex = array == null ? new int[1] : new int[array.Length + 1];
+            if (array == null)
+                return new[] {number};
 
-            arrayAddLastIndex[array == null ? 0 : (arrayAddLastIndex.Length - 1)] = number;
-
-            for (int i = 0; i < (array == null ? 0 : array.Length); i++)
-            {
-                arrayAddLastIndex[i] = array[i];
-            }
-
-            return arrayAddLastIndex;
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -197,6 +164,13 @@ namespace BootCamp.Chapter1
             }
 
             return array;
+        }
+        private static void Swap(int[] array, int i, int j)
+        {
+            int temp;
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
         }
     }
 }
