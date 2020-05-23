@@ -14,15 +14,48 @@ namespace BootCamp.Chapter
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             decimal highestBalance = 0;
+            List<string> Name = new List<string>();
+
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+                return "N/A.";
 
             foreach (Person person in GetPeople(peopleAndBalances))
             {
                 if (person.Balance.Max() > highestBalance)
                 {
                     highestBalance = person.Balance.Max();
+                    Name.Clear();
+                    Name.Add(person.Name);
+                }
+                else if (person.Balance.Max() == highestBalance)
+                {
+                    Name.Add(person.Name);
                 }
             }
-            return highestBalance.ToString(CultureInfo.InvariantCulture);
+
+            return $"{FormatName(Name)} had the most money ever. ¤{highestBalance.ToString()}.";
+        }
+
+        private static string FormatName(List<string> Name)
+        {
+            string formattedName = "";
+            if (Name.Count == 1)
+                return Name[0];
+            
+            for (int i = 0; i < Name.Count; i++)
+            {
+                formattedName += Name[i];
+                if (Name.Count - 2 == i)
+                {
+                    formattedName += " and ";
+                }
+                else if (Name.Count -2 > i)
+                {
+                    formattedName += ", ";
+                }
+            }
+
+            return formattedName;
         }
 
         /// <summary>
@@ -44,7 +77,7 @@ namespace BootCamp.Chapter
                     }
                 }
             }
-            return personWithBiggestLoss;
+            return personWithBiggestLoss + biggestLoss;
         }
 
         /// <summary>
@@ -52,15 +85,18 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-           List<Person> people = GetPeople(peopleAndBalances);
-           foreach (Person person in people)
-           {
-               if (person.Balance.Contains(decimal.Parse(FindHighestBalanceEver(peopleAndBalances))))
-               {
-                   return person.Name;
-               }
-           }
-           return "";
+            decimal highestBalance = 0;
+            string richestPerson = "";
+
+            foreach (Person person in GetPeople(peopleAndBalances))
+            {
+                if (person.Balance[^1] > highestBalance)
+                {
+                    highestBalance = person.Balance[^1];
+                    richestPerson = person.Name;
+                }
+            }
+            return richestPerson;
         }
 
         /// <summary>
@@ -68,7 +104,17 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            decimal lowerBalance = 0;
+            string mostPoorPerson = "";
+
+            foreach (Person person in GetPeople(peopleAndBalances))
+            {
+                if (person.Balance[^1] < lowerBalance)
+                {
+                    lowerBalance = person.Balance[^1];
+                }
+            }
+            return mostPoorPerson;
         }
 
         public static List<Person> GetPeople(string[] peopleAndBalances)
