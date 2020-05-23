@@ -16,7 +16,20 @@ namespace BootCamp.Chapter1
         public static void Sort(int[] array)
         {
             if (array == null || array.Length == 0) return;
-            Array.Sort(array);
+            
+            for (int i = 0; i <= array.Length -1;i++)
+            {
+                for (int j = i+1; j < array.Length;j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                       int newArray = array[i];
+                        array[i] = array[j];
+                        array[j] = newArray;
+                    }
+                }
+            }
+
         }
 
         /// <summary>
@@ -27,7 +40,13 @@ namespace BootCamp.Chapter1
         public static void Reverse(int[] array)
         {
             if (array == null || array.Length == 0) return;
-            Array.Reverse(array);
+            for (int i = 0; i < array.Length /2 ; i++)
+            {
+                int newArray = array[i];
+                array[i] = array[array.Length - i - 1];
+                array[array.Length - i - 1] = newArray;
+            }
+
         }
 
         /// <summary>
