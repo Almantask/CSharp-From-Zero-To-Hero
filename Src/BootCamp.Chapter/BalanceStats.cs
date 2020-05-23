@@ -13,11 +13,11 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
+            if (isArrayNullOrEmpty(peopleAndBalances))
+                return "N/A.";
+
             decimal highestBalance = 0;
             List<string> Name = new List<string>();
-
-            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
-                return "N/A.";
 
             foreach (Person person in GetPeople(peopleAndBalances))
             {
@@ -36,37 +36,27 @@ namespace BootCamp.Chapter
             return $"{FormatName(Name)} had the most money ever. ¤{highestBalance.ToString()}.";
         }
 
-        private static string FormatName(List<string> Name)
-        {
-            string formattedName = "";
-            if (Name.Count == 1)
-                return Name[0];
-            
-            for (int i = 0; i < Name.Count; i++)
-            {
-                formattedName += Name[i];
-                if (Name.Count - 2 == i)
-                {
-                    formattedName += " and ";
-                }
-                else if (Name.Count -2 > i)
-                {
-                    formattedName += ", ";
-                }
-            }
-
-            return formattedName;
-        }
+        
 
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
+            if (isArrayNullOrEmpty(peopleAndBalances))
+                return "N/A.";
+
             decimal biggestLoss = 0;
             string personWithBiggestLoss = null;
+            bool enoughBalance = false;
+
             foreach (Person person in GetPeople(peopleAndBalances))
             {
+                if (person.Balance.Count > 1)
+                {
+                    enoughBalance = true;
+                }
+
                 for (int i = 1; i < person.Balance.Count; i++)
                 {
                     decimal currentLoss = person.Balance[i - 1] - person.Balance[i];
@@ -77,7 +67,11 @@ namespace BootCamp.Chapter
                     }
                 }
             }
-            return personWithBiggestLoss + biggestLoss;
+
+            if (!enoughBalance)
+                return "N/A.";
+
+            return $"{personWithBiggestLoss} lost the most money. -¤{Math.Abs(biggestLoss)}.";
         }
 
         /// <summary>
@@ -85,18 +79,27 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
+            if (isArrayNullOrEmpty(peopleAndBalances))
+                return "N/A.";
+
             decimal highestBalance = 0;
-            string richestPerson = "";
+            List<string> RichestPerson = new List<string>();
 
             foreach (Person person in GetPeople(peopleAndBalances))
             {
                 if (person.Balance[^1] > highestBalance)
                 {
                     highestBalance = person.Balance[^1];
-                    richestPerson = person.Name;
+                    RichestPerson.Clear();
+
+                    RichestPerson.Add(person.Name);
+                }
+                else if (person.Balance[^1] == highestBalance)
+                {
+                    RichestPerson.Add(person.Name);
                 }
             }
-            return richestPerson;
+            return $"{FormatName(RichestPerson)} {(RichestPerson.Count > 1 ? "are the richest people." : "is the richest person.")} ¤{highestBalance.ToString()}.";
         }
 
         /// <summary>
@@ -136,6 +139,33 @@ namespace BootCamp.Chapter
                 People.Add(person);
             }
             return People;
+        }
+
+        private static string FormatName(List<string> Name)
+        {
+            string formattedName = "";
+            if (Name.Count == 1)
+                return Name[0];
+
+            for (int i = 0; i < Name.Count; i++)
+            {
+                formattedName += Name[i];
+                if (Name.Count - 2 == i)
+                {
+                    formattedName += " and ";
+                }
+                else if (Name.Count - 2 > i)
+                {
+                    formattedName += ", ";
+                }
+            }
+
+            return formattedName;
+        }
+
+        private static bool isArrayNullOrEmpty(string[] peopleAndBalances)
+        {
+            return peopleAndBalances == null || peopleAndBalances.Length == 0;
         }
     }
 }
