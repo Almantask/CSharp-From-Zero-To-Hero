@@ -6,7 +6,7 @@ namespace BootCamp.Chapter1
     {
         static void Main(string[] args)
         {
-            int[] arr = { 1, 5, 7, 3, 6, 9, 4, 2 };
+            int[] arr = new int[0];
             OutputArr(arr);
 
             ArrayOperations.Sort(arr);
