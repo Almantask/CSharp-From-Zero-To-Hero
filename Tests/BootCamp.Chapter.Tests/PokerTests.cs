@@ -1,5 +1,6 @@
 ﻿using BootCamp.Chapter.Gambling;
 using BootCamp.Chapter.Gambling.Poker;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,6 +30,12 @@ namespace BootCamp.Chapter.Tests
             var game = new Poker();
             game.AddPlayer(player1);
             game.AddPlayer(player2);
+
+            var cardsPlayer1 = player1.Hand.Reveal(); 
+
+            //var PokerComboMock = new Mock<PokerCombo>();
+            //PokerComboMock.Setup(foo => foo.CalculateRoyalFlushScore()).Returns(12);
+            //PokerComboMock.Setup(foo => foo.CalculateStraightFlushScore()).Returns(11); 
 
             var expected = new List<Player> { player1 }; 
             

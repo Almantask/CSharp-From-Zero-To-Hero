@@ -39,13 +39,13 @@ namespace BootCamp.Chapter.Gambling.Poker
                 playersWithCombos.Add(player, combo);
             }
 
-            var playersByScore = playersWithCombos.OrderByDescending(kvp => kvp.Key);
+            var playersByScore = playersWithCombos.OrderByDescending(kvp => kvp.Value);
             var highestScore = playersByScore.First().Value;
 
             var winners = playersByScore.Where(p => p.Value == highestScore)
                                         .Select(p => p.Key);
             
-            return winners;
+            return winners.ToList();
         }
 
         private PokerCombo FindCombo(IEnumerable<Card> cards)
