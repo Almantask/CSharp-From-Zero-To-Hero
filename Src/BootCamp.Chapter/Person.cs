@@ -7,11 +7,11 @@ namespace BootCamp.Chapter
     public class Person
     {
         public string Name { get; set; }
-        public List<decimal> Balance { get; set; }
+        public decimal[] Balance { get; set; }
 
         public Person()
         {
-            Balance = new List<decimal>();
+            Balance = new decimal[20];
         }
     }
 }

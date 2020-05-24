@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.CompilerServices;
+
 
 namespace BootCamp.Chapter
 {
@@ -17,26 +16,25 @@ namespace BootCamp.Chapter
                 return "N/A.";
 
             decimal highestBalance = 0;
-            List<string> Name = new List<string>();
+            Person[] peopleArray = GetPeopleArray(peopleAndBalances);
+            string[] NameArray = new string[20];
 
-            foreach (Person person in GetPeople(peopleAndBalances))
+            for (int i = 0; i < peopleArray.Length; i++)
             {
-                if (person.Balance.Max() > highestBalance)
+                if (peopleArray[i].Balance.Max() > highestBalance)
                 {
-                    highestBalance = person.Balance.Max();
-                    Name.Clear();
-                    Name.Add(person.Name);
+                    highestBalance = peopleArray[i].Balance.Max();
+                    ClearNameArray(NameArray);
+                    AddName(peopleArray[i].Name, NameArray);
                 }
-                else if (person.Balance.Max() == highestBalance)
+                else if (peopleArray[i].Balance.Max() == highestBalance)
                 {
-                    Name.Add(person.Name);
+                    AddName(peopleArray[i].Name, NameArray);
                 }
             }
 
-            return $"{FormatName(Name)} had the most money ever. ¤{highestBalance.ToString()}.";
+            return $"{FormatNameArray(NameArray)} had the most money ever. ¤{highestBalance.ToString()}.";
         }
-
-        
 
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
@@ -49,25 +47,34 @@ namespace BootCamp.Chapter
             decimal biggestLoss = 0;
             string personWithBiggestLoss = null;
             bool enoughBalance = false;
-
-            foreach (Person person in GetPeople(peopleAndBalances))
+            Person[] peopleArray = GetPeopleArray(peopleAndBalances);
+            
+            for (int i = 0; i < peopleArray.Length; i++)
             {
-                if (person.Balance.Count > 1)
+                int balanceSize = peopleAndBalances[i].Split().Length;
+
+                if (peopleAndBalances[i].Split().Length >= 3)
+                {
+                    enoughBalance = true;
+                }
+                if (peopleArray[i].Balance[i+1] != 0)
                 {
                     enoughBalance = true;
                 }
 
-                for (int i = 1; i < person.Balance.Count; i++)
+                for (int j = 1; j < balanceSize -1; j++)
                 {
-                    decimal currentLoss = person.Balance[i - 1] - person.Balance[i];
+                    if (peopleArray[i].Balance[j] == 0 && peopleArray[i].Balance[j+1] == 0 && balanceSize < 3 )
+                        break;
+                    
+                    decimal currentLoss = peopleArray[i].Balance[j - 1] - peopleArray[i].Balance[j];
                     if (currentLoss > biggestLoss)
                     {
                         biggestLoss = currentLoss;
-                        personWithBiggestLoss = person.Name;
+                        personWithBiggestLoss = peopleArray[i].Name;
                     }
                 }
             }
-
             if (!enoughBalance)
                 return "N/A.";
 
@@ -83,23 +90,35 @@ namespace BootCamp.Chapter
                 return "N/A.";
 
             decimal highestBalance = 0;
-            List<string> RichestPerson = new List<string>();
+            Person[] peopleArray = GetPeopleArray(peopleAndBalances);
 
-            foreach (Person person in GetPeople(peopleAndBalances))
+            string[] richestPersonArray = new string[20];
+
+            for (int i = 0; i < peopleArray.Length; i++)
             {
-                if (person.Balance[^1] > highestBalance)
+                int balanceSize = peopleAndBalances[i].Split(',').Length - 1;
+                if (peopleArray[i].Balance[balanceSize -1] > highestBalance)
                 {
-                    highestBalance = person.Balance[^1];
-                    RichestPerson.Clear();
-
-                    RichestPerson.Add(person.Name);
+                    highestBalance = peopleArray[i].Balance[balanceSize -1];
+                    ClearNameArray(richestPersonArray);
+                    AddName(peopleArray[i].Name, richestPersonArray);
                 }
-                else if (person.Balance[^1] == highestBalance)
+                else if (peopleArray[i].Balance[balanceSize - 1] == highestBalance)
                 {
-                    RichestPerson.Add(person.Name);
+                    AddName(peopleArray[i].Name, richestPersonArray);
                 }
             }
-            return $"{FormatName(RichestPerson)} {(RichestPerson.Count > 1 ? "are the richest people." : "is the richest person.")} ¤{highestBalance.ToString()}.";
+
+            int richestArraySize = 0;
+            for (int i = 0; i < richestPersonArray.Length; i++)
+            {
+                if (richestPersonArray[i+1] == "" || richestPersonArray[i+1] == null)
+                {
+                    richestArraySize = i + 1;
+                    break;
+                }
+            } 
+            return $"{FormatNameArray(richestPersonArray)} {(richestArraySize > 1 ? "are the richest people." : "is the richest person.")} ¤{highestBalance.ToString()}.";
         }
 
         /// <summary>
@@ -109,73 +128,111 @@ namespace BootCamp.Chapter
         {
             if (isArrayNullOrEmpty(peopleAndBalances))
                 return "N/A.";
-            var ListOfPeople = GetPeople(peopleAndBalances);
+            
+            var peopleArray = GetPeopleArray(peopleAndBalances);
+            int balanceSize = peopleAndBalances[0].Split(',').Length - 1;
+            decimal lowerBalance = peopleArray[0].Balance[balanceSize - 1];
+            string[] mostPoorPersonArray = new string[20];
 
-            decimal lowerBalance = GetPeople(peopleAndBalances)[0].Balance[^1];
-            List<string> mostPoorPerson = new List<string>();
-
-            foreach (Person person in GetPeople(peopleAndBalances))
+            for (int i = 0; i < peopleArray.Length; i++)
             {
-                if (person.Balance[^1] < lowerBalance)
+                int internalBalanceSize = peopleAndBalances[i].Split(',').Length - 1;
+
+                if (peopleArray[i].Balance[internalBalanceSize -1] < lowerBalance)
                 {
-                    lowerBalance = person.Balance[^1];
-                    mostPoorPerson.Clear();
-                    mostPoorPerson.Add(person.Name);
+                    lowerBalance = peopleArray[i].Balance[internalBalanceSize - 1];
+                    ClearNameArray(mostPoorPersonArray);
+                    AddName(peopleArray[i].Name, mostPoorPersonArray);
                 }
-                else if (person.Balance[^1] == lowerBalance)
+                else if (peopleArray[i].Balance[internalBalanceSize - 1] == lowerBalance)
                 {
-                    mostPoorPerson.Add(person.Name);
+                    AddName(peopleArray[i].Name, mostPoorPersonArray);
                 }
             }
-            return $"{FormatName(mostPoorPerson)} {(mostPoorPerson.Count > 1 ? "have the least money." : "has the least money.")} {(lowerBalance >= 0 ? null : "-")}¤{(Math.Abs(lowerBalance).ToString())}.";
+
+            int mostPoorArraySize = 0;
+            for (int i = 0; i < mostPoorPersonArray.Length; i++)
+            {
+                if (mostPoorPersonArray[i + 1] == "" || mostPoorPersonArray[i + 1] == null)
+                {
+                    mostPoorArraySize = i + 1;
+                    break;
+                }
+            }
+
+            return $"{FormatNameArray(mostPoorPersonArray)} {(mostPoorArraySize > 1 ? "have the least money." : "has the least money.")} {(lowerBalance >= 0 ? null : "-")}¤{(Math.Abs(lowerBalance).ToString())}.";
         }
 
-        public static List<Person> GetPeople(string[] peopleAndBalances)
+        public static Person[] GetPeopleArray(string[] peopleAndBalances)
         {
-            List<Person> People = new List<Person>();
-            foreach (string peopleAndBalance in peopleAndBalances)
+            Person[] People = new Person[peopleAndBalances.Length];
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var irregularArray = peopleAndBalance.Split(',');
+                var irregularArray = peopleAndBalances[i].Split(',');
                 Person person = new Person();
                 person.Name = irregularArray[0];
-                for (int i = 1; i < irregularArray.Length; i++)
+
+                for (int j = 1; j < irregularArray.Length; j++)
                 {
                     decimal balance;
-                    if (decimal.TryParse(irregularArray[i], NumberStyles.Any, new CultureInfo("en-US"), out balance))
+                    if (decimal.TryParse(irregularArray[j], NumberStyles.Any, new CultureInfo("en-US"), out balance))
                     {
-                        person.Balance.Add(balance);
+                        person.Balance[j - 1] = balance;
                     }
                 }
-                People.Add(person);
+
+                People[i] = person;
             }
+
             return People;
         }
-
-        private static string FormatName(List<string> Name)
+        
+        private static string FormatNameArray(string[] nameArray)
         {
+            if (nameArray[1] == "" || nameArray[1] == null)
+                return nameArray[0];
             string formattedName = "";
-            if (Name.Count == 1)
-                return Name[0];
 
-            for (int i = 0; i < Name.Count; i++)
+            for (int i = 0; i < nameArray.Length; i++)
             {
-                formattedName += Name[i];
-                if (Name.Count - 2 == i)
+                formattedName += nameArray[i];
+                if (nameArray[i + 2] == "" || nameArray[i+2] == null)
                 {
-                    formattedName += " and ";
+                    formattedName += $" and {nameArray[i + 1]}";
+                    return formattedName;
                 }
-                else if (Name.Count - 2 > i)
+                else if (nameArray[i+1] != "")
                 {
                     formattedName += ", ";
                 }
             }
-
             return formattedName;
         }
 
         private static bool isArrayNullOrEmpty(string[] peopleAndBalances)
         {
             return peopleAndBalances == null || peopleAndBalances.Length == 0;
+        }
+
+        private static void AddName(string Name, string[] nameArray)
+        {
+            for (int i = 0; i < nameArray.Length; i++)
+            {
+                if (nameArray[i] == "" || nameArray[i] == null)
+                {
+                    nameArray[i] = Name;
+                    return;
+                }
+            }
+        }
+
+        private static void ClearNameArray(string[] nameArray)
+        {
+            for (int i = 0; i < nameArray.Length; i++)
+            {
+                nameArray[i] = "";
+            }
         }
     }
 }
