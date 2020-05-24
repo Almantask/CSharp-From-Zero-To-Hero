@@ -10,7 +10,7 @@ namespace BootCamp.Chapter.Tests
     public class PokerHandsTests
     {
         [Fact]
-        public void AddCards_Given_Empty_List_And_A_List_With_Elements_Returns_A_List_With_Elements()
+        public void AddCards_Given_Empty_Hand_And_A_Card_Returns__Card()
         {
             var cardToBeAdded = new Card(Card.Suites.Clubs, Card.Ranks.Four);
             var hand = new PokerHand();
@@ -23,7 +23,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void AddCards_Given_List_And_Card_Null_Throws_ArgumentNullException()
+        public void AddCards_Hand_And_Non_Existing_Card_Throws_ArgumentNullException()
         {
             var hand = new PokerHand();
 

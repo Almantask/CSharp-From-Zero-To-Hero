@@ -1,107 +1,69 @@
 ﻿using BootCamp.Chapter.Gambling.Poker;
+using System.Collections.Generic;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
 {
     public class PokerComboTests
     {
-        [Fact]
-        public void Smaller__Given_Set1_Is_Smaller_Set2_Returns_True()
+        [Theory]
+        [MemberData(nameof(pokerComboSmallerExpectations))]
+        public void Smaller__Given_Set1_Is_Smaller_Set2_Returns_Expected(PokerCombo set1, PokerCombo set2, bool expected)
         {
-            var set1 = new PokerCombo(PokerCombo.Sets.Flush, 1);
-            var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 12);
-
             var actual = set1 < set2;
 
-            Assert.True(actual);
+            Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void Smaller__Given_Set1_Is_Equal_Set2_But_Set1_Lower_Score_Returns_True()
+        [Theory]
+        [MemberData(nameof(pokerComboEqualExpectations))]
+        public void Equal__Given_Set1_Is_Smaller_Set2_Returns_Expected(PokerCombo set1, PokerCombo set2, bool expected)
         {
-            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 1);
-            var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 12);
-
-            var actual = set1 < set2;
-
-            Assert.True(actual);
-        }
-
-        [Fact]
-        public void Smaller__Given_Set1_Is_Greater_Set2_Returns_False()
-        {
-            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 1);
-            var set2 = new PokerCombo(PokerCombo.Sets.Flush, 12);
-
-            var actual = set1 < set2;
-
-            Assert.False(actual);
-        }
-
-        [Fact]
-        public void Equal__Given_Set1_Is_Equal_To__Set2_Returns_True()
-        {
-            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 1);
-            var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 1);
-
             var actual = set1 == set2;
 
-            Assert.True(actual);
+            Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void Equal__Given_Set1_IsDifferent_Set_To__Set2_Returns_False()
+        [Theory]
+        [MemberData(nameof(pokerComboGreaterExpectations))]
+        public void Greater__Given_Set1_Is_Smaller_Set2_Returns_Expected(PokerCombo set1, PokerCombo set2, bool expected)
         {
-            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 1);
-            var set2 = new PokerCombo(PokerCombo.Sets.Pair, 1);
-
-            var actual = set1 == set2;
-
-            Assert.False(actual);
-        }
-
-        [Fact]
-        public void Equal__Given_Set1_IsDifferent_Score_To__Set2_Returns_False()
-        {
-            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 1);
-            var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 2);
-
-            var actual = set1 == set2;
-
-            Assert.False(actual);
-        }
-
-        [Fact]
-        public void Greater__Given_Set1_Is_Greater_Set2_Returns_True()
-        {
-            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 12);
-            var set2 = new PokerCombo(PokerCombo.Sets.Flush, 12);
-
             var actual = set1 > set2;
 
-            Assert.True(actual);
+            Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void Greater__Given_Set1_Is_Equal_Set2_But_Set1_Higher_Score_Returns_True()
+
+        public static IEnumerable<object[]> pokerComboSmallerExpectations
         {
-            var set1 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 12);
-            var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 1);
-
-            var actual = set1 > set2;
-
-            Assert.True(actual);
+            get
+            {
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.Flush, 0), new PokerCombo(PokerCombo.Sets.RoyalFlush, 0), true };
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.RoyalFlush, 1), new PokerCombo(PokerCombo.Sets.RoyalFlush, 12), true };
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.RoyalFlush, 1), new PokerCombo(PokerCombo.Sets.Flush, 12), false };
+            }
         }
 
-        [Fact]
-        public void Greater__Given_Set1_Is_Smaller_Set2_Returns_False()
+        public static IEnumerable<object[]> pokerComboEqualExpectations
         {
-            var set1 = new PokerCombo(PokerCombo.Sets.Flush, 1);
-            var set2 = new PokerCombo(PokerCombo.Sets.RoyalFlush, 12);
-
-            var actual = set1 > set2;
-
-            Assert.False(actual);
+            get
+            {
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.RoyalFlush, 1), new PokerCombo(PokerCombo.Sets.RoyalFlush, 1), true};
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.RoyalFlush, 1), new PokerCombo(PokerCombo.Sets.RoyalFlush, 2), false };
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.RoyalFlush, 1), new PokerCombo(PokerCombo.Sets.Pair, 1), false };
+            }
         }
+
+        public static IEnumerable<object[]> pokerComboGreaterExpectations
+        {
+            get
+            {
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.Flush, 0), new PokerCombo(PokerCombo.Sets.RoyalFlush, 0), false };
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.RoyalFlush, 1), new PokerCombo(PokerCombo.Sets.RoyalFlush, 12), false };
+                yield return new object[] { new PokerCombo(PokerCombo.Sets.RoyalFlush, 1), new PokerCombo(PokerCombo.Sets.Flush, 12), true };
+            }
+        }
+
+
     }
 }
