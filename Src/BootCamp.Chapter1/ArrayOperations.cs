@@ -102,12 +102,13 @@ namespace BootCamp.Chapter1
 
         public static int[] InsertFirst(int[] array, int number)
         {
+            int[] newArray = new int[array.Length + 1];
+
             if (IsNullOrEmpty(array))
             {
-                return array;
+                newArray[0] = number;
+                return newArray;
             }
-
-            int[] newArray = new int[array.Length + 1];
 
             newArray[0] = number;
 
@@ -121,12 +122,13 @@ namespace BootCamp.Chapter1
 
         public static int[] InsertLast(int[] array, int number)
         {
+            int[] newArray = new int[array.Length + 1];
+
             if (IsNullOrEmpty(array))
             {
-                return array;
+                newArray[0] = number;
+                return newArray;
             }
-
-            int[] newArray = new int[array.Length + 1];
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -140,12 +142,13 @@ namespace BootCamp.Chapter1
 
         public static int[] InsertAt(int[] array, int number, int index)
         {
+            int[] newArray = new int[array.Length + 1];
+
             if (IsNullOrEmpty(array))
             {
-                return array;
+                newArray[0] = number;
+                return newArray;
             }
-
-            int[] newArray = new int[array.Length + 1];
 
             for (int i = 0; i < index; i++)
             {
