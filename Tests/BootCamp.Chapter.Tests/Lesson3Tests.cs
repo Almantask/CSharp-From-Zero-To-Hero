@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using BootCamp.Chapter.Tests.Utils;
 using FluentAssertions;
 using Xunit;
@@ -16,7 +14,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData(100, 10, 1)]
         public void CalculateBmi_With_ValidInput_Returns_Expected(float weightKg, float heightM, float expectedBmi)
         {
-            var bmi = Checks.CalculateBmi(weightKg, heightM);
+            var bmi = Checks.CalculateBMI(weightKg, heightM);
 
             bmi.Should().Be(expectedBmi);
         }

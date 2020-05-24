@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Console = System.Console;
-
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     class Program
     {
+#pragma warning disable IDE0060 // Remove unused parameter
         static void Main(string[] args)
+#pragma warning restore IDE0060 // Remove unused parameter
         {
+            Lesson3.Demo();
         }
     }
 }
