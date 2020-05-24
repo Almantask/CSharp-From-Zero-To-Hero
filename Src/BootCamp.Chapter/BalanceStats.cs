@@ -1,6 +1,7 @@
 ﻿using BootCamp.Chapter.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -18,8 +19,7 @@ namespace BootCamp.Chapter
 
             List<Person> people = DataToObject(peopleAndBalances);
             var highestBalance = people.Where(p => p.Balances.Contains(people.Max(b => b.Balances.Max()))).ToList();
-
-            return $"{GenerateNameString(highestBalance)} had the most money ever. {ConvertBalanceToText(highestBalance.Max(b => b.Balances.Max()))}.";
+            return $"{GenerateNameString(highestBalance)} had the most money ever. {ConvertBalanceToText(highestBalance.Max(b => b.Balances.Max()),highestBalance.FirstOrDefault().Currency)}.";
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace BootCamp.Chapter
 
             List<Person> personHighLoss = people.Where(l => (l.Balances.Max() - l.Balances.LastOrDefault()) * -1 == highestLoss).ToList();
 
-            return $"{GenerateNameString(personHighLoss)} lost the most money. {ConvertBalanceToText(highestLoss)}.";
+            return $"{GenerateNameString(personHighLoss)} lost the most money. {ConvertBalanceToText(highestLoss, personHighLoss.FirstOrDefault().Currency)}.";
         }
 
         /// <summary>
@@ -62,9 +62,9 @@ namespace BootCamp.Chapter
             var richestPerson = people.Where(p => p.Balances.LastOrDefault() == people.Max(x => x.Balances.LastOrDefault())).ToList();
 
             if (richestPerson.Count > 1)
-                return $"{GenerateNameString(richestPerson)} are the richest people. {ConvertBalanceToText(richestPerson.FirstOrDefault().Balances.LastOrDefault())}.";
+                return $"{GenerateNameString(richestPerson)} are the richest people. {ConvertBalanceToText(richestPerson.FirstOrDefault().Balances.LastOrDefault(), richestPerson.FirstOrDefault().Currency)}.";
             else
-                return $"{GenerateNameString(richestPerson)} is the richest person. {ConvertBalanceToText(richestPerson.FirstOrDefault().Balances.LastOrDefault())}.";
+                return $"{GenerateNameString(richestPerson)} is the richest person. {ConvertBalanceToText(richestPerson.FirstOrDefault().Balances.LastOrDefault(), richestPerson.FirstOrDefault().Currency)}.";
 
 
         }
@@ -81,9 +81,9 @@ namespace BootCamp.Chapter
             var mostPoorPerson = people.Where(p => p.Balances.LastOrDefault() == people.Min(x => x.Balances.LastOrDefault())).ToList();
 
             if (mostPoorPerson.Count > 1)
-                return $"{GenerateNameString(mostPoorPerson)} have the least money. {ConvertBalanceToText(mostPoorPerson.FirstOrDefault().Balances.LastOrDefault())}.";
+                return $"{GenerateNameString(mostPoorPerson)} have the least money. {ConvertBalanceToText(mostPoorPerson.FirstOrDefault().Balances.LastOrDefault(), mostPoorPerson.FirstOrDefault().Currency)}.";
             else
-                return $"{GenerateNameString(mostPoorPerson)} has the least money. {ConvertBalanceToText(mostPoorPerson.FirstOrDefault().Balances.LastOrDefault())}.";
+                return $"{GenerateNameString(mostPoorPerson)} has the least money. {ConvertBalanceToText(mostPoorPerson.FirstOrDefault().Balances.LastOrDefault(), mostPoorPerson.FirstOrDefault().Currency)}.";
         }
 
         /// <summary>
@@ -98,15 +98,35 @@ namespace BootCamp.Chapter
             {
                 var personArray = line.Split(',').ToArray();
                 List<Single> Balances = new List<Single>();
-                Person person = new Person();
-                person.Name = personArray[0];
+                Person person = new Person()
+                {
+                    Name = personArray[0]
+                };
+                
                 for (int i = 1; i < personArray.Count(); i++)
                 {
-                    if (Single.TryParse(personArray[i], out float floatValue))
-                        Balances.Add(floatValue);
+                    Single value = 0;
+                    if (personArray[i].Contains('£'))
+                    {
+                        Single.TryParse(personArray[i].Replace("£", "", StringComparison.InvariantCulture), NumberStyles.Number, CultureInfo.InvariantCulture, out value);
+                        person.Currency = "£";
+                    }
+                    else if (personArray[i].Contains('¤'))
+                    {
+                        Single.TryParse(personArray[i].Replace("¤", "", StringComparison.InvariantCulture), NumberStyles.Number, CultureInfo.InvariantCulture, out value);
+                        person.Currency = "¤";
+                    }
+                    else
+                    {
+                        Single.TryParse(personArray[i], NumberStyles.Number, CultureInfo.InvariantCulture, out value);
+                        person.Currency = "¤";
+                    }
+                                    
+                    Balances.Add(value);
                 }
                 person.Balances = Balances;
-                people.Add(person);
+                if (Balances.Count != 0)
+                    people.Add(person);
             }
             return people;
         }
@@ -151,12 +171,12 @@ namespace BootCamp.Chapter
         /// </summary>
         /// <param name="balance">numeric value</param>
         /// <returns>balance text</returns>
-        public static string ConvertBalanceToText(Single balance)
+        public static string ConvertBalanceToText(Single balance, string typeOfCurrency)
         {
             if (balance < 0)
-                return $"-¤{balance.ToString().Remove(0, 1)}";
+                return $"-{typeOfCurrency}{balance.ToString().Remove(0, 1)}";
             else
-                return $"¤{balance}";
+                return $"{typeOfCurrency}{balance}";
         }
     }
 }
