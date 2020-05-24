@@ -1,5 +1,6 @@
 ﻿using BootCamp.Chapter.Gambling;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -7,7 +8,7 @@ namespace BootCamp.Chapter.Tests
     public class PlayerTests
     {
         [Fact]
-        public void New_Given_Arguments_For_Name_Sets_Name()
+        public void New_Given_Arguments_For_Name_Sets_Name_And_Hand()
         {
             var name = "John Doe";
             var hand = new Hand();
@@ -15,39 +16,28 @@ namespace BootCamp.Chapter.Tests
             var player = new Player(name, hand);
 
             Assert.Equal(player.Name, name);
+            Assert.Equal(player.Hand, hand); 
         }
 
-        [Fact]
-        public void New_Given_Arguments_For_Hand_Sets_Hand()
+        
+
+        [Theory]
+
+        [MemberData(nameof(playersExpectations))]
+        public void New_Given_Name_Or_Hand_Does_Not_Exist_Throws_ArgumentNullException(string name, Hand hand)
         {
-            var name = "John Doe";
-            var hand = new Hand();
-
-            var player = new Player(name, hand);
-
-            Assert.Equal(player.Hand, hand);
-        }
-
-        [Fact]
-        public void New_Given_Null_Name_Throws_ArgumentNullException()
-        {
-            string name = null;
-            var hand = new Hand();
-
-            Action action = () => new Player(name, hand);
+            Action action = () => new Player(name, hand); 
 
             Assert.Throws<ArgumentNullException>(action); 
         }
 
-        [Fact]
-        public void New_Given_Null_Hand_Throws_ArgumentNullException()
+        public static IEnumerable<object[]> playersExpectations
         {
-            string name = "Jon Doe";
-            Hand hand = null; 
-
-            Action action = () => new Player(name, hand);
-
-            Assert.Throws<ArgumentNullException>(action);
+            get
+            {
+                yield return new object[] { "John Doe", null };
+                yield return new object[] { null, new Hand() };
+            }
         }
     }
 }
