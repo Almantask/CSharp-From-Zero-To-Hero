@@ -17,25 +17,25 @@ namespace CleanCodeSeries.Workshop.Lesson8.Tests.Desktop
         }
              
         [Fact]
-        public void TwoNumbers_Addition_Ok()
+        public void Add_TwoNumbers_Returns_Expected()
         {
             TestMathOperation(1, 2, "+", 3);
         }
 
         [Fact]
-        public void TwoNumbers_Substraction_Ok()
+        public void Subtract_TwoNumbers_Returns_Expected()
         {
             TestMathOperation(1, 2, "-", -1);
         }
 
         [Fact]
-        public void TwoNumbers_Multiplication_Ok()
+        public void Multiple_TwoNumbers_Returns_Expected()
         {
             TestMathOperation(1, 2, "x", 2);
         }
 
         [Fact]
-        public void TwoNumbers_Division_Ok()
+        public void Divide_TwoNumbers_Returns_Expected()
         {
             TestMathOperation(1, 2, "/", 0.5m);
         }
