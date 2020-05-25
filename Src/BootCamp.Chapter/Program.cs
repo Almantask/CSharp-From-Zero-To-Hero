@@ -14,8 +14,8 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             string[] files = new string[] {
-                @"C:\Users\aa192\source\repos\_ZeroToHero\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.corrupted",
-                @"C:\Users\aa192\source\repos\_ZeroToHero\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.clean" };
+                @"C:\Users\aa192\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.corrupted",
+                @"C:\Users\aa192\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.clean" };
 
             foreach (var file in files)
             {

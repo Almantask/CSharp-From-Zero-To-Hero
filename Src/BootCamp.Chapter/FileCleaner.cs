@@ -13,7 +13,17 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {
-            var contents = File.ReadAllLines(dirtyFile);
+            string[] contents = null;
+               
+            try
+            {
+                contents = File.ReadAllLines(dirtyFile);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException($"File '{dirtyFile}' not found.", ex);
+            }
+
             if (contents.Length == 0)
             {
                 File.WriteAllText(cleanedFile, "");
@@ -106,21 +116,18 @@ namespace BootCamp.Chapter
             for (int i = 0; i < Contents.Length; i++)
             {
                 string[] lineArray = Contents[i].Split(',');
-                for (int j = 0; j < lineArray.Length; j++)
+                for (int j = 1; j < lineArray.Length; j++)
                 {
-                    if (j > 0)
+                    try
                     {
-                        try
-                        {
-                            if (lineArray[j].Contains('£'))
-                                Single.Parse(lineArray[j], NumberStyles.Currency, CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB"));
-                            else
-                                Single.Parse(lineArray[j], NumberStyles.Currency, CultureInfo.InvariantCulture);
-                        }
-                        catch (Exception ex)
-                        {
-                            throw new InvalidBalancesException($"Invalid value {lineArray[j]}", ex);
-                        }
+                        if (lineArray[j].Contains('£'))
+                            Single.Parse(lineArray[j], NumberStyles.Currency, CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB"));
+                        else
+                            Single.Parse(lineArray[j], NumberStyles.Currency, CultureInfo.InvariantCulture);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new InvalidBalancesException($"Invalid value {lineArray[j]}", ex);
                     }
                 }
             }
