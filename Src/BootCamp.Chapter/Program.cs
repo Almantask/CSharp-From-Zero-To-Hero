@@ -6,23 +6,21 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args) 
         {
-            string firstName = "Mert Efe";
-            string surName = "Isikgor";  
-            int age = 24;
-            double weight = 85; 
-            double height = 1.81; 
-            double BMI = weight / (height * height); 
+            Console.Write("Please enter your first name and last name: ");
+            string fullName = Console.ReadLine();
 
-            string name = "Cagan";
-            string lastName = "Satir";
-            int ageOf = 24;
-            double caganWeight = 75; 
-            double caganHeight = 1.78;
-            double caganBMI = caganWeight / (caganHeight * caganHeight);
-            
+            Console.Write("Please enter your age: ");
+            int age = int.Parse(Console.ReadLine());
 
-            Console.WriteLine(firstName + " is " + age + " years old. And his last name is " + surName + ". His BMI Score is: " + BMI + ".");
-            Console.WriteLine("And the friend of " + firstName + " which is his name " + name + " " + lastName + ". His Age and BMI Scores are: " + ageOf + " and " + caganBMI + ".");
+            Console.Write("Please enter your weight: ");
+            double weight = double.Parse(Console.ReadLine());
+
+            Console.Write("Please enter your height: ");
+            double height = double.Parse(Console.ReadLine());
+
+            double BMICalculator = weight / (height * height);
+
+            Console.WriteLine($"His name is {fullName}, and he is {age} years old. His BMI score is: {BMICalculator}.");
 
         }
     }
