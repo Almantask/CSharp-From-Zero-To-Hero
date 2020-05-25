@@ -14,7 +14,7 @@ namespace BootCamp.Chapter
         public static void Clean(string dirtyFile, string cleanedFile)
         {
             string[] contents = null;
-               
+
             try
             {
                 contents = File.ReadAllLines(dirtyFile);
