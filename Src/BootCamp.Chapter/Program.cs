@@ -8,24 +8,24 @@ namespace BootCamp.Chapter
         {
             Console.Write("Please enter the full name for the first person: ");
             string fullNameFirstPerson = Console.ReadLine();
-
-            Console.Write("Pelase enter the full name for the second person: ");
-            string fullNameSecondPerson = Console.ReadLine();
-
+            
             Console.Write($"{fullNameFirstPerson} please enter your age: ");
             int ageFirstPerson = int.Parse(Console.ReadLine());
+            
+            Console.Write($"{fullNameFirstPerson} please enter your weight: ");
+            double weightFirstPerson = double.Parse(Console.ReadLine());
+
+            Console.Write($"{fullNameFirstPerson} please enter your height: ");
+            double heightFirstPerson = double.Parse(Console.ReadLine());
+           
+            Console.Write("Pelase enter the full name for the second person: ");
+            string fullNameSecondPerson = Console.ReadLine();
 
             Console.Write($"{fullNameSecondPerson} please enter your age: ");
             int ageSecondPerson = int.Parse(Console.ReadLine());
 
-            Console.Write($"{fullNameFirstPerson} please enter your weight: ");
-            double weightFirstPerson = double.Parse(Console.ReadLine());
-
             Console.Write($"{fullNameSecondPerson} please enter your weight: ");
             double weightSecondPerson = double.Parse(Console.ReadLine());
-
-            Console.Write($"{fullNameFirstPerson} please enter your height: ");
-            double heightFirstPerson = double.Parse(Console.ReadLine());
 
             Console.Write($"{fullNameSecondPerson} please enter your height: ");
             double heightSecondPerson = double.Parse(Console.ReadLine());
