@@ -11,5 +11,11 @@ namespace BootCamp.Chapter
         {
 
         }
+
+        public InvalidBalancesException(string reason)
+            : base(reason)
+        {
+
+        }
     }
 }

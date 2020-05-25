@@ -13,50 +13,22 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            //string[] files = new string[] {
-            //    @"C:\Users\aa192\source\repos\_ZeroToHero\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.corrupted",
-            //    @"C:\Users\aa192\source\repos\_ZeroToHero\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.clean" };
+            string[] files = new string[] {
+                @"C:\Users\aa192\source\repos\_ZeroToHero\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.corrupted",
+                @"C:\Users\aa192\source\repos\_ZeroToHero\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.clean" };
 
-            //foreach (var file in files)
-            //{
-            //    var contents = File.ReadAllLines(file);
-            //    if (!CheckValidContents(contents))
-            //        contents = RepairCorruptFile(contents);
-
-            //    Console.WriteLine(TextTable.Build($"{BalanceStats.FindHighestBalanceEver(contents)}",3));
-            //    Console.WriteLine(TextTable.Build($"{BalanceStats.FindPersonWithBiggestLoss(contents)}", 3));
-            //    Console.WriteLine(TextTable.Build($"{BalanceStats.FindRichestPerson(contents)}", 3));
-            //    Console.WriteLine(TextTable.Build($"{BalanceStats.FindMostPoorPerson(contents)}", 3));
-            //}
-
-            FileCleaner.Clean(@"C:\Users\aa192\source\repos\_ZeroToHero\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.corrupted", @"C:\Users\aa192\source\repos\_ZeroToHero\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.cleaned");
-        }
-
-        public static bool CheckValidContents(string[] Contents)
-        {
-            Regex validContent = new Regex($" ^[a-z0-9, .£-]*$", RegexOptions.IgnoreCase);
-            bool isValid = true;
-            foreach (var line in Contents)
+            foreach (var file in files)
             {
-                if (!validContent.IsMatch(line))
-                    isValid = false;
-            }
-            if (isValid)
-                return true;
-            else
-                return false;
-        }
+                FileCleaner.Clean(file, $"{file}.cleaned");
 
-        public static string[] RepairCorruptFile(string[] Contents)
-        {
-            List<string> newContents = new List<string>();
-            foreach (var line in Contents)
-            {
-                var newline = Regex.Replace(line, @"(?![a-zA-Z0-9, .£-]).", "");
-                newContents.Add(newline);
-            }
-            return newContents.ToArray();
-        }
+                string[] cleanedContents = File.ReadAllLines($"{file}.cleaned");
+                Console.WriteLine(TextTable.Build($"{BalanceStats.FindHighestBalanceEver(cleanedContents)}", 3));
+                Console.WriteLine(TextTable.Build($"{BalanceStats.FindPersonWithBiggestLoss(cleanedContents)}", 3));
+                Console.WriteLine(TextTable.Build($"{BalanceStats.FindRichestPerson(cleanedContents)}", 3));
+                Console.WriteLine(TextTable.Build($"{BalanceStats.FindMostPoorPerson(cleanedContents)}", 3));
 
+                File.Delete($"{file}.cleaned");
+            }
+        }
     }
 }

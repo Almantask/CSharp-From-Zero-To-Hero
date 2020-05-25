@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace BootCamp.Chapter
 {
@@ -18,35 +14,136 @@ namespace BootCamp.Chapter
         public static void Clean(string dirtyFile, string cleanedFile)
         {
             var contents = File.ReadAllLines(dirtyFile);
+            if (contents.Length == 0)
+            {
+                File.WriteAllText(cleanedFile, "");
+                return;
+            }
+
             if (!CheckValidContents(contents))
                 contents = RepairCorruptFile(contents);
-            File.WriteAllText(cleanedFile, contents);
+
+            CheckValidName(contents);
+
+            CheckValidBalance(contents);
+
+            using (StreamWriter writer = new StreamWriter(File.OpenWrite(cleanedFile)))
+            {
+                for (int i = 0; i < contents.Length - 1; i++)
+                {
+                    writer.WriteLine(contents[i]);
+                }
+                // add last line without newline
+                writer.Write(contents[contents.Length - 1]);
+            }
         }
 
-        public static bool CheckValidContents(string[] Contents)
+        /// <summary>
+        /// Check if name is valid
+        /// </summary>
+        /// <param name="Contents">Array of people and balances</param>
+        /// <returns>True if valid, else throws InvalidBalancesException</returns>
+        public static bool CheckValidName(string[] Contents)
         {
-            Regex validContent = new Regex($"^[a-z0-9, .'£-]*$", RegexOptions.IgnoreCase);
-            bool isValid = true;
-            foreach (var line in Contents)
+            var isNameValid = true;
+            var allowedSpecialChars = new[] { " ", "-", "'" };
+            for (int i = 0; i < Contents.Length; i++)
             {
-                if (!validContent.IsMatch(line))
+                string name = Contents[i].Split(',')[0];
+                for (int j = 0; j < name.Length; j++)
+                {
+                    if (!(Char.IsLetter(name[j]) || IsAllowedCharacter(name[j], allowedSpecialChars)))
+                        throw new InvalidBalancesException($"{name} is not a valid name.");
+                }
+            }
+
+            return isNameValid;
+        }
+
+        /// <summary>
+        /// Check if character is in allowed charaters array
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="AllowedSpecialChars">Array of allowed characters</param>
+        /// <returns>Is character allowed</returns>
+        private static bool IsAllowedCharacter(char Character, string[] AllowedSpecialChars)
+        {
+            for (int i = 0; i < AllowedSpecialChars.Length; i++)
+            {
+                if (AllowedSpecialChars[i] == Character.ToString())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if contents of file is valid
+        /// </summary>
+        /// <param name="Contents">Array of people and balances</param>
+        /// <returns>Is contents valid</returns>
+        private static bool CheckValidContents(string[] Contents)
+        {
+            bool isValid = true;
+            for (int i = 0; i < Contents.Length; i++)
+            {
+                if (Contents[i].Contains('_'))
                     isValid = false;
             }
-            if (isValid)
-                return true;
-            else
-                return false;
+
+            return isValid;
         }
 
-        public static string[] RepairCorruptFile(string[] Contents)
+        /// <summary>
+        /// Check if balance is valid
+        /// </summary>
+        /// <param name="Contents">Array of people and balances</param>
+        /// <returns>Is balance valid</returns>
+        private static bool CheckValidBalance(string[] Contents)
         {
-            List<string> newContents = new List<string>();
-            foreach (var line in Contents)
+            for (int i = 0; i < Contents.Length; i++)
             {
-                var newline = Regex.Replace(line, @"(?![a-zA-Z0-9, .\r\n'£-]).", "");
-                newContents.Add(newline);
+                string[] lineArray = Contents[i].Split(',');
+                for (int j = 0; j < lineArray.Length; j++)
+                {
+                    if (j > 0)
+                    {
+                        try
+                        {
+                            if (lineArray[j].Contains('£'))
+                                Single.Parse(lineArray[j], NumberStyles.Currency, CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB"));
+                            else
+                                Single.Parse(lineArray[j], NumberStyles.Currency, CultureInfo.InvariantCulture);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new InvalidBalancesException($"Invalid value {lineArray[j]}", ex);
+                        }
+                    }
+                }
             }
-            return newContents.ToArray();
+            return true;
+        }
+
+        /// <summary>
+        /// Replace "_" with "" in corrupt file
+        /// </summary>
+        /// <param name="Contents">Array of people and balances</param>
+        /// <returns>Clean file without "_"</returns>
+        private static string[] RepairCorruptFile(string[] Contents)
+        {
+            const string corruptedChar = "_";
+            const string replaceChar = "";
+            var newContents = new string[Contents.Length];
+            for (int i = 0; i < Contents.Length; i++)
+            {
+                var newline = Contents[i].Replace(corruptedChar, replaceChar);
+                newContents[i] = newline;
+            }
+
+            return newContents;
         }
     }
 }
