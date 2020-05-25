@@ -14,8 +14,9 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             string[] files = new string[] {
-                @"C:\Users\aa192\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.corrupted",
-                @"C:\Users\aa192\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.clean" };
+                $"{AppDomain.CurrentDomain.BaseDirectory.Replace(@"bin\Debug\netcoreapp3.0\",@"Input\Balances.corrupted")}",
+                $"{AppDomain.CurrentDomain.BaseDirectory.Replace(@"bin\Debug\netcoreapp3.0\",@"Input\Balances.clean" )}"
+            };
 
             foreach (var file in files)
             {
