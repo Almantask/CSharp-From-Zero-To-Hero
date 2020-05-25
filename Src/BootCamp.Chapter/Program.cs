@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
         static void Main(string[] args) 
         {
             string firstName = "Mert Efe";
-            string surName = "Isikgor"; 
+            string surName = "Isikgor";  
             int age = 24;
             double weight = 85; 
             double height = 1.81; 
