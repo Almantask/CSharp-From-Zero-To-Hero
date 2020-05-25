@@ -6,6 +6,7 @@
         static void Main(string[] args)
 #pragma warning restore IDE0060 // Remove unused parameter
         {
+            // Lesson3.cs is called.
             Lesson3.Demo();
         }
     }

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
     public class Lesson3
     {
+        // Program is defined here.
         public static void Demo()
         {
             string firstName = PromptString("Please enter the first name.");
@@ -13,9 +15,11 @@ namespace BootCamp.Chapter
             float height = PromptFloat("Please enter the height in metres.");
 
             Console.WriteLine(firstName + " " + lastName + " is " + age + " years old, their weight is " + weight + " kg and their height is " + height + " m.");
-            Console.WriteLine("Their BMI is " + CalculateBMI(weight, height) + ".");
+            Console.WriteLine("Their BMI is " + CalculateBmi(weight, height) + ".");
             Console.ReadLine();
         }
+
+        // All functions are defined here for use in the main Demo function.
 
         public static int PromptInt(string message)
         {
@@ -32,10 +36,10 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            return float.Parse(Console.ReadLine());
+            return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
         }
 
-        public static double CalculateBMI(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             return weight / (height * height);
         }

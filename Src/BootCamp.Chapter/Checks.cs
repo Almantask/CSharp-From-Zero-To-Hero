@@ -8,6 +8,8 @@
     /// DO NOT IMPLEMENT FUNCTIONS IN TESTS CLASS
     /// TESTS CLASS FUNCTIONS SHOULD ALL HAVE 1 LINE OF CODE
     /// </summary>
+
+    /// Checks for tests are defined here.
     public static class Checks
     {
         public static int PromptInt(string message)
@@ -25,9 +27,9 @@
             return Lesson3.PromptFloat(message);
         }
 
-        public static double CalculateBMI(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
-            return Lesson3.CalculateBMI(weight, height);
+            return Lesson3.CalculateBmi(weight, height);
         }
     }
 }
