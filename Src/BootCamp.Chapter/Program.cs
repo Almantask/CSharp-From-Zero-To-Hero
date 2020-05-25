@@ -6,22 +6,35 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args) 
         {
-            Console.Write("Please enter your first name and last name: ");
-            string fullName = Console.ReadLine();
+            Console.Write("Please enter the full name for the first person: ");
+            string fullNameFirstPerson = Console.ReadLine();
 
-            Console.Write("Please enter your age: ");
-            int age = int.Parse(Console.ReadLine());
+            Console.Write("Pelase enter the full name for the second person: ");
+            string fullNameSecondPerson = Console.ReadLine();
 
-            Console.Write("Please enter your weight: ");
-            double weight = double.Parse(Console.ReadLine());
+            Console.Write($"{fullNameFirstPerson} please enter your age: ");
+            int ageFirstPerson = int.Parse(Console.ReadLine());
 
-            Console.Write("Please enter your height: ");
-            double height = double.Parse(Console.ReadLine());
+            Console.Write($"{fullNameSecondPerson} please enter your age: ");
+            int ageSecondPerson = int.Parse(Console.ReadLine());
 
-            double BMICalculator = weight / (height * height);
+            Console.Write($"{fullNameFirstPerson} please enter your weight: ");
+            double weightFirstPerson = double.Parse(Console.ReadLine());
 
-            Console.WriteLine($"His name is {fullName}, and he is {age} years old. His BMI score is: {BMICalculator}.");
+            Console.Write($"{fullNameSecondPerson} please enter your weight: ");
+            double weightSecondPerson = double.Parse(Console.ReadLine());
 
+            Console.Write($"{fullNameFirstPerson} please enter your height: ");
+            double heightFirstPerson = double.Parse(Console.ReadLine());
+
+            Console.Write($"{fullNameSecondPerson} please enter your height: ");
+            double heightSecondPerson = double.Parse(Console.ReadLine());
+
+            double BMICalculatorFirstPerson = weightFirstPerson / (heightFirstPerson * heightFirstPerson);
+            double BMICalculatorSecondPerson = weightSecondPerson / (heightSecondPerson * heightSecondPerson);
+
+            Console.WriteLine($"His name is {fullNameFirstPerson}, and he is {ageFirstPerson} years old. His BMI score is: {BMICalculatorFirstPerson}.");
+            Console.WriteLine($"His name is {fullNameSecondPerson}, and he is {ageSecondPerson} years old. His BMI score is: {BMICalculatorSecondPerson}.");
         }
     }
 }
