@@ -42,7 +42,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Please enter your weight now. ");
                 int yourWeight = Convert.ToInt32(Console.ReadLine());
                 double yourBMI = yourWeight / yourHeight;
-                Console.WriteLine("Alright " + firstName + ", " + "you are " + yourAge + " years old, and your BMI based off your provided measurements is " + yourBMI);
+                Console.WriteLine("Alright " + firstName + " " + surname + ", " + "you are " + yourAge + " years old, and your BMI based off your provided measurements is " + yourBMI);
 
                 Console.WriteLine("Press enter continue...");
 
