@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BootCamp.Chapter
 {
@@ -19,6 +21,8 @@ namespace BootCamp.Chapter
 
         public Item[] GetItem(string name)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException($"{nameof(name)} cannot be null or empty.");
+
             if (RemainingSpace == Size) return new Item[0];
 
             foreach (var item in Items)
@@ -36,7 +40,7 @@ namespace BootCamp.Chapter
         {
             if (RemainingSpace == 0) return;
 
-            Items.Add(item);
+            Items.Add(item ?? throw new ArgumentNullException($"{nameof(item)} cannot be null."));
             RemainingSpace--;
         }
 
@@ -46,11 +50,8 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(Item item)
         {
-            if (Items.Contains(item))
-            {
-                Items.Remove(item);
-                RemainingSpace++;
-            }
+            var isRemoved = Items.Remove(item ?? throw new ArgumentNullException($"{nameof(item)} cannot be null."));
+            RemainingSpace = isRemoved ? RemainingSpace++ : RemainingSpace;
         }
     }
 }
