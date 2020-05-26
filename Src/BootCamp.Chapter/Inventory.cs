@@ -38,6 +38,16 @@ namespace BootCamp.Chapter
             return filteredItems;
         }
 
+        public Item GetFirstItem(string name)
+        {
+            foreach (Item item in _items)
+            {
+                if (item.GetName() == name) return item;
+            }
+
+            return null;
+        }
+
         public void AddItem(Item item)
         {
             if (item == null) return;
@@ -91,6 +101,17 @@ namespace BootCamp.Chapter
 
             array = new object[array.Length -1];
             array = temp;
+        }
+        public bool CheckItemExists(Item item)
+        {
+            foreach (Item indexItem in _items)
+            {
+                if (item == indexItem)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
