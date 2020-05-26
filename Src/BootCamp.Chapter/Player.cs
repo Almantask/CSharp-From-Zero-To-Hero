@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System;
 using System.Collections.Generic;
 
 namespace BootCamp.Chapter
@@ -34,12 +35,12 @@ namespace BootCamp.Chapter
 
         public Player(string name, int hp, int strength, Inventory inventory, Equipment equipment)
         {
-            Name = name;
-            Hp = hp;
-            Strength = strength;
+            Name = name ?? throw new ArgumentNullException($"{nameof(Name)} cannot be null.");
+            Hp = hp > 0 ? hp : throw new ArgumentException($"{nameof(Hp)} cannot be equal to or less than 0.");
+            Strength = strength >= 0 ? strength : throw new ArgumentException($"{nameof(strength)} cannot be less than 0.");
             MaxCarryCapacity = baseCarryWeight + Strength * 10;
-            _inventory = inventory;
-            Equipment = equipment;
+            _inventory = inventory ?? throw new ArgumentNullException($"{nameof(_inventory)} cannot be null.");
+            Equipment = equipment ?? throw new ArgumentNullException($"{nameof(Equipment)} cannot be null.");
         }
 
         /// <summary>
@@ -50,9 +51,7 @@ namespace BootCamp.Chapter
             return _inventory.Items;
         }
 
-        /// <summary>
-        /// Adds item to player's inventory
-        /// </summary>
+        //All inventory related null validations are done at the Inventory class level.
         public void AddItem(Item item)
         {
             _inventory.AddItem(item);
@@ -63,10 +62,6 @@ namespace BootCamp.Chapter
             _inventory.RemoveItem(item);
         }
 
-        /// <summary>
-        /// Gets items with matching name.
-        /// </summary>
-        /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
             return _inventory.GetItem(name);
@@ -78,6 +73,8 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+
+        // All equipment related null validations are done at the Equipment class level.
         public void Equip(Headpiece head)
         {
             if (IsOverEncumbered(head)) return;
