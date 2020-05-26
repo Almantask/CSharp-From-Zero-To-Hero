@@ -40,9 +40,9 @@ namespace BootCamp.Chapter
                     return '\u21a5';
                 case 'c':
                     return '\u21a5';
+                default:
+                    return '\u21a5';
             }
-
-            return 'a';
         }
     }
 }

@@ -31,7 +31,7 @@ namespace BootCamp.Chapter
 
         public static string ToBinary(long number)
         {
-            string binaryValue = "";
+            StringBuilder stringBuilder = new StringBuilder();
 
             if (number == 0)
             {
@@ -40,7 +40,7 @@ namespace BootCamp.Chapter
 
             if (number == 1)
             {
-                binaryValue = "1" + binaryValue;
+                stringBuilder.Insert(0, 1);
                 number -= 1;
             }
 
@@ -48,19 +48,18 @@ namespace BootCamp.Chapter
             {
                 if (number % 2 == 1)
                 {
-                    binaryValue = "1" + binaryValue;
+                    stringBuilder.Insert(0, 1);
                     number -= 1;
                     number /= 2;
                 }
 
                 if (number == 0)
-                    return binaryValue;
+                    return stringBuilder.ToString();
 
-                binaryValue = "0" + binaryValue;
+                stringBuilder.Insert(0, 0);
                 number /= 2;
             }
-            //return Convert.ToString(Convert.ToInt32(number, 16), 2);
-            return binaryValue;
+            return stringBuilder.ToString();
         }
     }
 }
