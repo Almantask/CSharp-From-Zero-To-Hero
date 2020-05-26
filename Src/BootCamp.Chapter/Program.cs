@@ -9,11 +9,11 @@ namespace BootCamp.Chapter
         {
             Player playerOne = new Player("Arthas Menethil", 50, 10, new Inventory(), new Equipment());
 
-            EquipItems_And_DisplayStatistics(playerOne);
+            EquipItemsAndDisplayStatistics(playerOne);
         }
 
         // This code is ugly but it properly displays the stats of the player after items are equipped.
-        private static void EquipItems_And_DisplayStatistics(Player player)
+        private static void EquipItemsAndDisplayStatistics(Player player)
         {
             Console.WriteLine($"New player '{player.Name}' has been created.");
             Console.WriteLine($"Stats# HP: {player.Hp} | STR: {player.Strength} | Max Carry Capacity: {player.MaxCarryCapacity} \n");

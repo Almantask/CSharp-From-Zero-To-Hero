@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -15,7 +16,7 @@ namespace BootCamp.Chapter
         public Shop(decimal money)
         {
             Inventory = new Inventory();
-            Money = money;
+            Money = money >= 0 ? money : throw new ArgumentException($"{nameof(Money)} cannot be less than 0.");
         }
 
         /// <summary>
@@ -24,7 +25,9 @@ namespace BootCamp.Chapter
         /// </summary>
         public void Add(Item item)
         {
-            if (Inventory.Items.Contains(item) || item is null) return;
+            if (item is null) throw new ArgumentNullException($"{nameof(item)} cannot be null.");
+
+            if (Inventory.Items.Contains(item)) return;
 
             Inventory.AddItem(item);
         }
@@ -36,6 +39,8 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException($"{nameof(name)} cannot be null or empty.");
+
             Item[] itemToRemove = Inventory.GetItem(name);
 
             if (itemToRemove.Length == 0) return;
@@ -50,7 +55,8 @@ namespace BootCamp.Chapter
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            if (Money < item.Price) return 0m;
+            var itemPrice = item?.Price ?? throw new ArgumentNullException($"{nameof(item)} cannot be null.");
+            if (Money < itemPrice) return 0m;
 
             Inventory.RemoveItem(item);
             Money -= item.Price;
