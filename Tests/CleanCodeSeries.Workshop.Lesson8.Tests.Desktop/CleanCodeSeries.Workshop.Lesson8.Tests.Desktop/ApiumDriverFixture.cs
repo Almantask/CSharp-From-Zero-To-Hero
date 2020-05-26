@@ -3,7 +3,7 @@ using System.IO;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 
-namespace SeleniumTests.Tests
+namespace CleanCodeSeries.Workshop.Lesson8.Tests.Desktop
 {
     public class ApiumDriverFixture : IDisposable
     {

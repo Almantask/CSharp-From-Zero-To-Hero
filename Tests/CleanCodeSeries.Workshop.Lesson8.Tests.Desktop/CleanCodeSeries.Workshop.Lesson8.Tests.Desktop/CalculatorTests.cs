@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenQA.Selenium.Appium.Windows;
-using SeleniumTests.Tests;
 using System.Threading;
 using Xunit;
 

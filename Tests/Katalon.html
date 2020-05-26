@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>Untitled Test Suite</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Greet_When_Kaisinel_Alerts_HelloKaisinel</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://localhost:44356/<datalist><option>https://localhost:44356/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Greeter<datalist><option>link=Greeter</option><option>//a[contains(text(),'Greeter')]</option><option>//a[contains(@href, '/Greet')]</option><option>//li[2]/a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=name<datalist><option>id=name</option><option>//input[@id='name']</option><option>//input</option><option>css=#name</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=name<datalist><option>id=name</option><option>//input[@id='name']</option><option>//input</option><option>css=#name</option></datalist></td><td>Kaisinel</td>
+</tr>
+<tr><td>click</td><td>//button[@onclick="alert('Hello, ' + $('#name').val())"]<datalist><option>//button[@onclick="alert('Hello, ' + $('#name').val())"]</option><option>//main/div/button</option><option>css=div.text-center &gt; button</option></datalist></td><td></td>
+</tr>
+<tr><td>assertAlert</td><td>Hello, Kaisinel<datalist><option>Hello, Kaisinel</option><option>Hello, Kaisinelj</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Home_Title_WelcomeToDummyApp</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://localhost:44356/<datalist><option>https://localhost:44356/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Home<datalist><option>link=Home</option><option>//a[contains(text(),'Home')]</option><option>xpath=(//a[contains(@href, '/')])[2]</option><option>//li/a</option><option>css=a.nav-link.text-dark</option></datalist></td><td></td>
+</tr>
+<tr><td>assertText</td><td>//h1<datalist><option>//h1</option><option>css=h1.display-4</option></datalist></td><td>Welcome to dummy app!</td>
+</tr>
+</tbody></table>
+</body>
+</html>
