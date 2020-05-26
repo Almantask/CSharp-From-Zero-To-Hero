@@ -25,7 +25,7 @@ namespace BootCamp.Chapter.Tests
             var sword = new Item(ItemName, ItemPrice, 2);
             _shop.Add(sword);
 
-            _shop.Items.Should().Contain(sword);
+            _shop.Inventory.Items.Should().Contain(sword);
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace BootCamp.Chapter.Tests
             _shop.Add(sword);
             _shop.Add(sword);
 
-            _shop.Items.Should().Contain(sword);
+            _shop.Inventory.Items.Should().Contain(sword);
         }
 
         [Fact]
@@ -45,8 +45,8 @@ namespace BootCamp.Chapter.Tests
             _shop.Add(sword);
 
             _shop.Remove(ItemName);
-            
-            _shop.Items.Should().NotContain(sword);
+
+            _shop.Inventory.Items.Should().NotContain(sword);
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace BootCamp.Chapter.Tests
         public void Buy_Item_Reduces_Shop_Money_By_The_Bought_Item_Price()
         {
             var sword = new Item(ItemName, ItemPrice, 2);
-            
+
             var baughtItemPrice = _shop.Buy(sword);
 
             using (new AssertionScope())

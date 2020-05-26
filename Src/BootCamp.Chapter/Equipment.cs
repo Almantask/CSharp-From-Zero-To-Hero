@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System.ComponentModel;
 
 namespace BootCamp.Chapter
 {
@@ -7,85 +8,154 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
-        private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
-        {
+        public float TotalAttackValue { get; private set; }
+        public float TotalDefenseValue { get; private set; }
+        public float TotalCombinedWeight { get; private set; }
 
+        private Weapon _weapon;
+        public Weapon Weapon
+        {
+            get
+            {
+                return _weapon;
+            }
+            set
+            {
+                if (value == null) return;
+
+                TotalAttackValue = (value == null) ? 0.0f : value.AttackValue;
+
+                var currentWeight = (_weapon == null) ? 0.0f : Weapon.Weight;
+                var newWeight = (value == null) ? 0.0f : value.Weight;
+
+                TotalCombinedWeight += newWeight - currentWeight;
+                _weapon = value;
+            }
         }
 
-        private Headpiece _head;
-        public void SetHead(Headpiece head)
+        private Headpiece _headpiece;
+        public Headpiece Headpiece
         {
-
+            get
+            {
+                return _headpiece;
+            }
+            set
+            {
+                RefreshArmorStatistics(_headpiece, value);
+                _headpiece = value;
+            }
         }
 
         private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
+        public Chestpiece Chestpiece
         {
-
+            get
+            {
+                return _chest;
+            }
+            set
+            {
+                RefreshArmorStatistics(_chest, value);
+                _chest = value;
+            }
         }
 
         private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece should)
+        public Shoulderpiece LeftShoulderpiece
         {
-
+            get
+            {
+                return _leftShoulder;
+            }
+            set
+            {
+                RefreshArmorStatistics(_leftShoulder, value);
+                _leftShoulder = value;
+            }
         }
 
         private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
+        public Shoulderpiece RightShoulderpiece
         {
-
+            get
+            {
+                return _rightShoulder;
+            }
+            set
+            {
+                RefreshArmorStatistics(_rightShoulder, value);
+                _rightShoulder = value;
+            }
         }
 
         private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
+        public Legspiece Legspiece
         {
-
+            get
+            {
+                return _legs;
+            }
+            set
+            {
+                RefreshArmorStatistics(_legs, value);
+                _legs = value;
+            }
         }
 
         private Armpiece _leftArm;
-        public void SetLeftArmp(Armpiece arm)
+        public Armpiece LeftArm
         {
-
+            get
+            {
+                return _leftArm;
+            }
+            set
+            {
+                RefreshArmorStatistics(_leftArm, value);
+                _leftArm = value;
+            }
         }
 
         private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
+        public Armpiece RightArm
         {
-
+            get
+            {
+                return _rightArm;
+            }
+            set
+            {
+                RefreshArmorStatistics(_rightArm, value);
+                _rightArm = value;
+            }
         }
 
         private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
+        public Gloves Gloves
         {
-
+            get
+            {
+                return _gloves;
+            }
+            set
+            {
+                RefreshArmorStatistics(_gloves, value);
+                _gloves = value;
+            }
         }
 
-        /// <summary>
-        /// Gets total weight of armour.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalWeight()
+        private void RefreshArmorStatistics(Armor currentArmor, Armor newArmor)
         {
-            return 0;
-        }
+            var currentDefenseValue = (currentArmor == null) ? 0.0f : currentArmor.DefenseValue;
+            var newDefenseValue = (newArmor == null) ? 0.0f : newArmor.DefenseValue;
 
-        /// <summary>
-        /// Returns sums of defense stat of all armour pieces.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalDefense()
-        {
-            return 0;
-        }
+            TotalDefenseValue += newDefenseValue - currentDefenseValue;
 
-        /// <summary>
-        /// Returns damage done by weapon.
-        /// </summary>
-        /// <returns></returns>
-        public float GetTotalAttack()
-        {
-            return 0;
+            var currentWeight = (currentArmor == null) ? 0.0f : currentArmor.Weight;
+            var newWeight = (newArmor == null) ? 0.0f : newArmor.Weight;
+
+            TotalCombinedWeight += newWeight - currentWeight;
         }
     }
 }
