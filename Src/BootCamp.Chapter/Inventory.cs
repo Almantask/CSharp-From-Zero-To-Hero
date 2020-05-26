@@ -18,13 +18,15 @@ namespace BootCamp.Chapter
         public Item[] GetItems(string name)
         {
             Item[] allItems = GetItems();
-            Item[] filteredItems = new Item[0];
+            Item[] filteredItems = new Item[1];
+
+            if (allItems[0] == null) return filteredItems;
 
             foreach (Item Item in allItems)
             {
                 if (Item.GetName() == name)
                 {
-                    if (filteredItems.Length > 0)
+                    if (allItems.Length > 1)
                     {
                         var temp = (Item[]) filteredItems.Clone();
                         filteredItems = new Item[filteredItems.Length + 1];
@@ -39,7 +41,11 @@ namespace BootCamp.Chapter
         public void AddItem(Item item)
         {
             if (item == null) return;
-
+            if (GetItems().Length == 1)
+            {
+                _items[0] = item;
+                return;
+            }
             Item[] temp = GetItems();
             _items = new Item[temp.Length + 1];
             temp.CopyTo(_items, 0);

@@ -1,4 +1,6 @@
-﻿using BootCamp.Chapter.Items;
+﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
+using BootCamp.Chapter.Items;
 
 namespace BootCamp.Chapter
 {
@@ -18,13 +20,36 @@ namespace BootCamp.Chapter
         private const int baseCarryWeight = 30;
 
         private string _name;
+
+        public string GetName()
+        {
+            return _name;
+        }
+        
         private int _hp;
+
+        public int GetHp()
+        {
+            return _hp;
+
+        }
 
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
         /// </summary>
         private int _strenght;
+        public int GetStrength()
+        {
+            return _strenght;
 
+        }
+        
+        private int _carryWeight;
+        public int GetCarryWeight()
+        {
+            return _carryWeight;
+
+        }
         /// <summary>
         /// Player items. There can be multiple of items with same name.
         /// </summary>
@@ -34,8 +59,23 @@ namespace BootCamp.Chapter
         /// </summary>
         private Equipment _equipment;
 
-        public Player()
+        public Player() //Leave it for tests.
         {
+            _inventory = new Inventory();
+            _equipment = new Equipment();
+            _carryWeight = baseCarryWeight;
+        }
+
+        public Player(string name, int hp, int strenght)
+        {
+            if (name == null || hp == 0 || strenght == 0) throw new Exception("Name, int and strength must have a value!");
+            _name = name;
+            _hp = hp;
+            _strenght = strenght;
+            CalculateCarryWeight(strenght);
+            _inventory = new Inventory();
+            _equipment = new Equipment();
+
         }
 
         /// <summary>
@@ -43,7 +83,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public Item[] GetItems()
         {
-            return new Item[0];
+            return _inventory.GetItems();
         }
 
         /// <summary>
@@ -51,11 +91,12 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
@@ -64,7 +105,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
@@ -103,5 +144,9 @@ namespace BootCamp.Chapter
 
         }
         #endregion
+        private void CalculateCarryWeight(int strength)
+        {
+            _carryWeight = baseCarryWeight + (strength * 10);
+        }
     }
 }
