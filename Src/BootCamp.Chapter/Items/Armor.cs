@@ -10,7 +10,7 @@ namespace BootCamp.Chapter.Items
 
         public Armor(string name, decimal price, float weight, float defenseValue) : base(name, price, weight)
         {
-            DefenseValue = defenseValue;
+            DefenseValue = defenseValue < 0 ? defenseValue : throw new ArgumentException($"{nameof(DefenseValue)} cannot be less than 0.");
         }
     }
 }
