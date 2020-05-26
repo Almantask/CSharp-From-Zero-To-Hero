@@ -9,34 +9,41 @@ namespace BootCamp.Chapter
             Console.WriteLine("Hello World!");
 
 
-			string myName = "Tom Jefferson";
+			 Console.WriteLine("What is your Name?.");
+            string name = Console.ReadLine();
+           
 
-			int myAge = 19;
+            Console.WriteLine("How old are you?");
+            string stoneAge = Console.ReadLine();
+            int age = int.Parse(stoneAge);
 
-			int weight = 50;
+            Console.WriteLine("Your Weight in Kg?");
+            string gumWeight = Console.ReadLine();
+            int weight = int.Parse(gumWeight);
 
-			float height = 156.5f;
-
-			// BMI formula weight(kg) divided by height(cm)^2 multiplied by 10000
-			double sum = 156.5 * 156.5;
-			double sum2 = weight / sum;
-			double bmi = sum2 * 10000;
-
-			string greetings = "years old";
-			var completeSentence = myName + " is " + myAge + " " + greetings + ", his weight is " + weight + "kg" + " and his height is " + height + "cm" + " BMI " + bmi;
-			Console.WriteLine(completeSentence);
-
-
-			string name = "Sandor Clegane";
-
-			var completeSense = name + " is " + myAge + " " + greetings + ", his weight is " + weight + "kg" + " and his height is " + height + "cm" + " BMI " + bmi;
-			Console.WriteLine(completeSense);
+            Console.WriteLine("Your Height in CM?");
+            string saneHeight = Console.ReadLine();
+            double height = double.Parse(saneHeight);
 
 
-			string nickName = "Onion Knight";
 
-			var complete = nickName + " is " + myAge + " " + greetings + ", his weight is " + weight + "kg" + " and his height is " + height + "cm" + " BMI " + bmi;
-			Console.WriteLine(complete);
+            // BMI formula weight(kg) divided by (height(cm))^2 multiplied by 10000
+            double sum = height * height;
+            double sum2 = weight / sum;
+            double bmi = sum2 * 10000;
+            bmi = Convert.ToInt32(bmi);
+          
+
+                if (bmi < 18.5)
+            { Console.WriteLine($"Your BMI is {bmi}. Which is feather weight. Have a pie :("); }
+            if (bmi >= 18.5 & bmi <= 24.9)
+            { Console.WriteLine($"Your BMI is {bmi}. Great, go and chill but keep an eye on your diet :)"); }
+            if (bmi >= 25 & bmi <= 29.9)
+            { Console.WriteLine($"your BMI is {bmi}. You're overweight mate hit the gym"); }
+            if (bmi >= 30.0)
+            { Console.WriteLine($"Your BMI is {bmi}. obese, stop eating junk mate and hit the gym 5 times a week"); }
+
+            Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {bmi} ");
 
 		}
     }
