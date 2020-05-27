@@ -102,19 +102,22 @@ namespace BootCamp.Chapter1
 
         public static int[] InsertFirst(int[] array, int number)
         {
-            int[] newArray = new int[array.Length + 1];
+            int[] newArray;
 
             if (IsNullOrEmpty(array))
             {
-                newArray[0] = number;
-                return newArray;
+                newArray = new int[1] { number };
             }
 
-            newArray[0] = number;
-
-            for (int i = 1; i < newArray.Length; i++)
+            else
             {
-                newArray[i] = array[i - 1];
+                newArray = new int[array.Length + 1];
+                newArray[0] = number;
+
+                for (int i = 1; i < newArray.Length; i++)
+                {
+                    newArray[i] = array[i - 1];
+                }
             }
 
             return newArray;
@@ -122,44 +125,52 @@ namespace BootCamp.Chapter1
 
         public static int[] InsertLast(int[] array, int number)
         {
-            int[] newArray = new int[array.Length + 1];
+            int[] newArray;
 
             if (IsNullOrEmpty(array))
             {
-                newArray[0] = number;
-                return newArray;
+                newArray = new int[1] { number };
             }
 
-            for (int i = 0; i < array.Length; i++)
+            else
             {
-                newArray[i] = array[i];
-            }
+                newArray = new int[array.Length + 1];
 
-            newArray[newArray.Length - 1] = number;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    newArray[i] = array[i];
+                }
+
+                newArray[newArray.Length - 1] = number;
+            }
 
             return newArray;
         }
 
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            int[] newArray = new int[array.Length + 1];
+            int[] newArray;
 
             if (IsNullOrEmpty(array))
             {
-                newArray[0] = number;
-                return newArray;
+                newArray = new int[1] { number };
             }
 
-            for (int i = 0; i < index; i++)
+            else
             {
-                newArray[i] = array[i];
-            }
+                newArray = new int[array.Length + 1];
 
-            newArray[index] = number;
+                for (int i = 0; i < index; i++)
+                {
+                    newArray[i] = array[i];
+                }
 
-            for (int i = index + 1; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i - 1];
+                newArray[index] = number;
+
+                for (int i = index + 1; i < newArray.Length; i++)
+                {
+                    newArray[i] = array[i - 1];
+                }
             }
 
             return newArray;
@@ -172,7 +183,7 @@ namespace BootCamp.Chapter1
 
         private static bool IsNullOrEmpty(int[] array)
         {
-            if (array.Length == 0 || array == null)
+            if (array == null || array.Length == 0)
             {
                 return true;
             }
