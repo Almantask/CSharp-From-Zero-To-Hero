@@ -2,25 +2,17 @@
 {
     public class Item
     {
-        private string _name;
-        public string GetName()
-        {
-            return _name;
-        }
+        public string Name { get; set; }
 
-        private decimal _price;
-        public decimal GetPrice()
-        {
-            return _price;
-        }
+        public decimal Price { get; set; }
 
-        private float _weight;
+        public float Weight { get; set; }
 
         public Item(string name, decimal price, float weight)
         {
-            _name = name;
-            _price = price;
-            _weight = weight;
+            Name = name;
+            Price = price;
+            Weight = weight;
         }
     }
 }
