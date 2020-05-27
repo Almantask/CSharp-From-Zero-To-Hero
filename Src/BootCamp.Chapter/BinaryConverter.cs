@@ -7,6 +7,11 @@ namespace BootCamp.Chapter
 {
     public static class BinaryConverter
     {
+        /// <summary>
+        /// Convert binary to Integer
+        /// </summary>
+        /// <param name="binary">binary string</param>
+        /// <returns>int number</returns>
         public static long ToInteger(string binary)
         {
             if (!IsValidBinaryNumber(binary))
@@ -23,11 +28,32 @@ namespace BootCamp.Chapter
             return intResult;
         }
 
+        /// <summary>
+        /// Convert long to binary string
+        /// </summary>
+        /// <param name="number">number</param>
+        /// <returns>binary string</returns>
         public static string ToBinary(long number)
         {
-            return "";
+            if (number == 0)
+                return "0";
+
+            long remainder;
+            string result = string.Empty;
+            while (number > 0)
+            {
+                remainder = number % 2;
+                number /= 2;
+                result = remainder.ToString() + result;
+            }
+            return result;
         }
 
+        /// <summary>
+        /// Check if binary string is valid
+        /// </summary>
+        /// <param name="binary">binary string</param>
+        /// <returns>Is valid</returns>
         private static bool IsValidBinaryNumber(string binary)
         {
             bool isValid = true;
@@ -42,8 +68,6 @@ namespace BootCamp.Chapter
             }
 
             return isValid;
-        }
-
-        
+        }        
     }
 }
