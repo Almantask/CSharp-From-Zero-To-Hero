@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeSeries.Workshop.Le
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.DummyApp.Calculator", "Src\DummyAps\Bootcamp.DummyApp.Calculator\Bootcamp.DummyApp.Calculator.csproj", "{E2ADEDF3-204D-4FF5-AA02-AF138DD972EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.DummyApp.Greet", "Bootcamp.DummyApp.Greet\Bootcamp.DummyApp.Greet.csproj", "{EFA6888D-945A-4ED4-9A22-EFACFB754DD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.DummyApp.Greet", "Bootcamp.DummyApp.Greet\Bootcamp.DummyApp.Greet.csproj", "{EFA6888D-945A-4ED4-9A22-EFACFB754DD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

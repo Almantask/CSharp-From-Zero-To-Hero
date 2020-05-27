@@ -1,12 +1,16 @@
 ﻿using System;
+using BootCamp.Chapter.Examples;
 
 namespace BootCamp.Chapter
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static IDummyService Service { get; set; }
+
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Service?.Foo();
+            Console.WriteLine("Hello world!");
         }
     }
 }
