@@ -114,39 +114,80 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+        public void Equip(Weapon weapon)
+        {
+            if (checkWeight(weapon))
+            {
+                _equipment.SetWeapon(weapon);
+            }
+        }
+
         public void Equip(Headpiece head)
         {
-
+            if (checkWeight(head))
+            {
+                _equipment.SetHead(head);
+            }
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Chestpiece chest)
         {
-
+            if (checkWeight(chest))
+            {
+                _equipment.SetChest(chest);
+            }
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
-
+            if (checkWeight(shoulder))
+            {
+                if (isLeft)
+                {
+                    _equipment.SetLeftShoulder(shoulder);
+                }
+                _equipment.SetRightShoulder(shoulder);
+            }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Legspiece legs)
         {
-
+            if (checkWeight(legs))
+            {
+                _equipment.SetLeg(legs);
+            }
         }
 
-        public void Equip(Armpiece head, bool isLeft)
+        public void Equip(Armpiece armPiece, bool isLeft)
         {
-
+            if (checkWeight(armPiece))
+            {
+                if (isLeft)
+                {
+                    _equipment.SetLeftArmp(armPiece);
+                }
+                _equipment.SetRightArm(armPiece);
+            }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Gloves gloves)
         {
-
+            if (checkWeight(gloves))
+            {
+                _equipment.SetGloves(gloves);
+            }
         }
         #endregion
         private void CalculateCarryWeight(int strength)
         {
             _carryWeight = baseCarryWeight + (strength * 10);
+        }
+        private bool checkWeight(Item item)
+        {
+            float availableWeight = baseCarryWeight - _equipment.GetTotalWeight();
+            if (item.GetWeight() > availableWeight) return false;
+
+            return true;
         }
     }
 }
