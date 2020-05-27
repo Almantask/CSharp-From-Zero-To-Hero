@@ -46,41 +46,17 @@ namespace BootCamp.Chapter1
 
         public static int[] RemoveLast(int[] array)
         {
-            if (IsNullOrEmpty(array))
-            {
-                return array;
-            }
-
-            int[] newArray = new int[array.Length - 1];
-            
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                newArray[i] = array[i];
-            }
-            
-            return newArray;
+            return RemoveAt(array, array.Length - 1);
         }
 
         public static int[] RemoveFirst(int[] array)
         {
-            if (IsNullOrEmpty(array))
-            {
-                return array;
-            }
-
-            int[] newArray = new int[array.Length - 1];
-
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i + 1];
-            }
-
-            return newArray;
+            return RemoveAt(array, 0);
         }
 
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (IsNullOrEmpty(array))
+            if (IsNullOrEmpty(array) || IsOutOfBonds(array, index))
             {
                 return array;
             }
@@ -102,49 +78,12 @@ namespace BootCamp.Chapter1
 
         public static int[] InsertFirst(int[] array, int number)
         {
-            int[] newArray;
-
-            if (IsNullOrEmpty(array))
-            {
-                newArray = new int[1] { number };
-            }
-
-            else
-            {
-                newArray = new int[array.Length + 1];
-                newArray[0] = number;
-
-                for (int i = 1; i < newArray.Length; i++)
-                {
-                    newArray[i] = array[i - 1];
-                }
-            }
-
-            return newArray;
+            return InsertAt(array, number, 0);
         }
 
         public static int[] InsertLast(int[] array, int number)
         {
-            int[] newArray;
-
-            if (IsNullOrEmpty(array))
-            {
-                newArray = new int[1] { number };
-            }
-
-            else
-            {
-                newArray = new int[array.Length + 1];
-
-                for (int i = 0; i < array.Length; i++)
-                {
-                    newArray[i] = array[i];
-                }
-
-                newArray[newArray.Length - 1] = number;
-            }
-
-            return newArray;
+            return InsertAt(array, number, array.Length - 1);
         }
 
         public static int[] InsertAt(int[] array, int number, int index)
@@ -154,6 +93,11 @@ namespace BootCamp.Chapter1
             if (IsNullOrEmpty(array))
             {
                 newArray = new int[1] { number };
+            }
+
+            else if (IsOutOfBonds(array, index))
+            {
+                return array;
             }
 
             else
@@ -176,14 +120,19 @@ namespace BootCamp.Chapter1
             return newArray;
         }
 
-        internal static bool Sort()
-        {
-            throw new NotImplementedException();
-        }
-
         private static bool IsNullOrEmpty(int[] array)
         {
             if (array == null || array.Length == 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsOutOfBonds(int[] array, int index)
+        {
+            if (index < 0 || index > array.Length - 1) 
             {
                 return true;
             }
