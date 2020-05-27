@@ -56,9 +56,8 @@ namespace BootCamp.Chapter
                 _items[0] = item;
                 return;
             }
-            Item[] temp = GetItems();
-            _items = new Item[temp.Length + 1];
-            temp.CopyTo(_items, 0);
+            
+            Array.Resize(ref _items, _items.Length + 1);
             _items[^1] = item;
         }
 
@@ -81,17 +80,15 @@ namespace BootCamp.Chapter
             }
         }
 
-        private void DeleteIndexShiftElements(Object[] array, int index)
+        private void DeleteIndexShiftElements(Item[] array, int index)
         {
-            if (array == null || index == null) return;
-            if ((array.Length - index + 1) < 0) throw new InvalidOperationException("Wrong index or array!");
             if (array.Length == 1)
             {
                 array[0] = null;
                 return;
             }
 
-            Object[] temp = new object[array.Length - 1];
+            Object[] temp = new Object[array.Length - 1];
             Array.ConstrainedCopy(array, 0, temp, 0, array.Length-1);
 
             for (int i = index; i < array.Length; i++)
@@ -99,14 +96,13 @@ namespace BootCamp.Chapter
                 temp[i] = array[i + 1];
             }
 
-            array = new object[array.Length -1];
-            array = temp;
+            
         }
         public bool CheckItemExists(Item item)
         {
-            foreach (Item indexItem in _items)
+            foreach (Item candidate in _items)
             {
-                if (item == indexItem)
+                if (item == candidate)
                 {
                     return true;
                 }

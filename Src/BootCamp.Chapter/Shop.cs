@@ -10,16 +10,6 @@
 
         private Inventory _inventory;
 
-        public Inventory GetInventory()
-        {
-            return _inventory;
-        }
-
-        public Shop()
-        {
-            _money = 10000;
-            _inventory = new Inventory();
-        }
 
         public Shop(decimal money)
         {
