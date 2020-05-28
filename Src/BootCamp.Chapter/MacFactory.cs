@@ -7,47 +7,40 @@ namespace BootCamp.Chapter
 {
     public class MacFactory : PcFactory
     {
-        private Body _macBody;
-        private Cpu _macCpu;
-        private Gpu _macGpu;
-        private HardDisk _macHardDisk;
-        private Motherboard _macMotherboard;
-        private Ram _macRam;
-
-        public override void AssembleBody()
+        public override void PrepareBody()
         {
-            _macBody = new Body();
-            base.body = _macBody;
+            Body macBody = new Body();
+            base.body = macBody;
         }
 
-        public override void AssembleCpu()
+        public override void PrepareCpu()
         {
-            _macCpu = new Cpu();
-            base.cpu = _macCpu;
+            Cpu macCpu = new Cpu();
+            base.cpu = macCpu;
         }
 
-        public override void AssembleGpu()
+        public override void PrepareGpu()
         {
-            _macGpu = new Gpu();
-            base.gpu = _macGpu;
+            Gpu macGpu = new Gpu();
+            base.gpu = macGpu;
         }
 
-        public override void AssembleHardDisk()
+        public override void PrepareHardDisk()
         {
-            _macHardDisk = new HardDisk();
-            base.disk = _macHardDisk;
+            HardDisk macHardDisk = new HardDisk();
+            base.disk = macHardDisk;
         }
 
-        public override void AssembleMotherboard()
+        public override void PrepareMotherboard()
         {
-            _macMotherboard = new Motherboard();
-            base.board = _macMotherboard;
+            Motherboard macMotherboard = new Motherboard();
+            base.board = macMotherboard;
         }
 
-        public override void AssembleRam()
+        public override void PrepareRam()
         {
-            _macRam = new Ram();
-            base.ram = _macRam;
+            Ram macRam = new Ram();
+            base.ram = macRam;
         }
     }
 }

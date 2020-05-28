@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using BootCamp.Chapter.Computer;
 
@@ -7,47 +8,40 @@ namespace BootCamp.Chapter
 {
     public class MsFactory : PcFactory
     {
-        private Body _msBody;
-        private Cpu _msCpu;
-        private Gpu _msGpu;
-        private HardDisk _msHardDisk;
-        private Motherboard _msMotherboard;
-        private Ram _msRam;
-
-        public override void AssembleBody()
+        public override void PrepareBody()
         {
-            _msBody = new Body();
-            base.body = _msBody;
+            Body msBody = new Body();
+            base.body = msBody;
         }
 
-        public override void AssembleCpu()
+        public override void PrepareCpu()
         {
-            _msCpu = new Cpu();
-            base.cpu = _msCpu;
+            Cpu msCpu = new Cpu();
+            base.cpu = msCpu;
         }
 
-        public override void AssembleGpu()
+        public override void PrepareGpu()
         {
-            _msGpu = new Gpu();
-            base.gpu = _msGpu;
+            Gpu msGpu = new Gpu();
+            base.gpu = msGpu;
         }
 
-        public override void AssembleHardDisk()
+        public override void PrepareHardDisk()
         {
-            _msHardDisk = new HardDisk();
-            base.disk = _msHardDisk;
+            HardDisk msHardDisk = new HardDisk();
+            base.disk = msHardDisk;
         }
 
-        public override void AssembleMotherboard()
+        public override void PrepareMotherboard()
         {
-            _msMotherboard = new Motherboard();
-            base.board = _msMotherboard;
+            Motherboard msMotherboard = new Motherboard();
+            base.board = msMotherboard;
         }
 
-        public override void AssembleRam()
+        public override void PrepareRam()
         {
-            _msRam = new Ram();
-            base.ram = _msRam;
+            Ram msRam = new Ram();
+            base.ram = msRam;
         }
     }
 }

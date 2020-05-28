@@ -16,20 +16,20 @@ namespace BootCamp.Chapter
 
         public DesktopComputer Assemble()
         {
-            AssembleBody();
-            AssembleCpu();
-            AssembleGpu();
-            AssembleHardDisk();
-            AssembleMotherboard();
-            AssembleRam();
+            PrepareBody();
+            PrepareCpu();
+            PrepareGpu();
+            PrepareHardDisk();
+            PrepareMotherboard();
+            PrepareRam();
             return new DesktopComputer(body, cpu, gpu, disk, board, ram);
         }
 
-        public abstract void AssembleBody();
-        public abstract void AssembleCpu();
-        public abstract void AssembleGpu();
-        public abstract void AssembleHardDisk();
-        public abstract void AssembleMotherboard();
-        public abstract void AssembleRam();
+        public abstract void PrepareBody();
+        public abstract void PrepareCpu();
+        public abstract void PrepareGpu();
+        public abstract void PrepareHardDisk();
+        public abstract void PrepareMotherboard();
+        public abstract void PrepareRam();
     }
 }
