@@ -44,11 +44,19 @@
 
         public static int[] RemoveLast(int[] array)
         {
+            if (IsNullOrEmpty(array))
+            {
+                return array;
+            }
             return RemoveAt(array, array.Length - 1);
         }
 
         public static int[] RemoveFirst(int[] array)
         {
+            if (IsNullOrEmpty(array))
+            {
+                return array;
+            }
             return RemoveAt(array, 0);
         }
 
@@ -76,11 +84,21 @@
 
         public static int[] InsertFirst(int[] array, int number)
         {
+            if (IsNullOrEmpty(array))
+            {
+                int[] newArray = { number };
+                return newArray;
+            }
             return InsertAt(array, number, 0);
         }
 
         public static int[] InsertLast(int[] array, int number)
         {
+            if (IsNullOrEmpty(array))
+            {
+                int[] newArray = { number };
+                return newArray;
+            }
             return InsertAt(array, number, array.Length);
         }
 
