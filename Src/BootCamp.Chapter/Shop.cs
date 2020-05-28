@@ -7,11 +7,6 @@ namespace BootCamp.Chapter
         public Inventory Inventory { get; private set; }
         public decimal Money { get; private set; }
 
-        public Shop()
-        {
-            Inventory = new Inventory();
-        }
-
         public Shop(decimal money)
         {
             Inventory = new Inventory();
