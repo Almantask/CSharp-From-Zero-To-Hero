@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     public class Shop
     {
-        public Inventory Inventory { get; private set; }
+        public Inventory Inventory { get; }
         public decimal Money { get; private set; }
 
         public Shop(decimal money)
