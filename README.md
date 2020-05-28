@@ -1,17 +1,26 @@
-# C#: From Zero To Hero 
-# The vision
-"Programming is hard". Yes, but not harder than running a marathon for a person has never run. It's not harder than 
-building a house if you never built one. Programming is hard only until you practice it (like any other skill). 
-I would like to invite you to learn programming and C# following this course. 
-Ignite passion for finding little miracles in code every day 🙂
+# Testing / Mocks Practice
 
-# For new joiners
-It's never too late to join, because the community is there, all the material is saved
-and you will not be left alone.
+I've got a `DiceRoller` class here that needs to be tested. I've got
+a partial test suite started in *TestingRandomTests/DiceRollerTests.cs*, 
+but it's got some problems. 
 
-Live lessons material (slides + videos + examples + homework) here:  
-https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/Summary
+`DiceRoller.Roll(string)` accepts an input string formatted like a Dungeons
+and Dragons dice roll. For example, *1d6* means roll a six-sided die one time, 
+*2d8* means roll an eight-sided die twice, and so on.
 
-New joiner's guide here:  
-https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/New-joiner-guide  
-![Boot Camp Banner](Res/kaisi_banner.png)
+## Task 
+
+(1) `Roll_Never_Out_Of_Range` - Looping the action to test over and over
+is a pretty bad way of testing Roll. Figure out a better way to test and 
+make sure it's never out of range.
+
+(2) Figure out how to test making sure that the `DiceRoller` calls into
+the `IRandomizer` the right number of times with the right argument.
+
+Don't change `DiceRoller` to make this happen. You should only make
+changes to the test project. 
+
+You are not limited in the 
+mocking technique / library you use. (In other words, you are to find a 
+mocking library or implement the mocks yourself - *what* you're expected 
+to test is the same).
