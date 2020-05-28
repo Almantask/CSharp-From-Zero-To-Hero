@@ -10,19 +10,6 @@ namespace BootCamp.Chapter.Tests
 {
     public class TestsDeck
     {
-        private static List<Card> FullDeckOfCards()
-        {
-            List<Card> cardsDeck = new List<Card>();
-            foreach (Card.Suites suite in (Card.Suites[])Enum.GetValues(typeof(Card.Suites)))
-            {
-                foreach (Card.Ranks rank in (Card.Ranks[])Enum.GetValues(typeof(Card.Ranks)))
-                {
-                    cardsDeck.Add(new Card(suite, rank));
-                }
-            }
-            return cardsDeck;
-        }
-
         [Fact]
         public void When_No_Cards_Given_To_Deck_Should_Throw_ArgumentNullException()
         {
@@ -49,7 +36,7 @@ namespace BootCamp.Chapter.Tests
         public void DrawAt_Out_Of_Index_Should_Throw_Out_Of_Range(int index)
         {
             //Arrange
-            List<Card> cards = FullDeckOfCards();
+            List<Card> cards = BuildFullDeckOfCards();
             IDeck deck = new Gambling.Deck(cards);
 
             //Act
@@ -62,7 +49,7 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void DrawRandom_52_Times_Test()
         {
-            List<Card> cards = FullDeckOfCards();
+            List<Card> cards = BuildFullDeckOfCards();
             IDeck deck = new Gambling.Deck(cards);
             List<Card> newCards = new List<Card>();
 
@@ -78,7 +65,7 @@ namespace BootCamp.Chapter.Tests
         public void DrawAt_Index_Within_Range_should_Give_Correct_Card()
         {
             //Arrange
-            List<Card> cards = FullDeckOfCards();
+            List<Card> cards = BuildFullDeckOfCards();
             IDeck deck = new Gambling.Deck(cards);
 
             //Act
@@ -110,7 +97,7 @@ namespace BootCamp.Chapter.Tests
         {
             //Arrange
             Card lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
-            List<Card> cards = FullDeckOfCards();
+            List<Card> cards = BuildFullDeckOfCards();
             cards.Add(lastCard);
             IDeck deck = new Gambling.Deck(cards);
 
@@ -125,8 +112,8 @@ namespace BootCamp.Chapter.Tests
         public void Shuffle_Should_Return_Different_Order()
         {
             //Arrange
-            List<Card> cards = FullDeckOfCards();
-            IDeck deck = new Gambling.Deck(FullDeckOfCards());
+            List<Card> cards = BuildFullDeckOfCards();
+            IDeck deck = new Gambling.Deck(BuildFullDeckOfCards());
 
             //Act
             deck.Shuffle();
@@ -140,5 +127,18 @@ namespace BootCamp.Chapter.Tests
             //Assert
             shuffledDeck.Should().Contain(cards).And.NotEqual(cards);
         }
+        private static List<Card> BuildFullDeckOfCards()
+        {
+            List<Card> cardsDeck = new List<Card>();
+            foreach (Card.Suites suite in (Card.Suites[])Enum.GetValues(typeof(Card.Suites)))
+            {
+                foreach (Card.Ranks rank in (Card.Ranks[])Enum.GetValues(typeof(Card.Ranks)))
+                {
+                    cardsDeck.Add(new Card(suite, rank));
+                }
+            }
+            return cardsDeck;
+        }
+
     }
 }
