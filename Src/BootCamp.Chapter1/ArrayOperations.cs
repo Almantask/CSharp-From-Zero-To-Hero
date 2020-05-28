@@ -106,12 +106,12 @@
         {
             int[] newArray;
 
-            if (IsNullOrEmpty(array))
+            if (array == null)
             {
                 newArray = new int[1] { number };
             }
 
-            else if (index < 0 || index > array.Length) //If OutOfBounds
+            else if (index < 0 || index > array.Length) //If index is OutOfBounds
             {
                 return array;
             }
@@ -120,16 +120,20 @@
             {
                 newArray = new int[array.Length + 1];
 
-                for (int i = 0; i < index; i++)
+                for (int i = 0; i < newArray.Length; i++)
                 {
-                    newArray[i] = array[i];
-                }
-
-                newArray[index] = number;
-
-                for (int i = index + 1; i < newArray.Length; i++)
-                {
-                    newArray[i] = array[i - 1];
+                    if (i < index)
+                    {
+                        newArray[i] = array[i];
+                    }
+                    else if (i == index)
+                    {
+                        newArray[i] = number;
+                    }
+                    else
+                    {
+                        newArray[i] = array[i - 1];
+                    }
                 }
             }
 
