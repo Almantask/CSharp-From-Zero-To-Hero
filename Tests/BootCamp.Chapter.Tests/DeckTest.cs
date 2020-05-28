@@ -21,7 +21,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void Draw_When_DeckHasNoCards_Throws_OutOfCardsException()
+        public void Draw_Given_DeckDeckWithNoCards_Throws_OutOfCardsException()
         {
             IDeck deck = new Gambling.Deck(new List<Card>());
 
