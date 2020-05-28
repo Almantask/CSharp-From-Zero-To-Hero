@@ -11,7 +11,7 @@ namespace BootCamp.Chapter.Tests
     public class DeckTest
     {
         [Fact]
-        public void When_No_Cards_Given_To_Deck_Should_Throw_ArgumentNullException()
+        public void Deck_Created_WithoutCards_Throws_ArgumentNullException()
         {
             List<Card> cards = null;
 
@@ -21,7 +21,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void Draw_When_Deck_Has_No_Cards_Should_Throw_OutOfCardsException()
+        public void Draw_When_DeckHasNoCards_Throws_OutOfCardsException()
         {
             IDeck deck = new Gambling.Deck(new List<Card>());
 
@@ -33,7 +33,7 @@ namespace BootCamp.Chapter.Tests
         [Theory]
         [InlineData(-1)]
         [InlineData(100)]
-        public void DrawAt_Out_Of_Index_Should_Throw_Out_Of_Range(int index)
+        public void DrawAt_OutOfIndex_Throws_IndexOutOfRangeException(int index)
         {
             //Arrange
             List<Card> cards = BuildFullDeckOfCards();
@@ -47,7 +47,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void DrawRandom_52_Times_Test()
+        public void DrawRandom_52Times_Returns_SameCards_DifferentOrder()
         {
             List<Card> cards = BuildFullDeckOfCards();
             IDeck deck = new Gambling.Deck(cards);
@@ -62,7 +62,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void DrawAt_Index_Within_Range_should_Give_Correct_Card()
+        public void DrawAt_When_IndexWithinRange_Returns_ExpectedCard()
         {
             //Arrange
             List<Card> cards = BuildFullDeckOfCards();
@@ -77,7 +77,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void Deck_With_1_Card_Should_After_DrawFromTop_Throw_OutOfCardsException_When_DrawAt_0()
+        public void DrawFromTop_RemovesACard_And_DrawAt0_Throws_OutOfCardsException()
         {
             //Test if DrawFromTop actually removes a card from deck.
 
@@ -93,7 +93,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void DrawFromTop_Should_Give_Last_Card_In_List()
+        public void DrawFromTop_Given_DeckWith1ExtraCard_Returns_ExpectedCard()
         {
             //Arrange
             Card lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
