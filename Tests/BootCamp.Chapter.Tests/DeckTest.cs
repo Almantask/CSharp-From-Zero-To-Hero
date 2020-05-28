@@ -36,7 +36,7 @@ namespace BootCamp.Chapter.Tests
         public void DrawAt_OutOfIndex_Throws_IndexOutOfRangeException(int index)
         {
             //Arrange
-            List<Card> cards = BuildFullDeckOfCards();
+            List<Card> cards = BuildFullListOfCards();
             IDeck deck = new Gambling.Deck(cards);
 
             //Act
@@ -49,7 +49,7 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void DrawRandom_52Times_Returns_SameCards_DifferentOrder()
         {
-            List<Card> cards = BuildFullDeckOfCards();
+            List<Card> cards = BuildFullListOfCards();
             IDeck deck = new Gambling.Deck(cards);
             List<Card> newCards = new List<Card>();
 
@@ -65,7 +65,7 @@ namespace BootCamp.Chapter.Tests
         public void DrawAt_When_IndexWithinRange_Returns_ExpectedCard()
         {
             //Arrange
-            List<Card> cards = BuildFullDeckOfCards();
+            List<Card> cards = BuildFullListOfCards();
             IDeck deck = new Gambling.Deck(cards);
 
             //Act
@@ -97,7 +97,7 @@ namespace BootCamp.Chapter.Tests
         {
             //Arrange
             Card lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
-            List<Card> cards = BuildFullDeckOfCards();
+            List<Card> cards = BuildFullListOfCards();
             cards.Add(lastCard);
             IDeck deck = new Gambling.Deck(cards);
 
@@ -112,22 +112,22 @@ namespace BootCamp.Chapter.Tests
         public void Shuffle_Should_Return_Different_Order()
         {
             //Arrange
-            List<Card> cards = BuildFullDeckOfCards();
-            IDeck deck = new Gambling.Deck(BuildFullDeckOfCards());
+            List<Card> cards = BuildFullListOfCards();
+            IDeck deck = new Gambling.Deck(BuildFullListOfCards());
+            List<Card> shuffledDeck = new List<Card>();
+            cards.Reverse();
 
             //Act
             deck.Shuffle();
-            List<Card> shuffledDeck = new List<Card>();
             for (int i = 0; i < cards.Count; i++)
             {
                 shuffledDeck.Add(deck.DrawFromTop());
             }
-            shuffledDeck.Reverse();
 
             //Assert
             shuffledDeck.Should().Contain(cards).And.NotEqual(cards);
         }
-        private static List<Card> BuildFullDeckOfCards()
+        private static List<Card> BuildFullListOfCards()
         {
             List<Card> cardsDeck = new List<Card>();
             foreach (Card.Suites suite in (Card.Suites[])Enum.GetValues(typeof(Card.Suites)))
