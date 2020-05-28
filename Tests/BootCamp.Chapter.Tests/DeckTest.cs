@@ -8,7 +8,7 @@ using Xunit;
 
 namespace BootCamp.Chapter.Tests
 {
-    public class TestsDeck
+    public class DeckTest
     {
         [Fact]
         public void When_No_Cards_Given_To_Deck_Should_Throw_ArgumentNullException()

@@ -4,7 +4,7 @@ using Xunit;
 
 namespace BootCamp.Chapter.Tests
 {
-    public class TestsHand : Gambling.Hand
+    public class HandTest : Gambling.Hand
     {
         //PS cant remove cards from hand? weird....
 
@@ -12,7 +12,7 @@ namespace BootCamp.Chapter.Tests
         public void Reveal_Returns_Hand_Given()
         {
             List<Card> listOfCards = BuildListOfCards();
-            TestsHand hand = new TestsHand();
+            HandTest hand = new HandTest();
 
             hand.AddCards(listOfCards.ToArray());
             IEnumerable<Card> returnedListOfCards = hand.Reveal();
