@@ -18,21 +18,21 @@ namespace BootCamp.Chapter
             Items = new List<Item>(defaultInventorySize);
         }
 
-        public Item[] GetItem(string name)
+        public Item GetItem(string name)
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException($"{nameof(name)} cannot be null or empty.");
 
-            if (RemainingSpace == Size) return new Item[0];
+            if (RemainingSpace == Size) return null;
 
             foreach (var item in Items)
             {
                 if (item.Name == name)
                 {
-                    return new Item[] { item };
+                    return item;
                 }
             }
 
-            return new Item[0];
+            return null;
         }
 
         public void AddItem(Item item)

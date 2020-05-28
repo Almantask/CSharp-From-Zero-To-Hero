@@ -64,7 +64,7 @@ namespace BootCamp.Chapter
 
         public Item[] GetItems(string name)
         {
-            return _inventory.GetItem(name);
+            return new Item[] { _inventory.GetItem(name) };
         }
 
         #region Extra challenge: Equipment

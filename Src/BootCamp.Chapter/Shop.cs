@@ -35,10 +35,10 @@ namespace BootCamp.Chapter
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException($"{nameof(name)} cannot be null or empty.");
 
-            Item[] itemToRemove = Inventory.GetItem(name);
+            Item itemToRemove = Inventory.GetItem(name);
 
-            if (itemToRemove.Length == 0) return;
-            Inventory.RemoveItem(itemToRemove[0]);
+            if (itemToRemove is null) return;
+            Inventory.RemoveItem(itemToRemove);
         }
 
         /// <summary>
@@ -68,12 +68,12 @@ namespace BootCamp.Chapter
         /// </returns>
         public Item Sell(string item)
         {
-            Item[] itemToSell = Inventory.GetItem(item);
+            Item itemToSell = Inventory.GetItem(item);
 
-            if (Inventory.Items.Contains(itemToSell[0]))
+            if (Inventory.Items.Contains(itemToSell))
             {
-                Money += itemToSell[0].Price;
-                return itemToSell[0];
+                Money += itemToSell.Price;
+                return itemToSell;
             }
 
             return null;
