@@ -11,6 +11,11 @@ namespace BootCamp.Chapter
 
 			 Console.WriteLine("What is your Name?.");
             string name = Console.ReadLine();
+		
+		
+		 Console.WriteLine("What is your sex? (M/F)");
+            string gender = Console.ReadLine();
+             string M;
            
 
             Console.WriteLine("How old are you?");
@@ -42,8 +47,12 @@ namespace BootCamp.Chapter
             { Console.WriteLine($"your BMI is {bmi}. You're overweight mate hit the gym"); }
             if (bmi >= 30.0)
             { Console.WriteLine($"Your BMI is {bmi}. obese, stop eating junk mate and hit the gym 5 times a week"); }
-
+		
+            if (gender == "M")
             Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg and his height is {height} cm. His BMI is {bmi} ");
+		 else
+                Console.WriteLine($"{name} is {age} years old, her weight is {weight} kg and her height is {height} cm. Her BMI is {bmi} ");
+		
 
 		}
     }
