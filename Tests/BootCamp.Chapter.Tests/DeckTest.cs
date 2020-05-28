@@ -36,8 +36,7 @@ namespace BootCamp.Chapter.Tests
         public void DrawAt_OutOfIndex_Throws_IndexOutOfRangeException(int index)
         {
             //Arrange
-            List<Card> cards = BuildFullListOfCards();
-            IDeck deck = new Gambling.Deck(cards);
+            IDeck deck = BuildFullDeckOfCards();
 
             //Act
             Action action = () => deck.DrawAt(index);
@@ -71,9 +70,8 @@ namespace BootCamp.Chapter.Tests
             //Act
             Card pickedCard = deck.DrawAt(1);
 
-            //Assert wich is better and why?
+            //Assert
             Assert.Equal(cards[1], pickedCard);
-            //pickedCard.Should().Be(cards[index]);
         }
 
         [Fact]
@@ -140,5 +138,11 @@ namespace BootCamp.Chapter.Tests
             return cardsDeck;
         }
 
+        private static IDeck BuildFullDeckOfCards()
+        {
+            List<Card> cards = BuildFullListOfCards();
+            IDeck deck = new Gambling.Deck(cards);
+            return deck;
+        }
     }
 }
