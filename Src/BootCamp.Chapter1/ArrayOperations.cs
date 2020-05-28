@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BootCamp.Chapter1
+﻿namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -56,7 +54,7 @@ namespace BootCamp.Chapter1
 
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (IsNullOrEmpty(array) || IsOutOfBonds(array, index))
+            if (IsNullOrEmpty(array) || index < 0 || index > array.Length - 1) // If Null Or Empty or OutOfBounds
             {
                 return array;
             }
@@ -83,7 +81,7 @@ namespace BootCamp.Chapter1
 
         public static int[] InsertLast(int[] array, int number)
         {
-            return InsertAt(array, number, array.Length - 1);
+            return InsertAt(array, number, array.Length);
         }
 
         public static int[] InsertAt(int[] array, int number, int index)
@@ -95,7 +93,7 @@ namespace BootCamp.Chapter1
                 newArray = new int[1] { number };
             }
 
-            else if (IsOutOfBonds(array, index))
+            else if (index < 0 || index > array.Length) //If OutOfBounds
             {
                 return array;
             }
@@ -123,16 +121,6 @@ namespace BootCamp.Chapter1
         private static bool IsNullOrEmpty(int[] array)
         {
             if (array == null || array.Length == 0)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private static bool IsOutOfBonds(int[] array, int index)
-        {
-            if (index < 0 || index > array.Length - 1) 
             {
                 return true;
             }
