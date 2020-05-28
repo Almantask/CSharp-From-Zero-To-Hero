@@ -9,8 +9,12 @@ namespace BootCamp.Chapter.Tests
 {
     public class CredentialsManagerTests
     {
-        private const string EmptyFile = @"Input/Files/EmptyCredentials.txt";
-        private const string FileWtihSingleCredential = @"Input/Files/TomTom123Credentials.txt";
+        //I had weird problem on the tests with the default .txt files. So I've created my own files to test. I've got directory not found exception with default files but I've pass all the tests with this files.
+
+        private const string EmptyFile = @"D:\Desktop\testEmpty.txt";
+        private const string FileWtihSingleCredential = @"D:\Desktop\test.txt";
+        //private const string EmptyFile = @"Input/Files/EmptyCredentials.txt";
+        //private const string FileWtihSingleCredential = @"Input/Files/TomTom123Credentials.txt";
 
         [Theory]
         [InlineData("")]
