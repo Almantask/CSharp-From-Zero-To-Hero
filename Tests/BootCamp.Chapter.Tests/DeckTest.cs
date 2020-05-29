@@ -110,10 +110,7 @@ namespace BootCamp.Chapter.Tests
         public void Shuffle_Should_Return_Different_Order()
         {
             //Arrange
-            List<Card> cards = BuildFullListOfCards();
-            IDeck deck = new Gambling.Deck(BuildFullListOfCards());
-            List<Card> shuffledDeck = new List<Card>();
-            cards.Reverse();
+            BuildDeckAndListOfCards(out List<Card> cards, out IDeck deck, out List<Card> shuffledDeck);
 
             //Act
             deck.Shuffle();
@@ -125,6 +122,15 @@ namespace BootCamp.Chapter.Tests
             //Assert
             shuffledDeck.Should().Contain(cards).And.NotEqual(cards);
         }
+
+        private static void BuildDeckAndListOfCards(out List<Card> cards, out IDeck deck, out List<Card> shuffledDeck)
+        {
+            cards = BuildFullListOfCards();
+            deck = new Gambling.Deck(BuildFullListOfCards());
+            shuffledDeck = new List<Card>();
+            cards.Reverse();
+        }
+
         private static List<Card> BuildFullListOfCards()
         {
             List<Card> cardsDeck = new List<Card>();
