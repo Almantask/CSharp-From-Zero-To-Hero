@@ -8,40 +8,40 @@ namespace BootCamp.Chapter
 {
     public class MsFactory : PcFactory
     {
-        public override void PrepareBody()
+        public override Body PrepareBody()
         {
             Body msBody = new Body();
-            base.body = msBody;
+            return msBody;
         }
 
-        public override void PrepareCpu()
+        public override Cpu PrepareCpu()
         {
             Cpu msCpu = new Cpu();
-            base.cpu = msCpu;
+            return msCpu;
         }
 
-        public override void PrepareGpu()
+        public override Gpu PrepareGpu()
         {
             Gpu msGpu = new Gpu();
-            base.gpu = msGpu;
+            return msGpu;
         }
 
-        public override void PrepareHardDisk()
+        public override HardDisk PrepareHardDisk()
         {
             HardDisk msHardDisk = new HardDisk();
-            base.disk = msHardDisk;
+            return msHardDisk;
         }
 
-        public override void PrepareMotherboard()
+        public override Motherboard PrepareMotherboard()
         {
             Motherboard msMotherboard = new Motherboard();
-            base.board = msMotherboard;
+            return msMotherboard;
         }
 
-        public override void PrepareRam()
+        public override Ram PrepareRam()
         {
             Ram msRam = new Ram();
-            base.ram = msRam;
+            return msRam;
         }
     }
 }

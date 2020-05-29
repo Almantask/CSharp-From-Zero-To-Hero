@@ -7,29 +7,26 @@ namespace BootCamp.Chapter
 {
     public abstract class PcFactory
     {
-        protected Body body;
-        protected Cpu cpu;
-        protected Gpu gpu;
-        protected HardDisk disk;
-        protected Motherboard board;
-        protected Ram ram;
+        
 
         public DesktopComputer Assemble()
         {
-            PrepareBody();
-            PrepareCpu();
-            PrepareGpu();
-            PrepareHardDisk();
-            PrepareMotherboard();
-            PrepareRam();
-            return new DesktopComputer(body, cpu, gpu, disk, board, ram);
+            Body body = PrepareBody();
+            Cpu cpu = PrepareCpu();
+            Gpu gpu =PrepareGpu();
+            HardDisk hardDisk = PrepareHardDisk();
+            Motherboard motherboard = PrepareMotherboard();
+            Ram ram = PrepareRam();
+
+            return new DesktopComputer(body,cpu,gpu,hardDisk,motherboard,ram);
+            
         }
 
-        public abstract void PrepareBody();
-        public abstract void PrepareCpu();
-        public abstract void PrepareGpu();
-        public abstract void PrepareHardDisk();
-        public abstract void PrepareMotherboard();
-        public abstract void PrepareRam();
+        public abstract Body PrepareBody();
+        public abstract Cpu PrepareCpu();
+        public abstract Gpu PrepareGpu();
+        public abstract HardDisk PrepareHardDisk();
+        public abstract Motherboard PrepareMotherboard();
+        public abstract Ram PrepareRam();
     }
 }

@@ -7,40 +7,40 @@ namespace BootCamp.Chapter
 {
     public class MacFactory : PcFactory
     {
-        public override void PrepareBody()
+        public override Body PrepareBody()
         {
             Body macBody = new Body();
-            base.body = macBody;
+            return macBody;
         }
 
-        public override void PrepareCpu()
+        public override Cpu PrepareCpu()
         {
             Cpu macCpu = new Cpu();
-            base.cpu = macCpu;
+            return macCpu;
         }
 
-        public override void PrepareGpu()
+        public override Gpu PrepareGpu()
         {
             Gpu macGpu = new Gpu();
-            base.gpu = macGpu;
+            return macGpu;
         }
 
-        public override void PrepareHardDisk()
+        public override HardDisk PrepareHardDisk()
         {
             HardDisk macHardDisk = new HardDisk();
-            base.disk = macHardDisk;
+            return macHardDisk;
         }
 
-        public override void PrepareMotherboard()
+        public override Motherboard PrepareMotherboard()
         {
             Motherboard macMotherboard = new Motherboard();
-            base.board = macMotherboard;
+            return macMotherboard;
         }
 
-        public override void PrepareRam()
+        public override Ram PrepareRam()
         {
             Ram macRam = new Ram();
-            base.ram = macRam;
+            return macRam;
         }
     }
 }
