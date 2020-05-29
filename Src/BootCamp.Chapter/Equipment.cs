@@ -1,4 +1,5 @@
-﻿using BootCamp.Chapter.Items;
+﻿using System;
+using BootCamp.Chapter.Items;
 
 namespace BootCamp.Chapter
 {
@@ -7,58 +8,82 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
-        private Weapon _weapon;
+        private float _totalWeight;
+        private float _totalDefense;
+        private float _totalAttack;
+
+        public Weapon Weapon { get; set; }
+        public Headpiece Headpiece { get; set; }
+        public Chestpiece Chestpiece { get; set; }
+        public Shoulderpiece LeftShoulder { get; set; }
+        public Shoulderpiece RightShoulder { get; set; }
+        public Legspiece Legs { get; set; }
+        public Armpiece LeftArm { get; set; }
+        public Armpiece RightArm { get; set; }
+        public Gloves Gloves { get; set; }
+
+        //I haven't change those to properties cause it has so many if statements.
+
         public void SetWeapon(Weapon weapon)
         {
+            Weapon newWeapon = weapon ?? throw new ArgumentNullException(nameof(weapon) + " shouldn't be null.");
 
+            changeWepon(Weapon, newWeapon);
         }
 
-        private Headpiece _head;
+        
         public void SetHead(Headpiece head)
         {
+            Headpiece newHeadpiece = head ?? throw new ArgumentNullException(nameof(head) + " shouldn't be null.");
 
+            changeArmor(Headpiece, head);
         }
 
-        private Chestpiece _chest;
         public void SetChest(Chestpiece chestpiece)
         {
-
+            Chestpiece newChestpiece = chestpiece ?? throw new ArgumentNullException(nameof(chestpiece) + " shouldn't be null.");
+            changeArmor(Chestpiece, chestpiece);
         }
 
-        private Shoulderpiece _leftShoulder;
         public void SetLeftShoulder(Shoulderpiece should)
         {
-
+            Shoulderpiece newShoulderpiece = should ?? throw new ArgumentNullException(nameof(should) + " shouldn't be null.");
+            changeArmor(LeftShoulder, should);
         }
 
-        private Shoulderpiece _rightShoulder;
+        
         public void SetRightShoulder(Shoulderpiece shoulder)
         {
-
+            Shoulderpiece newShoulderpiece = shoulder ?? throw new ArgumentNullException(nameof(shoulder) + " shouldn't be null.");
+            changeArmor(RightShoulder, shoulder);
         }
 
-        private Legspiece _legs;
+        
         public void SetLeg(Legspiece legs)
         {
-
+            Legspiece newLegspiece = legs ?? throw new ArgumentNullException(nameof(legs) + " shouldn't be null.");
+            changeArmor(Legs, legs);
         }
 
-        private Armpiece _leftArm;
+        
         public void SetLeftArmp(Armpiece arm)
         {
-
+            var armpiece = arm ?? throw new ArgumentNullException(nameof(arm) + " shouldn't be null.");
+            changeArmor(LeftArm, arm );
         }
 
-        private Armpiece _rightArm;
+        
         public void SetRightArm(Armpiece arm)
         {
-
+            Armpiece newArmpiece = arm ?? throw new ArgumentNullException(nameof(arm) + " shouldn't be null.");
+            changeArmor(RightArm, arm);
         }
 
-        private Gloves _gloves;
+        
         public void SetGloves(Gloves gloves)
         {
-
+            Gloves newGloves = gloves ?? throw new ArgumentNullException(nameof(gloves) + " shouldn't be null.");
+            changeArmor(Gloves, gloves);
         }
 
         /// <summary>
@@ -67,7 +92,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalWeight()
         {
-            return 0;
+            return _totalWeight;
         }
 
         /// <summary>
@@ -76,7 +101,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalDefense()
         {
-            return 0;
+            return _totalDefense;
         }
 
         /// <summary>
@@ -85,7 +110,24 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalAttack()
         {
-            return 0;
+            return _totalAttack;
+        }
+        private void changeWepon(Weapon currentWeapon, Weapon newWeapon)
+        {
+            _totalAttack -= currentWeapon?.GetDamageValue() ?? throw new ArgumentNullException(nameof(currentWeapon) + " shouldn't be null.");
+            _totalAttack += newWeapon?.GetDamageValue() ?? throw new ArgumentNullException(nameof(newWeapon) + " shouldn't be null.");
+
+            _totalWeight -= currentWeapon.Weight;
+            _totalWeight += currentWeapon.Weight;
+        }
+
+        private void changeArmor(Armor currentArmorPiece, Armor newArmorPiece)
+        {
+            _totalWeight -= currentArmorPiece?.Weight ?? throw new ArgumentNullException(nameof(currentArmorPiece) + " shouldn't be null.");
+            _totalWeight += newArmorPiece?.Weight ?? throw new ArgumentNullException(nameof(newArmorPiece) + " shouldn't be null.");
+
+            _totalDefense -= currentArmorPiece.GetDefenseValue();
+            _totalDefense += currentArmorPiece.GetDefenseValue();
         }
     }
 }

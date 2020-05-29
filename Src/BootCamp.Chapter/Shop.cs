@@ -1,29 +1,21 @@
-﻿namespace BootCamp.Chapter
+﻿#nullable enable
+using System;
+using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
+        public decimal Money { get; set; }
 
-        private Inventory _inventory;
-
-        public Shop()
-        {
-
-        }
+        public Inventory Inventory { get; set; }
 
         public Shop(decimal money)
         {
-            _money = money;
+            Money = money;
+            Inventory = new Inventory();
         }
 
-        public Item[] GetItems()
-        {
-            return _inventory.GetItems();
-        }
 
         /// <summary>
         /// Adds item to the stock.
@@ -31,6 +23,11 @@
         /// </summary>
         public void Add(Item item)
         {
+            Item recievedItem = item ?? throw new ArgumentNullException(nameof(item) + " shouldn't be null.");
+
+            if (Inventory.GetItems(item.Name).Contains(item)) return;
+
+            Inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,17 +37,24 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            Inventory.RemoveItem(Inventory.GetFirstItem(name ?? throw new ArgumentNullException(nameof(name) + " shouldn't be null.")));
         }
 
         /// <summary>
-        /// Player can sell items to a shop.
-        /// All items can be sold.
+        /// Player can sell Inventory to a shop.
+        /// All Inventory can be sold.
         /// Shop looses money.
         /// </summary>
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            Item recievedItem = item ?? throw new ArgumentNullException(nameof(item) + " shouldn't be null.");
+
+            if (Money < item.Price) return 0;
+
+            Money -= item.Price;
+            Inventory.AddItem(item);
+            return item.Price;
         }
 
         /// <summary>
@@ -64,7 +68,14 @@
         /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            if(item == "") throw new ArgumentException(nameof(item)+ " shouldn't be empty.");
+            Item itemToSell =
+                Inventory.GetFirstItem(item ?? throw new ArgumentNullException(nameof(item) + " shouldn't be null."));
+            if (itemToSell is null) return null;
+
+            Money += itemToSell.Price;
+            Inventory.RemoveItem(itemToSell);
+            return itemToSell;
         }
     }
 }
