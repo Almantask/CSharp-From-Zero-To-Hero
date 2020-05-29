@@ -28,7 +28,11 @@ namespace BootCamp.Chapter.Gambling.Poker
 
         public override IEnumerable<Player> GetWinners()
         {
-            if (!Players.Any()) return new Player[0];
+            if (!Players.Any())
+            {
+                throw new InvalidGameStateException("There must at least 1 player"); 
+            }
+
 
             var playersWithCombos = new Dictionary<Player, PokerCombo>();
 

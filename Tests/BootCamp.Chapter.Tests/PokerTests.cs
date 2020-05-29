@@ -1,6 +1,7 @@
 ﻿using BootCamp.Chapter.Gambling;
 using BootCamp.Chapter.Gambling.Poker;
 using FluentAssertions;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -10,13 +11,23 @@ namespace BootCamp.Chapter.Tests
     {
         [Theory]
         [MemberData(nameof(PokerExpectations))]
-        public void GetWinners_Given_List_Players_Returns_Winnner((Poker game, List<Player> expectedWinner) buildGame)
+        public void GetWinners_Given_List_Players_Returns_ExpectedWinnner((Poker game, List<Player> expectedWinner) buildGame)
         {
             (Poker game, List<Player> expectedWinner) = buildGame;
 
             var winners = game.GetWinners();
 
             winners.Should().Contain(expectedWinner);
+        }
+
+        [Fact]
+        public void GetWinners_Given_No_Players_Throws_InvalidGameStateException()
+        {
+            var game = new Poker();
+
+            Action action = () => game.GetWinners();
+
+            Assert.Throws<InvalidGameStateException>(action); 
         }
 
         public static IEnumerable<object[]> PokerExpectations

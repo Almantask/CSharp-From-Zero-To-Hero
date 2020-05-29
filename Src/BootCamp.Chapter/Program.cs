@@ -10,6 +10,8 @@ namespace BootCamp.Chapter
 
         static void Main(string[] args)
         {
+            var game = new Poker();
+            var outcome = game.GetWinners();
              
         }
 
