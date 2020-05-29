@@ -68,13 +68,7 @@ namespace BootCamp.Chapter1
             if (IsArrayNullOrEmpty(array))
                 return array;
 
-            var newArray = new int[array.Length - 1];
-            for (int i = 0; i < array.Length -1; i++)
-            {
-                newArray[i] = array[i];
-            }
-
-            return newArray;
+            return RemoveAt(array, array.Length - 1);
 
         }
 
@@ -87,14 +81,7 @@ namespace BootCamp.Chapter1
             if (IsArrayNullOrEmpty(array))
                 return array;
 
-            int j = 0;
-            var newArray = new int[array.Length - 1];
-            for (int i = 1; i < array.Length; i++, j++)
-            {
-                newArray[j] = array[i];
-            }
-
-            return newArray;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -135,14 +122,7 @@ namespace BootCamp.Chapter1
             if (IsArrayNullOrEmpty(array))
                 array = new int[0];
 
-            int[] newIntArray = new int[array.Length + 1];
-            newIntArray[0] = number;
-            for (int i = 1, j = 0; i < newIntArray.Length; i++, j++)
-            {
-                newIntArray[i] = array[j];
-            }
-            return newIntArray;
-
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -156,13 +136,7 @@ namespace BootCamp.Chapter1
             if (IsArrayNullOrEmpty(array))
                 array = new int[0];
 
-            int[] newIntArray = new int[array.Length + 1];
-            for (int i = 0, j = 0; i < array.Length; i++, j++)
-            {
-                newIntArray[i] = array[j];
-            }
-            newIntArray[newIntArray.Length - 1] = number;
-            return newIntArray;
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
