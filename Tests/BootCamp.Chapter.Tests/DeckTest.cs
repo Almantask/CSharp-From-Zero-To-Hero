@@ -48,9 +48,7 @@ namespace BootCamp.Chapter.Tests
         [Fact]
         public void DrawRandom_52Times_Returns_SameCards_DifferentOrder()
         {
-            List<Card> cards = BuildFullListOfCards();
-            IDeck deck = new Gambling.Deck(cards);
-            List<Card> newCards = new List<Card>();
+            BuildListOfCardsGiveItToDeckAndCreateEmptyListOfCards(out List<Card>  cards, out IDeck deck, out List<Card> newCards);
 
             for (int i = 0; i < 52; i++)
             {
@@ -58,6 +56,13 @@ namespace BootCamp.Chapter.Tests
             }
 
             newCards.Should().Contain(cards).And.NotEqual(cards);
+        }
+
+        private static void BuildListOfCardsGiveItToDeckAndCreateEmptyListOfCards(out List<Card> cards, out IDeck deck, out List<Card> newCards)
+        {
+            cards = BuildFullListOfCards();
+            deck = new Gambling.Deck(cards);
+            newCards = new List<Card>();
         }
 
         [Fact]
@@ -110,7 +115,7 @@ namespace BootCamp.Chapter.Tests
         public void Shuffle_Should_Return_Different_Order()
         {
             //Arrange
-            BuildDeckAndListOfCards(out List<Card> cards, out IDeck deck, out List<Card> shuffledDeck);
+            BuildListOfCardsGiveItToDeckAndShuffle(out List<Card> cards, out IDeck deck, out List<Card> shuffledDeck);
 
             //Act
             deck.Shuffle();
@@ -123,7 +128,7 @@ namespace BootCamp.Chapter.Tests
             shuffledDeck.Should().Contain(cards).And.NotEqual(cards);
         }
 
-        private static void BuildDeckAndListOfCards(out List<Card> cards, out IDeck deck, out List<Card> shuffledDeck)
+        private static void BuildListOfCardsGiveItToDeckAndShuffle(out List<Card> cards, out IDeck deck, out List<Card> shuffledDeck)
         {
             cards = BuildFullListOfCards();
             deck = new Gambling.Deck(BuildFullListOfCards());
