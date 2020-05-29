@@ -6,15 +6,14 @@ namespace BootCamp.Chapter.Tests
 {
     public class HandTest : Gambling.Hand
     {
-        //PS cant remove cards from hand? weird....
 
         [Fact]
-        public void Reveal_Returns_Hand_Given()
+        public void Reveal_Returns_CardsInHand()
         {
             List<Card> listOfCards = BuildListOfCards();
-            HandTest hand = new HandTest();
-
+            Hand hand = new Hand();
             hand.AddCards(listOfCards.ToArray());
+
             IEnumerable<Card> returnedListOfCards = hand.Reveal();
 
             Assert.Equal(returnedListOfCards, listOfCards);
