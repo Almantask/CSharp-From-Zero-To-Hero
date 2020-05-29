@@ -59,7 +59,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void DrawRandom_DeckWith1Card_returns_ExcpectedCard()
+        public void DrawRandom_Given_DeckWith1Card_returns_ExcpectedCard()
         {
 
             //Arrange
@@ -73,7 +73,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void DrawRandom_DeckWithNoCards_Throws_OutOfCardsException()
+        public void DrawRandom_Given_DeckWithNoCards_Throws_OutOfCardsException()
         {
             IDeck deck = new Gambling.Deck(new List<Card>());
 
@@ -106,7 +106,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void DrawFromTop_Given_DeckWith1ExtraCard_Returns_ExpectedCard()
+        public void DrawFromTop_Given_DeckWith1Card_Returns_ExpectedCard()
         {
             //Arrange
             BuildDeckWith1Card(out Card lastCard, out IDeck deck);
@@ -119,7 +119,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void Shuffle_Should_Return_Different_Order()
+        public void Shuffle_Returns_DifferentCardOrder()
         {
             //Arrange
             BuildListOfCardsGiveItToDeckAndShuffle(out List<Card> cards, out IDeck deck, out List<Card> shuffledDeck);
