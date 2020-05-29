@@ -44,8 +44,8 @@ namespace BootCamp.Chapter.Gambling.Poker
 
             var winners = playersByScore.Where(p => p.Value == highestScore)
                                         .Select(p => p.Key);
-            
-            return winners.ToList();
+
+            return winners;
         }
 
         private PokerCombo FindCombo(IEnumerable<Card> cards)

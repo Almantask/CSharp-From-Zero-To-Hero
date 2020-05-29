@@ -33,5 +33,11 @@ namespace BootCamp.Chapter.Tests
 
         }
 
+        [Fact]
+        public void AddCards_Given_Hand_With_5_Cards_And_Adding_Another_Card_Throws_InvalidPokerHandException()
+        {
+
+        }
+
     }
 }

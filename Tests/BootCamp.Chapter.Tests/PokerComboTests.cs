@@ -7,7 +7,7 @@ namespace BootCamp.Chapter.Tests
     public class PokerComboTests
     {
         [Theory]
-        [MemberData(nameof(pokerComboSmallerExpectations))]
+        [MemberData(nameof(PokerComboSmallerExpectations))]
         public void Smaller__Given_Set1_Is_Smaller_Set2_Returns_Expected(PokerCombo set1, PokerCombo set2, bool expected)
         {
             var actual = set1 < set2;
@@ -16,7 +16,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Theory]
-        [MemberData(nameof(pokerComboEqualExpectations))]
+        [MemberData(nameof(PokerComboEqualExpectations))]
         public void Equal__Given_Set1_Is_Smaller_Set2_Returns_Expected(PokerCombo set1, PokerCombo set2, bool expected)
         {
             var actual = set1 == set2;
@@ -25,7 +25,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Theory]
-        [MemberData(nameof(pokerComboGreaterExpectations))]
+        [MemberData(nameof(PokerComboGreaterExpectations))]
         public void Greater__Given_Set1_Is_Smaller_Set2_Returns_Expected(PokerCombo set1, PokerCombo set2, bool expected)
         {
             var actual = set1 > set2;
@@ -34,7 +34,7 @@ namespace BootCamp.Chapter.Tests
         }
 
 
-        public static IEnumerable<object[]> pokerComboSmallerExpectations
+        public static IEnumerable<object[]> PokerComboSmallerExpectations
         {
             get
             {
@@ -44,7 +44,7 @@ namespace BootCamp.Chapter.Tests
             }
         }
 
-        public static IEnumerable<object[]> pokerComboEqualExpectations
+        public static IEnumerable<object[]> PokerComboEqualExpectations
         {
             get
             {
@@ -54,7 +54,7 @@ namespace BootCamp.Chapter.Tests
             }
         }
 
-        public static IEnumerable<object[]> pokerComboGreaterExpectations
+        public static IEnumerable<object[]> PokerComboGreaterExpectations
         {
             get
             {
