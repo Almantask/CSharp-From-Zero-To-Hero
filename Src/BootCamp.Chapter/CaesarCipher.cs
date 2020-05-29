@@ -11,27 +11,23 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
-            if (message == null)
+            return CipherText(message, (byte)shift);
+        }
+
+        public static string Decrypt(string message, byte shift)
+        {
+            return CipherText(message, (byte)((int)shift * -1));
+        }
+
+        private static string CipherText(string message, byte shift)
+        {
+            if (string.IsNullOrEmpty(message))
                 return message;
 
             var byteArray = ASCIIEncoding.ASCII.GetBytes(message.ToCharArray());
             for (int i = 0; i < message.Length; i++)
             {
                 byteArray[i] += shift;
-            }
-
-            return new string(Encoding.ASCII.GetChars(byteArray));
-        }
-
-        public static string Decrypt(string message, byte shift)
-        {
-            if (message == null)
-                return message;
-
-            var byteArray = ASCIIEncoding.ASCII.GetBytes(message.ToCharArray());
-            for (int i = 0; i < message.Length; i++)
-            {
-                byteArray[i] -= shift;
             }
 
             return new string(Encoding.ASCII.GetChars(byteArray));
