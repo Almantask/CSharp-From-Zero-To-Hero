@@ -58,19 +58,35 @@ namespace BootCamp.Chapter.Tests
             newCards.Should().Contain(cards).And.NotEqual(cards);
         }
 
-        private static void BuildListOfCardsGiveItToDeckAndCreateEmptyListOfCards(out List<Card> cards, out IDeck deck, out List<Card> newCards)
+        [Fact]
+        public void DrawRandom_DeckWith1Card_returns_ExcpectedCard()
         {
-            cards = BuildFullListOfCards();
-            deck = new Gambling.Deck(cards);
-            newCards = new List<Card>();
+
+            //Arrange
+            BuildDeckWith1Card(out Card lastCard, out IDeck deck);
+
+            //Act
+            Card cardDrawn = deck.DrawRandom();
+
+            //Assert
+            cardDrawn.Should().Be(lastCard);
+        }
+
+        [Fact]
+        public void DrawRandom_DeckWithNoCards_Throws_OutOfCardsException()
+        {
+            IDeck deck = new Gambling.Deck(new List<Card>());
+
+            Action action = () => deck.DrawRandom();
+
+            action.Should().Throw<OutOfCardsException>();
         }
 
         [Fact]
         public void DrawAt_When_IndexWithinRange_Returns_ExpectedCard()
         {
             //Arrange
-            List<Card> cards = BuildFullListOfCards();
-            IDeck deck = new Gambling.Deck(cards);
+            BuildDeckAndGiveItFullListOfCards(out List<Card> cards, out IDeck deck);
 
             //Act
             Card pickedCard = deck.DrawAt(1);
@@ -80,16 +96,10 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void DrawFromTop_RemovesACard_And_DrawAt0_Throws_OutOfCardsException()
+        public void DrawAt0_Given_EmptyDeck_Throws_OutOfCardsException()
         {
-            //Test if DrawFromTop actually removes a card from deck.
+            IDeck deck = new Deck(new List<Card>());
 
-            Card lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
-            List<Card> cards = new List<Card>();
-            cards.Add(lastCard);
-            IDeck deck = new Gambling.Deck(cards);
-
-            deck.DrawFromTop();
             Action action = () => deck.DrawAt(0);
 
             action.Should().Throw<OutOfCardsException>();
@@ -99,10 +109,7 @@ namespace BootCamp.Chapter.Tests
         public void DrawFromTop_Given_DeckWith1ExtraCard_Returns_ExpectedCard()
         {
             //Arrange
-            Card lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
-            List<Card> cards = BuildFullListOfCards();
-            cards.Add(lastCard);
-            IDeck deck = new Gambling.Deck(cards);
+            BuildDeckWith1Card(out Card lastCard, out IDeck deck);
 
             //Act
             Card cardDrawn = deck.DrawFromTop();
@@ -154,6 +161,27 @@ namespace BootCamp.Chapter.Tests
             List<Card> cards = BuildFullListOfCards();
             IDeck deck = new Gambling.Deck(cards);
             return deck;
+        }
+
+        private static void BuildListOfCardsGiveItToDeckAndCreateEmptyListOfCards(out List<Card> cards, out IDeck deck, out List<Card> newCards)
+        {
+            cards = BuildFullListOfCards();
+            deck = new Gambling.Deck(cards);
+            newCards = new List<Card>();
+        }
+
+        private static void BuildDeckWith1Card(out Card lastCard, out IDeck deck)
+        {
+            lastCard = new Card(Card.Suites.Hearts, Card.Ranks.Ace);
+            List<Card> cards = new List<Card>();
+            cards.Add(lastCard);
+            deck = new Gambling.Deck(cards);
+        }
+
+        private static void BuildDeckAndGiveItFullListOfCards(out List<Card> cards, out IDeck deck)
+        {
+            cards = BuildFullListOfCards();
+            deck = new Gambling.Deck(cards);
         }
     }
 }
