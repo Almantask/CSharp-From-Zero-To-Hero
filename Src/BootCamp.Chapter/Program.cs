@@ -9,6 +9,16 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
+
+            BmiPrompt();
+            BmiPrompt();
+
+            Console.ReadKey();
+
+        }
+
+        public static void BmiPrompt()
+        {
             //  obtain information from user
             var name = PromptString("Name: ");
             var surname = PromptString("Surname: ");
@@ -17,14 +27,11 @@ namespace BootCamp.Chapter
             var height = PromptFloat("Height: ");
 
             // print information back to user
-            Console.WriteLine("\n" + name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
-            
+            Console.WriteLine("\n" + name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " m.");
+
             // calculated BMI using function and store it in "determinedBmi" variable
             var determinedBmi = CalculateBmi(weight, height);
             Console.WriteLine("BMI for " + name + ": " + determinedBmi + "\n");
-
-     
-            Console.ReadKey();
 
         }
 
