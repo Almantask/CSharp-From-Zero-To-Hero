@@ -4,6 +4,7 @@ namespace BootCamp.Chapter
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             string name = "Tom";
@@ -11,22 +12,33 @@ namespace BootCamp.Chapter
             int age = 19;
             double weight = 50;
             double height = 156.5;
-            
-            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm");
 
             double bmi = weight / Math.Pow(height / 100.0, 2);
+
+            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm");
             Console.WriteLine($"BMI of {name} {surname} is {bmi}");
 
-            string name2 = "John";
-            string surname2 = "Smith";
-            int age2 = 34;
-            double weight2 = 86.5;
-            double height2 = 178.9;
+            Console.WriteLine("Introduce a name:");
+            name = Console.ReadLine();
 
-            Console.WriteLine($"{name2} {surname2} is {age2} years old, his weight is {weight2} kg and his height is {height2} cm");
+            Console.WriteLine("Introduce a surname:");
+            surname = Console.ReadLine();
 
-            double bmi2 = weight2 / Math.Pow(height2 / 100.0, 2);
-            Console.WriteLine($"BMI of {name2} {surname2} is {bmi2}");
+            Console.WriteLine("Introduce an age:");
+            age = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Introduce a weight (kg):");
+            weight = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine("Introduce a height (cm):");
+            height = double.Parse(Console.ReadLine());
+
+            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm");
+
+            bmi = weight / Math.Pow(height / 100.0, 2);
+
+            Console.WriteLine($"BMI of {name} {surname} is {bmi}");
         }
+
     }
 }
