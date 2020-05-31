@@ -77,8 +77,8 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public List<Item> GetItems(string name)
         {
-            if (name =="") throw new ArgumentException(nameof(name) + " shouldn't be empty");
-            
+            if (name == "") throw new ArgumentException(nameof(name) + " shouldn't be empty");
+
             return _inventory.GetItems(name ?? throw new ArgumentException(nameof(name) + " shouldn't be null or empty."));
         }
 
@@ -93,7 +93,7 @@ namespace BootCamp.Chapter
 
             if (checkWeight(weapon ?? throw new ArgumentNullException(nameof(weapon) + " shouldn't be null.")))
             {
-                _equipment.SetWeapon(weapon);
+                _equipment.Weapon = weapon;
             }
         }
 
@@ -102,14 +102,14 @@ namespace BootCamp.Chapter
 
             if (checkWeight(head ?? throw new ArgumentNullException(nameof(head) + " shouldn't be null.")))
             {
-                _equipment.SetHead(head);
+                _equipment.Headpiece = head;
             }
         }
         public void Equip(Chestpiece chest)
         {
             if (checkWeight(chest ?? throw new ArgumentNullException(nameof(chest) + " shouldn't be null.")))
             {
-                _equipment.SetChest(chest);
+                _equipment.Chestpiece = chest;
             }
 
         }
@@ -120,9 +120,9 @@ namespace BootCamp.Chapter
             {
                 if (isLeft)
                 {
-                    _equipment.SetLeftShoulder(shoulder);
+                    _equipment.LeftShoulder = shoulder;
                 }
-                _equipment.SetRightShoulder(shoulder);
+                _equipment.RightShoulder = shoulder;
             }
         }
 
@@ -130,7 +130,7 @@ namespace BootCamp.Chapter
         {
             if (checkWeight(legs ?? throw new ArgumentNullException(nameof(legs) + " shouldn't be null.")))
             {
-                _equipment.SetLeg(legs);
+                _equipment.Legs = legs;
             }
         }
 
@@ -140,17 +140,17 @@ namespace BootCamp.Chapter
             {
                 if (isLeft)
                 {
-                    _equipment.SetLeftArmp(armPiece);
+                    _equipment.LeftArm = armPiece;
                 }
-                _equipment.SetRightArm(armPiece);
+                _equipment.RightArm = armPiece;
             }
         }
 
         public void Equip(Gloves gloves)
         {
-            if (checkWeight(gloves ?? throw new ArgumentNullException(nameof(gloves) + " shouldn't be null.")) )
+            if (checkWeight(gloves ?? throw new ArgumentNullException(nameof(gloves) + " shouldn't be null.")))
             {
-                _equipment.SetGloves(gloves);
+                _equipment.Gloves = gloves;
             }
         }
         #endregion

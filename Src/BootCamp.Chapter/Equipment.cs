@@ -12,78 +12,89 @@ namespace BootCamp.Chapter
         private float _totalDefense;
         private float _totalAttack;
 
-        public Weapon Weapon { get; set; }
-        public Headpiece Headpiece { get; set; }
-        public Chestpiece Chestpiece { get; set; }
-        public Shoulderpiece LeftShoulder { get; set; }
-        public Shoulderpiece RightShoulder { get; set; }
-        public Legspiece Legs { get; set; }
-        public Armpiece LeftArm { get; set; }
-        public Armpiece RightArm { get; set; }
-        public Gloves Gloves { get; set; }
-
-        //I haven't change those to properties cause it has so many if statements.
-
-        public void SetWeapon(Weapon weapon)
+        public Weapon Weapon
         {
-            Weapon newWeapon = weapon ?? throw new ArgumentNullException(nameof(weapon) + " shouldn't be null.");
+            get => Weapon;
+            set
+            {
+                Weapon newWeapon = value ?? throw new ArgumentNullException(nameof(value) + " shouldn't be null.");
 
-            changeWepon(Weapon, newWeapon);
+                changeWepon(Weapon, newWeapon);
+            }
+        }
+        public Headpiece Headpiece
+        {
+            get => Headpiece;
+            set
+            {
+                Headpiece newHeadpiece = Headpiece ?? throw new ArgumentNullException(nameof(Headpiece) + " shouldn't be null.");
+
+                changeArmor(Headpiece, Headpiece);
+            }
+        }
+        public Chestpiece Chestpiece
+        {
+            get => Chestpiece;
+            set
+            {
+                Chestpiece newChestpiece = Chestpiece ?? throw new ArgumentNullException(nameof(Chestpiece) + " shouldn't be null.");
+                changeArmor(Chestpiece, Chestpiece);
+            }
+        }
+        public Shoulderpiece LeftShoulder
+        {
+            get => LeftShoulder;
+            set
+            {
+                Shoulderpiece newShoulderpiece = LeftShoulder ?? throw new ArgumentNullException(nameof(LeftShoulder) + " shouldn't be null.");
+                changeArmor(LeftShoulder, LeftShoulder);
+            }
+        }
+        public Shoulderpiece RightShoulder
+        {
+            get => RightShoulder;
+            set
+            {
+                Shoulderpiece newShoulderpiece = RightShoulder ?? throw new ArgumentNullException(nameof(RightShoulder) + " shouldn't be null.");
+                changeArmor(RightShoulder, RightShoulder);
+            }
         }
 
-        
-        public void SetHead(Headpiece head)
+        public Legspiece Legs
         {
-            Headpiece newHeadpiece = head ?? throw new ArgumentNullException(nameof(head) + " shouldn't be null.");
-
-            changeArmor(Headpiece, head);
+            get => Legs;
+            set
+            {
+                Legspiece newLegspiece = Legs ?? throw new ArgumentNullException(nameof(Legs) + " shouldn't be null.");
+                changeArmor(Legs, Legs);
+            }
         }
 
-        public void SetChest(Chestpiece chestpiece)
+        public Armpiece LeftArm
         {
-            Chestpiece newChestpiece = chestpiece ?? throw new ArgumentNullException(nameof(chestpiece) + " shouldn't be null.");
-            changeArmor(Chestpiece, chestpiece);
+            get => LeftArm;
+            set
+            {
+                var armpiece = LeftArm ?? throw new ArgumentNullException(nameof(LeftArm) + " shouldn't be null.");
+                changeArmor(LeftArm, LeftArm);
+            }
         }
-
-        public void SetLeftShoulder(Shoulderpiece should)
+        public Armpiece RightArm
         {
-            Shoulderpiece newShoulderpiece = should ?? throw new ArgumentNullException(nameof(should) + " shouldn't be null.");
-            changeArmor(LeftShoulder, should);
+            get => RightArm; set
+            {
+                Armpiece newArmpiece = RightArm ?? throw new ArgumentNullException(nameof(RightArm) + " shouldn't be null.");
+                changeArmor(RightArm, RightArm);
+            }
         }
-
-        
-        public void SetRightShoulder(Shoulderpiece shoulder)
+        public Gloves Gloves
         {
-            Shoulderpiece newShoulderpiece = shoulder ?? throw new ArgumentNullException(nameof(shoulder) + " shouldn't be null.");
-            changeArmor(RightShoulder, shoulder);
-        }
-
-        
-        public void SetLeg(Legspiece legs)
-        {
-            Legspiece newLegspiece = legs ?? throw new ArgumentNullException(nameof(legs) + " shouldn't be null.");
-            changeArmor(Legs, legs);
-        }
-
-        
-        public void SetLeftArmp(Armpiece arm)
-        {
-            var armpiece = arm ?? throw new ArgumentNullException(nameof(arm) + " shouldn't be null.");
-            changeArmor(LeftArm, arm );
-        }
-
-        
-        public void SetRightArm(Armpiece arm)
-        {
-            Armpiece newArmpiece = arm ?? throw new ArgumentNullException(nameof(arm) + " shouldn't be null.");
-            changeArmor(RightArm, arm);
-        }
-
-        
-        public void SetGloves(Gloves gloves)
-        {
-            Gloves newGloves = gloves ?? throw new ArgumentNullException(nameof(gloves) + " shouldn't be null.");
-            changeArmor(Gloves, gloves);
+            get => Gloves; 
+            set
+            {
+                Gloves newGloves = Gloves ?? throw new ArgumentNullException(nameof(Gloves) + " shouldn't be null.");
+                changeArmor(Gloves, Gloves);
+            }
         }
 
         /// <summary>
