@@ -58,7 +58,8 @@ namespace BootCamp.Chapter.Gambling.Poker
                 && cards.Any(card => card.Rank == Card.Ranks.Ten)
                 && (cards.GroupBy(card => card.Suite).Count() == 1))
             {
-                return 12;
+                var score = CalculateLowestCardScore(cards);
+                return score; 
             }
 
             return 0;
@@ -81,7 +82,8 @@ namespace BootCamp.Chapter.Gambling.Poker
                 }
             }
 
-            return 22;
+            var score = CalculateLowestCardScore(cards);
+            return score;
         }
 
         public static int CalculateFourOfAKindScore(IEnumerable<Card> cards)
@@ -90,7 +92,10 @@ namespace BootCamp.Chapter.Gambling.Poker
             {
                 return 0;
             }
-            return 21;
+
+            var score = CalculateLowestCardScore(cards);
+            return score;
+
         }
 
         public static int CallculateFullHouseScore(IEnumerable<Card> cards)
@@ -99,7 +104,9 @@ namespace BootCamp.Chapter.Gambling.Poker
             {
                 return 0;
             }
-            return 20;
+
+            var score = CalculateLowestCardScore(cards);
+            return score;
         }
 
         public static int CalculateFlushScore(IEnumerable<Card> cards)
@@ -109,7 +116,8 @@ namespace BootCamp.Chapter.Gambling.Poker
                 return 0;
             }
 
-            return 19;
+            var score = CalculateLowestCardScore(cards);
+            return score;
         }
 
         public static int CalculateStraightScore(IEnumerable<Card> cards)
@@ -119,7 +127,8 @@ namespace BootCamp.Chapter.Gambling.Poker
                 return 0;
             }
 
-            return 18;
+            var score = CalculateLowestCardScore(cards);
+            return score;
         }
 
         public static int CalculateThreeOfAKindScore(IEnumerable<Card> cards)
@@ -129,7 +138,8 @@ namespace BootCamp.Chapter.Gambling.Poker
                 return 0;
             }
 
-            return 17;
+            var score = CalculateLowestCardScore(cards);
+            return score;
         }
 
         public static int CalculateTwoPairScore(IEnumerable<Card> cards)
@@ -139,7 +149,8 @@ namespace BootCamp.Chapter.Gambling.Poker
                 return 0;
             }
 
-            return 16;
+            var score = CalculateLowestCardScore(cards);
+            return score;
         }
 
         public static int CalculatePairScore(IEnumerable<Card> cards)
@@ -149,7 +160,8 @@ namespace BootCamp.Chapter.Gambling.Poker
                 return 0;
             }
 
-            return 15;
+            var score = CalculateLowestCardScore(cards);
+            return score;
         }
 
         public static int CalculateHighCardScore(IEnumerable<Card> cards)
@@ -158,6 +170,56 @@ namespace BootCamp.Chapter.Gambling.Poker
             var highestCard = sorted.First().Rank;
 
             switch (highestCard)
+            {
+                case Card.Ranks.Ace:
+                    return 14;
+
+                case Card.Ranks.King:
+                    return 13;
+
+                case Card.Ranks.Queen:
+                    return 12;
+
+                case Card.Ranks.Jack:
+                    return 11;
+
+                case Card.Ranks.Ten:
+                    return 10;
+
+                case Card.Ranks.Nine:
+                    return 9;
+
+                case Card.Ranks.Eight:
+                    return 8;
+
+                case Card.Ranks.Seven:
+                    return 7;
+
+                case Card.Ranks.Six:
+                    return 6;
+
+                case Card.Ranks.Five:
+                    return 5;
+
+                case Card.Ranks.Four:
+                    return 4;
+
+                case Card.Ranks.Three:
+                    return 3;
+
+                case Card.Ranks.Two:
+                    return 2;
+            }
+
+            return 0;
+        }
+
+        public static int CalculateLowestCardScore(IEnumerable<Card> cards)
+        {
+            var sorted = cards.OrderBy(card => card.Rank).ToArray();
+            var lowestCard = sorted.First().Rank;
+
+            switch (lowestCard)
             {
                 case Card.Ranks.Ace:
                     return 14;

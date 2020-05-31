@@ -29,15 +29,44 @@ namespace BootCamp.Chapter.Tests
 
             Action action = () => hand.AddCards(null);
 
-            Assert.Throws<ArgumentNullException>(action); 
-
+            Assert.Throws<ArgumentNullException>(action);
+            
         }
 
-        [Fact]
-        public void AddCards_Given_Hand_With_5_Cards_And_Adding_Another_Card_Throws_InvalidPokerHandException()
+        [Theory]
+        [MemberData(nameof(PokerHandExpectations))]
+        public void AddCards_Given_Hand_With_6_Cards_Throws_InvalidPokerHandException(Hand hand)
         {
+            var card = new Card(Card.Suites.Clubs, Card.Ranks.Nine);
 
+            Action action = () => hand.AddCards(card);
+
+            var ex = Assert.Throws<InvalidPokerHandException>(action);
+            Assert.Contains("Invalid hand size.", ex.Message); 
         }
 
+        public static IEnumerable<object[]> PokerHandExpectations
+        {
+            get
+            {
+                yield return new object[] { BuildGameWith6Card() };
+
+            }
+        }
+
+        private static object BuildGameWith6Card()
+        {
+            var pokerHand = new PokerHand();
+            pokerHand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Ace));
+            pokerHand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.King));
+            pokerHand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Queen));
+            pokerHand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Jack));
+            pokerHand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Ten));
+           
+
+            return pokerHand;
+        }
+
+       
     }
 }
