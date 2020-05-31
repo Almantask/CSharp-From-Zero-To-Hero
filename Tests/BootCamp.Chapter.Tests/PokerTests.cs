@@ -27,7 +27,7 @@ namespace BootCamp.Chapter.Tests
 
             Action action = () => game.GetWinners();
 
-            Assert.Throws<InvalidGameStateException>(action); 
+            Assert.Throws<InvalidGameStateException>(action);
         }
 
         public static IEnumerable<object[]> PokerExpectations
@@ -36,7 +36,31 @@ namespace BootCamp.Chapter.Tests
             {
                 yield return new object[] { BuildGameWithAWinner() };
                 yield return new object[] { BuildGameWithADraw() };
+                yield return new object[] { BuildGameWithSameCombo() };
             }
+        }
+
+        private static object BuildGameWithSameCombo()
+        {
+            var player1 = new Player("player1", new PokerHand());
+            player1.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Seven));
+            player1.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Six));
+            player1.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Five));
+            player1.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Four));
+            player1.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Three));
+
+            var player2 = new Player("player2", new PokerHand());
+            player2.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Six));
+            player2.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Five));
+            player2.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Four));
+            player2.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Three));
+            player2.Hand.AddCards(new Card(Card.Suites.Clubs, Card.Ranks.Two));
+
+            var game = new Poker();
+            game.AddPlayer(player1);
+            game.AddPlayer(player2);
+
+            return (game, new List<Player> { player1 });
         }
 
         public static (Poker, List<Player>) BuildGameWithAWinner()
