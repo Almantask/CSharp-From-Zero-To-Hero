@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -21,19 +22,14 @@ namespace BootCamp.Chapter
         private void LoadList(string peopleFile)
         {
             if (string.IsNullOrEmpty(peopleFile)) throw new ArgumentNullException();
+            if (!File.Exists(peopleFile)) throw new FileNotFoundException();
             using (StreamReader streamReader = new StreamReader(peopleFile))
             {
+                if (string.IsNullOrEmpty(streamReader.ReadLine())) throw
+                new ArgumentNullException("The file hasn't got any data.");
                 bool firstIndexFlag = true;
                 while (!streamReader.EndOfStream)
                 {
-                    if (firstIndexFlag)
-                    {
-                        //we want to skip first row cause it's header.
-                        //This looks weird but I couldn't find diferent way to do it.
-                        streamReader.ReadLine();
-                        firstIndexFlag = false;
-                        continue;
-                    }
 
                     string[] personInfo = streamReader.ReadLine().Split(',');
 
