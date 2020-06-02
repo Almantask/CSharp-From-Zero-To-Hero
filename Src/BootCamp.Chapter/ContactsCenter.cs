@@ -9,6 +9,8 @@ namespace BootCamp.Chapter
     public class ContactsCenter
     {
         private readonly List<Person> _people;
+        public event EventHandler KeyPressed;
+
 
         public ContactsCenter(string peopleFile)
         {
@@ -42,15 +44,7 @@ namespace BootCamp.Chapter
 
         private void GetPersonInfoAndAddPersonList(string[] personInfo)
         {
-            Person person = new Person();
-
-            person.Name = personInfo[0];
-            person.Surname = personInfo[1];
-            person.BirthDate = formatAndParseDateTime(personInfo[2]);
-            person.Gender = personInfo[3];
-            person.Country = personInfo[4];
-            person.Email = personInfo[5];
-            person.StreetAddress = personInfo[6];
+            Person person = new Person(personInfo[0], personInfo[1], formatAndParseDateTime(personInfo[2]), personInfo[3], personInfo[4], personInfo[5], personInfo[6]);
 
             _people.Add(person);
         }
@@ -62,7 +56,10 @@ namespace BootCamp.Chapter
         public List<Person> Filter(Predicate<Person> predicate)
         {
             var people = new List<Person>();
-            // ToDo: implement applying filter.
+            foreach (Person person in _people)
+            {
+                if (predicate.Invoke(person)) people.Add(person);
+            }
             return people;
         }
 
