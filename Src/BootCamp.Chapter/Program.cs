@@ -43,9 +43,9 @@ namespace BootCamp.Chapter
             // check for errors during BMI calculation; otherwise state the BMI
             if (determinedBmi == -1)
             {
-                Console.Write("\nFailed calculating BMI. Reason: ");
-                if (height <= 0) Console.WriteLine("Height cannot be less than zero, but was " + height + ". \n");
-                if (weight <= 0) Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ". \n");
+                Console.WriteLine("\nFailed calculating BMI. Reason: ");
+                if (height <= 0) Console.WriteLine("Height cannot be less than zero, but was " + height + ". ", Environment.NewLine);
+                if (weight <= 0) Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ". ", Environment.NewLine);
             }
             else Console.WriteLine("BMI for " + name + ": " + determinedBmi + "\n");
 
@@ -69,33 +69,41 @@ namespace BootCamp.Chapter
         {
             // Displays request for age from user.
             Console.Write(message);
-            // Declares age variable that will store result of below
-            int integer;
 
-            var input = Console.ReadLine();
+            // Declares the variable that will store result of what happens below.
+            int ValidInput;
 
-            bool isEmpty = string.IsNullOrEmpty(input);
+            var UserInput = Console.ReadLine();
+
+            // Checks for valid input
+            bool isEmpty = string.IsNullOrEmpty(UserInput);
             if (isEmpty == true) return 0;
-            bool isValid = int.TryParse(input, out integer);
+
+            bool isValid = int.TryParse(UserInput, out ValidInput);
             if (!isValid) return -1;
-            else return integer;
+            else return ValidInput;
         }
 
         public static float PromptFloat(string message)
         {
+            // Displays request for height or weight from user.
             Console.Write(message);
 
-            float number;
+            // Declares a variable that will store the result of the checks below.
+            float ValidInput;
 
-            var input = Console.ReadLine();
+            var UserInput = Console.ReadLine();
 
-            bool isEmpty = string.IsNullOrEmpty(input);
+            // Checks for valid input
+            bool isEmpty = string.IsNullOrEmpty(UserInput);
             if (isEmpty == true) return 0;
-            bool isValid = float.TryParse(input, out number);
+
+            bool isValid = float.TryParse(UserInput, out ValidInput);
             if (!isValid) return -1;
-            else return number;
+            else return ValidInput;
         }
 
+        // BMI calculation checks if EITHER height or weight are invalid, if so return error code "-1"
         public static float CalculateBmi(float weight, float height)
         {
             if (height <= 0 || weight <= 0) return -1;
