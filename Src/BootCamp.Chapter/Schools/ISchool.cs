@@ -1,12 +1,23 @@
-﻿using System;
+﻿using BootCamp.Chapter.Students;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter.Schools
 {
-    interface ISchool
+    public interface ISchool<TStudent> where TStudent : IStudent
     {
-        public string Name { get; }
-        public string MyProperty { get; set; }
+        string Name { get; }
+        string Location { get; }
+        List<TStudent> StudentList { get; }
+
+        TStudent this[int index]
+        {
+            get;
+            set;
+        }
+
+        void RegisterStudent(TStudent student);
+        TStudent GetStudent(string studentName);
+        TStudent GetStudent(Guid guid);
     }
 }

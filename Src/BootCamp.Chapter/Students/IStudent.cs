@@ -1,11 +1,10 @@
-﻿using BootCamp.Chapter.Hints;
+﻿using BootCamp.Chapter.Subjects;
+using BootCamp.Chapter.Teachers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter.Students
 {
-    interface IStudent
+    public interface IStudent
     {
         string Name { get; }
         Guid guid { get; }
