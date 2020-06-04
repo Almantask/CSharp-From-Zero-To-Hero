@@ -10,7 +10,12 @@ namespace BootCamp.Chapter.Students
     {
         public string Name { get; }
 
-        public Guid guid { get; }
+        public Guid guid { get; } = new Guid();
+
+        public Student(string name)
+        {
+            Name = name;
+        }
 
         public void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
             where TTeacher : ITeacher<TSubject>
