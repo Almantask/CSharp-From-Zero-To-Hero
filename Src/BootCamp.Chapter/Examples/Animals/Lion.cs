@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BootCamp.Chapter.Examples.Animals;
+﻿using BootCamp.Chapter.Examples.Animals;
 
 namespace BootCamp.Chapter.Examples.Family
 {

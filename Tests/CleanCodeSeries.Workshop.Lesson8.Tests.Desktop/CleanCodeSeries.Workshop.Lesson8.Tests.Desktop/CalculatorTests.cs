@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenQA.Selenium.Appium.Windows;
-using System.Threading;
 using Xunit;
 
 namespace CleanCodeSeries.Workshop.Lesson8.Tests.Desktop

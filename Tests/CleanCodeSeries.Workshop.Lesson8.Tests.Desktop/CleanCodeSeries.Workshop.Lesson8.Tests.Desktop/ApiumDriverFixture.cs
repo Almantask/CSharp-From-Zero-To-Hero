@@ -8,7 +8,7 @@ namespace CleanCodeSeries.Workshop.Lesson8.Tests.Desktop
     public class ApiumDriverFixture : IDisposable
     {
         private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private string pathToAppUnderTest = $@"C:\Users\alman\source\repos\CSharp-From-Zero-To-Hero\Src\DummyAps\CleanCodeSeries.Workshop.Lesson8.DummyApp.Desktop\CleanCodeSeries.Workshop.Lesson8.DummyApp.Desk\bin\Debug\CleanCodeSeries.Workshop.Lesson8.DummyApp.Desk.exe";
+        private string pathToAppUnderTest = $@"C:\Users\alman\source\repos\CSharp-From-Zero-To-Hero\Src\DummyAps\Bootcamp.DummyApp.Calculator\bin\Debug\Bootcamp.DummyApp.Calculator.exe";
         public WindowsDriver<WindowsElement> Driver;
 
         public ApiumDriverFixture()

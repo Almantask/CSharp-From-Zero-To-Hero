@@ -1,5 +1,3 @@
-using System;
-
 namespace Bootcamp.DummyApp.Greet.Models
 {
     public class ErrorViewModel
