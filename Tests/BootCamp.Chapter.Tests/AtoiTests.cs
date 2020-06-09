@@ -17,12 +17,12 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void MyAtoi_Given_String_With_Spaces_And_Negative_Sign_Return_Zero()
+        public void MyAtoi_Given_String_With_Spaces_And_Negative_Number_Return_Number()
         {
             var solution = new Solution();
-            var expected = 0;
+            var expected = -2;
 
-            var actual = solution.MyAtoi("      -");
+            var actual = solution.MyAtoi("      -2");
 
             Assert.Equal(expected, actual);
         }
@@ -111,6 +111,18 @@ namespace BootCamp.Chapter.Tests
             var expected = 0;
 
             var actual = solution.MyAtoi("+w");
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void MyAtoi_Given_String_Has_Number_Negative_Sign_Number_Return_Zero()
+        {
+            var solution = new Solution();
+            var expected = 0;
+
+            var actual = solution.MyAtoi("0+1");
+                 
 
             Assert.Equal(expected, actual);
         }
