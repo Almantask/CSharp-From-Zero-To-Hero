@@ -29,7 +29,6 @@ namespace BootCamp.Chapter
             if (surname == "-") Console.WriteLine("Name cannot be empty.");
 
             var age = PromptInt("Age: ");
-            if (age == -1) Console.WriteLine("\"" + age + "\" is not a valid number.");
 
             var weight = PromptFloat("Weight: ");
             var height = PromptFloat("Height: ");
@@ -80,7 +79,11 @@ namespace BootCamp.Chapter
             if (isEmpty == true) return 0;
 
             bool isValid = int.TryParse(UserInput, out ValidInput);
-            if (!isValid) return -1;
+            if (!isValid)
+            {
+                Console.WriteLine("\"" + UserInput + "\" is not a valid number.");
+                return -1;
+            }
             else return ValidInput;
         }
 
