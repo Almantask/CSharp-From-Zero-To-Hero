@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
             {
                 if (string.IsNullOrEmpty(streamReader.ReadLine())) throw
                 new ArgumentNullException("The file hasn't got any data.");
-                bool firstIndexFlag = true;
+
                 while (!streamReader.EndOfStream)
                 {
 
@@ -40,7 +40,15 @@ namespace BootCamp.Chapter
 
         private void GetPersonInfoAndAddPersonList(string[] personInfo)
         {
-            Person person = new Person(personInfo[0], personInfo[1], formatAndParseDateTime(personInfo[2]), personInfo[3], personInfo[4], personInfo[5], personInfo[6]);
+            const int NAME_INDEX = 0;
+            const int SURNAME_INDEX = 1;
+            const int BIRTHDATE_INDEX = 2;
+            const int GENDER_INDEX = 3;
+            const int COUNTRY_INDEX = 4;
+            const int EMAIL_INDEX = 5;
+            const int STREET_ADDRESS_INDEX = 6;
+
+            Person person = new Person(personInfo[NAME_INDEX], personInfo[SURNAME_INDEX], formatAndParseDateTime(personInfo[BIRTHDATE_INDEX]), personInfo[GENDER_INDEX], personInfo[COUNTRY_INDEX], personInfo[EMAIL_INDEX], personInfo[STREET_ADDRESS_INDEX]);
 
             _people.Add(person);
         }
