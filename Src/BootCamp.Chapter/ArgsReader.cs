@@ -12,8 +12,9 @@ namespace BootCamp.Chapter
 
         public static void Read(string[] args)
         {
-            CheckArgsLength(args);
-            string[] commandArr = ReadAndCheckCommand(args[commandInt]);
+            ValidateArgs(args);
+            ValidateCommand(args[commandInt]);
+            string[] commandArr = ReadCommand(args[commandInt]);
 
             List<Transaction> transactions = ReportsManager.ReadTransactionFile(args[fileToReadInt]);
 
@@ -33,13 +34,16 @@ namespace BootCamp.Chapter
             command.Execute();
         }
 
-        private static string[] ReadAndCheckCommand(string command)
+        private static void ValidateCommand(string command)
         {
             if (string.IsNullOrWhiteSpace(command))
             {
                 throw new InvalidCommandException($"Please give a valid command.");
             }
+        }
 
+        private static string[] ReadCommand(string command)
+        {
             string[] splitCommand = command.Split(' ');
 
             for (int i = 0; i < splitCommand.Length; i++)
@@ -60,7 +64,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static void CheckArgsLength(string[] args)
+        private static void ValidateArgs(string[] args)
         {
             if (args == null || args.Length != 3)
             {
