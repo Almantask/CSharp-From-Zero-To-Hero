@@ -16,6 +16,6 @@ namespace BootCamp.Chapter
         /// Used to log any errors or exceptions raised at the current Date and Time
         /// </summary>
         /// <param name="error"></param>
-        void ErrorLog(string error);
+        void ErrorLog(Exception error);
     }
 }

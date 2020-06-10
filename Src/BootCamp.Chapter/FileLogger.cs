@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public void ErrorLog(string error)
+        public void ErrorLog(Exception error)
         {
             using (var writer = File.AppendText(_logFileName))
             {

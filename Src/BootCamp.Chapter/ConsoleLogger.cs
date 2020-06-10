@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
             Console.WriteLine($"[{DateTime.Now}] {action}");
         }
 
-        public void ErrorLog(string error)
+        public void ErrorLog(Exception error)
         {
             Console.WriteLine($"[{DateTime.Now}] {error}");
         }
