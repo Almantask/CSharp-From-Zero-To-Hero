@@ -1,0 +1,58 @@
+﻿[
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Springfield",
+    "Street": "HoloPapap 2",
+    "Item": "Sausage",
+    "DateTime": "2020-01-05T20:00:00Z",
+    "Price": "€8"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Springfield",
+    "Street": "HoloPapap 2",
+    "Item": "Bannana",
+    "DateTime": "2020-01-05T22:00:00Z",
+    "Price": "€10"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "ANC 54",
+    "Item": "Sausage",
+    "DateTime": "2020-01-07T23:00:00Z",
+    "Price": "€9"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "ANC 54",
+    "Item": "Bannana",
+    "DateTime": "2020-01-08T23:00:00Z",
+    "Price": "€12"
+  },
+  {
+    "Shop": "Kwiki Mart",
+    "City": "Springfield",
+    "Street": "HoloPapap 2",
+    "Item": "Bannana",
+    "DateTime": "2020-01-05T22:00:00Z",
+    "Price": "€15"
+  },
+  {
+    "Shop": "Wallmart",
+    "City": "London",
+    "Street": "ANC 54",
+    "Item": "Toy Car",
+    "DateTime": "2020-01-06T20:00:00Z",
+    "Price": "€11"
+  },
+  {
+    "Shop": "Aibe",
+    "City": "Birstonas",
+    "Street": "Gireno 16",
+    "Item": "Pineapple",
+    "DateTime": "2020-01-12T20:00:00Z",
+    "Price": "€5"
+  }
+]

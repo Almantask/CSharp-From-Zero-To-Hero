@@ -1,50 +1,20 @@
 # C#: From Zero To Hero
-## Chapter 3: C#. Homework: Advanced LINQ
+## Chapter 3: C#. Homework 11: Serialization for JSON and XML
 ### Intro
-LINQ is a powerful tool not only to filter data, but also to transform it. All the common operations
-that you would do in a foreach loop can, and in most cases should be done using LINQ.
-Even though LINQ is not the fastest, it is still good enough for daily programming tasks as it makes code
-much more readable and it's efficient (time-wise) to write code using LINQ.
+Portable data format has been an issue for a long time. We did have binary since the beginning, however
+a human simply couldn't get it. Therefore any kind of changes to such a file would require an intervention of a machine.
 
-Anonymous object is a nice addition for selecting something without a defined type. Sometimes we just
-want to print the results and that purpose anonymous object serves just fine.
+This all changed with **XML**. The idea of XML is to have something similar to HTML, except a bit more strict.
+Base everything with your own custom tags and here you have it- data format.
+
+Later on **JSON** came to town and now in most cases replaces XML, because it's lighter, more concise, faster.
+
+Why do we need all this? Simply because we need to save object's sate. For example a video game has a whole bunch of objects.
+Each object has its' own state and if we want to save the state, we will need to save them to a file.
+This process is called **serialization**. When we want to load the game- we will parse the serialized data back into objects.
+This is called **deserialization**.
 
 ### Task
-All transactions within the shops are known: what, when, where and for how much was an item baught.
+Refer to https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter3/Homework/9
 
-Create a command line program that accepts the following arguments, 
-
-`programname "path/to/input" "command" "path/to/output"`. The "command" format will be specified in the requirements below (`in parantheses`).
-
-You need to generate the following reports:  
-
-1) By time (`time`)
-    - how many items have been bought during every hour of time of day,
-    - how much money did every hour total (on average), 
-    - and get rush hour (most mony earned on average).
-
-Support getting items sold count and money earned for a selected range of hours as well.
-
-2) What city (can be parsed from address) earned the most/least money and what city sold the most/least items? (`city [-min/-max] [-items/-money]`)
-
---- Extra challenge:
-
-3) Daily money earned for specific shop. (`daily Shop Name`)
-
-4) What items were sold in what shop, at what price and when (file, named after shop).  (`full`)
-
-Results should be printed to a file in .csv format.
-
-(3) and (4) supports sorting by shop name (or city name) in either ascending or descending order. If not sorting is provided, it should sort in ascending order. Sorting is just 1 extra arg: -asc (sorts in ascending order by shop name); -desc (sorts in descending order by shop name)
-
-### Example Command Invocations
-
-Here's a list of example command invocations to get you started. It is not an exhaustive list of required supported commands.
-
-1) `"path/to/input" "time" "path/to/output"` - Output the report specified in requirement 1.
-
-2) `"path/to/input" "time 11:00-17:00" "path/to/output"` - Output the report specified in requirement 1, filtered on transactions between the time of day 11:00 - 17:00.
-
-3) `"path/to/input" "city -money -max" "path/to/output"` - Output the report specified in requirement 2, determining the city where the most money is earned. 
-
-Note: No UI.
+Implement saving of results using XML and JSON formats. Input is a JSON, no longer a .csv.
