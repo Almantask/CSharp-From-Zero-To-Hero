@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Security;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +7,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            var message = CaesarCipher.Message(5);
+
+            Console.WriteLine(message);
+
+            Console.WriteLine(CaesarCipher.Encrypt(message, 35));
         }
     }
 }
