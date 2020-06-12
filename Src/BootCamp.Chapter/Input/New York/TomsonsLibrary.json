@@ -1,0 +1,20 @@
+[
+  {
+    "Title": "Beauty and the beast",
+    "Author": "Someone",
+    "Comment": "New",
+    "Status": "Available"
+  },
+  {
+    "Title": "Beauty and the beast",
+    "Author": "Someone",
+    "Comment": null,
+    "Status": "Reserved"
+  },
+  {
+    "Title": "Tom Soyer Adventures",
+    "Author": "Someone else",
+    "Comment": "Old",
+    "Status": "Available"
+  }
+]
