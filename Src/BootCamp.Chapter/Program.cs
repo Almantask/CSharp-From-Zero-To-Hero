@@ -42,46 +42,7 @@ namespace BootCamp.Chapter
             //Console.WriteLine("Sixth Toggle:");
             //toggleableGrid.Toggle(1, 2);
 
-            //Multidimensional
-
-            bool[,] multiDimensionalArray = new bool[4, 2];
-            ToggleableGrid2D toggleableGrid2D = new ToggleableGrid2D(multiDimensionalArray, null);
-
-            Console.WriteLine("First Toggle:");
-            toggleableGrid2D.Toggle(0, 0);
-
-            Console.WriteLine();
-
-            Console.WriteLine("Second Toggle:");
-            toggleableGrid2D.Toggle(0, 1);
-
-            Console.WriteLine();
-
-            Console.WriteLine("Third Toggle:");
-            toggleableGrid2D.Toggle(1, 0);
-
-            Console.WriteLine();
-
-            Console.WriteLine("Fourth Toggle:");
-            toggleableGrid2D.Toggle(1, 1);
-
-            Console.WriteLine();
-
-            Console.WriteLine("Fifth Toggle:");
-            toggleableGrid2D.Toggle(2, 0);
-
-            Console.WriteLine();
-
-            Console.WriteLine("Sixth Toggle:");
-            toggleableGrid2D.Toggle(2, 1);
-
-            Console.WriteLine("Seventh Toggle:");
-            toggleableGrid2D.Toggle(3, 0);
-
-            Console.WriteLine();
-
-            Console.WriteLine("Eight Toggle:");
-            toggleableGrid2D.Toggle(3, 1);
+            Console.WriteLine(MostCommonLetterFinder.Find("This is a test sentence with a ton of t-s inside of it."));
         }
     }
 }

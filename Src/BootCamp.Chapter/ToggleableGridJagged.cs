@@ -12,7 +12,7 @@ namespace BootCamp.Chapter
 
         public ToggleableGridJagged(bool[][] toggles, IGridClearer gridClearer)
         {
-            _gridClearer = gridClearer; //?? throw new ArgumentNullException();
+            _gridClearer = gridClearer ?? throw new ArgumentNullException();
             _gridRenderer = new JaggedArrayRenderer<ToggleableGridJagged>();
 
             Toggleables = toggles ?? throw new ArgumentNullException();

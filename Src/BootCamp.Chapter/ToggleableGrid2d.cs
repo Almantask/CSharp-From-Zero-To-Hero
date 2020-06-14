@@ -13,10 +13,10 @@ namespace BootCamp.Chapter
 
         public ToggleableGrid2D(bool[,] toggles, IGridClearer gridClearer)
         {
-            _gridClearer = gridClearer; // ?? throw new ArgumentNullException();
+            _gridClearer = gridClearer ?? throw new ArgumentNullException();
             _gridRenderer = new TwoDimensionalArrayRenderer<ToggleableGrid2D>();
 
-            Toggleables = toggles;
+            Toggleables = toggles ?? throw new ArgumentNullException();
         }
 
         public void Toggle(int x, int y)
