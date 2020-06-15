@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using System.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -11,17 +10,17 @@ namespace BootCamp.Chapter
         public static List<Transaction> ReadTransactionFile(string path)
         {
             CheckFilePathForRead(path);
+            List<DTOTransaction> dtoTransactions = JsonConvert.DeserializeObject<List<DTOTransaction>>(File.ReadAllText(path));
             List<Transaction> transactions = new List<Transaction>();
 
-            string[] transactionsLines = File.ReadAllText(path).Split(Environment.NewLine);
-
-            foreach (string line in transactionsLines)
+            foreach (DTOTransaction transaction in dtoTransactions)
             {
-                if (Transaction.TryParse(line, out Transaction transaction))
+                if(Transaction.TryParse(transaction.ToString(), out Transaction tr))
                 {
-                    transactions.Add(transaction);
+                    transactions.Add(tr);
                 }
             }
+
             if (transactions.Count == 0)
             {
                 throw new NoTransactionsFoundException($"{path} contained no vaid transactions.");
@@ -62,7 +61,7 @@ namespace BootCamp.Chapter
             {
                 throw new NoTransactionsFoundException($"{path} does not exist.");
             }
-            if(new FileInfo(path).Length == 0)
+            if (new FileInfo(path).Length == 0)
             {
                 throw new NoTransactionsFoundException($"{path} is empty");
             }

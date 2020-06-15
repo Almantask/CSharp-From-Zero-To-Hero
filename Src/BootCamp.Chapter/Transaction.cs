@@ -23,7 +23,11 @@ namespace BootCamp.Chapter
         public DateTime DateTime { get; }
         public decimal Price { get; }
 
-        private Transaction(string name, string city, string street, string item, DateTime dateTime, decimal price)
+        public Transaction()
+        {
+
+        }
+        public Transaction(string name, string city, string street, string item, DateTime dateTime, decimal price)
         {
             ShopName = name;
             City = city;

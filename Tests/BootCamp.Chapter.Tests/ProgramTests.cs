@@ -9,12 +9,12 @@ namespace BootCamp.Chapter.Tests
     // You don't have to be here for a long time.
     public class ProgramTests : IDisposable
     {
-        private const string ValidTransactionsFile = "Input/Transactions.csv";
+        private const string ValidTransactionsFile = "Input/Transactions.json";
         private readonly string OutputFile = Guid.NewGuid().ToString();
 
         [Theory]
-        [InlineData("Input/Empty.csv")]
-        [InlineData("nonExisting.csv")]
+        [InlineData("Input/Empty.json")]
+        [InlineData("nonExisting.json")]
         public void Main_When_Transactions_File_Empty_Or_Not_Found_Throws_NoTransactionsException(string input)
         {
             const string cmd = "time";
