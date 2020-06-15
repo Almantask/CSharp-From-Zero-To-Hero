@@ -1,95 +1,153 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+using System.IO;
+using System.Threading;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
-        /// <summary>
-        /// Sort the array in ascending order.
-        /// If array empty or null- don't do anything.
-        /// </summary>
-        /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0) return;
+            
+            // Bubble sort algorithm
+            for (var i = 0; i < array.Length - 1; i++)
+            {
+                for (var j = i + 1; j < array.Length; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        // Operation that swaps the two values only if they're incorrectly ordered
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
         }
 
-        /// <summary>
-        /// Reverse the array elements, first being last and so on.
-        /// If array empty or null- don't do anything.
-        /// </summary>
-        /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0) return;
+
+            // Defines the start and end of the array.
+            var startIndex = 0;
+            var endIndex = array.Length - 1;
+
+            // Over time, the start will increment by one index value
+            // while the end decrements by one index value. Eventually 
+            // these two values will pass each other which causes the
+            // while loop to stop performing work.
+            while (startIndex < endIndex)
+            {
+                // Performs a swap between the start and end value of the array.
+                var temp = array[startIndex];
+                array[startIndex] = array[endIndex];
+                array[endIndex] = temp;
+
+                // Increments start and end value until they meet
+                startIndex += 1;
+                endIndex -= 1;
+            }
+
         }
 
-        /// <summary>
-        /// Remove last element in array.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            return RemoveAt(array, array.Length - 1);
         }
 
-        /// <summary>
-        /// Remove first element in array.
-        /// </summary>
-        /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            return RemoveAt(array,0);
         }
 
-        /// <summary>
-        /// Removes array element at given index.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="index">Index at which array element should be removed.</param>
-        /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+            // Defines the new array with the new length to accomodate the loss of a value.
+            var newArray = new int[array.Length - 1];
+
+            /// Elements right of item being inserted
+            /// They are shifted back by one index value to fill in empty slot
+            for (var i = index; i < array.Length - 1; i++)
+            {
+
+                newArray[i] = array[i + 1];
+            }
+
+            /// Elements left of the item that is being removed
+            for (var i = 0; i < index; i++)
+            {
+                newArray[i] = array[i];
+            }
+
+            /// Item being removed
+
+            return newArray;
         }
 
-        /// <summary>
-        /// Inserts a new array element at the start.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="number">Number to be added.</param>
-        /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                var newArray = new[] { 0 };
+                return newArray;
+            }
+            return InsertAt(array, number, 0);
+
         }
 
-        /// <summary>
-        /// Inserts a new array element at the end.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="number">Number to be added.</param>
-        /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                var newArray = new[] { 0 };
+                return newArray;
+            }
+            return InsertAt(array, number, array.Length);
         }
 
-        /// <summary>
-        /// Inserts a new array element at the specified index.
-        /// </summary>
-        /// <param name="array">Input array.</param>
-        /// <param name="number">Number to be added.</param>
-        /// <param name="index">Index at which array element should be added.</param>
-        /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                var makeNewArray = new[] { number };
+                return makeNewArray;
+            }
+
+            var newArray = new int[array.Length + 1];
+
+            /// Elements right of item being inserted
+            /// They are shifted by one index value to make space
+            for (var i = index; i < array.Length; i++)
+            {
+
+                newArray[i + 1] = array[i];
+            }
+
+            /// Elements left of the item that is being inserted
+            for (var i = 0; i < index; i++)
+            {
+                newArray[i] = array[i];
+            }
+
+            /// Item being inserted
+            newArray[index] = number;
+
+            return newArray;
         }
     }
 }
