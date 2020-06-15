@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
 {
     public static class ReportsManager
     {
-        public static List<Transaction> ReadTransactionFile(string path)
+        public static List<Transaction> ReadTransactionFileJson(string path)
         {
             CheckFilePathForRead(path);
             List<DTOTransaction> dtoTransactions = JsonConvert.DeserializeObject<List<DTOTransaction>>(File.ReadAllText(path));
@@ -21,6 +21,27 @@ namespace BootCamp.Chapter
                 }
             }
 
+            if (transactions.Count == 0)
+            {
+                throw new NoTransactionsFoundException($"{path} contained no vaid transactions.");
+            }
+
+            return transactions;
+        }
+        public static List<Transaction> ReadTransactionFileCsv(string path)
+        {
+            CheckFilePathForRead(path);
+            List<Transaction> transactions = new List<Transaction>();
+
+            string[] transactionsLines = File.ReadAllText(path).Split(Environment.NewLine);
+
+            foreach (string line in transactionsLines)
+            {
+                if (Transaction.TryParse(line, out Transaction transaction))
+                {
+                    transactions.Add(transaction);
+                }
+            }
             if (transactions.Count == 0)
             {
                 throw new NoTransactionsFoundException($"{path} contained no vaid transactions.");

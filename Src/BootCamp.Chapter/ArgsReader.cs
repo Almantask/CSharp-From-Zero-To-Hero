@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
             ValidateCommand(args[commandInt]);
             string[] commandArr = ReadCommand(args[commandInt]);
 
-            List<Transaction> transactions = ReportsManager.ReadTransactionFile(args[fileToReadInt]);
+            List<Transaction> transactions = ReportsManager.ReadTransactionFileJson(args[fileToReadInt]);
 
             ICommand command = default;
 
