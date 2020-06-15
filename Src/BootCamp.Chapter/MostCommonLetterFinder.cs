@@ -16,14 +16,14 @@ namespace BootCamp.Chapter
             {
                 if (char.IsWhiteSpace(character)) continue;
 
-                IterateDictionary(character, keyValuePairs);
+                IncrementMatchingChar(character, keyValuePairs);
             }
 
             var highestValue = keyValuePairs.Values.Max();
             return FindFirstKeyByValue(keyValuePairs, highestValue);
         }
 
-        private static void IterateDictionary(char input, Dictionary<char, int> dictionary)
+        private static void IncrementMatchingChar(char input, Dictionary<char, int> dictionary)
         {
             if (dictionary.ContainsKey(input))
             {

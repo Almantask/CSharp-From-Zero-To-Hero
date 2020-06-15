@@ -20,6 +20,8 @@ namespace BootCamp.Chapter
 
         public void Toggle(int x, int y)
         {
+            _gridClearer.Clear();
+
             Toggleables[x][y] = !Toggleables[x][y];
             _gridRenderer.Render(this);
         }
