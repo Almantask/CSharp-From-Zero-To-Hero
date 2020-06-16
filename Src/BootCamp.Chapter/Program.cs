@@ -1,4 +1,4 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using BootCamp.Chapter.Examples.Encapsulation;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +6,6 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Example1Demo.Run();
         }
     }
 }
