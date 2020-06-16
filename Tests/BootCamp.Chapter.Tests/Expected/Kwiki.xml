@@ -1,0 +1,23 @@
+<Transactions>
+  <Transaction>
+    <City>Springfield</City>
+    <Street>HoloPapap 2</Street>
+    <Item>Sausage</Item>
+    <DateTime>2020-01-05T20:00:00Z</DateTime>
+    <Price>€8</Price>
+  </Transaction>
+  <Transaction>
+    <City>Springfield</City>
+    <Street>HoloPapap 2</Street>
+    <Item>Bannana</Item>
+    <DateTime>2020-01-05T22:00:00Z</DateTime>
+    <Price>€10</Price>
+  </Transaction>
+  <Transaction>
+    <City>Springfield</City>
+    <Street>HoloPapap 2</Street>
+    <Item>Bannana</Item>
+    <DateTime>2020-01-05T22:00:00Z</DateTime>
+    <Price>€15</Price>
+  </Transaction>
+</Transactions>

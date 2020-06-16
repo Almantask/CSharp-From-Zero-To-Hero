@@ -1,0 +1,125 @@
+﻿{
+  "Times": [
+    {
+      "Hour": 0,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 1,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 2,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 3,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 4,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 5,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 6,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 7,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 8,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 9,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 10,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 11,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 12,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 13,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 14,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 15,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 16,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 17,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 18,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 19,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 20,
+      "Count": 3,
+      "Earned": "€8"
+    },
+    {
+      "Hour": 21,
+      "Count": 0,
+      "Earned": "€0"
+    },
+    {
+      "Hour": 22,
+      "Count": 2,
+      "Earned": "€25"
+    },
+    {
+      "Hour": 23,
+      "Count": 2,
+      "Earned": "€10.05"
+    }
+  ],
+  "RushHour" :  22 
+}

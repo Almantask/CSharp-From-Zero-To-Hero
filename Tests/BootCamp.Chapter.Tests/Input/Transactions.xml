@@ -1,0 +1,58 @@
+﻿<Shops>
+  <Shop>
+    <Shop>Kwiki Mart</Shop>
+    <City>Springfield</City>
+    <Street>HoloPapap 2</Street>
+    <Item>Sausage</Item>
+    <DateTime>2020-01-05T20:00:00Z</DateTime>
+    <Price>€8</Price>
+  </Shop>
+  <Shop>
+    <Shop>Kwiki Mart</Shop>
+    <City>Springfield</City>
+    <Street>HoloPapap 2</Street>
+    <Item>Bannana</Item>
+    <DateTime>2020-01-05T22:00:00Z</DateTime>
+    <Price>€10</Price>
+  </Shop>
+  <Shop>
+    <Shop>Wallmart</Shop>
+    <City>London</City>
+    <Street>ANC 54</Street>
+    <Item>Sausage</Item>
+    <DateTime>2020-01-07T23:00:00Z</DateTime>
+    <Price>€9</Price>
+  </Shop>
+  <Shop>
+    <Shop>Wallmart</Shop>
+    <City>London</City>
+    <Street>ANC 54</Street>
+    <Item>Bannana</Item>
+    <DateTime>2020-01-08T23:00:00Z</DateTime>
+    <Price>€12</Price>
+  </Shop>
+  <Shop>
+    <Shop>Kwiki Mart</Shop>
+    <City>Springfield</City>
+    <Street>HoloPapap 2</Street>
+    <Item>Bannana</Item>
+    <DateTime>2020-01-05T22:00:00Z</DateTime>
+    <Price>€15</Price>
+  </Shop>
+  <Shop>
+    <Shop>Wallmart</Shop>
+    <City>London</City>
+    <Street>ANC 54</Street>
+    <Item>Toy Car</Item>
+    <DateTime>2020-01-06T20:00:00Z</DateTime>
+    <Price>€11</Price>
+  </Shop>
+  <Shop>
+    <Shop>Aibe</Shop>
+    <City>Birstonas</City>
+    <Street>Gireno 16</Street>
+    <Item>Pineapple</Item>
+    <DateTime>2020-01-12T20:00:00Z</DateTime>
+    <Price>€5</Price>
+  </Shop>
+</Shops>

@@ -1,0 +1,9 @@
+<Transactions>
+  <Transaction>
+    <City>Birstonas</City>
+    <Street>Gireno 16</Street>
+    <Item>Pineapple</Item>
+    <DateTime>2020-01-12T20:00:00Z</DateTime>
+    <Price>€5</Price>
+  </Transaction>
+</Transactions>
