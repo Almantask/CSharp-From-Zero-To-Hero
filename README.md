@@ -17,4 +17,5 @@ This is called **deserialization**.
 ### Task
 Refer to https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter3/Homework/9
 
-Implement saving of results using XML and JSON formats. Input is a JSON, no longer a .csv.
+Implement saving of results using XML and JSON formats. Input is a JSON, no longer a .csv.  
+Note: output file extension will determine whether the output should be in json or xml formats.
