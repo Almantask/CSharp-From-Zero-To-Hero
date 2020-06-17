@@ -9,7 +9,7 @@ namespace BootCamp.Chapter.Tests
     // You don't have to be here for a long time.
     public class ProgramTests : IDisposable
     {
-        private const string ValidTransactionsFile = "Input/Transactions.json";
+        private const string ValidTransactionsFile = "Input/Transactions";
         private readonly string OutputFile = Guid.NewGuid().ToString();
 
         [Theory]
@@ -17,19 +17,9 @@ namespace BootCamp.Chapter.Tests
         [InlineData("nonExisting.json")]
         public void Main_When_Transactions_File_Empty_Or_Not_Found_Throws_NoTransactionsException(string input)
         {
-            const string cmd = "time";
-
-            Action action = () => Program.Main(new[] { input, cmd, OutputFile });
+            Action action = () => Program.Main(new[] { input });
 
             action.Should().Throw<NoTransactionsFoundException>();
-        }
-
-        [Fact]
-        public void Main_When_Too_Few_Arguments_Throws_InvalidCommandException()
-        {
-            Action action = () => Program.Main(new[] { ValidTransactionsFile });
-
-            action.Should().Throw<InvalidCommandException>();
         }
 
         [Fact]
@@ -37,58 +27,70 @@ namespace BootCamp.Chapter.Tests
         {
             const string cmd = "blablabla";
 
-            Action action = () => Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
+            Action action = () => Program.Main(new[] { cmd });
 
             action.Should().Throw<InvalidCommandException>();
         }
 
-        [Fact]
-        public void Main_When_Valid_Time_Command_Creates_File_And_Writes_Stats_For_Every_Hour()
+        [Theory]
+        [InlineData(".json")]
+        [InlineData(".xml")]
+        public void Main_When_Valid_Time_Command_Creates_File_And_Writes_Stats_For_Every_Hour(string extension)
         {
             const string cmd = "time";
 
-            Program.Main(new []{ValidTransactionsFile, cmd, OutputFile});
+            Program.Main(new []{ ValidTransactionsFile + extension, cmd, OutputFile + extension });
             
-            const string expectedOutput = "Expected/FullDay.csv";
-            AssertMatchingContents(expectedOutput, OutputFile);
-        }
-
-        [Fact]
-        public void Main_When_Valid_Time_Command_With_Range_Creates_File_And_Writes_Stats_For_Every_Hour_Belonging_To_Range()
-        {
-            const string cmd = "time 20:00-00:00";
-
-            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
-
-            const string expectedOutput = "Expected/Night.csv";
-            AssertMatchingContents(expectedOutput, OutputFile);
-        }
-
-        [Fact]
-        public void Main_When_Valid_DailyRevenue_Command_Creates_File_And_Writes_Revenue_For_Each_Day_Of_Week()
-        {
-            const string cmd = "Daily Kwiki Mart";
-
-            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
-            
-            const string expectedOutput = "Expected/DailyKwiki.csv";
+            var expectedOutput = "Expected/FullDay" + extension;
             AssertMatchingContents(expectedOutput, OutputFile);
         }
 
         [Theory]
-        [InlineData("city -money -max", "Expected/CityItemsMax.csv")]
-        [InlineData("city -money -min", "Expected/CityItemsMin.csv")]
-        [InlineData("city -items -max", "Expected/CityMoneyMax.csv")]
-        [InlineData("city -items -min", "Expected/CityMoneyMin.csv")]
-        public void Main_When_Valid_MinMax_Command_With_Returns_Expected_Cities_With_Min_Max(string cmd, string expectedOutput)
+        [InlineData(".json")]
+        [InlineData(".xml")]
+        public void Main_When_Valid_Time_Command_With_Range_Creates_File_And_Writes_Stats_For_Every_Hour_Belonging_To_Range(string extension)
         {
-            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
+            const string cmd = "time 20:00-00:00";
+
+            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile + extension });
+
+            var expectedOutput = "Expected/Night" + extension;
+            AssertMatchingContents(expectedOutput, OutputFile + extension);
+        }
+
+        [Theory]
+        [InlineData(".json")]
+        [InlineData(".xml")]
+        public void Main_When_Valid_DailyRevenue_Command_Creates_File_And_Writes_Revenue_For_Each_Day_Of_Week(string extension)
+        {
+            const string cmd = "Daily Kwiki Mart";
+
+            Program.Main(new[] { ValidTransactionsFile + extension, cmd, OutputFile + extension });
+            
+            var expectedOutput = "Expected/DailyKwiki" + extension;
+            AssertMatchingContents(expectedOutput, OutputFile + extension);
+        }
+
+        [Theory]
+        [InlineData("city -money -max", "CityItemsMax", ".json")]
+        [InlineData("city -money -min", "CityItemsMin", ".json")]
+        [InlineData("city -items -max", "CityMoneyMax", ".json")]
+        [InlineData("city -items -min", "CityMoneyMin", ".json")]
+        [InlineData("city -money -max", "CityItemsMax", ".xml")]
+        [InlineData("city -money -min", "CityItemsMin", ".xml")]
+        [InlineData("city -items -max", "CityMoneyMax", ".xml")]
+        [InlineData("city -items -min", "CityMoneyMin", ".xml")]
+        public void Main_When_Valid_MinMax_Command_With_Returns_Expected_Cities_With_Min_Max(string cmd, string expectedOutput, string extension)
+        {
+            Program.Main(new[] { ValidTransactionsFile + extension, cmd, OutputFile });
 
             AssertMatchingContents(expectedOutput, OutputFile);
         }
 
-        [Fact]
-        public void Main_When_Valid_Full_Command_Creates_Files_Based_On_Shop_With_All_Transactions()
+        [Theory]
+        [InlineData(".json")]
+        [InlineData(".xml")]
+        public void Main_When_Valid_Full_Command_Creates_Files_Based_On_Shop_With_All_Transactions(string extension)
         {
             const string cmd = "full";
 
@@ -96,9 +98,9 @@ namespace BootCamp.Chapter.Tests
 
             using (new AssertionScope())
             {
-                AssertMatchingContents("Expected/Aibe.csv", "Aibe.csv");
-                AssertMatchingContents("Expected/Kwiki Mart.csv", "Kwiki Mart.csv");
-                AssertMatchingContents("Expected/Wallmart.csv", "Wallmart.csv");
+                AssertMatchingContents("Expected/Aibe" + extension, "Aibe" + extension);
+                AssertMatchingContents("Expected/Kwiki Mart" + extension, "Kwiki Mart" + extension);
+                AssertMatchingContents("Expected/Wallmart" + extension, "Wallmart" + extension);
             }
         }
 

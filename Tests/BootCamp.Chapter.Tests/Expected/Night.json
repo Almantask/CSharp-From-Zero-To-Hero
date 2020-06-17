@@ -1,4 +1,4 @@
-[
+ [
   {
     "Hour": 20,
     "Count": 3,
@@ -18,10 +18,5 @@
     "Hour": 23,
     "Count": 2,
     "Earned": "€10.5"
-  },
-  {
-    "Hour": "Rush hour: 22",
-    "Count": "",
-    "Earned": ""
   }
 ]
