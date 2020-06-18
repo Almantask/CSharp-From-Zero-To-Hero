@@ -52,10 +52,10 @@ namespace BootCamp.Chapter
         {
             const string headers = "Hour, Count, Earned";
 
-            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new TimeNumberEarned
+            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new HourCountEarned
             {
-                Time = z.First().DateTime.Hour,
-                Number = z.Count(),
+                Hour = z.First().DateTime.Hour,
+                Count = z.Count(),
                 Earned = z.Sum(x => x.Price) / z.Select(x => x.DateTime.Date).Distinct().Count()
             }
             ).ToList();
@@ -63,7 +63,7 @@ namespace BootCamp.Chapter
             return CreateTabelForSoldByTime(headers, soldByTime, times[0].Hour, times[1].Hour);
         }
 
-        private static IEnumerable<String> CreateTabelForSoldByTime(string topRow, IEnumerable<TimeNumberEarned> soldByTime, int startTime, int EndTime)
+        private static IEnumerable<String> CreateTabelForSoldByTime(string topRow, IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime)
         {
             List<String> toBeWritten = new List<string>();
 
@@ -76,7 +76,7 @@ namespace BootCamp.Chapter
             return toBeWritten;
         }
 
-        private static int AddTimesToBeWritten(IEnumerable<TimeNumberEarned> soldByTime, int startTime, int EndTime, List<string> toBeWritten)
+        private static int AddTimesToBeWritten(IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime, List<string> toBeWritten)
         {
             int rushHour = 0;
             decimal mostEarned = Decimal.MinValue;
@@ -86,11 +86,11 @@ namespace BootCamp.Chapter
                 int count = 0;
                 decimal earned = 0;
 
-                foreach (TimeNumberEarned timeNumberEarned in soldByTime)
+                foreach (HourCountEarned timeNumberEarned in soldByTime)
                 {
-                    if (timeNumberEarned.Time == i)
+                    if (timeNumberEarned.Hour == i)
                     {
-                        count = timeNumberEarned.Number;
+                        count = timeNumberEarned.Count;
                         earned = timeNumberEarned.Earned;
                         if (mostEarned < earned)
                         {

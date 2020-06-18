@@ -4,10 +4,10 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class TimeNumberEarned
+    public class HourCountEarned
     {
-        public int Time { get; set; }
-        public int Number { get; set; }
+        public int Hour { get; set; }
+        public int Count { get; set; }
         public decimal Earned { get; set; }
     }
 }
