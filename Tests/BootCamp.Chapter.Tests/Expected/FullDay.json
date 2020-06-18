@@ -102,8 +102,8 @@
     },
     {
       "Hour": 20,
-      "Count": 3,
-      "Earned": "€8"
+      "Count": 4,
+      "Earned": "€9"
     },
     {
       "Hour": 21,
@@ -113,12 +113,12 @@
     {
       "Hour": 22,
       "Count": 2,
-      "Earned": "€25"
+      "Earned": "€25,50"
     },
     {
       "Hour": 23,
       "Count": 2,
-      "Earned": "€10.05"
+      "Earned": "€10.50"
     }
   ],
   "RushHour" :  22 

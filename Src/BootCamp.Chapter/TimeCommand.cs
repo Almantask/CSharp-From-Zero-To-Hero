@@ -81,25 +81,25 @@ namespace BootCamp.Chapter
             int rushHour = 0;
             decimal mostEarned = Decimal.MinValue;
 
-            for (int i = startTime; i <= EndTime; i++)
+            for (int time = startTime; time <= EndTime; time++)
             {
                 int count = 0;
                 decimal earned = 0;
 
                 foreach (HourCountEarned timeNumberEarned in soldByTime)
                 {
-                    if (timeNumberEarned.Hour == i)
+                    if (timeNumberEarned.Hour == time)
                     {
                         count = timeNumberEarned.Count;
                         earned = timeNumberEarned.Earned;
                         if (mostEarned < earned)
                         {
                             mostEarned = earned;
-                            rushHour = i;
+                            rushHour = time;
                         }
                     }
                 }
-                toBeWritten.Add($"{i.ToString("D2")}, {count}, \"{earned.ToString("C2", CultureInfo.GetCultureInfo("lt-LT"))}\"");
+                toBeWritten.Add($"{time.ToString("D2")}, {count}, \"{earned.ToString("C2", CultureInfo.GetCultureInfo("lt-LT"))}\"");
             }
 
             return rushHour;
