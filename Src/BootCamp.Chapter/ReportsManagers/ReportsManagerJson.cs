@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -30,11 +31,19 @@ namespace BootCamp.Chapter.ReportsManagers
 
         public void WriteCityTransaction(string path, IEnumerable<string> toBeWritten)
         {
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
+            }
             throw new System.NotImplementedException();
         }
 
         public void WriteTimeTransaction(string path, IEnumerable<string> toBeWritten)
         {
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
+            }
             throw new System.NotImplementedException();
         }
     }

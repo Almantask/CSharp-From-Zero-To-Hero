@@ -16,13 +16,13 @@ namespace BootCamp.Chapter
         {
             ValidateArgs(args);
             ValidateCommand(args[commandInt]);
+
             string[] commandArr = ReadCommand(args[commandInt]);
-            IReportsManager reportsManager = GetReportManagerExtentionTypeFromCommand(commandArr);
+            IReportsManager reportsManager = GetCorrectReportsManagerFromCommandArr(commandArr);
 
             List<Transaction> transactions = reportsManager.ReadTransactionFile(args[fileToReadInt]);
 
             ICommand command = default;
-
             switch (commandArr[0])
             {
                 case timeCommand:
@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
             command.Execute();
         }
 
-        private static IReportsManager GetReportManagerExtentionTypeFromCommand(string[] commandArr)
+        private static IReportsManager GetCorrectReportsManagerFromCommandArr(string[] commandArr)
         {
             ReportsManagers.IReportsManager reportsManager;
 

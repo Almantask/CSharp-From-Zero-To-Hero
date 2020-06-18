@@ -52,7 +52,7 @@ namespace BootCamp.Chapter
         {
             const string headers = "Hour, Count, Earned";
 
-            var soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new HourCountEarned
+            List<HourCountEarned> soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new HourCountEarned
             {
                 Hour = z.First().DateTime.Hour,
                 Count = z.Count(),
@@ -69,14 +69,14 @@ namespace BootCamp.Chapter
 
             toBeWritten.Add(topRow);
 
-            int rushHour = AddTimesToBeWritten(soldByTime, startTime, EndTime, toBeWritten);
+            AddTimesToBeWritten(soldByTime, startTime, EndTime, toBeWritten);
 
-            toBeWritten.Add($"Rush hour: {rushHour}");
+            toBeWritten.Add($"Rush hour: {FindRushHour(soldByTime, startTime, EndTime)}");
 
             return toBeWritten;
         }
 
-        private static int AddTimesToBeWritten(IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime, List<string> toBeWritten)
+        private static int FindRushHour(IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime)
         {
             int rushHour = 0;
             decimal mostEarned = Decimal.MinValue;
@@ -99,10 +99,27 @@ namespace BootCamp.Chapter
                         }
                     }
                 }
-                toBeWritten.Add($"{time.ToString("D2")}, {count}, \"{earned.ToString("C2", CultureInfo.GetCultureInfo("lt-LT"))}\"");
             }
 
             return rushHour;
+        }
+
+        private static void AddTimesToBeWritten(IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime, List<string> toBeWritten)
+        {
+            for (int time = startTime; time <= EndTime; time++)
+            {
+                int count = 0;
+                decimal earned = 0;
+
+                foreach (HourCountEarned timeNumberEarned in soldByTime)
+                {
+                    if (timeNumberEarned.Hour == time)
+                    {
+                        count = timeNumberEarned.Count;
+                    }
+                }
+                toBeWritten.Add($"{time.ToString("D2")}, {count}, \"{earned.ToString("C2", CultureInfo.GetCultureInfo("lt-LT"))}\"");
+            }
         }
 
         private static bool IsHoursValid(string hours, out DateTime[] times)

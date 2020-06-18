@@ -13,11 +13,19 @@ namespace BootCamp.Chapter.ReportsManagers
 
         public void WriteCityTransaction(string path, IEnumerable<string> toBeWritten)
         {
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
+            }
             throw new NotImplementedException();
         }
 
         public void WriteTimeTransaction(string path, IEnumerable<string> toBeWritten)
         {
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
+            }
             throw new NotImplementedException();
         }
     }
