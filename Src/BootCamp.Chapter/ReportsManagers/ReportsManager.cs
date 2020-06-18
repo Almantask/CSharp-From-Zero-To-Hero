@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
     {
         public static List<Transaction> ReadTransactionFileJson(string path)
         {
-            CheckFilePathForRead(path);
+            ValidateFilePath(path);
             List<DTOTransaction> dtoTransactions = JsonConvert.DeserializeObject<List<DTOTransaction>>(File.ReadAllText(path));
             List<Transaction> transactions = new List<Transaction>();
 
@@ -30,7 +30,7 @@ namespace BootCamp.Chapter
         }
         public static List<Transaction> ReadTransactionFileCsv(string path)
         {
-            CheckFilePathForRead(path);
+            ValidateFilePath(path);
             List<Transaction> transactions = new List<Transaction>();
 
             string[] transactionsLines = File.ReadAllText(path).Split(Environment.NewLine);
@@ -72,7 +72,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static void CheckFilePathForRead(string path)
+        private static void ValidateFilePath(string path)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
