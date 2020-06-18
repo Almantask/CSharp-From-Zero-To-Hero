@@ -18,7 +18,7 @@ namespace BootCamp.Chapter
             ValidateCommand(args[commandInt]);
 
             string[] commandArr = ReadCommand(args[commandInt]);
-            IReportsManager reportsManager = GetCorrectReportsManagerFromCommandArr(commandArr);
+            ReportsManager reportsManager = GetCorrectReportsManagerFromCommandArr(commandArr);
 
             List<Transaction> transactions = reportsManager.ReadTransactionFile(args[fileToReadInt]);
 
@@ -26,7 +26,7 @@ namespace BootCamp.Chapter
             switch (commandArr[0])
             {
                 case timeCommand:
-                    command = new TimeCommand(args[fileToWriteInt], commandArr, transactions);
+                    command = new TimeCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
                     break;
 
                 case cityCommand:
@@ -37,24 +37,24 @@ namespace BootCamp.Chapter
             command.Execute();
         }
 
-        private static IReportsManager GetCorrectReportsManagerFromCommandArr(string[] commandArr)
+        private static ReportsManager GetCorrectReportsManagerFromCommandArr(string[] commandArr)
         {
-            ReportsManagers.IReportsManager reportsManager;
+            ReportsManagers.ReportsManager reportsManager;
 
             string fileType = commandArr[fileToReadInt].Split('.')[1];
 
             switch (fileType)
             {
                 case "json":
-                    reportsManager = new ReportsManagers.ReportsManagerJson();
+                    reportsManager = new ReportsManagerJson();
                     break;
 
                 case "xml":
-                    reportsManager = new ReportsManagers.ReportsManagerXML();
+                    reportsManager = new ReportsManagerXML();
                     break;
 
                 case "csv":
-                    reportsManager = new ReportsManagers.ReportsManagerCSV();
+                    reportsManager = new ReportsManagerCSV();
                     break;
 
                 default:

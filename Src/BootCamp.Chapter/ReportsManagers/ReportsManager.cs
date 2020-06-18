@@ -1,78 +1,27 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.ReportsManagers
 {
-    public static class ReportsManager
+    public abstract class ReportsManager
     {
-        public static List<Transaction> ReadTransactionFileJson(string path)
-        {
-            ValidateFilePath(path);
-            List<DTOTransaction> dtoTransactions = JsonConvert.DeserializeObject<List<DTOTransaction>>(File.ReadAllText(path));
-            List<Transaction> transactions = new List<Transaction>();
-
-            foreach (DTOTransaction transaction in dtoTransactions)
-            {
-                if(Transaction.TryParse(transaction.ToString(), out Transaction tr))
-                {
-                    transactions.Add(tr);
-                }
-            }
-
-            if (transactions.Count == 0)
-            {
-                throw new NoTransactionsFoundException($"{path} contained no vaid transactions.");
-            }
-
-            return transactions;
-        }
-        public static List<Transaction> ReadTransactionFileCsv(string path)
-        {
-            ValidateFilePath(path);
-            List<Transaction> transactions = new List<Transaction>();
-
-            string[] transactionsLines = File.ReadAllText(path).Split(Environment.NewLine);
-
-            foreach (string line in transactionsLines)
-            {
-                if (Transaction.TryParse(line, out Transaction transaction))
-                {
-                    transactions.Add(transaction);
-                }
-            }
-            if (transactions.Count == 0)
-            {
-                throw new NoTransactionsFoundException($"{path} contained no vaid transactions.");
-            }
-
-            return transactions;
-        }
-
-        public static void WriteTimeTransaction(string path, IEnumerable<String> toBeWritten)
+        public abstract List<Transaction> ReadTransactionFile(string path);
+        public void WriteTransaction(string path, string toBeWritten)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
             }
 
-            File.WriteAllLines(path, toBeWritten);
-        }
-        public static void WriteCityTransaction(string path, IEnumerable<String> toBeWritten)
-        {
-            if (String.IsNullOrWhiteSpace(path))
-            {
-                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
-            }
-
-            foreach (String line in toBeWritten)
-            {
-                File.WriteAllText(path, line);
-            }
+            File.WriteAllText(path, toBeWritten);
         }
 
-        private static void ValidateFilePath(string path)
+        public abstract void WriteTimeTransaction(string path, string toBeWritten);
+        public abstract void WriteCityTransaction(string path, string toBeWritten);
+
+        public void ValidateFilePath(string path)
         {
             if (String.IsNullOrWhiteSpace(path))
             {

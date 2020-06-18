@@ -5,11 +5,11 @@ using System.IO;
 
 namespace BootCamp.Chapter.ReportsManagers
 {
-    public class ReportsManagerJson : IReportsManager
+    public class ReportsManagerJson : ReportsManager
     {
-        public List<Transaction> ReadTransactionFile(string path)
+        public override List<Transaction> ReadTransactionFile(string path)
         {
-            IReportsManager.ValidateFilePath(path);
+            ValidateFilePath(path);
             List<DTOTransaction> dtoTransactions = JsonConvert.DeserializeObject<List<DTOTransaction>>(File.ReadAllText(path));
             List<Transaction> transactions = new List<Transaction>();
 
@@ -29,7 +29,7 @@ namespace BootCamp.Chapter.ReportsManagers
             return transactions;
         }
 
-        public void WriteCityTransaction(string path, IEnumerable<string> toBeWritten)
+        public override void WriteCityTransaction(string path, string toBeWritten)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
@@ -38,7 +38,7 @@ namespace BootCamp.Chapter.ReportsManagers
             throw new System.NotImplementedException();
         }
 
-        public void WriteTimeTransaction(string path, IEnumerable<string> toBeWritten)
+        public override void WriteTimeTransaction(string path, string toBeWritten)
         {
             if (String.IsNullOrWhiteSpace(path))
             {

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using BootCamp.Chapter.ReportsManagers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -9,6 +11,7 @@ namespace BootCamp.Chapter
         private string _Path;
         private string[] _Command;
         private List<Transaction> _Transactions;
+        private ReportsManager _ReportsManager;
 
         public CityCommand(string path, string[] command, List<Transaction> transactions)
         {
@@ -20,7 +23,7 @@ namespace BootCamp.Chapter
         public void Execute()
         {
             var toBeWritten = CreateReport();
-            WriteToCSV(toBeWritten);
+            WriteToFile(toBeWritten);
         }
         private IEnumerable<string> CreateReport()
         {
@@ -89,9 +92,16 @@ namespace BootCamp.Chapter
             return toReturn;
         }
 
-        private void WriteToCSV(IEnumerable<string> toBeWritten)
+        private void WriteToFile(IEnumerable<string> toBeWritten)
         {
-            ReportsManager.WriteCityTransaction(_Path, toBeWritten);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (String line in toBeWritten)
+            {
+                sb.AppendLine(line);
+            }
+
+            _ReportsManager.WriteTransaction(_Path, sb.ToString());
         }
     }
 }

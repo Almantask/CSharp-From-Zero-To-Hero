@@ -4,14 +4,14 @@ using System.Text;
 
 namespace BootCamp.Chapter.ReportsManagers
 {
-    class ReportsManagerXML : IReportsManager
+    class ReportsManagerXML : ReportsManager
     {
-        public List<Transaction> ReadTransactionFile(string path)
+        public override List<Transaction> ReadTransactionFile(string path)
         {
             throw new NotImplementedException();
         }
 
-        public void WriteCityTransaction(string path, IEnumerable<string> toBeWritten)
+        public override void WriteCityTransaction(string path, string toBeWritten)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
@@ -20,7 +20,7 @@ namespace BootCamp.Chapter.ReportsManagers
             throw new NotImplementedException();
         }
 
-        public void WriteTimeTransaction(string path, IEnumerable<string> toBeWritten)
+        public override void WriteTimeTransaction(string path,string toBeWritten)
         {
             if (String.IsNullOrWhiteSpace(path))
             {

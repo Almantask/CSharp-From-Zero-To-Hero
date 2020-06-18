@@ -1,7 +1,9 @@
-﻿using System;
+﻿using BootCamp.Chapter.ReportsManagers;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -10,18 +12,20 @@ namespace BootCamp.Chapter
         private string _Path;
         private string[] _Command;
         private List<Transaction> _Transactions;
+        private ReportsManager _ReportsManager;
 
-        public TimeCommand(string path, string[] command, List<Transaction> transactions)
+        public TimeCommand(string path, string[] command, List<Transaction> transactions, ReportsManager reportsManager)
         {
             _Path = path;
             _Command = command;
             _Transactions = transactions;
+            _ReportsManager = reportsManager;
         }
 
         public void Execute()
         {
             var toBeWritten = CreateReport();
-            WriteToCSV(toBeWritten);
+            WriteToFile(toBeWritten);
         }
 
         private IEnumerable<string> CreateReport()
@@ -59,6 +63,8 @@ namespace BootCamp.Chapter
                 Earned = z.Sum(x => x.Price) / z.Select(x => x.DateTime.Date).Distinct().Count()
             }
             ).ToList();
+
+
 
             return CreateTabelForSoldByTime(headers, soldByTime, times[0].Hour, times[1].Hour);
         }
@@ -143,9 +149,16 @@ namespace BootCamp.Chapter
             return true;
         }
 
-        private void WriteToCSV(IEnumerable<string> toBeWritten)
+        private void WriteToFile(IEnumerable<string> toBeWritten)
         {
-            ReportsManager.WriteTimeTransaction(_Path, toBeWritten);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (String line in toBeWritten)
+            {
+                sb.AppendLine(line);
+            }
+
+            _ReportsManager.WriteTransaction(_Path, sb.ToString());
         }
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace BootCamp.Chapter.ReportsManagers
 {
-    class ReportsManagerCSV : IReportsManager
+    class ReportsManagerCSV : ReportsManager
     {
-        public List<Transaction> ReadTransactionFile(string path)
+        public override List<Transaction> ReadTransactionFile(string path)
         {
-            IReportsManager.ValidateFilePath(path);
+            ValidateFilePath(path);
             List<Transaction> transactions = new List<Transaction>();
 
             string[] transactionsLines = File.ReadAllText(path).Split(Environment.NewLine);
@@ -29,26 +28,23 @@ namespace BootCamp.Chapter.ReportsManagers
             return transactions;
         }
 
-        public void WriteTimeTransaction(string path, IEnumerable<String> toBeWritten)
+        public override void WriteTimeTransaction(string path, string toBeWritten)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
             }
 
-            File.WriteAllLines(path, toBeWritten);
+            File.WriteAllText(path, toBeWritten);
         }
-        public void WriteCityTransaction(string path, IEnumerable<String> toBeWritten)
+        public override void WriteCityTransaction(string path, string toBeWritten)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
             }
 
-            foreach (String line in toBeWritten)
-            {
-                File.WriteAllText(path, line);
-            }
+            File.WriteAllText(path, toBeWritten);
         }
     }
 }

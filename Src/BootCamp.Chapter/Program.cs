@@ -17,6 +17,7 @@ namespace BootCamp.Chapter
             //TestReportsManager();
         }
 
+        /*
         private static void CreateJsonFile()
         {
             string[] command = new string[] { @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.csv", "time", "test.json" };
@@ -28,14 +29,17 @@ namespace BootCamp.Chapter
             Console.Write(json);
 
         }
+        */
 
         private static void TestArgs()
         {
             string[] command = new string[] { @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Transactions.csv", "time", "test.csv" };
         }
 
+        /*
         private static void TestReportsManager()
         {
+
             var reports = ReportsManager.ReadTransactionFileJson(@"C:\Users\Max\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\bin\Debug\netcoreapp3.1\Input\Transactions.csv");
 
             foreach (var report in reports)
@@ -43,6 +47,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine(report.ToString());
             }
         }
+        */
 
         private static void TestTransactionTryParse()
         {
