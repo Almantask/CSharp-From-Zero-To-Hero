@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using BootCamp.Chapter.Exceptions;
+using BootCamp.Chapter.ReportsManagers;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -15,8 +17,9 @@ namespace BootCamp.Chapter
             ValidateArgs(args);
             ValidateCommand(args[commandInt]);
             string[] commandArr = ReadCommand(args[commandInt]);
+            IReportsManager reportsManager = GetReportManagerExtentionTypeFromCommand(commandArr);
 
-            List<Transaction> transactions = ReportsManager.ReadTransactionFileJson(args[fileToReadInt]);
+            List<Transaction> transactions = reportsManager.ReadTransactionFile(args[fileToReadInt]);
 
             ICommand command = default;
 
@@ -32,6 +35,33 @@ namespace BootCamp.Chapter
             }
 
             command.Execute();
+        }
+
+        private static IReportsManager GetReportManagerExtentionTypeFromCommand(string[] commandArr)
+        {
+            ReportsManagers.IReportsManager reportsManager;
+
+            string fileType = commandArr[fileToReadInt].Split('.')[1];
+
+            switch (fileType)
+            {
+                case "json":
+                    reportsManager = new ReportsManagers.ReportsManagerJson();
+                    break;
+
+                case "xml":
+                    reportsManager = new ReportsManagers.ReportsManagerXML();
+                    break;
+
+                case "csv":
+                    reportsManager = new ReportsManagers.ReportsManagerCSV();
+                    break;
+
+                default:
+                    throw new FileExtensionUnsupportedException();
+            }
+
+            return reportsManager;
         }
 
         private static void ValidateCommand(string command)

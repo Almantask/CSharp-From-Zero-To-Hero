@@ -16,12 +16,12 @@ namespace BootCamp.Chapter
         }
 
         // Shop,City,Street,Item,DateTime,Price
-        public string ShopName { get; }
-        public string City { get; }
-        public string Street { get; }
-        public string Item { get; }
-        public DateTime DateTime { get; }
-        public decimal Price { get; }
+        public string ShopName { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string Item { get; set; }
+        public DateTime DateTime { get; set; }
+        public decimal Price { get; set; }
 
         public Transaction()
         {
