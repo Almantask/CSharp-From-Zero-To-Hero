@@ -6,10 +6,10 @@ namespace BootCamp.Chapter.Models
 {
     public class TimesModel
     {
-        public List<HourCountEarned> Times { get; set; }
-        public string RushHour { get; set; }
+        public List<HourCountEarnedCurrency> Times { get; set; }
+        public int RushHour { get; set; }
 
-        public TimesModel(List<HourCountEarned> times, string rushHour)
+        public TimesModel(List<HourCountEarnedCurrency> times, int rushHour)
         {
             Times = times;
             RushHour = rushHour;

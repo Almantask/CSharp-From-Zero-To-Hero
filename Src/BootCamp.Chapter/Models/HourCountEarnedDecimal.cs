@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    public class HourCountEarned
+    public class HourCountEarnedDecimal
     {
         public int Hour { get; set; }
         public int Count { get; set; }

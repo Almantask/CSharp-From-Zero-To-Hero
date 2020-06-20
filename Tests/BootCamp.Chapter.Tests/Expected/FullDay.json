@@ -3,123 +3,123 @@
     {
       "Hour": 0,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 1,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 2,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 3,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 4,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 5,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 6,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 7,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 8,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 9,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 10,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 11,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 12,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 13,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 14,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 15,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 16,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 17,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 18,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 19,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 20,
       "Count": 4,
-      "Earned": "€9"
+      "Earned": "9,00 €"
     },
     {
       "Hour": 21,
       "Count": 0,
-      "Earned": "€0"
+      "Earned": "0,00 €"
     },
     {
       "Hour": 22,
       "Count": 2,
-      "Earned": "€25,50"
+      "Earned": "25,50 €"
     },
     {
       "Hour": 23,
       "Count": 2,
-      "Earned": "€10.50"
+      "Earned": "10,50 €"
     }
   ],
-  "RushHour" :  22 
+  "RushHour": 22
 }

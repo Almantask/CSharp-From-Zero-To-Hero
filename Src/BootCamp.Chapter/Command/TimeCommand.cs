@@ -60,7 +60,7 @@ namespace BootCamp.Chapter
         {
             //const string headers = "Hour, Count, Earned";
 
-            List<HourCountEarned> soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new HourCountEarned
+            List<HourCountEarnedDecimal> soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new HourCountEarnedDecimal
             {
                 Hour = z.First().DateTime.Hour,
                 Count = z.Count(),
@@ -86,7 +86,7 @@ namespace BootCamp.Chapter
             return toBeWritten;
         }
         */
-        private static int FindRushHour(IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime)
+        private static int FindRushHour(IEnumerable<HourCountEarnedDecimal> soldByTime, int startTime, int EndTime)
         {
             int rushHour = 0;
             decimal mostEarned = Decimal.MinValue;
@@ -96,7 +96,7 @@ namespace BootCamp.Chapter
                 int count = 0;
                 decimal earned = 0;
 
-                foreach (HourCountEarned timeNumberEarned in soldByTime)
+                foreach (HourCountEarnedDecimal timeNumberEarned in soldByTime)
                 {
                     if (timeNumberEarned.Hour == time)
                     {
@@ -114,29 +114,29 @@ namespace BootCamp.Chapter
             return rushHour;
         }
 
-        private static TimesModel CreateModelWithTimes(List<HourCountEarned> soldByTime, int startTime, int EndTime)
+        private static TimesModel CreateModelWithTimes(List<HourCountEarnedDecimal> soldByTime, int startTime, int EndTime)
         {
-            List<HourCountEarned> hourCountEarneds = new List<HourCountEarned>();
+            List<HourCountEarnedCurrency> hourCountEarneds = new List<HourCountEarnedCurrency>();
 
             for (int time = startTime; time <= EndTime; time++)
             {
                 bool isTimeAdded = false;
 
-                foreach (HourCountEarned timeNumberEarned in soldByTime)
+                foreach (HourCountEarnedDecimal timeNumberEarned in soldByTime)
                 {
                     if (timeNumberEarned.Hour == time)
                     {
-                        hourCountEarneds.Add(timeNumberEarned);
+                        hourCountEarneds.Add(HourCountEarnedCurrency.ConvertFromDecimal(timeNumberEarned));
                         isTimeAdded = true;
                     }
                 }
                 if (!isTimeAdded)
                 {
-                    hourCountEarneds.Add(new HourCountEarned() { Hour = time, Count = 0, Earned = 0 });
+                    hourCountEarneds.Add(new HourCountEarnedCurrency() { Hour = time, Count = 0, Earned = 0.ToString("C2", CultureInfo.GetCultureInfo("lt-LT")) });
                 }
             }
             //TODO does not return amout correct. its without € sign.
-            return new TimesModel(hourCountEarneds, $"Rush hour: {FindRushHour(soldByTime, startTime, EndTime)}");
+            return new TimesModel(hourCountEarneds, FindRushHour(soldByTime, startTime, EndTime));
         }
 
         private static bool IsHoursValid(string hours, out DateTime[] times)
