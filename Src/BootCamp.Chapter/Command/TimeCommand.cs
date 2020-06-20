@@ -27,9 +27,6 @@ namespace BootCamp.Chapter
         {
             var toBeWritten = CreateReport();
             _ReportsManager.WriteTimeTransaction(_Path, toBeWritten);
-
-            //var toBeWritten = CreateReport();
-            //WriteToFile(toBeWritten);
         }
 
         private TimesModel CreateReport()
@@ -58,8 +55,6 @@ namespace BootCamp.Chapter
 
         private static TimesModel GroupedByTime(List<Transaction> transactions, DateTime[] times)
         {
-            //const string headers = "Hour, Count, Earned";
-
             List<HourCountEarnedDecimal> soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new HourCountEarnedDecimal
             {
                 Hour = z.First().DateTime.Hour,
@@ -69,23 +64,7 @@ namespace BootCamp.Chapter
             ).ToList();
 
             return CreateModelWithTimes(soldByTime, times[0].Hour, times[1].Hour);
-
-            //return CreateTabelForSoldByTime(headers, soldByTime, times[0].Hour, times[1].Hour);
         }
-        /*
-        private static IEnumerable<String> CreateTabelForSoldByTime(string topRow, IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime)
-        {
-            List<String> toBeWritten = new List<string>();
-
-            toBeWritten.Add(topRow);
-
-            AddTimesToBeWritten(soldByTime, startTime, EndTime, toBeWritten);
-
-            toBeWritten.Add($"Rush hour: {FindRushHour(soldByTime, startTime, EndTime)}");
-
-            return toBeWritten;
-        }
-        */
         private static int FindRushHour(IEnumerable<HourCountEarnedDecimal> soldByTime, int startTime, int EndTime)
         {
             int rushHour = 0;
@@ -135,7 +114,6 @@ namespace BootCamp.Chapter
                     hourCountEarneds.Add(new HourCountEarnedCurrency() { Hour = time, Count = 0, Earned = 0.ToString("C2", CultureInfo.GetCultureInfo("lt-LT")) });
                 }
             }
-            //TODO does not return amout correct. its without € sign.
             return new TimesModel(hourCountEarneds, FindRushHour(soldByTime, startTime, EndTime));
         }
 
@@ -158,18 +136,6 @@ namespace BootCamp.Chapter
             }
 
             return true;
-        }
-
-        private void WriteToFile(IEnumerable<string> toBeWritten)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            foreach (String line in toBeWritten)
-            {
-                sb.AppendLine(line);
-            }
-
-            _ReportsManager.WriteTransaction(_Path, sb.ToString());
         }
     }
 }

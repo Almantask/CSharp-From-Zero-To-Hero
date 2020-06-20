@@ -37,7 +37,6 @@ namespace BootCamp.Chapter.ReportsManagers
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
             }
 
-            //TODO fix this should not be to string
             File.WriteAllText(path, timesModel.ToString());
         }
         public override void WriteCityTransaction(string path, string toBeWritten)
