@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BootCamp.Chapter.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,7 +21,7 @@ namespace BootCamp.Chapter.ReportsManagers
             throw new NotImplementedException();
         }
 
-        public override void WriteTimeTransaction(string path,string toBeWritten)
+        public override void WriteTimeTransaction(string path, TimesModel timesModel)
         {
             if (String.IsNullOrWhiteSpace(path))
             {

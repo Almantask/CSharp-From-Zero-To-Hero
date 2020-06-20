@@ -1,4 +1,5 @@
-﻿using BootCamp.Chapter.ReportsManagers;
+﻿using BootCamp.Chapter.Models;
+using BootCamp.Chapter.ReportsManagers;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,10 +26,13 @@ namespace BootCamp.Chapter
         public void Execute()
         {
             var toBeWritten = CreateReport();
-            WriteToFile(toBeWritten);
+            _ReportsManager.WriteTimeTransaction(_Path, toBeWritten);
+
+            //var toBeWritten = CreateReport();
+            //WriteToFile(toBeWritten);
         }
 
-        private IEnumerable<string> CreateReport()
+        private TimesModel CreateReport()
         {
             DateTime[] times = new DateTime[2] { new DateTime(2020, 01, 01, 00, 00, 00), new DateTime(2020, 01, 01, 23, 00, 00) };
 
@@ -52,9 +56,9 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static IEnumerable<String> GroupedByTime(List<Transaction> transactions, DateTime[] times)
+        private static TimesModel GroupedByTime(List<Transaction> transactions, DateTime[] times)
         {
-            const string headers = "Hour, Count, Earned";
+            //const string headers = "Hour, Count, Earned";
 
             List<HourCountEarned> soldByTime = transactions.GroupBy(t => t.DateTime.Hour).Select(z => new HourCountEarned
             {
@@ -64,11 +68,11 @@ namespace BootCamp.Chapter
             }
             ).ToList();
 
+            return CreateModelWithTimes(soldByTime, times[0].Hour, times[1].Hour);
 
-
-            return CreateTabelForSoldByTime(headers, soldByTime, times[0].Hour, times[1].Hour);
+            //return CreateTabelForSoldByTime(headers, soldByTime, times[0].Hour, times[1].Hour);
         }
-
+        /*
         private static IEnumerable<String> CreateTabelForSoldByTime(string topRow, IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime)
         {
             List<String> toBeWritten = new List<string>();
@@ -81,7 +85,7 @@ namespace BootCamp.Chapter
 
             return toBeWritten;
         }
-
+        */
         private static int FindRushHour(IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime)
         {
             int rushHour = 0;
@@ -110,22 +114,29 @@ namespace BootCamp.Chapter
             return rushHour;
         }
 
-        private static void AddTimesToBeWritten(IEnumerable<HourCountEarned> soldByTime, int startTime, int EndTime, List<string> toBeWritten)
+        private static TimesModel CreateModelWithTimes(List<HourCountEarned> soldByTime, int startTime, int EndTime)
         {
+            List<HourCountEarned> hourCountEarneds = new List<HourCountEarned>();
+
             for (int time = startTime; time <= EndTime; time++)
             {
-                int count = 0;
-                decimal earned = 0;
+                bool isTimeAdded = false;
 
                 foreach (HourCountEarned timeNumberEarned in soldByTime)
                 {
                     if (timeNumberEarned.Hour == time)
                     {
-                        count = timeNumberEarned.Count;
+                        hourCountEarneds.Add(timeNumberEarned);
+                        isTimeAdded = true;
                     }
                 }
-                toBeWritten.Add($"{time.ToString("D2")}, {count}, \"{earned.ToString("C2", CultureInfo.GetCultureInfo("lt-LT"))}\"");
+                if (!isTimeAdded)
+                {
+                    hourCountEarneds.Add(new HourCountEarned() { Hour = time, Count = 0, Earned = 0 });
+                }
             }
+            //TODO does not return amout correct. its without € sign.
+            return new TimesModel(hourCountEarneds, $"Rush hour: {FindRushHour(soldByTime, startTime, EndTime)}");
         }
 
         private static bool IsHoursValid(string hours, out DateTime[] times)

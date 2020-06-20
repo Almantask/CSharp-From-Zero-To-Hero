@@ -8,5 +8,11 @@ namespace BootCamp.Chapter.Models
     {
         public List<HourCountEarned> Times { get; set; }
         public string RushHour { get; set; }
+
+        public TimesModel(List<HourCountEarned> times, string rushHour)
+        {
+            Times = times;
+            RushHour = rushHour;
+        }
     }
 }

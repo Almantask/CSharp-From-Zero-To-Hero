@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BootCamp.Chapter.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,13 +39,15 @@ namespace BootCamp.Chapter.ReportsManagers
             throw new System.NotImplementedException();
         }
 
-        public override void WriteTimeTransaction(string path, string toBeWritten)
+        public override void WriteTimeTransaction(string path, TimesModel timesModel)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
             }
-            throw new System.NotImplementedException();
+            string data = JsonConvert.SerializeObject(timesModel, Formatting.Indented);
+
+            WriteTransaction(path, data);
         }
     }
 }

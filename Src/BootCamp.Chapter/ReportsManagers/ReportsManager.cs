@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BootCamp.Chapter.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -18,7 +19,7 @@ namespace BootCamp.Chapter.ReportsManagers
             File.WriteAllText(path, toBeWritten);
         }
 
-        public abstract void WriteTimeTransaction(string path, string toBeWritten);
+        public abstract void WriteTimeTransaction(string path, TimesModel timesModel);
         public abstract void WriteCityTransaction(string path, string toBeWritten);
 
         public void ValidateFilePath(string path)

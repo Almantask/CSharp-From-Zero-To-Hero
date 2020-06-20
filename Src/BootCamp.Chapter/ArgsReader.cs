@@ -18,7 +18,7 @@ namespace BootCamp.Chapter
             ValidateCommand(args[commandInt]);
 
             string[] commandArr = ReadCommand(args[commandInt]);
-            ReportsManager reportsManager = GetCorrectReportsManagerFromCommandArr(commandArr);
+            ReportsManager reportsManager = GetCorrectReportsManagerFromCommandArr(args);
 
             List<Transaction> transactions = reportsManager.ReadTransactionFile(args[fileToReadInt]);
 
@@ -37,11 +37,11 @@ namespace BootCamp.Chapter
             command.Execute();
         }
 
-        private static ReportsManager GetCorrectReportsManagerFromCommandArr(string[] commandArr)
+        private static ReportsManager GetCorrectReportsManagerFromCommandArr(string[] args)
         {
             ReportsManagers.ReportsManager reportsManager;
 
-            string fileType = commandArr[fileToReadInt].Split('.')[1];
+            string fileType = args[fileToReadInt].Split('.')[1];
 
             switch (fileType)
             {

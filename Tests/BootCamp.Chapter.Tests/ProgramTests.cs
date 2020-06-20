@@ -17,7 +17,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData("nonExisting.json")]
         public void Main_When_Transactions_File_Empty_Or_Not_Found_Throws_NoTransactionsException(string input)
         {
-            Action action = () => Program.Main(new[] { input });
+            Action action = () => Program.Main(new[] {  input , "time" , OutputFile + ".json" });
 
             action.Should().Throw<NoTransactionsFoundException>();
         }
@@ -42,7 +42,7 @@ namespace BootCamp.Chapter.Tests
             Program.Main(new []{ ValidTransactionsFile + extension, cmd, OutputFile + extension });
             
             var expectedOutput = "Expected/FullDay" + extension;
-            AssertMatchingContents(expectedOutput, OutputFile);
+            AssertMatchingContents(expectedOutput, OutputFile + extension);
         }
 
         [Theory]
@@ -52,7 +52,7 @@ namespace BootCamp.Chapter.Tests
         {
             const string cmd = "time 20:00-00:00";
 
-            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile + extension });
+            Program.Main(new[] { ValidTransactionsFile + extension, cmd, OutputFile + extension });
 
             var expectedOutput = "Expected/Night" + extension;
             AssertMatchingContents(expectedOutput, OutputFile + extension);
