@@ -55,13 +55,13 @@ namespace BootCamp.Chapter
             {
                 return number;
             }
-            else if (input.Length == 0)
+            else if (input == null || input?.Length == 0)
             {
                 return 0;
             }
             else
             {
-                Console.WriteLine($"\"{input}\" is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
 
@@ -71,9 +71,9 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
-            if (input.Length == 0)
+            if (input == null || input.Length == 0)
             {
-                Console.WriteLine("Field cannot be empty.");
+                Console.Write("Name cannot be empty.");
                 return "-";
             }
             else
@@ -90,13 +90,13 @@ namespace BootCamp.Chapter
             {
                 return number;
             }
-            else if (input.Length == 0)
+            if (input == null || input.Length == 0)
             {
                 return 0;
             }
             else
             {
-                Console.WriteLine($"\"{input}\" is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
 
