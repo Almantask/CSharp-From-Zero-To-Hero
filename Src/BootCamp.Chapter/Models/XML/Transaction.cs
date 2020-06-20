@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Models.XML
 {
-    public class DTOTransaction
+    public class Transaction
     {
         public string Shop { get; set; }
         public string City { get; set; }
