@@ -16,7 +16,7 @@ namespace BootCamp.Chapter.ReportsManagers
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
             }
 
-            File.WriteAllText(path, toBeWritten);
+            File.AppendAllText(path, toBeWritten);
         }
 
         public abstract void WriteTimeTransaction(string path, TimesModel timesModel);

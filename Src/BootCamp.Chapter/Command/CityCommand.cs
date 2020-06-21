@@ -13,11 +13,12 @@ namespace BootCamp.Chapter
         private List<Transaction> _Transactions;
         private ReportsManager _ReportsManager;
 
-        public CityCommand(string path, string[] command, List<Transaction> transactions)
+        public CityCommand(string path, string[] command, List<Transaction> transactions, ReportsManager reportsManager)
         {
             _Path = path;
             _Command = command;
             _Transactions = transactions;
+            _ReportsManager = reportsManager;
         }
 
         public void Execute()
@@ -31,37 +32,40 @@ namespace BootCamp.Chapter
             const string items = "-items";
             const string min = "-min";
             const string max = "-max";
+            string command = _Command[0];
+            string commandParameter1 = _Command[1];
+            string commandParameter2 = _Command[2];
 
             if (_Command.Length != 3)
             {
-                throw new InvalidCommandException($"{_Command[0]} has the wrong amount of parameters.");
+                throw new InvalidCommandException($"{_Command.ToString()} has the wrong amount of parameters.");
             }
 
-            if (_Command[1] == items)
+            if (commandParameter1 == items)
             {
-                if (_Command[2] == min || _Command[2] == max)
+                if (commandParameter2 == min || commandParameter2 == max)
                 {
-                    return FindItemsMaxOrMin(_Transactions, _Command[2]);
+                    return FindItemsMaxOrMin(_Transactions, commandParameter2);
                 }
                 else
                 {
-                    throw new InvalidCommandException($"{_Command[2]} is not a valid parameter.");
+                    throw new InvalidCommandException($"{commandParameter2} is not a valid parameter.");
                 }
             }
-            else if (_Command[1] == money)
+            else if (commandParameter1 == money)
             {
-                if (_Command[2] == min || _Command[2] == max)
+                if (commandParameter2 == min || commandParameter2 == max)
                 {
-                    return FindMoneyMaxOrMin(_Transactions, _Command[2]);
+                    return FindMoneyMaxOrMin(_Transactions, commandParameter2);
                 }
                 else
                 {
-                    throw new InvalidCommandException($"{_Command[2]} is not a valid parameter.");
+                    throw new InvalidCommandException($"{commandParameter2} is not a valid parameter.");
                 }
             }
             else
             {
-                throw new InvalidCommandException($"{_Command[1]} is not a valid parameter.");
+                throw new InvalidCommandException($"{commandParameter1} is not a valid parameter.");
             }
         }
 
@@ -101,7 +105,7 @@ namespace BootCamp.Chapter
                 sb.AppendLine(line);
             }
 
-            _ReportsManager.WriteTransaction(_Path, sb.ToString());
+            _ReportsManager.WriteTransaction(_Path, sb.ToString().TrimEnd('\n').TrimEnd('\r'));
         }
     }
 }

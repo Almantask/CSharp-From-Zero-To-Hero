@@ -72,19 +72,19 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Theory]
-        [InlineData("city -money -max", "CityItemsMax", ".json")]
-        [InlineData("city -money -min", "CityItemsMin", ".json")]
-        [InlineData("city -items -max", "CityMoneyMax", ".json")]
-        [InlineData("city -items -min", "CityMoneyMin", ".json")]
-        [InlineData("city -money -max", "CityItemsMax", ".xml")]
-        [InlineData("city -money -min", "CityItemsMin", ".xml")]
-        [InlineData("city -items -max", "CityMoneyMax", ".xml")]
-        [InlineData("city -items -min", "CityMoneyMin", ".xml")]
+        [InlineData("city -items -max", @"expected\CityItemsMax", ".json")]
+        [InlineData("city -items -min", @"expected\CityItemsMin", ".json")]
+        [InlineData("city -money -max", @"expected\CityMoneyMax", ".json")]
+        [InlineData("city -money -min", @"expected\CityMoneyMin", ".json")]
+        [InlineData("city -items -max", @"expected\CityItemsMax", ".xml")]
+        [InlineData("city -items -min", @"expected\CityItemsMin", ".xml")]
+        [InlineData("city -money -max", @"expected\CityMoneyMax", ".xml")]
+        [InlineData("city -money -min", @"expected\CityMoneyMin", ".xml")]
         public void Main_When_Valid_MinMax_Command_With_Returns_Expected_Cities_With_Min_Max(string cmd, string expectedOutput, string extension)
         {
-            Program.Main(new[] { ValidTransactionsFile + extension, cmd, OutputFile });
+            Program.Main(new[] { ValidTransactionsFile + extension, cmd, OutputFile + extension });
 
-            AssertMatchingContents(expectedOutput, OutputFile);
+            AssertMatchingContents(expectedOutput, OutputFile + extension);
         }
 
         [Theory]

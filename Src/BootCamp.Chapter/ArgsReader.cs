@@ -30,7 +30,7 @@ namespace BootCamp.Chapter
                     break;
 
                 case cityCommand:
-                    command = new CityCommand(args[fileToWriteInt], commandArr, transactions);
+                    command = new CityCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
                     break;
             }
 
