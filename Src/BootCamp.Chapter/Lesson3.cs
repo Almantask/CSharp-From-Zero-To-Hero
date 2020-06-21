@@ -20,27 +20,27 @@ namespace BootCamp.Chapter
 
         public static string GetName()
         {
-            Console.Write("Please enter name: ");
+            Console.Write("Testing");
             return Console.ReadLine();
         }
         public static int GetAge()
         {
-            Console.Write("Please enter age: ");
+            Console.Write("Testing");
             return int.Parse(Console.ReadLine());
         }
         public static float GetWeight()
         {
-            Console.Write("Please enter weight (in kg): ");
+            Console.Write("Testing");
             return float.Parse(Console.ReadLine());
         }
         public static float GetHeight()
         {
-            Console.Write("Please enter height (in cm): ");
+            Console.Write("Testing");
             return float.Parse(Console.ReadLine());
         }
         public static float GetBMI(float weight, float height)
         {
-            return weight / ((height / 100) * (height / 100));
+            return weight / (height * height);
         }
     }
 }
