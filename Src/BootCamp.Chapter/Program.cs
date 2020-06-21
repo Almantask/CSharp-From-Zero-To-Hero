@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BootCamp.Chapter.ReportsManagers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -8,13 +9,35 @@ namespace BootCamp.Chapter
     {
         public static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.ASCII;
             ArgsReader.Read(args);
 
+            //CreateXMLFile();
             //CreateJsonFile();
             //Console.OutputEncoding = System.Text.Encoding.Unicode;
             //TestArgs();
             //TestTransactionTryParse();
             //TestReportsManager();
+        }
+
+        private static void CreateXMLFile()
+        {
+            string path = @"C:\Users\Max\Source\Repos\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\transactions.json";
+
+            ReportsManagers.ReportsManagerJson reportsManagerJson = new ReportsManagers.ReportsManagerJson();
+            ReportsManagers.ReportsManagerXML reportsManagerXML = new ReportsManagers.ReportsManagerXML();
+            List<Transaction> transactionsData = reportsManagerJson.ReadTransactionFile(path);
+            List<Models.XML.Transaction> XMLtransactionsData = new List<Models.XML.Transaction>();
+
+            foreach (Transaction tr in transactionsData)
+            {
+                XMLtransactionsData.Add(Models.XML.Transaction.TransactionCreator(tr));
+            }
+            Models.XML.DTOTransactions dTOTransactions = new Models.XML.DTOTransactions() { Transactions = XMLtransactionsData };
+
+            string serializedTransactionData = XmlConvert.SerializeObject(XMLtransactionsData);
+            Console.WriteLine(serializedTransactionData);
+
         }
 
         /*

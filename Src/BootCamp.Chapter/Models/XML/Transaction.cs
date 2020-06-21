@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter.Models.XML
@@ -12,6 +13,18 @@ namespace BootCamp.Chapter.Models.XML
         public string Item { get; set; }
         public string DateTime { get; set; }
         public string Price { get; set; }
+
+        public static Transaction TransactionCreator(BootCamp.Chapter.Transaction transaction)
+        {
+            Transaction tr = new Transaction();
+            tr.Shop = transaction.ShopName;
+            tr.City = transaction.City;
+            tr.Street = transaction.Street;
+            tr.Item = transaction.Item;
+            tr.DateTime = transaction.DateTime.ToString();
+            tr.Price = transaction.Price.ToString("C2", CultureInfo.GetCultureInfo("lt-LT"));
+            return tr;
+        }
 
         public override string ToString()
         {

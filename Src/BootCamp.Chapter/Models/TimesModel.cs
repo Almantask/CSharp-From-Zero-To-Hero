@@ -9,6 +9,11 @@ namespace BootCamp.Chapter.Models
         public List<HourCountEarnedCurrency> Times { get; set; }
         public int RushHour { get; set; }
 
+        public TimesModel()
+        {
+
+        }
+
         public TimesModel(List<HourCountEarnedCurrency> times, int rushHour)
         {
             Times = times;

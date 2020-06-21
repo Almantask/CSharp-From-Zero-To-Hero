@@ -1,4 +1,5 @@
-﻿<Transactions>
+﻿<?xml version='1.0'?>
+<ArrayOfTransaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Transaction>
     <Shop>Kwiki Mart</Shop>
     <City>Springfield</City>
@@ -55,4 +56,4 @@
     <DateTime>2020-01-12T20:00:00Z</DateTime>
     <Price>€5</Price>
   </Transaction>
-</Transactions>
+</ArrayOfTransaction>

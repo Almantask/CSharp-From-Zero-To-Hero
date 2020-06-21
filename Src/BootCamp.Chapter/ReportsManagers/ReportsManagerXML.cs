@@ -12,7 +12,8 @@ namespace BootCamp.Chapter.ReportsManagers
         public override List<Transaction> ReadTransactionFile(string path)
         {
             List<Transaction> transactions = new List<Transaction>();
-            foreach(Models.XML.Transaction tr in Deserializer(path).Transactions)
+            List<Models.XML.Transaction> xmlTransactions = XmlConvert.DeserializeFile<List<Models.XML.Transaction>>(path);
+            foreach (Models.XML.Transaction tr in xmlTransactions)
             {
                 if(Transaction.TryParse(tr.ToString(), out Transaction trans))
                 {
@@ -20,15 +21,6 @@ namespace BootCamp.Chapter.ReportsManagers
                 }
             }
             return transactions;
-        }
-
-        private Models.XML.DTOTransactions Deserializer(string path)
-        {
-            var serializer = new XmlSerializer(typeof(Models.XML.DTOTransactions));
-            using (var reader = new StringReader(path))
-            {
-                return serializer.Deserialize(reader) as Models.XML.DTOTransactions;
-            }
         }
 
         public override void WriteCityTransaction(string path, string toBeWritten)
@@ -46,7 +38,9 @@ namespace BootCamp.Chapter.ReportsManagers
             {
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
             }
-            throw new NotImplementedException();
+            string data = XmlConvert.SerializeObject(timesModel);
+
+            WriteTransaction(path, data);
         }
     }
 }
