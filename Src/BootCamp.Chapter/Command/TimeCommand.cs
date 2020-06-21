@@ -95,7 +95,7 @@ namespace BootCamp.Chapter
 
         private static TimesModel CreateModelWithTimes(List<HourCountEarnedDecimal> soldByTime, int startTime, int EndTime)
         {
-            List<HourCountEarnedCurrency> hourCountEarneds = new List<HourCountEarnedCurrency>();
+            List<Time> hourCountEarneds = new List<Time>();
 
             for (int time = startTime; time <= EndTime; time++)
             {
@@ -105,13 +105,13 @@ namespace BootCamp.Chapter
                 {
                     if (timeNumberEarned.Hour == time)
                     {
-                        hourCountEarneds.Add(HourCountEarnedCurrency.ConvertFromDecimal(timeNumberEarned));
+                        hourCountEarneds.Add(Time.ConvertFromDecimal(timeNumberEarned));
                         isTimeAdded = true;
                     }
                 }
                 if (!isTimeAdded)
                 {
-                    hourCountEarneds.Add(new HourCountEarnedCurrency() { Hour = time, Count = 0, Earned = 0.ToString("C2", CultureInfo.GetCultureInfo("lt-LT")) });
+                    hourCountEarneds.Add(new Time() { Hour = time, Count = 0, Earned = 0.ToString("C2", CultureInfo.GetCultureInfo("lt-LT")) });
                 }
             }
             return new TimesModel(hourCountEarneds, FindRushHour(soldByTime, startTime, EndTime));

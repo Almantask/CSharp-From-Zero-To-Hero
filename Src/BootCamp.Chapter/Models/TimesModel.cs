@@ -6,7 +6,7 @@ namespace BootCamp.Chapter.Models
 {
     public class TimesModel
     {
-        public List<HourCountEarnedCurrency> Times { get; set; }
+        public List<Time> Times { get; set; }
         public int RushHour { get; set; }
 
         public TimesModel()
@@ -14,7 +14,7 @@ namespace BootCamp.Chapter.Models
 
         }
 
-        public TimesModel(List<HourCountEarnedCurrency> times, int rushHour)
+        public TimesModel(List<Time> times, int rushHour)
         {
             Times = times;
             RushHour = rushHour;
