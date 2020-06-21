@@ -1,7 +1,45 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
+        private static void SwapElements(int[] array, int index, int j)
+        {
+            int aux = array[index];
+            array[index] = array[j];
+            array[j] = aux;
+        }
+
+        private static int GetPartitionNumber(int[] array, int low, int high)
+        {
+            int pivotNumber = array[high];
+            int index = low - 1;
+
+            for (int j = low; j <= high - 1; j++)
+            {
+                if (array[j] < pivotNumber)
+                {
+                    index += 1;
+                    SwapElements(array, index, j);
+                }
+            }
+
+            SwapElements(array, index + 1, high);
+            return index + 1;
+        }
+
+        private static void Quicksort(int[] array, int lowIndex, int highIndex)
+        {
+            if (lowIndex < highIndex)
+            {
+                int pivotNumber = GetPartitionNumber(array, lowIndex, highIndex);
+                Quicksort(array, lowIndex, pivotNumber - 1);
+                Quicksort(array, pivotNumber + 1, highIndex);
+            }
+
+        }
+
         /// <summary>
         /// Sort the array in ascending order.
         /// If array empty or null- don't do anything.
@@ -9,7 +47,10 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array.Length > 0)
+            {
+                Quicksort(array, 0, array.Length - 1);
+            }
         }
 
         /// <summary>
@@ -19,7 +60,14 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array != null && array.Length > 0)
+            {
+                for (int i = 0; i <= (array.Length / 2) - 1; i++)
+                {
+                    int j = array.Length - 1 - i;
+                    SwapElements(array, i, j);
+                }
+            }
         }
 
         /// <summary>
@@ -29,8 +77,18 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+            int[] result = new int[array.Length - 1];
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i] = array[i];
+            }
+            return result;
         }
 
         /// <summary>
@@ -39,8 +97,17 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+            int[] result = new int[array.Length - 1];
+            for (int i = result.Length - 1; i >= 0; i--)
+            {
+                result[i] = array[i + 1];
+            }
+            return result;
         }
 
         /// <summary>
@@ -51,7 +118,23 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
+            if (array != null && array.Length > 0 && index < array.Length && index >= 0)
+            {
+                int j = 0;
+                int[] result = new int[array.Length - 1];
+
+                for (int i = 0; i < result.Length; i++)
+                {
+                    if (index == i)
+                        j++;
+
+                    result[i] = array[j];
+                    j++;
+                }
+
+                return result;
+            }
+
             return array;
         }
 
@@ -63,8 +146,26 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array != null && array.Length > 0)
+            {
+                int[] result = new int[array.Length + 1];
+
+                for (int i = 0; i < result.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        result[i] = number;
+                    }
+                    else
+                    {
+                        result[i] = array[i - 1];
+                    }
+                }
+
+                return result;
+            }
+
+            return new[] { number };
         }
 
         /// <summary>
@@ -75,8 +176,26 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array != null && array.Length > 0)
+            {
+                int[] result = new int[array.Length + 1];
+
+                for (int i = 0; i < result.Length; i++)
+                {
+                    if (i == result.Length - 1)
+                    {
+                        result[i] = number;
+                    }
+                    else
+                    {
+                        result[i] = array[i];
+                    }
+                }
+
+                return result;
+            }
+
+            return new[] { number };
         }
 
         /// <summary>
@@ -88,8 +207,33 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+
+
+
+            if (array != null && array.Length > 0)
+            {
+                int[] result = new int[array.Length + 1];
+                int j = 0;
+
+                for (int i = 0; i < result.Length; i++)
+                {
+                    if (i == index)
+                    {
+                        result[i] = number;
+                    }
+                    else
+                    {
+                        result[i] = array[j];
+                        j++;
+                    }
+                }
+            }
+            return new[] { number };
         }
     }
 }
