@@ -6,6 +6,7 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
+        //Calls all user prompt methods & prints full message to console
         public static void Demo()
         {
             string name = PromptName();
@@ -17,6 +18,7 @@ namespace BootCamp.Chapter
             Console.WriteLine("Their BMI is: " + bmi);
         }
 
+        //Prompting user for info
         public static string PromptName()
         {
             Console.Write("Testing");
@@ -37,6 +39,7 @@ namespace BootCamp.Chapter
             Console.Write("Testing");
             return float.Parse(Console.ReadLine());
         }
+        //Calculates BMI
         public static float CalculateBmi(float weight, float height)
         {
             return weight / (height * height);
