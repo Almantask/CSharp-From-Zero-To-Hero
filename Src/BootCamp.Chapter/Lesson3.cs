@@ -6,39 +6,38 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
-        static string name = GetName();
-        static int age = GetAge();
-        static float weight = GetWeight();
-        static float height = GetHeight();
-        static float bmi = GetBMI(weight, height);
-
         public static void Demo()
         {
+            string name = PromptName();
+            int age = PromptAge();
+            float weight = PromptWeight();
+            float height = PromptHeight();
+            float bmi = CalculateBmi(weight, height);
             Console.WriteLine(name + " is " + age + " years old, their weight is " + weight + " kg, and their height is " + height + " cm.");
             Console.WriteLine("Their BMI is: " + bmi);
         }
 
-        public static string GetName()
+        public static string PromptName()
         {
             Console.Write("Testing");
             return Console.ReadLine();
         }
-        public static int GetAge()
+        public static int PromptAge()
         {
             Console.Write("Testing");
             return int.Parse(Console.ReadLine());
         }
-        public static float GetWeight()
+        public static float PromptWeight()
         {
             Console.Write("Testing");
             return float.Parse(Console.ReadLine());
         }
-        public static float GetHeight()
+        public static float PromptHeight()
         {
             Console.Write("Testing");
             return float.Parse(Console.ReadLine());
         }
-        public static float GetBMI(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             return weight / (height * height);
         }
