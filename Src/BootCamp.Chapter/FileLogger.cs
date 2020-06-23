@@ -12,10 +12,10 @@ namespace BootCamp.Chapter
         public FileLogger()
         {
             _logFileName = CreateLogFile();
-            ActionLog("Log File created");
+            LogAction("Log File created");
         }
 
-        public void ActionLog(string action)
+        public void LogAction(string action)
         {
             using (var writer = File.AppendText(_logFileName))
             {
@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public void ErrorLog(Exception error)
+        public void LogError(Exception error)
         {
             using (var writer = File.AppendText(_logFileName))
             {

@@ -10,12 +10,12 @@ namespace BootCamp.Chapter
         /// Used to log the Action at the current Date and Time
         /// </summary>
         /// <param name="action"></param>
-        void ActionLog(string action);
+        void LogAction(string action);
 
         /// <summary>
         /// Used to log any errors or exceptions raised at the current Date and Time
         /// </summary>
         /// <param name="error"></param>
-        void ErrorLog(Exception error);
+        void LogError(Exception error);
     }
 }

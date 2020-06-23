@@ -8,14 +8,14 @@ namespace BootCamp.Chapter
     {
         public ConsoleLogger()
         {
-            ActionLog("Log started");
+            LogAction("Log started");
         }
-        public void ActionLog(string action)
+        public void LogAction(string action)
         {
             Console.WriteLine($"[{DateTime.Now}] {action}");
         }
 
-        public void ErrorLog(Exception error)
+        public void LogError(Exception error)
         {
             Console.WriteLine($"[{DateTime.Now}] {error}");
         }
