@@ -47,7 +47,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if (array.Length > 0)
+            if (array != null && array.Length > 0)
             {
                 Quicksort(array, 0, array.Length - 1);
             }
@@ -207,33 +207,29 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-
             if (array == null || array.Length == 0)
-            {
+                return index != 0 ? array : new[] { number };
+
+            if (index < 0 || index >= array.Length)
                 return array;
-            }
 
+            int[] result = new int[array.Length + 1];
+            int j = 0;
 
-
-            if (array != null && array.Length > 0)
+            for (int i = 0; i < result.Length; i++)
             {
-                int[] result = new int[array.Length + 1];
-                int j = 0;
-
-                for (int i = 0; i < result.Length; i++)
+                if (i == index)
                 {
-                    if (i == index)
-                    {
-                        result[i] = number;
-                    }
-                    else
-                    {
-                        result[i] = array[j];
-                        j++;
-                    }
+                    result[i] = number;
+                }
+                else
+                {
+                    result[i] = array[j];
+                    j++;
                 }
             }
-            return new[] { number };
+
+            return result;
         }
     }
 }
