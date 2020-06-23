@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         {
             // Initialising the type of logger for the entire application
             ILogger typeoflogger = InitialiseLogger();
-            
+
             // Simulating the logger through using a Calculator Sim
             var calculate = new CalculatorSimulator(typeoflogger);
 
@@ -21,10 +21,10 @@ namespace BootCamp.Chapter
         // enum for Logging Options to make code more readable
         enum LoggingOptions
         {
-            File,
-            Console
+            File = 1,
+            Console = 2
         }
-                
+
         private static ILogger InitialiseLogger()
         {
             while (true)
