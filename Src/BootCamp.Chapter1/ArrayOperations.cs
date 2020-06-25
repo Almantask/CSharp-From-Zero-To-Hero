@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,7 +11,12 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if ((array == null) || (array.Length == 0))
+            {
+                return;
+            }
+            
+            Array.Sort(array);
         }
 
         /// <summary>
@@ -19,7 +26,12 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if ((array == null) || (array.Length == 0))
+            {
+                return;
+            }
+
+            Array.Reverse(array);
         }
 
         /// <summary>
@@ -29,7 +41,6 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
             return array;
         }
 
