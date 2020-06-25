@@ -74,7 +74,7 @@ namespace BootCamp.Chapter
                 Console.Write("\"" + input + "\" is not a valid number.");
                 return -1;
             }
-            else if (goodWeight && (weight == 0))
+            else if ((goodWeight) && (weight == 0))
             {
                 return 0;
             }
@@ -89,21 +89,22 @@ namespace BootCamp.Chapter
             float height;
             string input = Console.ReadLine();
             bool goodHeight = float.TryParse(input, out height);
-            if (goodHeight)
+            if (string.IsNullOrEmpty(input))
             {
-                return height;
+                return 0;
+            }
+            else if (!goodHeight)
+            {
+                Console.Write("\"" + input + "\" is not a valid number.");
+                return -1;
             }
             else if ((goodHeight) && (height == 0))
             {
                 return 0;
             }
-            else if (string.IsNullOrEmpty(input))
-            {
-                return 0f;
-            }
             else
             {
-                return -1;
+                return height;
             }
         }
         //Calculates BMI
