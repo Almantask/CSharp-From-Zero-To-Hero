@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Buffers;
+using System.Linq;
 
 namespace BootCamp.Chapter1
 {
@@ -15,7 +17,7 @@ namespace BootCamp.Chapter1
             {
                 return;
             }
-            
+
             Array.Sort(array);
         }
 
@@ -41,7 +43,16 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            return array;
+            if (array == null)
+            {
+                return null;
+            }
+            else if (array.Length == 0)
+            {
+                return array;
+            }
+
+            return array.SkipLast(1).ToArray(); ;
         }
 
         /// <summary>
@@ -50,8 +61,16 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return null;
+            }
+            else if (array.Length == 0)
+            {
+                return array;
+            }
+
+            return array.Skip(1).ToArray();
         }
 
         /// <summary>
@@ -62,8 +81,16 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return null;
+            }
+            else if (array.Length == 0)
+            {
+                return array;
+            }
+
+            return array.Where(val => val != index).ToArray();
         }
 
         /// <summary>
@@ -99,8 +126,23 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            int[] newArray = new int[array.Length + 1];
+            for (int i = 0; i < array.Length + 1; i++)
+            {
+                if (i < index - 1)
+                {
+                    newArray[i] = array[i];
+                }
+                else if (i == index - 1)
+                {
+                    newArray[i] = number;
+                }
+                else
+                {
+                    newArray[i] = array[i - 1];
+                }
+            }
+            return newArray;
         }
     }
 }
