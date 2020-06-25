@@ -1,9 +1,6 @@
 ﻿using BootCamp.Chapter.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace BootCamp.Chapter.ReportsManagers
 {
@@ -12,10 +9,10 @@ namespace BootCamp.Chapter.ReportsManagers
         public override List<Transaction> ReadTransactionFile(string path)
         {
             List<Transaction> transactions = new List<Transaction>();
-            List<Models.XML.Transaction> xmlTransactions = XmlConvert.DeserializeFile<List<Models.XML.Transaction>>(path);
-            foreach (Models.XML.Transaction tr in xmlTransactions)
+            List<Models.XML.TransactionModel> xmlTransactions = XmlConvert.DeserializeFile<List<Models.XML.TransactionModel>>(path);
+            foreach (Models.XML.TransactionModel tr in xmlTransactions)
             {
-                if(Transaction.TryParse(tr.ToString(), out Transaction trans))
+                if (Transaction.TryParse(tr.ToString(), out Transaction trans))
                 {
                     transactions.Add(trans);
                 }
