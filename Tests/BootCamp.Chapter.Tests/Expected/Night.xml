@@ -1,8 +1,8 @@
 <Times>
   <Time>
     <Hour>20</Hour>
-    <Count>3</Count>
-    <Earned>€8</Earned>
+    <Count>4</Count>
+    <Earned>9,00 €</Earned>
   </Time>
   <Time>
     <Hour>21</Hour>
@@ -19,4 +19,5 @@
     <Count>2</Count>
     <Earned>€10.05</Earned>
   </Time>
+  <RushHour>22</RushHour>
 </Times>

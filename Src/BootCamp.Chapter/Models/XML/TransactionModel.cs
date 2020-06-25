@@ -5,38 +5,27 @@ namespace BootCamp.Chapter.Models.XML
 {
     public class TransactionModel
     {
-
-        // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
-        /// <remarks/>
-        [System.SerializableAttribute()]
-        [System.ComponentModel.DesignerCategoryAttribute("code")]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-        public partial class Shops
+        [XmlRoot("Transactions")]
+        public partial class Transactions
         {
 
-            private ShopsShop[] shopField;
+            private TransactionsTransaction[] transactionField;
 
-            /// <remarks/>
-            [System.Xml.Serialization.XmlElementAttribute("Shop")]
-            public ShopsShop[] Shop
+            [XmlElement("Transaction")]
+            public TransactionsTransaction[] Transaction
             {
                 get
                 {
-                    return this.shopField;
+                    return this.transactionField;
                 }
                 set
                 {
-                    this.shopField = value;
+                    this.transactionField = value;
                 }
             }
         }
 
-        /// <remarks/>
-        [System.SerializableAttribute()]
-        [System.ComponentModel.DesignerCategoryAttribute("code")]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-        public partial class ShopsShop
+        public partial class TransactionsTransaction
         {
 
             private string shopField;
@@ -128,6 +117,7 @@ namespace BootCamp.Chapter.Models.XML
                     this.priceField = value;
                 }
             }
+
         public override string ToString()
             {
                 return $"{shopField},{cityField},{streetField},{itemField},{dateTimeField},{priceField}";
