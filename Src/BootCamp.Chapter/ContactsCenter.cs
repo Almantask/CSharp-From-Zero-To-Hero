@@ -13,6 +13,8 @@ namespace BootCamp.Chapter
             IExcelDataReader excelDataReader = new ExcelCsvReader(peopleFile);
             var peopleData = excelDataReader.GetData();
 
+            if (peopleData.Length < 1) throw new ArgumentOutOfRangeException();
+
             foreach (var line in peopleData[1..])
             {
                 if (Person.TryParse(line, out Person person))

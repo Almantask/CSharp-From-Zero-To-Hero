@@ -18,9 +18,7 @@ namespace BootCamp.Chapter.DataReader
 
         public string[] GetData()
         {
-            if (File.Exists(_fileToRead)) return File.ReadAllLines(_fileToRead);
-
-            return new string[0];
+            return File.ReadAllLines(_fileToRead);
         }
     }
 }
