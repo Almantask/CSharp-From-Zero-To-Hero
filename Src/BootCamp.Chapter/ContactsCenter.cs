@@ -1,16 +1,23 @@
-﻿using System;
+﻿using BootCamp.Chapter.DataReader;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
     public class ContactsCenter
     {
-        private readonly List<Person> _people;
+        private readonly List<Person> _people = new List<Person>();
 
         public ContactsCenter(string peopleFile)
         {
-            // load people
+            IExcelDataReader excelDataReader = new ExcelCsvReader(peopleFile);
+            var peopleData = excelDataReader.GetData();
+
+            foreach (var line in peopleData[1..])
+            {
+                if (Person.TryParse(line, out Person person))
+                    _people.Add(person);
+            }
         }
 
         /// <summary>
@@ -20,7 +27,15 @@ namespace BootCamp.Chapter
         public List<Person> Filter(Predicate<Person> predicate)
         {
             var people = new List<Person>();
-            // ToDo: implement applying filter.
+
+            foreach (var person in _people)
+            {
+                if (predicate(person))
+                {
+                    people.Add(person);
+                }
+            }
+
             return people;
         }
     }

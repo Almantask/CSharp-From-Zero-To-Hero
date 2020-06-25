@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BootCamp.Chapter.DataReader;
+using System;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +7,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //IExcelDataReader excelDataReader = new ExcelCsvReader("Input/MOCK_DATA.csv");
+            ContactsCenter contactsCenter = new ContactsCenter("Input/MOCK_DATA.csv");
         }
     }
 }
