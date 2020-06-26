@@ -1,23 +1,17 @@
-﻿namespace BootCamp.Chapter.Models.XML
+﻿using System.Xml.Serialization;
+
+namespace BootCamp.Chapter.Models.XML
 {
     public class DTOEarnings
     {
-
-        // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
-        /// <remarks/>
-        [System.SerializableAttribute()]
-        [System.ComponentModel.DesignerCategoryAttribute("code")]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+        [XmlRoot("Times")]
         public partial class Earnings
         {
-
             private EarningsTime[] timesField;
 
             private int rushHourField;
 
-            /// <remarks/>
-            [System.Xml.Serialization.XmlArrayItemAttribute("Time", IsNullable = false)]
+            [XmlElement("Time")]
             public EarningsTime[] Times
             {
                 get
@@ -30,7 +24,6 @@
                 }
             }
 
-            /// <remarks/>
             public int RushHour
             {
                 get
@@ -44,20 +37,14 @@
             }
         }
 
-        /// <remarks/>
-        [System.SerializableAttribute()]
-        [System.ComponentModel.DesignerCategoryAttribute("code")]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
         public partial class EarningsTime
         {
-
             private int hourField;
 
             private int countField;
 
             private string earnedField;
 
-            /// <remarks/>
             public int Hour
             {
                 get
@@ -70,7 +57,6 @@
                 }
             }
 
-            /// <remarks/>
             public int Count
             {
                 get
@@ -83,7 +69,6 @@
                 }
             }
 
-            /// <remarks/>
             public string Earned
             {
                 get
@@ -96,7 +81,5 @@
                 }
             }
         }
-
-
     }
 }
