@@ -9,8 +9,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            //Runs homework program twice (like I should've done for homeworks 1 and 3 lmao)
-            Lesson4.Demo();
+            //Runs homework program
             Lesson4.Demo();
         }
     }

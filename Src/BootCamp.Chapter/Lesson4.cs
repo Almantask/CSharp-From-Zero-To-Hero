@@ -6,8 +6,15 @@ namespace BootCamp.Chapter
 {
     class Lesson4
     {
-        //Calls all user prompt methods & prints full message to console
+        //Main function
         public static void Demo()
+        {
+            ProcessPerson();
+            ProcessPerson();
+        }
+
+        //Prompts all user info and results final Console Line
+        public static void ProcessPerson()
         {
             string name = PromptName();
             int age = PromptAge();
