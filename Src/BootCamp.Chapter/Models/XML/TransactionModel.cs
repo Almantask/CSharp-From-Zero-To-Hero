@@ -5,21 +5,13 @@ namespace BootCamp.Chapter.Models.XML
 {
     public class TransactionModel
     {
-
-        // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
-        /// <remarks/>
-        ///
-
-            [XmlRoot("Transactions")]
+        [XmlRoot("Transactions")]
         public partial class Transactions
         {
 
             private TransactionsTransaction[] transactionField;
 
-            /// <remarks/>
-            /// 
-
-            [XmlArray("Transactions"), XmlArrayItem(ElementName = "Transaction", Type = typeof(TransactionsTransaction))]
+            [XmlElement("Transaction")]
             public TransactionsTransaction[] Transaction
             {
                 get
@@ -33,10 +25,6 @@ namespace BootCamp.Chapter.Models.XML
             }
         }
 
-        /// <remarks/>
-        /// 
-
-            [XmlRoot("Transaction")]
         public partial class TransactionsTransaction
         {
 
@@ -52,7 +40,6 @@ namespace BootCamp.Chapter.Models.XML
 
             private string priceField;
 
-            [XmlElement("Shop")]
             public string Shop
             {
                 get
@@ -65,7 +52,6 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
-            [XmlElement("City")]
             public string City
             {
                 get
@@ -78,7 +64,6 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
-            [XmlElement("Street")]
             public string Street
             {
                 get
@@ -91,7 +76,6 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
-            [XmlElement("Item")]
             public string Item
             {
                 get
@@ -104,7 +88,6 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
-            [XmlElement("DateTime")]
             public System.DateTime DateTime
             {
                 get
@@ -117,7 +100,6 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
-            [XmlElement("Price")]
             public string Price
             {
                 get
@@ -130,7 +112,7 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
-        public override string ToString()
+            public override string ToString()
             {
                 return $"{shopField},{cityField},{streetField},{itemField},{dateTimeField},{priceField}";
             }
