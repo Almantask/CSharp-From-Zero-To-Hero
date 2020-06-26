@@ -52,6 +52,7 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
+            [XmlElement("City")]
             public string City
             {
                 get
@@ -64,6 +65,7 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
+            [XmlElement("Street")]
             public string Street
             {
                 get
@@ -76,6 +78,7 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
+            [XmlElement("Item")]
             public string Item
             {
                 get
@@ -88,6 +91,7 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
+            [XmlElement("DateTime")]
             public System.DateTime DateTime
             {
                 get
@@ -100,6 +104,7 @@ namespace BootCamp.Chapter.Models.XML
                 }
             }
 
+            [XmlElement("Price")]
             public string Price
             {
                 get

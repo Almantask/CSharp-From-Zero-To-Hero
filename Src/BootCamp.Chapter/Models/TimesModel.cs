@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace BootCamp.Chapter.Models
 {
+    [XmlRoot("Times")]
     public class TimesModel
     {
+        [XmlElement("Times")]
         public List<Time> Times { get; set; }
         public int RushHour { get; set; }
 
