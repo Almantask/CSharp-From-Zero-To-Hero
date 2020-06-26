@@ -17,27 +17,31 @@ namespace BootCamp.Chapter
             ValidateArgs(args);
             ValidateCommand(args[commandInt]);
 
-            string[] commandArr = ReadCommand(args[commandInt]);
-            ReportsManager reportsManager = GetCorrectReportsManagerFromCommandArr(args);
+            ReportsManager reportsManager = GetCorrectReportsManagerFromArgs(args);
 
             List<Transaction> transactions = reportsManager.ReadTransactionFile(args[fileToReadInt]);
 
-            ICommand command = default;
-            switch (commandArr[0])
-            {
-                case timeCommand:
-                    command = new TimeCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
-                    break;
-
-                case cityCommand:
-                    command = new CityCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
-                    break;
-            }
+            ICommand command = GetCommand(args, reportsManager, transactions);
 
             command.Execute();
         }
 
-        private static ReportsManager GetCorrectReportsManagerFromCommandArr(string[] args)
+        private static ICommand GetCommand(string[] args, ReportsManager reportsManager, List<Transaction> transactions)
+        {
+            string[] commandArr = args[commandInt].Split(' ');
+            switch (commandArr[0])
+            {
+                case timeCommand:
+                    return new TimeCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
+
+                case cityCommand:
+                    return new CityCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
+            }
+
+            return default;
+        }
+
+        private static ReportsManager GetCorrectReportsManagerFromArgs(string[] args)
         {
             ReportsManagers.ReportsManager reportsManager;
 
@@ -53,10 +57,6 @@ namespace BootCamp.Chapter
                     reportsManager = new ReportsManagerXML();
                     break;
 
-                case "csv":
-                    reportsManager = new ReportsManagerCSV();
-                    break;
-
                 default:
                     throw new FileExtensionUnsupportedException();
             }
@@ -70,10 +70,6 @@ namespace BootCamp.Chapter
             {
                 throw new InvalidCommandException($"Please give a valid command.");
             }
-        }
-
-        private static string[] ReadCommand(string command)
-        {
             string[] splitCommand = command.Split(' ');
 
             for (int i = 0; i < splitCommand.Length; i++)
@@ -84,10 +80,10 @@ namespace BootCamp.Chapter
             switch (splitCommand[0])
             {
                 case timeCommand:
-                    return (splitCommand);
+                    break;
 
                 case cityCommand:
-                    return (splitCommand);
+                    break;
 
                 default:
                     throw new InvalidCommandException($"{splitCommand[0]} is not a valid command.");

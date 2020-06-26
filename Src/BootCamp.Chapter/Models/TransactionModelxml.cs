@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace BootCamp.Chapter.Models.XML
 {
-    public class TransactionModel
+    public class TransactionModelxml
     {
         [XmlRoot("Transactions")]
         public partial class Transactions

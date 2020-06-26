@@ -9,8 +9,8 @@ namespace BootCamp.Chapter.ReportsManagers
         public override List<Transaction> ReadTransactionFile(string path)
         {
             List<Transaction> transactions = new List<Transaction>();
-            Models.XML.TransactionModel.Transactions xmlTransactions = XmlConvert.DeserializeFile<Models.XML.TransactionModel.Transactions>(path);
-            foreach (Models.XML.TransactionModel.TransactionsTransaction tr in xmlTransactions.Transaction)
+            Models.XML.TransactionModelxml.Transactions xmlTransactions = XmlConvert.DeserializeFile<Models.XML.TransactionModelxml.Transactions>(path);
+            foreach (Models.XML.TransactionModelxml.TransactionsTransaction tr in xmlTransactions.Transaction)
             {
                 if (Transaction.TryParse(tr.ToString(), out Transaction trans))
                 {

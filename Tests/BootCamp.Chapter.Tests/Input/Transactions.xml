@@ -24,14 +24,6 @@
     <Price>€10</Price>
   </Transaction>
   <Transaction>
-    <Shop>Kwiki Mart</Shop>
-    <City>Springfield</City>
-    <Street>HoloPapap 2</Street>
-    <Item>Apple</Item>
-    <DateTime>2020-01-05T20:00:00Z</DateTime>
-    <Price>€3</Price>
-  </Transaction>
-  <Transaction>
     <Shop>Wallmart</Shop>
     <City>London</City>
     <Street>ANC 54</Street>

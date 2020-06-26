@@ -11,10 +11,10 @@ namespace BootCamp.Chapter.ReportsManagers
         public override List<Transaction> ReadTransactionFile(string path)
         {
             ValidateFilePath(path);
-            List<DTOTransaction> dtoTransactions = JsonConvert.DeserializeObject<List<DTOTransaction>>(File.ReadAllText(path));
+            List<TransactionModeljson> dtoTransactions = JsonConvert.DeserializeObject<List<TransactionModeljson>>(File.ReadAllText(path));
             List<Transaction> transactions = new List<Transaction>();
 
-            foreach (DTOTransaction transaction in dtoTransactions)
+            foreach (TransactionModeljson transaction in dtoTransactions)
             {
                 if (Transaction.TryParse(transaction.ToString(), out Transaction tr))
                 {

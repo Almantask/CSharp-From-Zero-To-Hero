@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
-    public class DTOTransaction
+    public class TransactionModeljson
     {
         public string Shop { get; set; }
         public string City { get; set; }
