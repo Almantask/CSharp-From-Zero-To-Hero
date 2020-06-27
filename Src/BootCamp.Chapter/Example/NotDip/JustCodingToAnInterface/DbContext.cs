@@ -7,7 +7,7 @@ namespace BootCamp.Chapter.Example.NotDip.JustCodingToAnInterface
     // The only benifit this gives us is a way of slightly easier testing.
     // Not everything must be unit tested. In this case I'd stick with no interface (and integration tests)
     // Because we don't escape a dependency and it is fine, because we are using EF to implement feature X.
-    public interface ISchoolMemoryContext
+    public interface ISchoolContext
     {
         DbSet<Student> Students { get; set; }
         DbSet<Teacher> Teachers { get; set; }
@@ -15,11 +15,16 @@ namespace BootCamp.Chapter.Example.NotDip.JustCodingToAnInterface
         DbSet<LessonClass> Lessons { get; set; }
     }
 
-    public class SchoolMemoryContext : ISchoolMemoryContext
+    public class SchoolContext : ISchoolContext
     {
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Grade> Grades { get; set; }
         public virtual DbSet<LessonClass> Lessons { get; set; }
+    }
+
+    // Populate context with in memory data, no connection needed
+    public class InMemorySchoolContext : SchoolContext
+    {
     }
 }

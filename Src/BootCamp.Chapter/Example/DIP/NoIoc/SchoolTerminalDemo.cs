@@ -8,7 +8,7 @@ using BootCamp.Chapter.Ref.Repository.InMemory.Repositories;
 
 namespace BootCamp.Chapter.Example.DIP.NoIoc
 {
-    class Demo
+    class SchoolTerminalDemo
     {
         public static void Run()
         {
