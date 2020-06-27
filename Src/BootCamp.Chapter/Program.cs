@@ -1,4 +1,4 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using BootCamp.Chapter.Examples.InterfacePolution;
 
 namespace BootCamp.Chapter
 {
