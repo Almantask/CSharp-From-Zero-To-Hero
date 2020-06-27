@@ -1,4 +1,7 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using System;
+using BootCamp.Chapter.Example.DIP.NoIoc;
+using BootCamp.Chapter.Example.DIP.WithIoC;
+using BootCamp.Chapter.Ref;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +9,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Example1Demo.Run();
+            // High level depends on abstraction
+            ISchoolTerminal app = UnityConfiguration.InitializeSchoolTerminal();
+            app.Start();
         }
     }
 }
