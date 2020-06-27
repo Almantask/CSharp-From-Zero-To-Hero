@@ -2,11 +2,10 @@
 
 namespace BootCamp.Chapter
 {
-    class Program
+   public class Program : CaesarCipher
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
         }
     }
 }
