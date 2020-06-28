@@ -6,7 +6,13 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter Name");
+            Person();
+            Person();
+        }
+
+        static void Person()
+        {
+            Console.WriteLine("Enter name");
             string name = Console.ReadLine();
             Console.WriteLine("Enter age ");
             string age = Console.ReadLine();
