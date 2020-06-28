@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
             double BMI = weightInDouble / (heightInMeters * heightInMeters);
 
             Console.WriteLine("You have entered:");
-            Console.WriteLine(name+" is " + age+ " years old, his weight is " + weight+" kg and his height is "+height+" cm.");
+            Console.WriteLine(name + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
             Console.WriteLine("BMI: " + BMI);
         }
     }
