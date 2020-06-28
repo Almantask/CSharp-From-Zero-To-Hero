@@ -1,4 +1,5 @@
-﻿using BootCamp.Chapter.Exceptions;
+﻿using BootCamp.Chapter.Command;
+using BootCamp.Chapter.Exceptions;
 using BootCamp.Chapter.ReportsManagers;
 using System.Collections.Generic;
 
@@ -8,6 +9,7 @@ namespace BootCamp.Chapter
     {
         private const string timeCommand = "time";
         private const string cityCommand = "city";
+        private const string dailyCommand = "daily";
         private const int fileToReadInt = 0;
         private const int commandInt = 1;
         private const int fileToWriteInt = 2;
@@ -29,13 +31,16 @@ namespace BootCamp.Chapter
         private static ICommand GetCommand(string[] args, ReportsManager reportsManager, List<Transaction> transactions)
         {
             string[] commandArr = args[commandInt].Split(' ');
-            switch (commandArr[0])
+            switch (commandArr[0].ToLower())
             {
                 case timeCommand:
                     return new TimeCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
 
                 case cityCommand:
                     return new CityCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
+
+                case dailyCommand:
+                    return new DailyCommand(args[fileToWriteInt], commandArr, transactions, reportsManager);
             }
 
             return default;
@@ -83,6 +88,9 @@ namespace BootCamp.Chapter
                     break;
 
                 case cityCommand:
+                    break;
+
+                case dailyCommand:
                     break;
 
                 default:
