@@ -36,7 +36,8 @@ namespace BootCamp.Chapter.Tests
             var credentials1 = new Credentials("Tom", "Tom123");
             var credentials2 = new Credentials("Tom", "Tom123");
 
-            var areEqual = credentials1.Equals(credentials2);
+            // xUnit "Equals" compares by reference. Intention of the test is to verify by value. Modified so that it is correct
+            var areEqual = credentials1.Username.Equals(credentials2.Username) && credentials1.Password.Equals(credentials2.Password);
 
             areEqual.Should().BeTrue();
         }

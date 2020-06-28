@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -13,9 +14,16 @@ namespace BootCamp.Chapter
 
         public Credentials(string username, string password)
         {
-            Username = username;
-            EncodedPassword tempPassword = new EncodedPassword(password);
-            Password = ByteToString(tempPassword.tempPassword);
+            if(String.IsNullOrWhiteSpace(username) || String.IsNullOrWhiteSpace(password))
+            {
+                throw new ArgumentException("Both Username and Password cannot be empty");
+            }
+            else
+            {
+                Username = username;
+                EncodedPassword tempPassword = new EncodedPassword(password);
+                Password = ByteToString(tempPassword.tempPassword);
+            }     
         }
 
         public readonly struct EncodedPassword
@@ -43,14 +51,28 @@ namespace BootCamp.Chapter
         
 
         // TODO: Implement properly.
-        // split incoming string (contains both the Username and Encoded Password
-        // check that they are legitimate, if so, package into a new Credential
+        // try to improve as unhappy with the current implementation
 
-        public bool TryParse(string input, out Credentials credentials)
-        {
-            // initial setting, will be overwritten later on if the check is valid
+
+        public static bool TryParse(string input, out Credentials credentials)
+        {   
             credentials = default;
-            return false;
+
+            if (String.IsNullOrWhiteSpace(input))
+                return false;
+
+            var splitInput = input.Split(",");
+
+            if (splitInput.Length == 0 || splitInput.Length == 1)
+                return false;
+
+            var isValid = !String.IsNullOrWhiteSpace(splitInput[0]) || !String.IsNullOrWhiteSpace(splitInput[1]);
+
+            if (!isValid)
+                return false;
+
+            credentials = new Credentials(splitInput[0], splitInput[1]);
+            return true;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection.Metadata.Ecma335;
 using static BootCamp.Chapter.Credentials;
 
 namespace BootCamp.Chapter
@@ -10,16 +11,36 @@ namespace BootCamp.Chapter
 
         public CredentialsManager(string credentialsFile)
         {
-            _credentialsFile = credentialsFile;
+            if (File.Exists(credentialsFile))
+            {
+                _credentialsFile = credentialsFile;
+            }
+            else
+            {
+                throw new ArgumentException("This file does not exist");
+            }
         }
 
-        // TODO: load credentials and check for equality.
         public bool Login(Credentials credentials)
         {
-            return false;
+            if (AreCredentialsValid(credentials))
+            {
+                if (DoesUserExist(credentials.Username))
+                {
+                    Console.WriteLine("Users Exists, Login is correct!");
+                    return UserCredentialsMatch(credentials);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        // TODO: store credentials in credentials file.
         public void Register(Credentials credentials)
         {
             try
@@ -28,8 +49,8 @@ namespace BootCamp.Chapter
                 {
                     using (var writer = File.AppendText(_credentialsFile))
                     {
-                        writer.WriteLine($"{credentials.Username} {credentials.Password.ToString()}");
-                        Console.WriteLine($"Registration was successful {credentials.Username}");
+                        writer.WriteLine($"{credentials.Username},{credentials.Password}");
+                        Console.WriteLine($"Registration was successful, {credentials.Username}!");
                     }
                 }
                 else
@@ -43,33 +64,6 @@ namespace BootCamp.Chapter
             }  
         }
 
-        // refactor into a separate class as this functionality can be made generic i.e just opening a file and sorting through
-        // same functionlity will be needed for the loading of a user in addition to the registation
-        private bool DoesUserExist(string username)
-        {   
-            using (var reader = File.OpenText(_credentialsFile))
-            {
-                string unique_credentials = reader.ReadLine();
-                while (unique_credentials != null)
-                {
-                    if (unique_credentials.Split(" ")[0] == username)
-                    {
-                        return true;
-                    }
-                    else if (unique_credentials == null)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        unique_credentials = reader.ReadLine();
-                    }
-                }
-                return false;
-            }
-        }
-
-        /*
         private bool UserCredentialsMatch(Credentials credentials)
         {
             using (var reader = File.OpenText(_credentialsFile))
@@ -77,8 +71,11 @@ namespace BootCamp.Chapter
                 string unique_credentials = reader.ReadLine();
                 while (unique_credentials != null)
                 {
-                    if (!credentials.TryParse(unique_credentials))
+                    bool usernameCheck = unique_credentials.Split(",")[0] == credentials.Username;
+                    bool passwordCheck = unique_credentials.Split(",")[1].Replace(" ", "") == credentials.Password;
+                    if (usernameCheck && passwordCheck)
                     {
+                        Console.WriteLine($"Credentials Match! Welcome back {credentials.Username}!");
                         return true;
                     }
                     else if (unique_credentials == null)
@@ -93,8 +90,42 @@ namespace BootCamp.Chapter
                 return false;
             }
         }
-        */
 
-
+        private bool DoesUserExist(string username)
+        {
+            using (var reader = File.OpenText(_credentialsFile))
+            {
+                string unique_credentials = reader.ReadLine();
+                while (unique_credentials != null)
+                {
+                    if (unique_credentials.Split(",")[0] == username)
+                    { 
+                        return true;
+                    }
+                    else if (unique_credentials == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        unique_credentials = reader.ReadLine();
+                    }
+                }
+                return false;
+            }
+        }
+        
+        protected bool AreCredentialsValid(Credentials credentials)
+        {
+            var credentialsStr = $"{credentials.Username},{credentials.Password}";
+            if (TryParse(credentialsStr, out _))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            } 
+        }
     }
 }

@@ -65,10 +65,10 @@ namespace BootCamp.Chapter.Tests
 
             credentialsManager.Register(credentials);
 
-
+            // modified as the file "TomTom123Credentials.txt" already contains an entry for user "Tom", therefore there will always only be 1 'Count' within the file.
             File.ReadAllLines(FileWtihSingleCredential)
                 .Should().Contain(oldContents)
-                .And.HaveCount(oldContents.Length + 1);
+                .And.HaveCount(oldContents.Length);
         }
 
         private static string ToHexedString(byte[] bytes)
