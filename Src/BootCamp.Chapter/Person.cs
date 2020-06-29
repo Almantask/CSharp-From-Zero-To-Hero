@@ -5,7 +5,14 @@ namespace BootCamp.Chapter
 {
     public class Person
     {
-        // add missing properties: name,sureName,birthday,gender,country,email,streetAddress
+        private const int FirstNameColumn = 0;
+        private const int SurnameColumn = 1;
+        private const int BirthdayColumn = 2;
+        private const int GenderColumn = 3;
+        private const int CountryColumn = 4;
+        private const int EmailColumn = 5;
+        private const int StreetAddressColumn = 6;
+
         public string Name { get; }
         public string Surname { get; }
         public string Gender { get; }
@@ -52,13 +59,13 @@ namespace BootCamp.Chapter
 
             var personalData = input.Split(',');
 
-            var name = personalData[0];
-            var surname = personalData[1];
-            var birthday = personalData[2];
-            var gender = personalData[3];
-            var country = personalData[4];
-            var email = personalData[5];
-            var streetAddress = personalData[6];
+            var name = personalData[FirstNameColumn];
+            var surname = personalData[SurnameColumn];
+            var birthday = personalData[BirthdayColumn];
+            var gender = personalData[GenderColumn];
+            var country = personalData[CountryColumn];
+            var email = personalData[EmailColumn];
+            var streetAddress = personalData[StreetAddressColumn];
 
             person = new Person(name, surname, birthday, gender, country, email, streetAddress);
 

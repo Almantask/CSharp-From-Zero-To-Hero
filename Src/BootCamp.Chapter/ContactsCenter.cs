@@ -7,11 +7,12 @@ namespace BootCamp.Chapter
     public class ContactsCenter
     {
         private readonly List<Person> _people = new List<Person>();
+        private readonly IExcelDataReader _excelDataReader;
 
         public ContactsCenter(string peopleFile)
         {
-            IExcelDataReader excelDataReader = new ExcelCsvReader(peopleFile);
-            var peopleData = excelDataReader.GetData();
+            _excelDataReader = new ExcelCsvReader(peopleFile ?? throw new ArgumentException());
+            var peopleData = _excelDataReader.GetData();
 
             if (peopleData.Length < 1) throw new ArgumentOutOfRangeException();
 
