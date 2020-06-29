@@ -1,26 +1,58 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Runtime.ExceptionServices;
+using System;
+using System.Reflection.Metadata.Ecma335;
+
+namespace BootCamp.Chapter
 {
     public class Inventory
     {
-        private Item[] _items;
-        public Item[] GetItems()
+        protected Item[] _items;
+
+        public Item[] Items{get{ return _items; } }
+
+        // displays all items in inventory
+        // renamed from 'GetItems' to show the clear different from the 'GetItems' method below
+        public void ShowAllItems()
         {
-            return new Item[0];
+            if (!Array.TrueForAll(_items, IsNull => IsNull == null))
+            {
+                Console.WriteLine("Items in inventory:\n");
+                foreach (var item in _items)
+                {
+                    if (item != null)
+                    {
+                        Console.WriteLine(item.GetName());
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("The inventory is currently empty.");
+            }
         }
 
-        public Inventory()
+        public Item GetItem(string name)
         {
-            _items = new Item[0];
+            return _items[Array.FindIndex(_items, element => element.GetName().Equals(name))];         
         }
 
-        public Item[] GetItems(string name)
-        {
-            return new Item[0];
-        }
-
+        // adding an item to the array at the next available slot
         public void AddItem(Item item)
         {
-
+            for(int i = 0; i < _items.Length; i++)
+            {
+                if(_items[i] == null)
+                {
+                    _items[i] = item;
+                    Console.WriteLine($"{item.GetName()} has been added");
+                    return;
+                }
+            }
+            throw new InventoryIsFullException("The inventory is currently full! You will need to sell an item to create room!");
         }
 
         /// <summary>
@@ -29,7 +61,11 @@
         /// </summary>
         public void RemoveItem(Item item)
         {
-
+            if(_items[0] != null && Array.Exists(_items, x => x.Equals(item)))
+            {
+                _items[Array.FindIndex(_items, itemAtIndex => itemAtIndex == item)] = null;
+                Console.WriteLine($"{item.GetName()} has been removed from the inventory.");
+            }
         }
     }
 }

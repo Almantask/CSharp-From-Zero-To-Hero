@@ -11,7 +11,7 @@ namespace BootCamp.Chapter.Tests
 
         public PlayerTests()
         {
-            _player = new Player();
+            _player = new Player("Test Name");
         }
 
         [Fact]
@@ -20,7 +20,8 @@ namespace BootCamp.Chapter.Tests
             var item = new Item("Potion", 20, 0.2f);
 
             _player.AddItem(item);
-            var items = _player.GetItems(item.Name);
+            var items = _player.GetItems(item.GetName());
+
 
             items.Should().Contain(item);
         }
@@ -33,7 +34,7 @@ namespace BootCamp.Chapter.Tests
 
             _player.Remove(item);
 
-            var items = _player.GetItems(item.Name);
+            var items = _player.GetItems(item.GetName());
             
             items.Should().NotContain(item);
         }

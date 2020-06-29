@@ -44,7 +44,7 @@ namespace BootCamp.Chapter
         }
 
         private Armpiece _leftArm;
-        public void SetLeftArmp(Armpiece arm)
+        public void SetLeftArm(Armpiece arm)
         {
 
         }

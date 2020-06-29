@@ -1,4 +1,8 @@
 ﻿using BootCamp.Chapter.Items;
+using System;
+using System.Net.NetworkInformation;
+using System.Reflection.Metadata;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BootCamp.Chapter
 {
@@ -16,9 +20,11 @@ namespace BootCamp.Chapter
         /// Everyone can carry this much weight at least.
         /// </summary>
         private const int baseCarryWeight = 30;
-
-        private string _name;
+        private const int baseHP = 60;
+        private readonly string _name;
+        public string Name { get { return _name; } }
         private int _hp;
+        private int _carryWeight;
 
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
@@ -28,34 +34,50 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Player items. There can be multiple of items with same name.
         /// </summary>
-        private Inventory _inventory;
+        private PlayerInventory _inventory;
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
         private Equipment _equipment;
 
-        public Player()
+        public Player(string name)
         {
+            _name = name;
+            _inventory = new PlayerInventory();
+            _equipment = new Equipment();
+            _hp = baseHP;
+            _carryWeight = baseCarryWeight;
+            _strenght = 0;
         }
 
         /// <summary>
         /// Gets all items from player's inventory
         /// </summary>
-        public Item[] GetItems()
+        public void ShowInventory()
         {
-            return new Item[0];
+            _inventory.ShowAllItems();
+          
         }
 
         /// <summary>
         /// Adds item to player's inventory
         /// </summary>
+        // The inventory method 'AddItem' will throw an expection if no room is available in the inventory for an another item
         public void AddItem(Item item)
         {
+            try
+            {
+                _inventory.AddItem(item);
+            }
+            catch(InventoryIsFullException msg)
+            {
+                Console.WriteLine(msg);
+            }
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);           
         }
 
         /// <summary>
@@ -64,7 +86,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
