@@ -6,7 +6,6 @@ namespace BootCamp.Chapter
 {
     public class Lesson3
     {
-        
         public static void Demo()
         {
             string name = ReadString("Enter name: ");
@@ -18,18 +17,21 @@ namespace BootCamp.Chapter
             Console.WriteLine(name + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm.");
             Console.WriteLine("BMI: " + CalculateBMI(weight, height));
         }
+
         public static string ReadString(string message)
         {
             Console.WriteLine(message);
             string readString = Console.ReadLine();
             return readString;
         }
+
         public static int ReadInt(string message)
         {
             Console.WriteLine(message);
             int readInt = int.Parse(Console.ReadLine());
             return readInt;
         }
+
         public static float ReadFloat(string message)
         {
             Console.WriteLine(message);
