@@ -26,7 +26,7 @@ namespace BootCamp.Chapter
         public void Execute()
         {
             var toBeWritten = CreateReport();
-            _ReportsManager.WriteTimeTransaction(_Path, toBeWritten);
+            _ReportsManager.WriteModel(_Path, toBeWritten);
         }
 
         private TimesModel CreateReport()

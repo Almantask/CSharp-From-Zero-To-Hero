@@ -31,7 +31,6 @@ namespace BootCamp.Chapter.ReportsManagers
 
         public override void WriteModel<T>(string path, T model)
         {
-            //TODO check if this is correct.
             if (String.IsNullOrWhiteSpace(path))
             {
                 throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");

@@ -27,7 +27,7 @@ namespace BootCamp.Chapter.Command
         {
             ExtractShopName();
             ValidateShopName();
-            List<EarnedDayModel> EarnedPerDay = SortByDayOfWeek();
+            List<Earning> EarnedPerDay = SortByDayOfWeek();
             _ReportsManager.WriteModel(_Path, EarnedPerDay);
         }
 
@@ -60,7 +60,7 @@ namespace BootCamp.Chapter.Command
             }
         }
 
-        private List<EarnedDayModel> SortByDayOfWeek()
+        private List<Earning> SortByDayOfWeek()
         {
             IEnumerable<EarnedDayDecimal> sortedTransactionsByDayOfWeek = _Transactions.Where(x => x.ShopName == _Shop)
                                                             .Select(x => new { x.DateTime.DayOfWeek, x.Price, x.DateTime})
@@ -71,11 +71,11 @@ namespace BootCamp.Chapter.Command
                                                                                                                                 .Distinct()
                                                                                                                                 .Count()
                                                              });
-            List<EarnedDayModel> sortedEarnedDayModel = new List<EarnedDayModel>();
+            List<Earning> sortedEarnedDayModel = new List<Earning>();
 
             foreach (EarnedDayDecimal earnedDayDecimal in sortedTransactionsByDayOfWeek)
             {
-                sortedEarnedDayModel.Add(EarnedDayModel.ConvertFromDecimal(earnedDayDecimal));
+                sortedEarnedDayModel.Add(Earning.ConvertFromDecimal(earnedDayDecimal));
             }
             return sortedEarnedDayModel;
         }

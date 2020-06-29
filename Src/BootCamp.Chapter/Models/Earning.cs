@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 namespace BootCamp.Chapter.Models
 {
     [XmlRoot("Earning")]
-    public class EarnedDayModel
+    public class Earning
     {
         [XmlElement("Day")]
         public string Day { get; set; }
@@ -15,9 +15,9 @@ namespace BootCamp.Chapter.Models
         [XmlElement("Earned")]
         public string Earned { get; set; }
 
-        public static EarnedDayModel ConvertFromDecimal(EarnedDayDecimal input)
+        public static Earning ConvertFromDecimal(EarnedDayDecimal input)
         {
-            return new EarnedDayModel() { Day =  input.Day , Earned = ConvertDecimalToStringCurrency(input.Earned) };
+            return new Earning() { Day =  input.Day , Earned = ConvertDecimalToStringCurrency(input.Earned) };
         }
 
         private static string ConvertDecimalToStringCurrency(decimal earned)
