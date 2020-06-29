@@ -29,6 +29,18 @@ namespace BootCamp.Chapter.ReportsManagers
             throw new NotImplementedException();
         }
 
+        public override void WriteModel<T>(string path, T model)
+        {
+            //TODO check if this is correct.
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
+            }
+            string data = XmlConvert.SerializeObject(model);
+
+            WriteTransaction(path, data);
+        }
+
         public override void WriteTimeTransaction(string path, TimesModel timesModel)
         {
             if (String.IsNullOrWhiteSpace(path))

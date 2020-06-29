@@ -21,6 +21,7 @@ namespace BootCamp.Chapter.ReportsManagers
 
         public abstract void WriteTimeTransaction(string path, TimesModel timesModel);
         public abstract void WriteCityTransaction(string path, string toBeWritten);
+        public abstract void WriteModel<T>(string path, T model);
 
         public void ValidateFilePath(string path)
         {

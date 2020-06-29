@@ -49,5 +49,15 @@ namespace BootCamp.Chapter.ReportsManagers
 
             WriteTransaction(path, data);
         }
+        public override void WriteModel<T>(string path, T model)
+        {
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                throw new NoTransactionsFoundException($"{nameof(path)} cannot be empty.");
+            }
+            string data = JsonConvert.SerializeObject(model, Formatting.Indented);
+
+            WriteTransaction(path, data);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BootCamp.Chapter.ReportsManagers;
+﻿using BootCamp.Chapter.Models;
+using BootCamp.Chapter.ReportsManagers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,8 @@ namespace BootCamp.Chapter.Command
         {
             ExtractShopName();
             ValidateShopName();
-            throw new NotImplementedException();
+            List<EarnedDayModel> EarnedPerDay = SortByDayOfWeek();
+            _ReportsManager.WriteModel(_Path, EarnedPerDay);
         }
 
         private void ExtractShopName()
@@ -56,6 +58,26 @@ namespace BootCamp.Chapter.Command
             {
                 throw new InvalidCommandException($"Shop name {_Shop} does not exsist.");
             }
+        }
+
+        private List<EarnedDayModel> SortByDayOfWeek()
+        {
+            IEnumerable<EarnedDayDecimal> sortedTransactionsByDayOfWeek = _Transactions.Where(x => x.ShopName == _Shop)
+                                                            .Select(x => new { x.DateTime.DayOfWeek, x.Price, x.DateTime})
+                                                            .GroupBy(x => x.DayOfWeek)
+                                                            .Select(x => new EarnedDayDecimal {
+                                                                                                Day = x.First().DayOfWeek.ToString(),
+                                                                                                Earned = x.Sum( z => z.Price) / x.Select(z => z.DateTime.Date)
+                                                                                                                                .Distinct()
+                                                                                                                                .Count()
+                                                             });
+            List<EarnedDayModel> sortedEarnedDayModel = new List<EarnedDayModel>();
+
+            foreach (EarnedDayDecimal earnedDayDecimal in sortedTransactionsByDayOfWeek)
+            {
+                sortedEarnedDayModel.Add(EarnedDayModel.ConvertFromDecimal(earnedDayDecimal));
+            }
+            return sortedEarnedDayModel;
         }
     }
 }
