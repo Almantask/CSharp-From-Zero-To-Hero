@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
 {
     public class TransactionModeljson
     {
-        public string Shop { get; set; }
+        public string ShopName { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public string Item { get; set; }
@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
 
         public override string ToString()
         {
-            return $"{Shop},{City},{Street},{Item},{DateTime},{Price}";
+            return $"{ShopName},{City},{Street},{Item},{DateTime},{Price}";
         }
     }
 }

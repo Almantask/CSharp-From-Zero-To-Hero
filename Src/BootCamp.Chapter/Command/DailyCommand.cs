@@ -1,6 +1,7 @@
 ﻿using BootCamp.Chapter.ReportsManagers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BootCamp.Chapter.Command
@@ -24,7 +25,7 @@ namespace BootCamp.Chapter.Command
         public void Execute()
         {
             ExtractShopName();
-            ValidateCommand();
+            ValidateShopName();
             throw new NotImplementedException();
         }
 
@@ -36,12 +37,25 @@ namespace BootCamp.Chapter.Command
             {
                 sb.Append(_Command[i] + " ");
             }
+            if (String.IsNullOrEmpty(sb.ToString()))
+            {
+                throw new InvalidCommandException("Must enter a shop name.");
+            }
             _Shop = sb.ToString().Trim();
         }
 
-        private void ValidateCommand()
+        private void ValidateShopName()
         {
-            //TODO validateCommand
+            IEnumerable<String> shopnames = _Transactions.Select(z => z.ShopName).Distinct();
+
+            if (shopnames.Contains(_Shop))
+            {
+                return;
+            }
+            else
+            {
+                throw new InvalidCommandException($"Shop name {_Shop} does not exsist.");
+            }
         }
     }
 }
