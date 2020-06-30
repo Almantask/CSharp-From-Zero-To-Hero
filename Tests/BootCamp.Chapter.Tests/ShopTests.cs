@@ -25,7 +25,7 @@ namespace BootCamp.Chapter.Tests
             var sword = new Item(ItemName, ItemPrice, 2);
             _shop.Add(sword);
 
-            _shop.GetItems().Should().Contain(sword);
+            _shop.Items.Should().Contain(sword);
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace BootCamp.Chapter.Tests
             _shop.Add(sword);
             _shop.Add(sword);
 
-            _shop.GetItems().Should().Contain(sword);
+            _shop.Items.Should().Contain(sword);
         }
 
         [Fact]
@@ -125,7 +125,7 @@ namespace BootCamp.Chapter.Tests
         {
             Action action = () => _shop.Sell(item);
 
-            action.Should().Throw<ArgumentException>();
+            action.Should().Throw<ArgumentNullException>();
         }
     }
 }

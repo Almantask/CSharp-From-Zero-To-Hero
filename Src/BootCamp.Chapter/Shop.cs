@@ -6,22 +6,14 @@ namespace BootCamp.Chapter
     public class Shop
     {
         private decimal _money;
+        public decimal Money { get { return _money; } }
         private ShopInventory _inventory;
+        public Item[] Items { get { return _inventory.Items; } }
 
         public Shop(decimal money)
         {
             _money = money;
             _inventory = new ShopInventory();
-        }
-
-        public decimal GetMoney()
-        {
-            return _money;
-        }
-
-        public Item[] GetItems()
-        {
-            return _inventory.Items;
         }
 
         /// <summary>
@@ -32,7 +24,7 @@ namespace BootCamp.Chapter
         {
             try
             {
-                _inventory.AddItem(item);
+                _inventory.AddItem(item ?? throw new ArgumentNullException("Item is Null"));
             }
             catch (InventoryIsFullException msg)
             {
@@ -47,7 +39,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            _inventory.RemoveItem(name);
+            _inventory.RemoveItem(name ?? throw new ArgumentNullException("Item is Null"));
         }
 
         /// <summary>
@@ -58,17 +50,24 @@ namespace BootCamp.Chapter
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            if (GetMoney() >= item.GetPrice())
+            if(item != null)
             {
-                Add(item);
-                _money -= item.GetPrice();
-                Console.WriteLine($"{item.GetName()} was sold to the Shop!");
-                return item.GetPrice();
+                if (Money >= item.Price)
+                {
+                    Add(item ?? throw new ArgumentNullException("Item is Null"));
+                    _money -= item.Price;
+                    Console.WriteLine($"{item.Name} was sold to the Shop!");
+                    return item.Price;
+                }
+                else
+                {
+                    Console.WriteLine("The Shop cannot afford to buy that item!");
+                    return 0;
+                }
             }
             else
             {
-                Console.WriteLine("The Shop cannot afford to buy that item!");
-                return 0;
+                throw new ArgumentNullException("Item is Null");
             }
         }
 
@@ -83,19 +82,27 @@ namespace BootCamp.Chapter
         /// </returns>
         public Item Sell(string item)
         {
-            if (Array.Exists(_inventory.GetItems(), element => element.GetName().Equals(item)))
+            if(item != "" && item != null)
             {
-                _money += _inventory.GetItem(item).GetPrice();
-                var itemSold = _inventory.GetItem(item);
-                _inventory.RemoveItem(_inventory.GetItem(item));
-                Console.WriteLine("Item is sold!");
-                return itemSold;
+                if (Array.Exists(_inventory.Items, element => element.Name.Equals(item)))
+                {
+                    _money += _inventory.GetItem(item).Price;
+                    var itemSold = _inventory.GetItem(item);
+                    _inventory.RemoveItem(_inventory.GetItem(item));
+                    Console.WriteLine("Item is sold!");
+                    return itemSold;
+                }
+                else
+                {
+                    Console.WriteLine("That item was not in the Shop!");
+                    return null;
+                }
             }
             else
             {
-                Console.WriteLine("That item was not in the Shop!");
-                return null;
+                throw new ArgumentNullException("Item is Null");
             }
+            
         }
     }
 }

@@ -13,11 +13,11 @@ namespace BootCamp.Chapter
             player.ShowInventory();
             player.Remove(chestPiece);
             player.ShowInventory();
-            Console.WriteLine($"{chestPiece.GetPrice()}");
+            Console.WriteLine($"{chestPiece.Price}");
             Shop shop = new Shop(100);
             shop.Add(chestPiece);
             shop.Sell("Mighty Chestpiece");
-            Console.WriteLine($"{shop.GetMoney()}");
+            Console.WriteLine($"{shop.Money}");
 
         }
     }

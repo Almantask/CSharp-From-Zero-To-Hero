@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
                 {
                     if (item != null)
                     {
-                        Console.WriteLine(item.GetName());
+                        Console.WriteLine(item.Name);
                     }
                     else
                     {
@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
 
         public Item GetItem(string name)
         {
-            return _items[Array.FindIndex(_items, element => element.GetName().Equals(name))];         
+            return _items[Array.FindIndex(_items, element => element.Name.Equals(name))];         
         }
 
         // adding an item to the array at the next available slot
@@ -48,7 +48,7 @@ namespace BootCamp.Chapter
                 if(_items[i] == null)
                 {
                     _items[i] = item;
-                    Console.WriteLine($"{item.GetName()} has been added");
+                    Console.WriteLine($"{item.Name} has been added");
                     return;
                 }
             }
@@ -64,7 +64,7 @@ namespace BootCamp.Chapter
             if(_items[0] != null && Array.Exists(_items, x => x.Equals(item)))
             {
                 _items[Array.FindIndex(_items, itemAtIndex => itemAtIndex == item)] = null;
-                Console.WriteLine($"{item.GetName()} has been removed from the inventory.");
+                Console.WriteLine($"{item.Name} has been removed from the inventory.");
             }
         }
     }

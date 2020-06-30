@@ -65,9 +65,11 @@ namespace BootCamp.Chapter
         // The inventory method 'AddItem' will throw an expection if no room is available in the inventory for an another item
         public void AddItem(Item item)
         {
+
+
             try
             {
-                _inventory.AddItem(item);
+                _inventory.AddItem(item ?? throw new ArgumentNullException("The Item was either Null or Empty"));
             }
             catch(InventoryIsFullException msg)
             {
@@ -77,7 +79,7 @@ namespace BootCamp.Chapter
 
         public void Remove(Item item)
         {
-            _inventory.RemoveItem(item);           
+            _inventory.RemoveItem(item ?? throw new ArgumentNullException("Name of Item requeted is either Null or Empty"));           
         }
 
         /// <summary>
@@ -86,7 +88,14 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return _inventory.GetItems(name);
+            if (name != "" && name != null)
+            {
+                return _inventory.GetItems(name);
+            }
+            else
+            {
+                throw new ArgumentNullException("Item is Null/Empty");
+            }
         }
 
         #region Extra challenge: Equipment

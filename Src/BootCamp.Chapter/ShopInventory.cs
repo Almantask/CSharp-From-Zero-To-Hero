@@ -14,9 +14,9 @@ namespace BootCamp.Chapter
 
         public void RemoveItem(string name)
         {
-            if (_items[0] != null && Array.Exists(_items, x => x.GetName().Equals(name)))
+            if (_items[0] != null && Array.Exists(_items, x => x.Name.Equals(name)))
             {
-                _items[Array.FindIndex(_items, itemAtIndex => itemAtIndex.GetName().Equals(name))] = null;
+                _items[Array.FindIndex(_items, itemAtIndex => itemAtIndex.Name.Equals(name))] = null;
                 Console.WriteLine($"{name} has been removed from the inventory.");
             }
         }
