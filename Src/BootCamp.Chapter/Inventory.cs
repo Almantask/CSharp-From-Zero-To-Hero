@@ -6,48 +6,42 @@ namespace BootCamp.Chapter
 {
     public class Inventory
     {
-        protected Item[] _items;
+        public Item[] Items{ get; set; }
 
-        public Item[] Items{get{ return _items; } }
-
-        // displays all items in inventory
-        // renamed from 'GetItems' to show the clear different from the 'GetItems' method below
-        public void ShowAllItems()
+        ///<summary>
+        /// Displays all items in inventory
+        ///</summary>
+        public void DisplayInventory()
         {
-            if (!Array.TrueForAll(_items, IsNull => IsNull == null))
+            _ = Items ?? throw new ArgumentNullException("Inventory is Null/Empty");
+
+            Console.WriteLine("Items in inventory:\n");
+            foreach (var item in Items)
             {
-                Console.WriteLine("Items in inventory:\n");
-                foreach (var item in _items)
+                if (item != null)
                 {
-                    if (item != null)
-                    {
-                        Console.WriteLine(item.Name);
-                    }
-                    else
-                    {
-                        continue;
-                    }
+                    Console.WriteLine(item.Name);
                 }
-            }
-            else
-            {
-                Console.WriteLine("The inventory is currently empty.");
+                else
+                {
+                    continue;
+                }
             }
         }
 
         public Item GetItem(string name)
         {
-            return _items[Array.FindIndex(_items, element => element.Name.Equals(name))];         
+            return Items[Array.FindIndex(Items, element => element.Name.Equals(name))];         
         }
 
         // adding an item to the array at the next available slot
         public void AddItem(Item item)
         {
-            for(int i = 0; i < _items.Length; i++)
+            for(int i = 0; i < Items.Length; i++)
             {
-                if(_items[i] == null)
+                if(Items[i] == null)
                 {
-                    _items[i] = item;
+                    Items[i] = item;
                     Console.WriteLine($"{item.Name} has been added");
                     return;
                 }
@@ -61,9 +55,9 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(Item item)
         {
-            if(_items[0] != null && Array.Exists(_items, x => x.Equals(item)))
+            if(Items[0] != null && Array.Exists(Items, x => x.Equals(item)))
             {
-                _items[Array.FindIndex(_items, itemAtIndex => itemAtIndex == item)] = null;
+                Items[Array.FindIndex(Items, itemAtIndex => itemAtIndex == item)] = null;
                 Console.WriteLine($"{item.Name} has been removed from the inventory.");
             }
         }

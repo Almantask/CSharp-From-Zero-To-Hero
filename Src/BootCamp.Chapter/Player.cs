@@ -55,7 +55,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public void ShowInventory()
         {
-            _inventory.ShowAllItems();
+            _inventory.DisplayInventory();
           
         }
 

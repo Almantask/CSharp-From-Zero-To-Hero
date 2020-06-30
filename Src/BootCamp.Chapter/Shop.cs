@@ -50,25 +50,21 @@ namespace BootCamp.Chapter
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            if(item != null)
+            _ = item ?? throw new ArgumentNullException("Item is Null");
+
+            if (Money >= item.Price)
             {
-                if (Money >= item.Price)
-                {
-                    Add(item ?? throw new ArgumentNullException("Item is Null"));
-                    _money -= item.Price;
-                    Console.WriteLine($"{item.Name} was sold to the Shop!");
-                    return item.Price;
-                }
-                else
-                {
-                    Console.WriteLine("The Shop cannot afford to buy that item!");
-                    return 0;
-                }
+                Add(item);
+                _money -= item.Price;
+                Console.WriteLine($"{item.Name} was sold to the Shop!");
+                return item.Price;
             }
             else
             {
-                throw new ArgumentNullException("Item is Null");
+                Console.WriteLine("The Shop cannot afford to buy that item!");
+                return 0;
             }
+
         }
 
         /// <summary>

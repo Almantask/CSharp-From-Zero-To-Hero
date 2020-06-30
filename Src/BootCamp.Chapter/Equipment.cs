@@ -8,58 +8,37 @@ namespace BootCamp.Chapter
     public class Equipment
     {
         private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
-        {
+        public Weapon weapon { get { return _weapon; } set { _weapon = value; } }
 
-        }
 
         private Headpiece _head;
-        public void SetHead(Headpiece head)
-        {
+        public Headpiece head { get { return _head; } set { _head = value; } }
 
-        }
 
         private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
-        {
-
-        }
+        public Chestpiece chest { get { return _chest; } set { _chest = value; } }
 
         private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece should)
-        {
+        public Shoulderpiece leftShoulder { get { return _leftShoulder; } set { _leftShoulder = value; } }
 
-        }
 
         private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
-        {
-
-        }
+        public Shoulderpiece rightShoulder { get { return _rightShoulder; } set { _rightShoulder = value; } }
 
         private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
-        {
+        public Legspiece legs { get { return _legs; } set { _legs = value; } }
 
-        }
 
         private Armpiece _leftArm;
-        public void SetLeftArm(Armpiece arm)
-        {
+        public Armpiece leftArm { get { return _leftArm; } set { _leftArm = value; } }
 
-        }
 
         private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
-        {
-
-        }
+        public Armpiece rightArm { get { return _rightArm; } set { _rightArm = value; } }
 
         private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
-        {
+        public Gloves gloves { get { return _gloves; } set { _gloves = value; } }
 
-        }
 
         /// <summary>
         /// Gets total weight of armour.

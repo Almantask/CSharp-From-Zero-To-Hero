@@ -9,14 +9,14 @@ namespace BootCamp.Chapter
         private const int _sizeOfInventory = 50;
         public ShopInventory()
         {
-            _items = new Item[_sizeOfInventory];
+            Items = new Item[_sizeOfInventory];
         }
 
         public void RemoveItem(string name)
         {
-            if (_items[0] != null && Array.Exists(_items, x => x.Name.Equals(name)))
+            if (Items[0] != null && Array.Exists(Items, x => x.Name.Equals(name)))
             {
-                _items[Array.FindIndex(_items, itemAtIndex => itemAtIndex.Name.Equals(name))] = null;
+                Items[Array.FindIndex(Items, itemAtIndex => itemAtIndex.Name.Equals(name))] = null;
                 Console.WriteLine($"{name} has been removed from the inventory.");
             }
         }
