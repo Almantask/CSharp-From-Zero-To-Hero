@@ -4,8 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter.Students
 {
-    class HighSchoolStudent : Student
+    class MiddleSchoolStudent : Student
     {
-        public HighSchoolStudent(string name) : base(name) { }
+        public MiddleSchoolStudent(string name) : base(name) { }
     }
 }

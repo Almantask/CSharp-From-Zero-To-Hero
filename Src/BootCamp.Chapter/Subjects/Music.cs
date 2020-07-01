@@ -4,7 +4,8 @@ using System.Text;
 
 namespace BootCamp.Chapter.Subjects
 {
-    class Music : ISubject
+    class Music : Subject
     {
+        public Music(string name, string description) : base(name, description) { }
     }
 }
