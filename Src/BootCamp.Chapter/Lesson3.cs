@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -9,41 +7,13 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            string firstName = InputString("Enter First Name: ");
-
-            string lastName = InputString("Enter Last Name: ");
-
-            int personsAge = InputInt("Enter Age: ");
-
-            float personsWeight = InputFloat("Enter Weight in kg: ");
-
-            float personsHeight = InputFloat("Enter Height in m:");
-
-            Console.WriteLine(firstName + " " + lastName + " is " + personsAge + " years old, their weight is "
-                                + personsWeight + " and their height is " + personsHeight + " m.");
-
-            Console.WriteLine("Their BMI is " + string.Format("{0:0.#}", CalculateBMI(personsWeight, personsHeight)));
-
-            Console.WriteLine();
-            Console.WriteLine("Please Enter a second persons information");
-
-            firstName = InputString("Enter First Name: ");
-
-            lastName = InputString("Enter Last Name: ");
-
-            personsAge = InputInt("Enter Age: ");
-
-            personsWeight = InputFloat("Enter Weight in kg: ");
-
-            personsHeight = InputFloat("Enter Height in m:");
-
-            Console.WriteLine(firstName + " " + lastName + " is " + personsAge + " years old, their weight is "
-                                + personsWeight + " and their height is " + personsHeight + " m.");
-
-
-            Console.WriteLine("Their BMI is " + string.Format("{0:0.#}", CalculateBMI(personsWeight, personsHeight)));
-
-            Console.WriteLine();
+            //Enter information for 2 people
+            Console.WriteLine("Please enter the information for person 1");
+            NewPerson();
+            Console.WriteLine("Please enter the information for person 2");
+            NewPerson();
+            
+            //Close program 
             Console.WriteLine("Press any key to quit");
             Console.ReadKey();
         }
@@ -69,6 +39,25 @@ namespace BootCamp.Chapter
         {
             Console.Write(prompt);
             return Console.ReadLine();
+        }
+
+        public static void NewPerson()
+        {
+            //Gather Input
+            string firstName = InputString("Enter First Name: ");
+            string lastName = InputString("Enter Last Name: ");
+            int personsAge = InputInt("Enter Age: ");
+            float personsWeight = InputFloat("Enter Weight in kg: ");
+            float personsHeight = InputFloat("Enter Height in m: ");
+
+            //Echo data to console
+            Console.WriteLine(firstName + " " + lastName + " is " + personsAge + " years old, their weight is "
+                                + personsWeight + " and their height is " + personsHeight + " m.");
+
+            //Calculate and Display BMI
+            Console.WriteLine("Their BMI is " + string.Format("{0:0.#}", CalculateBMI(personsWeight, personsHeight)));
+            Console.WriteLine();
+
         }
     }
 }
