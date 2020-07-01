@@ -52,7 +52,12 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            return array.SkipLast(1).ToArray(); ;
+            int[] newArray = new int[array.Length - 1];
+            for (int i = 0; i <= newArray.Length - 1; i++)
+            {
+                newArray[i] = array[i];
+            }
+            return newArray;
         }
 
         /// <summary>
@@ -70,7 +75,12 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            return array.Skip(1).ToArray();
+            int[] newArray = new int[array.Length - 1];
+            for (int i = 1; i <= newArray.Length; i++)
+            {
+                newArray[i - 1] = array[i];
+            }
+            return newArray;
         }
 
         /// <summary>
@@ -90,7 +100,20 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            return array.Where(val => val != index).ToArray();
+            if ((index < 0) || (index > array.Length))
+            {
+                return array;
+            }
+
+            int[] newArray = new int[array.Length - 1];
+            for (int i = 0; i <= newArray.Length - 1; i++)
+            {
+                if (i != index)
+                {
+                    newArray[i] = array[i];
+                }
+            }
+            return newArray;
         }
 
         /// <summary>
