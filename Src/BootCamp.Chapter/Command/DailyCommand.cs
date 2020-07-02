@@ -26,27 +26,34 @@ namespace BootCamp.Chapter.Command
 
         public void Execute()
         {
-            _Ascending = IsAscendingOrDescending();
+            AscendingOrDescending();
             ExtractShopName();
             ValidateShopName();
+
             IEnumerable<EarnedDayDecimal> earnedPerDayDecimal = GetEarnedPerDayDecimalForShop();
-            sortList(ref earnedPerDayDecimal);
+            sortEarnedPerDayDecimalList(ref earnedPerDayDecimal);
+
             List<Earning> EarnedPerDay = GetEarningListFromEarnedDayDecimalList(earnedPerDayDecimal);
+
             _ReportsManager.WriteModel(_Path, EarnedPerDay);
         }
 
-        private bool IsAscendingOrDescending()
+        private void AscendingOrDescending()
         {
-            if(_Command[_Command.Count - 1] == "-desc")
+            switch (_Command[_Command.Count - 1])
             {
-                _Command.RemoveAt(_Command.Count - 1);
-                return false;
+                case "-desc":
+                    _Command.RemoveAt(_Command.Count - 1);
+                    _Ascending = false;
+                    break;
+                case "-asc":
+                    _Command.RemoveAt(_Command.Count - 1);
+                    _Ascending = true;
+                    break;
+                default:
+                    _Ascending = true;
+                    break;
             }
-            if (_Command[_Command.Count - 1] == "-asc")
-            {
-                _Command.RemoveAt(_Command.Count - 1);
-            }
-                return true;
         }
 
         private void ExtractShopName()
@@ -86,14 +93,13 @@ namespace BootCamp.Chapter.Command
                                                             .Select(x => new EarnedDayDecimal
                                                             {
                                                                 Day = x.First().DayOfWeek.ToString(),
-                                                                Earned = x.Sum(z => z.Price) / x.Select(z => z.DateTime.Date)
-                                                                                                                                .Distinct()
-                                                                                                                                .Count()
+                                                                //Sum of all day's devided by count of day's.
+                                                                Earned = x.Sum(z => z.Price) / (x.Select(z => z.DateTime.Date).Distinct().Count())
                                                             });
             return sortedTransactionsByDayOfWeek;
         }
 
-        private void sortList(ref IEnumerable<EarnedDayDecimal> earnedPerDayDecimal)
+        private void sortEarnedPerDayDecimalList(ref IEnumerable<EarnedDayDecimal> earnedPerDayDecimal)
         {
             if (_Ascending)
             {
