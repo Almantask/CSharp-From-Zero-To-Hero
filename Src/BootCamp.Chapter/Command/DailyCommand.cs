@@ -26,23 +26,27 @@ namespace BootCamp.Chapter.Command
 
         public void Execute()
         {
-            //TODO Ascend and Descend
             _Ascending = IsAscendingOrDescending();
             ExtractShopName();
             ValidateShopName();
-            IEnumerable<EarnedDayDecimal> earnedPerDayDecimal = SortByDayOfWeek();
+            IEnumerable<EarnedDayDecimal> earnedPerDayDecimal = GetEarnedPerDayDecimalForShop();
+            sortList(ref earnedPerDayDecimal);
             List<Earning> EarnedPerDay = GetEarningListFromEarnedDayDecimalList(earnedPerDayDecimal);
             _ReportsManager.WriteModel(_Path, EarnedPerDay);
         }
 
         private bool IsAscendingOrDescending()
         {
-            if(_Command[_Command.Count] == "-desc")
+            if(_Command[_Command.Count - 1] == "-desc")
             {
                 _Command.RemoveAt(_Command.Count - 1);
                 return false;
             }
-            return true;
+            if (_Command[_Command.Count - 1] == "-asc")
+            {
+                _Command.RemoveAt(_Command.Count - 1);
+            }
+                return true;
         }
 
         private void ExtractShopName()
@@ -74,7 +78,7 @@ namespace BootCamp.Chapter.Command
             }
         }
 
-        private IEnumerable<EarnedDayDecimal> SortByDayOfWeek()
+        private IEnumerable<EarnedDayDecimal> GetEarnedPerDayDecimalForShop()
         {
             IEnumerable<EarnedDayDecimal> sortedTransactionsByDayOfWeek = _Transactions.Where(x => x.ShopName == _Shop)
                                                             .Select(x => new { x.DateTime.DayOfWeek, x.Price, x.DateTime })
@@ -89,7 +93,20 @@ namespace BootCamp.Chapter.Command
             return sortedTransactionsByDayOfWeek;
         }
 
-        private static List<Earning> GetEarningListFromEarnedDayDecimalList(IEnumerable<EarnedDayDecimal> sortedTransactionsByDayOfWeek)
+        private void sortList(ref IEnumerable<EarnedDayDecimal> earnedPerDayDecimal)
+        {
+            if (_Ascending)
+            {
+                earnedPerDayDecimal = earnedPerDayDecimal.OrderBy(x => x.Earned);
+            }
+            else
+            {
+                earnedPerDayDecimal = earnedPerDayDecimal.OrderByDescending(x => x.Earned);
+            }
+        }
+            
+
+private static List<Earning> GetEarningListFromEarnedDayDecimalList(IEnumerable<EarnedDayDecimal> sortedTransactionsByDayOfWeek)
         {
             List<Earning> sortedEarnedDayModel = new List<Earning>();
 
