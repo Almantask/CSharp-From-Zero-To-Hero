@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+using System.Linq;
+using System.Collections;
+namespace BootCamp.Chapter1
 {
     class Program
     {
@@ -7,3 +10,4 @@
         }
     }
 }
+
