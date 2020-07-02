@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
+
 namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
@@ -39,7 +41,7 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0)
                 return array;
-            array = array.Take(array.Length - 1).ToArray();
+            Array.Resize(ref array, array.Length - 1);
             return array;
         }
 
@@ -51,7 +53,14 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0)
                 return array;
-            array = array.Skip(1).ToArray();
+            List<int> array2 = array.ToList();
+            array2.Remove(0);
+            Array.Resize(ref array, array.Length - 1);
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = array2[i];
+                Console.WriteLine(array[i]);
+            }
             return array;
         }
 
@@ -78,32 +87,7 @@ namespace BootCamp.Chapter1
         public static int[] InsertFirst(int[] array, int number)
         {
             int index = 0;
-            if (array == null || array.Length == 0)
-            {
-                int[] newArray = new int[] { number };
-                return newArray;
-            }
-            else
-            {
-                var array2 = new int[array.Length + 1];
-
-                for (var i = 0; i < array2.Length; i++)
-                {
-                    if (i < index)
-                    {
-                        array2[i] = array[i];
-                    }
-                    if (i == index)
-                    {
-                        array2[i] = number;
-                    }
-                    else
-                    {
-                        array2[i] = array[i - 1];
-                    }
-                }
-                return array2;
-            }
+            return InsertAt(array, number, index);
         }
 
         /// <summary>
@@ -116,20 +100,15 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0)
             {
-                int[] array3 = new int[] { number };
-                return array3;
+                int[] newArray = new int[] { number };
+                for (int i = 0; i < newArray.Length; i++)
+                {
+                    Console.WriteLine(newArray[i]);
+                }
+                return newArray;
             }
             else
-            {
-                int[] array2 = new int[array.Length + 1];
-
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array2[i] = array[i];
-                }
-                array2[array2.Length - 1] = number;
-                return array2;
-            }
+                return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -141,6 +120,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
+
             if ((array == null || array.Length == 0) && index == 0)
             {
                 int[] newArray = new int[] { number };
