@@ -2,6 +2,7 @@
 using BootCamp.Chapter.Exceptions;
 using BootCamp.Chapter.ReportsManagers;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -30,7 +31,7 @@ namespace BootCamp.Chapter
 
         private static ICommand GetCommand(string[] args, ReportsManager reportsManager, List<Transaction> transactions)
         {
-            string[] commandArr = args[commandInt].Split(' ');
+            List<string> commandArr = args[commandInt].Split(' ').ToList();
             switch (commandArr[0].ToLower())
             {
                 case timeCommand:

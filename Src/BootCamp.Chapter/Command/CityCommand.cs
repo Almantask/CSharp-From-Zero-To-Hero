@@ -9,11 +9,11 @@ namespace BootCamp.Chapter
     internal class CityCommand : ICommand
     {
         private string _Path;
-        private string[] _Command;
+        private List<string> _Command;
         private List<Transaction> _Transactions;
         private ReportsManager _ReportsManager;
 
-        public CityCommand(string path, string[] command, List<Transaction> transactions, ReportsManager reportsManager)
+        public CityCommand(string path, List<string> command, List<Transaction> transactions, ReportsManager reportsManager)
         {
             _Path = path;
             _Command = command;
@@ -36,7 +36,7 @@ namespace BootCamp.Chapter
             string commandParameter1 = _Command[1];
             string commandParameter2 = _Command[2];
 
-            if (_Command.Length != 3)
+            if (_Command.Count != 3)
             {
                 throw new InvalidCommandException($"{_Command.ToString()} has the wrong amount of parameters.");
             }

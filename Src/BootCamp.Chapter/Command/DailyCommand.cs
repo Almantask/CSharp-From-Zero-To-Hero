@@ -10,12 +10,13 @@ namespace BootCamp.Chapter.Command
     public class DailyCommand : ICommand
     {
         private string _Path;
-        private string[] _Command;
+        private List<string> _Command;
         private List<Transaction> _Transactions;
         private ReportsManager _ReportsManager;
         private string _Shop;
+        private bool _Ascending;
 
-        public DailyCommand(string path, string[] command, List<Transaction> transactions, ReportsManager reportsManager)
+        public DailyCommand(string path, List<string> command, List<Transaction> transactions, ReportsManager reportsManager)
         {
             _Path = path;
             _Command = command;
@@ -25,17 +26,30 @@ namespace BootCamp.Chapter.Command
 
         public void Execute()
         {
+            //TODO Ascend and Descend
+            _Ascending = IsAscendingOrDescending();
             ExtractShopName();
             ValidateShopName();
-            List<Earning> EarnedPerDay = SortByDayOfWeek();
+            IEnumerable<EarnedDayDecimal> earnedPerDayDecimal = SortByDayOfWeek();
+            List<Earning> EarnedPerDay = GetEarningListFromEarnedDayDecimalList(earnedPerDayDecimal);
             _ReportsManager.WriteModel(_Path, EarnedPerDay);
+        }
+
+        private bool IsAscendingOrDescending()
+        {
+            if(_Command[_Command.Count] == "-desc")
+            {
+                _Command.RemoveAt(_Command.Count - 1);
+                return false;
+            }
+            return true;
         }
 
         private void ExtractShopName()
         {
             StringBuilder sb = new StringBuilder();
 
-            for (int i = 1; i < _Command.Length; i++)
+            for (int i = 1; i < _Command.Count; i++)
             {
                 sb.Append(_Command[i] + " ");
             }
@@ -60,17 +74,23 @@ namespace BootCamp.Chapter.Command
             }
         }
 
-        private List<Earning> SortByDayOfWeek()
+        private IEnumerable<EarnedDayDecimal> SortByDayOfWeek()
         {
             IEnumerable<EarnedDayDecimal> sortedTransactionsByDayOfWeek = _Transactions.Where(x => x.ShopName == _Shop)
-                                                            .Select(x => new { x.DateTime.DayOfWeek, x.Price, x.DateTime})
+                                                            .Select(x => new { x.DateTime.DayOfWeek, x.Price, x.DateTime })
                                                             .GroupBy(x => x.DayOfWeek)
-                                                            .Select(x => new EarnedDayDecimal {
-                                                                                                Day = x.First().DayOfWeek.ToString(),
-                                                                                                Earned = x.Sum( z => z.Price) / x.Select(z => z.DateTime.Date)
+                                                            .Select(x => new EarnedDayDecimal
+                                                            {
+                                                                Day = x.First().DayOfWeek.ToString(),
+                                                                Earned = x.Sum(z => z.Price) / x.Select(z => z.DateTime.Date)
                                                                                                                                 .Distinct()
                                                                                                                                 .Count()
-                                                             });
+                                                            });
+            return sortedTransactionsByDayOfWeek;
+        }
+
+        private static List<Earning> GetEarningListFromEarnedDayDecimalList(IEnumerable<EarnedDayDecimal> sortedTransactionsByDayOfWeek)
+        {
             List<Earning> sortedEarnedDayModel = new List<Earning>();
 
             foreach (EarnedDayDecimal earnedDayDecimal in sortedTransactionsByDayOfWeek)

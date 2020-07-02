@@ -11,11 +11,11 @@ namespace BootCamp.Chapter
     internal class TimeCommand : ICommand
     {
         private string _Path;
-        private string[] _Command;
+        private List<string> _Command;
         private List<Transaction> _Transactions;
         private ReportsManager _ReportsManager;
 
-        public TimeCommand(string path, string[] command, List<Transaction> transactions, ReportsManager reportsManager)
+        public TimeCommand(string path, List<string> command, List<Transaction> transactions, ReportsManager reportsManager)
         {
             _Path = path;
             _Command = command;
@@ -33,12 +33,12 @@ namespace BootCamp.Chapter
         {
             DateTime[] times = new DateTime[2] { new DateTime(2020, 01, 01, 00, 00, 00), new DateTime(2020, 01, 01, 23, 00, 00) };
 
-            if (_Command.Length == 1)
+            if (_Command.Count == 1)
             {
                 //Time Command given without any times uses whole day.
                 return GroupedByTime(_Transactions, times);
             }
-            else if (_Command.Length == 2)
+            else if (_Command.Count == 2)
             {
                 //Time Command given with times only gives a report within time frame.
                 if (IsHoursValid(_Command[1], out times))
