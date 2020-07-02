@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Buffers;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace BootCamp.Chapter1
 {
@@ -124,8 +125,16 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            int[] newArray = new int[array.Length + 1];
+
+            newArray[0] = number;
+
+            for (int i = 0; i <= array.Length - 1; i++)
+            {
+                newArray[i + 1] = array[i];
+            }
+
+            return newArray;
         }
 
         /// <summary>
