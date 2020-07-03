@@ -12,7 +12,14 @@ namespace BootCamp.Chapter
             {
                 for (int j = 0; j < grid.GridJagged[i].Length; j++)
                 {
-                    Console.Write(grid.GridJagged[i][j] ? "■" : " ");
+                    if (grid.GridJagged[i][j])
+                    {
+                        Console.Write("■");
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
                 }
                 if (i != grid.GridJagged.Length - 1) Console.WriteLine();
             }

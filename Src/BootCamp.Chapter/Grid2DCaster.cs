@@ -12,9 +12,16 @@ namespace BootCamp.Chapter
             {
                 for (int j = 0; j < grid.Grid2D.GetLength(1); j++)
                 {
-                    Console.WriteLine(grid.Grid2D[i,j] ? "■" : " ");                    
+                    if (grid.Grid2D[i, j])
+                    {
+                        Console.Write("■");
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }           
                 }
-                //if (i < grid.Grid2D.GetLength(0) - 1) Console.WriteLine();
+                if (i != grid.Grid2D.GetLength(0) - 1) Console.WriteLine();
             }
         }
     }
