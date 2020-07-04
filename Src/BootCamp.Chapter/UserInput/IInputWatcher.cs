@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter.UserInput
 {
-    public interface IInputWatcher
+    public interface IInputWatcher<TInput> where TInput : struct
     {
-        void Test() { }
+        // We use the generic EventHandler type provided by .NET, thus we don't have to create our own.
+        public event EventHandler<InputPressedEventArgs<TInput>> InputPressed;
+        void MonitorInput(TInput input);
     }
 }

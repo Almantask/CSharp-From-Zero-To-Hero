@@ -6,6 +6,16 @@ namespace BootCamp.Chapter.Demo
 {
     public class DemoApplication
     {
+        public IApplicationStateController ApplicationStateController { get; }
+        public IInputWatcher<ConsoleKey> InputWatcher { get; }
+
+        public DemoApplication()
+        {
+            // We inject our dependencies through our ctor.
+            ApplicationStateController = new ApplicationStateController();
+            InputWatcher = new InputWatcher();
+        }
+
         public void Run()
         {
             InitializeApplication();
@@ -16,13 +26,13 @@ namespace BootCamp.Chapter.Demo
         public void OnApplicationStateChange(object sender, ApplicationStateEventArgs e)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{sender.GetType()} - changing application state to {e.State}...");
+            Console.WriteLine($"{sender.GetType().Name} - changing application state to {e.State}...");
             Console.ResetColor();
         }
 
-        public void OnInputPressed(object sender, InputPressedEventArgs e)
+        public void OnInputPressed(object sender, InputPressedEventArgs<ConsoleKey> e)
         {
-            var key = sender as ConsoleKey?;
+            var key = e.Input;
 
             switch (key)
             {
@@ -43,17 +53,18 @@ namespace BootCamp.Chapter.Demo
 
         private void InitializeApplication()
         {
-            
+            ApplicationStateController.ChangeState(ApplicationStates.APPLICATION_STARTED);
+            InputWatcher.MonitorInput(GetUserInput());
         }
 
         private void EndDemo()
         {
-            
+            ApplicationStateController.ChangeState(ApplicationStates.DEMO_ENDED);
         }
 
         private void CloseApplication()
         {
-            
+            ApplicationStateController.ChangeState(ApplicationStates.APPLICATION_CLOSED);
         }
 
         private ConsoleKey GetUserInput()

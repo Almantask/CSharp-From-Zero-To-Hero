@@ -8,23 +8,19 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            // We instantiate our event publishers.
-            ApplicationStateController applicationStateController = new ApplicationStateController();
-            InputWatcher consoleInputWatcher = new InputWatcher();
-
             // We instantiate our event subscriber.
             DemoApplication demoApplication = new DemoApplication();
 
-            // We subscribe to events.
-            applicationStateController.ApplicationStateChanged += demoApplication.OnApplicationStateChange;
-            consoleInputWatcher.InputPressed += demoApplication.OnInputPressed;
+            // We subscribe to events from the outside.
+            demoApplication.ApplicationStateController.ApplicationStateChanged += demoApplication.OnApplicationStateChange;
+            demoApplication.InputWatcher.InputPressed += demoApplication.OnInputPressed;
 
             // We run our demo.
             demoApplication.Run();
 
-            // We unsubscribe from events.
-            applicationStateController.ApplicationStateChanged -= demoApplication.OnApplicationStateChange;
-            consoleInputWatcher.InputPressed -= demoApplication.OnInputPressed;
+            // We unsubscribe from events to allow them to be collected by the GC.
+            demoApplication.ApplicationStateController.ApplicationStateChanged -= demoApplication.OnApplicationStateChange;
+            demoApplication.InputWatcher.InputPressed -= demoApplication.OnInputPressed;
         }
     }
 }

@@ -3,9 +3,8 @@
 
 namespace BootCamp.Chapter.ApplicationState
 {
-    public class ApplicationStateController
+    public class ApplicationStateController : IApplicationStateController
     {
-        // We use the generic EventHandler type provided by .NET, thus we don't have to create our own.
         public event EventHandler<ApplicationStateEventArgs> ApplicationStateChanged;
 
         public void ChangeState(ApplicationStates newState)
