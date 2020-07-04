@@ -1,5 +1,4 @@
-﻿using BootCamp.Chapter.DataReader;
-using System;
+﻿using System;
 
 namespace BootCamp.Chapter.UserInput
 {

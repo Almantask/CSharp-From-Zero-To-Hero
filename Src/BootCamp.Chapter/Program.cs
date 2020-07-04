@@ -1,6 +1,4 @@
-﻿using BootCamp.Chapter.ApplicationState;
-using BootCamp.Chapter.Demo;
-using BootCamp.Chapter.UserInput;
+﻿using BootCamp.Chapter.Demo;
 
 namespace BootCamp.Chapter
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter.ApplicationState
+﻿namespace BootCamp.Chapter.ApplicationState
 {
     public enum ApplicationStates
     {

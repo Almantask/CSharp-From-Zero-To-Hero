@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace BootCamp.Chapter.ApplicationState
 {
     public class ApplicationStateController : IApplicationStateController
