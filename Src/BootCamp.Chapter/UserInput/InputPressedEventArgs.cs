@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BootCamp.Chapter.Events
+namespace BootCamp.Chapter.UserInput
 {
     public class InputPressedEventArgs : EventArgs
     {

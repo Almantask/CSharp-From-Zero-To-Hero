@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BootCamp.Chapter.Events
+namespace BootCamp.Chapter.ApplicationState
 {
     public class ApplicationStateEventArgs : EventArgs
     {
         public DateTime TimeFired { get; }
-        public ApplicationState State { get; }
+        public ApplicationStates State { get; }
 
-        public ApplicationStateEventArgs(ApplicationState applicationState)
+        public ApplicationStateEventArgs(ApplicationStates applicationState)
         {
             TimeFired = DateTime.Now;
             State = applicationState;

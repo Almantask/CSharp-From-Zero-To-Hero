@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BootCamp.Chapter.Events
+namespace BootCamp.Chapter.ApplicationState
 {
-    public enum ApplicationState
+    public enum ApplicationStates
     {
         APPLICATION_STARTED,
         DEMO_ENDED,
