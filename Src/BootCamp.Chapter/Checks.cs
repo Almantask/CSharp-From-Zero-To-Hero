@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace BootCamp.Chapter
 {
     /// <summary>
@@ -17,25 +18,25 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             // To do: call your implementation. 
-            return 0;
+            return Lesson3.getUserInt("int");
         }
 
         public static string PromptString(string message)
         {
             // To do: call your implementation. 
-            return "";
+            return Lesson3.getUserString("string");
         }
 
         public static float PromptFloat(string message)
         {
             // To do: call your implementation. 
-            return 0;
+            return Lesson3.getUserFloat("float");
         }
 
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation. 
-            return 0;
+            return Lesson3.calculateBMI(weight, height);
         }
     }
 }
