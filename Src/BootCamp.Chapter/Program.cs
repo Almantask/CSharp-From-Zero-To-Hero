@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
         // You are not supposed to change anything but "runTests = true" comment here.
         private static void OptionalPart()
         {
-            bool runTests = false;
+            bool runTests = true;
 
             // Uncomment the next line to run your tests only.
             // runTests = true;
