@@ -8,31 +8,11 @@ namespace BootCamp.Chapter
     {
 		public static void Demo()
 		{
-			/*2) Take homework 2 code, place it in the forked branch and refactor it using functions.There should be as little duplicate code as possible (there should be functions for:
-				-Calculating BMI(weight comes in kg, height comes in meters),
-			-Prompt for input and converting it to int(print message for request, read console input and return converted input to int), 
-			-Prompt for input and converting it to string(print message for request, read console input and return input),
-			-Prompt for input and converting it to float(print message for request, read console input and return converted input to float).
-			3) Put all the function you made into the right places in Checks.cs class. Run tests, make sure you pass all the tests
-			4) Put all program.cs logic to Lesson3.cs.Call it from main function. Program class should look like this:
-			*/
-
 			string quit = "";
 
 			while (quit != "q" && quit != "Q")
 			{
-				int age = getUserInt("age");
-				string firstName = getUserString("first");
-				string lastNmae = getUserString("last");
-				float weight = getUserFloat("weight(Kg)");
-				float height = getUserFloat("height(cm)");
-
-
-				Console.WriteLine($"{firstName} {lastNmae} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
-
-				var BMI = calculateBMI(weight, height);
-
-				Console.WriteLine($"{firstName} {lastNmae}'s BMI is: {BMI}.");
+				processPersonInfo();
 
 				Console.WriteLine("Enter \"q\" to quit or press any other key to continue ");
 				quit = Console.ReadLine();
@@ -40,19 +20,21 @@ namespace BootCamp.Chapter
 
 		}
 
+
 		public static float calculateBMI(float weight, float height)
 		{
 			float heightInMeters = height / 100f;
-			return (weight / (heightInMeters * heightInMeters));
 
+			return (weight / (heightInMeters * heightInMeters));
 		}
+
 
 		public static string getUserString(string requestedInfo)
 		{
 			string response;
 			Console.WriteLine($"please input {requestedInfo}: ");
-			return response = Console.ReadLine().Trim();
 
+			return response = Console.ReadLine().Trim();
 		}
 
 
@@ -66,32 +48,45 @@ namespace BootCamp.Chapter
 
 			while (!float.TryParse(response, out number))
 			{
-				Console.WriteLine($"Please enter {requestedInfo} as a whole number: ");
+				Console.WriteLine($"Please enter {requestedInfo} as a number: ");
 				response = Console.ReadLine().Trim();
 			}
 
 			return number;
-
 		}
 
 
-
-		public static int getUserInt(string requestedInfo)
+		public static int getUserAge()
 		{
 			string response;
-			Console.WriteLine($"please input {requestedInfo}: ");
+			Console.WriteLine($"please input age: ");
 			response = Console.ReadLine().Trim();
 
 			int number;
 
 			while (!int.TryParse(response, out number))
 			{
-				Console.WriteLine($"Please enter {requestedInfo} as a whole number: ");
+				Console.WriteLine($"Please enter age as a whole number: ");
 				response = Console.ReadLine().Trim();
 			}
 
 			return number;
+		}
 
+
+		public static void processPersonInfo()
+		{
+			int age = getUserAge();
+			string firstName = getUserString("first");
+			string lastName = getUserString("last");
+			float weight = getUserFloat("weight(Kg)");
+			float height = getUserFloat("height(cm)");
+
+			Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
+
+			var BMI = calculateBMI(weight, height);
+
+			Console.WriteLine($"{firstName} {lastName}'s BMI is: {BMI}.");
 		}
 	}
 }

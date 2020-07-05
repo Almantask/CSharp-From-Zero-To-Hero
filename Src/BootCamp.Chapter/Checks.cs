@@ -18,7 +18,7 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             // To do: call your implementation. 
-            return Lesson3.getUserInt("int");
+            return Lesson3.getUserAge();
         }
 
         public static string PromptString(string message)
