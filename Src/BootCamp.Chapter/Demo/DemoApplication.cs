@@ -6,13 +6,12 @@ namespace BootCamp.Chapter.Demo
 {
     public class DemoApplication
     {
-        public IApplicationStateController ApplicationStateController { get; }
+        public event EventHandler<ApplicationStateEventArgs> ApplicationStateChanged;
         public IInputWatcher<ConsoleKey> InputWatcher { get; }
 
         public DemoApplication()
         {
-            // We inject our dependencies through our ctor.
-            ApplicationStateController = new ApplicationStateController();
+            // We inject our dependency through our ctor.
             InputWatcher = new InputWatcher();
         }
 
@@ -21,6 +20,27 @@ namespace BootCamp.Chapter.Demo
             InitializeApplication();
             EndDemo();
             CloseApplication();
+        }
+
+        private void InitializeApplication()
+        {
+            ChangeState(ApplicationStates.APPLICATION_STARTED);
+            InputWatcher.MonitorInput(GetUserInput());
+        }
+
+        private void EndDemo()
+        {
+            ChangeState(ApplicationStates.DEMO_ENDED);
+        }
+
+        private void CloseApplication()
+        {
+            ChangeState(ApplicationStates.APPLICATION_CLOSED);
+        }
+
+        public void ChangeState(ApplicationStates newState)
+        {
+            ApplicationStateChanged?.Invoke(this, new ApplicationStateEventArgs(newState));
         }
 
         public void OnApplicationStateChange(object sender, ApplicationStateEventArgs e)
@@ -49,22 +69,6 @@ namespace BootCamp.Chapter.Demo
                     Console.WriteLine("Invalid Option");
                     break;
             }
-        }
-
-        private void InitializeApplication()
-        {
-            ApplicationStateController.ChangeState(ApplicationStates.APPLICATION_STARTED);
-            InputWatcher.MonitorInput(GetUserInput());
-        }
-
-        private void EndDemo()
-        {
-            ApplicationStateController.ChangeState(ApplicationStates.DEMO_ENDED);
-        }
-
-        private void CloseApplication()
-        {
-            ApplicationStateController.ChangeState(ApplicationStates.APPLICATION_CLOSED);
         }
 
         private ConsoleKey GetUserInput()
