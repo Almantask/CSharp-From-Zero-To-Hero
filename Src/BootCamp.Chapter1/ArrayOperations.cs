@@ -16,8 +16,21 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0)
                 return;
-            Array.Sort(array);
 
+            int temp = 0;
+
+            for (int i = 0; i <= array.Length - 1; i++)
+            {
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -29,7 +42,13 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0)
                 return;
-            Array.Reverse(array);
+
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                int tmp = array[i];
+                array[i] = array[array.Length - i - 1];
+                array[array.Length - i - 1] = tmp;
+            }
         }
 
         /// <summary>
@@ -41,8 +60,8 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0)
                 return array;
-            Array.Resize(ref array, array.Length - 1);
-            return array;
+            int index = array.Length - 1;
+            return RemoveAt(array, index);
         }
 
         /// <summary>
@@ -53,15 +72,8 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0)
                 return array;
-            List<int> array2 = array.ToList();
-            array2.Remove(0);
-            Array.Resize(ref array, array.Length - 1);
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = array2[i];
-                Console.WriteLine(array[i]);
-            }
-            return array;
+            int index = 0;
+            return RemoveAt(array, index);
         }
 
         /// <summary>
@@ -74,9 +86,27 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0)
                 return array;
-            array = array.Except(new int[] { index }).ToArray();
-            return array;
+            var array2 = new int[array.Length - 1];
+
+            if (index > array2.Length || index < 0)
+            {
+                return array;
+            }
+
+            for (var i = 0; i < array2.Length; i++)
+            {
+                if (i < index)
+                {
+                    array2[i] = array[i];
+                }
+                else
+                {
+                    array2[i] = array[i + 1];
+                }
+            }
+            return array2;
         }
+
 
         /// <summary>
         /// Inserts a new array element at the start.
