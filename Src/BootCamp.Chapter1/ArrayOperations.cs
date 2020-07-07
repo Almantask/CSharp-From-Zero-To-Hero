@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System.Net.NetworkInformation;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,7 +11,23 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+	        if (array.Length == 0 || array == null)
+	        {
+                return;
+	        }
+
+	        for (int i = 0; i < array.Length - 1; i++)
+	        {
+		        for (int j = 0; j < array.Length - 1; j++)
+		        {
+			        if (array[j] > array[j + 1])
+			        {
+				        int temp = array[j];
+				        array[j] = array[j + 1];
+				        array[j + 1] = temp;
+			        }
+		        }
+	        }
         }
 
         /// <summary>
@@ -19,7 +37,18 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+	        if (array.Length == 0 || array == null)
+	        {
+		        return;
+	        }
+
+	        for (int i = 0; i < (array.Length / 2); i++)
+	        {
+		        int temp = array[i];
+		        array[i] = array[array.Length - i - 1];
+		        array[array.Length - i - 1] = temp;
+	        }
+
         }
 
         /// <summary>
@@ -29,8 +58,18 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+	        if (array.Length == 0 || array == null)
+	        {
+		        return array;
+	        }
+
+	        var newArray = new int[array.Length - 1];
+	        for (int i = 0; i < array.Length - 1; i++)
+	        {
+		        newArray[i] = array[i];
+	        }
+
+	        return newArray;
         }
 
         /// <summary>
@@ -39,8 +78,18 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+	        if (array.Length == 0 || array == null)
+	        {
+		        return array;
+	        }
+
+	        var newArray = new int[array.Length - 1];
+	        for (int i = array.Length - 1; i > 0; i--)
+	        {
+		        newArray[i - 1] = array[i];
+	        }
+
+	        return newArray;
         }
 
         /// <summary>
