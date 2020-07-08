@@ -13,7 +13,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-	        if (array.Length == 0 || array == null)
+	        if (array.Equals(null) || array.Length == 0)
 	        {
                 return;
 	        }
@@ -104,7 +104,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (array.Length == 0 || array == null)
+            if (array.Length <= 0 || array == null || index < 0 || index > array.Length -1)
             {
                 return array;
             }
@@ -162,16 +162,15 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array.Length == 0 || array == null)
-            {
-                return array;
-            }
-
-            var newArray = new int[array.Length + 1];
-
+	        var newArray = new int[array.Length + 1];
             newArray[array.Length] = number;
 
-            for (int i = 0; i < array.Length; i++)
+            if (array.Length == 0 || array == null)
+            {
+                return newArray;
+            }
+
+			for (int i = 0; i < array.Length; i++)
             {
                 newArray[i] = array[i];
             }
@@ -188,21 +187,19 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-
-
-            if (array.Length == 0 || array == null)
-            {
-                var tempArray = new int[index];
-
-                tempArray[index] = number;
-
-                return tempArray;
-            }
-
-            var newArray = new int[array.Length + 1];
-
+	        if (index < 0 || index > array.Length)
+	        {
+		        return array;
+	        }
+	        
+	        var newArray = new int[array.Length + 1];
             newArray[index] = number;
 
+            if (array.Length <= 0 || array.Equals(null))
+            {
+	            return newArray;
+            }
+            
             for (int i = 0; i < array.Length; i++)
             {
                 if (i == index)
