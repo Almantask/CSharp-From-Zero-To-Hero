@@ -1,4 +1,9 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
@@ -7,7 +12,53 @@
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+                return "N/A.";
+
+            Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
+            List<string> names = new List<string>();
+            StringBuilder peopleString = new StringBuilder();
+
+            var biggestBalanceEver = float.MinValue;
+            var personWithABiggestBalanceEver = "";
+            string[] personWithABiggestBalanceEverArray = { };
+            string message = "";
+
+            foreach (var personBalances in peopleBalances)
+            {
+                foreach (var balance in personBalances.Value)
+                {
+                    if (balance > biggestBalanceEver)
+                    {
+                        names.Clear();
+                        biggestBalanceEver = balance;
+                        personWithABiggestBalanceEver = personBalances.Key;
+                        names.Add(personWithABiggestBalanceEver);
+                    }
+                    else if (balance == biggestBalanceEver)
+                    {
+                        names.Add(personBalances.Key);
+                    }
+                }
+            }
+
+            for (int i = 0; i < names.Count; i++)
+            {
+                if (i == 0)
+                {
+                    peopleString.Append(names[i]);
+                    continue;
+                }
+                if (i == names.Count - 1)
+                {
+                    peopleString.Append(" and ").Append(names[i]);
+                    continue;
+                }
+                peopleString.Append(", ").Append(names[i]);
+            }
+            message = $"{peopleString} had the most money ever. ¤{biggestBalanceEver}.";
+
+            return message;
         }
 
         /// <summary>
@@ -15,7 +66,52 @@
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+                return "N/A.";
+
+            Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
+            List<string> names = new List<string>();
+            StringBuilder peopleString = new StringBuilder();
+            var biggestLostEver = float.MaxValue;
+            var personWithABiggestBalanceEver = "";
+            string[] personWithABiggestLostEverArray = { };
+            string message = "";
+
+            foreach (var personBalances in peopleBalances)
+            {
+                foreach (var balance in personBalances.Value)
+                {
+                    if (balance < biggestLostEver)
+                    {
+                        names.Clear();
+                        biggestLostEver = balance;
+                        personWithABiggestBalanceEver = personBalances.Key;
+                        names.Add(personWithABiggestBalanceEver);
+                    }
+                    else if (balance == biggestLostEver)
+                    {
+                        names.Add(personBalances.Key);
+                    }
+                }
+            }
+            for (int i = 0; i < names.Count; i++)
+            {
+                if (i == 0)
+                {
+                    peopleString.Append(names[i]);
+                    continue;
+                }
+                if (i == names.Count - 1)
+                {
+                    peopleString.Append(" and ").Append(names[i]);
+                    continue;
+                }
+                peopleString.Append(", ").Append(names[i]);
+            }
+            message = $"{peopleString} lost the most money. ¤{biggestLostEver}.";
+
+            return message;
+
         }
 
         /// <summary>
@@ -23,7 +119,59 @@
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+                return "N/A.";
+
+            Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
+            List<string> names = new List<string>();
+            StringBuilder peopleString = new StringBuilder();
+            var biggestLostEver = float.MinValue;
+            var personWithABiggestBalanceEver = "";
+            string[] personWithABiggestLostEverArray = { };
+            string message = "";
+
+            foreach (var personBalances in peopleBalances)
+            {
+                {
+                    if (personBalances.Value.Last() > biggestLostEver)
+                    {
+                        names.Clear();
+                        biggestLostEver = personBalances.Value.Last();
+                        personWithABiggestBalanceEver = personBalances.Key;
+                        names.Add(personWithABiggestBalanceEver);
+                    }
+                    else if (personBalances.Value.Last() == biggestLostEver)
+                    {
+                        names.Add(personBalances.Key);
+                    }
+                }
+            }
+            for (int i = 0; i < names.Count; i++)
+            {
+                if (i == 0)
+                {
+                    peopleString.Append(names[i]);
+                    continue;
+                }
+                if (i == names.Count - 1)
+                {
+                    peopleString.Append(" and ").Append(names[i]);
+                    continue;
+                }
+                peopleString.Append(", ").Append(names[i]);
+            }
+            if (names.Count > 1)
+            {
+                message = $"{peopleString} are the richest people. ¤{biggestLostEver}.";
+            }
+            else
+            {
+                message = $"{peopleString} is the richest person. ¤{biggestLostEver}.";
+            }
+
+            return message;
+
+
         }
 
         /// <summary>
@@ -31,7 +179,107 @@
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+                return "N/A.";
+
+            Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
+            List<string> names = new List<string>();
+            StringBuilder peopleString = new StringBuilder();
+            var biggestLostEver = float.MaxValue;
+            var personWithABiggestBalanceEver = "";
+            string[] personWithABiggestLostEverArray = { };
+            string message = "";
+
+            foreach (var personBalances in peopleBalances)
+            {
+                foreach (var balance in personBalances.Value)
+                {
+                    if (balance < biggestLostEver)
+                    {
+                        names.Clear();
+                        biggestLostEver = balance;
+                        personWithABiggestBalanceEver = personBalances.Key;
+                        names.Add(personWithABiggestBalanceEver);
+                    }
+                    else if (balance == biggestLostEver)
+                    {
+                        names.Add(personBalances.Key);
+                    }
+                }
+            }
+            for (int i = 0; i < names.Count; i++)
+            {
+                if (i == 0)
+                {
+                    peopleString.Append(names[i]);
+                    continue;
+                }
+                if (i == names.Count - 1)
+                {
+                    peopleString.Append(" and ").Append(names[i]);
+                    continue;
+                }
+                peopleString.Append(", ").Append(names[i]);
+            }
+            if (names.Count > 1 || biggestLostEver>=0)
+            {
+                message = $"{peopleString} have the least money. ¤{biggestLostEver}.";
+               
+            }
+            else if (names.Count == 1 || biggestLostEver >= 0)
+            {
+                message = $"{peopleString} has the least money. ¤{biggestLostEver}.";
+            }
+            else if (names.Count > 1 || biggestLostEver < 0)
+            {
+                message = $"{peopleString} have the least money. ¤{biggestLostEver}.";
+            }
+            else if (names.Count == 1 || biggestLostEver < 0)
+            {
+                message = $"{peopleString} has the least money. ¤{biggestLostEver}.";
+            }
+
+            return message;
+
         }
+
+
+        public static Dictionary<string, List<float>> ArrayOfPeople(string[] peopleAndBalances)
+        {
+            string[] splitString = { };
+
+            Dictionary<string, List<float>> people = new Dictionary<string, List<float>>();
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+
+                splitString = peopleAndBalances[i].Split(",");
+                var name = splitString[0];
+                people.Add(name, new List<float>());
+
+                for (int j = 1; j < splitString.Length; j++)
+                {
+                    float balances;
+                    var isNumber = float.TryParse(splitString[j], out balances);
+                    if (isNumber)
+                    {
+                        people[name].Add(balances);
+                    }
+                }
+                // Console.WriteLine("Name: " + name);
+
+                foreach (var balance in people[name])
+                {
+                    // Console.WriteLine("balance: " + balance);
+                }
+
+            }
+            return people;
+        }
+
+
+
+
+
     }
 }
