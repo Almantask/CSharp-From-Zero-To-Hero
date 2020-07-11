@@ -185,6 +185,7 @@ namespace BootCamp.Chapter
             Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             StringBuilder peopleString = new StringBuilder();
+            StringBuilder lost = new StringBuilder();
             var biggestLostEver = float.MaxValue;
             var personWithABiggestBalanceEver = "";
             string[] personWithABiggestLostEverArray = { };
@@ -221,22 +222,23 @@ namespace BootCamp.Chapter
                 }
                 peopleString.Append(", ").Append(names[i]);
             }
-            if (names.Count > 1 || biggestLostEver>=0)
-            {
-                message = $"{peopleString} have the least money. ¤{biggestLostEver}.";
-               
-            }
-            else if (names.Count == 1 || biggestLostEver >= 0)
-            {
-                message = $"{peopleString} has the least money. ¤{biggestLostEver}.";
-            }
-            else if (names.Count > 1 || biggestLostEver < 0)
+            if (names.Count > 1 && biggestLostEver>=0)
             {
                 message = $"{peopleString} have the least money. ¤{biggestLostEver}.";
             }
-            else if (names.Count == 1 || biggestLostEver < 0)
+            else if (names.Count == 1 && biggestLostEver >= 0)
             {
                 message = $"{peopleString} has the least money. ¤{biggestLostEver}.";
+            }
+            else if (names.Count > 1 && biggestLostEver < 0)
+            {
+                lost.Append(biggestLostEver).Replace("-", "");
+                message = $"{peopleString} have the least money. -¤{lost}.";
+            }
+            else if (names.Count == 1 && biggestLostEver < 0)
+            {
+                lost.Append(biggestLostEver).Replace("-", "");
+                message = $"{peopleString} has the least money. -¤{lost}.";
             }
 
             return message;
