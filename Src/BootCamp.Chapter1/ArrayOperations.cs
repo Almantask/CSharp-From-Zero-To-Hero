@@ -19,7 +19,21 @@ namespace BootCamp.Chapter1
                 return;
             }
 
-            Array.Sort(array);
+            int temp;
+
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -34,7 +48,14 @@ namespace BootCamp.Chapter1
                 return;
             }
 
-            Array.Reverse(array);
+            int temp;
+
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                temp = array[i];
+                array[i] = array[array.Length - i - 1];
+                array[array.Length - i - 1] = temp;
+            }
         }
 
         /// <summary>
@@ -54,7 +75,7 @@ namespace BootCamp.Chapter1
             }
 
             int[] newArray = new int[array.Length - 1];
-            for (int i = 0; i <= newArray.Length - 1; i++)
+            for (int i = 0; i < newArray.Length; i++)
             {
                 newArray[i] = array[i];
             }
@@ -100,19 +121,19 @@ namespace BootCamp.Chapter1
             {
                 return array;
             }
-
-            if ((index < 0) || (index > array.Length))
+            else if ((index < 0) || (index >= array.Length))
             {
                 return array;
             }
 
             int[] newArray = new int[array.Length - 1];
-            for (int i = 0; i <= newArray.Length - 1; i++)
+            for (int i = 0; i < index; i++)
             {
-                if (i != index)
-                {
-                    newArray[i] = array[i];
-                }
+                newArray[i] = array[i];
+            }
+            for (int i = index + 1; i < array.Length; i++)
+            {
+                newArray[i - 1] = array[i];
             }
             return newArray;
         }
@@ -125,13 +146,24 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
+            int[] arraySpecial = { number };
+            if (array == null)
+            {
+                return arraySpecial;
+            }
+            else if (array.Length == 0)
+            {
+                return arraySpecial;
+            }
+
             int[] newArray = new int[array.Length + 1];
 
             newArray[0] = number;
 
-            for (int i = 0; i <= array.Length - 1; i++)
+
+            for (int i = 1; i < newArray.Length; i++)
             {
-                newArray[i + 1] = array[i];
+                newArray[i] = array[i - 1];
             }
 
             return newArray;
@@ -145,8 +177,25 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            int[] arraySpecial = { number };
+            if (array == null)
+            {
+                return arraySpecial;
+            }
+            else if (array.Length == 0)
+            {
+                return arraySpecial;
+            }
+
+            int[] newArray = new int[array.Length + 1];
+            for (int i = 0; i < array.Length; i++)
+            {
+                newArray[i] = array[i];
+            }
+
+            newArray[^1] = number;
+
+            return newArray;
         }
 
         /// <summary>
@@ -158,21 +207,35 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            int[] newArray = new int[array.Length + 1];
-            for (int i = 0; i < array.Length + 1; i++)
+            int[] arraySpecial = { number };
+            if (array == null)
             {
-                if (i < index - 1)
-                {
-                    newArray[i] = array[i];
-                }
-                else if (i == index - 1)
-                {
-                    newArray[i] = number;
-                }
-                else
-                {
-                    newArray[i] = array[i - 1];
-                }
+                return arraySpecial;
+            }
+            else if ((array.Length == 0) && ((index < 0) || (index > 0)))
+            {
+                return array;
+            }
+            else if (array.Length == 0)
+            {
+                return arraySpecial;
+            }
+            else if ((index < 0) || (index >= array.Length))
+            {
+                return array;
+            }
+
+            int[] newArray = new int[array.Length + 1];
+            for (int i = 0; i < index; i++)
+            {
+                newArray[i] = array[i];
+            }
+
+            newArray[index] = number;
+
+            for (int i = index + 1; i < newArray.Length; i++)
+            {
+                newArray[i] = array[i - 1];
             }
             return newArray;
         }
