@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static bool IsA(Person person)
         {
-            return ((person.Age > 18) && (person.Country != "United Kingdom") && (!person.Surename.Contains('a')));
+            return ((person.Age > 18) && (person.Country != "United Kingdom" && person.Country != "UK") && (!person.Surename.Contains('a')));
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static bool IsB(Person person)
         {
-            return person.Age < 18 && person.Country != "United Kingdom" && !person.Surename.Contains('a');
+            return person.Age < 18 && (person.Country != "United Kingdom" && person.Country != "UK") && !person.Surename.Contains('a');
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public static bool IsC(Person person)
         {
-            return person.Country != "United Kingdom" && !person.Surename.Contains('a') && !person.Firstname.Contains('a');
+            return (person.Country != "United Kingdom" && person.Country != "UK") && !person.Surename.Contains('a') && !person.Firstname.Contains('a');
         }
     }
 }

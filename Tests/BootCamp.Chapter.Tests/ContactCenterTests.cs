@@ -26,7 +26,7 @@ namespace BootCamp.Chapter.Tests
             Action action = () => new ContactsCenter(path);
 
             // Leaving this up to a student to figure out.
-            action.Should().Throw<Exception>();
+            action.Should().Throw<ArgumentNullException>();
         }
 
         [Theory]

@@ -7,19 +7,34 @@ namespace BootCamp.Chapter
 {
     public class ContactsCenter
     {
+        public bool fileEmpty;
         public List<Person> peopleContactList { get; }
-
+        // for some reason the test file 'Empty.txt' has a size of 3 bytes, not 0. Hence my solution needs to be modified to correct for this
         public ContactsCenter(string peopleFile)
         {
-            if(File.Exists(peopleFile) && new FileInfo(peopleFile).Length != 0)
+            fileEmpty = false;
+
+            if (File.Exists(peopleFile))
+            {
+                using (var reader = new StreamReader(File.OpenRead(peopleFile)))
+                {
+                    fileEmpty = (reader.ReadLine() != null);
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException($"File at path '{peopleFile}' not found");
+            }
+            
+            if (fileEmpty)
             {
                 peopleContactList = new List<Person>();
                 ParsePeopleContactDetails(peopleFile);
             }
             else
             {
-                throw new FileNotFoundException($"File at located at '{peopleFile}' either does not exist or is empty");
-            } 
+                throw new ArgumentNullException($"File at path '{peopleFile}' is empty");
+            }
         }
 
         /// <summary>
@@ -56,9 +71,6 @@ namespace BootCamp.Chapter
                     {
                         string parsedInformation = reader?.ReadLine().ToString();
                         string[] contactDetails = parsedInformation.Split(",");
-                        
-
-
 
                         // add functionality to catch whether part of the contact detail  is Null or Void and it should be replaced with a placeholder.
                         peopleContactList.Add(new Person(contactDetails[0], contactDetails[1], contactDetails[2], contactDetails[3], contactDetails[4], contactDetails[5], contactDetails[6], CalculateAge(contactDetails[2])));
