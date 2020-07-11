@@ -74,10 +74,15 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
+            int index = array.Length - 1;
             int[] newArray = new int[array.Length - 1];
-            for (int i = 0; i < newArray.Length; i++)
+            for (int i = 0; i < index; i++)
             {
                 newArray[i] = array[i];
+            }
+            for (int i = index + 1; i < array.Length; i++)
+            {
+                newArray[i - 1] = array[i];
             }
             return newArray;
         }
@@ -97,8 +102,14 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
+            int index = 0;
+            
             int[] newArray = new int[array.Length - 1];
-            for (int i = 1; i <= newArray.Length; i++)
+            for (int i = 0; i < index; i++)
+            {
+                newArray[i] = array[i];
+            }
+            for (int i = index + 1; i < array.Length; i++)
             {
                 newArray[i - 1] = array[i];
             }
@@ -156,12 +167,17 @@ namespace BootCamp.Chapter1
                 return arraySpecial;
             }
 
+            int index = 0;
+
             int[] newArray = new int[array.Length + 1];
+            for (int i = 0; i < index; i++)
+            {
+                newArray[i] = array[i];
+            }
 
-            newArray[0] = number;
+            newArray[index] = number;
 
-
-            for (int i = 1; i < newArray.Length; i++)
+            for (int i = index + 1; i < newArray.Length; i++)
             {
                 newArray[i] = array[i - 1];
             }
@@ -188,13 +204,18 @@ namespace BootCamp.Chapter1
             }
 
             int[] newArray = new int[array.Length + 1];
-            for (int i = 0; i < array.Length; i++)
+            int index = newArray.Length - 1;
+            for (int i = 0; i < index; i++)
             {
                 newArray[i] = array[i];
             }
 
-            newArray[^1] = number;
+            newArray[index] = number;
 
+            for (int i = index + 1; i < newArray.Length; i++)
+            {
+                newArray[i] = array[i - 1];
+            }
             return newArray;
         }
 
