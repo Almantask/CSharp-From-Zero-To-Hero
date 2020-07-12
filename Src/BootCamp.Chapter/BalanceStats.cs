@@ -122,7 +122,6 @@ namespace BootCamp.Chapter
 
             Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
-            StringBuilder peopleString = new StringBuilder();
             var lowestBalanceEver = float.MaxValue;
 
             foreach (var personBalances in peopleBalances)

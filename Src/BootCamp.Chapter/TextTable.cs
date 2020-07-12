@@ -1,6 +1,5 @@
 ﻿
 using System;
-using System.Linq;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -106,13 +105,11 @@ namespace BootCamp.Chapter
         public static int FindLongestWordLength(string message)
         {
             string[] words = message.Split(new[] { " " }, StringSplitOptions.None);
-            string word = "";
             int length = 0;
             foreach (String s in words)
             {
                 if (s.Length > length)
                 {
-                    word = s;
                     length = s.Length;
                 }
             }
