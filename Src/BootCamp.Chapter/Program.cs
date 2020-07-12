@@ -6,14 +6,16 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            //TextTable.Build($"Hello{Environment.NewLine}World!", 2);
-            BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances);
-            // BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances);
             // Print each of the statistical output using Text Table with padding 3:
             // - FindHighestBalanceEver
             // - FindPersonWithBiggestLoss
             // - FindRichestPerson
             // - FindMostPoorPerson
+
+            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(PeoplesBalances.Balances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances), 3));
         }
     }
 }

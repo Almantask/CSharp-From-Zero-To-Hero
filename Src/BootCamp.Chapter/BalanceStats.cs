@@ -110,35 +110,7 @@ namespace BootCamp.Chapter
             }
             return $"{peopleString} is the richest person. {BuildCurrancy(biggestLastBalance)}.";
         }
-        public static string BuildCurrancy(float currancy)
-        {
-            if (currancy < 0)
-            {
-                return $"-¤{Math.Abs(currancy)}";
-            }
-            return $"¤{currancy}";
-        }
-
-        public static string BuildNamesString(List<string> names)
-        {
-           var uniqeNames =  names.Distinct().ToList();
-            StringBuilder peopleString = new StringBuilder();
-            for (int i = 0; i < uniqeNames.Count; i++)
-            {
-                if (i == 0)
-                {
-                    peopleString.Append(uniqeNames[i]);
-                    continue;
-                }
-                if (i == uniqeNames.Count - 1)
-                {
-                    peopleString.Append(" and ").Append(uniqeNames[i]);
-                    continue;
-                }
-                peopleString.Append(", ").Append(uniqeNames[i]);
-            }
-            return peopleString.ToString();
-        }
+       
 
         /// <summary>
         /// Return name and current money of the most poor person.
@@ -151,20 +123,19 @@ namespace BootCamp.Chapter
             Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             StringBuilder peopleString = new StringBuilder();
-            StringBuilder lost = new StringBuilder();
             var lowestBalanceEver = float.MaxValue;
 
             foreach (var personBalances in peopleBalances)
             {
                 foreach (var balance in personBalances.Value)
                 {
-                    if (balance < lowestBalanceEver)
+                    if (personBalances.Value.Last() < lowestBalanceEver)
                     {
                         names.Clear();
                         lowestBalanceEver = balance;
                         names.Add(personBalances.Key);
                     }
-                    else if (balance == lowestBalanceEver)
+                    else if (personBalances.Value.Last() == lowestBalanceEver)
                     {
                         names.Add(personBalances.Key);
                     }
@@ -188,7 +159,6 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-
                 splitString = peopleAndBalances[i].Split(",");
                 var name = splitString[0];
                 people.Add(name, new List<float>());
@@ -206,9 +176,34 @@ namespace BootCamp.Chapter
             return people;
         }
 
+        public static string BuildCurrancy(float currancy)
+        {
+            if (currancy < 0)
+            {
+                return $"-¤{Math.Abs(currancy)}";
+            }
+            return $"¤{currancy}";
+        }
 
-
-
-
+        public static string BuildNamesString(List<string> names)
+        {
+            var uniqeNames = names.Distinct().ToList();
+            StringBuilder peopleString = new StringBuilder();
+            for (int i = 0; i < uniqeNames.Count; i++)
+            {
+                if (i == 0)
+                {
+                    peopleString.Append(uniqeNames[i]);
+                    continue;
+                }
+                if (i == uniqeNames.Count - 1)
+                {
+                    peopleString.Append(" and ").Append(uniqeNames[i]);
+                    continue;
+                }
+                peopleString.Append(", ").Append(uniqeNames[i]);
+            }
+            return peopleString.ToString();
+        }
     }
 }
