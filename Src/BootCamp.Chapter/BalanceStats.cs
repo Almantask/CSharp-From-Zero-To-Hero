@@ -13,7 +13,9 @@ namespace BootCamp.Chapter
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
                 return "N/A.";
+            }
 
             Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
@@ -29,7 +31,7 @@ namespace BootCamp.Chapter
                         biggestBalanceEver = balance;
                         names.Add(personBalances.Key);
                     }
-                    if (balance == biggestBalanceEver)
+                    if (Math.Round((decimal)balance, 2) == (Math.Round((decimal)biggestBalanceEver, 2)))
                     {
                         names.Add(personBalances.Key);
                     }
@@ -44,7 +46,9 @@ namespace BootCamp.Chapter
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
                 return "N/A.";
+            }
 
             Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
@@ -62,7 +66,7 @@ namespace BootCamp.Chapter
                         names.Add(personBalances.Key);
                         continue;
                     }
-                    if (balanceDifferences == biggestLostEver)
+                    if (Math.Round((decimal)balanceDifferences, 2) == (Math.Round((decimal)biggestLostEver, 2)))
                     {
                         names.Add(personBalances.Key);
                     }
@@ -110,7 +114,7 @@ namespace BootCamp.Chapter
             }
             return $"{peopleString} is the richest person. {BuildCurrancy(biggestLastBalance)}.";
         }
-       
+
 
         /// <summary>
         /// Return name and current money of the most poor person.
@@ -118,7 +122,9 @@ namespace BootCamp.Chapter
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
                 return "N/A.";
+            }
 
             Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
@@ -152,13 +158,11 @@ namespace BootCamp.Chapter
 
         public static Dictionary<string, List<float>> ArrayOfPeople(string[] peopleAndBalances)
         {
-            string[] splitString = { };
-
             Dictionary<string, List<float>> people = new Dictionary<string, List<float>>();
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                splitString = peopleAndBalances[i].Split(",");
+                string[] splitString = peopleAndBalances[i].Split(",");
                 var name = splitString[0];
                 people.Add(name, new List<float>());
 
