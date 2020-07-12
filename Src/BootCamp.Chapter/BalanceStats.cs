@@ -85,7 +85,9 @@ namespace BootCamp.Chapter
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
                 return "N/A.";
+            }
 
             Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
