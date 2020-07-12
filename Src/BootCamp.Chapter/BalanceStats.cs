@@ -79,40 +79,23 @@ namespace BootCamp.Chapter
 
             foreach (var personBalances in peopleBalances)
             {
-                foreach (var balance in personBalances.Value)
+                for (int i = 0; i< personBalances.Value.Count-1; i++)
                 {
-                    if (balance < biggestLostEver)
+                    var balanceDifferences = personBalances.Value[i] - personBalances.Value[i + 1];
+                    if (balanceDifferences< biggestLostEver)
                     {
                         names.Clear();
-                        biggestLostEver = balance;
-                        personWithABiggestBalanceEver = personBalances.Key;
-                        names.Add(personWithABiggestBalanceEver);
+                        biggestLostEver = balanceDifferences;
+                        names.Add(personBalances.Key);
+                        continue;
                     }
-                    else if (balance == biggestLostEver)
+                    if (balanceDifferences==biggestLostEver)
                     {
                         names.Add(personBalances.Key);
                     }
                 }
             }
-            for (int i = 0; i < names.Count; i++)
-            {
-                if (i == 0)
-                {
-                    peopleString.Append(names[i]);
-                    continue;
-                }
-                if (i == names.Count - 1)
-                {
-                    peopleString.Append(" and ").Append(names[i]);
-                    continue;
-                }
-                peopleString.Append(", ").Append(names[i]);
-            }
-            message = $"{peopleString} lost the most money. ¤{biggestLostEver}.";
 
-            return message;
-
-        }
 
         /// <summary>
         /// Return name and current money of the richest person.
@@ -170,9 +153,8 @@ namespace BootCamp.Chapter
             }
 
             return message;
-
-
         }
+           
 
         /// <summary>
         /// Return name and current money of the most poor person.
