@@ -1,10 +1,15 @@
-﻿namespace BootCamp.Chapter
+﻿
+using System;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
     /// </summary>
     public static class TextTable
     {
+
         /*
 
          Input: "Hello", 0
@@ -34,7 +39,81 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
-            return "";
+            string newMessage = message.Replace(System.Environment.NewLine, " ");
+
+            if (String.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            StringBuilder buildMessage = new StringBuilder();
+            buildMessage.AppendLine(CreateBorder(FindLongestWordLength(newMessage), padding));
+            buildMessage.Append(CreateBody(newMessage, padding, FindLongestWordLength(newMessage)));
+            buildMessage.AppendLine(CreateBorder(FindLongestWordLength(newMessage), padding));
+
+            return buildMessage.ToString();
+        }
+        public static string CreateBody(string message, int padding, int messageLength)
+        {
+            var messageBody = new StringBuilder();
+
+            if (padding > 0)
+            {
+                messageBody.Append(CreateEmptyLines(message, padding, messageLength));
+                messageBody.Append(CreateMessage(message, padding, messageLength));
+                messageBody.Append(CreateEmptyLines(message, padding, messageLength));
+            }
+            else
+            {
+                messageBody.Append(CreateMessage(message, padding, messageLength));
+            }
+
+            return messageBody.ToString();
+        }
+        public static string CreateBorder(int messageLength, int padding)
+        {
+            var topAndBottomBorder = new StringBuilder();
+            topAndBottomBorder.Append('+').Append('-', padding).Append('-', messageLength).Append('-', padding).Append('+');
+            return topAndBottomBorder.ToString();
+        }
+
+        public static string CreateEmptyLines(string message, int padding, int messageLength)
+        {
+            var emptyLines = new StringBuilder();
+
+            for (int j = 0; j < padding; j++)
+            {
+                emptyLines.Append("|").Append(' ', padding).Append(' ', messageLength).Append(' ', padding).AppendLine("|");
+
+            }
+            return emptyLines.ToString();
+        }
+
+        public static string CreateMessage(string message, int padding, int messageLength)
+        {
+            var messageBody = new StringBuilder();
+            string[] words = message.Split(' ');
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                var emtySpace = messageLength - words[i].Length;
+                messageBody.Append("|").Append(' ', padding).Append(words[i]).Append(' ', emtySpace).Append(' ', padding).AppendLine("|");
+            }
+            return messageBody.ToString();
+        }
+
+        public static int FindLongestWordLength(string message)
+        {
+            string[] words = message.Split(new[] { " " }, StringSplitOptions.None);
+            int length = 0;
+            foreach (String s in words)
+            {
+                if (s.Length > length)
+                {
+                    length = s.Length;
+                }
+            }
+            return length;
         }
     }
 }
