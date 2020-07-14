@@ -74,17 +74,7 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            int index = array.Length - 1;
-            int[] newArray = new int[array.Length - 1];
-            for (int i = 0; i < index; i++)
-            {
-                newArray[i] = array[i];
-            }
-            for (int i = index + 1; i < array.Length; i++)
-            {
-                newArray[i - 1] = array[i];
-            }
-            return newArray;
+            return RemoveAt(array, (array.Length - 1));
         }
 
         /// <summary>
@@ -102,18 +92,7 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            int index = 0;
-            
-            int[] newArray = new int[array.Length - 1];
-            for (int i = 0; i < index; i++)
-            {
-                newArray[i] = array[i];
-            }
-            for (int i = index + 1; i < array.Length; i++)
-            {
-                newArray[i - 1] = array[i];
-            }
-            return newArray;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -167,22 +146,7 @@ namespace BootCamp.Chapter1
                 return arraySpecial;
             }
 
-            int index = 0;
-
-            int[] newArray = new int[array.Length + 1];
-            for (int i = 0; i < index; i++)
-            {
-                newArray[i] = array[i];
-            }
-
-            newArray[index] = number;
-
-            for (int i = index + 1; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i - 1];
-            }
-
-            return newArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -203,20 +167,7 @@ namespace BootCamp.Chapter1
                 return arraySpecial;
             }
 
-            int[] newArray = new int[array.Length + 1];
-            int index = newArray.Length - 1;
-            for (int i = 0; i < index; i++)
-            {
-                newArray[i] = array[i];
-            }
-
-            newArray[index] = number;
-
-            for (int i = index + 1; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i - 1];
-            }
-            return newArray;
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -233,15 +184,7 @@ namespace BootCamp.Chapter1
             {
                 return arraySpecial;
             }
-            else if ((array.Length == 0) && ((index < 0) || (index > 0)))
-            {
-                return array;
-            }
-            else if (array.Length == 0)
-            {
-                return arraySpecial;
-            }
-            else if ((index < 0) || (index >= array.Length))
+            else if ((index < 0) || (index > array.Length))
             {
                 return array;
             }
