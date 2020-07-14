@@ -23,34 +23,53 @@ namespace BootCamp.Chapter
             float height = PromptFloatInput("Please provide your height in m: ");
 
             Console.WriteLine(name + " " + surname + " is " + age + " years old, their weight is " + weight + " kg and their height is " + height + "cm.");
-            float bmi = CalculateBmi(weight, height);
+            float bmi = GetBmi(weight, height);
             Console.WriteLine("Their BMI is: " + bmi);
         }
 
-        public static float CalculateBmi(float weight, float height)
+        public static float GetBmi(float weight, float height)
+        {
+            bool areParametersValid = ValidateWeightAndHeight(weight, height);
+            if (!areParametersValid)
+            {
+                return -1;
+            }
+            else 
+            {
+                return CalculateBmi(weight, height);
+            }
+            
+        }
+
+        private static float CalculateBmi(float weight, float height)
+        {
+            float bmi = weight / (height * height);
+            return bmi;
+        }
+
+        private static bool ValidateWeightAndHeight(float weight, float height)
         {
             if (weight <= 0 && height <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
                 Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
-                return -1;
+                return false;
             }
             else if (weight <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
-                return -1;
+                return false;
             }
             else if (height <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
-                return -1;
+                return false;
             }
 
-            float bmi = weight / (height * height);
-            return bmi;
+            return true;
         }
 
         public static int PromptIntInput(string message)
