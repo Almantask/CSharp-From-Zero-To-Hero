@@ -16,67 +16,28 @@ namespace BootCamp.Chapter
         private static void PromptPersonInformation(string person)
         {
             Console.WriteLine("Person " + person + ":");
-            string name = PromptStringInput("Please provide your name: ");
-            string surname = PromptStringInput("Please provide your surname: ");
-            int age = PromptIntInput("Please provide your age: ");
-            int weight = PromptIntInput("Please provide your weigth in kg: ");
-            float height = PromptFloatInput("Please provide your height in m: ");
+            string name = PromptName("Please provide your name: ");
+            int age = PromptAge("Please provide your age: ");
+            float weight = PromptWeight("Please provide your weigth in kg: ");
+            float height = PromptHeight("Please provide your height in m: ");
 
-            Console.WriteLine(name + " " + surname + " is " + age + " years old, their weight is " + weight + " kg and their height is " + height + "cm.");
-            float bmi = GetBmi(weight, height);
+            Console.WriteLine(name + " is " + age + " years old, their weight is " + weight + " kg and their height is " + height + "cm.");
+            float bmi = CalculateBmi(weight, height);
             Console.WriteLine("Their BMI is: " + bmi);
         }
 
-        public static float GetBmi(float weight, float height)
-        {
-            bool areParametersValid = ValidateWeightAndHeight(weight, height);
-            if (!areParametersValid)
-            {
-                return -1;
-            }
-            else 
-            {
-                return CalculateBmi(weight, height);
-            }
-            
-        }
 
-        private static float CalculateBmi(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             float bmi = weight / (height * height);
             return bmi;
         }
 
-        private static bool ValidateWeightAndHeight(float weight, float height)
-        {
-            if (weight <= 0 && height <= 0)
-            {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
-                Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
-                return false;
-            }
-            else if (weight <= 0)
-            {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
-                return false;
-            }
-            else if (height <= 0)
-            {
-                Console.WriteLine("Failed calculating BMI. Reason:");
-                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
-                return false;
-            }
-
-            return true;
-        }
-
-        public static int PromptIntInput(string message)
+        public static int PromptAge(string message)
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
-            bool isNumber = int.TryParse(input, out int number);
+            bool isNumber = int.TryParse(input, out int age);
             if (string.IsNullOrEmpty(input))
             {
                 return 0;
@@ -86,15 +47,15 @@ namespace BootCamp.Chapter
                 Console.Write("\"" + input + "\" is not a valid number.");
                 return -1;
             }
-            else if (number == 0)
+            else if (age <= 0)
             {
                 return 0;
             }
 
-            return number;
+            return age;
         }
 
-        public static string PromptStringInput(string message)
+        public static string PromptName(string message)
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
@@ -107,11 +68,11 @@ namespace BootCamp.Chapter
             return input;
         }
 
-        public static float PromptFloatInput(string message)
+        public static float PromptWeight(string message)
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
-            bool isNumber = float.TryParse(input, out float number);
+            bool isNumber = float.TryParse(input, out float weight);
             if (string.IsNullOrEmpty(input))
             {
                 return 0;
@@ -121,12 +82,36 @@ namespace BootCamp.Chapter
                 Console.Write("\"" + input + "\" is not a valid number.");
                 return -1;
             }
-            else if (number == 0)
+            else if (weight <= 0)
             {
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + weight + ".");
                 return 0;
             }
 
-            return number;
+            return weight;
+        }
+
+        public static float PromptHeight(string message)
+        {
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+            bool isNumber = float.TryParse(input, out float height);
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+            else if (!isNumber)
+            {
+                Console.Write("\"" + input + "\" is not a valid number.");
+                return -1;
+            }
+            else if (height <= 0)
+            {
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+                return 0;
+            }
+
+            return height;
         }
     }
 }
