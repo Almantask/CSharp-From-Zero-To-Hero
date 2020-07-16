@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -94,10 +95,33 @@ namespace BootCamp.Chapter
         }
 
         // ToDo: Implement the validation logic of the input command
-        private static bool ValidateCommand(string command)
+        private static bool ValidateCommand(string input)
         {
             // update when commands class and functionality has been created
-            return true;
+            string[] splitInput = input.Split(' ');
+            Enum.TryParse(splitInput[0], out Command command);
+
+            switch (command)
+            {
+                case Command.city:
+                    return true;
+
+                case Command.time:
+                    return true;
+
+                case Command.daily:
+                    return true;
+
+                case Command.full:
+                    return true;
+
+                case Command.help:
+
+
+                default:
+                    return false;
+
+            }
         }
     }
 }
