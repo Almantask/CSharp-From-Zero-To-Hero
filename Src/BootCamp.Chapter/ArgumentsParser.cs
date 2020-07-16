@@ -58,7 +58,7 @@ namespace BootCamp.Chapter
                 // End of a Arg
                 else if (inputString[i] == '"' && currArg.Count != 0)
                 {
-                    args.Add(currArg.CharArrayToString());
+                    args.Add(currArg.CharListToString());
                     currArg.Clear();
                 }
                 // Skips if blank space between args
@@ -71,7 +71,7 @@ namespace BootCamp.Chapter
             return args;
         }
 
-        private static string CharArrayToString(this List<char> input)
+        private static string CharListToString(this List<char> input)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
