@@ -9,16 +9,15 @@
             // - FindPersonWithBiggestLoss
             // - FindRichestPerson
             // - FindMostPoorPerson
-            var peopleBalances = PeoplesBalances.Balances;
-            string highestEver = BalanceStats.FindHighestBalanceEver(peopleBalances);
-            System.Console.WriteLine(highestEver);
-            string biggestLoss = BalanceStats.FindPersonWithBiggestLoss(peopleBalances);
-            System.Console.WriteLine(biggestLoss);
-            string richest = BalanceStats.FindRichestPerson(peopleBalances);
-            System.Console.WriteLine(richest);
-            string poorest = BalanceStats.FindMostPoorPerson(peopleBalances);
-            System.Console.WriteLine(poorest);
-
+            System.Console.WriteLine("--------------------------");
+            string table = TextTable.Build("Hello{Environment.NewLine}World!", 0);
+            System.Console.WriteLine(table);
+            System.Console.WriteLine("--------------------------");
+            table = TextTable.Build("Hello{Environment.NewLine}World!", 1);
+            System.Console.WriteLine(table);
+            System.Console.WriteLine("--------------------------");
+            table = TextTable.Build("Hello{Environment.NewLine}World!", 2);
+            System.Console.WriteLine(table);
         }
     }
 }
