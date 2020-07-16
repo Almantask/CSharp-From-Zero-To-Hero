@@ -29,6 +29,22 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float weight, float height)
         {
+            if (weight <= 0 || height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                string heightErrorAddition = "equal or ";
+                if (weight <= 0)
+                {
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + '.');
+                    heightErrorAddition = "";
+                }
+                if (height <= 0)
+                {
+                    Console.WriteLine("Height cannot be " + heightErrorAddition + "less than zero, but was " + height + '.');
+                }
+                return -1;
+            }
+
             float bmi = weight / (height * height);
             return bmi;
         }
