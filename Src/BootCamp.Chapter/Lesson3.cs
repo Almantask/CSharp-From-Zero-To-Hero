@@ -20,7 +20,6 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg " +
                 $"and his height is {height} cm.");
             Console.WriteLine($"{CalculateBMI(weight, height/100):F2}");
-            Console.ReadLine();
         }
         public static string PrintMessageAndReturnString(string message)
         {
