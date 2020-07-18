@@ -11,6 +11,7 @@ namespace BootCamp.Chapter
             int age;
             int weight;
             float height;
+            float bmi;
 
             Console.Write("Enter your first name: ");
             firstName = Console.ReadLine();
@@ -19,17 +20,20 @@ namespace BootCamp.Chapter
             lastName = Console.ReadLine();
 
             Console.Write("Enter your age: ");
-            age = Convert.ToInt32(Console.ReadLine());
+            age = int.Parse(Console.ReadLine());
 
             Console.Write("Enter your weight (kg): ");
-            weight = Convert.ToInt32(Console.ReadLine());
+            weight = int.Parse(Console.ReadLine());
 
             Console.Write("Enter your height (cm): ");
             height = float.Parse(Console.ReadLine());
 
+            bmi = (float) (weight / Math.Pow((height / 100.0), 2));
+
             Console.WriteLine("\n" + firstName + " " + lastName + " is " + age + " years old, " +
                               "his weight is " + weight + " kg " +
-                              "and his height is " + height + " cm.");
+                              "and his height is " + height + " cm.\n");
+            Console.WriteLine(firstName + "'s BMI is " + bmi);
         }
     }
 }
