@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+
 
 namespace BootCamp.Chapter
 {
@@ -162,20 +164,30 @@ namespace BootCamp.Chapter
         {
             Dictionary<string, List<float>> people = new Dictionary<string, List<float>>();
 
+
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 string[] splitString = peopleAndBalances[i].Split(",");
                 var name = splitString[0];
+
                 people.Add(name, new List<float>());
+
+
+
 
                 for (int j = 1; j < splitString.Length; j++)
                 {
                     float balances;
-                    var isNumber = float.TryParse(splitString[j], out balances);
-                    if (isNumber)
+
+                    var isNumber = float.TryParse(splitString[j].Replace("£", ""), out balances);
+
+                    if (!isNumber)
                     {
-                        people[name].Add(balances);
+                      throw new ArgumentException("Bad balance");
+
                     }
+
+                    people[name].Add(balances);
                 }
             }
             return people;
@@ -210,5 +222,7 @@ namespace BootCamp.Chapter
             }
             return peopleString.ToString();
         }
+
+
     }
 }

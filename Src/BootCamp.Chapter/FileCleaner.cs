@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BootCamp.Chapter
 {
@@ -13,34 +14,47 @@ namespace BootCamp.Chapter
         /// <param name="dirtyFile">Dirty file with "_" placed in random places.</param>
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         /// 
-        
+
         public static void Clean(string dirtyFile, string cleanedFile)
         {
             if (string.IsNullOrEmpty(dirtyFile) || string.IsNullOrEmpty(cleanedFile))
             {
-                throw new ArgumentException("File can not be null or empty.");
+                throw new ArgumentException("File can not be null or empty");
             }
+
             var insideACorruptedFile = File.ReadAllText(dirtyFile);
+
+            if (string.IsNullOrEmpty(insideACorruptedFile))
+            {
+                File.WriteAllText(cleanedFile, insideACorruptedFile);
+                return;
+            }
+
             insideACorruptedFile = insideACorruptedFile.Replace("_", "");
             File.WriteAllText(cleanedFile, insideACorruptedFile);
 
             try
             {
-                CheckForInvalidBalances(cleanedFile);
+                var insideAFile = File.ReadAllText(cleanedFile);
+                string[] arrayString = insideAFile.Split(Environment.NewLine);
+                var people = BalanceStats.ArrayOfPeople(arrayString);
+                foreach (var personName in people.Keys)
+                {
+                    if (!Regex.IsMatch(personName, @"^[\p{L} '\-]+$"))
+                    {
+                        throw new ArgumentException("Invalid name ");
+                    }
+                }
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
-                Console.WriteLine(e.Message);
+                throw new InvalidBalancesException("Invalid name or balance", exc);
             }
-        }
-        
-        public static void CheckForInvalidBalances(string insideAFile)
-        {
-            String[] strlist = insideAFile.Split(Environment.NewLine);
-            for (int i = 0; i < strlist.Length; i++)
-            {
-                Console.WriteLine(strlist[i]);
-            }
+
+          
         }
     }
 }
+
+
+
