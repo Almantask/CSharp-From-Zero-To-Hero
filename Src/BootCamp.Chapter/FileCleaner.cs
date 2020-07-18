@@ -38,13 +38,7 @@ namespace BootCamp.Chapter
                 var insideAFile = File.ReadAllText(cleanedFile);
                 string[] arrayString = insideAFile.Split(Environment.NewLine);
                 var people = BalanceStats.ArrayOfPeople(arrayString);
-                foreach (var personName in people.Keys)
-                {
-                    if (!Regex.IsMatch(personName, @"^[\p{L} '\-]+$"))
-                    {
-                        throw new ArgumentException("Invalid name ");
-                    }
-                }
+                
             }
             catch (Exception exc)
             {

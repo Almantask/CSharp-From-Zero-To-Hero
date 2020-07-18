@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Text.RegularExpressions;
 
 
 namespace BootCamp.Chapter
@@ -169,28 +170,32 @@ namespace BootCamp.Chapter
             {
                 string[] splitString = peopleAndBalances[i].Split(",");
                 var name = splitString[0];
-
-                people.Add(name, new List<float>());
-
-
-
-
-                for (int j = 1; j < splitString.Length; j++)
+                if (!Regex.IsMatch(name, @"^[\p{L} '\-]+$"))
                 {
-                    float balances;
+                    throw new ArgumentException("Invalid name ");
+                }
+                if (splitString.Length >1)
+                {
+                    people.Add(name, new List<float>());
 
-                    var isNumber = float.TryParse(splitString[j].Replace("£", ""), out balances);
-
-                    if (!isNumber)
+                    for (int j = 1; j < splitString.Length; j++)
                     {
-                      throw new ArgumentException("Bad balance");
+                        float balances;
 
+                        var isNumber = float.TryParse(splitString[j].Replace("£", ""), out balances);
+
+                        if (!isNumber)
+                        {
+                            throw new ArgumentException("Bad balance");
+
+                        }
+
+                        people[name].Add(balances);
                     }
-
-                    people[name].Add(balances);
                 }
             }
-            return people;
+                return people;
+            
         }
 
         public static string BuildCurrancy(float currancy)
