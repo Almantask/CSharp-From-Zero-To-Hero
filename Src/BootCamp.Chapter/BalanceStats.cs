@@ -174,7 +174,7 @@ namespace BootCamp.Chapter
                 {
                     throw new ArgumentException("Invalid name ");
                 }
-                if (splitString.Length >1)
+                if (splitString.Length > 1)
                 {
                     people.Add(name, new List<float>());
 
@@ -194,8 +194,8 @@ namespace BootCamp.Chapter
                     }
                 }
             }
-                return people;
-            
+            return people;
+
         }
 
         public static string BuildCurrancy(float currancy)

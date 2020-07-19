@@ -38,14 +38,14 @@ namespace BootCamp.Chapter
                 var insideAFile = File.ReadAllText(cleanedFile);
                 string[] arrayString = insideAFile.Split(Environment.NewLine);
                 var people = BalanceStats.ArrayOfPeople(arrayString);
-                
+
             }
             catch (Exception exc)
             {
                 throw new InvalidBalancesException("Invalid name or balance", exc);
             }
 
-          
+
         }
     }
 }
