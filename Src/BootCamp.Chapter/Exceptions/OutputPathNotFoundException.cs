@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Exceptions
 {
-    class OutputPathNotFoundException : Exception
+    public class OutputPathNotFoundException : Exception
     {
         private readonly string _msg;
 

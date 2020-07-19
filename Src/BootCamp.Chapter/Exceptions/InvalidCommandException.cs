@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Exceptions
 {
-    class InvalidCommandException : Exception
+    public class InvalidCommandException : Exception
     {
         private readonly string _msg;
 

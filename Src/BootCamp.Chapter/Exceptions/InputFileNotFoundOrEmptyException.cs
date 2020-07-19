@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Exceptions
 {
-    class InputFileNotFoundOrEmptyException : Exception
+    public class InputFileNotFoundOrEmptyException : Exception
     {
         private readonly string _msg;
 

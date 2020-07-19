@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Exceptions
 {
     public class NoTransactionsFoundException : Exception
     {

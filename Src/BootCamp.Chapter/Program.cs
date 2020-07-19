@@ -4,10 +4,10 @@ namespace BootCamp.Chapter
 {
     public class Program
     {
-        public static void Main()
+        public static void Main(string[] arguments)
         {
             Console.WriteLine("Please input the commands");
-            // "C:\Users\Matthew\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.csv" "12 12" "C:\Users\Matthew\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\"
+            // "C:\Users\matth\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.csv" "help" "C:\Users\matth\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\"
             string userInput = Console.ReadLine();
             Console.WriteLine(ArgumentsParser.TryParse(userInput, out string [] args));
             TransactionDataParser transactionDataParser = new TransactionDataParser(args[0]);
