@@ -5,6 +5,21 @@ using Bootcamp.Optional;
 using Bootcamp.SecretP1;
 using Bootcamp.SecretP2;
 
+/*
+A break point in line 49 lets us inspect Prompter.Instance 
+and see every question alongside it's answer.
+
+Debugger!
+51
+79
+77
+
+A break point in line 72 lets us manually call each for loop,
+and by doing so we can get the words in the right order.
+
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes 
+*/
+
 namespace BootCamp.Chapter
 {
     class Program
