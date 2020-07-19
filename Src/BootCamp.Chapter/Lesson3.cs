@@ -6,11 +6,12 @@ namespace BootCamp.Chapter
 {
     public class Lesson3
     {
-        // Had to implement to make test work with float (. instead of , in test number).
+        // Had to implement to make BootCamp.Chapter.Test work with float ("." instead of "," in test number).
         static CultureInfo invC = CultureInfo.InvariantCulture;
-        public static void Demo()
+
+        internal static void Demo()
         {
-            // Calling all functions and combining output.
+            // Calling the functions and combining output.
             string name = PrintMessageAndReturnString("Please enter your name: ");
             string surname = PrintMessageAndReturnString("Please enter your surname: ");
             int age = PrintMessageAndReturnInt("Please enter your age: ");
@@ -21,22 +22,22 @@ namespace BootCamp.Chapter
                 $"and his height is {height} cm.");
             Console.WriteLine($"{CalculateBMI(weight, height/100):F2}");
         }
-        public static string PrintMessageAndReturnString(string message)
+        internal static string PrintMessageAndReturnString(string message)
         {
             Console.Write(message);
-            return (Console.ReadLine());
+            return Console.ReadLine();
         }
-        public static int PrintMessageAndReturnInt(string message)
+        internal static int PrintMessageAndReturnInt(string message)
         {
             Console.Write(message);
-            return (int.Parse(Console.ReadLine()));
+            return int.Parse(Console.ReadLine());
         }
-        public static float PrintMessageAndReturnFloat(string message)
+        internal static float PrintMessageAndReturnFloat(string message)
         {
             Console.Write(message);
-            return (float.Parse(Console.ReadLine(), invC));
+            return float.Parse(Console.ReadLine(), invC);
         }
-        public static float CalculateBMI(float weight, float height)
+        internal static float CalculateBMI(float weight, float height)
         {
             return weight / (height * height);
         }
