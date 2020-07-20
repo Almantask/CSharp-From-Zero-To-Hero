@@ -50,20 +50,23 @@ namespace BootCamp.Chapter
 
         private static string AddBorder(string message, int padding)
         {
-            int maxContentLength = LengthOfTheLongestLine(message);
-            int borderLength = maxContentLength + padding * 2;
-            string border = $"+{"-".PadRight(borderLength, '-')}+{Environment.NewLine}";
+            int lineLength = LineLength(message, padding);
+            string border = CreateLine('+', '-', lineLength);
             return border;
         }
 
         private static string AddPaddingLines(string message, int padding)
         {
-            int maxContentLength = LengthOfTheLongestLine(message);
-            int lineLength = maxContentLength + padding * 2;
+            int lineLength = LineLength(message, padding);
             if (padding == 0) return "";
 
-            string line = $"|{" ".PadRight(lineLength, ' ')}|{Environment.NewLine}";
-            return line;
+            var line = new StringBuilder();
+            for (int i = 0; i < padding; i++)
+            {
+                line.Append(CreateLine('|', ' ', lineLength));
+
+            }
+            return line.ToString();
         }
 
         private static string AddMessageLines(string message, int padding)
@@ -91,6 +94,17 @@ namespace BootCamp.Chapter
             }
 
             return longestLine;
+        }
+
+        private static string CreateLine(char border, char inside, int lineLength)
+        {
+            return $"{border}{"".PadRight(lineLength, inside)}{border}{Environment.NewLine}";
+        }
+
+        private static int LineLength(string message, int padding)
+        {
+            int maxContentLength = LengthOfTheLongestLine(message);
+            return maxContentLength + padding * 2;
         }
     }
 }
