@@ -11,19 +11,25 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var peopleBalances = PeoplesBalances.Balances;
+            var dirtyFile = @"Input\Balances.corrupted";
+            var cleanFile = @"Input\Balances.fixed";
+            FileCleaner.Clean(dirtyFile, cleanFile);
 
-            string highestEver = TextTable.Build(BalanceStats.FindHighestBalanceEver(peopleBalances), 3);
-            System.Console.WriteLine(highestEver);
+            var peopleBalances = new StringBuilder();
+            peopleBalances.Append(File.ReadAllText(cleanFile));
 
-            string biggestLoss = TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(peopleBalances), 3);
-            System.Console.WriteLine(biggestLoss);
 
-            string richest = TextTable.Build(BalanceStats.FindRichestPerson(peopleBalances), 3);
-            System.Console.WriteLine(richest);
+            //string highestEver = TextTable.Build(BalanceStats.FindHighestBalanceEver(peopleBalances), 3);
+            //System.Console.WriteLine(highestEver);
 
-            string poorest = TextTable.Build(BalanceStats.FindMostPoorPerson(peopleBalances), 3);
-            System.Console.WriteLine(poorest);
+            //string biggestLoss = TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(peopleBalances), 3);
+            //System.Console.WriteLine(biggestLoss);
+
+            //string richest = TextTable.Build(BalanceStats.FindRichestPerson(peopleBalances), 3);
+            //System.Console.WriteLine(richest);
+
+            //string poorest = TextTable.Build(BalanceStats.FindMostPoorPerson(peopleBalances), 3);
+            //System.Console.WriteLine(poorest);
         }
     }
 }
