@@ -18,9 +18,11 @@ namespace BootCamp.Chapter
 
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Split(", ");
+                string[] personInformationSplit = GetPersonInformationSplitted(personInformation);
 
-                for (int i = 1; i <= personInformationSplit.Length - 1; i++)
+                const int FirstBalanceIndex = 1;
+
+                for (int i = FirstBalanceIndex; i <= personInformationSplit.Length - 1; i++)
                 {
                     bool isNumber = double.TryParse(personInformationSplit[i], out double balance);
 
@@ -51,7 +53,7 @@ namespace BootCamp.Chapter
 
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Split(", ");
+                string[] personInformationSplit = GetPersonInformationSplitted(personInformation);
 
                 const int FirstBalanceIndex = 1;
 
@@ -87,7 +89,7 @@ namespace BootCamp.Chapter
 
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Split(", ");
+                string[] personInformationSplit = GetPersonInformationSplitted(personInformation);
 
                 bool isLastBalanceANumber = double.TryParse(personInformationSplit[^1], out double currentBalance);
 
@@ -118,7 +120,7 @@ namespace BootCamp.Chapter
 
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Split(", ");
+                string[] personInformationSplit = GetPersonInformationSplitted(personInformation);
 
                 bool isLastBalanceANumber = double.TryParse(personInformationSplit[^1], out double currentBalance);
 
@@ -137,6 +139,11 @@ namespace BootCamp.Chapter
             string informationOnPoorestPerson = $"Poorest person currently is {poorestPerson}";
 
             return informationOnPoorestPerson;
+        }
+
+        private static string[] GetPersonInformationSplitted(string personInformation)
+        {
+            return personInformation.Split(",");
         }
     }
 }
