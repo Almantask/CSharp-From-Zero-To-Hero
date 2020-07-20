@@ -16,9 +16,7 @@ namespace BootCamp.Chapter
 
         public static string FindHighestBalanceEver(string balancesFile)
         {
-            string balancesContent = ReturnFileContent(balancesFile);
-
-            string[] peopleAndBalances = balancesContent.Split(Environment.NewLine);
+            string[] peopleAndBalances = ReturnFileContent(balancesFile);
 
             string personWithHighestBalanceEver = NotFound;
             double highestBalance = double.MinValue;
@@ -26,7 +24,7 @@ namespace BootCamp.Chapter
 
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Replace("£","").Split(",");
+                string[] personInformationSplit = GetPersonInformationSplitted(personInformation);
 
                 const int FirstBalanceIndex = 1;
 
@@ -51,31 +49,34 @@ namespace BootCamp.Chapter
             return informationOnHighestBalance;
         }
 
-        private static string ReturnFileContent(string file)
+        private static string[] ReturnFileContent(string file)
         {
             if (String.IsNullOrEmpty(file)) throw new ArgumentException("Path to source file is empty");
-
+            string content = "";
             try
             {
-                return File.ReadAllText(file);
+                content = File.ReadAllText(file);
             }
             catch (Exception ex)
             {
                 throw new DirectoryNotFoundException("Path to source file does not exist", ex);
             }
+
+            return content.Split(Environment.NewLine);
         }
 
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
         /// </summary>
-        public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        public static string FindPersonWithBiggestLoss(string balancesFile)
         {
+            string[] peopleAndBalances = ReturnFileContent(balancesFile);
             string personWithBiggestLoss = NotFound;
             double biggestLoss = double.MinValue;
 
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Split(", ");
+                string[] personInformationSplit = GetPersonInformationSplitted(personInformation);
 
                 const int FirstBalanceIndex = 1;
 
@@ -104,14 +105,15 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and current money of the richest person.
         /// </summary>
-        public static string FindRichestPerson(string[] peopleAndBalances)
+        public static string FindRichestPerson(string balancesFile)
         {
+            string[] peopleAndBalances = ReturnFileContent(balancesFile);
             string richestPerson = NotFound;
             double highestCurrentBalance = double.MinValue;
 
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Split(", ");
+                string[] personInformationSplit = GetPersonInformationSplitted(personInformation);
 
                 bool isLastBalanceANumber = double.TryParse(personInformationSplit[^1], out double currentBalance);
 
@@ -135,14 +137,15 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and current money of the most poor person.
         /// </summary>
-        public static string FindMostPoorPerson(string[] peopleAndBalances)
+        public static string FindMostPoorPerson(string balancesFile)
         {
+            string[] peopleAndBalances = ReturnFileContent(balancesFile);
             string poorestPerson = NotFound;
             double lowestCurrentBalance = double.MaxValue;
 
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Split(", ");
+                string[] personInformationSplit = GetPersonInformationSplitted(personInformation);
 
                 bool isLastBalanceANumber = double.TryParse(personInformationSplit[^1], out double currentBalance);
 
@@ -161,6 +164,11 @@ namespace BootCamp.Chapter
             string informationOnPoorestPerson = $"Poorest person currently is {poorestPerson}";
 
             return informationOnPoorestPerson;
+        }
+
+        private static string[] GetPersonInformationSplitted(string personInformation)
+        {
+            return personInformation.Replace("£", "").Split(",");
         }
     }
 }
