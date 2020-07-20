@@ -19,8 +19,8 @@ namespace BootCamp.Chapter
             peopleBalances.Append(File.ReadAllText(cleanFile));
 
 
-            //string highestEver = TextTable.Build(BalanceStats.FindHighestBalanceEver(peopleBalances), 3);
-            //System.Console.WriteLine(highestEver);
+            string highestEver = TextTable.Build(BalanceStats.FindHighestBalanceEver(cleanFile), 3);
+            System.Console.WriteLine(highestEver);
 
             //string biggestLoss = TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(peopleBalances), 3);
             //System.Console.WriteLine(biggestLoss);

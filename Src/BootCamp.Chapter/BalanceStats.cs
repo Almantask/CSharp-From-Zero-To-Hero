@@ -1,5 +1,8 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
+using System.IO;
 using System.Runtime.ExceptionServices;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -11,16 +14,23 @@ namespace BootCamp.Chapter
 
         private const string NotFound = "not found";
 
-        public static string FindHighestBalanceEver(string[] peopleAndBalances)
+        public static string FindHighestBalanceEver(string balancesFile)
         {
+            string balancesContent = ReturnFileContent(balancesFile);
+
+            string[] peopleAndBalances = balancesContent.Split(Environment.NewLine);
+
             string personWithHighestBalanceEver = NotFound;
             double highestBalance = double.MinValue;
 
+
             foreach (string personInformation in peopleAndBalances)
             {
-                string[] personInformationSplit = personInformation.Split(", ");
+                string[] personInformationSplit = personInformation.Replace("£","").Split(",");
 
-                for (int i = 1; i <= personInformationSplit.Length - 1; i++)
+                const int FirstBalanceIndex = 1;
+
+                for (int i = FirstBalanceIndex; i <= personInformationSplit.Length - 1; i++)
                 {
                     bool isNumber = double.TryParse(personInformationSplit[i], out double balance);
 
@@ -36,9 +46,23 @@ namespace BootCamp.Chapter
                 }
 
             }
-            string informationOnHighestBalance = $"{personWithHighestBalanceEver} had the biggest historic balance";
+            string informationOnHighestBalance = $"{personWithHighestBalanceEver} had the biggest historic balance: {highestBalance}";
 
             return informationOnHighestBalance;
+        }
+
+        private static string ReturnFileContent(string file)
+        {
+            if (String.IsNullOrEmpty(file)) throw new ArgumentException("Path to source file is empty");
+
+            try
+            {
+                return File.ReadAllText(file);
+            }
+            catch (Exception ex)
+            {
+                throw new DirectoryNotFoundException("Path to source file does not exist", ex);
+            }
         }
 
         /// <summary>
