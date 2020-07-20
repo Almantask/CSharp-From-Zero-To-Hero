@@ -8,12 +8,26 @@ namespace BootCamp.Chapter
     {
         public static long ToInteger(string binary)
         {
-            return 0;
+            try
+            {
+                if (string.IsNullOrEmpty(binary))
+                {
+                    return 0;
+                }
+                var decimalNumber = Convert.ToInt32(binary, 2);
+            }
+            catch(Exception exc)
+            {
+
+            }
+            return decimalNumber;
         }
 
         public static string ToBinary(long number)
         {
-            return "";
+            
+            string binary = Convert.ToString(number, 2);
+            return binary;
         }
     }
 }
