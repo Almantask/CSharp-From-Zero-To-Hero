@@ -15,17 +15,17 @@ namespace BootCamp.Chapter
                     return 0;
                 }
                 var decimalNumber = Convert.ToInt32(binary, 2);
+                return decimalNumber;
             }
-            catch(Exception exc)
+            catch(Exception)
             {
-
+                throw new InvalidBinaryNumberException($"{ binary } is not a binary number.");
             }
-            return decimalNumber;
+            
         }
 
         public static string ToBinary(long number)
         {
-            
             string binary = Convert.ToString(number, 2);
             return binary;
         }
