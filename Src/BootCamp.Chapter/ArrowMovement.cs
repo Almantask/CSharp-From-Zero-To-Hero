@@ -18,25 +18,19 @@ namespace BootCamp.Chapter
         /// <returns>One of the arrow characters. '↥' by default.</returns>
         public static char GetIndicator(char symbol)
         {
-            if (symbol =='a' || symbol == 'A')
+            switch (char.ToUpper(symbol))
             {
-                return '\u21A4';
-
+                case 'A':
+                    return '\u21A4';
+                case 'D':
+                    return '\u21A6';
+                case 'W':
+                    return '\u21A5';
+                case 'S':
+                    return '\u21A7';
+                default:
+                    return '\u21A5';
             }
-            if (symbol == 'd' || symbol == 'D')
-            {
-                return '\u21A6';
-            }
-            if (symbol == 'w' || symbol == 'W')
-            {
-                return '\u21A5';
-            }
-            if (symbol == 's' || symbol == 'S')
-            {
-                return '\u21A7';
-            }
-
-            return '-';
         }
     }
 }
