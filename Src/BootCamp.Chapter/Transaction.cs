@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter
 {
-    class Transaction
+    public class Transaction
     {
         public readonly string ItemName;
         public readonly DateTime TimePurchased;

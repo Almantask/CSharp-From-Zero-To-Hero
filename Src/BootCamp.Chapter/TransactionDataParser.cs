@@ -6,9 +6,9 @@ using System.Globalization;
 
 namespace BootCamp.Chapter
 {
-    class TransactionDataParser
+    public class TransactionDataParser
     {
-        public List<Transaction> Transactions;
+        public readonly List<Transaction> Transactions;
 
 
         public TransactionDataParser(string inputPath)
@@ -17,32 +17,30 @@ namespace BootCamp.Chapter
             GetTransactions(inputPath);
         }
 
-        private string GetTransactions(string inputPath)
+        private void GetTransactions(string inputPath)
         {
-            using (var reader = new StreamReader(File.OpenRead(inputPath)))
-            {
-                int count = 0;
-                while (!reader.EndOfStream)
-                {
-                    if (count == 0)
-                    {
-                        reader.ReadLine();
-                        count++;
-                    }
-                    else
-                    {
-                        string parsedData = reader?.ReadLine().ToString();
-                        TryParse(parsedData, out string itemName, out DateTime timePurchased, 
-                                                out decimal price, out string shopName, out string location, out string streetName);
+            using var reader = new StreamReader(File.OpenRead(inputPath));
 
-                        Transactions.Add(new Transaction(itemName, timePurchased, price, shopName, location, streetName));
-                    }
+            int count = 0;
+            while (!reader.EndOfStream)
+            {
+                if (count == 0)
+                {
+                    reader.ReadLine();
+                    count++;
+                }
+                else
+                {
+                    string parsedData = reader?.ReadLine();
+                    TryParse(parsedData, out string itemName, out DateTime timePurchased, 
+                        out decimal price, out string shopName, out string location, out string streetName);
+
+                    Transactions.Add(new Transaction(itemName, timePurchased, price, shopName, location, streetName));
                 }
             }
-            return default;
         }
 
-        public string CharListToString(List<char> input)
+        private string CharListToString(List<char> input)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -54,7 +52,7 @@ namespace BootCamp.Chapter
             return stringBuilder.ToString();
         }
 
-        public List<string> ObtainData(string inputString)
+        private List<string> ObtainData(string inputString)
         {
             bool quotationMarkHit = false;
             List<char> currArg = new List<char>();
@@ -103,7 +101,7 @@ namespace BootCamp.Chapter
             return args;
         }
 
-        public bool TryParse(string rawTransaction, out string itemName, out DateTime timePurchased,
+        private bool TryParse(string rawTransaction, out string itemName, out DateTime timePurchased,
                                            out decimal price, out string shopName, out string location, out string streetName)
         {
             List<string> receivedData = ObtainData(rawTransaction);

@@ -4,8 +4,12 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    interface ICommand
-    {
-        bool VerifyCommand(string inputCommand);
+    public interface ICommand
+    { 
+        abstract void VerifyCommand(string inputCommand);
+
+        void ExecuteCommand(TransactionDataParser transactionData);
+
+        void ComputeStats();
     }
 }

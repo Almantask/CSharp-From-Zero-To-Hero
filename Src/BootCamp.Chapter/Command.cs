@@ -1,5 +1,4 @@
-﻿
-namespace BootCamp.Chapter
+﻿namespace BootCamp.Chapter
 {
     public enum Command
     {
