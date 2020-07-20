@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Runtime.ExceptionServices;
 
 namespace BootCamp.Chapter
 {
@@ -7,10 +8,13 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
+
+        private const string NotFound = "not found";
+
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            string personWithHighestBalanceEver = "not found";
-            double? highestBalance = null;
+            string personWithHighestBalanceEver = NotFound;
+            double highestBalance = double.MinValue;
 
             foreach (string personInformation in peopleAndBalances)
             {
@@ -24,7 +28,7 @@ namespace BootCamp.Chapter
                     {
                         break;
                     }
-                    else if (highestBalance == null || balance > highestBalance)
+                    else if (balance > highestBalance)
                     {
                         highestBalance = balance;
                         personWithHighestBalanceEver = $"{personInformationSplit[0]} (current balance: {personInformationSplit[^1]})";
@@ -42,23 +46,25 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            string personWithBiggestLoss = "not found";
-            double? biggestLoss = null;
+            string personWithBiggestLoss = NotFound;
+            double biggestLoss = double.MinValue;
 
             foreach (string personInformation in peopleAndBalances)
             {
                 string[] personInformationSplit = personInformation.Split(", ");
 
-                for (int i = 1; i <= personInformationSplit.Length - 2; i++)
+                const int FirstBalanceIndex = 1;
+
+                for (int i = FirstBalanceIndex; i <= personInformationSplit.Length - 2; i++)
                 {
-                    bool isPreviousBalanceNumber = double.TryParse(personInformationSplit[i], out double previousBalance);
+                    bool isCurrentBalanceNumber = double.TryParse(personInformationSplit[i], out double previousBalance);
                     bool isNextBalanceNumber = double.TryParse(personInformationSplit[i+1], out double nextBalance);
 
-                    if (!isPreviousBalanceNumber || !isNextBalanceNumber)
+                    if (!isCurrentBalanceNumber || !isNextBalanceNumber)
                     {
                         break;
                     }
-                    else if (biggestLoss == null || (previousBalance - nextBalance) > biggestLoss)
+                    else if ((previousBalance - nextBalance) > biggestLoss)
                     {
                         biggestLoss = previousBalance - nextBalance;
                         personWithBiggestLoss = $"{personInformationSplit[0]}: {biggestLoss}";
@@ -76,8 +82,8 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            string richestPerson = "not found";
-            double? highestCurrentBalance = null;
+            string richestPerson = NotFound;
+            double highestCurrentBalance = double.MinValue;
 
             foreach (string personInformation in peopleAndBalances)
             {
@@ -89,7 +95,7 @@ namespace BootCamp.Chapter
                 {
                     break;
                 }
-                else if (highestCurrentBalance == null || currentBalance > highestCurrentBalance)
+                else if (currentBalance > highestCurrentBalance)
                 {
                     highestCurrentBalance = currentBalance;
                     richestPerson = $"{personInformationSplit[0]} (current balance: {personInformationSplit[^1]})";
@@ -107,8 +113,8 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            string poorestPerson = "not found";
-            double? lowestCurrentBalance = null;
+            string poorestPerson = NotFound;
+            double lowestCurrentBalance = double.MaxValue ;
 
             foreach (string personInformation in peopleAndBalances)
             {
@@ -120,7 +126,7 @@ namespace BootCamp.Chapter
                 {
                     break;
                 }
-                else if (lowestCurrentBalance == null || currentBalance < lowestCurrentBalance)
+                else if (currentBalance < lowestCurrentBalance)
                 {
                     lowestCurrentBalance = currentBalance;
                     poorestPerson = $"{personInformationSplit[0]} (current balance: {personInformationSplit[^1]})";
