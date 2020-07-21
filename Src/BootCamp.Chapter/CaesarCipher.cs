@@ -11,31 +11,26 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
-            if (String.IsNullOrEmpty(message)) return message;
-
-            var encryptedMessage = new StringBuilder();
-
-            for (int i = 0; i <= message.Length - 1; i++)
-            {
-                char encryptedCharacter = Convert.ToChar(message[i] + shift);
-                encryptedMessage.Append(encryptedCharacter);
-            }
-            return encryptedMessage.ToString();
+            return ShiftMessage(message, shift);
         }
 
         public static string Decrypt(string message, byte shift)
         {
+            return ShiftMessage(message, - shift);
+        }
 
+        private static string ShiftMessage(string message, int shift)
+        {
             if (String.IsNullOrEmpty(message)) return message;
 
-            var decryptedMessage = new StringBuilder();
+            var shiftedMessage = new StringBuilder();
 
             for (int i = 0; i <= message.Length - 1; i++)
             {
-                char decryptedCharacter = Convert.ToChar(message[i] - shift);
-                decryptedMessage.Append(decryptedCharacter);
+                char shiftedCharacter = Convert.ToChar(message[i] + shift);
+                shiftedMessage.Append(shiftedCharacter);
             }
-            return decryptedMessage.ToString();
+            return shiftedMessage.ToString();
         }
     }
 }
