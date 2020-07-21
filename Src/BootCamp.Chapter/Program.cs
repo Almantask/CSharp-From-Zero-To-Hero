@@ -6,25 +6,25 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            int myAge = 35;
-            int rAge = 68;
-            string myFirstName = "James";
-            string myLastName = "Mundy";
-            string rFirstName = "Rose";
-            string rLastName = "Mundy";
-            double myWeight = 111.584;
-            double myHeight = 185.42000000000002;
-            double rWeight = 80;
-            double rHeight = 150;
-            double BMIFormula = myWeight / (myHeight * myHeight) * 703;
-            double rBMIForuma = rWeight / (rHeight * rHeight) * 703;
+            Console.WriteLine("What is your name?");
+            string firstName = Console.ReadLine();
 
-            Console.WriteLine(myFirstName + " " + myLastName + " is " + myAge + " years old, his weight is " + myWeight +
-                " kg and his height is " + myHeight + ". " + myFirstName + "'s BMI is " + BMIFormula);
+            Console.WriteLine("How old are you?");
+            string sAge = Console.ReadLine();
+            int age = int.Parse(sAge);
 
-            Console.WriteLine(rFirstName + " " + rLastName + " is " + rAge + " years old, his weight is " + rWeight +
-                " kg and her height is " + rHeight + ". " + rFirstName + "'s BMI is " + rBMIForuma);
+            Console.WriteLine("How much do you weigh in kgs?");
+            string sWeight = Console.ReadLine();
+            float weight = float.Parse(sWeight);
 
+            Console.WriteLine("How tall are you in cm?");
+            string sHeight = Console.ReadLine();
+            float height = float.Parse(sHeight);
+
+            float bmiFormula = weight / height / height;
+
+            Console.WriteLine(firstName + " is " + age + " years old. They weigh " + weight +
+                "kgs and their height is " + height + ". " + firstName + "'s BMI is " + bmiFormula);
         }
     }
 }
