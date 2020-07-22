@@ -47,10 +47,10 @@ namespace BootCamp.Chapter
             return globalHeight;
         }
 
-        public static float BMIFormula()
+        public static float BMIFormula(float weight, float height)
         {
 
-            float bmiValue = globalWeight / globalHeight / globalHeight;
+            float bmiValue = weight / height / height;
 
             return bmiValue;
         }
@@ -58,7 +58,7 @@ namespace BootCamp.Chapter
         public static void Message()
         {
             Console.WriteLine(Lesson3.Information() + " is " + Lesson3.AskAge() + " years old, their weight in kg is " + Lesson3.Weight()
-            + " and their height in cm is " + Lesson3.Height() + ". " + "Their BMI is " + Lesson3.BMIFormula());
+            + " and their height in cm is " + Lesson3.Height() + ". " + "Their BMI is " + Lesson3.BMIFormula(globalWeight, globalHeight));
         }
     }
 }
