@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using BootCamp.Chapter.Commands;
 using BootCamp.Chapter.Exceptions;
 
 namespace BootCamp.Chapter
@@ -103,24 +104,14 @@ namespace BootCamp.Chapter
             string[] splitInput = input.Split(' ');
             Enum.TryParse(splitInput[0], out Command command);
 
-            switch (command)
+            return command switch
             {
-                case Command.city:
-                    return true;
-
-                case Command.time:
-                    return true;
-
-                case Command.daily:
-                    return true;
-
-                case Command.full:
-                    return true;
-
-                default:
-                    return false;
-
-            }
+                Command.city => true,
+                Command.time => true,
+                Command.daily => true,
+                Command.full => true,
+                _ => false
+            };
         }
     }
 }

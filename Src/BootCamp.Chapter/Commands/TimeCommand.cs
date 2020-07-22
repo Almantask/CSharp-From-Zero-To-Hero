@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Commands
 {
     public class TimeCommand : ICommand, ICsvGenerator
     {
@@ -50,7 +49,7 @@ namespace BootCamp.Chapter
             }
 
             ComputeStats();
-            Console.WriteLine($"Generating .csv file: [{_inputCommand}]");
+            
             GenerateCsv(_outputPath);
         }
 
@@ -65,6 +64,7 @@ namespace BootCamp.Chapter
                 _resultsOfCommand[hour].Add(transaction.Price);
             }
         }
+
         public void VerifyCommand(string inputCommand)
         {
             string[] splitCommand = inputCommand.Split(' ');
@@ -91,6 +91,7 @@ namespace BootCamp.Chapter
         {
             try
             {
+                Console.WriteLine($"Generating .csv file: [{_inputCommand}]");
                 int count = 0;
                 using (StreamWriter writer = new StreamWriter(File.Create($@"{outputPath}//time_command.csv")))
                 {
@@ -98,7 +99,7 @@ namespace BootCamp.Chapter
                     {
                         if (count == 0)
                         {
-                            writer.WriteLine($"Hour,Number of Items Sold,Average Money MadeHighest Grossing Hour?");
+                            writer.WriteLine($"Hour,Number of Items Sold,Average Money Made,Highest Grossing Hour?");
                             count++;
                         }
                         else

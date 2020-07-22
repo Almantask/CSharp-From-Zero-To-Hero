@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
 
-namespace BootCamp.Chapter
+namespace BootCamp.Chapter.Commands
 {
     class CityCommand : ICommand, ICsvGenerator
     {
+        private readonly string _inputCommand;
         private string[] _subCommands;
         private Dictionary<string, List<decimal>> _resultsOfCommand = new Dictionary<string, List<decimal>>();
-        private Dictionary<string, int> _statMostItemsSold = new Dictionary<string, int>();
-        private Dictionary<string, decimal> _statMostMoneyMade = new Dictionary<string, decimal>();
+        private Dictionary<string, decimal> _statisticsDictionary = new Dictionary<string, decimal>();
         private IOrderedEnumerable<KeyValuePair<string, decimal>> _outOrderedDict;
+        private readonly string _outputPath;
 
-        public CityCommand(string command, string outputPath)
+        public CityCommand(string inputCommand, string outputPath)
         {
-            VerifyCommand(command);
+            _inputCommand = inputCommand;
+            _outputPath = outputPath;
+            VerifyCommand(_inputCommand);
         }
 
         // Implement the solution such tha depending on items or money, the correct csv file is generated.
@@ -25,28 +26,22 @@ namespace BootCamp.Chapter
         {
             try
             {
+                Console.WriteLine($"Generating .csv file: [{_inputCommand}]");
                 int count = 0;
-                using (StreamWriter writer = new StreamWriter(File.Create($@"{outputPath}//city_command{_subCommands[0]}_{_subCommands[1]}.csv")))
+                using (StreamWriter writer = new StreamWriter(File.Create($@"{outputPath}//city_command_{_subCommands[0]}_{_subCommands[1]}.csv")))
                 {
                     while (true)
                     {
                         if (count == 0)
                         {
-                            writer.WriteLine($"Hour,Number of Items Sold,Average Money MadeHighest Grossing Hour?");
+                            writer.WriteLine(HeadingOfCsvFile(_subCommands[1]));
                             count++;
                         }
                         else
                         {
-                            foreach (var  in _computedStats)
+                            foreach (var pair in _outOrderedDict)
                             {
-                                if (hour.Key == highestHour)
-                                {
-                                    writer.WriteLine($"{hour.Key},{hour.Value[0]},{hour.Value[1]},RushHour");
-                                }
-                                else
-                                {
-                                    writer.WriteLine($"{hour.Key},{hour.Value[0]},{hour.Value[1]}");
-                                }
+                                writer.WriteLine($"{pair.Key},{pair.Value}");
                             }
                             break;
                         }
@@ -59,6 +54,21 @@ namespace BootCamp.Chapter
             }
         }
 
+        private string HeadingOfCsvFile(string subCommand)
+        {
+            switch (subCommand)
+            {
+                case "items":
+                    return "City,Number of Items Sold";
+
+                case "money":
+                    return "City,Amount of Money Made";
+
+                default:
+                    return null;
+            }
+        } 
+
         public void ExecuteCommand(TransactionDataParser transactionData)
         {
             List<Transaction> transactions = transactionData.Transactions;
@@ -69,6 +79,7 @@ namespace BootCamp.Chapter
             }
 
             ComputeStats();
+            GenerateCsv(_outputPath);
         }
 
         // Potentially can make this more 'DRY', seeming too much code which might be able to be simplified
@@ -78,19 +89,19 @@ namespace BootCamp.Chapter
             {
                 foreach (var pair in _resultsOfCommand)
                 {
-                    _statMostItemsSold.Add(pair.Key, pair.Value.Count);
+                    _statisticsDictionary.Add(pair.Key, pair.Value.Count);
                 }
 
-                _outOrderedDict = _subCommands[0] == "max" ? _statMostMoneyMade.OrderByDescending(x => x.Value) : _statMostMoneyMade.OrderBy(x => x.Value);
+                _outOrderedDict = _subCommands[0] == "max" ? _statisticsDictionary.OrderByDescending(x => x.Value) : _statisticsDictionary.OrderBy(x => x.Value);
             }
             else
             {
                 foreach (var pair in _resultsOfCommand)
                 {
-                    _statMostMoneyMade.Add(pair.Key, pair.Value.Sum());
+                    _statisticsDictionary.Add(pair.Key, pair.Value.Sum());
                 }
 
-                _outOrderedDict = _subCommands[0] == "max" ? _statMostMoneyMade.OrderByDescending(x => x.Value) : _statMostMoneyMade.OrderBy(x => x.Value);
+                _outOrderedDict = _subCommands[0] == "min" ? _statisticsDictionary.OrderBy(x => x.Value) : _statisticsDictionary.OrderByDescending(x => x.Value);
             }
         }
 
@@ -155,7 +166,5 @@ namespace BootCamp.Chapter
                     return false;
             }
         }
-
-        
     }
 }
