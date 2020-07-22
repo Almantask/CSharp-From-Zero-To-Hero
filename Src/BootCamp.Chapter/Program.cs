@@ -7,25 +7,26 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var dirtyFile = @"Input\Balances.corrupted";
-            var cleanFile = @"Input\Balances.fixed";
-            FileCleaner.Clean(dirtyFile, cleanFile);
+            var filePath = @"Input\Balances.corrupted";
 
-            var peopleBalances = new StringBuilder();
-            peopleBalances.Append(File.ReadAllText(cleanFile));
+            var fileWithBalances = new FileWithBalances(filePath);
+            System.Console.WriteLine(fileWithBalances.GetContent());
+
+            //var peopleBalances = new StringBuilder();
+            //peopleBalances.Append(File.ReadAllText(cleanFile));
 
 
-            string highestEver = BalanceStats.FindHighestBalanceEver(cleanFile);
-            System.Console.WriteLine(highestEver);
+            //string highestEver = BalanceStats.FindHighestBalanceEver(cleanFile);
+            //System.Console.WriteLine(highestEver);
 
-            string biggestLoss = BalanceStats.FindPersonWithBiggestLoss(cleanFile);
-            System.Console.WriteLine(biggestLoss);
+            //string biggestLoss = BalanceStats.FindPersonWithBiggestLoss(cleanFile);
+            //System.Console.WriteLine(biggestLoss);
 
-            string richest = BalanceStats.FindRichestPerson(cleanFile);
-            System.Console.WriteLine(richest);
+            //string richest = BalanceStats.FindRichestPerson(cleanFile);
+            //System.Console.WriteLine(richest);
 
-            string poorest = BalanceStats.FindMostPoorPerson(cleanFile);
-            System.Console.WriteLine(poorest);
+            //string poorest = BalanceStats.FindMostPoorPerson(cleanFile);
+            //System.Console.WriteLine(poorest);
         }
     }
 }

@@ -7,5 +7,9 @@ namespace BootCamp.Chapter
         public InvalidBalancesException(string message, Exception ex) : base (message, ex)
         {
         }
+
+        public InvalidBalancesException(string message) : base (message)
+        {
+        }
     }
 }
