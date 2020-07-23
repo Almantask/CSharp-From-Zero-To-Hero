@@ -38,9 +38,66 @@ namespace BootCamp.Chapter
                     personWithHighestBalance = person;
                 }
             }
-            string informationOnHighestBalance = $"{personWithHighestBalance.GetName()} had the biggest historic balance: {highestBalance}";
 
+            string informationOnHighestBalance = $"{personWithHighestBalance.GetName()} had the biggest historic balance: {highestBalance}";
             return informationOnHighestBalance;
+        }
+
+        public string FindPersonWithBiggestLoss()
+        {
+            double biggestLoss = double.MinValue;
+            Person personWithBiggestLoss = new Person(NotFound);
+
+
+            foreach (Person person in _people)
+            {
+                if (person.GetBiggestLoss() > biggestLoss)
+                {
+                    biggestLoss = person.GetBiggestLoss();
+                    personWithBiggestLoss = person;
+                }
+            }
+
+            string informationOnBiggestLoss = $"The person with the biggest loss was: {personWithBiggestLoss.GetName()}: {biggestLoss}";
+            return informationOnBiggestLoss;
+        }
+
+        public string FindRichestPerson()
+        {
+            double highestCurrentBalance = double.MinValue;
+            Person richestPerson = new Person(NotFound);
+
+
+            foreach (Person person in _people)
+            {
+                if (person.GetCurrentBalance() > highestCurrentBalance)
+                {
+                    highestCurrentBalance = person.GetCurrentBalance();
+                    richestPerson = person;
+                }
+            }
+
+            string informationOnRichestPerson = $"Richest person currently is {richestPerson.GetName()}: {highestCurrentBalance}";
+            return informationOnRichestPerson;
+        }
+
+        public string FindPoorestPerson()
+        {
+            double lowestCurrentBalance = double.MaxValue;
+            Person poorestPerson = new Person(NotFound);
+
+
+            foreach (Person person in _people)
+            {
+                if (person.GetCurrentBalance() < lowestCurrentBalance)
+                {
+                    lowestCurrentBalance = person.GetCurrentBalance();
+                    poorestPerson = person;
+                }
+            }
+
+            string informationOnPoorestPerson = $"Poorest person currently is {poorestPerson.GetName()}: {lowestCurrentBalance}";
+            return informationOnPoorestPerson;
         }
 
         private List<Person> GetPeopleFromInput(string informationOnPeopleBalances)

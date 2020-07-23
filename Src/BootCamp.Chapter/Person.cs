@@ -34,6 +34,7 @@ namespace BootCamp.Chapter
         public double GetHighestBalanceEver()
         {
             double highestBalance = double.MinValue;
+
             foreach (double balance in _balances)
             {
                 if (balance > highestBalance)
@@ -43,6 +44,22 @@ namespace BootCamp.Chapter
             }
 
             return highestBalance;
+        }
+
+        public double GetBiggestLoss()
+        {
+            double biggestLoss = double.MinValue;
+
+            for (int i = 1; i <= _balances.Count -1; i++)
+            {
+                double currentLoss = (_balances[i-1] - _balances[i]);
+                if (currentLoss > biggestLoss)
+                {
+                    biggestLoss = currentLoss;
+                }    
+            }
+
+            return biggestLoss;
         }
 
         private static string[] GetSplittedInformation(string personInformation)
