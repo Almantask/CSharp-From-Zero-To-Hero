@@ -12,15 +12,12 @@ namespace BootCamp.Chapter
 
             var peopleAndBalances = new PeopleAndBalances(fileWithBalances.GetContent());
 
-            var firstPerson = peopleAndBalances.GetPerson(0);
-            Console.WriteLine(firstPerson.GetName());
-            Console.WriteLine(firstPerson.GetCurrentBalance());
             //var peopleBalances = new StringBuilder();
             //peopleBalances.Append(File.ReadAllText(cleanFile));
 
 
-            //string highestEver = BalanceStats.FindHighestBalanceEver(cleanFile);
-            //System.Console.WriteLine(highestEver);
+            string highestEver = peopleAndBalances.FindHighestBalanceEver();
+            System.Console.WriteLine(highestEver);
 
             //string biggestLoss = BalanceStats.FindPersonWithBiggestLoss(cleanFile);
             //System.Console.WriteLine(biggestLoss);

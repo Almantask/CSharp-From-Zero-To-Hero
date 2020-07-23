@@ -31,6 +31,20 @@ namespace BootCamp.Chapter
 
         }
 
+        public double GetHighestBalanceEver()
+        {
+            double highestBalance = double.MinValue;
+            foreach (double balance in _balances)
+            {
+                if (balance > highestBalance)
+                {
+                    highestBalance = balance;
+                }
+            }
+
+            return highestBalance;
+        }
+
         private static string[] GetSplittedInformation(string personInformation)
         {
             return personInformation.Replace("£", "").Split(",");
