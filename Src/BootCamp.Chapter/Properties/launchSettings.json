@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BootCamp.Chapter": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\Matthew\\source\\repos\\CSharp-From-Zero-To-Hero\\Src\\BootCamp.Chapter\\Input\\Transactions.csv\"\"time 09:00-22:00\" \"C:\\Users\\Matthew\\source\\repos\\CSharp-From-Zero-To-Hero\\Src\\BootCamp.Chapter\\Input\\\"",
+      "sqlDebugging": false,
+      "nativeDebugging": false
+    }
+  }
+}

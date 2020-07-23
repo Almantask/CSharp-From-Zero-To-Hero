@@ -16,15 +16,15 @@ namespace BootCamp.Chapter
         /// <param name="inputString"></param>
         /// <param name="arguments"></param>
         /// <returns></returns>
-        public static bool TryParse(string inputString, out string[] arguments)
+        public static bool TryParse(string[] args, out string[] arguments)
         {
             arguments = default;
-            List<string> args = ObtainArguments(inputString);
             string pathIn = args[0];
             string command = args[1];
             string pathOut = args[2];
 
             // potentially the help command can be a separate method outside of argument parser which is called within the application controller. Doesn't make too much sense otherwise
+            
             bool[] inputsValid = new bool[3]{ false, false, false};
             inputsValid[0] = PathInFileExists(pathIn) ? true : throw new InputFileNotFoundOrEmptyException($"File at path {pathIn} was not found");
             inputsValid[1] = ValidateCommand(command) ? true : throw new InvalidCommandException($"Command '{command}' does not exist. Type \"help\" for a list of commands");
@@ -41,6 +41,7 @@ namespace BootCamp.Chapter
             }
         }
 
+        // potentially remove
         private static List<string> ObtainArguments(string inputString)
         {
             List<char> currArg = new List<char>();

@@ -11,6 +11,7 @@ namespace BootCamp.Chapter.Tests
     public class ProgramTests : IDisposable
     {
         private const string ValidTransactionsFile = "Input/Transactions.csv";
+        // changing outputfile location as it should be a legitimate directory (unless testing otherwise) (from: Guid.NewGuid().ToString();)
         private readonly string OutputFile = Guid.NewGuid().ToString();
 
         [Theory]

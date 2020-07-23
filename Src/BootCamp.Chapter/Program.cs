@@ -1,34 +1,20 @@
-﻿using System;
-using BootCamp.Chapter.Commands;
+﻿
+using System;
 
 namespace BootCamp.Chapter
 {
     public class Program
     {
-        public static void Main(string[] arguments)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Please input the commands");
-            // "C:\Users\Matthew\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.csv" "city -max -money" "C:\Users\Matthew\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\"
-            string userInput = Console.ReadLine();
-            Console.WriteLine(ArgumentsParser.TryParse(userInput, out string [] args));
-            TransactionDataParser transactionDataParser = new TransactionDataParser(args[0]);
-
-            foreach(var transaction in transactionDataParser.Transactions)
+            Console.WriteLine("Running");
+            // test inputs:
+            // "C:\Users\Matthew\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.csv" "time 09:00-22:00" "C:\Users\Matthew\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\"
+            if (args != null)
             {
-                Console.WriteLine(transaction.TimePurchased);
+                ApplicationController applicationController = new ApplicationController(args);
+                applicationController.Run();
             }
-
-            TimeCommand timeCommand = new TimeCommand("time", args[2]);
-            timeCommand.ExecuteCommand(transactionDataParser);
-
-            CityCommand cityCommand = new CityCommand("city -min -items", args[2]);
-            cityCommand.ExecuteCommand(transactionDataParser);
-
-            DailyCommand dailyCommand = new DailyCommand("daily Ebay -asc", args[2], transactionDataParser);
-            dailyCommand.ExecuteCommand(transactionDataParser);
-
-            FullCommand fullCommand = new FullCommand("full -asc", args[2], transactionDataParser);
-            fullCommand.ExecuteCommand(transactionDataParser);
         }
     }
 }
