@@ -27,10 +27,17 @@ namespace BootCamp.Chapter
             }
             catch (Exception ex)
             {
-                throw new DirectoryNotFoundException("Path to source file does not exist", ex);
+                throw new ArgumentException("Path to source file does not exist", ex);
             }
 
-            if (!IsContentValid(content.ToString())) content = Clean(content) ;
+            if (String.IsNullOrEmpty(content))
+            {
+                _content = content;
+            }
+            else if (!IsContentValid(content.ToString()))
+            {
+                content = Clean(content);
+            }
 
             _content = content;
 
@@ -44,7 +51,7 @@ namespace BootCamp.Chapter
             {
                 var nameAndBalances = person.Split(",");
                 if (!ISNameValid(nameAndBalances[0])) return false;
-                if (nameAndBalances.Length > 1 && !AreBalancesValid(nameAndBalances[1..^1])) return false;
+                if (nameAndBalances.Length > 1 && !AreBalancesValid(nameAndBalances[1..^0])) return false;
                 
             }
 
@@ -53,12 +60,12 @@ namespace BootCamp.Chapter
 
         private static bool ISNameValid(string name)
         {
-            foreach (char letter in name)
+            var nameRegex = new Regex(@"[a-zA-Z]+ [a-zA-Z]+'?-?[a-zA-Z]+[.]?$");
+
+            if (!nameRegex.IsMatch(name, 0))
             {
-                if (!(Char.IsLetter(letter) || letter.Equals(' ') || letter.Equals('\'') || letter.Equals('-') || letter.Equals('.')))
-                {
-                    return false;
-                }
+                Console.WriteLine(name);
+                return false;
             }
 
             return true;
@@ -66,7 +73,7 @@ namespace BootCamp.Chapter
 
         private static bool AreBalancesValid(string[] balances)
         {
-            var moneyRegex = new Regex(@"-?£[0-9]{1,}.[0-9]{2}");
+            var moneyRegex = new Regex(@"-?£[0-9]{1,}.[0-9]{2}$");
 
             foreach (string balance in balances)
             {

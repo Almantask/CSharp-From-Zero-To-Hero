@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -34,6 +35,9 @@ namespace BootCamp.Chapter
 
         public static void Clean(string file, string outputFile)
         {
+            var fileWithBalances = new FileWithBalances(file);
+            string cleanedContent = fileWithBalances.GetContent();
+            File.WriteAllText(outputFile, cleanedContent);
         }
     }
 }
