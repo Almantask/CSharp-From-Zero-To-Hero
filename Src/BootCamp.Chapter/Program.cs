@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Text;
+﻿using System;
 
 namespace BootCamp.Chapter
 {
@@ -10,8 +9,12 @@ namespace BootCamp.Chapter
             var filePath = @"Input\Balances.corrupted";
 
             var fileWithBalances = new FileWithBalances(filePath);
-            System.Console.WriteLine(fileWithBalances.GetContent());
 
+            var peopleAndBalances = new PeopleAndBalances(fileWithBalances.GetContent());
+
+            var firstPerson = peopleAndBalances.GetPerson(0);
+            Console.WriteLine(firstPerson.GetName());
+            Console.WriteLine(firstPerson.GetCurrentBalance());
             //var peopleBalances = new StringBuilder();
             //peopleBalances.Append(File.ReadAllText(cleanFile));
 
