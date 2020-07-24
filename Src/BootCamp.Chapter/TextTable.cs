@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class TextTables
+    class TextTable
     {
         /*
          Input: "Hello", 0
@@ -31,19 +31,56 @@ namespace BootCamp.Chapter
         /// Padding means how many spaces will a message be wrapped with.
         /// Table itself is made of: "+-" symbols. 
         /// </summary>
-        public static string Build(string message, int padding)
+        /// 
+        private readonly string _message;
+
+        public string GetMessage()
         {
-            if (String.IsNullOrEmpty(message)) return "";
+            return _message;
+        }
+
+        private int _padding;
+
+        public int GetPadding()
+        {
+            return _padding;
+        }
+
+        public void SetPadding(int newPadding)
+        {
+            _padding = newPadding;
+        }
+
+        public TextTable(string message, int padding)
+        {
+            if (String.IsNullOrEmpty(message)) _message = "";
+            _message = message;
+
+            if (padding < 0) throw new ArgumentException("Padding on Text Table can't be less than 0");
+            _padding = padding;
+        }
+
+        public TextTable(string message)
+        {
+            if (String.IsNullOrEmpty(message)) _message = "";
+            _message = message;
+            _padding = 0;
+
+        }
+
+        public string Build()
+        {
+            if (String.IsNullOrEmpty(_message)) return "";
 
             var sb = new StringBuilder();
 
-            string[] messageLines = message.Split(Environment.NewLine);
+            string[] messageLines = _message.Split(Environment.NewLine);
 
-            sb.Append(AddBorder(messageLines, padding));
-            sb.Append(AddPaddingLines(messageLines, padding));
-            sb.Append(AddMessageLines(messageLines, padding));
-            sb.Append(AddPaddingLines(messageLines, padding));
-            sb.Append(AddBorder(messageLines, padding));
+            sb.Append(AddBorder(messageLines, _padding));
+            sb.Append(AddPaddingLines(messageLines, _padding));
+            sb.Append(AddMessageLines(messageLines, _padding));
+            sb.Append(AddPaddingLines(messageLines, _padding));
+            sb.Append(AddBorder(messageLines, _padding));
 
             return sb.ToString();
         }

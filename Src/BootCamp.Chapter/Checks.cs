@@ -42,8 +42,8 @@ namespace BootCamp.Chapter
 
         public static string Build(string message, in int padding)
         {
-            string builtTextTable = TextTables.Build(message, padding);
-            return builtTextTable;
+            var testTextTable = new TextTable(message, padding);
+            return testTextTable.Build();
         }
 
         public static void Clean(string file, string outputFile)
