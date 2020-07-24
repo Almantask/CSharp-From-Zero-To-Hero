@@ -20,8 +20,8 @@ namespace BootCamp.Chapter
             Console.WriteLine($"Also the BMI is {bmi}.");
         }
            
-            public static int promptInt(string message)
-            {
+        public static int promptInt(string message)
+        {
             Console.WriteLine(message);
             var intToParse = Console.ReadLine();
             var isInt = int.TryParse(intToParse, out int input);
@@ -35,10 +35,10 @@ namespace BootCamp.Chapter
                 }
             }
             else return input;
-            }
+        }
 
-            public static string promptString(string message)
-            {
+        public static string promptString(string message)
+        {
             Console.Write(message);
             string word = Console.ReadLine();
             if (word == "")
@@ -49,8 +49,8 @@ namespace BootCamp.Chapter
             else return word;
         }
 
-            public static float promptFloat(string message)
-            {
+        public static float promptFloat(string message)
+        {
             Console.Write(message);
             var measuring = Console.ReadLine();
             var isValid = float.TryParse(measuring, out var input);
@@ -67,11 +67,11 @@ namespace BootCamp.Chapter
                 }
             }
             return input;
-            }
+        }
 
 
-            public static float calculateBmi(float weight, float height)
-            {
+        public static float calculateBmi(float weight, float height)
+        {
             if (weight <= 0 || height <= 0)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
@@ -88,7 +88,7 @@ namespace BootCamp.Chapter
                 var bmi = weight / (height * height);
                 Console.WriteLine($"Also the BMI is {bmi}.");
                 return bmi;
-            }
+        }
         
     }
 }
