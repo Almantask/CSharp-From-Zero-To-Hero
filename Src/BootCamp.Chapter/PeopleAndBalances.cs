@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -79,7 +80,7 @@ namespace BootCamp.Chapter
         public string FindRichestPerson()
         {
             double highestCurrentBalance = double.MinValue;
-            Person richestPerson = new Person(NotFound);
+            List<Person> richestPeople = new List<Person>();
 
 
             foreach (Person person in _people)
@@ -87,18 +88,26 @@ namespace BootCamp.Chapter
                 if (person.GetCurrentBalance() > highestCurrentBalance)
                 {
                     highestCurrentBalance = person.GetCurrentBalance();
-                    richestPerson = person;
+                    richestPeople.Clear();
+                    richestPeople.Add(person);
+                }
+                else if (person.GetCurrentBalance() == highestCurrentBalance)
+                {
+                    richestPeople.Add(person);
                 }
             }
 
-            string informationOnRichestPerson = $"Richest person currently is {richestPerson.GetName()}: {highestCurrentBalance}";
+            string messageAddition = $"is the richest person. ¤{highestCurrentBalance}.";
+            if (richestPeople.Count > 1) messageAddition = $"are the richest people. ¤{highestCurrentBalance}.";
+
+            string informationOnRichestPerson = CreateMessage(richestPeople, messageAddition);
             return informationOnRichestPerson;
         }
 
         public string FindPoorestPerson()
         {
             double lowestCurrentBalance = double.MaxValue;
-            Person poorestPerson = new Person(NotFound);
+            List<Person> poorestPeople = new List<Person>();
 
 
             foreach (Person person in _people)
@@ -106,11 +115,21 @@ namespace BootCamp.Chapter
                 if (person.GetCurrentBalance() < lowestCurrentBalance)
                 {
                     lowestCurrentBalance = person.GetCurrentBalance();
-                    poorestPerson = person;
+                    poorestPeople.Clear();
+                    poorestPeople.Add(person);
+                }
+                else if (person.GetCurrentBalance() == lowestCurrentBalance)
+                {
+                    poorestPeople.Add(person);
                 }
             }
 
-            string informationOnPoorestPerson = $"Poorest person currently is {poorestPerson.GetName()}: {lowestCurrentBalance}";
+            string formattedLowestCurrentBalance = FormatCurrency(lowestCurrentBalance);
+
+            string messageAddition = $"has the least money. {formattedLowestCurrentBalance}.";
+            if (poorestPeople.Count > 1) messageAddition = $"have the least money. {formattedLowestCurrentBalance}.";
+
+            string informationOnPoorestPerson = CreateMessage(poorestPeople, messageAddition);
             return informationOnPoorestPerson;
         }
 
@@ -160,6 +179,13 @@ namespace BootCamp.Chapter
             }
         }
 
-
+        private string FormatCurrency(double balance)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            nfi = (NumberFormatInfo)nfi.Clone();
+            nfi.CurrencySymbol = "¤";
+            nfi.CurrencyNegativePattern = 1;
+            return string.Format(nfi, "{0:c0}", balance);
+        }
     }
 }

@@ -10,12 +10,18 @@ namespace BootCamp.Chapter
     {
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            var people = CreatePeopleObjectFromArrayInput(peopleAndBalances);
+
+            string poorestPerson = people.FindPoorestPerson();
+            return poorestPerson;
         }
 
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            var people = CreatePeopleObjectFromArrayInput(peopleAndBalances);
+
+            string richestPerson = people.FindRichestPerson();
+            return richestPerson;
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
