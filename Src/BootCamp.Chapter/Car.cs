@@ -5,7 +5,8 @@ using System.Text;
 namespace BootCamp.Chapter
 {
     // This should have the following attribute
-    // [Textable]
+    // Labelling class 'Car' with attribute 'TextTable'. Default implementation is used.
+    [TextTable]
     public class Car
     {
         public string Brand { get; }
