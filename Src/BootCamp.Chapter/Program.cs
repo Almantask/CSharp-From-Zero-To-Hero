@@ -27,14 +27,14 @@ namespace BootCamp.Chapter
             var isInt = int.TryParse(intToParse, out int input);
             if (!isInt)
             {
-                if (intToParse == "" && intToParse == "0") return 0;
+                if (intToParse == "") return 0;
                 else
                 {
                     Console.WriteLine($"\"{intToParse}\" is not a valid number.");
                     return -1;
                 }
             }
-            return input;
+            else return input;
             }
 
             public static string promptString(string message)
@@ -72,6 +72,19 @@ namespace BootCamp.Chapter
 
             public static float calculateBmi(float weight, float height)
             {
+            if (weight <= 0 || height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
+                if (height <= 0)
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
+                return -1;
+            }
                 var bmi = weight / (height * height);
                 Console.WriteLine($"Also the BMI is {bmi}.");
                 return bmi;
