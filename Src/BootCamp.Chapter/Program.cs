@@ -9,6 +9,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Lesson3.InputUserDataAndPrintWithBMI();
+            Lesson3.InputUserDataAndPrintWithBMI();
         }
     }
 }
