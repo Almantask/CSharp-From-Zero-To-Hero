@@ -25,7 +25,11 @@ namespace BootCamp.Chapter
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances == null) peopleAndBalances = new string[0];
+            var stringContent = new PeopleAndBalances(String.Join(Environment.NewLine, peopleAndBalances));
+
+            string highestEver = stringContent.FindHighestBalanceEver();
+            return highestEver;
         }
 
         public static string Build(string message, in int padding)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -27,7 +28,7 @@ namespace BootCamp.Chapter
         public string FindHighestBalanceEver()
         {
             double highestBalance = double.MinValue;
-            Person personWithHighestBalance = new Person(NotFound);
+            List<Person> peopleWithHighestBalance = new List<Person>();
 
 
             foreach (Person person in _people)
@@ -35,11 +36,42 @@ namespace BootCamp.Chapter
                 if (person.GetHighestBalanceEver() > highestBalance)
                 {
                     highestBalance = person.GetHighestBalanceEver();
-                    personWithHighestBalance = person;
+                    peopleWithHighestBalance.Clear();
+                    peopleWithHighestBalance.Add(person);
+                }
+                else if (person.GetHighestBalanceEver() == highestBalance)
+                {
+                    peopleWithHighestBalance.Add(person);
                 }
             }
 
-            string informationOnHighestBalance = $"{personWithHighestBalance.GetName()} had the biggest historic balance: {highestBalance}";
+            string informationOnHighestBalance = "";
+            string fullMessage = $"had the most money ever. ¤{highestBalance}.";
+            if (peopleWithHighestBalance.Count == 0)
+            {
+                informationOnHighestBalance = "N/A.";
+            }
+            else if (peopleWithHighestBalance.Count == 1)
+            {
+                informationOnHighestBalance = $"{peopleWithHighestBalance[0].GetName()} {fullMessage}";
+            }
+            else if (peopleWithHighestBalance.Count == 2)
+            {
+                informationOnHighestBalance = $"{peopleWithHighestBalance[0].GetName()} and {peopleWithHighestBalance[1].GetName()} {fullMessage}";
+            }
+            else
+            {
+                var allPeopleWithHighestBalance = new StringBuilder();
+                allPeopleWithHighestBalance.Append(peopleWithHighestBalance[0].GetName());
+                for (int i = 1; i <= peopleWithHighestBalance.Count -2; i++)
+                {
+                    allPeopleWithHighestBalance.Append($", {peopleWithHighestBalance[i].GetName()}");
+                }
+                allPeopleWithHighestBalance.Append($" and {peopleWithHighestBalance[^1].GetName()}");
+
+                informationOnHighestBalance = $"{allPeopleWithHighestBalance.ToString()} {fullMessage}";
+            }
+
             return informationOnHighestBalance;
         }
 
@@ -102,6 +134,8 @@ namespace BootCamp.Chapter
 
         private List<Person> GetPeopleFromInput(string informationOnPeopleBalances)
         {
+            if (String.IsNullOrEmpty(informationOnPeopleBalances)) return new List<Person>();
+
             string[] peopleInformation = informationOnPeopleBalances.Split(Environment.NewLine);
             if (peopleInformation.Length <= 0) throw new InvalidBalancesException("Balances are invalid: not possible to split input into seperate people");
 
