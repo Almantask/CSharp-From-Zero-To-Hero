@@ -20,15 +20,17 @@ namespace BootCamp.Chapter
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            var people = CreatePeopleObjectFromArrayInput(peopleAndBalances);
+
+            string biggestLoss = people.FindPersonWithBiggestLoss();
+            return biggestLoss;
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null) peopleAndBalances = new string[0];
-            var stringContent = new PeopleAndBalances(String.Join(Environment.NewLine, peopleAndBalances));
+            var people = CreatePeopleObjectFromArrayInput(peopleAndBalances);
 
-            string highestEver = stringContent.FindHighestBalanceEver();
+            string highestEver = people.FindHighestBalanceEver();
             return highestEver;
         }
 
@@ -42,6 +44,12 @@ namespace BootCamp.Chapter
             var fileWithBalances = new FileWithBalances(file);
             string cleanedContent = fileWithBalances.GetContent();
             File.WriteAllText(outputFile, cleanedContent);
+        }
+
+        private static PeopleAndBalances CreatePeopleObjectFromArrayInput(string[] peopleAndBalances)
+        {
+            if (peopleAndBalances == null) peopleAndBalances = new string[0];
+            return new PeopleAndBalances(String.Join(Environment.NewLine, peopleAndBalances));
         }
     }
 }

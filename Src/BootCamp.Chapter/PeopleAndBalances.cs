@@ -45,32 +45,8 @@ namespace BootCamp.Chapter
                 }
             }
 
-            string informationOnHighestBalance = "";
-            string fullMessage = $"had the most money ever. ¤{highestBalance}.";
-            if (peopleWithHighestBalance.Count == 0)
-            {
-                informationOnHighestBalance = "N/A.";
-            }
-            else if (peopleWithHighestBalance.Count == 1)
-            {
-                informationOnHighestBalance = $"{peopleWithHighestBalance[0].GetName()} {fullMessage}";
-            }
-            else if (peopleWithHighestBalance.Count == 2)
-            {
-                informationOnHighestBalance = $"{peopleWithHighestBalance[0].GetName()} and {peopleWithHighestBalance[1].GetName()} {fullMessage}";
-            }
-            else
-            {
-                var allPeopleWithHighestBalance = new StringBuilder();
-                allPeopleWithHighestBalance.Append(peopleWithHighestBalance[0].GetName());
-                for (int i = 1; i <= peopleWithHighestBalance.Count -2; i++)
-                {
-                    allPeopleWithHighestBalance.Append($", {peopleWithHighestBalance[i].GetName()}");
-                }
-                allPeopleWithHighestBalance.Append($" and {peopleWithHighestBalance[^1].GetName()}");
-
-                informationOnHighestBalance = $"{allPeopleWithHighestBalance.ToString()} {fullMessage}";
-            }
+            string messageAddition = $"had the most money ever. ¤{highestBalance}.";
+            string informationOnHighestBalance = CreateMessage(peopleWithHighestBalance, messageAddition);
 
             return informationOnHighestBalance;
         }
@@ -78,7 +54,7 @@ namespace BootCamp.Chapter
         public string FindPersonWithBiggestLoss()
         {
             double biggestLoss = double.MinValue;
-            Person personWithBiggestLoss = new Person(NotFound);
+            List<Person> peopleWithBiggestLoss = new List<Person>();
 
 
             foreach (Person person in _people)
@@ -86,11 +62,17 @@ namespace BootCamp.Chapter
                 if (person.GetBiggestLoss() > biggestLoss)
                 {
                     biggestLoss = person.GetBiggestLoss();
-                    personWithBiggestLoss = person;
+                    peopleWithBiggestLoss.Clear();
+                    peopleWithBiggestLoss.Add(person);
+                }
+                else if (person.GetBiggestLoss() == biggestLoss && person.GetBiggestLoss() != double.MinValue)
+                {
+                    peopleWithBiggestLoss.Add(person);
                 }
             }
 
-            string informationOnBiggestLoss = $"The person with the biggest loss was: {personWithBiggestLoss.GetName()}: {biggestLoss}";
+            string messageAddition = $"lost the most money. -¤{biggestLoss}.";
+            string informationOnBiggestLoss = CreateMessage(peopleWithBiggestLoss, messageAddition);
             return informationOnBiggestLoss;
         }
 
@@ -148,6 +130,34 @@ namespace BootCamp.Chapter
             }
 
             return people;
+        }
+
+        private string CreateMessage(List<Person> people, string message)
+        {
+            if (people.Count == 0)
+            {
+                return "N/A.";
+            }
+            else if (people.Count == 1)
+            {
+                return $"{people[0].GetName()} {message}";
+            }
+            else if (people.Count == 2)
+            {
+                return $"{people[0].GetName()} and {people[1].GetName()} {message}";
+            }
+            else
+            {
+                var allPeopleWithHighestBalance = new StringBuilder();
+                allPeopleWithHighestBalance.Append(people[0].GetName());
+                for (int i = 1; i <= people.Count - 2; i++)
+                {
+                    allPeopleWithHighestBalance.Append($", {people[i].GetName()}");
+                }
+                allPeopleWithHighestBalance.Append($" and {people[^1].GetName()}");
+
+                return $"{allPeopleWithHighestBalance.ToString()} {message}";
+            }
         }
 
 

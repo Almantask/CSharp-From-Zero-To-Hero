@@ -48,6 +48,8 @@ namespace BootCamp.Chapter
 
         public double GetBiggestLoss()
         {
+            if (_balances.Count <= 1) return double.MinValue;
+
             double biggestLoss = double.MinValue;
 
             for (int i = 1; i <= _balances.Count -1; i++)
