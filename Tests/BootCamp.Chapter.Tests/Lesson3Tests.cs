@@ -111,10 +111,10 @@ namespace BootCamp.Chapter.Tests
         {
             ConsoleInput = input;
 
-            var convertedInput = Checks.PromptFloat(_promptMessage);
+            var convertedInput = Checks.PromptFloat(input);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}");
             const float invalid = -1;
+            ConsoleOutput.Should().Be($"{invalid}{Environment.NewLine}{errorMessage}");
             convertedInput.Should().Be(invalid);
         }
     }
