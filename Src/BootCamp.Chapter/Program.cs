@@ -19,31 +19,28 @@ namespace BootCamp.Chapter
             Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
             Console.WriteLine($"Also the BMI is {bmi}.");
         }
-           
+        
         public static int promptInt(string message)
         {
-            Console.WriteLine(message);
-            var intToParse = Console.ReadLine();
-            var isInt = int.TryParse(intToParse, out int input);
-            if (!isInt)
+            Console.Write(message + Environment.NewLine);
+            string intToParse = Console.ReadLine();
+            if (string.IsNullOrEmpty(intToParse)) return 0;
+            var isValid = int.TryParse(intToParse, out int input);
+            if (isValid == false)
             {
-                if (intToParse == "") return 0;
-                else
-                {
-                    Console.WriteLine($"\"{intToParse}\" is not a valid number.");
-                    return -1;
-                }
+                Console.Write($"\"{intToParse}\" is not a valid number.");
+                return -1;
             }
             else return input;
         }
 
         public static string promptString(string message)
         {
-            Console.Write(message);
+            Console.Write(message + Environment.NewLine);
             string word = Console.ReadLine();
-            if (word == "")
+            if (string.IsNullOrEmpty(word))
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write("Name cannot be empty.");
                 return "-";
             }
             else return word;
@@ -51,22 +48,17 @@ namespace BootCamp.Chapter
 
         public static float promptFloat(string message)
         {
-            Console.Write(message);
+            Console.Write(message + Environment.NewLine);
             var measuring = Console.ReadLine();
+            if (string.IsNullOrEmpty(measuring)) return 0;
             var isValid = float.TryParse(measuring, out var input);
-            if(!isValid)
+            if(isValid == false)
             {
-                if(measuring == "" || measuring == "0" || input == 0.0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    Console.WriteLine($"\"{measuring}\" is not a valid number.");
-                    return -1;
-                }
+                Console.Write($"\"{measuring}\" is not a valid number.");
+                return -1;
             }
-            return input;
+            
+            else return input;
         }
 
 
