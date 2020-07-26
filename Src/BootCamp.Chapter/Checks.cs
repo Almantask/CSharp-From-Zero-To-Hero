@@ -17,7 +17,7 @@ namespace BootCamp.Chapter
             {
                 return "N/A.";
             }
-
+            
             Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             var lowestBalanceEver = float.MaxValue;
