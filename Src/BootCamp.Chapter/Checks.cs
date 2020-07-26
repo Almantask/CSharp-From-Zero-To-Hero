@@ -230,27 +230,27 @@ namespace BootCamp.Chapter
         }
     
 
-        public static void Clean(string file, string outputFile)
+        public static void Clean(string dirtyFile, string cleanedFile)
         {
-            if (string.IsNullOrEmpty(file) || string.IsNullOrEmpty(outputFile))
+            if (string.IsNullOrEmpty(dirtyFile) || string.IsNullOrEmpty(cleanedFile))
             {
                 throw new ArgumentException("File can not be null or empty");
             }
 
-            var insideACorruptedFile = File.ReadAllText(file);
+            var insideACorruptedFile = File.ReadAllText(dirtyFile);
 
             if (string.IsNullOrEmpty(insideACorruptedFile))
             {
-                File.WriteAllText(outputFile, insideACorruptedFile);
+                File.WriteAllText(cleanedFile, insideACorruptedFile);
                 return;
             }
 
             insideACorruptedFile = insideACorruptedFile.Replace("_", "");
-            File.WriteAllText(outputFile, insideACorruptedFile);
+            File.WriteAllText(cleanedFile, insideACorruptedFile);
 
             try
             {
-                var insideAFile = File.ReadAllText(outputFile);
+                var insideAFile = File.ReadAllText(cleanedFile);
                 string[] arrayString = insideAFile.Split(Environment.NewLine);
                 var people = ArrayOfPeople(arrayString);
 
@@ -259,6 +259,7 @@ namespace BootCamp.Chapter
             {
                 throw new InvalidBalancesException();
             }
+
 
         }
 
