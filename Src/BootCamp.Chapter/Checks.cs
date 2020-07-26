@@ -177,10 +177,10 @@ namespace BootCamp.Chapter
             {
                 var insideAFile = File.ReadAllText(outputFile);
                 string[] arrayString = insideAFile.Split(Environment.NewLine);
-                var people = BalanceStats.ArrayOfPeople(arrayString);
+                var people = ArrayOfPeople(arrayString);
 
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 throw new InvalidBalancesException();
             }
