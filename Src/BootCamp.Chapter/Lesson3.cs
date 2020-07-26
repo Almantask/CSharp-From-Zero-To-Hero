@@ -6,11 +6,7 @@ using System.Globalization;
 namespace BootCamp.Chapter
 {
     public class Lesson3
-    {
-        // Used with float.TryParse to make tests pass ("." instead of "," in tests).
-        static CultureInfo invC = CultureInfo.InvariantCulture;
-        static NumberStyles styles = NumberStyles.Float;
-        
+    {   
         public static void InputUserDataAndPrintWithBMI()
         {
             // Calling the functions and combining output.
@@ -49,10 +45,12 @@ namespace BootCamp.Chapter
         }
         public static float PrintMessageAndReturnFloat(string message)
         {
+            CultureInfo invC = CultureInfo.InvariantCulture;
+            NumberStyles style = NumberStyles.Float;
             Console.WriteLine(message);
             string input = Console.ReadLine();
             if (string.IsNullOrEmpty(input)) { return 0; }
-            if (float.TryParse(input, styles, invC, out float output)) { return output; }
+            if (float.TryParse(input, style, invC, out float output)) { return output; }
             else
             {
                 Console.Write($"\"{input}\" is not a valid number.");
