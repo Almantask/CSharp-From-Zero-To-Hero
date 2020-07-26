@@ -255,9 +255,9 @@ namespace BootCamp.Chapter
                 var people = ArrayOfPeople(arrayString);
 
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                throw new InvalidBalancesException();
+                throw new InvalidBalancesException("Invalid name or balance", exc);
             }
         }
 
