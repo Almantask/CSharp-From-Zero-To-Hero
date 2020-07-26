@@ -259,8 +259,6 @@ namespace BootCamp.Chapter
             {
                 throw new InvalidBalancesException();
             }
-
-
         }
 
 
