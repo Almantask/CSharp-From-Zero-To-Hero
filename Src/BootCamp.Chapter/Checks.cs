@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Text.RegularExpressions;
+
 
 namespace BootCamp.Chapter
 {
@@ -154,10 +157,38 @@ namespace BootCamp.Chapter
 
         public static void Clean(string file, string outputFile)
         {
+            if (string.IsNullOrEmpty(file) || string.IsNullOrEmpty(outputFile))
+            {
+                throw new ArgumentException("File can not be null or empty");
+            }
+
+            var insideACorruptedFile = File.ReadAllText(file);
+
+            if (string.IsNullOrEmpty(insideACorruptedFile))
+            {
+                File.WriteAllText(outputFile, insideACorruptedFile);
+                return;
+            }
+
+            insideACorruptedFile = insideACorruptedFile.Replace("_", "");
+            File.WriteAllText(outputFile, insideACorruptedFile);
+
+            try
+            {
+                var insideAFile = File.ReadAllText(outputFile);
+                string[] arrayString = insideAFile.Split(Environment.NewLine);
+                var people = BalanceStats.ArrayOfPeople(arrayString);
+
+            }
+            catch (Exception exc)
+            {
+                throw new InvalidBalancesException();
+            }
+
         }
 
-            
-            public static Dictionary<string, List<float>> ArrayOfPeople(string[] peopleAndBalances)
+
+        public static Dictionary<string, List<float>> ArrayOfPeople(string[] peopleAndBalances)
             {
                 Dictionary<string, List<float>> people = new Dictionary<string, List<float>>();
 
