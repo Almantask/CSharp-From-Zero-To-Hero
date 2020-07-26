@@ -253,13 +253,15 @@ namespace BootCamp.Chapter
                 var insideAFile = File.ReadAllText(cleanedFile);
                 string[] arrayString = insideAFile.Split(Environment.NewLine);
                 var people = ArrayOfPeople(arrayString);
-
             }
             catch (Exception exc)
             {
                 throw new InvalidBalancesException("Invalid name or balance", exc);
             }
+
         }
+
+
 
 
         public static Dictionary<string, List<float>> ArrayOfPeople(string[] peopleAndBalances)
