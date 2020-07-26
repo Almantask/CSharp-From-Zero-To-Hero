@@ -156,22 +156,36 @@ namespace BootCamp.Chapter
         {
         }
 
+            
             public static Dictionary<string, List<float>> ArrayOfPeople(string[] peopleAndBalances)
             {
                 Dictionary<string, List<float>> people = new Dictionary<string, List<float>>();
+
 
                 for (int i = 0; i < peopleAndBalances.Length; i++)
                 {
                     string[] splitString = peopleAndBalances[i].Split(",");
                     var name = splitString[0];
-                    people.Add(name, new List<float>());
-
-                    for (int j = 1; j < splitString.Length; j++)
+                    if (!Regex.IsMatch(name, @"^[\p{L} '\-]+$"))
                     {
-                        float balances;
-                        var isNumber = float.TryParse(splitString[j], out balances);
-                        if (isNumber)
+                        throw new ArgumentException("Invalid name ");
+                    }
+                    if (splitString.Length > 1)
+                    {
+                        people.Add(name, new List<float>());
+
+                        for (int j = 1; j < splitString.Length; j++)
                         {
+                            float balances;
+
+                            var isNumber = float.TryParse(splitString[j].Replace("£", ""), out balances);
+
+                            if (!isNumber)
+                            {
+                                throw new ArgumentException("Bad balance");
+
+                            }
+
                             people[name].Add(balances);
                         }
                     }
