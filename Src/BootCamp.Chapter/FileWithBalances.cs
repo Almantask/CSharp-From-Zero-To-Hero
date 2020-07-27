@@ -18,9 +18,12 @@ namespace BootCamp.Chapter
 
         public FileWithBalances(string pathToFile)
         {
-            if (String.IsNullOrEmpty(pathToFile)) throw new ArgumentException("Path to source file is empty");
+            if (String.IsNullOrEmpty(pathToFile))
+            {
+                throw new ArgumentException("Path to source file is empty");
+            }
 
-            string content = "";
+            string content;
             try
             {
                 content = File.ReadAllText(pathToFile);
@@ -30,11 +33,7 @@ namespace BootCamp.Chapter
                 throw new ArgumentException("Path to source file does not exist", ex);
             }
 
-            if (String.IsNullOrEmpty(content))
-            {
-                _content = content;
-            }
-            else if (!IsContentValid(content.ToString()))
+            if (!IsContentValid(content.ToString()))
             {
                 content = Clean(content);
             }
@@ -44,14 +43,19 @@ namespace BootCamp.Chapter
         }
         private static bool IsContentValid(string contentToValidate)
         {
-            
+            if (String.IsNullOrEmpty(contentToValidate)) return true;
+
             var differentPeople = contentToValidate.Split(Environment.NewLine);
 
             foreach (var person in differentPeople)
             {
                 var nameAndBalances = person.Split(",");
-                if (!ISNameValid(nameAndBalances[0])) return false;
-                if (nameAndBalances.Length > 1 && !AreBalancesValid(nameAndBalances[1..^0])) return false;
+
+                const int nameIndex = 0;
+                if (!ISNameValid(nameAndBalances[nameIndex])) return false;
+
+                const int firstBalanceIndex = 1;
+                if (nameAndBalances.Length > firstBalanceIndex && !AreBalancesValid(nameAndBalances[firstBalanceIndex..^0])) return false;
                 
             }
 
@@ -61,14 +65,9 @@ namespace BootCamp.Chapter
         private static bool ISNameValid(string name)
         {
             var nameRegex = new Regex(@"[a-zA-Z]+ [a-zA-Z]+'?-?[a-zA-Z]+[.]?$");
+            var isMatch = nameRegex.IsMatch(name, 0);
 
-            if (!nameRegex.IsMatch(name, 0))
-            {
-                Console.WriteLine(name);
-                return false;
-            }
-
-            return true;
+            return isMatch;
         }
 
         private static bool AreBalancesValid(string[] balances)
@@ -91,7 +90,10 @@ namespace BootCamp.Chapter
             var contentToClean = content;
             contentToClean = contentToClean.Replace("_", "");
 
-            if (!IsContentValid(contentToClean)) throw new InvalidBalancesException("Balances file is still invalid after cleaning up the file");
+            if (!IsContentValid(contentToClean))
+            {
+                throw new InvalidBalancesException("Balances file is still invalid after cleaning up the file");
+            }
 
             return contentToClean;
         }

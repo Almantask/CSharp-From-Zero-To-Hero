@@ -55,7 +55,11 @@ namespace BootCamp.Chapter
 
         private static PeopleAndBalances CreatePeopleObjectFromArrayInput(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null) peopleAndBalances = new string[0];
+            if (peopleAndBalances == null)
+            {
+                peopleAndBalances = new string[0];
+            }
+
             return new PeopleAndBalances(String.Join(Environment.NewLine, peopleAndBalances));
         }
     }
