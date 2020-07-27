@@ -2,14 +2,35 @@
 using System.Collections.Generic;
 using System.Text;
 using BootCamp.Chapter.Computer;
+using BootCamp.Chapter.Computer.Mac;
 
 namespace BootCamp.Chapter
 {
-    public class MacFactory
+    public class MacFactory : ComputerFactory
     {
-        public DesktopComputer Assemble()
+        public  override Body GetBody()
         {
-            return new DesktopComputer();
+            return new MacBody();
+        }
+        public override Ram GetRam()
+        {
+            return new MacRam();
+        }
+        public override Cpu GetCpu()
+        {
+            return new MacCpu();
+        }
+        public override Gpu GetGpu()
+        {
+            return new MacGpu();
+        }
+        public override HardDisk GetHardDisk()
+        {
+            return new MacHardDisk();
+        }
+        public override Motherboard GetMotherboard()
+        {
+            return new MacMotherboard();
         }
     }
 }
