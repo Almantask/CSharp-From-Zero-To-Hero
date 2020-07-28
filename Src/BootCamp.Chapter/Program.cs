@@ -7,7 +7,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            LoggedProgram.Run();
+            GatherPersonalInformation.Run();
         }
 
         

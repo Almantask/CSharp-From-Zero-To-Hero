@@ -3,12 +3,19 @@ using System;
 
 namespace BootCamp.Chapter
 {
-    public static class LoggedProgram
+    public static class GatherPersonalInformation
     {
         public static void Run()
         {
             var logger = ChooseLogger();
             logger.LogMessage("Starting program.");
+
+            var person = new Person();
+            person.SetInformation(logger);
+            logger.LogMessage(person.GetInformation());
+            logger.LogMessage(person.CalculateBmi());
+
+
             logger.LogMessage("Program shutting down.");
         }
 
@@ -29,5 +36,6 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Please choose: 'a' - console; 'b' - file");
             }
         }
+
     }
 }
