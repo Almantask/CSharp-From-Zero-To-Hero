@@ -61,13 +61,8 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array == null || array.Length < 1) { return array; }
-            var newArray = new int[array.Length - 1];
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-            return newArray;
+            if (array == null) { return array; }
+            else { return RemoveAt(array, array.Length - 1); }
         }
 
         /// <summary>
@@ -76,15 +71,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length < 1) { return array; }
-            // Create new array with one less element and return if new array is empty.
-            var newArray = new int[array.Length - 1];
-            if (newArray.Length < 1) { return newArray; }
-            for (int i = 0; i < array.Length - 1 ; i++)
-            {
-                newArray[i] = array[i + 1];
-            }
-            return newArray;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -117,14 +104,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if(array == null) { return new int[1] { number }; }
-            var newArray = new int[array.Length + 1];
-            newArray[0] = number;
-            for (int i = 0; i < array.Length; i++)
-            {
-                newArray[i + 1] = array[i];
-            }
-            return newArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -135,14 +115,8 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array == null) { return new int[1] { number }; }
-            var newArray = new int[array.Length + 1];
-            for (int i = 0; i < array.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-            newArray[array.Length] = number;
-            return newArray;
+            if (array == null) { return InsertAt(array, number, 0); }
+            else { return InsertAt(array, number, array.Length); }
         }
 
         /// <summary>
