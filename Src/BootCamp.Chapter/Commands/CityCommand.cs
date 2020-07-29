@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace BootCamp.Chapter.Commands
 {
-    class CityCommand : ICommand, ICsvGenerator
+    class CityCommand : Command
     {
-        private readonly string _inputCommand;
+        public readonly string _inputCommand;
         private string[] _subCommands;
-        private Dictionary<string, List<decimal>> _resultsOfCommand = new Dictionary<string, List<decimal>>();
+        private Dictionary<string, List<decimal>> _tempDictionary = new Dictionary<string, List<decimal>>();
         private Dictionary<string, decimal> _statisticsDictionary = new Dictionary<string, decimal>();
-        private IOrderedEnumerable<KeyValuePair<string, decimal>> _outOrderedDict;
+        private Dictionary<string, decimal> _resultsOfCommand;
         private readonly string _outputPath;
 
         public CityCommand(string inputCommand, string outputPath)
@@ -19,16 +19,18 @@ namespace BootCamp.Chapter.Commands
             _inputCommand = inputCommand;
             _outputPath = outputPath;
             VerifyCommand(_inputCommand);
+
+            CsvGenerator<CityCommand> csvGenerator = new CsvGenerator<CityCommand>(_outputPath, this);
+            csvGenerator.GenerateCsvCity();
         }
 
-        // Implement the solution such tha depending on items or money, the correct csv file is generated.
         public void GenerateCsv(string outputPath)
         {
             try
             {
                 Console.WriteLine($"Generating .csv file: [{_inputCommand}]");
                 int count = 0;
-                using (StreamWriter writer = new StreamWriter(File.Create($@"{outputPath}//city_command_{_subCommands[0]}_{_subCommands[1]}.csv")))
+                using (StreamWriter writer = new StreamWriter(File.Create($@"{outputPath}//City{_subCommands[0]}{_subCommands[1]}.csv")))
                 {
                     while (true)
                     {
@@ -39,7 +41,7 @@ namespace BootCamp.Chapter.Commands
                         }
                         else
                         {
-                            foreach (var pair in _outOrderedDict)
+                            foreach (var pair in _resultsOfCommand)
                             {
                                 writer.WriteLine($"{pair.Key},{pair.Value}");
                             }
@@ -59,17 +61,17 @@ namespace BootCamp.Chapter.Commands
             switch (subCommand)
             {
                 case "items":
-                    return "City,Number of Items Sold";
+                    return "City,Num_Items_Sold";
 
                 case "money":
-                    return "City,Amount of Money Made";
+                    return "City,Money_Made";
 
                 default:
                     return null;
             }
         } 
 
-        public void ExecuteCommand(TransactionDataParser transactionData)
+        public override void ExecuteCommand(TransactionDataParser transactionData)
         {
             List<Transaction> transactions = transactionData.Transactions;
 
@@ -83,42 +85,47 @@ namespace BootCamp.Chapter.Commands
         }
 
         // Potentially can make this more 'DRY', seeming too much code which might be able to be simplified
-        public void ComputeStats()
+        public override void ComputeStats()
         {
             if (_subCommands[1] == "items")
             {
-                foreach (var pair in _resultsOfCommand)
+                foreach (var pair in _tempDictionary)
                 {
                     _statisticsDictionary.Add(pair.Key, pair.Value.Count);
                 }
 
-                _outOrderedDict = _subCommands[0] == "max" ? _statisticsDictionary.OrderByDescending(x => x.Value) : _statisticsDictionary.OrderBy(x => x.Value);
+                var tempOrderedDict = _subCommands[0] == "max" ? _statisticsDictionary.OrderByDescending(x => x.Value) : _statisticsDictionary.OrderBy(x => x.Value);
+
+                _resultsOfCommand =
+                    tempOrderedDict.ToDictionary(pair => pair.Key, pair => pair.Value);
             }
             else
             {
-                foreach (var pair in _resultsOfCommand)
+                foreach (var pair in _tempDictionary)
                 {
                     _statisticsDictionary.Add(pair.Key, pair.Value.Sum());
                 }
 
-                _outOrderedDict = _subCommands[0] == "min" ? _statisticsDictionary.OrderBy(x => x.Value) : _statisticsDictionary.OrderByDescending(x => x.Value);
+                var tempOrderedDict = _subCommands[0] == "min" ? _statisticsDictionary.OrderBy(x => x.Value) : _statisticsDictionary.OrderByDescending(x => x.Value);
+                _resultsOfCommand =
+                    tempOrderedDict.ToDictionary(pair => pair.Key, pair => pair.Value);
             }
         }
 
         private void UpdatingDictionary(Transaction transaction)
         {
             string city = transaction.Location;
-            if (!_resultsOfCommand.ContainsKey(city))
+            if (!_tempDictionary.ContainsKey(city))
             {
-                _resultsOfCommand.Add(city, new List<decimal>() { transaction.Price });
+                _tempDictionary.Add(city, new List<decimal>() { transaction.Price });
             }
             else
             {
-                _resultsOfCommand[city].Add(transaction.Price);
+                _tempDictionary[city].Add(transaction.Price);
             }
         }
 
-        public void VerifyCommand(string inputCommand)
+        public override void VerifyCommand(string inputCommand)
         {
             string[] splitCommand = inputCommand.Split(' ');
 

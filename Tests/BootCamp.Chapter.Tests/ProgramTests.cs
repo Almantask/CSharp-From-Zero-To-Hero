@@ -73,7 +73,7 @@ namespace BootCamp.Chapter.Tests
 
             Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile });
             
-            const string expectedOutput = "Expected/DailyKwiki.csv";
+            const string expectedOutput = "Expected/DailyKwikiMart.csv";
             AssertMatchingContents(expectedOutput, OutputFile);
         }
 
@@ -89,12 +89,13 @@ namespace BootCamp.Chapter.Tests
             AssertMatchingContents(expectedOutput, OutputFile);
         }
 
+        // output file reference missing - Added
         [Fact]
         public void Main_When_Valid_Full_Command_Creates_Files_Based_On_Shop_With_All_Transactions()
         {
             const string cmd = "full";
 
-            Program.Main(new []{ValidTransactionsFile, cmd});
+            Program.Main(new []{ValidTransactionsFile, cmd, OutputFile});
 
             using (new AssertionScope())
             {
@@ -103,6 +104,7 @@ namespace BootCamp.Chapter.Tests
                 AssertMatchingContents("Expected/Wallmart.csv", "Wallmart.csv");
             }
         }
+
 
         private void AssertMatchingContents(string expected, string actual)
         {

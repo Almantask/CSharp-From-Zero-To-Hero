@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
         public ApplicationController(string[] initInputArguments)
         {
 
-            ArgumentsParser.TryParse(initInputArguments, out string [] inputArguments);
+            if (!ArgumentsParser.TryParse(initInputArguments, out string [] inputArguments)) throw new ArgumentException("Input Arguments are not valid");
             _inputArguments = inputArguments;
             _inputPath = _inputArguments[0];
             _cmd = _inputArguments[1];
@@ -54,32 +54,6 @@ namespace BootCamp.Chapter
                 default:
                     Console.WriteLine("Error: No command executed");
                     break;
-            }
-        }
-
-        private string ArgArrayToString(string[] inputArgs)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            if (inputArgs != null)
-            {
-                foreach (var arg in inputArgs)
-                {
-                    if (sb.Length == 0)
-                    {
-                        sb.Append(arg);
-                    }
-                    else
-                    {
-                        sb.Append($" {arg}");
-                    }
-                }
-
-                return sb.ToString();
-            }
-            else
-            {
-                throw new ArgumentNullException("Input cannot be null");
             }
         }
     }

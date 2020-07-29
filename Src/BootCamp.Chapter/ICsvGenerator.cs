@@ -6,6 +6,9 @@ namespace BootCamp.Chapter
 {
     public interface ICsvGenerator
     {
-        void GenerateCsv(string outputPath);
+        void GenerateCsvCity();
+        void GenerateCsvTime();
+        void GenerateCsvFull();
+        void GenerateCsvDaily();
     }
 }

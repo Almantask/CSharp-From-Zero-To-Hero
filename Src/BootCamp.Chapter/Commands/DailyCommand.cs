@@ -6,14 +6,14 @@ using System.Text;
 
 namespace BootCamp.Chapter.Commands
 {
-    class DailyCommand : ICommand, ICsvGenerator
+    class DailyCommand : Command
     {
         private readonly string _inputCommand;
         private readonly string _outputPath;
         private string _shopName;
         private bool _displayAscending;
         private readonly TransactionDataParser _transactionData;
-        private IOrderedEnumerable<KeyValuePair<int, List<decimal>>> _resultsOfCommand;
+        private Dictionary<int, List<Decimal>> _resultsOfCommand;
         private Dictionary<int, List<decimal>> _tempDictionary = new Dictionary<int, List<decimal>>();
 
         public DailyCommand(string inputCommand, string outputPath, TransactionDataParser transactionData)
@@ -25,7 +25,7 @@ namespace BootCamp.Chapter.Commands
             VerifyCommand(_inputCommand);
         }
 
-        public void VerifyCommand(string inputCommand)
+        public override void VerifyCommand(string inputCommand)
         {
             string[] splitCommand = inputCommand.Split(' ');
             StringBuilder sb = new StringBuilder();
@@ -54,7 +54,7 @@ namespace BootCamp.Chapter.Commands
                 : throw new ArgumentException($"Shop Name [{sb}] is not valid");
         }
 
-        public void ExecuteCommand(TransactionDataParser transactionData)
+        public override void ExecuteCommand(TransactionDataParser transactionData)
         {
             _ = transactionData;
 
@@ -63,7 +63,7 @@ namespace BootCamp.Chapter.Commands
             GenerateCsv(_outputPath);
         }
 
-        public void ComputeStats()
+        public override void ComputeStats()
         {
             var newData = _transactionData.Transactions.Where(x => x.ShopName == _shopName);
 
@@ -79,9 +79,12 @@ namespace BootCamp.Chapter.Commands
                 }
             }
             
-            _resultsOfCommand = _displayAscending
+            var tempOrderedDict = _displayAscending
                 ? _tempDictionary.OrderBy(x => x.Value.Sum())
                 : _tempDictionary.OrderByDescending(x => x.Value.Sum());
+
+            _resultsOfCommand =
+                tempOrderedDict.ToDictionary(pair => pair.Key, pair => pair.Value);
         }
 
         public void GenerateCsv(string outputPath)

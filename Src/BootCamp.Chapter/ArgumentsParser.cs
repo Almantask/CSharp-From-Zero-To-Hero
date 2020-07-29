@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Attempts to parse the users inputs. Performs checks on the input arguments and returns a bool and the arguments depending on whether they are valid.
         /// </summary>
-        /// <param name="inputString"></param>
+        /// <param name="args"></param>
         /// <param name="arguments"></param>
         /// <returns></returns>
         public static bool TryParse(string[] args, out string[] arguments)
@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
             
             bool[] inputsValid = new bool[3]{ false, false, false};
             inputsValid[0] = PathInFileExists(pathIn) ? true : throw new InputFileNotFoundOrEmptyException($"File at path {pathIn} was not found");
-            inputsValid[1] = ValidateCommand(command) ? true : throw new InvalidCommandException($"Command '{command}' does not exist. Type \"help\" for a list of commands");
+            inputsValid[1] = ValidateCommand(command) ? true : throw new InvalidCommandException($"Commands '{command}' does not exist. Type \"help\" for a list of commands");
             inputsValid[2] = PathOutDirectoryExists(pathOut) ? true : throw new OutputPathNotFoundException($"Directory at path {pathOut} was not found");
             
             if (!inputsValid.Any(x => false))
@@ -41,53 +41,6 @@ namespace BootCamp.Chapter
             }
         }
 
-        // potentially remove
-        private static List<string> ObtainArguments(string inputString)
-        {
-            List<char> currArg = new List<char>();
-            List<string> args = new List<string>();
-            int lenOfCommand = inputString.Length;
-
-            for(int i = 0; i < lenOfCommand; i++)
-            {
-                // first char
-                if (inputString[i] != '"' && currArg.Count == 0 && inputString[i] != ' ')
-                {
-                    currArg.Add(inputString[i]);
-                }
-                // Next char
-                else if (inputString[i] != '"' && currArg.Count != 0)
-                {
-                    currArg.Add(inputString[i]);
-                }
-                // End of a Arg
-                else if (inputString[i] == '"' && currArg.Count != 0)
-                {
-                    args.Add(currArg.CharListToString());
-                    currArg.Clear();
-                }
-                // Skips if blank space between args
-                else if (inputString[i] == ' ' && inputString[i-1] != '"' && inputString[i + 1] != '"')
-                {
-                    continue;
-                }
-            }
-
-            return args;
-        }
-
-        private static string CharListToString(this List<char> input)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            foreach(char letter in input)
-            {
-                stringBuilder.Append(letter);
-            }
-
-            return stringBuilder.ToString();      
-        }
-
         private static bool PathInFileExists(string pathIn)
         {
             return File.Exists(pathIn);
@@ -98,7 +51,6 @@ namespace BootCamp.Chapter
             return Directory.Exists(pathOut);
         }
 
-        // ToDo: Implement the validation logic of the input command
         private static bool ValidateCommand(string input)
         {
             // update when commands class and functionality has been created

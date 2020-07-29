@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace BootCamp.Chapter.Commands
 {
-    public class TimeCommand : ICommand, ICsvGenerator
+    public class TimeCommand : Command
     {
         private TimeSpan[] _timeSpans;
-        private Dictionary<int, List<decimal>> _resultsOfCommand = new Dictionary<int, List<decimal>>();
-        private Dictionary<int, string[]> _computedStats = new Dictionary<int, string[]>();
+        private Dictionary<int, List<decimal>> _organisedDictionary = new Dictionary<int, List<decimal>>();
+        public IDictionary ResultsOfCommand = new Dictionary<int, string[]>();
+
         private readonly string _outputPath;
         private int highestHour = 0;
         private decimal highestEarnedHour = 0;
@@ -23,7 +25,7 @@ namespace BootCamp.Chapter.Commands
             VerifyCommand(inputCommand);
         }
 
-        public void ExecuteCommand(TransactionDataParser transactionData)
+        public override void ExecuteCommand(TransactionDataParser transactionData)
         {
             List<Transaction> transactions = transactionData.Transactions;
             if (_timeSpans == default)
@@ -49,23 +51,25 @@ namespace BootCamp.Chapter.Commands
             }
 
             ComputeStats();
+
+            
             
             GenerateCsv(_outputPath);
         }
 
         private void UpdatingDictionary(Transaction transaction, int hour)
         {
-            if (!_resultsOfCommand.ContainsKey(hour))
+            if (!_organisedDictionary.ContainsKey(hour))
             {
-                _resultsOfCommand.Add(hour, new List<decimal>() { transaction.Price });
+                _organisedDictionary.Add(hour, new List<decimal>() { transaction.Price });
             }
             else
             {
-                _resultsOfCommand[hour].Add(transaction.Price);
+                _organisedDictionary[hour].Add(transaction.Price);
             }
         }
 
-        public void VerifyCommand(string inputCommand)
+        public override void VerifyCommand(string inputCommand)
         {
             string[] splitCommand = inputCommand.Split(' ');
 
@@ -104,7 +108,7 @@ namespace BootCamp.Chapter.Commands
                         }
                         else
                         {
-                            foreach (var hour in _computedStats)
+                            foreach (var hour in ResultsOfCommand)
                             {
                                 if (hour.Key == highestHour)
                                 {
@@ -126,12 +130,12 @@ namespace BootCamp.Chapter.Commands
             }
         }
 
-        public void ComputeStats()
+        public override void ComputeStats()
         {
-            foreach (var hourEarnings in _resultsOfCommand)
+            foreach (var hourEarnings in _organisedDictionary)
             {
                 string[] newValues = { hourEarnings.Value.Count().ToString(), hourEarnings.Value.Average().ToString() };
-                _computedStats.Add(hourEarnings.Key, newValues);
+                ResultsOfCommand.Add(hourEarnings.Key, newValues);
 
                 if (hourEarnings.Value.Average() > highestEarnedHour)
                 {
