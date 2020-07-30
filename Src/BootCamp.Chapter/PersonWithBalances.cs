@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
             return _name;
         }
 
-     public float GetLowestBalance()
+        public float GetLowestBalance()
         {
             return _balances.Min();
         }
@@ -31,15 +31,15 @@ namespace BootCamp.Chapter
             return _balances.Max();
         }
 
-        public Tuple <bool,float> GetBiggestLoss()
+        public Tuple<bool, float> GetBiggestLoss()
         {
             var biggestLossEver = float.MaxValue;
-            if(_balances.Count < 2)
+            if (_balances.Count < 2)
             {
-                return new Tuple <bool, float> (false, 0.0f);
+                return new Tuple<bool, float>(false, 0.0f);
             }
 
-            for (int i = 0; i < _balances.Count-1; i++)
+            for (int i = 0; i < _balances.Count - 1; i++)
             {
                 var balanceDifferences = _balances[i + 1] - _balances[i];
                 if (balanceDifferences < biggestLossEver)
@@ -54,7 +54,7 @@ namespace BootCamp.Chapter
         {
             return _balances.Last();
         }
-       
+
 
     }
 }

@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
                 return arrayIsEmpty;
             }
 
-            var people = ArrayOfPeople(peopleAndBalances);
+            List<PersonWithBalances> people = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             var biggestBalanceEver = float.MinValue;
 
@@ -51,7 +51,7 @@ namespace BootCamp.Chapter
             {
                 return arrayIsEmpty;
             }
-            
+
             List<PersonWithBalances> person = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             var biggestLostEver = float.MaxValue;
@@ -59,7 +59,7 @@ namespace BootCamp.Chapter
             foreach (var personBalances in person)
             {
                 var personLoss = personBalances.GetBiggestLoss();
-                if(personLoss.Item1 == false)
+                if (personLoss.Item1 == false)
                 {
                     continue;
                 }
@@ -191,7 +191,6 @@ namespace BootCamp.Chapter
                 }
             }
             return people;
-
         }
 
         public static string BuildCurrancy(float currancy)
