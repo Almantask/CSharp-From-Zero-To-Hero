@@ -1,15 +1,8 @@
 ﻿using BootCamp.Chapter.Items;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
-    /// <summary>
-    /// Task: simulate a player who has an inventory.
-    /// Player can add or remove items from inventory.
-    ///
-    /// Extra task: player has equipement and maximum weight he/she can carry.
-    /// Player should not be able to take items if already at maximum weight.
-    /// Player should expose TotalAttack, TotalDefense stats.
-    /// </summary>
     public class Player
     {
         /// <summary>
@@ -17,70 +10,68 @@ namespace BootCamp.Chapter
         /// </summary>
         private const int baseCarryWeight = 30;
 
-        private string _name;
-        private int _hp;
+        public string Name { get; set; }
+        public int Hp { get; set; }
+        public int Strenght { get; set; }
 
-        private int _strenght;
-
-        public int GetFullCarryWeight()
+        public int FullCarryWeight 
         {
-            int fullCarryWeight = baseCarryWeight + _strenght * 10;
-            return fullCarryWeight;
+            get { return baseCarryWeight + Strenght * 10; }
         }
 
-        private Inventory _inventory;
+        public Inventory Inventory { get; }
 
-        private Equipment _equipment;
+        public Equipment Equipment { get; }
 
 
 
         public Player()
         {
-            _inventory = new Inventory();
-            _equipment = new Equipment();
+            Inventory = new Inventory();
+            Equipment = new Equipment();
         }
 
-        public Item[] GetItems()
+        public List<Item> GetItems()
         {
-            return _inventory.GetItems();
+            return Inventory.Items;
         }
 
         public void AddItem(Item item)
         {
-            _inventory.AddItem(item);
+            Inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-            _inventory.RemoveItem(item);
+            Inventory.RemoveItem(item);
         }
 
-        public Item[] GetItems(string name)
+        public List<Item> GetItems(string name)
         {
-            return _inventory.GetItems(name);
+            return Inventory[name];
         }
 
         #region Extra challenge: Equipment
         public float GetTotalDefence()
         {
-            return _equipment.GetTotalDefense();
+            return Equipment.GetTotalDefense();
         }
 
         public float GetTotalAttack()
         {
-            return _equipment.GetTotalAttack();
+            return Equipment.GetTotalAttack();
         }
 
         public void Equip(Headpiece head)
         {
             if (!CanCarryNewItem(head)) return;
-            _equipment.SetHead(head);
+            Equipment.Head = head;
         }
 
         public void Equip(Chestpiece chest)
         {
             if (!CanCarryNewItem(chest)) return;
-            _equipment.SetChest(chest);
+            Equipment.Chest = chest;
         }
 
         public void Equip(Shoulderpiece shoulder, bool isLeft)
@@ -89,18 +80,18 @@ namespace BootCamp.Chapter
 
             if (isLeft)
             {
-                _equipment.SetLeftShoulder(shoulder);
+                Equipment.LeftShoulder = shoulder;
             }
             else
             {
-                _equipment.SetRightShoulder(shoulder);
+                Equipment.RightShoulder = shoulder;
             }
         }
 
         public void Equip(Legspiece leg)
         {
             if (!CanCarryNewItem(leg)) return;
-            _equipment.SetLeg(leg);
+            Equipment.Legs = leg;
         }
 
         public void Equip(Armpiece arm, bool isLeft)
@@ -109,28 +100,28 @@ namespace BootCamp.Chapter
 
             if (isLeft)
             {
-                _equipment.SetLeftArmp(arm);
+                Equipment.LeftArm = arm;
             }
             else
             {
-                _equipment.SetRightArm(arm);
+                Equipment.RightArm = arm;
             }
         }
 
         public void Equip(Gloves gloves)
         {
             if (!CanCarryNewItem(gloves)) return;
-            _equipment.SetGloves(gloves);
+            Equipment.Gloves = gloves;
         }
         #endregion
 
         private bool CanCarryNewItem(Item item)
         {
             if (item == null) return true;
-            var currentWeight = _equipment.GetTotalWeight();
-            var newWeight = currentWeight + item.GetWeight();
+            var currentWeight = Equipment.GetTotalWeight();
+            var newWeight = currentWeight + item.Weight;
 
-            return (newWeight <= GetFullCarryWeight());
+            return (newWeight <= FullCarryWeight);
         }
     }
 }

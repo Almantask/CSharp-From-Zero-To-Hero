@@ -1,81 +1,52 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Inventory
     {
-        private Item[] _items;
-        public Item[] GetItems()
-        {
-            return _items;
-        }
-
+        public List<Item> Items { get; }
         public Inventory()
         {
-            _items = new Item[0];
+            Items = new List<Item>();
         }
 
-        public Item[] GetItems(string name)
+        public List<Item> this[string name]
         {
-
-            foreach (var item in _items)
+            get
             {
-                if (item.GetName() == name)
+                return GetItemsByName(name);
+            }
+        }
+
+        public List<Item> GetItemsByName(string name)
+        {
+            var items = new List<Item>();
+            foreach (var item in Items)
+            {
+                if (item.Name == name)
                 {
-                    return new Item[1] { item };
+                    items.Add(item);
                 }
             }
-            return new Item[0];
+            return items;
         }
 
         public void AddItem(Item item)
         {
-            Item[] newItems = new Item[_items.Length + 1];
-
-            for (int i = 0; i < _items.Length; i++)
-            {
-                newItems[i] = _items[i];
-            }
-            newItems[^1] = item;
-
-            _items = newItems;
+            Items.Add(item);
         }
 
         public void RemoveItem(Item item)
         {
-            if (!DoesItemExistInInventory(item.GetName()))
-            {
-                return;
-            }
-
-            Item[] newItems = new Item[_items.Length - 1];
-
-            bool wasItemFound = false;
-            for (int i = 0; i < _items.Length; i++)
-            {
-                if (_items[i] == item)
-                {
-                    wasItemFound = true;
-                    continue;
-                }
-
-                if (!wasItemFound)
-                {
-                    newItems[i] = _items[i];
-                }
-                else
-                {
-                    newItems[i - 1] = _items[i];
-                }
-
-            }
-            _items = newItems;
+            Items.Remove(item);
         }
 
         public bool DoesItemExistInInventory(string name)
         {
 
-            foreach (var existingItem in _items)
+            foreach (var existingItem in Items)
             {
-                if (existingItem.GetName() == name)
+                if (existingItem.Name == name)
                 {
                     return true;
                 }

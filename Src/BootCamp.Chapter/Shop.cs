@@ -1,71 +1,69 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
+        public decimal Money { get; set; }
 
-        private Inventory _inventory;
+        public Inventory Inventory { get; set; }
+        public List<Item> Items
+        {
+            get { return Inventory.Items; }
+        }
 
         public Shop()
         {
-            _money = 0;
-            _inventory = new Inventory();
+            Money = 0;
+            Inventory = new Inventory();
         }
 
         public Shop(decimal money)
         {
-            _money = money;
-            _inventory = new Inventory();
+            Money = money;
+            Inventory = new Inventory();
         }
 
-        public Item[] GetItems()
-        {
-            return _inventory.GetItems();
-        }
 
         public void Add(Item item)
         {
-            if (_inventory.DoesItemExistInInventory(item.GetName()))
+            if (Inventory.DoesItemExistInInventory(item.Name))
             {
                 return;
             }
 
-            _inventory.AddItem(item);
+            Inventory.AddItem(item);
         }
 
         public void Remove(string name)
         {
-            if (_inventory.GetItems(name).Length == 0) return;
+            if (Inventory[name].Count == 0) return;
 
-            var itemToRemove = _inventory.GetItems(name)[0];
-            _inventory.RemoveItem(itemToRemove);
+            var itemToRemove = Inventory[name][0];
+            Inventory.RemoveItem(itemToRemove);
         }
 
         public decimal Buy(Item item)
         {
-            if (item.GetPrice() > _money)
+            if (item.Price > Money)
             {
                 return 0;
             }
 
-            _inventory.AddItem(item);
-            _money -= item.GetPrice();
-            return item.GetPrice();
+            Inventory.AddItem(item);
+            Money -= item.Price;
+            return item.Price;
         }
 
-        public Item Sell(string item)
+        public Item Sell(string itemName)
         {
-            if (_inventory.GetItems(item).Length == 0)
+            if (Inventory[itemName].Count == 0)
             {
                 return null;
             }
 
-            var itemToSell = _inventory.GetItems(item)[0];
-            _money += itemToSell.GetPrice();
+            var itemToSell = Inventory[itemName][0];
+            Money += itemToSell.Price;
 
             return itemToSell;
         }

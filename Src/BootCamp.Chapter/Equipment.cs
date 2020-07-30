@@ -7,63 +7,19 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
-        private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
-        {
-            _weapon = weapon;
-        }
-
-        private Headpiece _head;
-        public void SetHead(Headpiece head)
-        {
-            _head = head;
-        }
-
-        private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
-        {
-            _chest = chestpiece;
-        }
-
-        private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece shoulder)
-        {
-            _leftShoulder = shoulder;
-        }
-
-        private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
-        {
-            _rightShoulder = shoulder;
-        }
-
-        private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
-        {
-            _legs = legs;
-        }
-
-        private Armpiece _leftArm;
-        public void SetLeftArmp(Armpiece arm)
-        {
-            _leftArm = arm;
-        }
-
-        private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
-        {
-            _rightArm = arm;
-        }
-
-        private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
-        {
-            _gloves = gloves;
-        }
+        public Weapon Weapon { get; set; }
+        public Headpiece Head { get; set; }
+        public Chestpiece Chest { get; set; }
+        public Shoulderpiece LeftShoulder { get; set; }
+        public Shoulderpiece RightShoulder { get; set; }
+        public Legspiece Legs { get; set; }
+        public Armpiece LeftArm { get; set; }
+        public Armpiece RightArm { get; set; }
+        public Gloves Gloves { get; set; }
 
         public float GetTotalWeight()
         {
-            var items = new Item[] { _weapon, _head, _chest, _leftShoulder, _rightShoulder, _legs, _leftArm, _rightArm, _gloves };
+            var items = new Item[] { Weapon, Head, Chest, LeftShoulder, RightShoulder, Legs, LeftArm, RightArm, Gloves };
             float totalWeight = 0;
 
             foreach (var item in items)
@@ -73,7 +29,7 @@ namespace BootCamp.Chapter
                     continue;
                 }
 
-                totalWeight += item.GetWeight();
+                totalWeight += item.Weight;
             }
 
             return totalWeight;
@@ -81,7 +37,7 @@ namespace BootCamp.Chapter
 
         public float GetTotalDefense()
         {
-            var items = new Armor[] { _head, _chest, _leftShoulder, _rightShoulder, _legs, _leftArm, _rightArm, _gloves };
+            var items = new Armor[] { Head, Chest, LeftShoulder, RightShoulder, Legs, LeftArm, RightArm, Gloves };
             float totalDefence = 0;
 
             foreach (var item in items)
@@ -91,7 +47,7 @@ namespace BootCamp.Chapter
                     continue;
                 }
 
-                totalDefence += item.GetDefence();
+                totalDefence += item.Defence;
             }
 
             return totalDefence;
@@ -99,12 +55,12 @@ namespace BootCamp.Chapter
 
         public float GetTotalAttack()
         {
-            if (_weapon == null)
+            if (Weapon == null)
             {
                 return 0;
             }
 
-            return _weapon.GetAttack();
+            return Weapon.Attack;
         }
     }
 }
