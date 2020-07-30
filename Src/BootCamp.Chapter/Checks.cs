@@ -11,32 +11,33 @@ namespace BootCamp.Chapter
     // This class is used to have a freedom of design, but with tests applied.
     public static class Checks
     {
+        const string arrayIsEmpty = "N/A.";
+
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
-                return "N/A.";
+                return arrayIsEmpty;
             }
 
-            Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
+            var people = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             var biggestBalanceEver = float.MinValue;
 
-            foreach (var personBalances in peopleBalances)
+            foreach (var personBalances in people)
             {
-                foreach (var balance in personBalances.Value)
+                var balance = personBalances.GetHighestBalance();
+                if (balance > biggestBalanceEver)
                 {
-                    if (balance > biggestBalanceEver)
-                    {
-                        names.Clear();
-                        biggestBalanceEver = balance;
-                        names.Add(personBalances.Key);
-                    }
-                    if (Math.Round((decimal)balance, 2) == (Math.Round((decimal)biggestBalanceEver, 2)))
-                    {
-                        names.Add(personBalances.Key);
-                    }
+                    names.Clear();
+                    biggestBalanceEver = balance;
+                    names.Add(personBalances.GetName());
                 }
+                if (Math.Round((decimal)balance, 2) == (Math.Round((decimal)biggestBalanceEver, 2)))
+                {
+                    names.Add(personBalances.GetName());
+                }
+
             }
             return $"{BuildNamesString(names)} had the most money ever. ¤{biggestBalanceEver}.";
         }
@@ -48,35 +49,37 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
-                return "N/A.";
+                return arrayIsEmpty;
             }
-
-            Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
+            
+            List<PersonWithBalances> person = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             var biggestLostEver = float.MaxValue;
 
-            foreach (var personBalances in peopleBalances)
+            foreach (var personBalances in person)
             {
-                for (int i = 0; i < personBalances.Value.Count - 1; i++)
+                var personLoss = personBalances.GetBiggestLoss();
+                if(personLoss.Item1 == false)
                 {
-                    var balanceDifferences = personBalances.Value[i + 1] - personBalances.Value[i];
-                    if (balanceDifferences < biggestLostEver)
-                    {
-                        names.Clear();
-                        biggestLostEver = balanceDifferences;
-                        names.Add(personBalances.Key);
-                        continue;
-                    }
-                    if (Math.Round((decimal)balanceDifferences, 2) == (Math.Round((decimal)biggestLostEver, 2)))
-                    {
-                        names.Add(personBalances.Key);
-                    }
+                    continue;
                 }
+                if (personLoss.Item2 < biggestLostEver)
+                {
+                    names.Clear();
+                    biggestLostEver = personLoss.Item2;
+                    names.Add(personBalances.GetName());
+                    continue;
+                }
+                if (Math.Round((decimal)personLoss.Item2, 2) == (Math.Round((decimal)biggestLostEver, 2)))
+                {
+                    names.Add(personBalances.GetName());
+                }
+
             }
 
             if (names.Count == 0)
             {
-                return "N/A.";
+                return arrayIsEmpty;
             }
             return $"{BuildNamesString(names)} lost the most money. {BuildCurrancy(biggestLostEver)}.";
         }
@@ -87,27 +90,26 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
-                return "N/A.";
+                return arrayIsEmpty;
             }
 
-            Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
+            List<PersonWithBalances> people = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             var biggestLastBalance = float.MinValue;
 
-            foreach (var personBalances in peopleBalances)
+            foreach (var personBalances in people)
             {
+                if (personBalances.GetCurrentBalance() > biggestLastBalance)
                 {
-                    if (personBalances.Value.Last() > biggestLastBalance)
-                    {
-                        names.Clear();
-                        biggestLastBalance = personBalances.Value.Last();
-                        names.Add(personBalances.Key);
-                    }
-                    else if (personBalances.Value.Last() == biggestLastBalance)
-                    {
-                        names.Add(personBalances.Key);
-                    }
+                    names.Clear();
+                    biggestLastBalance = personBalances.GetCurrentBalance();
+                    names.Add(personBalances.GetName());
                 }
+                else if (personBalances.GetCurrentBalance() == biggestLastBalance)
+                {
+                    names.Add(personBalances.GetName());
+                }
+
             }
 
             string peopleString = BuildNamesString(names);
@@ -126,28 +128,26 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
-                return "N/A.";
+                return arrayIsEmpty;
             }
 
-            Dictionary<string, List<float>> peopleBalances = ArrayOfPeople(peopleAndBalances);
+            List<PersonWithBalances> people = ArrayOfPeople(peopleAndBalances);
             List<string> names = new List<string>();
             var lowestBalanceEver = float.MaxValue;
 
-            foreach (var personBalances in peopleBalances)
+            foreach (var personBalances in people)
             {
-                foreach (var balance in personBalances.Value)
+                if (personBalances.GetCurrentBalance() < lowestBalanceEver)
                 {
-                    if (personBalances.Value.Last() < lowestBalanceEver)
-                    {
-                        names.Clear();
-                        lowestBalanceEver = balance;
-                        names.Add(personBalances.Key);
-                    }
-                    else if (personBalances.Value.Last() == lowestBalanceEver)
-                    {
-                        names.Add(personBalances.Key);
-                    }
+                    names.Clear();
+                    lowestBalanceEver = personBalances.GetCurrentBalance();
+                    names.Add(personBalances.GetName());
                 }
+                else if (personBalances.GetCurrentBalance() == lowestBalanceEver)
+                {
+                    names.Add(personBalances.GetName());
+                }
+
             }
 
             if (names.Count > 1)
@@ -159,10 +159,9 @@ namespace BootCamp.Chapter
         }
 
 
-        public static Dictionary<string, List<float>> ArrayOfPeople(string[] peopleAndBalances)
+        public static List<PersonWithBalances> ArrayOfPeople(string[] peopleAndBalances)
         {
-            Dictionary<string, List<float>> people = new Dictionary<string, List<float>>();
-
+            List<PersonWithBalances> people = new List<PersonWithBalances>();
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -174,22 +173,21 @@ namespace BootCamp.Chapter
                 }
                 if (splitString.Length > 1)
                 {
-                    people.Add(name, new List<float>());
 
-                    for (int j = 1; j < splitString.Length; j++)
+                    var personBalances = splitString.Skip(1).Select(v =>
                     {
-                        float balances;
-
-                        var isNumber = float.TryParse(splitString[j].Replace("£", ""), out balances);
-
+                        float balance;
+                        var isNumber = float.TryParse(v.Replace("£", ""), out balance);
                         if (!isNumber)
                         {
                             throw new ArgumentException("Bad balance");
-
                         }
+                        return balance;
+                    });
 
-                        people[name].Add(balances);
-                    }
+                    var person = new PersonWithBalances(splitString[0], personBalances.ToArray());
+                    people.Add(person);
+
                 }
             }
             return people;
@@ -340,7 +338,7 @@ namespace BootCamp.Chapter
 }
 
 
-    
+
 
 
 
