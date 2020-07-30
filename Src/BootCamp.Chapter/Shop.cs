@@ -12,12 +12,14 @@
 
         public Shop()
         {
-
+            _money = 0;
+            _inventory = new Inventory();
         }
 
         public Shop(decimal money)
         {
             _money = money;
+            _inventory = new Inventory();
         }
 
         public Item[] GetItems()
@@ -25,46 +27,47 @@
             return _inventory.GetItems();
         }
 
-        /// <summary>
-        /// Adds item to the stock.
-        /// If item of same name exists, does nothing.
-        /// </summary>
         public void Add(Item item)
         {
+            if (_inventory.DoesItemExistInInventory(item.GetName()))
+            {
+                return;
+            }
+
+            _inventory.AddItem(item);
         }
 
-        /// <summary>
-        /// Removes item from the stock.
-        /// If item doesn't exist, does nothing.
-        /// </summary>
-        /// <param name="name"></param>
         public void Remove(string name)
         {
+            if (_inventory.GetItems(name).Length == 0) return;
+
+            var itemToRemove = _inventory.GetItems(name)[0];
+            _inventory.RemoveItem(itemToRemove);
         }
 
-        /// <summary>
-        /// Player can sell items to a shop.
-        /// All items can be sold.
-        /// Shop looses money.
-        /// </summary>
-        /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            if (item.GetPrice() > _money)
+            {
+                return 0;
+            }
+
+            _inventory.AddItem(item);
+            _money -= item.GetPrice();
+            return item.GetPrice();
         }
 
-        /// <summary>
-        /// Sell item from a shop.
-        /// Shop increases it's money.
-        /// No money is increased if item does not exist.
-        /// </summary>
-        /// <returns>
-        /// Item sold.
-        /// Null, if no item is sold.
-        /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            if (_inventory.GetItems(item).Length == 0)
+            {
+                return null;
+            }
+
+            var itemToSell = _inventory.GetItems(item)[0];
+            _money += itemToSell.GetPrice();
+
+            return itemToSell;
         }
     }
 }

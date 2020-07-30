@@ -20,88 +20,117 @@ namespace BootCamp.Chapter
         private string _name;
         private int _hp;
 
-        /// <summary>
-        /// Each point of strength allows extra 10 kg to carry.
-        /// </summary>
         private int _strenght;
 
-        /// <summary>
-        /// Player items. There can be multiple of items with same name.
-        /// </summary>
+        public int GetFullCarryWeight()
+        {
+            int fullCarryWeight = baseCarryWeight + _strenght * 10;
+            return fullCarryWeight;
+        }
+
         private Inventory _inventory;
-        /// <summary>
-        /// Needed only for the extra task.
-        /// </summary>
+
         private Equipment _equipment;
+
+
 
         public Player()
         {
+            _inventory = new Inventory();
+            _equipment = new Equipment();
         }
 
-        /// <summary>
-        /// Gets all items from player's inventory
-        /// </summary>
         public Item[] GetItems()
         {
-            return new Item[0];
+            return _inventory.GetItems();
         }
 
-        /// <summary>
-        /// Adds item to player's inventory
-        /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
-        /// <summary>
-        /// Gets items with matching name.
-        /// </summary>
-        /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
-        // Player has equipment.
-        // Various slots of equipment can be equiped and unequiped.
-        // When a slot is equiped, it contributes to total defense
-        // and total attack.
-        // Implement equiping logic and total defense/attack calculation.
+        public float GetTotalDefence()
+        {
+            return _equipment.GetTotalDefense();
+        }
+
+        public float GetTotalAttack()
+        {
+            return _equipment.GetTotalAttack();
+        }
+
         public void Equip(Headpiece head)
         {
-
+            if (!CanCarryNewItem(head)) return;
+            _equipment.SetHead(head);
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Chestpiece chest)
         {
-
+            if (!CanCarryNewItem(chest)) return;
+            _equipment.SetChest(chest);
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
+            if (!CanCarryNewItem(shoulder)) return;
 
+            if (isLeft)
+            {
+                _equipment.SetLeftShoulder(shoulder);
+            }
+            else
+            {
+                _equipment.SetRightShoulder(shoulder);
+            }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Legspiece leg)
         {
-
+            if (!CanCarryNewItem(leg)) return;
+            _equipment.SetLeg(leg);
         }
 
-        public void Equip(Armpiece head, bool isLeft)
+        public void Equip(Armpiece arm, bool isLeft)
         {
+            if (!CanCarryNewItem(arm)) return;
 
+            if (isLeft)
+            {
+                _equipment.SetLeftArmp(arm);
+            }
+            else
+            {
+                _equipment.SetRightArm(arm);
+            }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Gloves gloves)
         {
-
+            if (!CanCarryNewItem(gloves)) return;
+            _equipment.SetGloves(gloves);
         }
         #endregion
+
+        private bool CanCarryNewItem(Item item)
+        {
+            if (item == null) return true;
+            var currentWeight = _equipment.GetTotalWeight();
+            var newWeight = currentWeight + item.GetWeight();
+
+            return (newWeight <= GetFullCarryWeight());
+        }
     }
 }
