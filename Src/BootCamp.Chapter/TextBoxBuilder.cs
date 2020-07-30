@@ -14,13 +14,14 @@ namespace BootCamp.Chapter
         private StringBuilder sb = new StringBuilder();
         private const int DivideByTwo = 2;
         private const int AddOne = 1;
+        private const int NumberOfLinesWithoutPadding = 3;
 
         public TextBoxBuilder(TextTableAttribute textTableAttributes, string message)
         {
             _textTableAttributes = textTableAttributes;
             _message = message;
             _messageLength = _message.Length + (_textTableAttributes.Padding * DivideByTwo);
-            _numberOfLines = 3 + (_textTableAttributes.Padding * DivideByTwo);
+            _numberOfLines = NumberOfLinesWithoutPadding + (_textTableAttributes.Padding * DivideByTwo);
             _numberOfMainLine = (_numberOfLines + AddOne) / DivideByTwo;
             _paddingString = new string(' ', _textTableAttributes.Padding);
         }
