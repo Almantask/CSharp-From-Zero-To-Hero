@@ -10,6 +10,7 @@
         public static void Sort(int[] array)
         {
             // ToDo: implement.
+            Program.Sort(array);
         }
 
         /// <summary>
@@ -20,6 +21,7 @@
         public static void Reverse(int[] array)
         {
             // ToDo: implement.
+            Program.Reverse(array);
         }
 
         /// <summary>
@@ -30,7 +32,7 @@
         public static int[] RemoveLast(int[] array)
         {
             // ToDo: implement.
-            return array;
+            return Program.removeLast(array);
         }
 
         /// <summary>
@@ -40,7 +42,7 @@
         public static int[] RemoveFirst(int[] array)
         {
             // ToDo: implement.
-            return array;
+            return Program.removeFirst(array);
         }
 
         /// <summary>
