@@ -26,6 +26,7 @@ namespace BootCamp.Chapter1
         public static int[] removeLast(int[] array)
         {
             if (array == null || array.Length < 1) return array;
+
             int[] array2 = new int[array.Length - 1];
             for (int i = 0; i < array2.Length; i++)
             {
