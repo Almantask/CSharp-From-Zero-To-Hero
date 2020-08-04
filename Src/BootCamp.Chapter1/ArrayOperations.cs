@@ -43,6 +43,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
+
             if (array == null || array.Length == 0) { return; }
             else
             {
@@ -67,18 +68,17 @@ namespace BootCamp.Chapter1
         public static int[] RemoveLast(int[] array)
         {
             
+            
 
             if (array == null || array.Length == 0) { return array; }
             else
             {
-                var array2 = new int[array.Length - 1];
-                Array.Copy(array, array2, array2.Length);
-                 
+                int index = array.Length;
+                return RemoveAt(array, index - 1);
 
-                return array2;
             }
 
-            
+
         }
 
         /// <summary>
@@ -87,18 +87,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length == 0) { return array; }
-            if (array.Length == 1)
-            {
-                var emptyArray = new int[0];               
-                return emptyArray;
-            }
-            else
-            {
-                var array2 = new int[array.Length - 1];
-                Array.Copy(array, array[1], array2, array2[0], array2.Length);
-                return array2;
-            }
+            return RemoveAt(array, 0);
+
         }
 
         /// <summary>
@@ -111,7 +101,12 @@ namespace BootCamp.Chapter1
         {
             if (array == null || array.Length == 0) { return array; }
             if (index < 0 || index > array.Length - 1) { return array; }
-            if (index == 1 && array.Length == 2)
+            if (array.Length == 1)
+            {
+                var emptyarray = new int[0];
+                return emptyarray;
+            }
+            if ((index == 1 && array.Length == 2) || (index == array.Length -1))
             {
                var array2 = new int[array.Length - 1];
                Array.Copy(array, array2, array2.Length);
@@ -158,23 +153,9 @@ namespace BootCamp.Chapter1
         /// <param name="number">Number to be added.</param>
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
-        {   
-            if (array == null || array.Length == 0)
-            {
-                var array2 = new int[1] { number };
-                return array2; 
-            }
-            else
-            {
-                var array2 = new int[array.Length + 1];
+        {
+            return InsertAt(array, number, 0);
 
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array2[i + 1] = array[i];
-                }
-                array2[0] = number;
-                return array2;
-            }
             
         }
 
@@ -191,17 +172,12 @@ namespace BootCamp.Chapter1
                 var array2 = new int[1] { number };
                 return array2;
             }
+
             else
             {
-                var array2 = new int[array.Length + 1];
-
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array2[i] = array[i];
-                }
-                array2[array2.Length - 1] = number;
-                return array2;
+                return InsertAt(array, number, array.Length);
             }
+
         }
 
         /// <summary>
@@ -214,18 +190,29 @@ namespace BootCamp.Chapter1
         public static int[] InsertAt(int[] array, int number, int index)
         {
            
-            if (array == null || array.Length == 0)
+            if (array == null || array.Length <= 0)
             {   
     
                 if (index < 0) { return array; }
-                if ((index > 0) && (array == null || array.Length == 0)) { return array;}
-                else if (number > 0 && index >= 0)
+                if ((index > 0) && (array == null || array.Length <= 0)) { return array;}
+                if (number > 0 && index >= 0)
                 {
                     var array2 = new int[1] { number };
                     return array2;
                 }
             }
             if (index > array.Length) { return array; }
+            if (index == array.Length)
+            {
+                var array2 = new int[array.Length + 1];
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array2[i] = array[i];
+                }
+                array2[array2.Length - 1] = number;
+                return array2;
+            }
             else
             {
                 var array2 = new int[array.Length + 1];

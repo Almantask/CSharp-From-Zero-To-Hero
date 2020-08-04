@@ -6,7 +6,8 @@ namespace BootCamp.Chapter1
     {
         static void Main(string[] args)
         {
-
+            var array = new int[] { 1, 1, 1};
+            ArrayOperations.RemoveLast(array);
         }
     }
 }
