@@ -53,8 +53,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            return Program.removeAt(array, index);
         }
 
         /// <summary>
@@ -65,8 +64,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            return Program.insertFirst(array, number);
         }
 
         /// <summary>
@@ -78,7 +76,7 @@
         public static int[] InsertLast(int[] array, int number)
         {
             // ToDo: implement.
-            return array;
+            return Program.insertLast(array,number);
         }
 
         /// <summary>
@@ -91,7 +89,7 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
-            return array;
+            return Program.insertAt(array, number, index);
         }
     }
 }
