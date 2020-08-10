@@ -6,15 +6,21 @@ namespace BootCamp.Chapter1
     {
         static void Main(string[] args)
         {
-            var name = "Tom Jefferson";
-            var age = 19;
-            var weight = 50;
-            var height = 156.5;
+            Console.WriteLine("Name: ");
+            string userName = Console.ReadLine();
+            Console.WriteLine("Surname: ");
+            string userSurname = Console.ReadLine();
+            Console.WriteLine("Age: ");
+            int userAge = int.Parse(Console.ReadLine());
+            Console.WriteLine("Weight (in kg): ");
+            int userWeight = int.Parse(Console.ReadLine());
+            Console.WriteLine("Height (in cm): ");
+            double userHeight = double.Parse(Console.ReadLine());
 
-            var bmi = 50 / (1.565 * 1.565);
+            double calculateBMI = userWeight / (userHeight * userHeight);
 
-            Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
-            Console.WriteLine($"{name}'s BMI is {bmi}");
+            Console.WriteLine($"{userName} {userSurname} is {userAge} old, his weight is {userWeight} and his height is {userHeight} cm.");
+            Console.WriteLine($"{userName}'s BMI is {calculateBMI}");
         }
     }
 }
