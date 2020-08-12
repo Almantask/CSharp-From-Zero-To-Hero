@@ -1,7 +1,7 @@
 ﻿using System;
 using BootCamp.Chapter.Ref;
 
-namespace BootCamp.Chapter.Example.NotDip
+namespace BootCamp.Chapter.Example.NotDip.HardcodedDepednencies
 {
     public class BrokenSchoolTerminal : ISchoolTerminal
     {

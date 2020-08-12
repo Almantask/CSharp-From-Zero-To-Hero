@@ -1,6 +1,8 @@
-﻿namespace BootCamp.Chapter.Ref
+﻿using BootCamp.Chapter.Example.DIP.WithIoC;
+
+namespace BootCamp.Chapter.Ref
 {
-    public interface ISchoolTerminal
+    public interface ISchoolTerminal : IService
     {
         void Start();
     }

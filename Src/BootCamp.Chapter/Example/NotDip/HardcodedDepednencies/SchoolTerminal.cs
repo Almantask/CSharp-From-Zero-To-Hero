@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using BootCamp.Chapter.Ref;
 using BootCamp.Chapter.Ref.Repository.File.Repository;
 using BootCamp.Chapter.Ref.Repository.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
-namespace BootCamp.Chapter.Example.NotDip
+namespace BootCamp.Chapter.Example.NotDip.HardcodedDepednencies
 {
     public class SchoolTerminal : ISchoolTerminal
     {

@@ -15,6 +15,7 @@ namespace BootCamp.Chapter.Example.DIP.WithIoC
         public static ISchoolTerminal InitializeSchoolTerminal()
         {
             var container = new UnityContainer();
+
             container.RegisterType<ISchoolMemoryContext, SchoolMemoryContext>();
             container.RegisterType<ITeachersRepository, TeachersRepository>();
             container.RegisterType<IGradesRepository, GradesRepository>();

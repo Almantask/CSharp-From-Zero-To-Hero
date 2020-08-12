@@ -2,27 +2,36 @@
 using BootCamp.Chapter.Ref.Application;
 using BootCamp.Chapter.Ref.Repository.InMemory;
 using BootCamp.Chapter.Ref.Repository.InMemory.Repositories;
+using BootCamp.Chapter.Ref.Repository.Interfaces;
+using Unity;
 
 namespace BootCamp.Chapter.Example.DIP.WithIoC
 {
+    public interface IService
+    {
+    }
+
     public class ServiceLocator
     {
-        public ISchoolTerminal Terminal { get; }
+        public TService Resolve<TService>() where TService : IService
+            => _container.Resolve<TService>();
+
         public static ServiceLocator Instance => _instance ??= new ServiceLocator();
         private static ServiceLocator _instance;
+        private UnityContainer _container;
 
 
         private ServiceLocator()
         {
-            var context = new SchoolMemoryContext();
+            _container = new UnityContainer();
 
-                ISchoolTerminal app = new SchoolTerminal(
-                    new StudentsRepository(context),
-                    new TeachersRepository(context),
-                    new GradesRepository(context),
-                    new LessonClassesRepository(context));
+            _container.RegisterType<ISchoolMemoryContext, SchoolMemoryContext>();
+            _container.RegisterType<ITeachersRepository, TeachersRepository>();
+            _container.RegisterType<IGradesRepository, GradesRepository>();
+            _container.RegisterType<ILessonClassesRepository, LessonClassesRepository>();
+            _container.RegisterType<IStudentsRepository, StudentsRepository>();
 
-                Terminal = app;
+            _container.RegisterType<ISchoolTerminal, SchoolTerminal>();
         }
     }
 }
