@@ -1,4 +1,6 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using BootCamp.Chapter.Examples.FunctionalMinStrategy;
+using BootCamp.Chapter.Examples.MinStrategy;
+using BootCamp.Chapter.Examples.TvRemoteControllerCommands;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +8,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Example1Demo.Run();
+            //FunctionalMinStrategyDemo.Run();
+            //TvRemoteControllerCommandsDemo.Run();
+            MinStrategyDemo.Execute();
         }
     }
 }
