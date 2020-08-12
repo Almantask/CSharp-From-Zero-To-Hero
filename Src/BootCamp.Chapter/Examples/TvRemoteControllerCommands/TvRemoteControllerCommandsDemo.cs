@@ -7,7 +7,7 @@ namespace BootCamp.Chapter.Examples.TvRemoteControllerCommands
         public static void Run()
         {
             var tv = new Tv();
-            var remoteController = new TvRemoteController(tv);
+            var remoteController = TvRemoteBuilder.Build(tv);
             remoteController.Toggle();
             remoteController.ChangeChannel(5);
             remoteController.RaiseVolume();

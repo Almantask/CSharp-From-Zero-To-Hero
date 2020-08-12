@@ -1,6 +1,6 @@
 ﻿namespace BootCamp.Chapter.Examples.TvRemoteControllerCommands
 {
-    public class TvRemoteController
+    public class TvRemote
     {
         private readonly Tv _tv;
         private readonly ICommand _raiseVolumeCommand;
@@ -10,17 +10,13 @@
 
         // Commands won't change 100%
         // They will always depend on just a Tv
-        public TvRemoteController(Tv tv)
+        public TvRemote(Tv tv, ICommand raiseVolumeCommand, ICommand lowerChangeVolumeCommand, ICommand toggleCommand, ICommandWithParam<int> changeChannelCommand)
         {
             _tv = tv;
-            // Hardcoding the commands might not be the best solution.
-            // However, in this specific example, the benefits are little for injecting them:
-            // Tv can still be tested, commands won't change (their implementation can change,
-            // but there won't be multiple implementations for the same)
-            _raiseVolumeCommand = new ChangeVolumeCommand(tv, 1);
-            _lowerChangeVolumeCommand = new ChangeVolumeCommand(tv, -1);
-            _toggleCommand = new ToggleCommand(tv);
-            _changeChannelCommand = new ChangeChanelCommand(tv);
+            _raiseVolumeCommand = raiseVolumeCommand;
+            _lowerChangeVolumeCommand = lowerChangeVolumeCommand;
+            _toggleCommand = toggleCommand;
+            _changeChannelCommand = changeChannelCommand;
         }
 
         // Imagine that each operation for TV is extremely complex.
