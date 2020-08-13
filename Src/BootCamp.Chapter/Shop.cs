@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
@@ -18,6 +21,7 @@
         public Shop(decimal money)
         {
             _money = money;
+            _inventory = new Inventory();
         }
 
         public Item[] GetItems()
@@ -31,6 +35,8 @@
         /// </summary>
         public void Add(Item item)
         {
+            _inventory.AddItem(item);
+
         }
 
         /// <summary>
@@ -40,6 +46,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            var itemName = _inventory.GetItems(name)[0];
         }
 
         /// <summary>
@@ -64,6 +71,10 @@
         /// </returns>
         public Item Sell(string item)
         {
+            if (string.IsNullOrEmpty(item))
+            {
+                return null;
+            }
             return null;
         }
     }

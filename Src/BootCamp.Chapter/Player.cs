@@ -51,10 +51,12 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
+            _inventory.RemoveItem(item);
 
         }
 
