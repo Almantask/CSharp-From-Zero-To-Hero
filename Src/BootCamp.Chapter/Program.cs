@@ -48,7 +48,7 @@ namespace BootCamp.Chapter
         }
         public static float CalculateBMI(float weight, float height)
         {
-            float bmi = weight / ((height / 100) * (height / 100));
+            float bmi = weight / (height * height);
             return (float)Math.Round(bmi, 1);
         }
         public static int AskingAndConvertingINT(string message)
