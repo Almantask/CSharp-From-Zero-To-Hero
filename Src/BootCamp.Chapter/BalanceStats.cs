@@ -130,7 +130,7 @@ namespace BootCamp.Chapter
             if (peopleAndBalances == null || peopleAndBalances.Length == 0) { return "N/A."; }
             ParsePeopleAndBalance(peopleAndBalances);
             float biggestLoss = GetBiggestLoss();
-            if (biggestLoss == 0) { return "N/A."; }
+            if (biggestLoss >= 0) { return "N/A."; }
             string name = GetNameOfBiggestLoss(biggestLoss);
             string formattedBalance = string.Format(culture, "{0:C0}", biggestLoss);
             return $"{name} lost the most money. {formattedBalance}.";

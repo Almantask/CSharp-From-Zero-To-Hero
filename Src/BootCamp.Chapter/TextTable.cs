@@ -41,14 +41,14 @@ namespace BootCamp.Chapter
             if(message == "") { return ""; }
             StringBuilder result = new StringBuilder();
             string[] lines = message.Split(Environment.NewLine);
-            int maxWordLength = lines[0].Length;
+            int maxWordLength = 0;
             for (int i = 0; i < lines.Length; i++)
             {
                 if (lines[i].Length > maxWordLength) { maxWordLength = lines[i].Length; }
             }
-            result.Append(ReturnVerticalFrameLine(maxWordLength, padding));
+            result.Append(ReturnHorisontalFrameLine(maxWordLength, padding));
             result.Append(ReturnContentLines(lines, maxWordLength, padding));
-            result.Append(ReturnVerticalFrameLine(maxWordLength, padding));
+            result.Append(ReturnHorisontalFrameLine(maxWordLength, padding));
             return result.ToString();
         }
 
@@ -58,15 +58,12 @@ namespace BootCamp.Chapter
             
             for (int i = 0; i < padding; i++)
             {
-                result.Append(ReturnVerticalEmptyLine(maxWordLength, padding));
+                result.Append(ReturnHorisontalEmptyLine(maxWordLength, padding));
             }
             for (int i = 0; i < lines.Length; i++)
             {
-                result.Append("|");
-                for (int j = 0; j < padding; j++)
-                {
-                    result.Append(" ");
-                }
+                result.Append('|');
+                result.Append(' ', padding);
                 result.Append(lines[i]);
                 if(lines[i].Length < maxWordLength)
                 {
@@ -77,33 +74,30 @@ namespace BootCamp.Chapter
             }
             for (int i = 0; i < padding; i++)
             {
-                result.Append(ReturnVerticalEmptyLine(maxWordLength, padding));
+                result.Append(ReturnHorisontalEmptyLine(maxWordLength, padding));
             }
             return result.ToString();
         }
 
-        private static string ReturnVerticalEmptyLine(int maxWordLength, int padding)
+        private static string ReturnHorisontalEmptyLine(int maxWordLength, int padding)
         {
             StringBuilder result = new StringBuilder();
-            result.Append("|");
-            for (int i = 0; i < maxWordLength + padding * 2; i++)
-            {
-                result.Append(" ");
-            }
-            result.Append("|");
+            result.Append('|');
+            result.Append(' ', maxWordLength + padding * 2);
+            result.Append('|');
             result.Append(Environment.NewLine);
             return result.ToString();
         }
 
-        private static string ReturnVerticalFrameLine(int maxWordLength, int padding)
+        private static string ReturnHorisontalFrameLine(int maxWordLength, int padding)
         {
             StringBuilder result = new StringBuilder();
-            result.Append("+");
+            result.Append('+');
             for (int i = 0; i < maxWordLength + padding * 2; i++)
             {
-                result.Append("-");
+                result.Append('-');
             }
-            result.Append("+"); 
+            result.Append('+'); 
             result.Append(Environment.NewLine);
             return result.ToString();
         }
