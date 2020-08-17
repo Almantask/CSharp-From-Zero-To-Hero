@@ -16,19 +16,20 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            int integer = Program.AskingAndConvertingINT();
+            int integer = Program.AskingAndConvertingINT(message);
             return integer;
         }
 
         public static string PromptString(string message)
         {
-            string thePrompt = Program.AskingAndConvertingSTRING();
+            string thePrompt = Program.AskingAndConvertingSTRING(message);
             return thePrompt;
         }
 
         public static float PromptFloat(string message)
         {
-            float number = Program.AskingAndConvertingFLOAT();
+
+            float number = Program.AskingAndConvertingFLOAT(message);
             return number;
         }
 
