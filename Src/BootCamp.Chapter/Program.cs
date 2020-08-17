@@ -66,7 +66,7 @@ namespace BootCamp.Chapter
         public static float AskingAndConvertingFLOAT(string message)
         {
             Console.WriteLine(message);
-            float theFloat = float.Parse(Console.ReadLine());
+            float theFloat = float.Parse(Console.ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
             return theFloat;
         }
     }
