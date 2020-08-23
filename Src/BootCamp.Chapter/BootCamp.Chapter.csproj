@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="E:\C# Zero to Hero\Homework\Homework 1 and 2.cs" Link="Homework 1 and 2.cs" />
+  </ItemGroup>
+
 </Project>

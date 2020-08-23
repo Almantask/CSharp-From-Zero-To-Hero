@@ -36,7 +36,6 @@ namespace BootCamp.Chapter
             decimal otherHeight = 162.6m;
             string otherName = "Rafa";
             string otherSurname = "Erende";
-
             Console.WriteLine(otherName + " " + otherSurname + " " + "is " + otherAge + " " +"years old " + "and weighs " + otherWeight + " " + "kilograms " + "and measures " + otherHeight + " " + "centimeters.");
 
 
