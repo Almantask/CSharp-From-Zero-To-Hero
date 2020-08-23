@@ -9,7 +9,7 @@ namespace BootCamp.Chapter
         public InvalidBalancesException(string reason, Exception innerException)
             : base(reason, innerException)
         {
-
+            Console.WriteLine($"{reason} is invalid data.");
         }
     }
 }
