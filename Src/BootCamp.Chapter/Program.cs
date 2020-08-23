@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     class Program
     {
@@ -6,5 +8,7 @@
         {
 
         }
+
     }
 }
+

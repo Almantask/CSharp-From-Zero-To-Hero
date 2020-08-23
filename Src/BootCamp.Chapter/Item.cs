@@ -12,16 +12,20 @@
             _price = price;
             _weight = weight;
         }
-       
+
         public string GetName()
         {
             return _name;
         }
 
-      
+
         public decimal GetPrice()
         {
             return _price;
+        }
+        public float GetWeight()
+        {
+            return _weight;
         }
     }
 }

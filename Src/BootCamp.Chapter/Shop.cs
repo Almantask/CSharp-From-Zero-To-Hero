@@ -47,6 +47,7 @@ namespace BootCamp.Chapter
         public void Remove(string name)
         {
             var itemName = _inventory.GetItems(name)[0];
+            _inventory.RemoveItem(itemName);
         }
 
         /// <summary>
@@ -57,7 +58,14 @@ namespace BootCamp.Chapter
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            if (item.GetPrice() > _money)
+            {
+                return 0;
+            }
+
+            _money = _money - item.GetPrice();
+
+            return item.GetPrice();
         }
 
         /// <summary>
@@ -75,7 +83,9 @@ namespace BootCamp.Chapter
             {
                 return null;
             }
-            return null;
+            _money = _money + _inventory.GetItems(item)[0].GetPrice();
+
+            return _inventory.GetItems(item)[0];
         }
     }
 }

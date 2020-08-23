@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace BootCamp.Chapter
 {
@@ -18,29 +20,31 @@ namespace BootCamp.Chapter
 
         public Item[] GetItems(string name)
         {
-            foreach(var item in _items)
+            List<Item> itemList = new List<Item>();
+            for (int i = 0; i < GetItems().Length; i++)
             {
-                if(item.GetName() == name)
+                if (_items[i].GetName() == name)
                 {
-                    return new Item[1];
+                    itemList.Add(_items[i]);
                 }
             }
-            return new Item[0];
+
+            return itemList.ToArray();
         }
 
         public void AddItem(Item item)
         {
-            Item[] newItem = new Item[_items.Length + 1];
-
-            for (int i = 0; i < _items.Length; i++)
+            if (CheckIfITemExists(item) == false)
             {
-                newItem[i] = _items[i];
+                Item[] newItemArray = new Item[GetItems().Length + 1];
+                for (int i = 0; i < GetItems().Length; i++)
+                {
+                    newItemArray[i] = _items[i];
+                }
+                newItemArray[newItemArray.Length - 1] = item;
 
+                _items = newItemArray;
             }
-            newItem[_items.Length] = item;
-
-            _items = newItem;
-
         }
 
         /// <summary>
@@ -49,8 +53,32 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(Item item)
         {
-            Item[] removeItem = new Item[_items.Length -1];
-            removeItem = removeItem.Where(val => val != item).ToArray();
+            if (CheckIfITemExists(item) == true)
+            {
+                Item[] removeItemArray = new Item[GetItems().Length - 1];
+                for (int i = 0; i < GetItems().Length; i++)
+                {
+                    if (_items[i] != item)
+                    {
+                        removeItemArray[i] = _items[i];
+                    }
+                }
+                _items = removeItemArray;
+            }
+        }
+
+        public bool CheckIfITemExists(Item item)
+        {
+            bool doesItemExists = false;
+
+            for (int i = 0; i < GetItems().Length; i++)
+            {
+                if (_items[i] == item)
+                {
+                    return doesItemExists = true;
+                }
+            }
+            return doesItemExists;
         }
     }
 }
