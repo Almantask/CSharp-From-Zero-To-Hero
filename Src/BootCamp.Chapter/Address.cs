@@ -9,12 +9,14 @@ namespace BootCamp.Chapter
     {
         public string Recipient { get; }
         public string Street { get; }
+        public string Town { get; }
         private const int ExpectedLengthOfAddress = 7;
 
-        public Address(string recipient, string street, string town, string county, string postalCode, string country, string houseNumber = "")
+        public Address(string recipient, string buildingName, string street, string town, string county, string postalCode, string country = "UNITED KINGDOM", string houseNumber = "")
         {
             Recipient = recipient;
             Street = street;
+            Town = town;
         }
 
         public static bool TryParse(string addressString, out Address address)
@@ -25,7 +27,7 @@ namespace BootCamp.Chapter
             // Unsure what the is the best action. Either throw a new exception and capture the error or just return false? Will return false for benefit of tests
             if (tempString?.Length != ExpectedLengthOfAddress) return false;
 
-            address = new Address(tempString[0], tempString[1], tempString[2], tempString[3], tempString[4], tempString[5]);
+            address = new Address(tempString[0], tempString[1], tempString[2], tempString[3], tempString[4], tempString[5], tempString[6]);
             return true;
         }
 
