@@ -1,20 +1,22 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BootCamp.Chapter.Examples.Singletons.Config
 {
     public static class ToDoServiceBuilder
     {
-        public static ToDoService.ToDoService BuildToDoService()
+        public static IServiceProvider BuildServiceProvider()
         {
             var services = new ServiceCollection();
             ConfigureServices(services);
             var serviceProvider = services.BuildServiceProvider();
-            return serviceProvider.GetService<ToDoService.ToDoService>();
+            return serviceProvider;
         }
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ToDoService.ToDoService>();
+            services.AddTransient<ToDoService>();
+            services.AddConfig();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BootCamp.Chapter.Examples.Singletons
+namespace BootCamp.Chapter.Examples.Singletons.Implementations
 {
     public sealed class NaiveSingleton
     {

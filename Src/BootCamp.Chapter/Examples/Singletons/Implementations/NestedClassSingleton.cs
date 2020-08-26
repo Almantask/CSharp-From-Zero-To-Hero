@@ -1,16 +1,18 @@
 ﻿using System;
 
-namespace BootCamp.Chapter.Examples.Singletons
+namespace BootCamp.Chapter.Examples.Singletons.Implementations
 {
     public sealed class NestedClassSingleton
     {
+        private static readonly NestedClassSingleton _instance = new NestedClassSingleton();
+
         private NestedClassSingleton()
         {
             Console.WriteLine("Nested singleton created");
         }
 
         // Lazily initialized, because the static class gets initialized only when first referenced.
-        public static NestedClassSingleton Instance => Nested._instance;
+        public static NestedClassSingleton Instance => _instance; //Nested._instance;
 
         private class Nested
         {

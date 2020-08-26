@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BootCamp.Chapter.Examples.Singletons.Config;
+using BootCamp.Chapter.Examples.Singletons.Implementations;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BootCamp.Chapter.Examples.Singletons
 {
@@ -7,14 +9,16 @@ namespace BootCamp.Chapter.Examples.Singletons
     {
         public static void Run()
         {
-            SpamAccessNestedClass();
-            SpamAccessLazyLoaded();
+            //SpamAccessNestedClass();
+            //SpamAccessLazyLoaded();
             //SpamAccessNaive();
-            SpamAccessSimple();
+            //SpamAccessSimple();
 
-            var todoService = ToDoServiceBuilder.BuildToDoService();
-            todoService.Test();
-            todoService.Test();
+            var serviceProvider = ToDoServiceBuilder.BuildServiceProvider();
+            var todoService1 = serviceProvider.GetService<Config.ToDoService>();
+            todoService1.Test();
+            var todoService2 = serviceProvider.GetService<Config.ToDoService>();
+            todoService2.Test();
         }
 
         private static void SpamAccessNaive()

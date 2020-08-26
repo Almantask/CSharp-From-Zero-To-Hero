@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BootCamp.Chapter.Examples.Singletons.Config
+﻿namespace BootCamp.Chapter.Examples.Singletons.Config
 {
     public class ToDoConfig
     {
