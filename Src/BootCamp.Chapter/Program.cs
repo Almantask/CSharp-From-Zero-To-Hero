@@ -6,7 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string Name;
+            string FirstName;
+            string Surname;
             string AgeEntered;
             int Age;
             string WeightEntered;
@@ -15,9 +16,11 @@ namespace BootCamp.Chapter
             double Height;
             double BMICalculated;
             double BMIRounded;
-            Console.WriteLine("What is your name?");
-            Name = Console.ReadLine();
-            Console.WriteLine("What is your age?");
+            Console.WriteLine("What is your first name?");
+            FirstName = Console.ReadLine();
+            Console.WriteLine("What is your surname(last name)?");
+            Surname = Console.ReadLine();
+            Console.WriteLine("Enter your age as a number please.");
             AgeEntered = Console.ReadLine();
             Age = int.Parse(AgeEntered);
             Console.WriteLine("What is your weight in kilograms?");
@@ -28,7 +31,7 @@ namespace BootCamp.Chapter
             Height = double.Parse(HeightEntered);
             BMICalculated = (Weight/Height/Height)*10000;
             BMIRounded = Math.Round(BMICalculated, 1);
-            Console.WriteLine(Name + " is " + Age + " years old, his weight is " + Weight + " and his height is " + Height + ". His BMI is " + BMIRounded + "%.");
+            Console.WriteLine(FirstName + " " + Surname + " is " + Age + " years old, their weight is " + Weight + " kg and their height is " + Height + " cm. " + FirstName + " " + Surname + "'s BMI is " + BMIRounded + "%.");
         }
     }
 }
