@@ -1,26 +1,36 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BootCamp.Chapter
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            Console.WriteLine("Tom Jefferson is 19 years old, his weight is 50 kg and his height is 156.5 cm.");
-            string TomsName = "Tom Jefferson";
-            int TomsAge = 19;
-            int TomsWeight = 50;
-            float TomsHeight = 156.5f;
-            float TomsBMI = ((TomsWeight / TomsHeight)/TomsHeight)*10000;
-            Console.WriteLine(TomsName + " is " + TomsAge + " years old, his weight is " + TomsWeight + " kg, his height is " + TomsHeight + " cm, and his BMI is " + TomsBMI + ".");
-
-            Console.WriteLine("Samson is 30 years old, his weight is 200 lbs and his height is 69 inches.");
-            string SamsonsName = "Samson";
-            int SamsonsAge = 30;
-            float SamsonsWeight = 200;
-            float SamsonsHeight = 69;
-            float SamsonsBMI = ((SamsonsWeight / SamsonsHeight)/SamsonsHeight)*703;
-            Console.WriteLine(SamsonsName + " is " + SamsonsAge + " years old, his weight is " + SamsonsWeight + " lbs, his height is " + SamsonsHeight + " inches, and his BMI is " + SamsonsBMI + ".");
+            string Name;
+            string AgeEntered;
+            int Age;
+            string WeightEntered;
+            double Weight;
+            string HeightEntered;
+            double Height;
+            double BMICalculated;
+            double BMIRounded;
+            Console.WriteLine("What is your name?");
+            Name = Console.ReadLine();
+            Console.WriteLine("What is your age?");
+            AgeEntered = Console.ReadLine();
+            Age = int.Parse(AgeEntered);
+            Console.WriteLine("What is your weight in kilograms?");
+            WeightEntered = Console.ReadLine();
+            Weight = double.Parse(WeightEntered);
+            Console.WriteLine("What is your height in centimeters?");
+            HeightEntered = Console.ReadLine();
+            Height = double.Parse(HeightEntered);
+            BMICalculated = (Weight/Height/Height)*10000;
+            BMIRounded = Math.Round(BMICalculated, 1);
+            Console.WriteLine(Name + " is " + Age + " years old, his weight is " + Weight + " and his height is " + Height + ". His BMI is " + BMIRounded + "%.");
         }
     }
 }
