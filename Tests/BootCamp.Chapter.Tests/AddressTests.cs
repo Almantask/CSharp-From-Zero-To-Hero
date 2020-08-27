@@ -58,7 +58,7 @@ namespace BootCamp.Chapter.Tests
             using (new AssertionScope())
             {
                 address.Recipient.Should().Be("Nildram Ltd");
-                address.Street.Should().Be("Ardenham Court");
+                address.Street.Should().Be("Oxford Road");
             }
         }
 

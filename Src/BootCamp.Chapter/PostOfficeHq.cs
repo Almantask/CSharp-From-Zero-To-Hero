@@ -10,8 +10,14 @@ namespace BootCamp.Chapter
     {
         public List<PostOffice> ListOfPostOffices = new List<PostOffice>();
         private List<Address> _addresses = new List<Address>();
-        private string _path = "path";
-        private StringBuilder stringBuilder = new StringBuilder();
+        private string _path = @"C:\Users\matth\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Addresses.txt";
+
+        public PostOfficeHq()
+        {
+            AddressesParser();
+            AssignPostOffices();
+            AddAddressesToPostOffice();
+        }
 
         private void AddressesParser()
         {
@@ -20,9 +26,9 @@ namespace BootCamp.Chapter
             {
                 string line = reader.ReadLine();
 
-                while (!reader.EndOfStream)
+                while (line != null)
                 {
-                    while (line != null)
+                    if (line != "")
                     {
                         for (int i = 0; i < lines.Length; i++)
                         {
@@ -30,6 +36,11 @@ namespace BootCamp.Chapter
                             line = reader.ReadLine();
                         }
                         AppendAddress(lines);
+                        lines = new string[7];
+                    }
+                    else
+                    {
+                        line = reader.ReadLine();
                     }
                 }
             }
@@ -44,7 +55,7 @@ namespace BootCamp.Chapter
         {
             foreach (var address in _addresses)
             {
-                if (DuplicateCheck(address))
+                if (!DoesPostOfficeExist(address))
                 {
                     ListOfPostOffices.Add(new PostOffice(address.Town));
                 }
@@ -53,16 +64,29 @@ namespace BootCamp.Chapter
 
         private void AddAddressesToPostOffice()
         {
-            // get address town
-            // retrieve the post office for that town
-            // check to see whether the post office in that town has any post for that address
-            // if true, increment duplication count
-            // if false, add address to post office
+            foreach (var address in _addresses)
+            {
+                PostOffice tempPostOffice = ReturnTownPostOffice(address.Town);
+
+                if (tempPostOffice.PostAddresses.All(x => x != address))
+                {
+                    tempPostOffice.AddPostalAddress(address);
+                }
+                else
+                {
+                    tempPostOffice.DuplicateCount++;
+                }
+            }
         }
 
-        private bool DuplicateCheck(Address address)
+        private bool DoesPostOfficeExist(Address address)
         {
             return ListOfPostOffices.Any(x => x.Location == address.Town);
+        }
+
+        private PostOffice ReturnTownPostOffice(string town)
+        {
+            return ListOfPostOffices.Find(x => x.Location == town);
         }
     }
 }
