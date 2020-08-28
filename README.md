@@ -1,6 +1,6 @@
 # C#: From Zero To Hero
 ## Chapter 4: TDD
-### Lesson 2: Mocking and Design for Testability
+### Lesson 2: 3A
 
 #### Intro
 Tests are a way of not only double checking if our code works, but also a way of having a living documentation.
