@@ -10,9 +10,13 @@ Tests are a way of not only double checking if our code works, but also a way of
 It's hard to express in short how much tests help: easy check if all works, good design enforcements, documentation, fun to experiment...
 It's time for you to play!
 
+##### Unit testing
+
+Developers need to prove that what they did works. They also would like to have a quick and easy way of checking if the codebase is working or not after the changes they made. A quick and simple way of doing that check is unit testing. Unit testing means that we test OUR code in isolation. That usually means calling a component under test and verifying output or verifying that something was done after the invokation.
+
 ##### 3A
 
-
+Every test has 3 steps: Arrange, Act, Assert.
 
 ###### Arrange
 
