@@ -2,7 +2,7 @@
 
 ## Chapter 4: TDD
 
-### Lesson 2: Arrange, Act, Assert
+### Lesson 1: Arrange, Act, Assert
 
 #### Intro
 
