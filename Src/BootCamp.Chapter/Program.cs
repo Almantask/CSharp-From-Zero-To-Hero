@@ -1,12 +1,15 @@
-﻿using BootCamp.Chapter.Examples.Example1;
+﻿using System.Threading.Tasks;
+using BootCamp.Chapter.Examples.Employee_NullObject;
+using BootCamp.Chapter.Examples.Shapes_Bridge;
 
 namespace BootCamp.Chapter
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Example1Demo.Run();
+            // PersonEmploymentDemo.Run();
+            await ShapesExample.Run();
         }
     }
 }
