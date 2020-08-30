@@ -6,49 +6,22 @@ using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
-    public class MacFactory : Factory
+    public class MacFactory
     {
 
         public DesktopComputer Assemble()
         {
             DesktopComputer desktopComputer = new DesktopComputer(new Body(), new Ram(), new Cpu(), new Gpu(), new HardDisk(), new Motherboard());
 
-            Body(desktopComputer);
-            Cpu(desktopComputer);
-            Gpu(desktopComputer);
-            HardDisk(desktopComputer);
-            Motherboard(desktopComputer);
-            Ram(desktopComputer);
+            desktopComputer.GetBody();
+            desktopComputer.GetCpu();
+            desktopComputer.GetGpu();
+            desktopComputer.GetHard();
+            desktopComputer.GetRam();
+            desktopComputer.GetMotherboard();
 
             return desktopComputer;
         }
-        public override void Body(DesktopComputer desktop)
-        {
-            desktop.GetBody();
-        }
-        public override void Cpu(DesktopComputer desktop)
-        {
-            desktop.GetCpu();
-        }
-        public override void Gpu(DesktopComputer desktop)
-        {
-            desktop.GetGpu();
-        }
-        public override void HardDisk(DesktopComputer desktop)
-        {
-            desktop.GetHard();
-        }
-        public override void Motherboard(DesktopComputer desktop)
-        {
-            desktop.GetMotherboard();
-        }
-        public override void Ram(DesktopComputer desktop)
-        {
-            desktop.GetRam();
-        }
-
-
-
-
+       
     }
 }
