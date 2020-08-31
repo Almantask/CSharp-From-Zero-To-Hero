@@ -6,9 +6,9 @@ namespace BootCamp.Chapter
 {
     class PostOffice
     {
-        public string Location;
-        public List<Address> PostAddresses;
-        public int DuplicateCount;
+        public string Location { get; }
+        public List<Address> PostAddresses { get; }
+        public int DuplicateCount { get; set; }
 
         public PostOffice(string location)
         {

@@ -23,8 +23,7 @@ namespace BootCamp.Chapter
         {
             address = default;
             string[] tempString = addressString?.Split(Environment.NewLine);
-            // Can refine to only check if key elements are missing i.e PostCode, Streetname and Building Number/Name
-            // Unsure what the is the best action. Either throw a new exception and capture the error or just return false? Will return false for benefit of tests
+
             if (tempString?.Length != ExpectedLengthOfAddress) return false;
 
             address = new Address(tempString[0], tempString[1], tempString[2], tempString[3], tempString[4], tempString[5], tempString[6]);

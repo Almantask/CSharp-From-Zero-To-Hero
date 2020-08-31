@@ -8,9 +8,9 @@ namespace BootCamp.Chapter
 {
     class PostOfficeHq
     {
-        public List<PostOffice> ListOfPostOffices = new List<PostOffice>();
-        private List<Address> _addresses = new List<Address>();
-        private string _path = @"C:\Users\matth\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Addresses.txt";
+        public readonly List<PostOffice> ListOfPostOffices = new List<PostOffice>();
+        private readonly List<Address> _addresses = new List<Address>();
+        private const string Path = @"C:\Users\Matthew\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Addresses.txt";
 
         public PostOfficeHq()
         {
@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
         private void AddressesParser()
         {
             string[] lines = new string[7];
-            using ( var reader = new StreamReader(_path))
+            using ( var reader = new StreamReader(Path))
             {
                 string line = reader.ReadLine();
 
@@ -66,7 +66,7 @@ namespace BootCamp.Chapter
         {
             foreach (var address in _addresses)
             {
-                PostOffice tempPostOffice = ReturnTownPostOffice(address.Town);
+                PostOffice tempPostOffice = FindPostOfficeAt(address.Town);
 
                 if (tempPostOffice.PostAddresses.All(x => x != address))
                 {
@@ -84,7 +84,7 @@ namespace BootCamp.Chapter
             return ListOfPostOffices.Any(x => x.Location == address.Town);
         }
 
-        private PostOffice ReturnTownPostOffice(string town)
+        private PostOffice FindPostOfficeAt(string town)
         {
             return ListOfPostOffices.Find(x => x.Location == town);
         }
