@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BootCamp1.Chapter
@@ -23,18 +24,76 @@ namespace BootCamp1.Chapter
         /// <returns>True if game was won or false if game was lost.</returns>
         public static bool Play(int lives, string wordsFile, int difficulty)
         {
-            var wordToGuess = WordsBank.PickRandomWord(@$"Words/{wordsFile}", difficulty);
-            // ToDo: finish the game!
-            var playersGuess = GuessCharacter();
+            if(lives < 1 || difficulty < 3)
+            {
+                throw new SystemException();
+            }
 
-            return false;
+            var wordToGuess = WordsBank.PickRandomWord(@$"Words/{wordsFile}", difficulty);           
+            bool[] isVisible = new bool[wordToGuess.Length];
+
+            while (true)
+            {
+                var playersGuess = GuessCharacter(lives);
+
+                bool isCharacterPresent = CheckForCharacter(wordToGuess, playersGuess, ref isVisible);
+
+                PrintKnownCharacters(wordToGuess, isVisible);
+
+                if (!isCharacterPresent)
+                {
+                    lives--;
+                }
+
+                if (lives == 0)
+                {
+                    Console.WriteLine("Too bad! You lost.");
+                    Console.WriteLine($"The correct word was {wordToGuess}.");
+                    return false;
+                }
+
+                else if (isVisible.All(x => x == true))
+                {
+                    Console.WriteLine("Congratulations! You guessed the correct word!");
+                    return true;
+                }
+            }
         }
 
-        private static char GuessCharacter()
+        private static void PrintKnownCharacters(string wordToGuess, bool[] isVisible)
         {
-            var character = '-';
+            string result = "";
 
-            return character;
+            for (int i = 0; i < wordToGuess.Length; i++)
+            {
+                result += (isVisible[i] ? wordToGuess[i] : '_');
+                result += ((i == wordToGuess.Length - 1) ? "" : " ");
+            }
+
+            Console.WriteLine(result);
+        }
+
+        private static bool CheckForCharacter(string wordToGuess, char playersGuess, ref bool[] isVisible)
+        {
+            bool foundCharacter = false;
+
+            for (int i = 0; i < wordToGuess.Length; i++)
+            {
+                if (wordToGuess[i].ToString().ToLower() == playersGuess.ToString().ToLower() && isVisible[i] != true)
+                {
+                    isVisible[i] = true;
+                    foundCharacter = true;
+                }
+            }
+
+            return foundCharacter;
+        }
+
+        private static char GuessCharacter(int lives)
+        {
+            Console.Write($"You have {lives} lives left. Guess a character: ");
+            var character = Console.ReadLine();
+            return character[0];
         }
     }
 }

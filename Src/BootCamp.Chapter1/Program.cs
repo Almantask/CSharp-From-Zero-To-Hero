@@ -7,7 +7,7 @@ namespace BootCamp1.Chapter
         static void Main(string[] args)
         {
             Console.WriteLine("Let's play Hangman!");
-            Hangman.Play(1, "Animals.txt", 5);
+            Hangman.Play(3, "Animals.txt", 5);
         }
     }
 }
