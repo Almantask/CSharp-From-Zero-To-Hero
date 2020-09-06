@@ -9,10 +9,10 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
-            return string.IsNullOrEmpty(message) ? message : EncryptedMessage(message, shift, true); 
+            return string.IsNullOrEmpty(message) ? message : EncryptedMessage(message, shift); 
         }
 
-        private static string EncryptedMessage(string message, byte shift, bool shiftRight)
+        private static string EncryptedMessage(string message, int shift)
         {
             byte[] asciiBytes = Encoding.ASCII.GetBytes(message);
 
@@ -20,20 +20,7 @@ namespace BootCamp.Chapter
             {
                 int newAsciiNumber;
 
-                if (shiftRight)
-                {
-                    newAsciiNumber = (asciiBytes[i] + shift) % 255;
-                }
-                else
-                {
-                    newAsciiNumber = (asciiBytes[i] - shift);
-
-                    if (newAsciiNumber < 0)
-                    {
-                        newAsciiNumber = 255 + newAsciiNumber;
-                    }
-                }
-
+                newAsciiNumber = (asciiBytes[i] + shift) % 255;
                 asciiBytes[i] = (byte)newAsciiNumber;
             }
 
@@ -43,7 +30,7 @@ namespace BootCamp.Chapter
 
         public static string Decrypt(string message, byte shift)
         {
-            return string.IsNullOrEmpty(message) ? message : EncryptedMessage(message, shift, false);
+            return string.IsNullOrEmpty(message) ? message : EncryptedMessage(message, 255-shift);
         }
     }
 }
