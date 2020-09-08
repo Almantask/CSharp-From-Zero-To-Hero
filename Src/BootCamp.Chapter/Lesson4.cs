@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -9,10 +7,10 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            string name = PromptString($"{Environment.NewLine}Enter name: ");
-            int age = PromptInt($"{Environment.NewLine}Enter age: ");
-            float weight = PromptFloat($"{Environment.NewLine}Enter weight (kg): ");
-            float height = PromptFloat($"{Environment.NewLine}Enter height (m): ");
+            string name = PromptString($"Enter name: ");
+            int age = PromptInt($"Enter age: ");
+            float weight = PromptFloat($"Enter weight (kg): ");
+            float height = PromptFloat($"Enter height (m): ");
 
             Console.WriteLine($"{Environment.NewLine}{name} is {age} years old. Their weight is {weight}kg and height is {height}m.");
             Console.WriteLine($"{name}'s BMI is {CalculateBMI(weight, height)}.{Environment.NewLine}");
@@ -45,31 +43,32 @@ namespace BootCamp.Chapter
 
         public static int PromptInt(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             string input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
 
             int processedInput;
             if (!int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out processedInput))
             {
-                Console.Write($"{Environment.NewLine}\"{input}\" is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
 
-            if (processedInput <= 0)
-            {
-                return 0;
-            }
             return processedInput;
         }
 
         public static string PromptString(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             string input = Console.ReadLine();
 
-            if (input == "")
+            if (string.IsNullOrEmpty(input))
             {
-                Console.Write($"{Environment.NewLine}Name cannot be empty.");
+                Console.Write($"Name cannot be empty.");
                 input = "-";
             }
 
@@ -78,10 +77,10 @@ namespace BootCamp.Chapter
 
         public static float PromptFloat(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
             string input = Console.ReadLine();
 
-            if (input == "")
+            if (string.IsNullOrEmpty(input))
             {
                 return 0;
             }
@@ -89,7 +88,7 @@ namespace BootCamp.Chapter
             float processedInput;
             if (!float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out processedInput))
             {
-                Console.Write($"{Environment.NewLine}\"{input}\" is not a valid number.");
+                Console.Write($"\"{input}\" is not a valid number.");
                 return -1;
             }
             
