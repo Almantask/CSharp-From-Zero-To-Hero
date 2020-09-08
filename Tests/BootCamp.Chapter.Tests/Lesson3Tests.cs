@@ -15,7 +15,7 @@ namespace BootCamp.Chapter.Tests
         [InlineData(100, 0, "Height cannot be equal or less than zero, but was 0.")]
         [InlineData(0, 50, "Weight cannot be equal or less than zero, but was 0.")]
         [InlineData(-100, 50, "Weight cannot be equal or less than zero, but was -100.")]
-        [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0.Height cannot be less than zero, but was 0.")]
+        [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0.Height cannot be equal or less than zero, but was 0.")]
         public void CalculateBmi_With_InvalidInput_Returns_MinusOne_And_PrintsErrorInConsole(float weightKg, float heightM, string fault)
         {
             var bmi = Checks.CalculateBmi(weightKg, heightM);
