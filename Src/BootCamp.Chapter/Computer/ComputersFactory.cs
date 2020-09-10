@@ -5,7 +5,7 @@ using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter.Computer
 {
-    public abstract class Installation
+    public abstract class ComputersFactory
     {
         public abstract Body InstallBody();
         public abstract Cpu InstallCpu();

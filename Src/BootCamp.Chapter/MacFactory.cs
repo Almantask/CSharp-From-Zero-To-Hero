@@ -3,44 +3,44 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using BootCamp.Chapter.Computer;
-
+using BootCamp.Chapter.Computer.Mac;
 namespace BootCamp.Chapter
 {
-    public class MacFactory : Installation
+    public class MacFactory : ComputersFactory
     {
 
         public override Body InstallBody()
         {
-            Body body = new Body();
+            MacBody body = new MacBody();
             return body;
         }
         public override Cpu InstallCpu()
         {
-            Cpu cpu = new Cpu();
+            MacCpu cpu = new MacCpu();
             return cpu;
         }
 
         public override Ram InstallRam()
         {
-            Ram ram = new Ram();
+            MacRam ram = new MacRam();
             return ram;
         }
 
         public override Gpu InstallGpu()
         {
-            Gpu gpu = new Gpu();
+            MacGpu gpu = new MacGpu();
             return gpu;
         }
 
         public override HardDisk InstallHardDisk()
         {
-            HardDisk hardDisk = new HardDisk();
+            MacHardDisk hardDisk = new MacHardDisk();
             return hardDisk;
         }
 
         public override Motherboard InstallMotherboard()
         {
-            Motherboard motherboard = new Motherboard();
+            MacMotherboard motherboard = new MacMotherboard();
             return motherboard;
         }
 

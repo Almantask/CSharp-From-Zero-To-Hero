@@ -2,44 +2,45 @@
 using System.Collections.Generic;
 using System.Text;
 using BootCamp.Chapter.Computer;
+using BootCamp.Chapter.Computer.Ms;
 
 namespace BootCamp.Chapter
 {
-    public class MsFactory : Installation
+    public class MsFactory : ComputersFactory
     {
 
         public override Body InstallBody()
         {
-            Body body = new Body();
+            MsBody body = new MsBody();
             return body;
         }
         public override Cpu InstallCpu()
         {
-            Cpu cpu = new Cpu();
+            MsCpu cpu = new MsCpu();
             return cpu;
         }
 
         public override Ram InstallRam()
         {
-            Ram ram = new Ram();
+            MsRam ram = new MsRam();
             return ram;
         }
 
         public override Gpu InstallGpu()
         {
-            Gpu gpu = new Gpu();
+            MsGpu gpu = new MsGpu();
             return gpu;
         }
 
         public override HardDisk InstallHardDisk()
         {
-            HardDisk hardDisk = new HardDisk();
+            MsHardDisk hardDisk = new MsHardDisk();
             return hardDisk;
         }
 
         public override Motherboard InstallMotherboard()
         {
-            Motherboard motherboard = new Motherboard();
+            MsMotherboard motherboard = new MsMotherboard();
             return motherboard;
         }
 
