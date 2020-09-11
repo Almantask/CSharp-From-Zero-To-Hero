@@ -12,7 +12,21 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            if (array?.Length > 0) Array.Sort(array);
+            if (array?.Length > 1)
+            {
+                for (int i = 0; i < array.Length - 1; i++)
+                {
+                    for (int j = i + 1; j < array.Length; j++)
+                    {
+                        if (array[i] > array[j])
+                        {
+                            int temp = array[i];
+                            array[i] = array[j];
+                            array[j] = temp;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -22,7 +36,17 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array?.Length > 0) Array.Reverse(array);
+            if (array?.Length > 0)
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    int endIndex = array.Length - (i + 1);
+                    if (endIndex < i) break;
+                    int temp = array[i];
+                    array[i] = array[endIndex];
+                    array[endIndex] = temp;
+                }
+            }
         }
 
         /// <summary>
@@ -32,16 +56,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (array?.Length > 0)
-            {
-                int[] output = new int[array.Length - 1];
-                for (int i = 0; i < output.Length; i++)
-                {
-                    output[i] = array[i];
-                }
-                return output;
-            }
-            return array;
+            if (array == null) return array;
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -50,16 +66,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array?.Length > 0)
-            {
-                int[] output = new int[array.Length - 1];
-                for (int i = 0; i < output.Length; i++)
-                {
-                    output[i] = array[i + 1];
-                }
-                return output;
-            }
-            return array;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -73,10 +80,6 @@ namespace BootCamp.Chapter1
             if (index < 0 || index >= array?.Length)
             {
                 return array;
-            }
-            if (index == 0)
-            {
-                return RemoveFirst(array);
             }
             if (array?.Length > 0)
             {
@@ -103,17 +106,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (array?.Length > 0)
-            {
-                int[] output = new int[array.Length + 1];
-                output[0] = number;
-                for (int i = 1; i < output.Length; i++)
-                {
-                    output[i] = array[i - 1];
-                }
-                return output;
-            }
-            return new int[] { number };
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -124,17 +117,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array?.Length > 0)
-            {
-                int[] output = new int[array.Length + 1];
-                output[output.Length - 1] = number;
-                for (int i = 0; i < output.Length - 1; i++)
-                {
-                    output[i] = array[i];
-                }
-                return output;
-            }
-            return new int[] { number };
+            if (array == null) return InsertAt(array, number, 0);
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -159,6 +143,10 @@ namespace BootCamp.Chapter1
                         continue;
                     }
                     output[i + flag] = array[i];
+                }
+                if (flag == 0)
+                {
+                    output[output.Length - 1] = number;
                 }
                 return output;
             }
