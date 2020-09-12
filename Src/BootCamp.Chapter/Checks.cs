@@ -16,19 +16,19 @@ namespace BootCamp.Chapter
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
             BalanceStats balanceStats = new BalanceStats();
-            return balanceStats.FindMostPoorPerson(peopleAndBalances);
+            return balanceStats.FindRichestPerson(peopleAndBalances);
         }
 
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
             BalanceStats balanceStats = new BalanceStats();
-            return balanceStats.FindMostPoorPerson(peopleAndBalances);
+            return balanceStats.FindPersonWithBiggestLoss(peopleAndBalances);
         }
 
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             BalanceStats balanceStats = new BalanceStats();
-            return balanceStats.FindMostPoorPerson(peopleAndBalances);
+            return balanceStats.FindHighestBalanceEver(peopleAndBalances);
         }
 
         public static string Build(string message, in int padding)
