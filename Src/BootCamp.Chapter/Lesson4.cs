@@ -39,8 +39,11 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             Console.WriteLine(message);
-            return int.Parse(Console.ReadLine());
 
+            var isNumber = int.TryParse(Console.ReadLine(), out int number);
+            if (!isNumber) return -1;
+
+            return number;
         }
 
         public static string PromptString(string message)
@@ -52,7 +55,11 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            return Single.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            float number;
+            var isNumber = Single.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.InvariantCulture, out number);
+            if (!isNumber) return -1;
+
+            return number;
         }
 
         public static float CalculateBMI(float weight, float height)
