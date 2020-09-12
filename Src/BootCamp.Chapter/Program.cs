@@ -11,6 +11,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            FileDataGetter dataGetter = new FileDataGetter();
+            dataGetter.Run();
         }
+        
     }
 }
