@@ -26,7 +26,12 @@ namespace BootCamp.Chapter
             {
                 string[] nameAndBalance = peopleAndBalances[i].Split(",");
 
-                if (!Regex.IsMatch(nameAndBalance[0], @"^[a-zA-Z .'-]+$"))
+                if(nameAndBalance[0][^1] == '.')
+                {
+                    nameAndBalance[0] = nameAndBalance[0].Remove(nameAndBalance[0].Length - 1);
+                }
+
+                if (!Regex.IsMatch(nameAndBalance[0], @"^[a-zA-Z '-]+$"))
                 {
                     throw new InvalidBalancesException(nameAndBalance[0], new Exception());
                 }
