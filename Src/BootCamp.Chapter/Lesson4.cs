@@ -72,27 +72,24 @@ namespace BootCamp.Chapter
         public static float CalculateBMI(float weight, float height)
         {
             var bmiError = "Failed calculating BMI. Reason:";
-            var lessThanEqualError = " cannot be equal or less than zero, but was ";
-            var heightError = "Height " + lessThanEqualError + height;
-            var weightError = "Weight " + lessThanEqualError + weight;
 
             if (height <= 0 && weight <= 0)
             {
                 Console.WriteLine(bmiError);
-                Console.WriteLine(heightError);
-                Console.WriteLine(weightError);
+                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+                Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
                 return -1;
             }
             else if (height <= 0)
             {
                 Console.WriteLine(bmiError);
-                Console.WriteLine(heightError);
+                Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
                 return -1;
             }
             else if (weight <= 0)
             {
                 Console.WriteLine(bmiError);
-                Console.WriteLine(weightError);
+                Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
                 return -1;
             }
 
