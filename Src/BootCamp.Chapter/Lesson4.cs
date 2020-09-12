@@ -52,7 +52,7 @@ namespace BootCamp.Chapter
             var name = Console.ReadLine();
             if (string.IsNullOrEmpty(name))
             {
-                Console.WriteLine("Name cannot be empty.");
+                Console.Write("Name cannot be empty.");
                 return "-";
             }
 
