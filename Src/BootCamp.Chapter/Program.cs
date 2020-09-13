@@ -6,7 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-
+            var logger = new ConsoleLogger();
+            BMICalculatorLogger.Info(logger);
         }
     }
 }
