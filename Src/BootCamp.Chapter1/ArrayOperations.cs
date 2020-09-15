@@ -16,7 +16,28 @@ namespace BootCamp.Chapter1
                 return;
             }
 
-            Array.Sort(array);
+            bool isArraySorted = false;
+            while(!isArraySorted)
+            {
+                bool wasOrderUpdated = false;
+                for (int i = 1; i < array.Length; i++)
+                {
+                    int a = array[i - 1];
+                    int b = array[i];
+
+                    if (a > b)
+                    {
+                        array[i - 1] = b;
+                        array[i] = a;
+                        wasOrderUpdated = true;
+                    }
+                }
+
+                if (!wasOrderUpdated)
+                {
+                    isArraySorted = true;
+                }
+            }
         }
 
         /// <summary>
@@ -31,7 +52,18 @@ namespace BootCamp.Chapter1
                 return;
             }
 
-            Array.Reverse(array);
+            var reversedArray = new int[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                int j = array.Length - 1 - i;
+                reversedArray[i] = array[j];
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = reversedArray[i];
+            }
         }
 
         /// <summary>
@@ -46,15 +78,7 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
-            var newLength = array.Length - 1;
-            var newArray = new int[newLength];
-
-            for (int i = 0; i < newLength; i++)
-            {
-                newArray[i] = array[i];
-            }
-
-            return newArray;
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -63,20 +87,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length == 0)
-            {
-                return array;
-            }
-
-            var newLength = array.Length - 1;
-            var newArray = new int[newLength];
-
-            for (int i = 0; i < newLength; i++)
-            {
-                newArray[i] = array[i+1];
-            }
-
-            return newArray;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -113,21 +124,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            var newLength = array == null ? 1 : array.Length + 1;
-            var newArray = new int[newLength];
-            newArray[0] = number;
-
-            if (array == null || array.Length == 0)
-            {
-                return newArray;
-            }
-
-            for (int i = 1; i < newLength; i++)
-            {
-                newArray[i] = array[i - 1];
-            }
-
-            return newArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -138,21 +135,12 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            var newLength = array == null ? 1 : array.Length + 1;
-            var newArray = new int[newLength];
-            newArray[newLength - 1] = number;
-
-            if (array == null || array.Length == 0)
+            if (array == null)
             {
-                return newArray;
+                return InsertAt(array, number, 0);
             }
 
-            for (int i = 0; i < newLength -1; i++)
-            {
-                newArray[i] = array[i];
-            }
-
-            return newArray;
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
