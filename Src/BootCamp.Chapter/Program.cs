@@ -27,7 +27,7 @@ namespace BootCamp.Chapter
 
                 Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
 
-                BMIPrinter(weight, height);
+                Console.WriteLine(BmiCalc(weight, height));
 
                 numPeople--;
             }
@@ -35,10 +35,10 @@ namespace BootCamp.Chapter
             Console.ReadKey();
         }
 
-        static void BMIPrinter(double weight, double height)
+        static double BmiCalc(double weight, double height)
         {
             double BMI = weight / ((height / 100) * (height / 100));
-            Console.WriteLine($"BMI = {BMI}");
+            return BMI;
         }
     }
 }
