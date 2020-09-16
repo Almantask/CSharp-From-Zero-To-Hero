@@ -47,7 +47,46 @@ It's all  done through unit tests.
 For now, you won't have to write tests, but you will have to pass them to see if your code works.
 So pay attention to what tests are red and fix them.
 
+##### Unit tests
+
+Unit tests, as the name implies, tests one thing only!
+The benefit of unit tests is that if we know that everything has been tested,
+just by clicking one button we can check the overall health of our codebase.
+Another benefit of unit tests is that in theory, you should not need to even debug.
+All tests are testing one small thing, therefore if a test fails, you should know exactly where the problem is.
+
+###### Black box testing
+
+Black box is a kind of testing when we don't really care how things work internally.
+All we care about is the input passed and the results returned.
+Therefore, all that matters in such tests is input/output pairs.
+
+###### White box testing
+
+White box testing also verifies if key parts of system were interacted with.
+In the homework of chapters 1-3 we will not use such kind of tests.
+More about them in chapter 4 (TDD).
+
+##### Reading test results
+
+1) Open the Test Explorer: from top menu bar: View->Test Explorer.
+   ![TestsWindow.PNG](docs/images/TestsWindow.PNG)
+2) Click "run all tests" button (left-most)
+3) Expand test results until you cannot (the most detailed test case reached)
+4) Open the expanded test case
+5) If the test case failed, it will show up as X and in Test Case Summary have all the information needed to fix it.
+
 ##### How to read test failures?
+
+The great thing about test explorer and the summary window is that you can see all the details you need in order to determine what went wrong and where to look to fix it.
+Here is an illustration of a specific test failing
+
+![Failed-Tests.png](docs/images/Failed-Tests.png)
+
+So you know that the test and why it failed and now we should fix it (make it green).
+Click on the red text that indicates the line of code that did not meet the criteria.
+It will open the file of tests that failed at the line that had input which did not meet the criteria.
+Stepping into the function that you were reidirected to will reveal the actual reason behind the failing tests.
 
 ### Task
 
