@@ -1,23 +1,58 @@
 # C#: From Zero To Hero
+
 ## Chapter 1. Homework 3: Functions
+
 ### Intro
 
 #### Functions
-Variables and functions is what makes every single program. 
-Understanding how to manage them, use and create your own functions is very important.
-Code is a story that we, developers write. 
+
+Variables and functions is what makes every single program.
+Code is a story that we, developers write.
 We start story from high level functions (title) and the more in depth we go, 
 the lower such detailed code (content) ends up.
 
+Every function has 5 things:
+- access modifier (private, protected, internal, public)
+- return type (void if it does not return anything, otherwise all the types are the same as you would declare variables)
+- name
+- arguments (can be 0 or more)
+- body (what the function does)
+
+For example:
+
+```
+public void Foo(int n)
+{
+  Console.WriteLine(n);
+}
+```
+
+or
+
+```
+public static int Bar()
+{
+  return 0;
+}
+```
+
+Note that some functions can also have a static modifier (in fact, all function in the homework of chapter 1). Those functions are global and don't require objects to be called. But this is only for the beginning. Normally, we avoid static functions because we want to make them localized to an object. About that more in chapter 2.
+
 #### Tests
+
 How do we know if code works?
 How do we define exactly what the code needs to do, under what conditions?
 How do we know when the code should succeed and when should it fail?  
 It's all  done through unit tests. 
 For now, you won't have to write tests, but you will have to pass them to see if your code works.
 So pay attention to what tests are red and fix them.
+
+##### How to read test failures?
+
 ### Task
+
 #### Code
+
 1) Fork https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter1/Homework/3
 2) Take homework 2 code, place it in the forked branch and refactor it using functions. There should be as little duplicate code as possible (there should be functions for:
 - Calculating BMI (weight comes in kg, height comes in meters),
@@ -26,6 +61,7 @@ So pay attention to what tests are red and fix them.
 - Prompt for input and converting it to float (print message for request, read console input and return converted input to float).
 3) Put all the function you made into the right places in Checks.cs class. Run tests, make sure you pass all the tests
 4) Put all program.cs logic to Lesson3.cs. Call it from main function. Program class should look like this:
+
 ```
 public class Program
 {
@@ -35,7 +71,9 @@ public class Program
   }
 } 
 ```
+
 #### Guide
+
 1) Open the Homework 3:
   * Choose the Chapter1/Homework/3 branch in the bottom right.
     * If it is not there already:
@@ -55,6 +93,7 @@ public class Program
   * Do not delete the function or it's curly braces.
   * Write between the curly braces "Lesson3.Demo();" without the ".
   * This should look like this:
+  
   ```csharp
     public class Program
     {
@@ -64,6 +103,7 @@ public class Program
         }
     }
   ```
+  
 6) Refactor/edit Lesson3.Demo() by using functions.
   * There should be as little duplicate code as possible
   * There should be functions for:
@@ -89,6 +129,7 @@ public class Program
         * Your Lesson3.cs functions should return the right output for the transmitted input. Otherwise a test will fail!
 
 ### Hints
+
 * This will make homework 4 much more easy:
   * Do use Environment.NewLine if you want to concanate a string with a newline command (or use WriteLine).
   * Do use [CultureInfo.InvariantCulture](https://docs.microsoft.com/de-de/dotnet/api/system.globalization.cultureinfo.invariantculture?view=netcore-3.1) when reading in float numbers. (Due to differences in parsing numbers with '.' and ',' character.
