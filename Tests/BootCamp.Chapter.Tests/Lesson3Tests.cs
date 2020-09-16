@@ -15,7 +15,8 @@ namespace BootCamp.Chapter.Tests
         [InlineData(100, 0, "Height cannot be equal or less than zero, but was 0.")]
         [InlineData(0, 50, "Weight cannot be equal or less than zero, but was 0.")]
         [InlineData(-100, 50, "Weight cannot be equal or less than zero, but was -100.")]
-        [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0.Height cannot be less than zero, but was 0.")]
+        [InlineData(0, 0, "Weight cannot be equal or less than zero, but was 0." +
+                          "Height cannot be equal or less than zero, but was 0.")]
         public void CalculateBmi_With_InvalidInput_Returns_MinusOne_And_PrintsErrorInConsole(float weightKg, float heightM, string fault)
         {
             var bmi = Checks.CalculateBmi(weightKg, heightM);
@@ -57,7 +58,7 @@ namespace BootCamp.Chapter.Tests
             
             var convertedInput = Checks.PromptString(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}Name cannot be empty.");
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}Name cannot be empty.{Environment.NewLine}");
             const string invalid = "-";
             convertedInput.Should().Be(invalid);
         }
@@ -85,7 +86,7 @@ namespace BootCamp.Chapter.Tests
 
             var convertedInput = Checks.PromptInt(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}");
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}{Environment.NewLine}");
             const int invalid = -1;
             convertedInput.Should().Be(invalid);
         }
@@ -113,7 +114,7 @@ namespace BootCamp.Chapter.Tests
 
             var convertedInput = Checks.PromptFloat(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}");
+            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}{Environment.NewLine}");
             const float invalid = -1;
             convertedInput.Should().Be(invalid);
         }
