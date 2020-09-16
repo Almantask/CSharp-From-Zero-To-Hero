@@ -2,19 +2,23 @@
 {
     public class Item
     {
-        private string _name;
+        protected string _name;
         public string GetName()
         {
             return _name;
         }
 
-        private decimal _price;
+        protected decimal _price;
         public decimal GetPrice()
         {
             return _price;
         }
 
-        private float _weight;
+        protected float _weight;
+        public float GetWeight()
+        {
+            return _weight;
+        }
 
         public Item(string name, decimal price, float weight)
         {
