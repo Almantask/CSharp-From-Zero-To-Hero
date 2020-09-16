@@ -1,6 +1,7 @@
 using System;
 using BootCamp.Chapter.Tests.Utils;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace BootCamp.Chapter.Tests
@@ -19,13 +20,19 @@ namespace BootCamp.Chapter.Tests
                           "Height cannot be equal or less than zero, but was 0.")]
         public void CalculateBmi_With_InvalidInput_Returns_MinusOne_And_PrintsErrorInConsole(float weightKg, float heightM, string fault)
         {
+            // Act
             var bmi = Checks.CalculateBmi(weightKg, heightM);
 
-            fault = fault.ToNewlineSentences();
-            ConsoleOutput.Should().Be($"Failed calculating BMI. Reason:{Environment.NewLine}{fault}");
-
-            const float invalid = -1;
-            bmi.Should().Be(invalid);
+            // Assert
+            var problems = fault.ToNewlineSentences();
+            var output = ConsoleOutput;
+            using (new AssertionScope())
+            {
+                output.Should().Contain("Failed calculating BMI. Reason:");
+                output.Should().ContainAll(problems);
+                const float invalid = -1;
+                bmi.Should().Be(invalid);
+            }
         }
 
         [Theory]
@@ -33,8 +40,10 @@ namespace BootCamp.Chapter.Tests
         [InlineData(100, 10, 1)]
         public void CalculateBmi_With_ValidInput_Returns_Expected(float weightKg, float heightM, float expectedBmi)
         {
+            // Act
             var bmi = Checks.CalculateBmi(weightKg, heightM);
 
+            // Assert
             bmi.Should().Be(expectedBmi);
         }
 
@@ -43,38 +52,56 @@ namespace BootCamp.Chapter.Tests
         [InlineData("X")]
         public void PromptName_PrintsMessage_And_ReturnsName(string input)
         {
+            // Arrange
             ConsoleInput = input;
 
+            // Act
             var convertedInput = Checks.PromptString(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}");
-            convertedInput.Should().Be(input);
+            // Assert
+            using (new AssertionScope())
+            {
+                ConsoleOutput.Should().Contain(_promptMessage);
+                convertedInput.Should().Be(input);
+            }
         }
 
         [Fact]
         public void PromptName_Empty_Returns_Dash_And_Prints_Error()
         {
+            // Arrange
             ConsoleInput = "";
             
+            // Act
             var convertedInput = Checks.PromptString(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}Name cannot be empty.{Environment.NewLine}");
-            const string invalid = "-";
-            convertedInput.Should().Be(invalid);
+            // Assert
+            using (new AssertionScope())
+            {
+                ConsoleOutput.Should().ContainAll(_promptMessage, "Name cannot be empty");
+                const string invalid = "-";
+                convertedInput.Should().Be(invalid);
+            }
         }
 
         [Theory]
         [InlineData("1", 1)]
         [InlineData("10", 10)]
-        [InlineData("", 0)]
+        [InlineData("", -1)]
         public void PromptInt_PrintsMessage_And_ReturnsInt(string input, int expectedConvertedInput)
         {
+            // Arrange
             ConsoleInput = input;
 
+            // Act
             var convertedInput = Checks.PromptInt(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}");
-            convertedInput.Should().Be(expectedConvertedInput);
+            // Assert
+            using (new AssertionScope())
+            {
+                ConsoleOutput.Should().Contain(_promptMessage);
+                convertedInput.Should().Be(expectedConvertedInput);
+            }
         }
 
         [Theory]
@@ -82,27 +109,39 @@ namespace BootCamp.Chapter.Tests
         [InlineData("10b", "\"10b\" is not a valid number.")]
         public void PromptInt_InvalidInput_Returns_MinusOne_And_PrintsErrorMessage(string input, string errorMessage)
         {
+            // Arrange
             ConsoleInput = input;
 
+            // Act
             var convertedInput = Checks.PromptInt(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}{Environment.NewLine}");
-            const int invalid = -1;
-            convertedInput.Should().Be(invalid);
+            // Assert
+            using (new AssertionScope())
+            {
+                ConsoleOutput.Should().ContainAll(_promptMessage, errorMessage);
+                const int invalid = -1;
+                convertedInput.Should().Be(invalid);
+            }
         }
 
         [Theory]
         [InlineData("1.0", 1f)]
         [InlineData("10.0", 10f)]
-        [InlineData("", 0)]
+        [InlineData("", -1)]
         public void PromptFloat_PrintsMessage_And_ReturnsFloat(string input, float expectedConvertedInput)
         {
+            // Arrange
             ConsoleInput = input;
 
+            // Act
             var convertedInput = Checks.PromptFloat(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}");
-            convertedInput.Should().Be(expectedConvertedInput);
+            // Assert
+            using (new AssertionScope())
+            {
+                ConsoleOutput.Should().Contain(_promptMessage);
+                convertedInput.Should().Be(expectedConvertedInput);
+            }
         }
 
         [Theory]
@@ -110,13 +149,19 @@ namespace BootCamp.Chapter.Tests
         [InlineData("10b", "\"10b\" is not a valid number.")]
         public void PromptFloat_InvalidInput_Returns_MinusOne_And_PrintsErrorMessage(string input, string errorMessage)
         {
+            // Arrange
             ConsoleInput = input;
 
+            // Act
             var convertedInput = Checks.PromptFloat(_promptMessage);
 
-            ConsoleOutput.Should().Be($"{_promptMessage}{Environment.NewLine}{errorMessage}{Environment.NewLine}");
-            const float invalid = -1;
-            convertedInput.Should().Be(invalid);
+            // Assert
+            using (new AssertionScope())
+            {
+                ConsoleOutput.Should().ContainAll(_promptMessage,errorMessage);
+                const float invalid = -1;
+                convertedInput.Should().Be(invalid);
+            }
         }
     }
 }
