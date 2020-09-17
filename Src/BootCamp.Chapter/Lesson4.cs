@@ -39,9 +39,15 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             Console.WriteLine(message);
-
-            var isNumber = int.TryParse(Console.ReadLine(), out int number);
-            if (!isNumber) return -1;
+            var input = Console.ReadLine();
+            
+            var isNumber = int.TryParse(input, out int number);
+            if (string.IsNullOrEmpty(input)) return 0;
+            if (!isNumber)
+            {
+                Console.Write("\"" + input + "\"" + " is not a valid number.");
+                return -1;
+            }
 
             return number;
         }
@@ -62,9 +68,14 @@ namespace BootCamp.Chapter
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            float number;
-            var isNumber = Single.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.InvariantCulture, out number);
-            if (!isNumber) return -1;
+            var input = Console.ReadLine();
+            var isNumber = Single.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out float number);
+            if (string.IsNullOrEmpty(input)) return 0;
+            if (!isNumber)
+            {
+                Console.Write("\"" + input + "\"" + " is not a valid number.");
+                return -1;
+            }
 
             return number;
         }
