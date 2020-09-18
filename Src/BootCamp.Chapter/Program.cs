@@ -70,7 +70,7 @@ namespace BootCamp.Chapter
 
             Console.WriteLine(User2name + " " + User2surname + " is" + " " + User2age + " years old, " + "their weight is " + User2weight + " and their height is " + User2height);
 
-            var weightbmi_2 = Convert.ToDouble(User2name);
+            var weightbmi_2 = Convert.ToDouble(User2weight);
             var heightBmi_2 = Convert.ToDouble(User2height) / 100;
 
             var heightsquared_2 = heightBmi_2 * heightBmi_2;
