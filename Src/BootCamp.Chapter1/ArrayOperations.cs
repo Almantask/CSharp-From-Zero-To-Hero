@@ -88,12 +88,15 @@ namespace BootCamp.Chapter1
             {
                 if(array.Length != 0 && index >= 0 && index <= array.Length - 1)
                 {
-                    var elementRemoved = new int[array.Length - 1];
-                    for (int i = 0; i < array.Length; i++)
+                    if (index == 0)
+                        return RemoveFirst(array);
+                    else if (index == array.Length - 1)
+                        return RemoveLast(array);
+                    else
                     {
-                        if (i == index) continue;
-
-                        elementRemoved[i] = array[i];
+                        var elementRemoved = new int[array.Length - 1];
+                        
+                        return elementRemoved;
                     }
                 }
             }
@@ -136,8 +139,13 @@ namespace BootCamp.Chapter1
             {
                 if(array.Length != 0)
                 {
-                    array.Append(number);
-                    return array;
+                    var newArray = new int[array.Length + 1];
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        newArray[i] = array[i];
+                    }
+                    newArray[newArray.Length - 1] = number;
+                    return newArray;
                 }
             }
             return new int[] { number };
