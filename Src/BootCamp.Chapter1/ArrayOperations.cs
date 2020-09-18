@@ -170,19 +170,24 @@ namespace BootCamp.Chapter1
         {
             if (array != null)
             {
-                if (array.Length != 0 && index >= 0 && index <= array.Length - 1)
+                if (array.Length != 0)
                 {
-                    var newArray = new int[array.Length + 1];
-                    for (int i = 0; i < index; i++)
+                    if (index >= 0 && index <= array.Length - 1)
                     {
-                        newArray[i] = array[i];
+
+                        var newArray = new int[array.Length + 1];
+                        for (int i = 0; i < index; i++)
+                        {
+                            newArray[i] = array[i];
+                        }
+                        newArray[index] = number;
+                        for (int i = index + 1; i < array.Length - 1; i++)
+                        {
+                            newArray[i] = array[i];
+                        }
+                        return newArray;
                     }
-                    newArray[index] = number;
-                    for (int i = index + 1; i < array.Length - 1; i++)
-                    {
-                        newArray[i] = array[i];
-                    }
-                    return newArray;
+                    return new int[0];
                 }
             }
             return new int[] { number };
