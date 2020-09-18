@@ -49,6 +49,34 @@ namespace BootCamp.Chapter
             //Final message is shown;
 
             Console.WriteLine(Firstname + " , your BMI value is " + Bmi);
+
+            //------- Task 3 -------//
+
+            Console.WriteLine("----User2----");
+            Console.WriteLine("Please enter your firstname: ");
+            string User2name = Console.ReadLine();
+
+            Console.WriteLine("Please enter your lastname: ");
+            string User2surname = Console.ReadLine();
+
+            Console.WriteLine("Please enter your age: ");
+            string User2age = Console.ReadLine();
+
+            Console.WriteLine("Please enter your weight: ");
+            string User2weight = Console.ReadLine();
+
+            Console.WriteLine("Please enter your height: ");
+            string User2height = Console.ReadLine();
+
+            Console.WriteLine(User2name + " " + User2surname + " is" + " " + User2age + " years old, " + "their weight is " + User2weight + " and their height is " + User2height);
+
+            var weightbmi_2 = Convert.ToDouble(User2name);
+            var heightBmi_2 = Convert.ToDouble(User2height) / 100;
+
+            var heightsquared_2 = heightBmi_2 * heightBmi_2;
+            var Bmi_2 = weightbmi_2 / heightsquared_2;
+
+            Console.WriteLine(User2name + " , your BMI value is " + Bmi_2);
         }
     }
 }
