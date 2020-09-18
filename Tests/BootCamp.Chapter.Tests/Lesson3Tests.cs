@@ -70,7 +70,6 @@ namespace BootCamp.Chapter.Tests
 
             // This is being tested
             var convertedInput = Checks.PromptFloat(PromptMessage);
-
             // Verify that prompted message is as expected
             var promptedMessage = consoleOutput.ToString().Trim();
             promptedMessage.Should().Be(PromptMessage);
