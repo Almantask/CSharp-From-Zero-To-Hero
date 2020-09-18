@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
             Console.WriteLine("Your body-mass index (BMI) is: " + Bmi);
 
             // Reading second person information: first name, second name, age, weight, height. (I add _2 to every variable)
-            Console.WriteLine("\nHello first person, what's your first name?");
+            Console.WriteLine("\nHello second person, what's your first name?");
             string firstName_2 = Console.ReadLine();
             Console.WriteLine("What's your second name?");
             string secondName_2 = Console.ReadLine();
