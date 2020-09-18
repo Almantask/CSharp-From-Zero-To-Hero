@@ -70,6 +70,7 @@ namespace BootCamp.Chapter1
                     {
                         firstRemoved[i - 1] = array[i];
                     }
+                    return firstRemoved;
                 }
             }
             return array;
@@ -117,6 +118,7 @@ namespace BootCamp.Chapter1
                     {
                         newArray[i + 1] = array[i];
                     }
+                    return newArray;
                 }
             }
             return new int[] { number };
