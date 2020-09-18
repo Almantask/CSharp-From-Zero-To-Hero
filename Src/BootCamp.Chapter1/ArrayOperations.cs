@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace BootCamp.Chapter1
@@ -95,7 +96,14 @@ namespace BootCamp.Chapter1
                     else
                     {
                         var elementRemoved = new int[array.Length - 1];
-                        
+                        for (int i = 0; i < index; i++)
+                        {
+                            elementRemoved[i] = array[i];
+                        }
+                        for (int i = index; i < array.Length-1; i++)
+                        {
+                            elementRemoved[i] = array[i + 1];
+                        }
                         return elementRemoved;
                     }
                 }
