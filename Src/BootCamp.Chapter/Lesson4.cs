@@ -37,6 +37,10 @@ namespace BootCamp.Chapter
                 Console.Write("\"{0}\" is not a valid number.", input);
                 return -1;
             }
+            if (string.IsNullOrEmpty(input))
+            {
+                return -1;
+            }
             return number;
         }
         public static string PromptString(string message)
@@ -55,7 +59,7 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
-            bool isNumber = float.TryParse(input, out float number);
+            bool isNumber = float.TryParse(input, NumberStyles.Number, CultureInfo.InvariantCulture, out float number);
 
             if (!isNumber && !string.IsNullOrEmpty(input))
             {
@@ -90,8 +94,8 @@ namespace BootCamp.Chapter
                 }
                 return -1;
             }
-            float heightM = height * 0.01f;
-            return weight / (heightM * heightM);
+            height = height * 1f;
+            return weight / (height * height);
         }
 
     }
