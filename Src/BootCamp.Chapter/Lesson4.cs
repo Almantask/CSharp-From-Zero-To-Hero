@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
 
             if (!isNumber && !string.IsNullOrEmpty(input))
             {
-                Console.Write("{input} is not a valid number.");
+                Console.Write("\"{0}\" is not a valid number.", input);
                 return -1;
             }
             return number;
@@ -59,7 +59,7 @@ namespace BootCamp.Chapter
 
             if (!isNumber && !string.IsNullOrEmpty(input))
             {
-                Console.Write("{input} is not a valid number.");
+                Console.Write("{0} is not a valid number.", input);
                 return -1;
             }
             return number;
@@ -80,17 +80,18 @@ namespace BootCamp.Chapter
             if (!isValidWeight || !isValidHeight)
             {
                 Console.WriteLine("Failed calculating BMI. Reason:");
-            }   
-            if (!isValidWeight)
-            {
-                Console.WriteLine("Weight cannot be equal or less than zero, but was {0}", weight);
-            }
-            if (!isValidHeight)
-            {
-                Console.WriteLine("Height cannot be equal or less than zero, but was {0}.", height);
+                if (!isValidWeight)
+                {
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was {0}", weight);
+                }
+                if (!isValidHeight)
+                {
+                    Console.WriteLine("Height cannot be equal or less than zero, but was {0}.", height);
+                }
                 return -1;
             }
-            return weight / height / height;
+            return weight / (height * height * 0.01f);
         }
+
     }
 }
