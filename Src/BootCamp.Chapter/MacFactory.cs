@@ -5,11 +5,22 @@ using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
-    public class MacFactory
+    public class MacFactory : DesktopComputer
     {
+        public MacFactory()
+        {
+            Assemble();
+            Console.WriteLine(CompletedAssembly());
+        }
+
         public DesktopComputer Assemble()
         {
             return new DesktopComputer();
+        }
+
+        public override string CompletedAssembly()
+        {
+            return "Assembly of Mac computer complete.";
         }
     }
 }

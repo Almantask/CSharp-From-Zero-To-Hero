@@ -6,7 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-
+            MsFactory msFactory = new MsFactory();
+            MacFactory macFactory = new MacFactory();
         }
     }
 }

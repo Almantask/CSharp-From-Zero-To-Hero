@@ -2,6 +2,15 @@
 {
     public class DesktopComputer
     {
+        public DesktopComputer()
+        {
+            _body = new Body();
+            _ram = new Ram();
+            _cpu = new Cpu();
+            _gpu = new Gpu();
+            _hard = new HardDisk();
+            _motherboard = new Motherboard();
+        }
         private Body _body;
         public Body GetBody()
         {
@@ -36,6 +45,11 @@
         public Motherboard GetMotherboard()
         {
             return _motherboard;
+        }
+
+        public virtual string CompletedAssembly()
+        {
+            return "Assembly of computer complete.";
         }
     }
 }
