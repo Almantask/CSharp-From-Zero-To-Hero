@@ -66,6 +66,10 @@ namespace BootCamp.Chapter
                 Console.Write("\"{0}\" is not a valid number.", input);
                 return -1;
             }
+            if (string.IsNullOrEmpty(input))
+            {
+                return -1;
+            }
             return number;
         }
         public static float CalculateBmi(float weight, float height)
