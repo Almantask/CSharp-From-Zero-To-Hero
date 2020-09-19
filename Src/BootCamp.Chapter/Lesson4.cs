@@ -59,7 +59,7 @@ namespace BootCamp.Chapter
 
             if (!isNumber && !string.IsNullOrEmpty(input))
             {
-                Console.Write("{0} is not a valid number.", input);
+                Console.Write("\"{0}\" is not a valid number.", input);
                 return -1;
             }
             return number;
@@ -90,7 +90,8 @@ namespace BootCamp.Chapter
                 }
                 return -1;
             }
-            return weight / (height * height * 0.01f);
+            float heightM = height * 0.01f;
+            return weight / (heightM * heightM);
         }
 
     }
