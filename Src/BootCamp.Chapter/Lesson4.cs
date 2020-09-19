@@ -42,15 +42,47 @@ namespace BootCamp.Chapter
         public static string PromptString(string message)
         {
             Console.WriteLine(message);
-            return Console.ReadLine();
+            string input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("Name cannot be empty");
+                return "-";
+            }
+            return input;
         }
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
-            return float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            string input = Console.ReadLine();
+            bool isNumber = float.TryParse(input, out float number);
+
+            if (!isNumber && !string.IsNullOrEmpty(input))
+            {
+                Console.Write("{input} is not a valid number.");
+                return -1;
+            }
+            return number;
         }
         public static float CalculateBmi(float weight, float height)
         {
+            bool isValidWeight = true;
+            bool isValidHeight = true;
+
+            if (weight <= 0)
+                isValidWeight = false;
+            if (height <= 0)
+                isValidHeight = false;
+
+            if (!isValidHeight || !isValidWeight)
+            { 
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (!isValidHeight)
+                    Console.Write(" Height cannot be equal or less than zero, but was {height}.");
+                if (!isValidWeight)
+                    Console.Write(" Weight cannot be equal or less than zero, but was {weight}.");
+                return -1;
+            }
             return (weight / height / height);
         }
     }
