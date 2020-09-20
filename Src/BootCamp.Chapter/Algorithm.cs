@@ -12,11 +12,14 @@ namespace BootCamp.Chapter
         /// </summary>
         internal static void OptionalTestCases()
         {
-            // int swapCount = 0;
-            // Sort(new int[0], ref swapCount);
+            int swapCount = 0;
+            int[] testArray = { 3, 2, 4, 1, 5 };
+            Split(testArray, out int[] array1, out int[] array2);
+            testArray = Merge(array1, array2);
+            Utility.PrintArray(testArray);
 
             // This will print your array like "3, 2, 4, 1".
-            Utility.PrintArray(new int[] { 3, 2, 4, 1 });
+            // Utility.PrintArray(new int[] { 3, 2, 4, 1 });
         }
 
         /// <summary>
@@ -33,7 +36,7 @@ namespace BootCamp.Chapter
                 return Merge(Sort(array1, ref swapCount), Sort(array2, ref swapCount));
             }
 
-            if (array[0] < array[1])
+            if (array.Length > 1 && array[0] > array[1])
             {
                 // You need to use my Swap function for solving the challange.
                 // It does nothing else than just swapping the two elements of index1 and index2 of the array.
@@ -52,14 +55,14 @@ namespace BootCamp.Chapter
         internal static void Split(int[] array, out int[] array1, out int[] array2)
         {
             array1 = new int[array.Length / 2];
-            array2 = new int[array.Length / 2];
+            array2 = new int[array.Length / 2 + array.Length % 2];
 
             for (int i = 0; i < array1.Length; i++)
             {
                 array1[i] = array[i];
                 array2[i] = array[i + array1.Length];
             }
-
+            array2[array2.Length - 1] = array[array1.Length + array2.Length - 1];
         }
 
         /// <summary>
@@ -79,7 +82,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < array2.Length; i++)
             {
-                array[i + array2.Length] = array2[i];
+                array[i + array1.Length] = array2[i];
             }
 
             return array;
