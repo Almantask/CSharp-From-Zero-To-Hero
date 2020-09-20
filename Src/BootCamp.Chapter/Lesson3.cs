@@ -96,10 +96,10 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(prompt);
             var bm = Console.ReadLine();
-            var bm_1 = float.Parse(bm, CultureInfo.InvariantCulture);
+            var bm_1 = float.Parse(bm);
 
             var bm_2 = Console.ReadLine();
-            var bm_20 = float.Parse(bm_2, CultureInfo.InvariantCulture);
+            var bm_20 = float.Parse(bm_2);
 
             var bmi = BMICalculator(bm_1, bm_20);
 
