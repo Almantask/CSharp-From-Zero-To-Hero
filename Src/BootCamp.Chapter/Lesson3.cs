@@ -85,7 +85,7 @@ namespace BootCamp.Chapter
 
         public static float BMICalculator(float weightcal, float heightcal)
         {
-            var heightmeter = heightcal / 100;
+            var heightmeter = heightcal;
             var heightsquared = heightmeter * heightmeter;
             var totalbmi = weightcal / heightsquared;
 
