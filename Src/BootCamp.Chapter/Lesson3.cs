@@ -11,39 +11,38 @@ namespace BootCamp.Chapter
         {
         }
 
-        public static float BMICalculator(float weightcal, float heightcal)
+        public static float CalculateBMI(float weight, float height)
         {
-            var heightmeter = heightcal;
-            var heightsquared = heightmeter * heightmeter;
-            var totalbmi = weightcal / heightsquared;
-            Console.WriteLine("Your bmi is: " + totalbmi);
-            return totalbmi;
+            var heightMeter = height;
+            var heightSquared = heightMeter * heightMeter;
+            var bmi = weight / heightSquared;
+            Console.WriteLine("Your bmi is: " + bmi);
+            return bmi;
         }
 
-        public static float BMiRequests(string prompt)
+        public static float ParseBmi(string prompt)
         {
             Console.WriteLine(prompt);
-            var bm = Console.ReadLine();
-            var bm_1 = float.Parse(bm);
+            var bmi = float.Parse(Console.ReadLine());
 
-            return bm_1;
+            return bmi;
         }
 
-        public static int ageRequests(string message)
+        public static int ParseAge(string message)
         {
             Console.WriteLine(message);
             var input = Console.ReadLine();
-            var ageconv = int.Parse(input);
+            var age = int.Parse(input);
 
-            return ageconv;
+            return age;
         }
 
-        public static string StringRequests(string messagestring)
+        public static string ReadString(string message)
         {
-            Console.WriteLine(messagestring);
-            var stringinput = Console.ReadLine();
+            Console.WriteLine(message);
+            var input = Console.ReadLine();
 
-            return stringinput;
+            return input;
         }
     }
 }

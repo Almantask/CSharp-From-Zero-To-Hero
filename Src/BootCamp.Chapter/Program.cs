@@ -10,12 +10,12 @@ namespace BootCamp.Chapter
         private static void Main(string[] args)
         {
             Lesson3.Demo();
-            Lesson3.StringRequests("Enter your first name:  ");
-            Lesson3.StringRequests("Enter your Last name: ");
+            Lesson3.ReadString("Enter your first name:  ");
+            Lesson3.ReadString("Enter your Last name: ");
 
-            Lesson3.ageRequests("Enter your age: ");
+            Lesson3.ParseAge("Enter your age: ");
 
-            Lesson3.BMICalculator(Lesson3.ageRequests("Enter weight: "), Lesson3.BMiRequests("Enter height: "));
+            Lesson3.CalculateBMI(Lesson3.ParseBmi("Enter weight: "), Lesson3.ParseBmi("Enter height: "));
         }
     }
 }
