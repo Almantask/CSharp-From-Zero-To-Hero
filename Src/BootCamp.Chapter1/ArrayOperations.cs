@@ -189,6 +189,8 @@ namespace BootCamp.Chapter1
                     }
                     return new int[0];
                 }
+                if (index < 0 || index > array.Length)
+                    return new int[0];
             }
             return new int[] { number };
         }
