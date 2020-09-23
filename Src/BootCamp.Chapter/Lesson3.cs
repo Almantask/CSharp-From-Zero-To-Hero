@@ -7,26 +7,9 @@ namespace BootCamp.Chapter
     class Lesson3
     {
         public static void Demo()
-        {
-            Console.WriteLine("Person 1:");
-            string name = PromptString("Enter your name: ");
-            string surname = PromptString("Enter your surname: ");
-            int age = PromptInt("Enter your age: ");
-            float height = PromptFloat("Enter your height: ");
-            float weight = PromptFloat("Enter your weight: ");            
-            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
-            float bmi = CalculateBmi(weight, height);
-            Console.WriteLine($"Your BMI is: {bmi}");
-
-            Console.WriteLine("\nPerson 2:");
-            name = PromptString("Enter your name: ");
-            surname = PromptString("Enter your surname: ");
-            age = PromptInt("Enter your age: ");
-            height = PromptFloat("Enter your height: ");
-            weight = PromptFloat("Enter your weight: ");            
-            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
-            bmi = CalculateBmi(weight, height);
-            Console.WriteLine($"Your BMI is: {bmi}");
+        {            
+            CallFunctions("Person 1");
+            CallFunctions("Person 2");
         }
         public static int PromptInt(string message)
         {
@@ -50,6 +33,18 @@ namespace BootCamp.Chapter
         {
             float bmi = weight / (height * height);
             return bmi;
+        }
+        public static void CallFunctions(string person)
+        {
+            Console.WriteLine(person);
+            string name = PromptString("Enter your name: ");
+            string surname = PromptString("Enter your surname: ");
+            int age = PromptInt("Enter your age: ");
+            float height = PromptFloat("Enter your height: ");
+            float weight = PromptFloat("Enter your weight: ");
+            Console.WriteLine($"{name} {surname} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
+            float bmi = CalculateBmi(weight, height);
+            Console.WriteLine($"Your BMI is: {bmi}");
         }
     }
 }
