@@ -1,26 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BootCamp.Chapter.Computer;
+﻿using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
     public class MacFactory : DesktopComputer
     {
-        public MacFactory()
-        {
-            Assemble();
-            Console.WriteLine(CompletedAssembly());
-        }
+        Body macBody = new Body();
+        Ram macRam = new Ram();
+        Cpu macCpu = new Cpu();
+        Gpu macGpu = new Gpu();
+        HardDisk macHardDisk = new HardDisk();
+        Motherboard macMotherBoard = new Motherboard();
 
         public DesktopComputer Assemble()
         {
-            return new DesktopComputer();
-        }
+            DesktopComputer macComputer = new DesktopComputer();
+            macComputer.SetBody(macBody);
+            macComputer.SetRam(macRam);
+            macComputer.SetCpu(macCpu);
+            macComputer.SetGpu(macGpu);
+            macComputer.SetHardDisk(macHardDisk);
+            macComputer.SetMotherBoard(macMotherBoard);
 
-        public override string CompletedAssembly()
-        {
-            return "Assembly of Mac computer complete.";
+            return macComputer;
         }
     }
 }

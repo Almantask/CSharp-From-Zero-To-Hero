@@ -2,25 +2,26 @@
 {
     public class DesktopComputer
     {
-        public DesktopComputer()
-        {
-            _body = new Body();
-            _ram = new Ram();
-            _cpu = new Cpu();
-            _gpu = new Gpu();
-            _hard = new HardDisk();
-            _motherboard = new Motherboard();
-        }
         private Body _body;
         public Body GetBody()
         {
             return _body;
         }
         
+        public void SetBody(Body body)
+        {
+            _body = body;
+        }
+
         private Ram _ram;
         public Ram GetRam()
         {
             return _ram;
+        }
+
+        public void SetRam(Ram ram)
+        {
+            _ram = ram;
         }
 
         private Cpu _cpu;
@@ -29,10 +30,21 @@
             return _cpu;
 
         }
+
+        public void SetCpu(Cpu cpu)
+        {
+            _cpu = cpu;
+        }
+
         private Gpu _gpu;
         public Gpu GetGpu()
         {
             return _gpu;
+        }
+
+        public void SetGpu(Gpu gpu)
+        {
+            _gpu = gpu;
         }
 
         private HardDisk _hard;
@@ -41,15 +53,20 @@
             return _hard;
         }
 
+        public void SetHardDisk(HardDisk hardDisk)
+        {
+            _hard = hardDisk;
+        }
+
         private Motherboard _motherboard;
         public Motherboard GetMotherboard()
         {
             return _motherboard;
         }
 
-        public virtual string CompletedAssembly()
+        public void SetMotherBoard(Motherboard motherboard)
         {
-            return "Assembly of computer complete.";
+            _motherboard = motherboard;
         }
     }
 }

@@ -1,26 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BootCamp.Chapter.Computer;
+﻿using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
     public class MsFactory : DesktopComputer
     {
-        public MsFactory()
-        {
-            Assemble();
-            Console.WriteLine(CompletedAssembly());
-        }
+        Body msBody = new Body();
+        Ram msRam = new Ram();
+        Cpu msCpu = new Cpu();
+        Gpu msGpu = new Gpu();
+        HardDisk msHardDisk = new HardDisk();
+        Motherboard msMotherBoard = new Motherboard();
 
         public DesktopComputer Assemble()
         {
-            return new DesktopComputer();
-        }
+            DesktopComputer msComputer = new DesktopComputer();
+            msComputer.SetBody(msBody);
+            msComputer.SetRam(msRam);
+            msComputer.SetCpu(msCpu);
+            msComputer.SetGpu(msGpu);
+            msComputer.SetHardDisk(msHardDisk);
+            msComputer.SetMotherBoard(msMotherBoard);
 
-        public override string CompletedAssembly()
-        {
-            return "Assembly of Ms computer complete.";
+            return msComputer;
         }
     }
 }
