@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
@@ -34,6 +37,16 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
+            var sb = new StringBuilder();
+            sb.Append("+");
+            var length = message.Length + padding;
+            for (int i = 0; i < length; i++)
+            {
+                sb.Append("-");
+            }
+            sb.Append($"+{Environment.NewLine}");
+            sb.Append("|");
+            
             return "";
         }
     }
