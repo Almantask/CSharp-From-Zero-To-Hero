@@ -2,17 +2,17 @@
 
 namespace BootCamp.Chapter
 {
-    public class MacFactory : DesktopComputer
+    public class MacFactory
     {
-        Body macBody = new Body();
-        Ram macRam = new Ram();
-        Cpu macCpu = new Cpu();
-        Gpu macGpu = new Gpu();
-        HardDisk macHardDisk = new HardDisk();
-        Motherboard macMotherBoard = new Motherboard();
-
         public DesktopComputer Assemble()
         {
+            Body macBody = new MacBody();
+            Ram macRam = new MacRam();
+            Cpu macCpu = new MacCpu();
+            Gpu macGpu = new MacGpu();
+            HardDisk macHardDisk = new MacHardDisk();
+            Motherboard macMotherBoard = new MacMotherboard();
+
             DesktopComputer macComputer = new DesktopComputer();
             macComputer.SetBody(macBody);
             macComputer.SetRam(macRam);

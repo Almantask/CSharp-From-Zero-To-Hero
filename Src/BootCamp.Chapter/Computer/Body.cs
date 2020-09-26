@@ -7,4 +7,10 @@ namespace BootCamp.Chapter.Computer
     public class Body
     {
     }
+    public class MacBody : Body
+    {
+    }
+    public class MsBody : Body
+    {
+    }
 }

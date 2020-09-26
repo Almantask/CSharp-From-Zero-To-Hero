@@ -2,17 +2,17 @@
 
 namespace BootCamp.Chapter
 {
-    public class MsFactory : DesktopComputer
+    public class MsFactory
     {
-        Body msBody = new Body();
-        Ram msRam = new Ram();
-        Cpu msCpu = new Cpu();
-        Gpu msGpu = new Gpu();
-        HardDisk msHardDisk = new HardDisk();
-        Motherboard msMotherBoard = new Motherboard();
-
         public DesktopComputer Assemble()
         {
+            Body msBody = new MsBody();
+            Ram msRam = new MsRam();
+            Cpu msCpu = new MsCpu();
+            Gpu msGpu = new MsGpu();
+            HardDisk msHardDisk = new MsHardDisk();
+            Motherboard msMotherBoard = new MsMotherboard();
+
             DesktopComputer msComputer = new DesktopComputer();
             msComputer.SetBody(msBody);
             msComputer.SetRam(msRam);

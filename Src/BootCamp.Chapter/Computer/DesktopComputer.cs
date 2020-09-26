@@ -28,7 +28,6 @@
         public Cpu GetCpu()
         {
             return _cpu;
-
         }
 
         public void SetCpu(Cpu cpu)
