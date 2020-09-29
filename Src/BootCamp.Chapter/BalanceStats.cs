@@ -46,28 +46,10 @@ namespace BootCamp.Chapter
                 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
                 var format = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
                 format.CurrencyGroupSeparator = string.Empty;
-                var balStr = string.Format(format, "{0:C0}", highBal);
-                for (int i = 0; i < highNames.Count; i++)
-                {
-                    if (highNames.Count == 1)
-                        sb.Append(highNames[i]);
-                    else if (i == highNames.Count - 1)
-                    {
-                        sb.Append("and ");
-                        sb.Append(highNames[i]);
-                    }
-                    else if (i == highNames.Count - 2)
-                    {
-                        sb.Append(highNames[i]);
-                        sb.Append(" ");
-                    }
-                    else
-                    {
-                        sb.Append(highNames[i]);
-                        sb.Append(", ");
-                    }
-                }
-                sb.Append($" had the most money ever. {balStr}.");
+                var highBalStr = string.Format(format, "{0:C0}", highBal);
+
+                BuildNamesString(sb, highNames);
+                sb.Append($" had the most money ever. {highBalStr}.");
 
                 return sb.ToString();
             }
@@ -110,6 +92,15 @@ namespace BootCamp.Chapter
                         lowNames.Add(name);
                     }
                 }
+
+                var sb = new StringBuilder();
+
+                var biggestLossStr = FormatValue(biggestLoss);
+
+                BuildNamesString(sb, lowNames);
+                sb.Append($" had the most money ever. {biggestLossStr}.");
+
+                return sb.ToString();
             }
             return defaultReturn;
         }
@@ -130,13 +121,18 @@ namespace BootCamp.Chapter
             return "";
         }
 
-        public static void BuildNamesAndBalanceString(List<string> names, int value)
+        public static string FormatValue(int value)
         {
-            var sb = new StringBuilder();
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var format = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
             format.CurrencyGroupSeparator = string.Empty;
             var valueStr = string.Format(format, "{0:C0}", value);
+
+            return valueStr;
+        }
+
+        public static void BuildNamesString(StringBuilder sb, List<string> names)
+        {
             for (int i = 0; i < names.Count; i++)
             {
                 if (names.Count == 1)
@@ -157,7 +153,6 @@ namespace BootCamp.Chapter
                     sb.Append(", ");
                 }
             }
-            sb.Append($" had the most money ever. {valueStr}.");
         }
     }
 }
