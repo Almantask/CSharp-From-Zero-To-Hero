@@ -81,7 +81,35 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances != null && peopleAndBalances.Length != 0)
             {
+                var lowNames = new List<string>();
+                int biggestLoss = 0;
 
+                foreach (var str in peopleAndBalances)
+                {
+                    var arr = str.Split(", ");
+                    var name = arr[0];
+                    int balance = 0;
+                    int difference = 0;
+                    for (int i = 1; i < arr.Length; i++)
+                    {
+                        var ok = int.TryParse(arr[i], out int number);
+                        if (ok)
+                        {
+                            balance = Math.Max(balance, number);
+                            difference = balance - number;
+                        }
+                    }
+                    if (difference > biggestLoss)
+                    {
+                        lowNames.Clear();
+                        lowNames.Add(name);
+                        biggestLoss = balance;
+                    }
+                    else if (difference == biggestLoss)
+                    {
+                        lowNames.Add(name);
+                    }
+                }
             }
             return defaultReturn;
         }
@@ -100,6 +128,36 @@ namespace BootCamp.Chapter
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             return "";
+        }
+
+        public static void BuildNamesAndBalanceString(List<string> names, int value)
+        {
+            var sb = new StringBuilder();
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            var format = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+            format.CurrencyGroupSeparator = string.Empty;
+            var valueStr = string.Format(format, "{0:C0}", value);
+            for (int i = 0; i < names.Count; i++)
+            {
+                if (names.Count == 1)
+                    sb.Append(names[i]);
+                else if (i == names.Count - 1)
+                {
+                    sb.Append("and ");
+                    sb.Append(names[i]);
+                }
+                else if (i == names.Count - 2)
+                {
+                    sb.Append(names[i]);
+                    sb.Append(" ");
+                }
+                else
+                {
+                    sb.Append(names[i]);
+                    sb.Append(", ");
+                }
+            }
+            sb.Append($" had the most money ever. {valueStr}.");
         }
     }
 }
