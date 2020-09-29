@@ -7,6 +7,8 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
+        static string defaultReturn = "N/A.";
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -69,7 +71,7 @@ namespace BootCamp.Chapter
 
                 return sb.ToString();
             }
-            return "N/A.";
+            return defaultReturn;
         }
 
         /// <summary>
@@ -77,7 +79,11 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances != null && peopleAndBalances.Length != 0)
+            {
+
+            }
+            return defaultReturn;
         }
 
         /// <summary>
