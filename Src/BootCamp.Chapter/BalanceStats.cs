@@ -12,54 +12,64 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            var highNames = new List<string>();
-            int highBal = 0;
-
-            foreach (var str in peopleAndBalances)
+            if (peopleAndBalances != null && peopleAndBalances.Length != 0)
             {
-                var arr = str.Split(", ");
-                var name = arr[0];
-                int balance = 0;
-                for (int i = 1; i < arr.Length; i++)
-                {
-                    var ok = int.TryParse(arr[i], out int number);
-                    if (ok)
-                        balance = Math.Max(balance, number);
-                }
-                if (balance > highBal)
-                {
-                    highNames.Clear();
-                    highNames.Add(name);
-                    highBal = balance;
-                }
-                else if (balance == highBal)
-                {
-                    highNames.Add(name);
-                }
-            }
+                var highNames = new List<string>();
+                int highBal = 0;
 
-            var sb = new StringBuilder();
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            var format = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
-            format.CurrencyGroupSeparator = string.Empty;
-            for (int i = 0; i < highNames.Count; i++)
-            {
-                if (highNames.Count == 1)
-                    sb.Append(highNames[i]);
-                else if (i == highNames.Count - 1)
+                foreach (var str in peopleAndBalances)
                 {
-                    sb.Append("and ");
-                    sb.Append(highNames[i]);
+                    var arr = str.Split(", ");
+                    var name = arr[0];
+                    int balance = 0;
+                    for (int i = 1; i < arr.Length; i++)
+                    {
+                        var ok = int.TryParse(arr[i], out int number);
+                        if (ok)
+                            balance = Math.Max(balance, number);
+                    }
+                    if (balance > highBal)
+                    {
+                        highNames.Clear();
+                        highNames.Add(name);
+                        highBal = balance;
+                    }
+                    else if (balance == highBal)
+                    {
+                        highNames.Add(name);
+                    }
                 }
-                else
-                {
-                    sb.Append(highNames[i]);
-                    sb.Append(", ");
-                }
-            }
-            sb.Append($" had the most money ever. {highBal:C0}.");
 
-            return sb.ToString();
+                var sb = new StringBuilder();
+                CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+                var format = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+                format.CurrencyGroupSeparator = string.Empty;
+                var balStr = string.Format(format, "{0:C0}", highBal);
+                for (int i = 0; i < highNames.Count; i++)
+                {
+                    if (highNames.Count == 1)
+                        sb.Append(highNames[i]);
+                    else if (i == highNames.Count - 1)
+                    {
+                        sb.Append("and ");
+                        sb.Append(highNames[i]);
+                    }
+                    else if (i == highNames.Count - 2)
+                    {
+                        sb.Append(highNames[i]);
+                        sb.Append(" ");
+                    }
+                    else
+                    {
+                        sb.Append(highNames[i]);
+                        sb.Append(", ");
+                    }
+                }
+                sb.Append($" had the most money ever. {balStr}.");
+
+                return sb.ToString();
+            }
+            return "N/A.";
         }
 
         /// <summary>
