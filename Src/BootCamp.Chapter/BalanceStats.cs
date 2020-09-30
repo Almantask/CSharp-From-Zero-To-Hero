@@ -42,11 +42,8 @@ namespace BootCamp.Chapter
                     }
                 }
 
-                var sb = new StringBuilder();
-                CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-                var format = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
-                format.CurrencyGroupSeparator = string.Empty;
-                var highBalStr = string.Format(format, "{0:C0}", highBal);
+                StringBuilder sb = new StringBuilder();
+                var highBalStr = FormatValue(highBal);
 
                 BuildNamesString(sb, highNames);
                 sb.Append($" had the most money ever. {highBalStr}.");
@@ -93,12 +90,14 @@ namespace BootCamp.Chapter
                     }
                 }
 
+                if (biggestLoss == 0) return defaultReturn;
+
                 var sb = new StringBuilder();
 
                 var biggestLossStr = FormatValue(biggestLoss);
 
                 BuildNamesString(sb, lowNames);
-                sb.Append($" had the most money ever. {biggestLossStr}.");
+                sb.Append($" lost the most money. -{biggestLossStr}.");
 
                 return sb.ToString();
             }
