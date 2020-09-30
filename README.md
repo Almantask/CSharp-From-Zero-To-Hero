@@ -16,37 +16,10 @@ if(condition)
 }
 ```
 
-or
-
-```cs
-if(condition)
-  // do something one liner
-```
-
 The scope (`{}`) is optional for one-liner statement, however it is recommended that you conventionally add the brackets. It's crucial that we do not miss the if statement branching logic and the extra brackets help even when they are not semantically needed.
 
 Please note that you don't have to explicitly say that something is true or false in your if statement, if you are working with a bool value.
 For example:
-This requires explicit comparison
-
-```cs
-if(x == y)
-{
-  // do something
-}
-```
-
-but this does not
-
-```
-bool x = false;
-if(x == true)
-{
-  // do something
-}
-```
-
-and so it can be simplified to just
 
 ```cs
 bool x = false;
@@ -83,23 +56,6 @@ public static void Foo(string message)
   if(!another_condition) return;
   // do something
   // good!- all is one level deep!
-}
-```
-
-If statements can be chained using `else if` or `else` keyword:
-
-```cs
-if(condition1)
-{
-  // do 1
-}
-else if(condition2)
-{
-  // do 2
-}
-else
-{
-  // do 3
 }
 ```
 
