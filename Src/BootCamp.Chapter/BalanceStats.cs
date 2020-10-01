@@ -200,6 +200,7 @@ namespace BootCamp.Chapter
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var format = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
             format.CurrencyGroupSeparator = string.Empty;
+            format.CurrencyNegativePattern = 1;
             var valueStr = string.Format(format, "{0:C0}", value);
 
             return valueStr;
