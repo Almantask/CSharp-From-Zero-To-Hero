@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -82,7 +83,7 @@ namespace BootCamp.Chapter
                     {
                         lowNames.Clear();
                         lowNames.Add(name);
-                        biggestLoss = balance;
+                        biggestLoss = difference;
                     }
                     else if (difference == biggestLoss)
                     {
@@ -109,7 +110,44 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances != null && peopleAndBalances.Length != 0)
+            {
+                var richNames = new List<string>();
+                int biggestBalance = 0;
+
+                foreach (var str in peopleAndBalances)
+                {
+                    var arr = str.Split(", ");
+                    var name = arr[0];
+
+                    var ok = int.TryParse(arr[arr.Length-1], out int number);
+
+                    if (ok)
+                    {
+                        if (number > biggestBalance)
+                        {
+                            richNames.Clear();
+                            richNames.Add(name);
+                            biggestBalance = number;
+                        }
+                        else if (number == biggestBalance)
+                        {
+                            richNames.Add(name);
+                        }
+                    }
+                }
+
+                var sb = new StringBuilder();
+
+                var biggestBalanceStr = FormatValue(biggestBalance);
+
+                BuildNamesString(sb, richNames);
+                var pluralOrSingle = (richNames.Count == 1 ? "is the richest person." : "are the richest people.");
+                sb.Append($" {pluralOrSingle} {biggestBalanceStr}.");
+
+                return sb.ToString();
+            }
+            return defaultReturn;
         }
 
         /// <summary>
@@ -117,7 +155,44 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (peopleAndBalances != null && peopleAndBalances.Length != 0)
+            {
+                var poorNames = new List<string>();
+                int lowestBalance = int.MaxValue;
+
+                foreach (var str in peopleAndBalances)
+                {
+                    var arr = str.Split(", ");
+                    var name = arr[0];
+
+                    var ok = int.TryParse(arr[arr.Length - 1], out int number);
+
+                    if (ok)
+                    {
+                        if (number < lowestBalance)
+                        {
+                            poorNames.Clear();
+                            poorNames.Add(name);
+                            lowestBalance = number;
+                        }
+                        else if (number == lowestBalance)
+                        {
+                            poorNames.Add(name);
+                        }
+                    }
+                }
+
+                var sb = new StringBuilder();
+
+                var lowestBalanceStr = FormatValue(lowestBalance);
+
+                BuildNamesString(sb, poorNames);
+                var pluralOrSingle = (poorNames.Count == 1 ? "has" : "have");
+                sb.Append($" {pluralOrSingle} the least money. {lowestBalanceStr}.");
+
+                return sb.ToString();
+            }
+            return defaultReturn;
         }
 
         public static string FormatValue(int value)
