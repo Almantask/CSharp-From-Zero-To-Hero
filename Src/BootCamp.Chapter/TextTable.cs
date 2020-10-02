@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.NetworkInformation;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -37,27 +38,50 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string Build(string message, int padding)
         {
-            var sb = new StringBuilder();
-            var whiteSpace = "";
-            var length = message.Length + padding*2;
-            sb.Append($"+{whiteSpace.PadRight(length, '-')}+");
-            BuildWhitespace(sb, whiteSpace, padding, length);
-            var messageWithPad = $"|{whiteSpace.PadRight(padding, ' ')} {message} {whiteSpace.PadRight(padding, ' ')}|";
-            sb.Append($"{messageWithPad}{Environment.NewLine}");
-            BuildWhitespace(sb, whiteSpace, padding, length);
-            sb.Append($"+{whiteSpace.PadRight(length, '-')}+");
+            if (!string.IsNullOrEmpty(message))
+            {
+                var sb = new StringBuilder();
+                var messages = message.Split(Environment.NewLine);
+                var longestString = "";
+                for (int i = 0; i < messages.Length; i++)
+                {
+                    if (messages[i].Length > longestString.Length)
+                        longestString = messages[i];
+                }
+                var whiteSpace = "";
+                var length = longestString.Length + padding * 2;
+                sb.Append($"+{whiteSpace.PadRight(length, '-')}+{Environment.NewLine}");
+                BuildWhitespace(sb, whiteSpace, padding, length);
+                BuildMessage(sb, messages, padding, longestString.Length);
+                BuildWhitespace(sb, whiteSpace, padding, length);
+                sb.Append($"+{whiteSpace.PadRight(length, '-')}+{Environment.NewLine}");
 
-            return sb.ToString();
+                return sb.ToString();
+            }
+            return "";
         }
 
         public static void BuildWhitespace(StringBuilder sb, string whiteSpace, int padding, int length)
         {
-            for (int i = 0; i < padding; i++)
+            if (padding > 0)
             {
-                sb.Append("|");
-                sb.Append(whiteSpace.PadRight(length, ' '));
-                sb.Append("|");
-                sb.Append(Environment.NewLine);
+                for (int i = 0; i < padding; i++)
+                {
+                    sb.Append("|");
+                    sb.Append(whiteSpace.PadRight(length, ' '));
+                    sb.Append("|");
+                    sb.Append(Environment.NewLine);
+                }
+            }
+        }
+
+        public static void BuildMessage(StringBuilder sb, string[] messages, int padding, int length)
+        {
+            var whiteSpace = "";
+            for (int i = 0; i < messages.Length; i++)
+            {
+                var message = messages[i];
+                sb.Append($"|{whiteSpace.PadRight(padding, ' ')}{message.PadRight(message.Length+(length-message.Length), ' ')}{whiteSpace.PadRight(padding, ' ')}|{Environment.NewLine}");
             }
         }
     }
