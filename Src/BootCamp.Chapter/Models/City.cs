@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using BootCamp.Chapter.Exceptions;
 
 namespace BootCamp.Chapter.Models
@@ -9,7 +10,7 @@ namespace BootCamp.Chapter.Models
     {
         private int[][] Buildings { get; set; }
         private SkyLine Skyline { get; set; }
-        public int[][] MaxBuildingHeight { get => getMaxBuildingHeight(); }
+        private int[][] MaxBuildingHeight { get => getMaxBuildingHeight(); }
 
         public City(int[][] buildings)
         {
@@ -21,6 +22,29 @@ namespace BootCamp.Chapter.Models
             TestBuildings(buildings);
             Buildings = buildings;
             SetSkyline();
+        }
+
+        public int MaxCityRise()
+        {
+            return SumHeightsTrueIsMaxHeightFalseIsOriginal(true) - SumHeightsTrueIsMaxHeightFalseIsOriginal(false);
+        }
+
+        private int SumHeightsTrueIsMaxHeightFalseIsOriginal(bool isMax)
+        {
+            int streetLength = Buildings.Length;
+            int[][] maxBuildingHeight = MaxBuildingHeight;
+
+            int sum = 0;
+
+            for (int i = 0; i < streetLength; i++)
+            {
+                for (int k = 0; k < streetLength; k++)
+                {
+                    sum += isMax ? maxBuildingHeight[i][k] : Buildings[i][k];
+                }
+            }
+
+            return sum;
         }
 
         private void SetSkyline()
