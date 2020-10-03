@@ -30,7 +30,24 @@ namespace BootCamp.Chapter.Models
 
         private int[][] getMaxBuildingHeight()
         {
-            throw new NotImplementedException();
+            int streetLength = Buildings.Length;
+            int[][] maxBuildingHeight = new int[streetLength][];
+
+            for (int i = 0; i < streetLength; i++)
+            {
+                maxBuildingHeight[i] = new int[streetLength];
+                for (int k = 0; k < streetLength; k++)
+                {
+                    maxBuildingHeight[i][k] = GetMaxHeight(i, k);
+                }
+            }
+
+            return maxBuildingHeight;
+        }
+
+        private int GetMaxHeight(int i, int k)
+        {
+            return (Skyline.TopView[i] < Skyline.SideView[k]) ? Skyline.SideView[k] : Skyline.TopView[i];
         }
 
         private void TestBuildings(int[][] buildings)
