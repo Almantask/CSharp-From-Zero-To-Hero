@@ -6,39 +6,25 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var name = "Joe";
-            var surname = "Shmoe";
-            var age = 22;
-            var weight = 54;
-            var height = 170f;
+            for(int i = 0; i < 3; i++)
+            {
+                int personCounter = i + 1;
+                Console.Write("Enter first name for person " + personCounter + ": ");
+                var name = Console.ReadLine();
+                Console.Write("Enter last name for person " + personCounter + ": ");
+                var surname = Console.ReadLine();
+                Console.Write("Enter age for person " + personCounter + ": ");
+                var age = int.Parse(Console.ReadLine());
+                Console.Write("Enter weight for person " + personCounter + ": ");
+                var weight = double.Parse(Console.ReadLine());
+                Console.Write("Enter height for person " + personCounter + ": ");
+                var height = double.Parse(Console.ReadLine());
 
-            Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm");
-            var heightConverted = height / 100; // height in meters
-            var bmi = weight / (heightConverted * heightConverted);
-            Console.WriteLine("BMI: " + bmi + "\n");
-
-            name = "Derek";
-            surname = "Donuts";
-            age = 22;
-            weight = 100;
-            height = 172.72f;
-
-            Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm");
-            heightConverted = height / 100; // height in meters
-            bmi = weight / (heightConverted * heightConverted);
-            Console.WriteLine("BMI: " + bmi + "\n");
-
-            name = "Bob";
-            surname = "Johnson";
-            age = 23;
-            weight = 100;
-            height = 182.88f;
-
-            Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm");
-            heightConverted = height / 100; // height in meters
-            bmi = weight / (heightConverted * heightConverted);
-            Console.WriteLine("BMI: " + bmi + "\n");
-
+                Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " cm");
+                var heightConverted = height / 100; // height in meters
+                var bmi = weight / (heightConverted * heightConverted);
+                Console.WriteLine("BMI: " + bmi + "\n");
+            }
         }
     }
 }
