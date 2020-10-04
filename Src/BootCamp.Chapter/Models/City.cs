@@ -8,9 +8,9 @@ namespace BootCamp.Chapter.Models
 {
     public class City
     {
-        private int[][] Buildings { get; set; }
-        private SkyLine Skyline { get; set; }
-        private int[][] MaxBuildingHeight { get => getMaxBuildingHeight(); }
+        public int[][] Buildings { get; set; }
+        public SkyLine Skyline { get; set; }
+        
 
         public City(int[][] buildings)
         {
@@ -19,32 +19,9 @@ namespace BootCamp.Chapter.Models
 
         public void BuildBuildings(int[][] buildings)
         {
-            TestBuildings(buildings);
+            ValidateBuildings(buildings);
             Buildings = buildings;
             SetSkyline();
-        }
-
-        public int MaxCityRise()
-        {
-            return SumHeightsTrueIsMaxHeightFalseIsOriginal(true) - SumHeightsTrueIsMaxHeightFalseIsOriginal(false);
-        }
-
-        private int SumHeightsTrueIsMaxHeightFalseIsOriginal(bool isMax)
-        {
-            int streetLength = Buildings.Length;
-            int[][] maxBuildingHeight = MaxBuildingHeight;
-
-            int sum = 0;
-
-            for (int i = 0; i < streetLength; i++)
-            {
-                for (int k = 0; k < streetLength; k++)
-                {
-                    sum += isMax ? maxBuildingHeight[i][k] : Buildings[i][k];
-                }
-            }
-
-            return sum;
         }
 
         private void SetSkyline()
@@ -52,29 +29,7 @@ namespace BootCamp.Chapter.Models
             Skyline = new SkyLine(Buildings);
         }
 
-        private int[][] getMaxBuildingHeight()
-        {
-            int streetLength = Buildings.Length;
-            int[][] maxBuildingHeight = new int[streetLength][];
-
-            for (int i = 0; i < streetLength; i++)
-            {
-                maxBuildingHeight[i] = new int[streetLength];
-                for (int k = 0; k < streetLength; k++)
-                {
-                    maxBuildingHeight[i][k] = GetMaxHeight(i, k);
-                }
-            }
-
-            return maxBuildingHeight;
-        }
-
-        private int GetMaxHeight(int i, int k)
-        {
-            return (Skyline.TopView[i] < Skyline.SideView[k]) ? Skyline.SideView[k] : Skyline.TopView[i];
-        }
-
-        private void TestBuildings(int[][] buildings)
+        private void ValidateBuildings(int[][] buildings)
         {
             foreach (int[] street in buildings)
             {
@@ -89,7 +44,7 @@ namespace BootCamp.Chapter.Models
         {
             if (building < 0 || building > 50)
             {
-                throw new BuildingException($"{nameof(building)} height can not be more than 50 or less than 0 but is {building}");
+                throw new BuildingException($"{nameof(building)} height can not be less than 0 or more than 50 but is {building}");
             }
         }
     }
