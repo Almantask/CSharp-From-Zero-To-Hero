@@ -16,6 +16,11 @@ namespace BootCamp.Chapter.Models
             SideView = CalculateSkylineSide(buildings);
         }
 
+        public static SkyLine CreateSkyLine(int[][] buildings)
+        {
+            return new SkyLine(buildings);
+        }
+
         private int[] CalculateSkylineTop(int[][] buildings)
         {
             bool isTopView = true;

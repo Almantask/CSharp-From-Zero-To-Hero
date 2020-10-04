@@ -9,24 +9,19 @@ namespace BootCamp.Chapter.Models
     public class City
     {
         public int[][] Buildings { get; private set; }
-        public SkyLine Skyline { get; private set; }
+        public SkyLine SkyLine { get; private set; }
         
 
         public City(int[][] buildings)
         {
             BuildBuildings(buildings);
+            SkyLine = SkyLine.CreateSkyLine(Buildings);
         }
 
         public void BuildBuildings(int[][] buildings)
         {
             ValidateBuildings(buildings);
             Buildings = buildings;
-            SetSkyline();
-        }
-
-        private void SetSkyline()
-        {
-            Skyline = new SkyLine(Buildings);
         }
 
         private void ValidateBuildings(int[][] buildings)

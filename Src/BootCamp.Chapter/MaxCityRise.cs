@@ -48,7 +48,7 @@ namespace BootCamp.Chapter
 
         private static int GetMaxHeight(int i, int k, City city)
         {
-            return (city.Skyline.TopView[i] < city.Skyline.SideView[k]) ? city.Skyline.TopView[i] : city.Skyline.SideView[k];
+            return (city.SkyLine.TopView[i] < city.SkyLine.SideView[k]) ? city.SkyLine.TopView[i] : city.SkyLine.SideView[k];
         }
     }
 }
