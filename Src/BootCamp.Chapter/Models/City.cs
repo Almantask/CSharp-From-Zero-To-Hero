@@ -15,13 +15,13 @@ namespace BootCamp.Chapter.Models
         public City(int[][] buildings)
         {
             BuildBuildings(buildings);
-            SkyLine = SkyLine.CreateSkyLine(Buildings);
         }
 
         public void BuildBuildings(int[][] buildings)
         {
             ValidateBuildings(buildings);
             Buildings = buildings;
+            SkyLine = SkyLine.CreateSkyLine(Buildings);
         }
 
         private void ValidateBuildings(int[][] buildings)
