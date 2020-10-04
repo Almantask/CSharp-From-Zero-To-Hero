@@ -8,8 +8,8 @@ namespace BootCamp.Chapter.Models
 {
     public class City
     {
-        public int[][] Buildings { get; set; }
-        public SkyLine Skyline { get; set; }
+        public int[][] Buildings { get; private set; }
+        public SkyLine Skyline { get; private set; }
         
 
         public City(int[][] buildings)

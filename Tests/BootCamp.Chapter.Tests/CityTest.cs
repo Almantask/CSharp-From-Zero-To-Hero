@@ -3,6 +3,7 @@ using Xunit;
 using BootCamp.Chapter.Models;
 using BootCamp.Chapter.Exceptions;
 using BootCamp.Chapter.Tests.Public;
+using Moq;
 
 namespace BootCamp.Chapter.Tests
 {
@@ -21,41 +22,24 @@ namespace BootCamp.Chapter.Tests
             Assert.Throws<BuildingException>(action);
         }
 
-        /*
-        [Theory]
-        [InlineData(0, 3, 1, 5)]
-        [InlineData(1, 3, 1, 5)]
-        [InlineData(2, 3, 1, 5)]
-        public void City_Given_Buildinging_Returns_Correct_MaxBuildingHeight(int offPlace, int citySize, int buildingHeight, int offNumber)
+        [Fact]
+        public void GetMaxCityRise_Given_City_Returns_CorrectMaxCityRise()//int offPlace, int Expected, int citySize, int buildingHeight, int offNumber
         {
             //Arrange
-            int[][] buildings = BuildBuildingsArray(citySize, buildingHeight);
-            buildings[offPlace][offPlace] = offNumber;
-            int[][] correctMaxBuildingHeight = GetMaxBuildingsArrArr(citySize, buildingHeight, offNumber, offPlace);
+            int[][] buildings = new int[][] 
+            {
+                new int[] { 3, 0, 8, 4 },
+                new int[] {2, 4, 5, 7 },
+                new int[] {9, 2, 6, 3 },
+                new int[] {0, 3, 1, 0 } 
+            };
+            City city = new City(buildings);
 
             //Act
-            City city = new City(buildings);
-            int[][] MaxHeightBuildings = city.MaxBuildingHeight;
+            int maxCityRise = MaxCityRise.GetMaxCityRise(city);
 
             //Assert
-            Assert.Equal(correctMaxBuildingHeight, MaxHeightBuildings);
+            Assert.Equal(35, maxCityRise);
         }
-        
-        private int[][] GetMaxBuildingsArrArr(int citySize, int buildingHeight, int offNumber, int offPlace)
-        {
-            int[][] buildings = new int[citySize][];
-
-            for (int i = 0; i < citySize; i++)
-            {
-                buildings[i] = new int[citySize];
-                for (int k = 0; k < citySize; k++)
-                {
-                    bool isOffPlace = (i == offPlace || k == offPlace);
-                    buildings[i][k] = isOffPlace ? offNumber : buildingHeight;
-                }
-            }
-            return buildings;
-        }
-        */
     }
 }

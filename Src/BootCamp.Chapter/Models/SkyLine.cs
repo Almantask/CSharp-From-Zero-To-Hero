@@ -7,8 +7,8 @@ namespace BootCamp.Chapter.Models
 {
     public class SkyLine
     {
-        public int[] TopView { get; set; }
-        public int[] SideView { get; set; }
+        public int[] TopView { get; }
+        public int[] SideView { get; }
 
         public SkyLine(int[][] buildings)
         {
