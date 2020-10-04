@@ -8,8 +8,8 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            CallFunctions("Person 1");
-            CallFunctions("Person 2");
+            GetUserInputs("Person 1");
+            GetUserInputs("Person 2");
         }
         public static int PromptInt(string message)
         {
@@ -44,7 +44,7 @@ namespace BootCamp.Chapter
                 return bmi;
             }            
         }
-        public static void CallFunctions(string person)
+        public static void GetUserInputs(string person)
         {
             Console.WriteLine(person);
             string name = PromptString("Enter your name: ");
