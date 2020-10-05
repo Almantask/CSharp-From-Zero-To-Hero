@@ -15,7 +15,21 @@ namespace BootCamp.Chapter1
             {
                 return;
             }
-            Array.Sort(array);
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                bool swapped = false;
+                for (int j = 0; j < array.Length - i - 1; j++)
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        int temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                        swapped = true;
+                    }
+                }
+                if (!swapped) return;
+            }
         }
 
         /// <summary>
