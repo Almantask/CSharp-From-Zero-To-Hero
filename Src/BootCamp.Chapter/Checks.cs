@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -14,28 +16,28 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
+        static CultureInfo invC = CultureInfo.InvariantCulture;
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.Write(message);
+            return int.Parse(Console.ReadLine());
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            Console.Write(message);
+            return Console.ReadLine();
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.Write(message);
+            return float.Parse(Console.ReadLine(), invC);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            return weight / (height * height);
         }
     }
 }
