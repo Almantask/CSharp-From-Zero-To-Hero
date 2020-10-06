@@ -15,7 +15,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null && peopleAndBalances.Length == 0) return defaultReturn;
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) return defaultReturn;
 
             var highNames = new List<string>();
             int highBal = 0;
@@ -108,7 +108,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null && peopleAndBalances.Length == 0) return defaultReturn;
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) return defaultReturn;
 
             var richNames = new List<string>();
             int biggestBalance = 0;
@@ -151,7 +151,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null && peopleAndBalances.Length == 0) return defaultReturn;
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) return defaultReturn;
 
             var poorNames = new List<string>();
             int lowestBalance = int.MaxValue;
