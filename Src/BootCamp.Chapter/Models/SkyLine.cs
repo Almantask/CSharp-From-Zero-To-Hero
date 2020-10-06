@@ -16,6 +16,11 @@ namespace BootCamp.Chapter.Models
             SideView = CalculateSkylineSide(buildings);
         }
 
+        /// <summary>
+        /// Returns a SkyLine for the Given Buildings
+        /// </summary>
+        /// <param name="buildings"></param>
+        /// <returns></returns>
         public static SkyLine CreateSkyLine(int[][] buildings)
         {
             return new SkyLine(buildings);
@@ -41,12 +46,19 @@ namespace BootCamp.Chapter.Models
             return view;
         }
 
+        /// <summary>
+        /// Constucts a view for TopView or sideview depending on isTopView.
+        /// </summary>
+        /// <param name="buildings"></param>
+        /// <param name="viewWidth"></param>
+        /// <param name="isTopView"></param>
+        /// <returns></returns>
         private static int[] ConstructView(int[][] buildings, int viewWidth, bool isTopView)
         {
             int[] view = new int[viewWidth];
 
             /*
-             * This Code makes a list of the Rows or Columns depending on topview or sideview. 
+             * Makes a list of the Rows or Columns depending on topview or sideview. 
              * Then pasts the highest number of the Row or collumn into the view.
             */
             for (int i = 0; i < viewWidth; i++)
