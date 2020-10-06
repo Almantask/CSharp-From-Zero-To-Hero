@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
-        static string defaultReturn = "N/A.";
+        const string defaultReturn = "N/A.";
 
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
