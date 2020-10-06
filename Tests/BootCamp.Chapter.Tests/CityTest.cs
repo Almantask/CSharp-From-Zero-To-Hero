@@ -11,15 +11,15 @@ namespace BootCamp.Chapter.Tests
     {
         [Theory]
         [InlineData( 1, -1)]
-        [InlineData(1, 51)]
-        public void City_Given_BadBuildings_Throws_BuildingException(int citySize, int buildingHeight)
+        [InlineData(1, 101)]
+        public void City_Given_WrongBuildingHeight_Throws_InvalidBuildingHeightException(int citySize, int buildingHeight)
         {
             int[][] buildings = Builders.BuildBuildingsArray(citySize, buildingHeight);
             City city;
 
             Action action = () => city = new City(buildings);
 
-            Assert.Throws<BuildingException>(action);
+            Assert.Throws<InvalidBuildingHeightException>(action);
         }
 
         [Fact]

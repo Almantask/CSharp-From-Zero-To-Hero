@@ -37,9 +37,9 @@ namespace BootCamp.Chapter.Models
 
         private void IsBuildingHeightValid(int building)
         {
-            if (building < 0 || building > 50)
+            if (building < 0 || building > 100)
             {
-                throw new BuildingException($"{nameof(building)} height can not be less than 0 or more than 50 but is {building}");
+                throw new InvalidBuildingHeightException($"{nameof(building)} height can not be less than 0 or more than 100 but is {building}");
             }
         }
     }
