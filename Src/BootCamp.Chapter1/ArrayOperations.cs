@@ -59,16 +59,12 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
+            
             if (array == null || array.Length == 0)
             {
                 return array;
             }
-            int[] newArray = new int[array.Length - 1];
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-            return newArray;
+            return RemoveAt(array, array.Length - 1);            
         }
 
         /// <summary>
@@ -77,16 +73,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null || array.Length == 0)
-            {
-                return array;
-            }
-            int[] newArray = new int[array.Length - 1];
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i + 1];
-            }
-            return newArray;
+            return RemoveAt(array, 0);            
         }
 
         /// <summary>
@@ -129,18 +116,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (array == null || array.Length == 0)
-            {
-                int[] numberArray = new int[] { number };
-                return numberArray;
-            }
-            int[] newArray = new int[array.Length + 1];
-            newArray[0] = number;
-            for (int i = 0; i < array.Length; i++)
-            {
-                newArray[i + 1] = array[i];
-            }
-            return newArray;
+            return InsertAt(array, number, 0);            
         }
 
         /// <summary>
@@ -151,18 +127,13 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
+            
             if (array == null || array.Length == 0)
             {
                 int[] numberArray = new int[] { number };
                 return numberArray;
             }
-            int[] newArray = new int[array.Length + 1];
-            newArray[newArray.Length - 1] = number;
-            for (int i = 0; i < array.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-            return newArray;
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -184,7 +155,7 @@ namespace BootCamp.Chapter1
                 return array;
 
             }
-            if (index < 0 || index >= array.Length)
+            if (index < 0 || index > array.Length)
             {
                 return array;
             }
