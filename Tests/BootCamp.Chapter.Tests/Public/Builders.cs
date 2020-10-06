@@ -6,7 +6,7 @@ namespace BootCamp.Chapter.Tests.Public
 {
     public static class Builders
     {
-        public static int[][] BuildBuildingsArray(int citySize, int buildingHeight)
+        public static int[][] BuildBuildings(int citySize, int buildingHeight)
         {
             int[][] buildings = new int[citySize][];
             for (int i = 0; i < citySize; i++)

@@ -14,7 +14,7 @@ namespace BootCamp.Chapter.Tests
         public void SkyLine_Given_Buildings_Creates_View(bool isTopView, int citySize, int buildingHeight, int offNumber)
         {
             //Arrange
-            int[][] buildings = Builders.BuildBuildingsArray(citySize, buildingHeight);
+            int[][] buildings = Builders.BuildBuildings(citySize, buildingHeight);
             buildings[0][0] = offNumber;
             int[] correctView = new int[4] { offNumber, buildingHeight, buildingHeight, buildingHeight };
 
