@@ -22,7 +22,7 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Fact]
-        public void GetMaxCityRise_Given_City_Returns_CorrectMaxCityRise()//int offPlace, int Expected, int citySize, int buildingHeight, int offNumber
+        public void GetMaxCityRise_Given_City_Returns_CorrectMaxCityRise()
         {
             //Arrange
             int[][] buildings = new int[][] 
