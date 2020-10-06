@@ -21,15 +21,15 @@ namespace BootCamp.Chapter
 
                 double bmi = weight / (length * length / 10000);
 
-                string completeEntry = $"{name} {surname} is {age} years old, his weight is {weight} kg " +
+                string completeEntry = $"{DateTime.Now} {name} {surname} is {age} years old, his weight is {weight} kg " +
                     $"and his height is {length} cm. BMI: {bmi:F1}";
 
-                logger.LogMessage(DateTime.Now, completeEntry);
+                logger.LogMessage(completeEntry);
             }
             catch (Exception ex)
             {
-                string errorMessage = $"Error reading or calculating data: {ex.Message}";
-                logger.LogMessage(DateTime.Now, errorMessage);
+                string errorMessage = $"{DateTime.Now} Error reading or calculating data: {ex.Message}";
+                logger.LogMessage(errorMessage);
             }
         }
     }

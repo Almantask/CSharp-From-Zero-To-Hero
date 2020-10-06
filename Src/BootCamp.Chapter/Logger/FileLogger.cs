@@ -1,21 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace BootCamp.Chapter
 {
     public class FileLogger : ILogger
     {
-        public void LogMessage(DateTime dateTime, string message)
+        public void LogMessage(string message)
         {
             string fullFileName = GlobalSettings.filePath + @"\log.txt";
-            string[] logEntry = new string[2];
 
-            logEntry[0] = dateTime.ToString();
-            logEntry[1] = message;
+            List<string> entries = new List<string>();
+            entries.Add(message);
 
             try
             {
-                File.AppendAllLines(fullFileName, logEntry);
+                File.AppendAllLines(fullFileName, entries);
             }
             catch (Exception ex)
             {

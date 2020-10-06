@@ -4,6 +4,6 @@ namespace BootCamp.Chapter
 {
     public interface ILogger
     {
-        void LogMessage(DateTime dateTime, string message);
+        void LogMessage(string message);
     }
 }
