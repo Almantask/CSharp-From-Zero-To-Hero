@@ -12,7 +12,7 @@ namespace BootCamp.Chapter.Tests
         [Theory]
         [InlineData( 1, -1)]
         [InlineData(1, 101)]
-        public void City_Given_WrongBuildingHeight_Throws_InvalidBuildingHeightException(int citySize, int buildingHeight)
+        public void City_Given_InvalidBuildingHeight_Throws_InvalidBuildingHeightException(int citySize, int buildingHeight)
         {
             int[][] buildings = Builders.BuildBuildings(citySize, buildingHeight);
 

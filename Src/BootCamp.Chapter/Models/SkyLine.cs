@@ -24,31 +24,37 @@ namespace BootCamp.Chapter.Models
         private int[] CalculateSkylineTop(int[][] buildings)
         {
             bool isTopView = true;
-            int viewLength = buildings.Length;
-            int[] view = ConstructView(buildings, viewLength, isTopView);
+            int viewWidth = buildings.Length;
+
+            int[] view = ConstructView(buildings, viewWidth, isTopView);
+
             return view;
         }
 
         private int[] CalculateSkylineSide(int[][] buildings)
         {
             bool isTopView = false;
-            int viewLength = buildings.Length;
+            int viewWidth = buildings.Length;
 
-            int[] view = ConstructView(buildings, viewLength, isTopView);
+            int[] view = ConstructView(buildings, viewWidth, isTopView);
 
             return view;
         }
 
-        private static int[] ConstructView(int[][] buildings, int viewLength, bool isTopView)
+        private static int[] ConstructView(int[][] buildings, int viewWidth, bool isTopView)
         {
-            int[] view = new int[viewLength];
+            int[] view = new int[viewWidth];
 
-            for (int i = 0; i < viewLength; i++)
+            /*
+             * This Code makes a list of the Rows or Columns depending on topview or sideview. 
+             * Then pasts the highest number of the Row or collumn into the view.
+            */
+            for (int i = 0; i < viewWidth; i++)
             {
-                int[] buildingArr = new int[viewLength];
-                for (int k = 0; k < viewLength; k++)
+                int[] buildingArr = new int[viewWidth];
+                for (int k = 0; k < viewWidth; k++)
                 {
-                    buildingArr[k] = isTopView ? buildings[k][i] : buildings[i][k];
+                    buildingArr[k] = isTopView ? buildings[k][i] : buildings[i][k]; 
                 }
                 view[i] = buildingArr.Max();
             }

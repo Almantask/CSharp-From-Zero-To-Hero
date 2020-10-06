@@ -30,12 +30,12 @@ namespace BootCamp.Chapter.Models
             {
                 foreach (int building in street)
                 {
-                    IsBuildingHeightValid(building);
+                    BuildingHeightValidation(building);
                 }
             }
         }
 
-        private void IsBuildingHeightValid(int building)
+        private void BuildingHeightValidation(int building)
         {
             if (building < 0 || building > 100)
             {

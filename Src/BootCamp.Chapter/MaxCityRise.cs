@@ -9,13 +9,13 @@ namespace BootCamp.Chapter
     {
         public static int GetMaxCityRise(City city)
         {
-            return SumHeightsTrueIsMaxHeightFalseIsOriginal(true, city) - SumHeightsTrueIsMaxHeightFalseIsOriginal(false, city);
+            return SumOfAllBuildingsMaxHeight(city) - SumOfAllBuildings(city);
 
         }
-        private static int SumHeightsTrueIsMaxHeightFalseIsOriginal(bool isMax, City city)
+        private static int SumOfAllBuildingsMaxHeight(City city)
         {
             int streetLength = city.Buildings.Length;
-            int[][] maxBuildingHeight = MaxBuildingHeight(city, streetLength);
+            int[][] maxBuildingHeight = CalculateMaxBuildingsHeight(city, streetLength);
 
             int sum = 0;
 
@@ -23,14 +23,30 @@ namespace BootCamp.Chapter
             {
                 for (int k = 0; k < streetLength; k++)
                 {
-                    sum += isMax ? maxBuildingHeight[i][k] : city.Buildings[i][k];
+                    sum += maxBuildingHeight[i][k];
                 }
             }
 
             return sum;
         }
 
-        private static int[][] MaxBuildingHeight(City city, int streetLength)
+        private static int SumOfAllBuildings(City city)
+        {
+            int streetLength = city.Buildings.Length;
+            int sum = 0;
+
+            for (int i = 0; i < streetLength; i++)
+            {
+                for (int k = 0; k < streetLength; k++)
+                {
+                    sum += city.Buildings[i][k];
+                }
+            }
+
+            return sum;
+        }
+
+        private static int[][] CalculateMaxBuildingsHeight(City city, int streetLength)
         {
             int[][] maxBuildingHeight = new int[streetLength][];
 
