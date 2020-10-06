@@ -38,27 +38,26 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string Build(string message, int padding)
         {
-            if (!string.IsNullOrEmpty(message))
-            {
-                var sb = new StringBuilder();
-                var messages = message.Split(Environment.NewLine);
-                var longestString = "";
-                for (int i = 0; i < messages.Length; i++)
-                {
-                    if (messages[i].Length > longestString.Length)
-                        longestString = messages[i];
-                }
-                var whiteSpace = "";
-                var length = longestString.Length + padding * 2;
-                sb.Append($"+{whiteSpace.PadRight(length, '-')}+{Environment.NewLine}");
-                BuildWhitespace(sb, whiteSpace, padding, length);
-                BuildMessage(sb, messages, padding, longestString.Length);
-                BuildWhitespace(sb, whiteSpace, padding, length);
-                sb.Append($"+{whiteSpace.PadRight(length, '-')}+{Environment.NewLine}");
+            if (string.IsNullOrEmpty(message)) return String.Empty;
 
-                return sb.ToString();
+            var sb = new StringBuilder();
+            var messages = message.Split(Environment.NewLine);
+            var longestString = "";
+            for (int i = 0; i < messages.Length; i++)
+            {
+                if (messages[i].Length > longestString.Length)
+                    longestString = messages[i];
             }
-            return "";
+            var whiteSpace = "";
+            var length = longestString.Length + padding * 2;
+            sb.Append($"+{whiteSpace.PadRight(length, '-')}+{Environment.NewLine}");
+            BuildWhitespace(sb, whiteSpace, padding, length);
+            BuildMessage(sb, messages, padding, longestString.Length);
+            BuildWhitespace(sb, whiteSpace, padding, length);
+            sb.Append($"+{whiteSpace.PadRight(length, '-')}+{Environment.NewLine}");
+
+            return sb.ToString();
+
         }
 
         public static void BuildWhitespace(StringBuilder sb, string whiteSpace, int padding, int length)
