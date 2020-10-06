@@ -50,11 +50,11 @@ namespace BootCamp.Chapter
             }
             var whiteSpace = "";
             var length = longestString.Length + padding * 2;
-            sb.Append($"+{whiteSpace.PadRight(length, '-')}+{Environment.NewLine}");
+            sb.AppendLine($"+{whiteSpace.PadRight(length, '-')}+");
             BuildWhitespace(sb, whiteSpace, padding, length);
             BuildMessage(sb, messages, padding, longestString.Length);
             BuildWhitespace(sb, whiteSpace, padding, length);
-            sb.Append($"+{whiteSpace.PadRight(length, '-')}+{Environment.NewLine}");
+            sb.AppendLine($"+{whiteSpace.PadRight(length, '-')}+");
 
             return sb.ToString();
 
@@ -80,7 +80,7 @@ namespace BootCamp.Chapter
             for (int i = 0; i < messages.Length; i++)
             {
                 var message = messages[i];
-                sb.Append($"|{whiteSpace.PadRight(padding, ' ')}{message.PadRight(message.Length+(length-message.Length), ' ')}{whiteSpace.PadRight(padding, ' ')}|{Environment.NewLine}");
+                sb.AppendLine($"|{whiteSpace.PadRight(padding, ' ')}{message.PadRight(message.Length+(length-message.Length), ' ')}{whiteSpace.PadRight(padding, ' ')}|");
             }
         }
     }
