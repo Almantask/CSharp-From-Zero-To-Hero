@@ -48,26 +48,26 @@ namespace BootCamp.Chapter
                 if (messages[i].Length > longestString.Length)
                     longestString = messages[i];
             }
-            var whiteSpace = "";
+
             var length = longestString.Length + padding * 2;
-            sb.AppendLine($"+{whiteSpace.PadRight(length, '-')}+");
-            BuildWhitespace(sb, whiteSpace, padding, length);
+            sb.AppendLine($"+{String.Empty.PadRight(length, '-')}+");
+            BuildWhitespace(sb, padding, length);
             BuildMessage(sb, messages, padding, longestString.Length);
-            BuildWhitespace(sb, whiteSpace, padding, length);
-            sb.AppendLine($"+{whiteSpace.PadRight(length, '-')}+");
+            BuildWhitespace(sb, padding, length);
+            sb.AppendLine($"+{String.Empty.PadRight(length, '-')}+");
 
             return sb.ToString();
 
         }
 
-        public static void BuildWhitespace(StringBuilder sb, string whiteSpace, int padding, int length)
+        public static void BuildWhitespace(StringBuilder sb, int padding, int length)
         {
             if (padding > 0)
             {
                 for (int i = 0; i < padding; i++)
                 {
                     sb.Append("|");
-                    sb.Append(whiteSpace.PadRight(length, ' '));
+                    sb.Append(String.Empty.PadRight(length, ' '));
                     sb.Append("|");
                     sb.Append(Environment.NewLine);
                 }
@@ -76,11 +76,10 @@ namespace BootCamp.Chapter
 
         public static void BuildMessage(StringBuilder sb, string[] messages, int padding, int length)
         {
-            var whiteSpace = "";
             for (int i = 0; i < messages.Length; i++)
             {
                 var message = messages[i];
-                sb.AppendLine($"|{whiteSpace.PadRight(padding, ' ')}{message.PadRight(message.Length+(length-message.Length), ' ')}{whiteSpace.PadRight(padding, ' ')}|");
+                sb.AppendLine($"|{String.Empty.PadRight(padding, ' ')}{message.PadRight(message.Length+(length-message.Length), ' ')}{String.Empty.PadRight(padding, ' ')}|");
             }
         }
     }
