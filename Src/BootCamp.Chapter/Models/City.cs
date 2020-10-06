@@ -17,6 +17,10 @@ namespace BootCamp.Chapter.Models
             BuildBuildings(buildings);
         }
 
+        /// <summary>
+        /// Build new Buildings in existing city. and will change SkyLine Accordingly.
+        /// </summary>
+        /// <param name="buildings"></param>
         public void BuildBuildings(int[][] buildings)
         {
             ValidateBuildings(buildings);
