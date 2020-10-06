@@ -15,9 +15,8 @@ namespace BootCamp.Chapter.Tests
         public void City_Given_WrongBuildingHeight_Throws_InvalidBuildingHeightException(int citySize, int buildingHeight)
         {
             int[][] buildings = Builders.BuildBuildings(citySize, buildingHeight);
-            City city;
 
-            Action action = () => city = new City(buildings);
+            Action action = () => new City(buildings);
 
             Assert.Throws<InvalidBuildingHeightException>(action);
         }
