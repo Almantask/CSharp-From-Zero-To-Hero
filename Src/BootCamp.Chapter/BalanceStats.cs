@@ -43,14 +43,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            StringBuilder sb = new StringBuilder();
-            var highBalStr = FormatValue(highBal);
-
-            BuildNamesString(sb, highNames);
-            sb.Append($" had the most money ever. {highBalStr}.");
-
-            return sb.ToString();
-
+            return BuildNames(highBal, highNames, " had the most money ever.");
         }
 
         /// <summary>
@@ -92,15 +85,8 @@ namespace BootCamp.Chapter
 
             if (biggestLoss == 0) return defaultReturn;
 
-            var sb = new StringBuilder();
-
-            var biggestLossStr = FormatValue(biggestLoss);
-
-            BuildNamesString(sb, lowNames);
-            sb.Append($" lost the most money. -{biggestLossStr}.");
-
-            return sb.ToString();
-
+            biggestLoss = -biggestLoss;
+            return BuildNames(biggestLoss, lowNames, " lost the most money.");
         }
 
         /// <summary>
@@ -135,15 +121,8 @@ namespace BootCamp.Chapter
                 }
             }
 
-            var sb = new StringBuilder();
-
-            var biggestBalanceStr = FormatValue(biggestBalance);
-
-            BuildNamesString(sb, richNames);
             var pluralOrSingle = (richNames.Count == 1 ? "is the richest person." : "are the richest people.");
-            sb.Append($" {pluralOrSingle} {biggestBalanceStr}.");
-
-            return sb.ToString();
+            return BuildNames(biggestBalance, richNames, $" {pluralOrSingle}");
         }
 
         /// <summary>
@@ -178,16 +157,8 @@ namespace BootCamp.Chapter
                 }
             }
 
-            var sb = new StringBuilder();
-
-            var lowestBalanceStr = FormatValue(lowestBalance);
-
-            BuildNamesString(sb, poorNames);
             var pluralOrSingle = (poorNames.Count == 1 ? "has" : "have");
-            sb.Append($" {pluralOrSingle} the least money. {lowestBalanceStr}.");
-
-            return sb.ToString();
-
+            return BuildNames(lowestBalance, poorNames, $" {pluralOrSingle} the least money.");
         }
 
         public static string FormatValue(int value)
@@ -201,8 +172,11 @@ namespace BootCamp.Chapter
             return valueStr;
         }
 
-        public static void BuildNamesString(StringBuilder sb, List<string> names)
+        public static string BuildNames(int value, List<string> names, string variableStr)
         {
+            var sb = new StringBuilder();
+            var valueStr = FormatValue(value);
+
             for (int i = 0; i < names.Count; i++)
             {
                 if (names.Count == 1)
@@ -223,6 +197,8 @@ namespace BootCamp.Chapter
                     sb.Append(", ");
                 }
             }
+            sb.Append($"{variableStr} {valueStr}.");
+            return sb.ToString();
         }
     }
 }
