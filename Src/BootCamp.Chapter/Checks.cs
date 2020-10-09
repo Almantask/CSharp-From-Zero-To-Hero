@@ -20,23 +20,57 @@ namespace BootCamp.Chapter
         public static int PromptInt(string message)
         {
             Console.Write(message);
-            return int.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
+            bool isNumber = int.TryParse(input, out int number);
+            if(!isNumber || number <= 0)
+            {
+                Console.WriteLine("\"" + input + "\" is not a valid number.");
+                return -1;
+            }
+            return number;
         }
 
         public static string PromptString(string message)
         {
             Console.Write(message);
-            return Console.ReadLine();
+            string input = Console.ReadLine();
+            if (string.IsNullOrEmpty(input)) {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            return input;
         }
 
         public static float PromptFloat(string message)
         {
             Console.Write(message);
-            return float.Parse(Console.ReadLine(), invC);
+            string input = Console.ReadLine();
+            bool isNumber = float.TryParse(input, NumberStyles.Float, invC, out float number);
+            if (!isNumber || number <= 0)
+            {
+                Console.WriteLine("\"" + input + "\" is not a valid number.");
+                return -1;
+            }
+            return number;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
+            if(height <= 0 || weight <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                if (height <= 0)
+                {
+                    Console.Write("Height cannot be equal or less than zero, but was " + height + ".");
+                }
+                if(weight <= 0)
+                {
+                    Console.Write("Weight cannot be equal or less than zero, but was " + weight + ".");
+                }
+                Console.WriteLine();
+                return -1;
+            }
+
             return weight / (height * height);
         }
     }
