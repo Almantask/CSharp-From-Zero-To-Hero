@@ -3,26 +3,13 @@ using System.Linq;
 
 namespace BootCamp.Chapter
 {
-    public class Shop
+    public class Shop : Inventory
     {
-        private Inventory _inventory;
-
         public decimal Money { get; set; }
-
-        public Shop()
-        {
-            _inventory = new Inventory();
-        }
 
         public Shop(decimal money)
         {
-            _inventory = new Inventory();
             Money = money;
-        }
-
-        public Item[] GetItems()
-        {
-            return _inventory.Items;
         }
 
         /// <summary>
@@ -31,7 +18,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public void Add(Item item)
         {
-            _inventory.AddItem(item);
+            AddItem(item);
         }
 
         /// <summary>
@@ -41,7 +28,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            _inventory.RemoveItem(_inventory.GetItems(name).FirstOrDefault());
+            RemoveItem(GetItems(name).FirstOrDefault());
         }
 
         /// <summary>
@@ -75,10 +62,10 @@ namespace BootCamp.Chapter
         /// </returns>
         public Item Sell(string item)
         {
-            if (_inventory.Items.Any(x => x.Name == item))
+            if (Items.Any(x => x.Name == item))
             {
-                Item soldItem = _inventory.GetItems(item).FirstOrDefault();
-                _inventory.RemoveItem(soldItem);
+                Item soldItem = GetItems(item).FirstOrDefault();
+                RemoveItem(soldItem);
                 Money += soldItem.Price;
                 return soldItem;
             }
@@ -90,7 +77,7 @@ namespace BootCamp.Chapter
 
         public override string ToString()
         {
-            return string.Format($"Shop has {Money} money and the following inventory: {_inventory}{Environment.NewLine}");
+            return string.Format($"Shop has {Money} money and the following inventory: {base.ToString()}{Environment.NewLine}");
         }
     }
 }

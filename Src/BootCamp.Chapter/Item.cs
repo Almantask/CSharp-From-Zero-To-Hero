@@ -12,5 +12,10 @@
             Price = price;
             Weight = weight;
         }
+
+        public override string ToString()
+        {
+            return string.Format($"{Name}");
+        }
     }
 }

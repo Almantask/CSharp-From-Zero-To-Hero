@@ -11,6 +11,11 @@ namespace BootCamp.Chapter
             Items = new Item[0];
         }
 
+        public Item[] GetItems()
+        {
+            return Items;
+        }
+
         public Item[] GetItems(string name)
         {
             return Items.Where(x => x.Name == name).ToArray();
