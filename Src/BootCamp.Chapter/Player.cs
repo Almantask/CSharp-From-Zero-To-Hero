@@ -1,4 +1,6 @@
 ﻿using BootCamp.Chapter.Items;
+using System;
+using System.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -19,6 +21,8 @@ namespace BootCamp.Chapter
 
         private string _name;
         private int _hp;
+        private float _totalAttack;
+        private float _totalDefense;
 
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
@@ -29,6 +33,7 @@ namespace BootCamp.Chapter
         /// Player items. There can be multiple of items with same name.
         /// </summary>
         private Inventory _inventory;
+
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
@@ -36,6 +41,41 @@ namespace BootCamp.Chapter
 
         public Player()
         {
+            _inventory = new Inventory();
+            _equipment = new Equipment();
+        }
+
+        public Player(string name, int hp, int strength)
+        {
+            if (strength >= 0 && strength <= 10)
+            {
+                _strenght = strength;
+            }
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                _name = name;
+            }
+
+            if (hp >= 0 && hp <= 10)
+            {
+                _hp = hp;
+            }
+
+            _inventory = new Inventory();
+            _equipment = new Equipment();
+        }
+
+        public float SetAndReturnTotalAttack()
+        {
+            _totalAttack = _equipment.GetTotalAttack();
+            return _totalAttack;
+        }
+
+        public float SetAndReturnTotalDefense()
+        {
+            _totalDefense = _equipment.GetTotalDefense();
+            return _totalDefense;
         }
 
         /// <summary>
@@ -43,19 +83,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public Item[] GetItems()
         {
-            return new Item[0];
-        }
-
-        /// <summary>
-        /// Adds item to player's inventory
-        /// </summary>
-        public void AddItem(Item item)
-        {
-        }
-
-        public void Remove(Item item)
-        {
-
+            return _inventory.Items;
         }
 
         /// <summary>
@@ -64,7 +92,39 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
+        }
+
+        /// <summary>
+        /// Adds item to player's inventory if player can carry extra item weight.
+        /// </summary>
+        public void AddItem(Item item)
+        {
+            float remainingCarryWeight = GetTotalCarryWeight() - GetTotalInventoryWeight();
+
+            if (remainingCarryWeight >= item.Weight)
+            {
+                _inventory.AddItem(item);
+            }
+        }
+
+        public void Remove(Item item)
+        {
+            _inventory.RemoveItem(item);
+        }
+
+        public float GetTotalInventoryWeight()
+        {
+            if (_inventory.Items.Length == 0)
+            {
+                return 0;
+            }
+            return _inventory.Items.Sum(x => x.Weight);
+        }
+
+        public int GetTotalCarryWeight()
+        {
+            return baseCarryWeight + _strenght * 10;
         }
 
         #region Extra challenge: Equipment
@@ -73,35 +133,70 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+        public void Equip(Weapon weapon)
+        {
+            _equipment.Weapon = weapon;
+            _totalAttack = _equipment.GetTotalAttack();
+        }
+
         public void Equip(Headpiece head)
         {
-
+            _equipment.Head = head;
+            _totalDefense = _equipment.GetTotalDefense();
         }
 
-        public void Equip(Chestpiece head)
+        public void Equip(Chestpiece chest)
         {
-
+            _equipment.Chest = chest;
+            _totalDefense = _equipment.GetTotalDefense();
         }
 
-        public void Equip(Shoulderpiece head, bool isLeft)
+        public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                _equipment.LeftShoulder = shoulder;
+                _totalDefense = _equipment.GetTotalDefense();
+            }
+            else
+            {
+                _equipment.RightShoulder = shoulder;
+                _totalDefense = _equipment.GetTotalDefense();
+            }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Legspiece legs)
         {
-
+            _equipment.Legs = legs;
+            _totalDefense = _equipment.GetTotalDefense();
         }
 
-        public void Equip(Armpiece head, bool isLeft)
+        public void Equip(Armpiece arm, bool isLeft)
         {
-
+            if (isLeft)
+            {
+                _equipment.LeftArm = arm;
+                _totalDefense = _equipment.GetTotalDefense();
+            }
+            else
+            {
+                _equipment.RightArm = arm;
+                _totalDefense = _equipment.GetTotalDefense();
+            }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Gloves gloves)
         {
-
+            _equipment.Gloves = gloves;
+            _totalDefense = _equipment.GetTotalDefense();
         }
         #endregion
+        public override string ToString()
+        {
+            return string.Format($"Player: {_name} has strength {_strenght} and hp {_hp}.{Environment.NewLine}" +
+                $"{_name} can carry a weight of {GetTotalCarryWeight() - GetTotalInventoryWeight()} out of a capacity of {GetTotalCarryWeight()}.{Environment.NewLine}" +
+                $"{_name} has the following inventory: {_inventory}{Environment.NewLine}" +
+                $"{_name} has {SetAndReturnTotalAttack()} attackpoints and {SetAndReturnTotalDefense()} defensepoints.");
+        }
     }
 }
