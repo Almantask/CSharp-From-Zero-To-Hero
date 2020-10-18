@@ -1,22 +1,44 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace BootCamp.Chapter
 {
-    // TODO: make a struct and add validation and other needed methods (if needed)
-    public class Credentials
+    public struct Credentials
     {
-        public string Username;
-        public string Password;
+        public readonly string Username;
+        public readonly string Password;
 
         public Credentials(string username, string password)
         {
+            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentException();
+            }
+
             Username = username;
             Password = password;
         }
 
-        // TODO: Implement properly.
         public static bool TryParse(string input, out Credentials credentials)
         {
-            credentials = default;
-            return false;
+            List<string> nameAndPassword = input.Split(",").ToList();
+            
+            try
+            {
+                credentials = new Credentials(nameAndPassword[0], nameAndPassword[1]);
+                return true;
+            }
+            catch (System.Exception)
+            {
+                credentials = default;
+                return false;
+            }
+        }
+
+        public string ConvertCredentialsToString()
+        {
+            return $"{Username},{Password}";
         }
     }
 }
