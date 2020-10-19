@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace BootCamp.Chapter
 {
     /// <summary>
@@ -41,10 +42,19 @@ namespace BootCamp.Chapter
         public static float CalculateBmi(float weight, float height)
         {
             // To do: call your implementation. 
-            var heightINmeter = height / 100;
-            var calculatePersonBMI = weight / (float)(Math.Pow(height, 2));
+            float heightINmeter = (height / 100f);
+            float calculatePersonBMI = weight / ((float)(Math.Pow(height, 2)));
             return calculatePersonBMI;
      
+        }
+
+        public static void PrintInfo(string name, string surname, int age, float weight, float height, float bmi)
+        {
+            Console.Write(name + " " + surname + " is ");
+            Console.Write(age + " years old, ");
+            Console.Write("his weight is " + weight + " kg ");
+            Console.Write("his hieght is " + height + " cm. ");
+            Console.WriteLine(name + " " + surname + "'s BMI is " + bmi);
         }
     }
 }
