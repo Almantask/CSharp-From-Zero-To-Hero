@@ -9,6 +9,10 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello This is for homework 3");
+            Lesson3.Demo();
+            
         }
+
     }
 }
