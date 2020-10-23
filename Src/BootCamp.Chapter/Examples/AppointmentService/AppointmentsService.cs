@@ -14,7 +14,7 @@ namespace BootCamp.Chapter.Examples.AppointmentService
 
         public void Create(Appointment appointment)
         {
-            if (appointment is null)
+            if (appointment == null)
             {
                 throw new ArgumentNullException(nameof(appointment));
             }

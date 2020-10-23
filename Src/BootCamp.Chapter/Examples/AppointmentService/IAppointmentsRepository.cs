@@ -5,7 +5,8 @@ namespace BootCamp.Chapter.Examples.AppointmentService
 {
     public interface IAppointmentsRepository
     {
-        void Create(Appointment appointment);
-        IEnumerable<Appointment> Get(DateTime from, DateTime to);
+        IEnumerable<Appointment> Get(DateTime start, DateTime end);
+        void Create(Appointment appointmentCandidate);
     }
 }
+
