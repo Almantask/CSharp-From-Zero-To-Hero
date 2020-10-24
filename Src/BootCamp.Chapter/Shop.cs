@@ -1,28 +1,15 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Linq;
+
+namespace BootCamp.Chapter
 {
-    public class Shop
+    public class Shop : Inventory
     {
-        private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
-
-        private Inventory _inventory;
-
-        public Shop()
-        {
-
-        }
+        public decimal Money { get; set; }
 
         public Shop(decimal money)
         {
-            _money = money;
-        }
-
-        public Item[] GetItems()
-        {
-            return _inventory.GetItems();
+            Money = money;
         }
 
         /// <summary>
@@ -31,6 +18,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            AddItem(item ?? throw new ArgumentNullException());
         }
 
         /// <summary>
@@ -40,6 +28,11 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException();
+            }
+            RemoveItem(GetItems(name).FirstOrDefault());
         }
 
         /// <summary>
@@ -50,6 +43,15 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
+            decimal itemPrice = item.Price;
+
+            if (Money >= itemPrice)
+            {
+                Add(item);
+                Money -= itemPrice;
+                return itemPrice;
+            }
+
             return 0;
         }
 
@@ -64,7 +66,26 @@
         /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            if (string.IsNullOrEmpty(item))
+            {
+                throw new ArgumentNullException();
+            }
+            if (Items.Any(x => x.Name == item))
+            {
+                Item soldItem = GetItems(item).FirstOrDefault();
+                RemoveItem(soldItem);
+                Money += soldItem.Price;
+                return soldItem;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"Shop has {Money} money and the following inventory: {base.ToString()}{Environment.NewLine}");
         }
     }
 }

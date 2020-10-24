@@ -1,16 +1,9 @@
 ﻿namespace BootCamp.Chapter.Items
 {
-    public class Chestpiece
+    public class Chestpiece : Armour
     {
-        private string _name;
-        private decimal _price;
-        private float _weight;
-
-        public Chestpiece(string name, decimal price, float weight)
+        public Chestpiece(string name, decimal price, float weight, float defense) : base(name, price, weight, defense)
         {
-            _name = name;
-            _price = price;
-            _weight = weight;
         }
     }
 }
