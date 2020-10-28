@@ -3,12 +3,17 @@ using System.Linq;
 
 namespace BootCamp.Chapter
 {
-    public class Shop : Inventory
+    public class Shop
     {
-        public decimal Money { get; set; }
+        public decimal Money { get; set; } = 0;
+
+        private Inventory inventory;
+        public Item[] Items { get; set; }
 
         public Shop(decimal money)
         {
+            inventory = new Inventory();
+            Items = inventory.Items;
             Money = money;
         }
 
@@ -18,7 +23,8 @@ namespace BootCamp.Chapter
         /// </summary>
         public void Add(Item item)
         {
-            AddItem(item ?? throw new ArgumentNullException());
+            inventory.AddItem(item ?? throw new ArgumentNullException());
+            Items = inventory.Items;
         }
 
         /// <summary>
@@ -32,7 +38,8 @@ namespace BootCamp.Chapter
             {
                 throw new ArgumentNullException();
             }
-            RemoveItem(GetItems(name).FirstOrDefault());
+            inventory.RemoveItem(inventory.GetItems(name).FirstOrDefault());
+            Items = inventory.Items;
         }
 
         /// <summary>
@@ -70,10 +77,11 @@ namespace BootCamp.Chapter
             {
                 throw new ArgumentNullException();
             }
-            if (Items.Any(x => x.Name == item))
+            if (inventory.Items.Any(x => x.Name == item))
             {
-                Item soldItem = GetItems(item).FirstOrDefault();
-                RemoveItem(soldItem);
+                Item soldItem = inventory.GetItems(item).FirstOrDefault();
+                inventory.RemoveItem(soldItem);
+                Items = inventory.Items;
                 Money += soldItem.Price;
                 return soldItem;
             }

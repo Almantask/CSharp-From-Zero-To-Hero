@@ -125,7 +125,9 @@ namespace BootCamp.Chapter
 
         public float GetTotalInventoryWeight()
         {
-            return _inventory.Items.Length == 0 ? 0 : _inventory.Items.Sum(x => x.Weight);
+            return _inventory.Items.Length == 0 
+                ? 0 
+                : _inventory.Items.Sum(x => x.Weight);
         }
 
         public int GetTotalCarryWeight()

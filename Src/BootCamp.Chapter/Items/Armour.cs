@@ -6,7 +6,7 @@ namespace BootCamp.Chapter.Items
 {
     public class Armour : Item
     {
-        public float Defense { get; private set; }
+        public float Defense { get; }
 
         public Armour(string name, decimal price, float weight, float defense) : base(name, price, weight)
         {

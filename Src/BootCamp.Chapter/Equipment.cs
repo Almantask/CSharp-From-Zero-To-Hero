@@ -70,21 +70,13 @@ namespace BootCamp.Chapter
         private string EquipmentToString()
         {
             string result = "";
-            Armour[] armourArray = new Armour[8];
-            armourArray[0] = Head;
-            armourArray[1] = Chest;
-            armourArray[2] = LeftShoulder;
-            armourArray[3] = RightShoulder;
-            armourArray[4] = LeftArm;
-            armourArray[5] = RightArm;
-            armourArray[6] = Gloves;
-            armourArray[7] = Legs;
+            Armour[] armour = { Head, Chest, LeftShoulder, RightShoulder, LeftArm, RightArm, Gloves, Legs };
 
-            for (int i = 0; i < armourArray.Length; i++)
+            for (int i = 0; i < armour.Length; i++)
             {
-                if (armourArray[i] != null)
+                if (armour[i] != null)
                 {
-                    result += armourArray[i].Name + ", ";
+                    result += armour[i].Name + ", ";
                 }
             }
 

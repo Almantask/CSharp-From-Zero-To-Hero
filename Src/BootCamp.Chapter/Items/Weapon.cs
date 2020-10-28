@@ -2,7 +2,7 @@
 {
     public class Weapon : Item
     {
-        public float Damage { get; private set; }
+        public float Damage { get; }
 
         public Weapon(string name, decimal price, float weight, float damage) : base(name, price, weight)
         {
