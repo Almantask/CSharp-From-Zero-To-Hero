@@ -57,13 +57,7 @@
             // ToDo: implement.
             if (array == null || array.Length == 0) return array;
 
-            int[] newArray = new int[array.Length - 1];
-
-            for(int i = 0; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-            return newArray;
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -75,14 +69,7 @@
             // ToDo: implement.
             if (array == null || array.Length == 0) return array;
 
-            int[] newArray = new int[array.Length - 1];
-
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i+1];
-            }
-
-            return newArray;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -121,16 +108,7 @@
             // ToDo: implement.
             if (array == null || array.Length == 0) return new int[] { number };
 
-            int[] newArray = new int[array.Length + 1];
-
-            newArray[0] = number;
-
-            for(int i = 1; i < newArray.Length; i++)
-            {
-                newArray[i] = array[i - 1];
-            }
-
-            return newArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -144,15 +122,7 @@
             // ToDo: implement.
             if (array == null || array.Length == 0) return new int[] { number };
 
-            int[] newArray = new int[array.Length + 1];
-
-            newArray[newArray.Length-1] = number;
-
-            for(int i = 0; i < array.Length; i++)
-            {
-                newArray[i] = array[i];
-            }
-            return newArray;
+            return InsertAt(array, number, array.Length);
         }
 
         /// <summary>
