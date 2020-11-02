@@ -13,7 +13,7 @@ namespace Homework
             Console.WriteLine($"{Lee.Name} is {Lee.Age} years old, his weight is {Lee.Weight} kg, his height is {Lee.Height} cm.");
             Console.WriteLine("Lee's BMI is: " + Lee.doBMI());
             Console.WriteLine($"{Tom.Name} is {Tom.Age} years old, his weight is {Tom.Weight} kg, his height is {Tom.Height} cm.");
-            Console.WriteLine("Lee's BMI is: " + Tom.doBMI());
+            Console.WriteLine("Tom's BMI is: " + Tom.doBMI());
         }
     }
     class Person
