@@ -8,9 +8,12 @@ namespace Homework
     {
         static void Main(string[] args)
         {
-            Person like = new Person("like", 27, 81, 181.5);
-            Console.WriteLine($"{like.Name} is {like.Age} years old, his weight is {like.Weight} kg, his height is {like.Height} cm.");
-            Console.WriteLine(like.doBMI());
+            Person Lee= new Person("Lee", 27, 81, 181.5);
+            Person Tom = new Person("Tom Jefferson", 19, 50, 156.5 );
+            Console.WriteLine($"{Lee.Name} is {Lee.Age} years old, his weight is {Lee.Weight} kg, his height is {Lee.Height} cm.");
+            Console.WriteLine("Lee's BMI is: " + Lee.doBMI());
+            Console.WriteLine($"{Tom.Name} is {Tom.Age} years old, his weight is {Tom.Weight} kg, his height is {Tom.Height} cm.");
+            Console.WriteLine("Lee's BMI is: " + Tom.doBMI());
         }
     }
     class Person
