@@ -21,7 +21,11 @@ namespace BootCamp.Chapter
             string input = Console.ReadLine();
             int result;
             bool isNumber = int.TryParse(input, out result);
-            if (!isNumber) return -1;
+            if (!isNumber)
+            {
+                Console.WriteLine($"{input} is not a valid number.");
+                return -1;
+            }
             return result;
         }
 
@@ -29,7 +33,11 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string name = Console.ReadLine();
-            if (name == string.Empty) return "-";
+            if (name == string.Empty)
+            { 
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
             return name;
         }
 
