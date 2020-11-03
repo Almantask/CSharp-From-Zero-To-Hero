@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
             bool isNumber = int.TryParse(input, out result);
             if (!isNumber)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.WriteLine($"\"{input}\" is not a valid number.");
                 return -1;
             }
             return result;
@@ -48,7 +48,7 @@ namespace BootCamp.Chapter
             bool isNumber = float.TryParse(input, out float result);
             if (!isNumber)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.WriteLine($"\"{input}\" is not a valid number.");
                 return -1;
             }
             return float.Parse(input,CultureInfo.InvariantCulture);
