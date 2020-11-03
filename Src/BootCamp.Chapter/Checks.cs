@@ -33,7 +33,7 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string name = Console.ReadLine();
-            if (name == string.Empty)
+            if (name == "")
             { 
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
@@ -58,7 +58,7 @@ namespace BootCamp.Chapter
         {
             if(weight <= 0|| height <= 0)
             {
-                Console.WriteLine("Failed calculating BMI.Reason:" + Environment.NewLine + $"Height cannot be equal or less than zero, but was {height}" + Environment.NewLine + $"Weight cannot be equal or less than zero, but was {weight}");
+                Console.WriteLine("Failed calculating BMI. Reason:" + Environment.NewLine + $"Height cannot be equal or less than zero, but was {height}" + Environment.NewLine + $"Weight cannot be equal or less than zero, but was {weight}");
                 return -1;
             }
             float bmi = weight / height / height;
