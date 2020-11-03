@@ -8,32 +8,20 @@ namespace Homework
     {
         static void Main(string[] args)
         {
-            Person Lee= new Person("Lee", 27, 81, 181.5);
-            Person Tom = new Person("Tom Jefferson", 19, 50, 156.5 );
-            Console.WriteLine($"{Lee.Name} is {Lee.Age} years old, his weight is {Lee.Weight} kg, his height is {Lee.Height} cm.");
-            Console.WriteLine("Lee's BMI is: " + Lee.doBMI());
-            Console.WriteLine($"{Tom.Name} is {Tom.Age} years old, his weight is {Tom.Weight} kg, his height is {Tom.Height} cm.");
-            Console.WriteLine("Tom's BMI is: " + Tom.doBMI());
-        }
-    }
-    class Person
-    {
-        public string Name { get; }
-        public int Age { get; }
-        public double Weight { get; }
-        public double Height { get; }
-        public Person(string name, int age, double weight, double height)
-        {
-            Name = name;
-            Age = age;
-            Weight = weight;
-            Height = height;
-        }
-        public double doBMI()
-        {
-            double result = this.Weight / ((this.Height / 100) * (this.Height / 100));
-            return result;
+            Console.WriteLine("Please enter your name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Please enter your age: ");
+            int age = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please enter your weight,unit is kg: ");
+            float weight = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine("Please enter your height,unit is cm: ");
+            float height = Convert.ToSingle(Console.ReadLine());
 
+            float bmi = weight / ((height / 100) * (height / 100));
+
+            Console.WriteLine($"{name} is {age} years old, weight is {weight} kg, height is {height} cm, BMI is {bmi}");
+           
         }
     }
+   
 }
