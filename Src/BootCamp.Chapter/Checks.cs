@@ -33,7 +33,7 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string name = Console.ReadLine();
-            if (name == "")
+            if (name == string.Empty || name == null)
             { 
                 Console.WriteLine("Name cannot be empty.");
                 return "-";
