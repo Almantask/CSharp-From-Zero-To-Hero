@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -16,26 +18,29 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.WriteLine(message);
+            int variable = Int32.Parse(Console.ReadLine());
+            return variable;
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            Console.WriteLine(message);
+            string variable = Console.ReadLine();
+            return variable;
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.WriteLine(message);
+            float variable = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            return variable;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            float BMI = weight / (height * height);
+            return BMI;
         }
     }
 }
