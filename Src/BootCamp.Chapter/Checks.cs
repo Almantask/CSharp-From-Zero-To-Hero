@@ -45,8 +45,13 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
-            float f = float.Parse(input, CultureInfo.InvariantCulture);
-            return f;
+            bool isNumber = float.TryParse(input, out float result);
+            if (!isNumber)
+            {
+                Console.WriteLine($"{input} is not a valid number.");
+                return -1;
+            }
+            return float.Parse(input,CultureInfo.InvariantCulture);
         }
 
         public static float CalculateBmi(float weight, float height)
