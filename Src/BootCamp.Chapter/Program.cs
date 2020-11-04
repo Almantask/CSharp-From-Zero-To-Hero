@@ -9,22 +9,18 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            // Variables
             string nameSurname = " ";
+            nameSurname = Lesson3.promptStr("Enter your name", nameSurname);
             int age = 0;
+            age = Lesson3.promptInt("Enter your age", age);
             float weight = 0;
+            weight = Lesson3.promptFloat("Enter your weight in Kg", weight);
             float height = 0;
-
-            // Return Functions
-            nameSurname = Lesson3.printStr("Enter your name", nameSurname);
-            age = Lesson3.printInt("Enter your age", age);
-            weight = Lesson3.printFloat("Enter your weight in Kg", weight);
-            height = Lesson3.printFloat("Enter your height in m", height);
+            height = Lesson3.promptFloat("Enter your height in m", height);
 
             Console.WriteLine(nameSurname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " m");
 
-            // BMI Function
-            Lesson3.printBMI(weight, height);
+            Lesson3.calculateBMI(weight, height);
         }
     }
 }
