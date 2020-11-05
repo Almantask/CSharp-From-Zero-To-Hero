@@ -8,10 +8,10 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
-        public static string promptStr(string message, string variable)
+        public static string promptStr(string message)
         {
             Console.WriteLine(message);
-            variable = Console.ReadLine();
+            string variable = Console.ReadLine();
             if (string.IsNullOrEmpty(variable)) 
             {
                 Console.WriteLine("Name cannot be empty");
@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
             return variable;
         }
 
-        public static int promptInt(string message, int variable)
+        public static int promptInt(string message)
         {
             Console.WriteLine(message);
             var input = Console.ReadLine();
@@ -30,13 +30,13 @@ namespace BootCamp.Chapter
                 Console.WriteLine(input + " is not a valid number");
                 return -1;
             }
-            return variable = age;
+            return age;
         }
 
-        public static float promptFloat(string message, float variable)
+        public static float promptFloat(string message)
         {
             Console.WriteLine(message);
-            variable = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            float variable = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             return variable;
         }
 

@@ -9,14 +9,10 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string nameSurname = " ";
-            nameSurname = Lesson3.promptStr("Enter your name", nameSurname);
-            int age = 0;
-            age = Lesson3.promptInt("Enter your age", age);
-            float weight = 0;
-            weight = Lesson3.promptFloat("Enter your weight in Kg", weight);
-            float height = 0;
-            height = Lesson3.promptFloat("Enter your height in m", height);
+            string nameSurname = Lesson3.promptStr("Enter your name");
+            int age = Lesson3.promptInt("Enter your age");
+            float weight = Lesson3.promptFloat("Enter your weight in Kg");
+            float height = Lesson3.promptFloat("Enter your height in m");
 
             Console.WriteLine(nameSurname + " is " + age + " years old, his weight is " + weight + " kg and his height is " + height + " m");
 
