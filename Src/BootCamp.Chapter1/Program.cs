@@ -6,8 +6,8 @@
         {
             var array = new int[] { 10, 2, 3, 6, 5 };
             int[] test = null;
-            ArrayOperations.Sort(array);
-            foreach(int i in array)
+            int[] newArray = ArrayOperations.InsertAt(array,0,5);
+            foreach(int i in newArray)
             {
                 System.Console.WriteLine(i);
             }

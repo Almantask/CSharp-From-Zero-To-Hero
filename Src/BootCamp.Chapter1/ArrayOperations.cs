@@ -173,6 +173,11 @@
                 array = new int[] { number };
                 return array;
             }
+            if (index >= array.Length || index < 0)
+            {
+                System.Console.WriteLine("index is out of range.");
+                return array;
+            }
             var newArray = new int[array.Length + 1];
             newArray[index] = number;
             for(int i = 0; i < array.Length; i++)
