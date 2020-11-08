@@ -22,7 +22,7 @@ namespace BootCamp.Chapter
                                     firstName,
                                     lastName,
                                     age,
-                                    Pluralize("year", age, "s"),
+                                    Pluralize("year", "s", age),
                                     weightKg.ToString("F1", CultureInfo.CurrentCulture),
                                     heightM.ToString("F1", CultureInfo.CurrentCulture)
                     ));
@@ -34,22 +34,25 @@ namespace BootCamp.Chapter
             }
         }
 
-        private static string Pluralize(string word, int count, string suffix, int? index = null)
+        private static string Pluralize(string word, string suffix, int count, int? indexInsertion = null)
         {
             if (count == 1)
             {
                 return word;
             }
+            else if (!indexInsertion.HasValue)
+            {
+                return word + suffix;
+            }
+            else if (indexInsertion < word.Length)
+            {
+                return word.Substring(0, (int)indexInsertion) + suffix;
+            }
             else
             {
-                if (index.HasValue)
-                {
-                    return word.Substring(0, (int)index) + suffix;
-                } else
-                {
-                    return word + suffix;
-                }
+                throw new NotImplementedException();
             }
+
         }
     }
 }
