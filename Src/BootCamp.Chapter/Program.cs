@@ -52,7 +52,7 @@ namespace BootCamp.Chapter
 
             // Sort the loop outside of array and then print the results.
             int[] sortedArray = Sort(unsortedArray);
-            for (int i = 0; i < 99; i++ ;)
+            for (int i = 0; i < 99; i++)
             {
                 System.Console.WriteLine(sortedArray[i]);
             }
