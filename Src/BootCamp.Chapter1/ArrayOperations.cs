@@ -170,8 +170,17 @@
         {
             if (array == null || array.Length == 0)
             {
-                array = new int[] { number };
-                return array;
+                if(index == 0)
+                {
+                    array = new int[] { number };
+                    return array;
+
+                }
+                else
+                {
+                    return array;
+                }
+                
             }
             if (index >= array.Length || index < 0)
             {
