@@ -17,11 +17,14 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
+        private const int NumericalErrorResult = -1;
+        private const string StringErrorResult = "-";
+
         public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
             string userInput = Console.ReadLine();
-            float result = -1f;
+            float result;
             if (string.IsNullOrEmpty(userInput) || !float.TryParse(
                 userInput,
                 NumberStyles.AllowDecimalPoint,
@@ -30,7 +33,7 @@ namespace BootCamp.Chapter
             ))
             {
                 Console.WriteLine("\"{0}\" is not a valid number.", userInput);
-                result = -1f; // reset by TryParse
+                result = (float)NumericalErrorResult;
             }
             return result;
         }
@@ -39,11 +42,11 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string userInput = Console.ReadLine();
-            int result = -1;
+            int result;
             if (string.IsNullOrEmpty(userInput) || !Int32.TryParse(userInput, out result))
             {
                 Console.WriteLine("\"{0}\" is not a valid number.", userInput);
-                result = -1; // reset by TryParse
+                result = NumericalErrorResult;
             }
             return result;
         }
@@ -55,7 +58,7 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(userInput))
             {
                 Console.WriteLine("Name cannot be empty.");
-                userInput = "-";
+                userInput = StringErrorResult;
             }
             return userInput;
         }
@@ -91,7 +94,7 @@ namespace BootCamp.Chapter
                         "Failed calculating BMI. Reason: {0}", 
                         String.Join("", errorMessages)
                 ));
-                return -1f;
+                return (float)NumericalErrorResult;
             }
         }
     }
