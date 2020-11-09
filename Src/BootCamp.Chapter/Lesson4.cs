@@ -13,9 +13,9 @@ namespace BootCamp.Chapter
             {
                 var firstName = Checks.PromptString("What is their first/given name?");
                 var lastName = Checks.PromptString("What is their last/family name?");
-                var age = Checks.PromptInt("What is their age in years?", onlyAcceptPositive: false);
-                var weightKg = Checks.PromptFloat("What is their weight in kilograms?", onlyAcceptPositive: false);
-                var heightM = Checks.PromptFloat("What is their height in meters?", onlyAcceptPositive: false);
+                var age = Checks.PromptInt("What is their age in years?");
+                var weightKg = Checks.PromptFloat("What is their weight in kilograms?");
+                var heightM = Checks.PromptFloat("What is their height in meters?");
                 float bmi = Checks.CalculateBmi(weightKg, heightM);
                 Console.WriteLine(
                     String.Format("{0} {1} is {2} {3} old, their weight is {4} kilograms, and their height is {5} meters.",

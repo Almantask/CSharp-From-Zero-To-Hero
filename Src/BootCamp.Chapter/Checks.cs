@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
             return Console.ReadLine();
         }
 
-        public static float PromptFloat(string message, bool? onlyAcceptPositive = null)
+        public static float PromptFloat(string message)
         {
             float result;
             string userInput = Prompt(message);
@@ -39,17 +39,11 @@ namespace BootCamp.Chapter
             {
                 Console.WriteLine("\"{0}\" is not a valid number.", userInput);
                 return FloatErrorCode;
-            } 
-            else if (
-                (onlyAcceptPositive.HasValue && (onlyAcceptPositive ?? false)) && Math.Sign(result) == -1)
-            {
-                Console.WriteLine("\"{0}\" is not a positive number.", result);
-                return FloatErrorCode;
             }
             return result;
         }
 
-        public static int PromptInt(string message, bool? onlyAcceptPositive = null)
+        public static int PromptInt(string message)
         {
             int result;
             string userInput = Prompt(message);
@@ -57,12 +51,6 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(userInput) || !Int32.TryParse(userInput, out result))
             {
                 Console.WriteLine("\"{0}\" is not a valid number.", userInput);
-                return IntegerErrorCode;
-            }
-            else if (
-                (onlyAcceptPositive.HasValue && (onlyAcceptPositive ?? false)) && Math.Sign(result) == -1)
-            {
-                Console.WriteLine("\"{0}\" is not a positive number.", result);
                 return IntegerErrorCode;
             }
             return result;
