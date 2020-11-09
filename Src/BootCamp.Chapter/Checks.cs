@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Net.Http.Headers;
-using System.Text;
-using Microsoft.VisualBasic;
+using System.Runtime.CompilerServices;
 
 namespace BootCamp.Chapter
 {
@@ -17,14 +15,21 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
-        private const int NumericalErrorResult = -1;
-        private const string StringErrorResult = "-";
+        public const int IntegerErrorCode = -1;
+        public const float FloatErrorCode = -1.0f;
+        public const string StringErrorCode = "-";
+
+        private static string Prompt(string message)
+        {
+            Console.WriteLine(message);
+            return Console.ReadLine();
+        }
 
         public static float PromptFloat(string message, bool? onlyAcceptPositive = null)
         {
-            Console.WriteLine(message);
-            string userInput = Console.ReadLine();
             float result;
+            string userInput = Prompt(message);
+
             if (string.IsNullOrEmpty(userInput) || !float.TryParse(
                 userInput,
                 NumberStyles.AllowDecimalPoint,
@@ -33,42 +38,44 @@ namespace BootCamp.Chapter
             ))
             {
                 Console.WriteLine("\"{0}\" is not a valid number.", userInput);
-                return (float)NumericalErrorResult;
+                return FloatErrorCode;
             } 
-            else if (onlyAcceptPositive.HasValue && (onlyAcceptPositive ?? false) && Math.Sign(result) == -1)
+            else if (
+                (onlyAcceptPositive.HasValue && (onlyAcceptPositive ?? false)) && Math.Sign(result) == -1)
             {
                 Console.WriteLine("\"{0}\" is not a positive number.", result);
-                return (float)NumericalErrorResult;
+                return FloatErrorCode;
             }
             return result;
         }
 
         public static int PromptInt(string message, bool? onlyAcceptPositive = null)
         {
-            Console.WriteLine(message);
-            string userInput = Console.ReadLine();
             int result;
+            string userInput = Prompt(message);
+
             if (string.IsNullOrEmpty(userInput) || !Int32.TryParse(userInput, out result))
             {
                 Console.WriteLine("\"{0}\" is not a valid number.", userInput);
-                return NumericalErrorResult;
+                return IntegerErrorCode;
             }
-            else if ((onlyAcceptPositive.HasValue && (onlyAcceptPositive ?? false) && Math.Sign(result) == -1))
+            else if (
+                (onlyAcceptPositive.HasValue && (onlyAcceptPositive ?? false)) && Math.Sign(result) == -1)
             {
                 Console.WriteLine("\"{0}\" is not a positive number.", result);
-                return NumericalErrorResult;
+                return IntegerErrorCode;
             }
             return result;
         }
 
         public static string PromptString(string message)
         {
-            Console.WriteLine(message);
-            string userInput = Console.ReadLine();
+            string userInput = Prompt(message);
+
             if (string.IsNullOrEmpty(userInput))
             {
                 Console.WriteLine("Name cannot be empty.");
-                userInput = StringErrorResult;
+                userInput = StringErrorCode;
             }
             return userInput;
         }
@@ -80,31 +87,31 @@ namespace BootCamp.Chapter
             {
                 errorMessages.Add(
                     String.Format(
-                    "Height cannot be equal or less than zero, but was {0}.",
-                    heightM
+                        "Height cannot be equal or less than zero, but was {0}.",
+                        heightM
                 ));
             }
             if (weightKg <= 0)
             {
                 errorMessages.Add(
                     String.Format(
-                    "Weight cannot be equal or less than zero, but was {0}.",
-                    weightKg
+                        "Weight cannot be equal or less than zero, but was {0}.",
+                        weightKg
                 ));
             }
-            
-            if (errorMessages.Count == 0)
+
+            if (errorMessages.Count > 0)
             {
-                return weightKg / (heightM * heightM);
+                Console.WriteLine(
+                        String.Format(
+                            "Failed calculating BMI. Reason: {0}",
+                            String.Join("", errorMessages)
+                    ));
+                return FloatErrorCode;
             }
             else
             {
-                Console.WriteLine(
-                    String.Format(
-                        "Failed calculating BMI. Reason: {0}", 
-                        String.Join("", errorMessages)
-                ));
-                return (float)NumericalErrorResult;
+                return weightKg / (heightM * heightM);
             }
         }
     }
