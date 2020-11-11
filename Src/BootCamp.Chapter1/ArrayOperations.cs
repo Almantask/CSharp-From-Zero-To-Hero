@@ -85,8 +85,14 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            int adjustedArraySize = IsArrayTruthy(array) ? array.Length : 0;
+            int[] results = new int[adjustedArraySize + 1];
+            results[0] = number; 
+            for (int i = 0; i < adjustedArraySize; i++)
+            {
+                results[i+1] = array[i];
+            }
+            return results;
         }
 
         /// <summary>
