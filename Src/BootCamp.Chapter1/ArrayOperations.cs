@@ -15,6 +15,7 @@ namespace BootCamp.Chapter1
         {
             return !(array == null || array.Length == 0);
         }
+
         public static void Sort(int[] array)
         {
             if (IsArrayTruthy(array))
@@ -61,8 +62,19 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (!IsArrayTruthy(array))
+            {
+                return array;
+            }
+            else
+            {
+                int[] results = new int[array.Length - 1];
+                for (int i = 0; i < results.Length; i++)
+                {
+                    results[i] = array[i + 1];
+                }
+                return results;
+            }
         }
 
         /// <summary>
