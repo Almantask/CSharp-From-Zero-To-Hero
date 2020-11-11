@@ -18,10 +18,7 @@ namespace BootCamp.Chapter1
 
         public static void Sort(int[] array)
         {
-            if (IsArrayTruthy(array))
-            {
-                Array.Sort(array);
-            }
+            if (IsArrayTruthy(array)) Array.Sort(array);
         }
 
         /// <summary>
@@ -31,10 +28,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (IsArrayTruthy(array))
-            {
-                Array.Reverse(array);
-            }
+            if (IsArrayTruthy(array)) Array.Reverse(array);
         }
 
         /// <summary>
@@ -44,16 +38,11 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (!IsArrayTruthy(array))
-            {
-                return array;
-            }
-            else
-            {
-                int[] results = new int[array.Length - 1];
-                Array.Copy(array, results, array.Length - 1);
-                return results;
-            }
+            if (!IsArrayTruthy(array)) return array;
+
+            int[] results = new int[array.Length - 1];
+            Array.Copy(array, results, array.Length - 1);
+            return results;
         }
 
         /// <summary>
@@ -62,19 +51,15 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (!IsArrayTruthy(array))
+            if (!IsArrayTruthy(array)) return array;
+
+            int[] results = new int[array.Length - 1];
+            for (int i = 0; i < results.Length; i++)
             {
-                return array;
+                results[i] = array[i + 1];
             }
-            else
-            {
-                int[] results = new int[array.Length - 1];
-                for (int i = 0; i < results.Length; i++)
-                {
-                    results[i] = array[i + 1];
-                }
-                return results;
-            }
+            return results;
+
         }
 
         /// <summary>
@@ -115,13 +100,13 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            int adjustedArraySize = IsArrayTruthy(array) ? array.Length : 0;
-            int[] results = new int[adjustedArraySize + 1];
-            for (int i = 0; i < adjustedArraySize; i++)
+            int adjustedInputArrayLength = IsArrayTruthy(array) ? array.Length : 0;
+            int[] results = new int[adjustedInputArrayLength + 1];
+            for (int i = 0; i < adjustedInputArrayLength; i++)
             {
                 results[i] = array[i];
             }
-            results[adjustedArraySize] = number;
+            results[adjustedInputArrayLength] = number;
             return results;
         }
 
@@ -134,26 +119,15 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            if (!IsArrayTruthy(array))
-            {
-                return index == 0 ? new int[] { number } : new int[0];
-            }
+            if (!IsArrayTruthy(array)) return index == 0 ? new int[] { number } : new int[0];
 
             int[] results = new int[array.Length + 1];
             int adjustedIndex = (index + array.Length) % array.Length;
             for (int i = 0; i < array.Length; i++)
             {
-                if (i < index)
-                {
-                    results[i] = array[i];
-                }
-                else if (i > index)
-                {
-                    results[i] = array[i + 1];
-                }
+                if (i < index) results[i] = array[i];
+                else if (i > index) results[i] = array[i + 1];
                 results[index] = number;
-             
             }
             return results;
         }
