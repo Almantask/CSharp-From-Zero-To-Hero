@@ -7,7 +7,12 @@
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            string name = null, current = null;
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
+                return "N/A.";
+            }
+
+            string name = null;
             double maxBalance = 0;
 
             for(int i = 0; i < peopleAndBalances.Length; i++)
@@ -39,12 +44,13 @@
                 {
                     maxBalance = tempBalance;
                     name = tempArray[0];
-                    current = tempArray[tempArray.Length - 1];
                 }
-
+                else if(tempBalance == maxBalance)
+                {
+                    name += tempArray[0];
+                }
             }
-            return $"{name},{current}";
-            
+            return $"{name},{maxBalance}";           
         }
 
         /// <summary>
@@ -52,6 +58,12 @@
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
+                return "N/A.";
+            }
+
+            bool isLossCalculate = false;
             string name = null;
             double diffBalance = 0; 
 
@@ -59,6 +71,12 @@
             {
                 string[] tempArray = peopleAndBalances[i].Split(", ");
                 double maxBalance = 0, minBalance = 0;
+
+                if (tempArray.Length <= 2)
+                    isLossCalculate = false;
+                else
+                    isLossCalculate = true;
+
                 for (int j = 1; j < tempArray.Length; j++)
                 {
                     double tempResult;
@@ -84,15 +102,26 @@
                         minBalance = tempResult;
                     }
                 }
-                
-                if (maxBalance - minBalance > diffBalance)
+
+                if(isLossCalculate)
                 {
-                    diffBalance = maxBalance - minBalance;
-                    name = tempArray[0];
+                    if (maxBalance - minBalance > diffBalance)
+                    {
+                        diffBalance = maxBalance - minBalance;
+                        name = tempArray[0];
+                    }
+                    else if(maxBalance - minBalance == diffBalance)
+                    {
+                        name += tempArray[0];
+                    }
                 }
+                else
+                {
+                    return "N/A.";
+                }              
 
             }
-            return $"{name},{diffBalance}";
+            return $"{name},{-diffBalance}";
         }
 
         /// <summary>
@@ -100,8 +129,12 @@
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            {
+                return "N/A.";
+            }
             string name = null;
-            double current = 0;
+            double current = double.MinValue;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -126,6 +159,10 @@
                     current = tempResult;
                     name = tempArray[0];
                 }
+                else if(tempResult == current)
+                {
+                    name += tempArray[0];
+                }
             }
             return $"{name},{current}";
         }
@@ -135,8 +172,12 @@
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
+            if(peopleAndBalances == null||peopleAndBalances.Length== 0)
+            {
+                return "N/A.";
+            }
             string name = null;
-            double current = 1000000;
+            double current = double.MaxValue;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -160,6 +201,10 @@
                 {
                     current = tempResult;
                     name = tempArray[0];
+                }
+                else if(tempResult == current)
+                {
+                    name += tempArray[0];
                 }
             }
             return $"{name},{current}";
