@@ -13,11 +13,11 @@ namespace BootCamp.Chapter1
         /// 
         private static bool IsArrayTruthy(int[] array)
         {
-            return array == null || array.Length == 0;
+            return !(array == null || array.Length == 0);
         }
         public static void Sort(int[] array)
         {
-            if (!IsArrayTruthy(array))
+            if (IsArrayTruthy(array))
             {
                 Array.Sort(array);
             }
@@ -30,7 +30,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (!IsArrayTruthy(array))
+            if (IsArrayTruthy(array))
             {
                 Array.Reverse(array);
             }
@@ -43,8 +43,16 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (!IsArrayTruthy(array))
+            {
+                return array;
+            }
+            else
+            {
+                int[] results = new int[array.Length - 1];
+                Array.Copy(array, results, array.Length - 1);
+                return results;
+            }
         }
 
         /// <summary>
