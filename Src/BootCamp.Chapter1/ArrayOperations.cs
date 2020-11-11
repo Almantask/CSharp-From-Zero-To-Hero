@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+using System.Collections.Immutable;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,7 +12,10 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (!(array == null || array.Length == 0))
+            {
+                Array.Sort(array);
+            }
         }
 
         /// <summary>
