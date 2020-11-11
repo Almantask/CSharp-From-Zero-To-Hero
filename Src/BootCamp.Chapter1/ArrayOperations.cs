@@ -97,8 +97,14 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            int adjustedArraySize = IsArrayTruthy(array) ? array.Length : 0;
+            int[] results = new int[adjustedArraySize + 1];
+            for (int i = 0; i < adjustedArraySize; i++)
+            {
+                results[i] = array[i];
+            }
+            results[adjustedArraySize] = number;
+            return results;
         }
 
         /// <summary>
