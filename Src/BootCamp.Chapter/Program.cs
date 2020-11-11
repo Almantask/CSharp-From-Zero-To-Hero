@@ -15,20 +15,21 @@
             //TextTable.Build(highestBalance, 3);
 
 
-            //string biggestLoss = BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances);
+            string biggestLoss = BalanceStats.FindPersonWithBiggestLoss(Person3Balance3);
             //TextTable.Build(biggestLoss, 3);
-            ////System.Console.WriteLine(biggestLoss);
+            System.Console.WriteLine(biggestLoss);
 
-            string richestPerson = BalanceStats.FindRichestPerson(Person1Balance2);
-            //TextTable.Build(richestPerson, 3);
-            System.Console.WriteLine(richestPerson);
+            //string richestPerson = BalanceStats.FindRichestPerson(Person1Balance2);
+            ////TextTable.Build(richestPerson, 3);
+            //System.Console.WriteLine(richestPerson);
 
-            //string mostPoorPerson = BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances);
-            //TextTable.Build(mostPoorPerson, 3);
+            //string mostPoorPerson = BalanceStats.FindMostPoorPerson(Person3Same);
+            ////TextTable.Build(mostPoorPerson, 3);
             //System.Console.WriteLine(mostPoorPerson);
 
         }
         public static string[] Person1Balance2 => new[] { "Tom, 1, 0" };
         public static string[] Person3Same => new[] { "Tom, 1", "Gillie, 1", "Agnes, 1" };
+        public static string[] Person3Balance3 => new[] { "Tom, 1, 3, -1", "Gillie, 2, 3, 1", "Thor, 1000, 1001, 1002" };
     }
 }

@@ -75,7 +75,8 @@ namespace BootCamp.Chapter
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 string[] tempArray = peopleAndBalances[i].Split(", ");
-                double maxBalance = 0, minBalance = 0;
+                double maxBalance = double.Parse(tempArray[1]);
+                double minBalance = maxBalance;
 
                 if (tempArray.Length <= 2)
                     isLossCalculate = false;
@@ -96,7 +97,7 @@ namespace BootCamp.Chapter
                     else
                     {
                         tempResult = double.Parse(tempArray[j]);
-                    }
+                    }                    
 
                     if (tempResult - maxBalance > 0)
                     {
@@ -174,7 +175,7 @@ namespace BootCamp.Chapter
             StringBuilder sb = new StringBuilder();
             name = FormarName(sb, name);
             if(name.Contains("and"))
-                return $"{name} are the richest person. ¤{current}.";
+                return $"{name} are the richest people. ¤{current}.";
             else
                 return $"{name} is the richest person. ¤{current}.";
         }
@@ -221,7 +222,16 @@ namespace BootCamp.Chapter
             }
             StringBuilder sb = new StringBuilder();
             name = FormarName(sb, name);
-            return $"{name} has the least money. ¤{current}.";
+            string finalOutput;
+            if(current < 0)
+                finalOutput =  $"{name} has the least money. -¤{- current}.";
+            else
+                finalOutput =  $"{name} has the least money. ¤{current}.";
+            if(name.Contains("and"))
+            {
+                return finalOutput.Replace("has", "have");
+            }
+            return finalOutput;
         }
 
         public static string FormarName(StringBuilder sb,string nameList)
