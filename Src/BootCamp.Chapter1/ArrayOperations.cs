@@ -135,7 +135,27 @@ namespace BootCamp.Chapter1
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
-            return array;
+            if (!IsArrayTruthy(array))
+            {
+                return index == 0 ? new int[] { number } : new int[0];
+            }
+
+            int[] results = new int[array.Length + 1];
+            int adjustedIndex = (index + array.Length) % array.Length;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i < index)
+                {
+                    results[i] = array[i];
+                }
+                else if (i > index)
+                {
+                    results[i] = array[i + 1];
+                }
+                results[index] = number;
+             
+            }
+            return results;
         }
     }
 }
