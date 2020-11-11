@@ -174,9 +174,9 @@ namespace BootCamp.Chapter
             StringBuilder sb = new StringBuilder();
             name = FormarName(sb, name);
             if(name.Contains("and"))
-                return $"{name} are the richest person. ¤{current}";
+                return $"{name} are the richest person. ¤{current}.";
             else
-                return $"{name} is the richest person. ¤{current}";
+                return $"{name} is the richest person. ¤{current}.";
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace BootCamp.Chapter
             }
             StringBuilder sb = new StringBuilder();
             name = FormarName(sb, name);
-            return $"{name} has the least money. ¤{current}";
+            return $"{name} has the least money. ¤{current}.";
         }
 
         public static string FormarName(StringBuilder sb,string nameList)
@@ -242,10 +242,10 @@ namespace BootCamp.Chapter
             }
             else
             {
-                sb.AppendJoin(",", name);
+                sb.AppendJoin(", ", name);
                 string temp = sb.ToString();
-                int index = temp.LastIndexOf(",");
-                string final = temp.Substring(0, index) + " and " + temp.Substring(index + 1);
+                int index = temp.LastIndexOf(", ");
+                string final = temp.Substring(0, index) + " and " + temp.Substring(index + 2);
                 return final;
             }
 
