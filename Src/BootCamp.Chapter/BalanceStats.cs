@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
@@ -47,10 +50,12 @@
                 }
                 else if(tempBalance == maxBalance)
                 {
-                    name += tempArray[0];
+                    name += " " + tempArray[0];
                 }
             }
-            return $"{name},{maxBalance}";           
+            StringBuilder sb = new StringBuilder();
+            name = FormarName(sb, name);
+            return $"{name} had the most money ever. ¤{maxBalance}";           
         }
 
         /// <summary>
@@ -112,7 +117,7 @@
                     }
                     else if(maxBalance - minBalance == diffBalance)
                     {
-                        name += tempArray[0];
+                        name += " "+ tempArray[0];
                     }
                 }
                 else
@@ -121,6 +126,8 @@
                 }              
 
             }
+            StringBuilder sb = new StringBuilder();
+            name = FormarName(sb, name);
             return $"{name},{-diffBalance}";
         }
 
@@ -161,9 +168,11 @@
                 }
                 else if(tempResult == current)
                 {
-                    name += tempArray[0];
+                    name +=" " + tempArray[0];
                 }
             }
+            StringBuilder sb = new StringBuilder();
+            name = FormarName(sb, name);
             return $"{name},{current}";
         }
 
@@ -204,10 +213,39 @@
                 }
                 else if(tempResult == current)
                 {
-                    name += tempArray[0];
+                    name += " " + tempArray[0];
                 }
             }
+            StringBuilder sb = new StringBuilder();
+            name = FormarName(sb, name);
             return $"{name},{current}";
+        }
+
+        public static string FormarName(StringBuilder sb,string nameList)
+        {
+            string[] name = nameList.Split(" ");
+            int num = name.Length;
+            if(num == 1)
+            {
+                sb.Append(name[0]);
+                return sb.ToString();
+            }
+            else if(num == 2)
+            {
+                sb.Append(name[0]);
+                sb.Append(" and ");
+                sb.Append(name[1]);
+                return sb.ToString();
+            }
+            else
+            {
+                sb.AppendJoin(",", name);
+                string temp = sb.ToString();
+                int index = temp.LastIndexOf(",");
+                string final = temp.Substring(0, index) + " and " + temp.Substring(index + 1);
+                return final;
+            }
+
         }
     }
 }
