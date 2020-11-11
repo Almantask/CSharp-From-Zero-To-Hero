@@ -82,10 +82,11 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            int adjustedArraySize = IsArrayTruthy(array) ? array.Length : 0;
-            int[] results = new int[adjustedArraySize + 1];
+            if (!IsArrayTruthy(array)) return new int[] { number };
+
+            int[] results = new int[array.Length + 1];
             results[0] = number; 
-            for (int i = 0; i < adjustedArraySize; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 results[i+1] = array[i];
             }
@@ -100,13 +101,14 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            int adjustedInputArrayLength = IsArrayTruthy(array) ? array.Length : 0;
-            int[] results = new int[adjustedInputArrayLength + 1];
-            for (int i = 0; i < adjustedInputArrayLength; i++)
+            if (!IsArrayTruthy(array)) return new int[] { number };
+
+            int[] results = new int[array.Length + 1];
+            for (int i = 0; i < array.Length; i++)
             {
                 results[i] = array[i];
             }
-            results[adjustedInputArrayLength] = number;
+            results[array.Length] = number;
             return results;
         }
 
