@@ -30,7 +30,10 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (!IsArrayTruthy(array))
+            {
+                Array.Reverse(array);
+            }
         }
 
         /// <summary>
