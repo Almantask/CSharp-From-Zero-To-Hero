@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using static System.Console;
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
@@ -34,7 +36,44 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
-            return "";
+            char[] input = message.ToCharArray();
+            int totalLength = input.Length + padding * 2;
+            //first line in output
+            Bottom(totalLength);
+            // upper part
+            Padding(padding, totalLength);
+            // middle output
+            string paddingLeft = message.PadLeft(totalLength - padding);
+            string paddingRight = paddingLeft.PadRight(totalLength);
+            Write("|" + paddingRight);
+            WriteLine("|");
+            //lower part
+            Padding(padding, totalLength);
+            //bottom line
+            Bottom(totalLength);
+
+            return "0";
+        }
+        public static void Bottom(int length)
+        {
+            Write("+");
+            for (int i = 0; i < length; i++)
+            {
+                Write("-");
+            }
+            WriteLine("+");
+        }
+        public static void Padding(int padding,int length)
+        {
+            for (int i = 0; i < padding; i++)
+            {
+                Write("|");
+                for (int j = 0; j < length; j++)
+                {
+                    Write(" ");
+                }
+                WriteLine("|");
+            }
         }
     }
 }
