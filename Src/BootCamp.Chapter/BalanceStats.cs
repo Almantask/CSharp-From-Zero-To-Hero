@@ -55,7 +55,7 @@ namespace BootCamp.Chapter
             }
             StringBuilder sb = new StringBuilder();
             name = FormarName(sb, name);
-            return $"{name} had the most money ever. ¤{maxBalance}";           
+            return $"{name} had the most money ever. ¤{maxBalance}.";           
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace BootCamp.Chapter
             }
             StringBuilder sb = new StringBuilder();
             name = FormarName(sb, name);
-            return $"{name},{-diffBalance}";
+            return $"{name} lost the most money. -¤{diffBalance}.";
         }
 
         /// <summary>
@@ -173,7 +173,10 @@ namespace BootCamp.Chapter
             }
             StringBuilder sb = new StringBuilder();
             name = FormarName(sb, name);
-            return $"{name},{current}";
+            if(name.Contains("and"))
+                return $"{name} are the richest person. ¤{current}";
+            else
+                return $"{name} is the richest person. ¤{current}";
         }
 
         /// <summary>
@@ -218,7 +221,7 @@ namespace BootCamp.Chapter
             }
             StringBuilder sb = new StringBuilder();
             name = FormarName(sb, name);
-            return $"{name},{current}";
+            return $"{name} has the least money. ¤{current}";
         }
 
         public static string FormarName(StringBuilder sb,string nameList)
