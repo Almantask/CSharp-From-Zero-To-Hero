@@ -10,9 +10,14 @@ namespace BootCamp.Chapter1
         /// If array empty or null- don't do anything.
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
+        /// 
+        private static bool IsArrayTruthy(int[] array)
+        {
+            return array == null || array.Length == 0;
+        }
         public static void Sort(int[] array)
         {
-            if (!(array == null || array.Length == 0))
+            if (!IsArrayTruthy(array))
             {
                 Array.Sort(array);
             }
