@@ -11,10 +11,6 @@ namespace BootCamp.Chapter1
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
         /// 
-        private static bool IsArrayNullOrEmpty(int[] array)
-        {
-            return (array == null || array.Length == 0);
-        }
 
         public static void Sort(int[] array)
         {
@@ -71,7 +67,7 @@ namespace BootCamp.Chapter1
         public static int[] RemoveAt(int[] array, int index)
         {
             if (IsArrayNullOrEmpty(array)) return array;
-            if (index < 0 || index > (array.Length - 1)) return array;
+            if (!IsValidIndex(array, index)) return array;
             
             int[] results = new int[array.Length - 1];
             for (int i = 0; i < results.Length; i++)
@@ -147,6 +143,16 @@ namespace BootCamp.Chapter1
                 results[adjustedInputIndex] = number;
             }
             return results;
+        }
+
+        private static bool IsArrayNullOrEmpty(int[] array)
+        {
+            return (array == null || array.Length == 0);
+        }
+
+        private static bool IsValidIndex(int[] array, int index)
+        {
+            return (index >= 0 || index < array.Length);
         }
     }
 }
