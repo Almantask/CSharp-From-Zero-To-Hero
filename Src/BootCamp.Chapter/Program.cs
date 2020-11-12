@@ -6,7 +6,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-
+            SchoolSimulator schoolSimulator = new SchoolSimulator();
+            schoolSimulator.Run();
         }
     }
 }
