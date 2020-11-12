@@ -34,11 +34,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (IsArrayNullOrEmpty(array)) return array;
-
-            int[] results = new int[array.Length - 1];
-            Array.Copy(array, results, array.Length - 1);
-            return results;
+            int index = IsArrayNullOrEmpty(array) ? 0 : array.Length - 1;
+            return RemoveAt(array, index);
         }
 
         /// <summary>
@@ -47,15 +44,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (IsArrayNullOrEmpty(array)) return array;
-
-            int[] results = new int[array.Length - 1];
-            for (int i = 0; i < results.Length; i++)
-            {
-                results[i] = array[i + 1];
-            }
-            return results;
-
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -86,15 +75,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (IsArrayNullOrEmpty(array)) return new int[] { number };
-
-            int[] results = new int[array.Length + 1];
-            results[0] = number; 
-            for (int i = 0; i < array.Length; i++)
-            {
-                results[i+1] = array[i];
-            }
-            return results;
+            
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -105,15 +87,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (IsArrayNullOrEmpty(array)) return new int[] { number };
-
-            int[] results = new int[array.Length + 1];
-            for (int i = 0; i < array.Length; i++)
-            {
-                results[i] = array[i];
-            }
-            results[array.Length] = number;
-            return results;
+            int index = IsArrayNullOrEmpty(array) ? 0 : array.Length;
+            return InsertAt(array, number, index);
         }
 
         /// <summary>
@@ -135,24 +110,34 @@ namespace BootCamp.Chapter1
             }
 
             int[] results = new int[array.Length + 1];
-            int adjustedInputIndex = (index + array.Length) % array.Length;
             for (int i = 0; i < array.Length; i++)
             {
-                if (i < adjustedInputIndex) results[i] = array[i];
-                else if (i > adjustedInputIndex) results[i] = array[i + 1];
-                results[adjustedInputIndex] = number;
+                if (i < index) results[i] = array[i];
+                else if (i > index) results[i] = array[i + 1];
+                results[index] = number;
             }
             return results;
         }
 
+        /// <summary>
+        /// Checks whether an array of ints is null or empty.
+        /// </summary>
+        /// <param name="array">Input array.</param>
+        /// <returns>True if  an array is null or has a length of zero.</returns>
         private static bool IsArrayNullOrEmpty(int[] array)
         {
             return (array == null || array.Length == 0);
         }
 
+        /// <summary>
+        /// Checks whether an index is valid for the passed array of ints
+        /// </summary>
+        /// <param name="array">Input array.</param>
+        /// <param name="index">Input index.</param>
+        /// <returns>True if the index is equal to zero and less than the array length.</returns>
         private static bool IsValidIndex(int[] array, int index)
         {
-            return (index >= 0 || index < array.Length);
+            return (index >= 0 && index < array.Length);
         }
     }
 }
