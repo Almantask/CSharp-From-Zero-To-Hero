@@ -1,4 +1,5 @@
-﻿using static System.Console;
+﻿using System;
+using static System.Console;
 
 namespace BootCamp.Chapter
 {
@@ -36,17 +37,54 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string Build(string message, int padding)
         {
-            char[] input = message.ToCharArray();
-            int totalLength = input.Length + padding * 2;
+            if(message == string.Empty)
+            {
+                return string.Empty;
+            }
+
+            int totalLength = 0;
+            bool isMultiLineInput = message.Contains(Environment.NewLine);
+            string[] newMessage;
+            if(isMultiLineInput)
+            {
+                newMessage = message.Split(Environment.NewLine);
+                for(int i = 0; i < newMessage.Length; i++)
+                {
+                    if (totalLength < newMessage[i].Length)
+                        totalLength = newMessage[i].Length;                   
+                }
+                totalLength += padding * 2;
+            }
+            else
+            {
+                char[] input = message.ToCharArray();
+                totalLength = input.Length + padding * 2;
+            }
+            
             //first line in output
             Bottom(totalLength);
+            WriteLine();
             // upper part
             Padding(padding, totalLength);
             // middle output
-            string paddingLeft = message.PadLeft(totalLength - padding);
-            string paddingRight = paddingLeft.PadRight(totalLength);
-            Write("|" + paddingRight);
-            WriteLine("|");
+            if(isMultiLineInput)
+            {
+                newMessage = message.Split(Environment.NewLine); 
+                for(int i =0; i < newMessage.Length; i++)
+                {
+                    string newPaddingLeft = newMessage[i].PadLeft(newMessage[i].Length + padding);
+                    string newPaddingRight = newPaddingLeft.PadRight(totalLength);
+                    Write("|" + newPaddingRight);
+                    WriteLine("|");
+                }
+            }
+            else
+            {
+                string paddingLeft = message.PadLeft(totalLength - padding);
+                string paddingRight = paddingLeft.PadRight(totalLength);
+                Write("|" + paddingRight);
+                WriteLine("|");
+            }
             //lower part
             Padding(padding, totalLength);
             //bottom line
@@ -61,7 +99,7 @@ namespace BootCamp.Chapter
             {
                 Write("-");
             }
-            WriteLine("+");
+            Write("+");
         }
         public static void Padding(int padding,int length)
         {
