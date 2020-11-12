@@ -11,14 +11,14 @@ namespace BootCamp.Chapter1
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
         /// 
-        private static bool IsArrayTruthy(int[] array)
+        private static bool IsArrayNullOrEmpty(int[] array)
         {
-            return !(array == null || array.Length == 0);
+            return (array == null || array.Length == 0);
         }
 
         public static void Sort(int[] array)
         {
-            if (IsArrayTruthy(array)) Array.Sort(array);
+            if (!IsArrayNullOrEmpty(array)) Array.Sort(array);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (IsArrayTruthy(array)) Array.Reverse(array);
+            if (!IsArrayNullOrEmpty(array)) Array.Reverse(array);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if (!IsArrayTruthy(array)) return array;
+            if (IsArrayNullOrEmpty(array)) return array;
 
             int[] results = new int[array.Length - 1];
             Array.Copy(array, results, array.Length - 1);
@@ -51,7 +51,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (!IsArrayTruthy(array)) return array;
+            if (IsArrayNullOrEmpty(array)) return array;
 
             int[] results = new int[array.Length - 1];
             for (int i = 0; i < results.Length; i++)
@@ -70,11 +70,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (
-                !IsArrayTruthy(array) || 
-                    (index < 0 ||
-                        index > (array.Length - 1)
-                )) return array;
+            if (IsArrayNullOrEmpty(array)) return array;
+            if (index < 0 || index > (array.Length - 1)) return array;
             
             int[] results = new int[array.Length - 1];
             for (int i = 0; i < results.Length; i++)
@@ -93,7 +90,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (!IsArrayTruthy(array)) return new int[] { number };
+            if (IsArrayNullOrEmpty(array)) return new int[] { number };
 
             int[] results = new int[array.Length + 1];
             results[0] = number; 
@@ -112,7 +109,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (!IsArrayTruthy(array)) return new int[] { number };
+            if (IsArrayNullOrEmpty(array)) return new int[] { number };
 
             int[] results = new int[array.Length + 1];
             for (int i = 0; i < array.Length; i++)
@@ -132,7 +129,14 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (!IsArrayTruthy(array)) return index == 0 ? new int[] { number } : new int[0];
+            if (IsArrayNullOrEmpty(array) && index == 0)
+            {
+                return new int[] { number };
+            }
+            else if (IsArrayNullOrEmpty(array) && index != 0)
+            {
+                return new int[0];
+            }
 
             int[] results = new int[array.Length + 1];
             int adjustedInputIndex = (index + array.Length) % array.Length;
