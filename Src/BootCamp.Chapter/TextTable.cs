@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using static System.Console;
 
 namespace BootCamp.Chapter
@@ -60,13 +61,14 @@ namespace BootCamp.Chapter
                 char[] input = message.ToCharArray();
                 totalLength = input.Length + padding * 2;
             }
-            
+
             //first line in output
-            Bottom(totalLength);
+            string top = Bottom(totalLength);
             WriteLine();
             // upper part
-            Padding(padding, totalLength);
+            string upper = Padding(padding, totalLength);
             // middle output
+            string middle = null;
             if(isMultiLineInput)
             {
                 newMessage = message.Split(Environment.NewLine); 
@@ -74,44 +76,52 @@ namespace BootCamp.Chapter
                 {
                     string newPaddingLeft = newMessage[i].PadLeft(newMessage[i].Length + padding);
                     string newPaddingRight = newPaddingLeft.PadRight(totalLength);
-                    Write("|" + newPaddingRight);
-                    WriteLine("|");
+                    middle += "|" + newPaddingRight + "|";
+                    middle += $"{ Environment.NewLine}";
                 }
             }
             else
             {
                 string paddingLeft = message.PadLeft(totalLength - padding);
                 string paddingRight = paddingLeft.PadRight(totalLength);
-                Write("|" + paddingRight);
-                WriteLine("|");
+                middle += "|" + paddingRight + "|";
+                middle += $"{Environment.NewLine}";
             }
             //lower part
-            Padding(padding, totalLength);
+            string lower = Padding(padding, totalLength);
             //bottom line
-            Bottom(totalLength);
+            string bottom = Bottom(totalLength);
 
-            return "0";
+            if (padding > 0)
+                return top + upper + middle + lower + bottom;
+            else
+                return top + middle + bottom;
+
         }
-        public static void Bottom(int length)
+        public static string Bottom(int length)
         {
-            Write("+");
+            StringBuilder sb = new StringBuilder();  
+            sb.Append("+");
             for (int i = 0; i < length; i++)
             {
-                Write("-");
+               sb.Append("-");
             }
-            Write("+");
+            sb.Append("+");
+            return $"{sb}{Environment.NewLine}";
         }
-        public static void Padding(int padding,int length)
+        public static string Padding(int padding,int length)
         {
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < padding; i++)
             {
-                Write("|");
+                sb.Append("|");
                 for (int j = 0; j < length; j++)
                 {
-                    Write(" ");
+                    sb.Append(" ");
                 }
-                WriteLine("|");
+                sb.Append("|");
             }
+            return $"{sb}{Environment.NewLine}";
         }
     }
 }

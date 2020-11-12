@@ -14,9 +14,12 @@ namespace BootCamp.Chapter
             //string highestBalance = BalanceStats.FindHighestBalanceEver(Person3Same);
             //System.Console.WriteLine(highestBalance);
 
-            TextTable.Build($"Hello{Environment.NewLine}World!", 1);
-            System.Console.WriteLine();
-            TextTable.Build($"Hello{Environment.NewLine}World!", 0);
+            //TextTable.Build($"Hello{Environment.NewLine}World!", 1);
+           
+            string s = TextTable.Build($"Hello{Environment.NewLine}World!", 1);
+            string s1 = TextTable.Build($"Hello", 1);
+            System.Console.Write(s1.Length);
+
 
 
             //string biggestLoss = BalanceStats.FindPersonWithBiggestLoss(Person3Balance3);
