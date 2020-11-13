@@ -10,11 +10,16 @@ namespace BootCamp.Chapter1
         /// If array empty or null- don't do anything.
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
-        /// 
-
+        ///
         public static void Sort(int[] array)
         {
-            if (!IsArrayNullOrEmpty(array)) Array.Sort(array);
+            if (!IsArrayNullOrEmpty(array))
+            {
+                for (int i = 0; i < array.Length -1; i++)
+                {
+                    SortUpToIndex(array, i);
+                }
+            }
         }
 
         /// <summary>
@@ -130,7 +135,7 @@ namespace BootCamp.Chapter1
         }
 
         /// <summary>
-        /// Checks whether an index is valid for the passed array of ints
+        /// Checks whether an index is valid for the passed array of ints.
         /// </summary>
         /// <param name="array">Input array.</param>
         /// <param name="index">Input index.</param>
@@ -138,6 +143,26 @@ namespace BootCamp.Chapter1
         private static bool IsValidIndex(int[] array, int index)
         {
             return (index >= 0 && index < array.Length);
+        }
+
+        /// <summary>
+        /// Sorts an array up to the selected index.
+        /// </summary>
+        /// <param name="array">Input array.</param>
+        /// <param name="stopIndex">Index to stop the sort at.</param>
+        private static void SortUpToIndex(int[] array, int stopIndex)
+        {
+            for (int indexToCheck = 0; indexToCheck < array.Length - stopIndex - 1; indexToCheck++)
+            {
+                int nextIndex = indexToCheck + 1;
+                if (array[indexToCheck] <= array[nextIndex]) continue;
+                else
+                {
+                    int stashedValue = array[indexToCheck];
+                    array[indexToCheck] = array[nextIndex];
+                    array[nextIndex] = stashedValue;
+                }
+            }
         }
     }
 }
