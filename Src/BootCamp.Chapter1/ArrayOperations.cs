@@ -53,6 +53,10 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
             return RemoveAt(array, array.Length - 1);
         }
 
@@ -116,6 +120,11 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
+            if (array == null || array.Length == 0)
+            {
+                array = new int[] { number };
+                return array;
+            }
             return InsertAt(array, number, array.Length);
         }
 

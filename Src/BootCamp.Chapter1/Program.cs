@@ -6,8 +6,8 @@
         {
             var array = new int[] { 1, 2, 3, 4, 5 };
             int[] test = null;
-            int[] newArray = ArrayOperations.InsertLast(array,10);
-            foreach(int i in newArray)
+            int[] newArray = ArrayOperations.InsertLast(test,0);
+            foreach (int i in newArray)
             {
                 System.Console.WriteLine(i);
             }
