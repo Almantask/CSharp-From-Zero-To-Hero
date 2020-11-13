@@ -15,7 +15,7 @@ namespace BootCamp.Chapter1
         {
             if (!IsArrayNullOrEmpty(array))
             {
-                for (int i = 0; i < array.Length -1; i++)
+                for (int i = 0; i < array.Length - 1; i++)
                 {
                     SortUpToIndex(array, i);
                 }
@@ -29,7 +29,17 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (!IsArrayNullOrEmpty(array)) Array.Reverse(array);
+            if (!IsArrayNullOrEmpty(array))
+            {
+                for (int i = 0; i < array.Length / 2; i++)
+                {
+                    int stashedValue = array[i];
+                    int indexToCompare = array.Length - i - 1;
+                    array[i] = array[indexToCompare];
+                    array[indexToCompare] = stashedValue;
+                }
+
+            }
         }
 
         /// <summary>
