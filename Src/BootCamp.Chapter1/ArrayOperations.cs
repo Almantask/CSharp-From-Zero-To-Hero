@@ -34,11 +34,10 @@ namespace BootCamp.Chapter1
                 for (int i = 0; i < array.Length / 2; i++)
                 {
                     int stashedValue = array[i];
-                    int indexToCompare = array.Length - i - 1;
+                    int indexToCompare = (array.Length - i) - 1;
                     array[i] = array[indexToCompare];
                     array[indexToCompare] = stashedValue;
                 }
-
             }
         }
 
@@ -89,8 +88,7 @@ namespace BootCamp.Chapter1
         /// <param name="number">Number to be added.</param>
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
-        {
-            
+        {   
             return InsertAt(array, number, 0);
         }
 
