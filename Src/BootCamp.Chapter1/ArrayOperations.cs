@@ -115,21 +115,20 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (IsArrayNullOrEmpty(array) && index == 0)
-            {
-                return new int[] { number };
-            }
-            else if (IsArrayNullOrEmpty(array) && index != 0)
-            {
-                return new int[0];
-            }
+            if (IsArrayNullOrEmpty(array) && index == 0) return new int[] { number };
+            if (IsArrayNullOrEmpty(array) && index != 0) return new int[0];
 
+            int indexInsideArray = 0;
             int[] results = new int[array.Length + 1];
-            for (int i = 0; i < array.Length; i++)
+            for (int indexInsideResults = 0; indexInsideResults < results.Length; indexInsideResults++)
             {
-                if (i < index) results[i] = array[i];
-                else if (i > index) results[i] = array[i + 1];
-                results[index] = number;
+                if (indexInsideResults == index)
+                {
+                    results[indexInsideResults] = number;
+                    indexInsideArray--;
+                }
+                else results[indexInsideResults] = array[indexInsideArray];
+                indexInsideArray++;
             }
             return results;
         }
