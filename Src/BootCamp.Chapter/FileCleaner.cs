@@ -72,7 +72,7 @@ namespace BootCamp.Chapter
             {
                 for(int i = 1; i < data.Length; i++)
                 {
-                    string temp = data[i].Remove(0, 1);  //remove currency symbol
+                    string temp = data[i].Replace("£", "");  //remove currency symbol
                     var isNumber = double.TryParse(temp,out _);
                     if(!isNumber)
                     {
