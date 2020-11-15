@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace BootCamp.Chapter
 {
@@ -11,9 +12,22 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string s = TextTable.Build($"Hello{Environment.NewLine}World!", 1);
-            string s1 = TextTable.Build($"Hello", 1);
-            System.Console.Write(s1.Length);
+            string input = @"Input/Balances.clean";
+            ArrayList array = new ArrayList();
+            using (StreamReader sr = new StreamReader(input))
+            {
+                if (!sr.EndOfStream)
+                {
+                    array.Add(sr.ReadLine().ToString());
+                }
+                string[] balance = new string[array.Count];
+                for(int i = 0; i < array.Count; i++)
+                {
+                    balance[i] = (string)array[i];
+                }
+                Console.WriteLine(BalanceStats.FindHighestBalanceEver(balance));
+            }
         }
+       
     }
 }

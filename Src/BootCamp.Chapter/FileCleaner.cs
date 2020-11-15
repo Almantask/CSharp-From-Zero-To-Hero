@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
                 if(dirtyFileExtension.Contains("clean")||dirtyFileExtension.Contains("empty"))
                 {
                     File.Copy(dirtyFile, cleanedFile);
-                    File.AppendAllText(cleanedFile, " The file has no corruption - there is nothing to clean up.");
+                    Console.WriteLine(" The file has no corruption - there is nothing to clean up.");
                     return;
                 }
 
@@ -72,7 +72,7 @@ namespace BootCamp.Chapter
             {
                 for(int i = 1; i < data.Length; i++)
                 {
-                    var isNumber = int.TryParse(data[1],out _);
+                    var isNumber = double.TryParse(data[1],out _);
                     if(!isNumber)
                     {
                         throw new InvalidBalancesException($"{data[i]} is not a number ", new ArgumentException());

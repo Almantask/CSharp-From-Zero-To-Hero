@@ -4,6 +4,7 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
+        const string negative = "N/A.";
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -11,7 +12,7 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
-                return "N/A.";
+                return negative;
             }
 
             string name = null;
@@ -19,7 +20,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                string[] tempArray = peopleAndBalances[i].Split(", ");
+                string[] tempArray = peopleAndBalances[i].Split(",");
                 double tempBalance = 0;
                 for (int j = 1; j < tempArray.Length; j++)
                 {
@@ -64,7 +65,7 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
-                return "N/A.";
+                return negative;
             }
 
             bool isLossCalculate = false;
@@ -122,7 +123,7 @@ namespace BootCamp.Chapter
                 }
                 else
                 {
-                    return "N/A.";
+                    return negative;
                 }
 
             }
@@ -138,7 +139,7 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
-                return "N/A.";
+                return negative;
             }
             string name = null;
             double current = double.MinValue;
@@ -186,7 +187,7 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0)
             {
-                return "N/A.";
+                return negative;
             }
             string name = null;
             double current = double.MaxValue;
