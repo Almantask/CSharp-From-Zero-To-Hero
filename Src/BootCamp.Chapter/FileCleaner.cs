@@ -20,6 +20,15 @@ namespace BootCamp.Chapter
                 {
                     throw new ArgumentException();
                 }
+                string dirtyFileExtension = Path.GetExtension(dirtyFile);
+
+                if(dirtyFileExtension.Contains("clean")||dirtyFileExtension.Contains("empty"))
+                {
+                    File.Copy(dirtyFile, cleanedFile);
+                    File.AppendAllText(cleanedFile, " The file has no corruption - there is nothing to clean up.");
+                    return;
+                }
+
                 using (StreamReader sr = new StreamReader(dirtyFile))
                 {
                     if (!sr.EndOfStream)
