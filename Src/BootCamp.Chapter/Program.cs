@@ -11,6 +11,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            string s = TextTable.Build($"Hello{Environment.NewLine}World!", 1);
+            string s1 = TextTable.Build($"Hello", 1);
+            System.Console.Write(s1.Length);
         }
     }
 }
