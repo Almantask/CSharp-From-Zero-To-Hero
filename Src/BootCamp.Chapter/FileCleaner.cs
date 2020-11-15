@@ -72,7 +72,8 @@ namespace BootCamp.Chapter
             {
                 for(int i = 1; i < data.Length; i++)
                 {
-                    var isNumber = double.TryParse(data[1],out _);
+                    string temp = data[i].Remove(0, 1);  //remove currency symbol
+                    var isNumber = double.TryParse(temp,out _);
                     if(!isNumber)
                     {
                         throw new InvalidBalancesException($"{data[i]} is not a number ", new ArgumentException());
