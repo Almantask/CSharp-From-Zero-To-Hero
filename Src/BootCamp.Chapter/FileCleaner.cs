@@ -31,18 +31,17 @@ namespace BootCamp.Chapter
 
                 using (StreamReader sr = new StreamReader(dirtyFile))
                 {
-                    if (!sr.EndOfStream)
+                    StringBuilder sb = new StringBuilder();
+                    while (!sr.EndOfStream)
                     {
                         string raw = sr.ReadLine();
                         string preProcess = raw.Replace("_", "");
-                        string[] balance = preProcess.Split(",");
+                        string[] balance = preProcess.Split("\n");
                         ValidatePerson(balance);
-
-                        StringBuilder sb = new StringBuilder();
+                       
                         sb.Append(preProcess + $"{Environment.NewLine}");
-
-                        File.WriteAllText(cleanedFile, sb.ToString());
                     }
+                    File.AppendAllText(cleanedFile, sb.ToString());
                 }
             }
             catch(ArgumentException e)

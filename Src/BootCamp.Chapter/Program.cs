@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
                 {
                     balance[i] = (string)array[i];
                 }
-                Console.WriteLine(BalanceStats.FindHighestBalanceEver(balance));
+                //Console.WriteLine(BalanceStats.FindHighestBalanceEver(balance));
             }
         }
        

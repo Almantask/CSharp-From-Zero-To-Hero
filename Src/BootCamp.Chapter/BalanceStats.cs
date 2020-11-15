@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                string[] tempArray = peopleAndBalances[i].Split(",");
+                string[] tempArray = peopleAndBalances[i].Split(", ");
                 double tempBalance = 0;
                 for (int j = 1; j < tempArray.Length; j++)
                 {
