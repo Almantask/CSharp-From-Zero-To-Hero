@@ -41,7 +41,8 @@ namespace BootCamp.Chapter
                        
                         sb.AppendLine(preProcess);
                     }
-                    File.AppendAllText(cleanedFile, sb.ToString());
+                    string output = sb.ToString().TrimEnd();
+                    File.AppendAllText(cleanedFile, output);
                 }
             }
             catch(ArgumentException e)
