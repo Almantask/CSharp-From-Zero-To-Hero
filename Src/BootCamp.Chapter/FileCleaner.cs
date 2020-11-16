@@ -36,7 +36,7 @@ namespace BootCamp.Chapter
                     {
                         string raw = sr.ReadLine();
                         string preProcess = raw.Replace("_", "");
-                        string[] balance = preProcess.Split("\n");
+                        string[] balance = preProcess.Split(",");
                         ValidatePerson(balance);
                        
                         sb.Append(preProcess + $"{Environment.NewLine}");
