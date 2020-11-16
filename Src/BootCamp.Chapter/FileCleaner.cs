@@ -39,7 +39,7 @@ namespace BootCamp.Chapter
                         string[] balance = preProcess.Split(",");
                         ValidatePerson(balance);
                        
-                        sb.Append(preProcess + $"{Environment.NewLine}");
+                        sb.AppendLine(preProcess);
                     }
                     File.AppendAllText(cleanedFile, sb.ToString());
                 }
@@ -62,7 +62,7 @@ namespace BootCamp.Chapter
             string name = data[0];
             foreach(char c in data[0])
             {
-                if(Char.IsDigit(c)||Char.IsPunctuation(c))
+                if(Char.IsDigit(c)||c == '.')
                 {
                     throw new InvalidBalancesException($"{nameof(name)} is invalid ", new ArgumentException());
                 }
