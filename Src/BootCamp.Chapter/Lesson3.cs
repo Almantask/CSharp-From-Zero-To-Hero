@@ -6,33 +6,30 @@ namespace BootCamp.Chapter
 {
     class Lesson3
     {
-        public static void Demo()
-        {
-            
-        }
+    
         public static int PromptInt(string message)
         {
-            int Newmessage;
+            int variable;
             Console.WriteLine(message);
-            Newmessage = int.Parse(Console.ReadLine());
-            return Newmessage;
+            variable = int.Parse(Console.ReadLine());
+            return variable;
         }
 
         public static string PromptString(string message)
         {
-            string name;
+            string variable;
             Console.WriteLine(message);
-            name = Console.ReadLine();
-            return name;
+            variable = Console.ReadLine();
+            return variable;
         }
 
 
         public static float PromptFloat(string message)
         {
-            float height;
+            float variable;
             Console.WriteLine(message);
-            height = float.Parse(Console.ReadLine());
-            return height;
+            variable = float.Parse(Console.ReadLine());
+            return variable;
         }
 
 
