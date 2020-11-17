@@ -16,57 +16,22 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            Console.WriteLine(message);
-            string input = Console.ReadLine();
-            int Number;
-            bool success = int.TryParse(input, out Number);
-
-            if (!success)
-            {
-                Console.WriteLine($"\"{input}\" is not a valid number.");
-                return -1;
-            }
-            return Number;
+            return Lesson_4.PromptInt(message);
         }
 
         public static string PromptString(string message)
         {
-            Console.WriteLine(message);
-            string input = Console.ReadLine();
-            if (input == string.Empty || input == null)
-            {
-                Console.WriteLine("Name cannot be empty");
-                return "-";
-            }
-            return input;
+            return Lesson_4.PromptString(message);
         }
 
         public static float PromptFloat(string message)
         {
-            Console.WriteLine(message);
-            string input = Console.ReadLine();
-            float Number;
-            bool success = float.TryParse(input, System.Globalization.NumberStyles.Float,
-    System.Globalization.CultureInfo.InvariantCulture, out Number);
-
-            if (!success)
-            {
-                Console.WriteLine($"\"{input}\" is not a valid number.");
-                return -1;
-            }
-            return Number;
-
+            return Lesson_4.PromptFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            if (weight <= 0 || height <= 0)
-            {
-                Console.WriteLine("Failed calculating BMI. Reason:" + Environment.NewLine + $"Height cannot be equal or less than zero, but was {height}" + Environment.NewLine + $"Weight cannot be equal or less than zero, but was {weight}");
-                return -1;
-            }
-            float bmi = weight / height / height;
-            return bmi;
+            return Lesson_4.CalculateBmi(weight, height);
         }
     }
 }
