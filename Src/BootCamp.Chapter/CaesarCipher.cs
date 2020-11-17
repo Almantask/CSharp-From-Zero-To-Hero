@@ -14,11 +14,15 @@ namespace BootCamp.Chapter
             if(string.IsNullOrEmpty(message))
                return message;
 
-            int actualShift = shift % 26;
+            int actualShift = shift % 256;
             byte[] bytes = Encoding.ASCII.GetBytes(message);
             for(int i = 0; i < bytes.Length; i++)
             {
-                bytes[i] = Convert.ToByte(bytes[i] + actualShift);
+                int temp = bytes[i] + actualShift;
+                if (temp <= 255)
+                    bytes[i] = Convert.ToByte(temp);
+                else
+                    bytes[i] = Convert.ToByte(temp - 255);
             }
             string result = Encoding.ASCII.GetString(bytes);
             return result;
@@ -28,11 +32,16 @@ namespace BootCamp.Chapter
         {
             if (string.IsNullOrEmpty(message))
                 return message;
-            int actualShift = shift % 26;
+
+            int actualShift = shift % 256;
             byte[] bytes = Encoding.ASCII.GetBytes(message);
             for (int i = 0; i < bytes.Length; i++)
             {
-                bytes[i] = Convert.ToByte(bytes[i] - actualShift);
+                int temp = bytes[i] - actualShift;
+                if (temp >= 0)
+                    bytes[i] = Convert.ToByte(temp);
+                else
+                    bytes[i] = Convert.ToByte(temp + 255);
             }
             string result = Encoding.ASCII.GetString(bytes);
             return result;
