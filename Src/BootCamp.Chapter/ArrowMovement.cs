@@ -18,7 +18,33 @@ namespace BootCamp.Chapter
         /// <returns>One of the arrow characters. '↥' by default.</returns>
         public static char GetIndicator(char symbol)
         {
-            return '-';
+            string input = symbol.ToString().ToUpper();
+            string output;
+            switch (input)
+            {
+                case "W":
+                    output = EncodingKey("↥");
+                    break;
+                case "A":
+                    output = EncodingKey("↤");
+                    break;
+                case "S":
+                    output = EncodingKey("↧");
+                    break;
+                case "D":
+                    output = EncodingKey("↦");
+                    break;
+                default:
+                    output = EncodingKey("↥");
+                    break;
+            }
+            return Convert.ToChar(output);
+        }
+        private static string EncodingKey(string str)
+        {
+            byte[] bytes = Encoding.Default.GetBytes(str);
+            string result = Encoding.Default.GetString(bytes);
+            return result;
         }
     }
 }

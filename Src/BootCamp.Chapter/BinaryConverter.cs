@@ -8,12 +8,33 @@ namespace BootCamp.Chapter
     {
         public static long ToInteger(string binary)
         {
-            return 0;
+            if (binary == null || binary == string.Empty)
+                return 0;
+            else if (IsBinary(binary))
+            {
+                long num = Convert.ToInt64(binary, 2);
+                return num;
+            }
+            else
+            {
+                throw new InvalidBinaryNumberException(binary);
+            }
         }
 
         public static string ToBinary(long number)
         {
-            return "";
+            string str = Convert.ToString(number, 2);
+            return str;
+        }
+        private static bool IsBinary(string str)
+        {
+            bool result = false;
+            foreach (char c in str)
+            {
+                if (c == '0' || c == '1')
+                    result = true;
+            }
+            return result;
         }
     }
 }
