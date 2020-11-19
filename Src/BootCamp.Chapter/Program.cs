@@ -11,6 +11,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            string cleanFile = $@"Balances{Guid.NewGuid()}.clean";
+            string dirtyFile = @"Input/Balances.corrupted";
+            Checks.Clean(dirtyFile, cleanFile);
         }
     }
 }

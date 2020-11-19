@@ -360,9 +360,9 @@ namespace BootCamp.Chapter
             string name = data[0];
             foreach (char c in data[0])
             {
-                if (Char.IsDigit(c) || c == '.')
+                if (Char.IsDigit(c) || (c == '.' && c!= name[^1]))
                 {
-                    throw new InvalidBalancesException($"{nameof(name)} is invalid ");
+                    throw new InvalidBalancesException($"{name} is invalid ");
                 }
             }
             if (data.Length > 1)
@@ -377,7 +377,6 @@ namespace BootCamp.Chapter
                     }
                 }
             }
-
 
         }
         private static string Bottom(int length)
