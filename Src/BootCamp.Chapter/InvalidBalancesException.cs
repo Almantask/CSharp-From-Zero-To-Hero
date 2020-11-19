@@ -18,10 +18,10 @@ namespace BootCamp.Chapter
         {
             this.error = msg;
         }
-        public InvalidBalancesException(string msg,Exception innerException)
+        public InvalidBalancesException(string msg,Exception innerException):base(msg,innerException)
         {
-            this.error = msg;
-            throw innerException;
+
         }
+
     }
 }

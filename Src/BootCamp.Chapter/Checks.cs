@@ -362,7 +362,7 @@ namespace BootCamp.Chapter
             {
                 if (Char.IsDigit(c) || c == '.')
                 {
-                    throw new InvalidBalancesException($"{nameof(name)} is invalid ", new ArgumentException());
+                    throw new InvalidBalancesException($"{nameof(name)} is invalid ");
                 }
             }
             if (data.Length > 1)
@@ -373,7 +373,7 @@ namespace BootCamp.Chapter
                     var isNumber = double.TryParse(temp, out _);
                     if (!isNumber)
                     {
-                        throw new InvalidBalancesException($"{data[i]} is not a number ", new ArgumentException());
+                        throw new InvalidBalancesException($"{data[i]} is not a number ");
                     }
                 }
             }
