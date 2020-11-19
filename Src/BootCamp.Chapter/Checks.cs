@@ -320,7 +320,7 @@ namespace BootCamp.Chapter
         {
             try
             {
-                if (IsNullOrEmpty(file) || IsNullOrEmpty(outputFile))
+                if (string.IsNullOrEmpty(file) || string.IsNullOrEmpty(outputFile))
                 {
                     throw new ArgumentException();
                 }
@@ -355,13 +355,6 @@ namespace BootCamp.Chapter
                 throw;
             }
         }
-
-        private static bool IsNullOrEmpty(string s)
-        {
-            if (s == null || s == string.Empty)
-                return true;
-            return false;
-        }
         private static void ValidatePerson(string[] data)
         {
             string name = data[0];
@@ -387,7 +380,7 @@ namespace BootCamp.Chapter
 
 
         }
-        public static string Bottom(int length)
+        private static string Bottom(int length)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("+");
@@ -398,7 +391,7 @@ namespace BootCamp.Chapter
             sb.Append("+");
             return $"{sb}{Environment.NewLine}";
         }
-        public static string Padding(int padding, int length)
+        private static string Padding(int padding, int length)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < padding; i++)
@@ -412,5 +405,6 @@ namespace BootCamp.Chapter
             }
             return $"{sb}{Environment.NewLine}";
         }
+
     }
 }
