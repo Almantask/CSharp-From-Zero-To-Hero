@@ -6,17 +6,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            //Homework for Chapter 1 goes here
-            /*
-            Read name, surename, age, weight (in kg) and height (in cm) from console.
-            DO NOT HARDCODE
-            Print all the info based on the example message below:
-            Tom Jefferson is 19 years old, his weight is 50 kg and his height is 156.5 cm.
-            
-            Calculate and print body-mass index (BMI)
-            Do it for 2 people (repeat the same thing twice)
 
-            */
 
             string user1Name;
             string user2Name;
@@ -28,6 +18,8 @@ namespace BootCamp.Chapter
             string user2WeightKG;
             string user1HeightCM;
             string user2HeightCM;
+            float user1BMI;
+            float user2BMI;
 
             Console.WriteLine("What is your name?");
             user1Name = Console.ReadLine();
@@ -40,8 +32,16 @@ namespace BootCamp.Chapter
             Console.WriteLine("What is your height in cm?");
             user1HeightCM = Console.ReadLine();
 
+            //BMI Calculation. Convert strings to ints. 
+            float user1HeightConv = int.Parse(user1HeightCM);
+            float user1WeightConv = int.Parse(user1WeightKG);
+            //Covert CM to M. Then square it for formula, then compute formula of BMI
+            float user1HeightM = user1HeightConv / 100;
+            user1HeightM = user1HeightM * user1HeightM;
+            user1BMI = user1WeightConv / user1HeightM;
+
             Console.WriteLine(user1Name +" "+ user1Surname +" is "+user1Age+" years old, his weight is "+user1WeightKG+
-                " kg and his height is "+user1HeightCM+" cm.");
+                              " kg and his height is "+user1HeightCM+" cm. Your BMI is "+user1BMI.ToString("n2")+".");
 
             Console.WriteLine("Please enter details for another person what is your name?");
             user2Name = Console.ReadLine();
@@ -54,8 +54,19 @@ namespace BootCamp.Chapter
             Console.WriteLine("What is your height in cm?");
             user2HeightCM = Console.ReadLine();
 
+
+            //BMI Calculation. Convert strings to ints. 
+            float user2HeightConv = int.Parse(user2HeightCM);
+            float user2WeightConv = int.Parse(user2WeightKG);
+            //Covert CM to M. Then square it for formula, then compute formula of BMI
+            float user2HeightM = user2HeightConv / 100;
+            user2HeightM = user2HeightM * user2HeightM;
+            user2BMI = user2WeightConv / user2HeightM;
+
             Console.WriteLine(user2Name + " " + user2Surname + " is " + user2Age + " years old, his weight is " + user2WeightKG +
-    " kg and his height is " + user2HeightCM + " cm.");
+                              " kg and his height is " + user2HeightCM + " cm. Your BMI is " + user2BMI.ToString("n2") + ".");
+
+
         }
     }
 }
