@@ -31,6 +31,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,6 +41,11 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            foreach(Item item in _inventory.GetItems())
+            {
+                if (item.GetName() == name)
+                    _inventory.RemoveItem(item);
+            }
         }
 
         /// <summary>
@@ -50,7 +56,14 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            bool isBuyOk = _money >= item.GetPrice();
+            if (isBuyOk)
+            {
+                _inventory.AddItem(item);
+                _money -= item.GetPrice();
+            }
+            return item.GetPrice();
+
         }
 
         /// <summary>
@@ -64,6 +77,15 @@
         /// </returns>
         public Item Sell(string item)
         {
+            foreach( Item item1 in _inventory.GetItems())
+            {
+                if(item1.ToString() == item)
+                {
+                    _inventory.RemoveItem(item1);
+                    _money += item1.GetPrice();
+                    return item1;
+                }                     
+            }
             return null;
         }
     }
