@@ -34,8 +34,11 @@ namespace BootCamp.Chapter
         /// </summary>
         private Equipment _equipment;
 
+
         public Player()
         {
+            _inventory = new Inventory();
+            _equipment = new Equipment();
         }
 
         /// <summary>
@@ -76,32 +79,39 @@ namespace BootCamp.Chapter
         // Implement equiping logic and total defense/attack calculation.
         public void Equip(Headpiece head)
         {
-
+            _equipment.SetHead(head);
         }
 
         public void Equip(Chestpiece head)
         {
-
+            _equipment.SetChest(head);
         }
 
         public void Equip(Shoulderpiece head, bool isLeft)
         {
+            if (isLeft)
+                _equipment.SetLeftShoulder(head);
+            else
+                _equipment.SetRightShoulder(head);
 
         }
 
         public void Equip(Legspiece head)
         {
-
+            _equipment.SetLeg(head);
         }
 
         public void Equip(Armpiece head, bool isLeft)
         {
-
+            if (isLeft)
+                _equipment.SetLeftArmp(head);
+            else
+                _equipment.SetRightArm(head);
         }
 
         public void Equip(Gloves head)
         {
-
+            _equipment.SetGloves(head);
         }
         #endregion
     }

@@ -24,7 +24,10 @@ namespace BootCamp.Chapter
                 if (item1.GetName() == name)
                     list.Add(item1);
             }
-            return (Item[])list.ToArray();
+            var outItems = new Item[list.Count];
+            for (int i = 0; i < outItems.Length; i++)
+                outItems[i] = (Item)list[i];
+            return outItems;
         }
 
         public void AddItem(Item item)                  

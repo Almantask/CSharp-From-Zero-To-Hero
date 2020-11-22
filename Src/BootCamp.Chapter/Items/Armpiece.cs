@@ -16,5 +16,11 @@
         {
             return _weight;
         }
+
+        private float _defense;
+        public float GetDefense()
+        {
+            return _defense;
+        }
     }
 }
