@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         private Item[] _items;
         public Item[] GetItems()
         {
-            return new Item[0];
+            return _items;
         }
 
         public Inventory()
