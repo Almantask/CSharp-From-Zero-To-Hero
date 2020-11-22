@@ -12,5 +12,15 @@
             _price = price;
             _weight = weight;
         }
+
+        public float GetWeight()
+        {
+            return _weight;
+        }
+        private float _defense;
+        public float GetDefense()
+        {
+            return _defense;
+        }
     }
 }
