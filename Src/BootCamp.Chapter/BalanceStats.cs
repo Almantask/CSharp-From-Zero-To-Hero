@@ -55,7 +55,43 @@ namespace BootCamp.Chapter
         {
             if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
 
-            return "";
+            var biggestLossOverall = decimal.MaxValue;
+            var peopleWithBiggestLossOverall = new string[0];
+
+            foreach (var personAndBalances in peopleAndBalances)
+            {
+                var nameAndBalances = personAndBalances.Split(
+                    "" +
+                    ", ",
+                    StringSplitOptions.RemoveEmptyEntries
+                );
+                var currentPerson = nameAndBalances[0];
+                var balances = ArrayOperations.ConvertStrArrayToDecimalArray(nameAndBalances[1..]);
+                if (balances.Length == 1) return ErrorCode;
+                var highestBalance = ArrayOperations.FindHighestBalanceIn(balances);
+                var lowestBalance = ArrayOperations.FindLowestBalanceIn(balances);
+                var overallLossForPerson = lowestBalance - highestBalance;
+
+                if (DecimalOperations.IsAEquivalentToB(overallLossForPerson, biggestLossOverall))
+                {
+                    peopleWithBiggestLossOverall = ArrayOperations.InsertAt(
+                        peopleWithBiggestLossOverall,
+                        currentPerson,
+                        peopleWithBiggestLossOverall.Length
+                    );
+                }
+                else if (overallLossForPerson < biggestLossOverall)
+                {
+                    peopleWithBiggestLossOverall = new string[] {currentPerson};
+                    biggestLossOverall = overallLossForPerson;
+                }
+            }
+
+            var cultureInfo = new CultureInfo("");
+            cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
+            cultureInfo.NumberFormat.CurrencyNegativePattern = 1;
+            return $"{ArrayOperations.FormatToString(peopleWithBiggestLossOverall)} " +
+                   $"lost the most money. {biggestLossOverall.ToString("C0", cultureInfo)}.";
         }
 
         /// <summary>

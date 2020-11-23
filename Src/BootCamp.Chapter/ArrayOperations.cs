@@ -57,6 +57,18 @@ namespace BootCamp.Chapter
 
             return highestBalance;
         }
+        
+        public static decimal FindLowestBalanceIn(decimal[] arr)
+        {
+            var lowestBalance = decimal.MaxValue;
+            foreach (var balance in arr)
+            {
+                if (balance < lowestBalance) lowestBalance = balance;
+            }
+
+            return lowestBalance;
+        }
+        
         public static int ReturnLongestStringLengthInArray(string[] arr)
         {
             var maxLength = int.MinValue;
