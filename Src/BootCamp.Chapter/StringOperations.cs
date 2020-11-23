@@ -8,6 +8,12 @@ namespace BootCamp.Chapter
         {
             return Pluralize("is", "are", count);
         }
+        
+        public static string PluralizeHasByCount(int count)
+        {
+            return Pluralize("has", "have", count);
+        }
+        
         public static string PluralizePersonByCount(int count)
         {
             return Pluralize("person", "people", count);

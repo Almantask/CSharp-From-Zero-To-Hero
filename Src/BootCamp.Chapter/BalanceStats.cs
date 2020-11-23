@@ -107,7 +107,43 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
+
+            var lowestBalanceAtEnd = decimal.MaxValue;
+
+            var peopleWithLowestBalanceAtEnd = new string[0];
+            
+            foreach (var  personAndBalances in peopleAndBalances)
+            {
+                var nameAndBalances = personAndBalances.Split(
+                    "" +
+                    ", ",
+                    StringSplitOptions.RemoveEmptyEntries
+                );
+                var currentPerson = nameAndBalances[0];
+                var balances = ArrayOperations.ConvertStrArrayToDecimalArray(nameAndBalances[1..]);
+                var lowestBalanceAtEndForPerson = balances[^1];
+                if (DecimalOperations.IsAEquivalentToB(lowestBalanceAtEndForPerson, lowestBalanceAtEnd))
+                {
+                    peopleWithLowestBalanceAtEnd = ArrayOperations.InsertAt(
+                        peopleWithLowestBalanceAtEnd, 
+                        currentPerson,
+                        peopleWithLowestBalanceAtEnd.Length
+                    );
+                }
+                else if  (lowestBalanceAtEndForPerson < lowestBalanceAtEnd)
+                {
+                    peopleWithLowestBalanceAtEnd = new string[] {currentPerson};
+                    lowestBalanceAtEnd = lowestBalanceAtEndForPerson;   
+                }
+            }
+
+            var cultureInfo = new CultureInfo("");
+            cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
+            cultureInfo.NumberFormat.CurrencyNegativePattern = 1;
+            return $"{ArrayOperations.FormatToString(peopleWithLowestBalanceAtEnd)} " +
+                   $"{StringOperations.PluralizeHasByCount(peopleWithLowestBalanceAtEnd.Length)} the least money. " +
+                   $"{lowestBalanceAtEnd.ToString("C0", cultureInfo)}.";
         }
     }
 }
