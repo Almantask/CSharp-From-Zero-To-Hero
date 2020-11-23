@@ -63,7 +63,43 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
+
+            var highestBalanceAtEnd = InitialBalance;
+
+            var peopleWithHighestBalanceAtEnd = new string[0];
+            
+            foreach (var  personAndBalances in peopleAndBalances)
+            {
+                var nameAndBalances = personAndBalances.Split(
+                    "" +
+                    ", ",
+                    StringSplitOptions.RemoveEmptyEntries
+                );
+                var currentPerson = nameAndBalances[0];
+                var balances = ArrayOperations.ConvertStrArrayToDecimalArray(nameAndBalances[1..]);
+                var highestBalanceAtEndForPerson = balances[^1];
+                if (DecimalOperations.IsAEquivalentToB(highestBalanceAtEndForPerson, highestBalanceAtEnd))
+                {
+                    peopleWithHighestBalanceAtEnd = ArrayOperations.InsertAt(
+                        peopleWithHighestBalanceAtEnd, 
+                        currentPerson,
+                        peopleWithHighestBalanceAtEnd.Length
+                    );
+                }
+                else if  (highestBalanceAtEndForPerson > highestBalanceAtEnd)
+                {
+                    peopleWithHighestBalanceAtEnd = new string[] {currentPerson};
+                    highestBalanceAtEnd = highestBalanceAtEndForPerson;   
+                }
+            }
+
+            var cultureInfo = new CultureInfo("");
+            cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
+            return $"{ArrayOperations.FormatToString(peopleWithHighestBalanceAtEnd)} " +
+                   $"{StringOperations.PluralizeIsByCount(peopleWithHighestBalanceAtEnd.Length)} the richest " +
+                   $"{StringOperations.PluralizePersonByCount(peopleWithHighestBalanceAtEnd.Length)}. "  +
+                   $"{highestBalanceAtEnd.ToString("C0", cultureInfo)}.";
         }
 
         /// <summary>

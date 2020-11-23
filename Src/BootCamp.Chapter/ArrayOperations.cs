@@ -38,7 +38,7 @@ namespace BootCamp.Chapter
             }
             return results;
         }
-
+        
         public static string FormatToString(string[] arr)
         {
             if (IsArrayNullOrEmpty(arr)) return string.Empty;
