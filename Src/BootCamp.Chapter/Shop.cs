@@ -17,6 +17,7 @@
 
         public Shop(decimal money)
         {
+            _inventory = new Inventory();
             _money = money;
         }
 
@@ -61,8 +62,10 @@
             {
                 _inventory.AddItem(item);
                 _money -= item.GetPrice();
+                return item.GetPrice();
             }
-            return item.GetPrice();
+            return 0;
+           
 
         }
 
@@ -79,7 +82,7 @@
         {
             foreach( Item item1 in _inventory.GetItems())
             {
-                if(item1.ToString() == item)
+                if(item1.GetName() == item)
                 {
                     _inventory.RemoveItem(item1);
                     _money += item1.GetPrice();
