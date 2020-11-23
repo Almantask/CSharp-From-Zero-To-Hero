@@ -10,10 +10,18 @@ namespace BootCamp.Chapter
             var player = new Player();
             var item = new Item("Potion", 20, 0.2f);
             player.AddItem(item);
+            WriteLine(item.GetName());
+
 
             var items = player.GetItems(item.GetName());
-            if (items != null)
-                Write(123);
+            //if (items != null)
+            //    Write(items.Length);
+
+            foreach (Item i in items)
+            {
+                WriteLine(i.GetName());
+            }
+
         }
     }
 }

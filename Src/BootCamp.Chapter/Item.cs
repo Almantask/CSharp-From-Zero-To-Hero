@@ -22,5 +22,11 @@
             _price = price;
             _weight = weight;
         }
+        public static  bool Equals(Item a, Item b)
+        {
+            if (a._name == b._name && a._price == b._price && a._weight == b._weight)
+                return true;
+            return false;
+        }
     }
 }

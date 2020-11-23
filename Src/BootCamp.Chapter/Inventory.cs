@@ -34,15 +34,11 @@ namespace BootCamp.Chapter
         {
             foreach(Item item2 in _items)
             {
-                if (item2 == item)
+                if (Item.Equals(item2,item))
                     return;
-                else
-                {
-                    _items = new Item[_items.Length + 1];
-                    _items[_items.Length] = item;
-                }
             }
-            
+            _items = new Item[_items.Length + 1];
+            _items[_items.Length - 1] = item;
         }
 
         /// <summary>
@@ -55,7 +51,7 @@ namespace BootCamp.Chapter
                 return ;
             for(int i = 0; i < _items.Length; i++)
             {
-                if(_items[i] == item)
+                if(Item.Equals(_items[i],item))
                 {                   
                     var temp = new Item[_items.Length - 1];
                    for(int j = 0; j <_items.Length -1;j++)
