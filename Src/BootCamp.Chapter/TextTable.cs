@@ -60,7 +60,7 @@ namespace BootCamp.Chapter
             var table = new StringBuilder();
             var maxPrintableWidth = maxLineLength + 2 * padding;
             table.Append(BuildHeaderFooterLine(maxPrintableWidth));
-            foreach (string line in lines)
+            foreach (var line in lines)
             {
                 table.Append(BuildContentLine(line, maxLineLength, padding));
             }
@@ -73,7 +73,7 @@ namespace BootCamp.Chapter
             var table = string.Empty;
             var maxPrintableWidth = maxLineLength + (2 * padding);
             table += BuildHeaderFooterLine(maxPrintableWidth);
-            foreach (string line in lines)
+            foreach (var line in lines)
             {
                 table += BuildContentLine(line, maxLineLength, padding);
             }

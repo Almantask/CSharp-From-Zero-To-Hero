@@ -6,13 +6,13 @@ namespace BootCamp.Chapter
     public static class BalanceStats
     {
         
-        private static string ErrorCode = "N/A.";
+        private static string codeNotApplicable = "N/A.";
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return codeNotApplicable;
 
             var highestBalanceEver = decimal.MinValue;
             var peopleWithHighestBalanceEver = new string[0];
@@ -42,10 +42,8 @@ namespace BootCamp.Chapter
                 }
             }
             
-            var cultureInfo = new CultureInfo("");
-            cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
-            return $"{ArrayOperations.FormatToString(peopleWithHighestBalanceEver)} had the most money ever. "  +
-                   $"{highestBalanceEver.ToString("C0", cultureInfo)}.";
+            return StringOperations.FormatHighestBalanceMessage(peopleWithHighestBalanceEver, highestBalanceEver);
+
         }
 
         /// <summary>
@@ -53,7 +51,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return codeNotApplicable;
 
             var biggestLossOverall = decimal.MaxValue;
             var peopleWithBiggestLossOverall = new string[0];
@@ -67,7 +65,7 @@ namespace BootCamp.Chapter
                 );
                 var currentPerson = nameAndBalances[0];
                 var balances = ArrayOperations.ConvertStrArrayToDecimalArray(nameAndBalances[1..]);
-                if (balances.Length == 1) return ErrorCode;
+                if (balances.Length == 1) return codeNotApplicable;
                 var highestBalance = ArrayOperations.FindHighestBalanceIn(balances);
                 var lowestBalance = ArrayOperations.FindLowestBalanceIn(balances);
                 var overallLossForPerson = lowestBalance - highestBalance;
@@ -87,11 +85,7 @@ namespace BootCamp.Chapter
                 }
             }
 
-            var cultureInfo = new CultureInfo("");
-            cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
-            cultureInfo.NumberFormat.CurrencyNegativePattern = 1;
-            return $"{ArrayOperations.FormatToString(peopleWithBiggestLossOverall)} " +
-                   $"lost the most money. {biggestLossOverall.ToString("C0", cultureInfo)}.";
+            return StringOperations.FormatBiggestLossMessage(peopleWithBiggestLossOverall, biggestLossOverall);
         }
 
         /// <summary>
@@ -99,7 +93,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return codeNotApplicable;
 
             var highestBalanceAtEnd = decimal.MinValue;
 
@@ -114,8 +108,8 @@ namespace BootCamp.Chapter
                 );
                 var currentPerson = nameAndBalances[0];
                 var balances = ArrayOperations.ConvertStrArrayToDecimalArray(nameAndBalances[1..]);
-                var highestBalanceAtEndForPerson = balances[^1];
-                if (DecimalOperations.IsAEquivalentToB(highestBalanceAtEndForPerson, highestBalanceAtEnd))
+                var lastBalanceForPerson = balances[^1];
+                if (DecimalOperations.IsAEquivalentToB(lastBalanceForPerson, highestBalanceAtEnd))
                 {
                     peopleWithHighestBalanceAtEnd = ArrayOperations.InsertAt(
                         peopleWithHighestBalanceAtEnd, 
@@ -123,19 +117,15 @@ namespace BootCamp.Chapter
                         peopleWithHighestBalanceAtEnd.Length
                     );
                 }
-                else if  (highestBalanceAtEndForPerson > highestBalanceAtEnd)
+                else if  (lastBalanceForPerson > highestBalanceAtEnd)
                 {
                     peopleWithHighestBalanceAtEnd = new string[] {currentPerson};
-                    highestBalanceAtEnd = highestBalanceAtEndForPerson;   
+                    highestBalanceAtEnd = lastBalanceForPerson;   
                 }
             }
             
-            var cultureInfo = new CultureInfo("");
-            cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
-            return $"{ArrayOperations.FormatToString(peopleWithHighestBalanceAtEnd)} " +
-                   $"{StringOperations.PluralizeIsByCount(peopleWithHighestBalanceAtEnd.Length)} the richest " +
-                   $"{StringOperations.PluralizePersonByCount(peopleWithHighestBalanceAtEnd.Length)}. "  +
-                   $"{highestBalanceAtEnd.ToString("C0", cultureInfo)}.";
+            return StringOperations.FormatRichestPersonMessage(peopleWithHighestBalanceAtEnd, highestBalanceAtEnd);
+
         }
 
         /// <summary>
@@ -143,7 +133,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return codeNotApplicable;
 
             var lowestBalanceAtEnd = decimal.MaxValue;
             var peopleWithLowestBalanceAtEnd = new string[0];
@@ -157,8 +147,8 @@ namespace BootCamp.Chapter
                 );
                 var currentPerson = nameAndBalances[0];
                 var balances = ArrayOperations.ConvertStrArrayToDecimalArray(nameAndBalances[1..]);
-                var lowestBalanceAtEndForPerson = balances[^1];
-                if (DecimalOperations.IsAEquivalentToB(lowestBalanceAtEndForPerson, lowestBalanceAtEnd))
+                var lastBalanceForPerson = balances[^1];
+                if (DecimalOperations.IsAEquivalentToB(lastBalanceForPerson, lowestBalanceAtEnd))
                 {
                     peopleWithLowestBalanceAtEnd = ArrayOperations.InsertAt(
                         peopleWithLowestBalanceAtEnd, 
@@ -166,19 +156,15 @@ namespace BootCamp.Chapter
                         peopleWithLowestBalanceAtEnd.Length
                     );
                 }
-                else if  (lowestBalanceAtEndForPerson < lowestBalanceAtEnd)
+                else if  (lastBalanceForPerson < lowestBalanceAtEnd)
                 {
                     peopleWithLowestBalanceAtEnd = new string[] {currentPerson};
-                    lowestBalanceAtEnd = lowestBalanceAtEndForPerson;   
+                    lowestBalanceAtEnd = lastBalanceForPerson;   
                 }
             }
 
-            var cultureInfo = new CultureInfo("");
-            cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
-            cultureInfo.NumberFormat.CurrencyNegativePattern = 1;
-            return $"{ArrayOperations.FormatToString(peopleWithLowestBalanceAtEnd)} " +
-                   $"{StringOperations.PluralizeHasByCount(peopleWithLowestBalanceAtEnd.Length)} the least money. " +
-                   $"{lowestBalanceAtEnd.ToString("C0", cultureInfo)}.";
+            return StringOperations.FormatPoorestPersonMessage(peopleWithLowestBalanceAtEnd, lowestBalanceAtEnd);
+
         }
     }
 }
