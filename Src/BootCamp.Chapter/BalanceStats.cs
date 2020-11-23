@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
     public static class BalanceStats
     {
         
-        private static string ErrorCode = "N/A";
+        private static string ErrorCode = "N/A.";
         private static decimal InitialBalance = 0m;
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
                     peopleWithHighestBalanceEver = ArrayOperations.InsertAt(
                         peopleWithHighestBalanceEver, 
                         currentPerson,
-                        0
+                        peopleWithHighestBalanceEver.Length
                         );
                 }
                 else if  (highestBalanceForPerson > highestBalanceEver)
@@ -44,7 +44,10 @@ namespace BootCamp.Chapter
                 }
             }
             //TODO build helper function to print string array of people with the highest balance
-            return "";
+            var cultureInfo = new CultureInfo("");
+            cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
+            return $"{ArrayOperations.FormatToString(peopleWithHighestBalanceEver)} had the most money ever. "  +
+                   $"{highestBalanceEver.ToString("C0", cultureInfo)}.";
         }
 
         /// <summary>

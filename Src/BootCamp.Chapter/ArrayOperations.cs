@@ -39,9 +39,17 @@ namespace BootCamp.Chapter
             return results;
         }
 
+        public static string FormatToString(string[] arr)
+        {
+            if (IsArrayNullOrEmpty(arr)) return string.Empty;
+            if (arr.Length <= 2) return string.Join(" and ", arr);
+            var namesWithComma = string.Join(", ", arr[..^1]);
+            return $@"{namesWithComma} and {arr[^1]}";
+        }
+
         public static decimal FindHighestBalanceIn(decimal[] arr)
         {
-            var highestBalance = Decimal.MinValue;
+            var highestBalance = decimal.MinValue;
             foreach (var balance in arr)
             {
                 if (balance > highestBalance) highestBalance = balance;
@@ -51,7 +59,7 @@ namespace BootCamp.Chapter
         }
         public static int ReturnLongestStringLengthInArray(string[] arr)
         {
-            var maxLength = Int32.MinValue;
+            var maxLength = int.MinValue;
             foreach (var item in arr)
             {
                 if (item.Length > maxLength) maxLength = item.Length;
