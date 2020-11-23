@@ -7,7 +7,6 @@ namespace BootCamp.Chapter
     {
         
         private static string ErrorCode = "N/A.";
-        private static decimal InitialBalance = 0m;
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -15,8 +14,7 @@ namespace BootCamp.Chapter
         {
             if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
 
-            var highestBalanceEver = InitialBalance;
-
+            var highestBalanceEver = decimal.MinValue;
             var peopleWithHighestBalanceEver = new string[0];
             
             foreach (var  personAndBalances in peopleAndBalances)
@@ -43,7 +41,7 @@ namespace BootCamp.Chapter
                     highestBalanceEver = highestBalanceForPerson;   
                 }
             }
-            //TODO build helper function to print string array of people with the highest balance
+            
             var cultureInfo = new CultureInfo("");
             cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
             return $"{ArrayOperations.FormatToString(peopleWithHighestBalanceEver)} had the most money ever. "  +
@@ -55,6 +53,8 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
+            if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
+
             return "";
         }
 
@@ -65,7 +65,7 @@ namespace BootCamp.Chapter
         {
             if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
 
-            var highestBalanceAtEnd = InitialBalance;
+            var highestBalanceAtEnd = decimal.MinValue;
 
             var peopleWithHighestBalanceAtEnd = new string[0];
             
@@ -93,7 +93,7 @@ namespace BootCamp.Chapter
                     highestBalanceAtEnd = highestBalanceAtEndForPerson;   
                 }
             }
-
+            
             var cultureInfo = new CultureInfo("");
             cultureInfo.NumberFormat.CurrencyGroupSeparator = "";
             return $"{ArrayOperations.FormatToString(peopleWithHighestBalanceAtEnd)} " +
@@ -110,7 +110,6 @@ namespace BootCamp.Chapter
             if (ArrayOperations.IsArrayNullOrEmpty(peopleAndBalances)) return ErrorCode;
 
             var lowestBalanceAtEnd = decimal.MaxValue;
-
             var peopleWithLowestBalanceAtEnd = new string[0];
             
             foreach (var  personAndBalances in peopleAndBalances)
