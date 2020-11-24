@@ -6,5 +6,10 @@ namespace BootCamp.Chapter.Computer
 {
     public class Body
     {
+        private string _name;
+        public Body(string name)
+        {
+            _name = name;
+        }
     }
 }
