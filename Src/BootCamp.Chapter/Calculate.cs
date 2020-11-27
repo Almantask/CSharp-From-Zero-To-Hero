@@ -21,7 +21,9 @@ namespace BootCamp.Chapter
 
                 float bmi = weight / ((height / 100) * (height / 100));
 
-                log.WriteMessage($"{name} is {age} years old, weight is {weight} kg, height is {height} cm, BMI is {bmi}");
+                string message = ($"{name} is {age} years old, weight is {weight} kg, height is {height} cm, BMI is {bmi}");
+                log.WriteMessageToFile(message);
+                log.WriteMessageToConsole(message);
 
                 Console.WriteLine("Once again? Y/N");
                 var input = Console.ReadKey();

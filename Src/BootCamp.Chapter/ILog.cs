@@ -6,7 +6,8 @@ namespace BootCamp.Chapter
 {
     interface ILog
     {
-        public void WriteMessage(string messge);
+        public void WriteMessageToFile(string messge);
+        public void WriteMessageToConsole(string messge);
 
     }
 }

@@ -7,8 +7,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Random random = new Random();
             var test = new Calculate();
-            test.CalculateBMI(new Logger());
+            test.CalculateBMI(new Logger(random.Next()));
         }
     }
 }
