@@ -11,15 +11,15 @@ namespace BootCamp.Chapter
     {       
         public void WriteMessage(string message)
         {
-            string fileName = $"Log_{DateTime.Now.ToShortDateString().Replace("/", "")}_{DateTime.Now.ToLongTimeString().Replace(":","")}.txt";
+            string fileName = $"Log_{DateTime.Now.ToShortDateString().Replace("/", "")}.txt";
             string file = Path.Combine(Directory.GetCurrentDirectory(), fileName);
             ArrayList list = new ArrayList();
             list.Add(message);
-            using StreamWriter sw = File.CreateText(file);
+            using StreamWriter sw = File.AppendText(file);
             for (int i = 0; i < list.Count; i++)
             {
                 sw.WriteLine(list[i]);
-
+                sw.WriteLine("----");
             }
         }
     }

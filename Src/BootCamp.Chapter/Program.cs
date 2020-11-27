@@ -9,11 +9,6 @@ namespace BootCamp.Chapter
         {
             var test = new Calculate();
             test.CalculateBMI(new Logger());
-            Console.WriteLine("Once again? Y/N");
-            //if(Console.ReadKey())
-               
-
-
         }
     }
 }
