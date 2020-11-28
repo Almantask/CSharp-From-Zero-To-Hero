@@ -51,7 +51,8 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            return RemoveAt(array, array.Length - 1);
+            if (array == null) return null;
+            return RemoveAt(array, array.Length-1);
             
         }
 
