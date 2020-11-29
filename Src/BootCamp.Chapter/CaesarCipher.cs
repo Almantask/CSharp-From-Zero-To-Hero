@@ -25,16 +25,7 @@ namespace BootCamp.Chapter
 
         public static string Decrypt(string message, byte shift)
         {
-            if (string.IsNullOrEmpty(message))
-                return message;
-;
-            byte[] bytes = Encoding.ASCII.GetBytes(message);
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                bytes[i] = Convert.ToByte((bytes[i] - shift + 128)% 128);
-            }
-            string result = Encoding.ASCII.GetString(bytes);
-            return result;
+            return Encrypt(message, Convert.ToByte(128 - shift));
         }
     }
 }
