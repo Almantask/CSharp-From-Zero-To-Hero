@@ -6,14 +6,14 @@ using System.IO;
 
 namespace BootCamp.Chapter
 {
-    class Logger: ILog
+    class FileLogger: ILog
     {
         int _number;
-        public Logger(int num)
+        public FileLogger(int num)
         {
             _number = num;
         }
-        public void WriteMessageToFile(string message)
+        public void WriteMessage(string message)
         {
             string fileName = $"Log_{DateTime.Now.ToShortDateString().Replace("/", "")}_{_number}.txt";
             string file = Path.Combine(Directory.GetCurrentDirectory(), fileName);
@@ -21,10 +21,6 @@ namespace BootCamp.Chapter
             using StreamWriter sw = File.AppendText(file);
             sw.WriteLine(message);
             sw.WriteLine("----");
-        }
-        public void WriteMessageToConsole(string message)
-        {
-            Console.WriteLine(message);
         }
     }
 }

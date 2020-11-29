@@ -9,7 +9,8 @@ namespace BootCamp.Chapter
         {
             Random random = new Random();
             var test = new Calculate();
-            test.CalculateBMI(new Logger(random.Next()));
+            test.ProcessData(new FileLogger(random.Next()));
+            test.ProcessData(new ConsoleLogger());
         }
     }
 }
