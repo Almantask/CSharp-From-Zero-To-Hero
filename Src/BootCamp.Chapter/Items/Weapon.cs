@@ -6,11 +6,12 @@
         private decimal _price;
         private float _weight;
 
-        public Weapon(string name, decimal price, float weight)
+        public Weapon(string name, decimal price, float weight,float attack)
         {
             _name = name;
             _price = price;
             _weight = weight;
+            _attack = attack;
         }
         public string Name
         {

@@ -6,11 +6,12 @@
         private decimal _price;
         private float _weight;
 
-        public Legspiece(string name, decimal price, float weight)
+        public Legspiece(string name, decimal price, float weight, float defense)
         {
             _name = name;
             _price = price;
             _weight = weight;
+            _defense = defense;
         }
         public string Name
         {
