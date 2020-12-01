@@ -12,5 +12,10 @@
             _price = price;
             _weight = weight;
         }
+        public string Name
+        {
+            get =>  _name;
+            set => _name = value;
+        }
     }
 }
