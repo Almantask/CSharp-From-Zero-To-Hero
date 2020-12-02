@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
         /// </summary>
-        private int _strenght;
+        private int _strength;
 
         /// <summary>
         /// Player items. There can be multiple of items with same name.
@@ -43,6 +43,22 @@ namespace BootCamp.Chapter
             _equipment = new Equipment();
         }
 
+        public int Strength => baseCarryWeight + _strength * 10;
+        public float CurrentWeight
+        {
+            get;
+            set;
+        }
+        public float TotalAttack
+        {
+            get;
+            set;
+        }
+        public float TotalDefense
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// Gets all items from player's inventory
         /// </summary>
@@ -79,6 +95,11 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+        public bool IsEquipped(Item item)
+        {
+            CurrentWeight += item.Weight;
+            return CurrentWeight <= Strength;
+        }
         public void Equip(Headpiece head)
         {
             _equipment.SetHead(head);
