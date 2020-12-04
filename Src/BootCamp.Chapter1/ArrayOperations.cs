@@ -10,6 +10,7 @@
         public static void Sort(int[] array)
         {
             // ToDo: implement.
+             Lesson5.Sort(array);
         }
 
         /// <summary>
@@ -20,6 +21,7 @@
         public static void Reverse(int[] array)
         {
             // ToDo: implement.
+            Lesson5.Reverse(array);
         }
 
         /// <summary>
@@ -30,7 +32,7 @@
         public static int[] RemoveLast(int[] array)
         {
             // ToDo: implement.
-            return array;
+            return Lesson5.RemoveLast(array);
         }
 
         /// <summary>
@@ -40,7 +42,7 @@
         public static int[] RemoveFirst(int[] array)
         {
             // ToDo: implement.
-            return array;
+            return Lesson5.RemoveFirst(array);
         }
 
         /// <summary>
@@ -52,7 +54,7 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             // ToDo: implement.
-            return array;
+            return Lesson5.RemoveAt(array, index);
         }
 
         /// <summary>
@@ -64,7 +66,7 @@
         public static int[] InsertFirst(int[] array, int number)
         {
             // ToDo: implement.
-            return array;
+            return Lesson5.InsertFirst(array, number);
         }
 
         /// <summary>
@@ -76,7 +78,7 @@
         public static int[] InsertLast(int[] array, int number)
         {
             // ToDo: implement.
-            return array;
+            return Lesson5.InsertLast(array, number);
         }
 
         /// <summary>
@@ -89,7 +91,7 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
-            return array;
+            return Lesson5.InsertAt(array, number, index);
         }
     }
 }
