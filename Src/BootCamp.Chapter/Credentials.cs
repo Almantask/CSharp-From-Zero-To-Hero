@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     // TODO: make a struct and add validation and other needed methods (if needed)
     public class Credentials
@@ -17,6 +19,13 @@
         {
             credentials = default;
             return false;
+        }
+        private void CheckInput(string a,string b)
+        {
+            if(string.IsNullOrEmpty(a)||string.IsNullOrEmpty(b))
+            {
+                throw new ArgumentException("Input is invalid.");
+            }
         }
     }
 }
