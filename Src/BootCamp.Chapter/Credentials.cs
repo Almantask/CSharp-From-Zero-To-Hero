@@ -11,6 +11,7 @@ namespace BootCamp.Chapter
 
         public Credentials(string username, string password)
         {
+            CheckInput(username, password);
             Username = username;
             Password = password;
         }
@@ -26,8 +27,7 @@ namespace BootCamp.Chapter
                     return false;
                 else
                 {
-                    credentials.Username = list[0];
-                    credentials.Password = list[1];
+                    credentials = new Credentials(list[0], list[1]);
                     return true;
                 }
             }          
@@ -52,7 +52,7 @@ namespace BootCamp.Chapter
         }
         public override string ToString()
         {
-            return $"{Username}_{Password}";
+            return $"{Username},{Password}";
         }
     }
 }

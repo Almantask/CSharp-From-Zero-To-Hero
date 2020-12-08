@@ -46,7 +46,7 @@ namespace BootCamp.Chapter
         }
         private void OpenFile(string path)
         {
-            var file = File.Open(path, FileMode.Open);
+            var file = File.Open(path, FileMode.OpenOrCreate);
             list = new List<string>();
             using (var stream = new StreamReader(file))
             {
