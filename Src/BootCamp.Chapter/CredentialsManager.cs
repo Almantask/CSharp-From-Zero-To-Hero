@@ -13,14 +13,14 @@ namespace BootCamp.Chapter
         public CredentialsManager(string credentialsFile)
         {
             CheckInput(credentialsFile);
-            _credentialsFile = credentialsFile;
-            OpenFile(_credentialsFile);
+            _credentialsFile = credentialsFile;          
         }
 
         // TODO: load credentials and check for equality.
         public bool Login(Credentials credentials)
         {
-           foreach(var credit in list)
+            OpenFile(_credentialsFile);
+            foreach (var credit in list)
             {
                 if (credit.Equals(credentials.ToString()))
                     return true;             
@@ -46,7 +46,7 @@ namespace BootCamp.Chapter
         }
         private void OpenFile(string path)
         {
-            var file = File.Open(path, FileMode.OpenOrCreate);
+            var file = File.Open(path, FileMode.Open);
             list = new List<string>();
             using (var stream = new StreamReader(file))
             {
