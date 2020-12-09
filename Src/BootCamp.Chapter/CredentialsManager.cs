@@ -26,16 +26,15 @@ namespace BootCamp.Chapter
                 if(isCredit)
                 {
                     string[] temp = credentials1.Password.Split(" ");
-                var bytes = new byte[temp.Length];
-                for(int i =0; i < bytes.Length -1; i++)
-                {
-                    bytes[i] = Convert.ToByte(temp[i]);
-                }
-                credentials1.Password = Encoding.Unicode.GetString(bytes);
-                }
-                
-                if (credentials1.Equals(credentials))
-                    return true;             
+                    var bytes = new byte[temp.Length];
+                    for(int i =0; i < bytes.Length -1; i++)
+                    {
+                       bytes[i] = Convert.ToByte(temp[i]);
+                    }
+                    credentials1.Password = Encoding.Unicode.GetString(bytes);
+                    if (credentials1.Equals(credentials))
+                        return true;
+                }                         
             }
             return false;
         }
@@ -46,7 +45,7 @@ namespace BootCamp.Chapter
             string newUser = credentials.ToString();
             using (StreamWriter sw = File.AppendText(_credentialsFile))
             {
-                sw.WriteLine(newUser);
+                sw.Write(newUser);
             }
         }
         private void CheckInput(string a)
