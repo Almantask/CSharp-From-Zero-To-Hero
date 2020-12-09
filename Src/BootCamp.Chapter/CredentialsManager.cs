@@ -22,6 +22,7 @@ namespace BootCamp.Chapter
             OpenFile(_credentialsFile);
             foreach (var credit in list)
             {
+                Console.WriteLine(credit);
                 if (credit.Equals(credentials.ToString()))
                     return true;             
             }

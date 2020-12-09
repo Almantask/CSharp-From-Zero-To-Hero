@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -13,11 +15,20 @@ namespace BootCamp.Chapter
 
             const string EmptyFile = @"EmptyCredentials.txt";
             var credentialsManager = new CredentialsManager(EmptyFile);
+            //var oldContents = File.ReadAllLines(EmptyFile);
+            //Console.WriteLine(oldContents.Length);
             credentialsManager.Register(credentials);
-            var credentials1 = new Credentials("Tom", "123455");
-            credentialsManager.Register(credentials1);
             bool isLogin = credentialsManager.Login(credentials);
+            //bool like = File.ReadAllLines(EmptyFile).ToString().Contains(oldContents.ToString());
             Console.WriteLine(isLogin);
+            //Console.WriteLine(File.ReadAllLines(EmptyFile).Length);
+
+            string yanan = "Tom123";
+            var bytes = Encoding.Unicode.GetBytes(yanan);
+            foreach(var a in bytes)
+            {
+                Console.Write(a + " ");
+            }
         }
     }
 }

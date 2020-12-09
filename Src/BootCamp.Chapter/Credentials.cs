@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -52,7 +53,14 @@ namespace BootCamp.Chapter
         }
         public override string ToString()
         {
-            return $"{Username},{Password}";
+            var bytes = Encoding.Unicode.GetBytes(Password);
+            StringBuilder sb = new StringBuilder();
+            foreach(byte b in bytes)
+            {
+                sb.Append(b);
+                sb.Append(" ");
+            }
+            return $"{Username},{sb}";
         }
     }
 }
