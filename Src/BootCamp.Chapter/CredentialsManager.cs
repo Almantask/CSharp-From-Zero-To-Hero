@@ -42,14 +42,21 @@ namespace BootCamp.Chapter
         // TODO: store credentials in credentials file.
         public void Register(Credentials credentials)
         {
-            bool isExist = File.Exists(_credentialsFile);
+            if (!File.Exists(_credentialsFile))
+            {
+                StreamWriter sw = File.AppendText(_credentialsFile);
+                sw.Write(credentials.ToString());
+                sw.Close();
+                return;
+            }
+            bool isEmpty = CheckFileEmpty(_credentialsFile);
             string newUser = credentials.ToString();
             using (StreamWriter sw = File.AppendText(_credentialsFile))
             {
-                if (isExist)
+                if (isEmpty)
+                    sw.Write(newUser);
+                else                  
                     sw.Write(System.Environment.NewLine + newUser);
-                else
-                    sw.WriteLine(newUser);
             }
         }
         private void CheckInput(string a)
@@ -71,6 +78,13 @@ namespace BootCamp.Chapter
                 }
             }
         }
-        
+       private bool CheckFileEmpty(string path)
+        {
+            OpenFile(path);
+            if (list.Count == 0)
+                return true;
+            return false;
+        }
+
     }
 }

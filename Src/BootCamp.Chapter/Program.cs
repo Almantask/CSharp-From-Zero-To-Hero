@@ -13,11 +13,13 @@ namespace BootCamp.Chapter
 
             const string testFile = @"test.txt";
             const string EmptyFile = @"E:\Users\ke.li.TE\Documents\GitHub\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Files\TomTom123Credentials.txt";
-            var credentialsManager = new CredentialsManager(EmptyFile);
+            var credentialsManager = new CredentialsManager(testFile);
+           
             //var oldContents = File.ReadAllLines(EmptyFile);
             //Console.WriteLine(oldContents.Length);
             credentialsManager.Register(credentials);
             bool isLogin = credentialsManager.Login(credentials);
+
             //bool isContain = File.ReadAllLines(EmptyFile).ToString().Contains(oldContents.ToString());
             Console.WriteLine(isLogin);
             //Console.WriteLine(File.ReadAllLines(EmptyFile).Length);
