@@ -11,8 +11,8 @@ namespace BootCamp.Chapter
             var credentials = new Credentials("Tom", "Tom123");
             Console.WriteLine(credentials.Password);
 
-
-            const string EmptyFile = @"EmptyCredentials.txt";
+            const string testFile = @"test.txt";
+            const string EmptyFile = @"E:\Users\ke.li.TE\Documents\GitHub\CSharp-From-Zero-To-Hero\Tests\BootCamp.Chapter.Tests\Input\Files\TomTom123Credentials.txt";
             var credentialsManager = new CredentialsManager(EmptyFile);
             //var oldContents = File.ReadAllLines(EmptyFile);
             //Console.WriteLine(oldContents.Length);

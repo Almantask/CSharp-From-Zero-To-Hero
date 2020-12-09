@@ -45,7 +45,7 @@ namespace BootCamp.Chapter
             string newUser = credentials.ToString();
             using (StreamWriter sw = File.AppendText(_credentialsFile))
             {
-                sw.WriteLine(newUser);
+                sw.Write(System.Environment.NewLine + newUser);
             }
         }
         private void CheckInput(string a)
