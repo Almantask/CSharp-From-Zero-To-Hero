@@ -13,7 +13,7 @@ namespace BootCamp.Chapter
         public CredentialsManager(string credentialsFile)
         {
             CheckInput(credentialsFile);
-            _credentialsFile = credentialsFile;          
+            _credentialsFile = credentialsFile;
         }
 
         // TODO: load credentials and check for equality.
@@ -42,10 +42,14 @@ namespace BootCamp.Chapter
         // TODO: store credentials in credentials file.
         public void Register(Credentials credentials)
         {
+            bool isExist = File.Exists(_credentialsFile);
             string newUser = credentials.ToString();
             using (StreamWriter sw = File.AppendText(_credentialsFile))
             {
-                sw.Write(System.Environment.NewLine + newUser);
+                if (isExist)
+                    sw.Write(System.Environment.NewLine + newUser);
+                else
+                    sw.WriteLine(newUser);
             }
         }
         private void CheckInput(string a)
@@ -67,5 +71,6 @@ namespace BootCamp.Chapter
                 }
             }
         }
+        
     }
 }
