@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
                 bool isCredit = Credentials.TryParse(credit ,out Credentials credentials1);
                 if(isCredit)
                 {
-                    string[] temp = credentials1.Password.Trim().Split(" ");
+                    string[] temp = credentials1.Password.Split(" ");
                 var bytes = new byte[temp.Length];
                 for(int i =0; i < bytes.Length -1; i++)
                 {
@@ -34,7 +34,6 @@ namespace BootCamp.Chapter
                 credentials1.Password = Encoding.Unicode.GetString(bytes);
                 }
                 
-                Console.WriteLine(credentials1.Password);
                 if (credentials1.Equals(credentials))
                     return true;             
             }

@@ -60,7 +60,7 @@ namespace BootCamp.Chapter
                 sb.Append(b);
                 sb.Append(" ");
             }
-            return $"{Username},{sb}";
+            return $"{Username},{sb.ToString().TrimEnd()}";
         }
     }
 }
