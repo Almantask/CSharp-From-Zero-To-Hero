@@ -146,26 +146,9 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            if (array != null && array.Length > 0)
-            {
-                int[] result = new int[array.Length + 1];
 
-                for (int i = 0; i < result.Length; i++)
-                {
-                    if (i == 0)
-                    {
-                        result[i] = number;
-                    }
-                    else
-                    {
-                        result[i] = array[i - 1];
-                    }
-                }
+            return array == null || array.Length == 0 ? new int[] { number } : InsertAt(array, number, 0);
 
-                return result;
-            }
-
-            return new[] { number };
         }
 
         /// <summary>
@@ -176,26 +159,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            if (array != null && array.Length > 0)
-            {
-                int[] result = new int[array.Length + 1];
-
-                for (int i = 0; i < result.Length; i++)
-                {
-                    if (i == result.Length - 1)
-                    {
-                        result[i] = number;
-                    }
-                    else
-                    {
-                        result[i] = array[i];
-                    }
-                }
-
-                return result;
-            }
-
-            return new[] { number };
+            return array == null || array.Length == 0 ? InsertAt(array, number, 0) : InsertAt(array, number, array.Length);
         }
 
         /// <summary>
@@ -207,29 +171,39 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array == null || array.Length == 0)
-                return index != 0 ? array : new[] { number };
 
-            if (index < 0 || index >= array.Length)
-                return array;
-
-            int[] result = new int[array.Length + 1];
-            int j = 0;
-
-            for (int i = 0; i < result.Length; i++)
+            if (array == null)
             {
-                if (i == index)
+                return new[] { number };
+            }
+            else
+            {
+                if (array.Length == 0)
+                    return index == 0 ? new[] { number } : array;
+
+                if (index < 0 || index > array.Length)
+                    return array;
+
+                int[] result = new int[array.Length + 1];
+                int j = 0;
+
+                for (int i = 0; i < result.Length; i++)
                 {
-                    result[i] = number;
+                    if (i == index)
+                    {
+                        result[i] = number;
+                    }
+                    else
+                    {
+                        result[i] = array[j];
+                        j++;
+                    }
                 }
-                else
-                {
-                    result[i] = array[j];
-                    j++;
-                }
+
+                return result;
             }
 
-            return result;
+
         }
     }
 }
