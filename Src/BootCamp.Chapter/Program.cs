@@ -13,7 +13,8 @@ namespace Homework
 		{
 			/*
 			 1.Print all the info based on the example message below:
-             Tom Jefferson is 19 years old, his weight is 50 kg and his height is 156.5 cm.
+			   Tom Jefferson is 19 years old, 
+			   his weight is 50 kg and his height is 156.5 cm.
 			 */
 
 			double height = 156.5;
