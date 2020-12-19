@@ -23,8 +23,7 @@ namespace Homework
 			string surName = "Jefferson";
 			string name = "Tom";
 
-			Console.WriteLine(name + " " + surName + " you are " + age + " years old, " +
-							  "your weight is " + weight + " Kg" + " and your height is " + height + " cm");
+			Console.WriteLine($"{name} {surName} you are {age} years old, your weight is {weight} Kg and your height is {height} cm");
 			Console.Write("\n");
 
 			// 2.Calculate and print body-mass index (BMI) - Tom Jefferson
@@ -34,7 +33,7 @@ namespace Homework
 			double bmi = 0.0;
 
 			bmi = kg / (cm * cm) * 10000;
-			Console.WriteLine("Tom Jefferson Body Mass index 'BMI' is: {0}", Math.Round(bmi, 2));
+			Console.WriteLine("Tom Jefferson's Body Mass index 'BMI' is: {0}", Math.Round(bmi, 2));
 			Console.Write("\n");
 			
 			// 3. Print all the info with input - Another person
@@ -56,8 +55,7 @@ namespace Homework
 			Console.Write("Height: ");
 			height = Convert.ToInt32(Console.ReadLine());
 
-			Console.WriteLine(name + " " + surName + " you are " + age + " years old, " +
-							  "your weight is " + weight + "Kg" + " and your height is " + height + " cm");
+			Console.WriteLine($"{name} {surName} you are {age} years old, your weight is {weight} Kg and your height is {height} cm");
 			Console.Write("\n");
 
 			// 3. Calculate and print body-mass index (BMI) with input - Another person
