@@ -67,8 +67,8 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalWeight()
         {
-            float totalWeight = _chest.Weight + _gloves.Weight + _head.Weight + _leftArm.Weight + _leftShoulder.Weight + _legs.Weight + _rightArm.Weight + _rightShoulder.Weight + _weapon.Weight;
-            return totalWeight;
+            float? totalWeight = _chest?.Weight + _gloves?.Weight + _head?.Weight + _leftArm?.Weight + _leftShoulder?.Weight + _legs?.Weight + _rightArm?.Weight + _rightShoulder?.Weight + _weapon?.Weight;
+            return (float)totalWeight;
         }
 
         /// <summary>
@@ -77,7 +77,8 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalDefense()
         {
-            return _chest.Defense + _gloves.Defense + _head.Defense + _leftArm.Defense + _leftShoulder.Defense + _legs.Defense + _rightArm.Defense + _rightShoulder.Defense;
+            float? totalDefense =  _chest?.Weight + _gloves?.Weight + _head?.Weight + _leftArm?.Weight + _leftShoulder?.Weight + _legs?.Weight + _rightArm?.Weight + _rightShoulder?.Weight;
+            return (float)totalDefense;
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalAttack()
         {
-            return _weapon.Attack;
+            return (float)_weapon?.Attack;
         }
     }
 }

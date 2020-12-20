@@ -51,13 +51,11 @@ namespace BootCamp.Chapter
         }
         public float TotalAttack
         {
-            get;
-            set;
+            get => _equipment.GetTotalAttack();
         }
         public float TotalDefense
         {
-            get;
-            set;
+            get => _equipment.GetTotalDefense();
         }
         /// <summary>
         /// Gets all items from player's inventory
