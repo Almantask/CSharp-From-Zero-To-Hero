@@ -1,4 +1,6 @@
 ﻿using BootCamp.Chapter.Items;
+using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -23,7 +25,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
         /// </summary>
-        private int _strenght;
+        private int _strength;
 
         /// <summary>
         /// Player items. There can be multiple of items with same name.
@@ -34,16 +36,35 @@ namespace BootCamp.Chapter
         /// </summary>
         private Equipment _equipment;
 
+
         public Player()
         {
+            _inventory = new Inventory();
+            _equipment = new Equipment();
         }
 
+        public int Strength => baseCarryWeight + _strength * 10;
+        public float CurrentWeight
+        {
+            get;
+            set;
+        }
+        public float TotalAttack
+        {
+            get;
+            set;
+        }
+        public float TotalDefense
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// Gets all items from player's inventory
         /// </summary>
-        public Item[] GetItems()
+        public List<Item> GetItems()
         {
-            return new Item[0];
+            return _inventory.Items;
         }
 
         /// <summary>
@@ -51,20 +72,21 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
         /// Gets items with matching name.
         /// </summary>
         /// <param name="name"></param>
-        public Item[] GetItems(string name)
+        public List<Item> GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
@@ -73,34 +95,46 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+        public bool IsEquipped(Item item)
+        {
+            CurrentWeight += item.Weight;
+            return CurrentWeight <= Strength;
+        }
         public void Equip(Headpiece head)
         {
-
+            _equipment.SetHead(head);
         }
 
         public void Equip(Chestpiece head)
         {
-
+            _equipment.SetChest(head);
         }
 
         public void Equip(Shoulderpiece head, bool isLeft)
         {
+            if (isLeft)
+                _equipment.SetLeftShoulder(head);
+            else
+                _equipment.SetRightShoulder(head);
 
         }
 
         public void Equip(Legspiece head)
         {
-
+            _equipment.SetLeg(head);
         }
 
         public void Equip(Armpiece head, bool isLeft)
         {
-
+            if (isLeft)
+                _equipment.SetLeftArmp(head);
+            else
+                _equipment.SetRightArm(head);
         }
 
         public void Equip(Gloves head)
         {
-
+            _equipment.SetGloves(head);
         }
         #endregion
     }

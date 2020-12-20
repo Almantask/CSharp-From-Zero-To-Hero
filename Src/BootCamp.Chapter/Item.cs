@@ -2,25 +2,22 @@
 {
     public class Item
     {
-        private string _name;
-        public string GetName()
-        {
-            return _name;
-        }
+        public string Name { get; }
 
-        private decimal _price;
-        public decimal GetPrice()
-        {
-            return _price;
-        }
+        public decimal Price { get; }
 
-        private float _weight;
-
+        public float Weight { get; }
         public Item(string name, decimal price, float weight)
         {
-            _name = name;
-            _price = price;
-            _weight = weight;
+            Name = name;
+            Price = price;
+            Weight = weight;
+        }
+        public static bool Equals(Item a, Item b)
+        {
+            if (a.Name == b.Name && a.Price == b.Price && a.Weight == b.Weight)
+                return true;
+            return false;
         }
     }
 }

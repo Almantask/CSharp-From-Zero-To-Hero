@@ -10,55 +10,55 @@ namespace BootCamp.Chapter
         private Weapon _weapon;
         public void SetWeapon(Weapon weapon)
         {
-
+            _weapon = weapon;
         }
 
         private Headpiece _head;
         public void SetHead(Headpiece head)
         {
-
+            _head = head;
         }
 
         private Chestpiece _chest;
         public void SetChest(Chestpiece chestpiece)
         {
-
+            _chest = chestpiece;
         }
 
         private Shoulderpiece _leftShoulder;
         public void SetLeftShoulder(Shoulderpiece should)
         {
-
+            _leftShoulder = should;
         }
 
         private Shoulderpiece _rightShoulder;
         public void SetRightShoulder(Shoulderpiece shoulder)
         {
-
+            _rightShoulder = shoulder;
         }
 
         private Legspiece _legs;
         public void SetLeg(Legspiece legs)
         {
-
+            _legs = legs;
         }
 
         private Armpiece _leftArm;
         public void SetLeftArmp(Armpiece arm)
         {
-
+            _leftArm = arm;
         }
 
         private Armpiece _rightArm;
         public void SetRightArm(Armpiece arm)
         {
-
+            _rightArm = arm;
         }
 
         private Gloves _gloves;
         public void SetGloves(Gloves gloves)
         {
-
+            _gloves = gloves;
         }
 
         /// <summary>
@@ -67,7 +67,8 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalWeight()
         {
-            return 0;
+            float totalWeight = _chest.Weight + _gloves.Weight + _head.Weight + _leftArm.Weight + _leftShoulder.Weight + _legs.Weight + _rightArm.Weight + _rightShoulder.Weight + _weapon.Weight;
+            return totalWeight;
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalDefense()
         {
-            return 0;
+            return _chest.Defense + _gloves.Defense + _head.Defense + _leftArm.Defense + _leftShoulder.Defense + _legs.Defense + _rightArm.Defense + _rightShoulder.Defense;
         }
 
         /// <summary>
@@ -85,7 +86,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalAttack()
         {
-            return 0;
+            return _weapon.Attack;
         }
     }
 }

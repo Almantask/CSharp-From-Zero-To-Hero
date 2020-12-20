@@ -1,28 +1,29 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
         private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
+        public decimal Money => _money;
 
         private Inventory _inventory;
 
         public Shop()
         {
-
+            _inventory = new Inventory();
         }
 
         public Shop(decimal money)
         {
+            _inventory = new Inventory();
             _money = money;
         }
 
-        public Item[] GetItems()
+        public List<Item> Items
         {
-            return _inventory.GetItems();
+            get => _inventory.Items;
         }
 
         /// <summary>
@@ -31,6 +32,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,6 +42,13 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            foreach (Item item in _inventory.Items)
+            {
+                if (item.Name == name)
+                    _inventory.RemoveItem(item);
+                if (_inventory.Items.Count == 0)
+                    return;
+            }
         }
 
         /// <summary>
@@ -50,7 +59,16 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
+            bool isBuyOk = _money >= item.Price;
+            if (isBuyOk)
+            {
+                _inventory.AddItem(item);
+                _money -= item.Price;
+                return item.Price;
+            }
             return 0;
+
+
         }
 
         /// <summary>
@@ -64,6 +82,15 @@
         /// </returns>
         public Item Sell(string item)
         {
+            foreach (Item item1 in _inventory.Items)
+            {
+                if (item1.Name == item)
+                {
+                    _inventory.RemoveItem(item1);
+                    _money += item1.Price;
+                    return item1;
+                }
+            }
             return null;
         }
     }
