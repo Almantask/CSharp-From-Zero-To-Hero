@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.I.O;
 using System.Threading.Tasks;
 
 namespace Homework
@@ -72,7 +73,7 @@ namespace Homework
 
 			BMI = kilograms / (centimeters * centimeters) * 10000;
 			Console.WriteLine("Your Body Mass index 'BMI' is: {0}", Math.Round(bmi, 2));
-			Console.Write("\n");
+	
 		}
 	}
 }
