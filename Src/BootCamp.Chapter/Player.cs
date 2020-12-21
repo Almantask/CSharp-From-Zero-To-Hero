@@ -100,39 +100,39 @@ namespace BootCamp.Chapter
         }
         public void Equip(Headpiece head)
         {
-            _equipment.SetHead(head);
+            _equipment?.SetHead(head);
         }
 
         public void Equip(Chestpiece head)
         {
-            _equipment.SetChest(head);
+            _equipment?.SetChest(head);
         }
 
         public void Equip(Shoulderpiece head, bool isLeft)
         {
             if (isLeft)
-                _equipment.SetLeftShoulder(head);
+                _equipment?.SetLeftShoulder(head);
             else
-                _equipment.SetRightShoulder(head);
+                _equipment?.SetRightShoulder(head);
 
         }
 
         public void Equip(Legspiece head)
         {
-            _equipment.SetLeg(head);
+            _equipment?.SetLeg(head);
         }
 
         public void Equip(Armpiece head, bool isLeft)
         {
             if (isLeft)
-                _equipment.SetLeftArmp(head);
+                _equipment?.SetLeftArmp(head);
             else
-                _equipment.SetRightArm(head);
+                _equipment?.SetRightArm(head);
         }
 
         public void Equip(Gloves head)
         {
-            _equipment.SetGloves(head);
+            _equipment?.SetGloves(head);
         }
         #endregion
     }
