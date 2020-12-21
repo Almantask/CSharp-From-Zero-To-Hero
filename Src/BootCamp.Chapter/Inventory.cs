@@ -16,23 +16,31 @@ namespace BootCamp.Chapter
 
         public List<Item> GetItems(string name)
         {
-            var list = new List<Item>();
-            foreach (Item item1 in _items)
-            {
-                if (item1.Name == name)
-                    list.Add(item1);
-            }
-            return list;
+           if(name is string)
+           {
+                var list = new List<Item>();
+                foreach (Item item1 in _items)
+                {
+                    if (item1.Name == name)
+                        list.Add(item1);
+                }
+                return list;
+           }
+           else
+           {
+                throw new ArgumentException();
+           }
+            
         }
 
         public void AddItem(Item item)
         {
             foreach (Item item2 in _items)
             {
-                if (Item.Equals(item2, item))
+                if (item.Equals(item2))
                     return;
             }
-            _items.Add(item);
+            _items?.Add(item);
         }
 
         /// <summary>
