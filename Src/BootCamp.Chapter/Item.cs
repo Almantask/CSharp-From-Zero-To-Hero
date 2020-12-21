@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     public class Item
     {
@@ -9,13 +11,13 @@
         public float Weight { get; }
         public Item(string name, decimal price, float weight)
         {
-            Name = name;
+            Name = name ?? throw new ArgumentNullException("name");
             Price = price;
             Weight = weight;
         }
-        public static bool Equals(Item a, Item b)
+        public bool Equals(Item b)
         {
-            if (a.Name == b.Name && a.Price == b.Price && a.Weight == b.Weight)
+            if (this.Name == (b?.Name??"") && this.Price ==( b?.Price??0) && this.Weight ==(b?.Weight??0))
                 return true;
             return false;
         }
