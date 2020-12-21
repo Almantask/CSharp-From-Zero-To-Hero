@@ -52,18 +52,20 @@ namespace BootCamp.Chapter1
             {
                 return array;
             }
+            return RemoveAt(array, array.Length - 1);
 
-            int[] newarr = new int[(array.Length) - 1];
+            /*int[] newarr = new int[(array.Length) - 1];
             for(int i=0; i<newarr.Length; i++)
             {
                 newarr[i] = array[i];
             }
-            return newarr;
+            return newarr; */
 
         }
 
         public static int[] RemoveFirst(int[] array)
         {
+            
             // ToDo: implement.
             if (array == null)
             {
@@ -75,13 +77,16 @@ namespace BootCamp.Chapter1
                 return array;
             }
 
+            return RemoveAt(array, 0);
+            /*
             int[] newarr = new int[array.Length - 1];
 
             for (int i = 0; i < newarr.Length; i++)
             {
                 newarr[i] = array[i+1];
             }
-            return newarr;
+            return newarr; */
+
         }
 
 
@@ -123,6 +128,8 @@ namespace BootCamp.Chapter1
                 
             }
 
+            return InsertAt(array, number, 0);
+            /*
             int[] newarr = new int[array.Length + 1];
             newarr[0] = number;
 
@@ -131,7 +138,7 @@ namespace BootCamp.Chapter1
                 newarr[i+1] = array[i];
             }
             return newarr;
-
+            */
         }
 
         public static int[] InsertLast(int[] array, int number)
@@ -145,6 +152,9 @@ namespace BootCamp.Chapter1
 
             }
 
+            //send array.Length because it takes 0th to nth element +1
+            return InsertAt(array, number, array.Length);
+             /*
             int[] newarr = new int[array.Length + 1];
             for (int i = 0; i < array.Length; i++)
             {
@@ -153,7 +163,7 @@ namespace BootCamp.Chapter1
             newarr[array.Length] = number;
 
             return newarr;
-            
+            */
         }
 
         public static int[] InsertAt(int[] array, int number, int index)
