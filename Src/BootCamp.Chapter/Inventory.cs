@@ -35,12 +35,18 @@ namespace BootCamp.Chapter
 
         public void AddItem(Item item)
         {
-            foreach (Item item2 in _items)
+            if (item is Item)
             {
-                if (item2.Equals(item))
-                    return;
+                foreach (Item item2 in _items)
+                {
+                    if (item2.Equals(item))
+                        return;
+                }
+                _items.Add(item);
             }
-            _items.Add(item);
+            else
+                throw new ArgumentNullException();
+            
         }
 
         /// <summary>
@@ -49,15 +55,18 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(Item item)
         {
-            if (_items.Count == 0)
-                return;
-            foreach (Item i in _items)
+            if (item is Item)
             {
-                if (i.Equals(item))
-                    _items.Remove(i);
-                if (_items.Count == 0)
-                    return;
+                foreach (Item i in _items)
+                {
+                    if (i.Equals(item))
+                        _items.Remove(i);
+                    if (_items.Count == 0)
+                        return;
+                }
             }
+            else
+                throw new ArgumentNullException();           
         }
     }
 }
