@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
 
         public List<Item> GetItems(string name)
         {
-           if(name is string)
+           if(name is string && name.Length!=0)
            {
                 var list = new List<Item>();
                 foreach (Item item1 in _items)
