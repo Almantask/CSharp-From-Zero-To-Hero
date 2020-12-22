@@ -51,8 +51,7 @@ namespace BootCamp.Chapter
                     if (_inventory.Items.Count == 0)
                         return;
                 }
-            }
-            
+            }            
         }
 
         /// <summary>
@@ -86,16 +85,22 @@ namespace BootCamp.Chapter
         /// </returns>
         public Item Sell(string item)
         {
-            foreach (Item item1 in _inventory.Items)
+            if (item is string && item.Length != 0)
             {
-                if (item1.Name == item)
+                foreach (Item item1 in _inventory.Items)
                 {
-                    _inventory.RemoveItem(item1);
-                    _money += item1.Price;
-                    return item1;
+                    if (item1.Name == item)
+                    {
+                        _inventory.RemoveItem(item1);
+                        _money += item1.Price;
+                        return item1;
+                    }
                 }
+                return null;
             }
-            return null;
+            else
+                throw new ArgumentException();
+            
         }
     }
 }

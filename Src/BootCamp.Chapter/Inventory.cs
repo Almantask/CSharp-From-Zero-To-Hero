@@ -37,10 +37,10 @@ namespace BootCamp.Chapter
         {
             foreach (Item item2 in _items)
             {
-                if (item.Equals(item2))
+                if (item2.Equals(item))
                     return;
             }
-            _items?.Add(item);
+            _items.Add(item);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace BootCamp.Chapter
                 return;
             foreach (Item i in _items)
             {
-                if (Item.Equals(i, item))
+                if (i.Equals(item))
                     _items.Remove(i);
                 if (_items.Count == 0)
                     return;
