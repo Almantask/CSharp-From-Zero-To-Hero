@@ -42,13 +42,17 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            foreach (Item item in _inventory.Items)
+            if(name is string)
             {
-                if (item.Name == name)
-                    _inventory.RemoveItem(item);
-                if (_inventory.Items.Count == 0)
-                    return;
+                foreach (Item item in _inventory.Items)
+                {
+                    if (item.Name == name)
+                        _inventory.RemoveItem(item);
+                    if (_inventory.Items.Count == 0)
+                        return;
+                }
             }
+            
         }
 
         /// <summary>
@@ -59,7 +63,7 @@ namespace BootCamp.Chapter
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            bool isBuyOk = _money >= item.Price;
+            bool isBuyOk = _money >= (item?.Price??0);
             if (isBuyOk)
             {
                 _inventory.AddItem(item);
