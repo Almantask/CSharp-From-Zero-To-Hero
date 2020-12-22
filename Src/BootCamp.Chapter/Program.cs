@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
             var item2 = new Item("Potion", 20, 0.2f);
             Item item3 = null;
             //shop.Add(item3);
-            shop.Remove(item3.Name);
+            shop.Remove(null);
 
             ////var itemSold = shop.Sell("Potion");
             ////WriteLine(Item.Equals(itemSold, item2));

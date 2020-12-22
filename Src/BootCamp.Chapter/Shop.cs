@@ -51,7 +51,9 @@ namespace BootCamp.Chapter
                     if (_inventory.Items.Count == 0)
                         return;
                 }
-            }            
+            }
+            else
+                throw new ArgumentNullException();
         }
 
         /// <summary>
