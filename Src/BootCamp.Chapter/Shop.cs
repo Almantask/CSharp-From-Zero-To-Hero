@@ -96,7 +96,7 @@ namespace BootCamp.Chapter
             if (!String.IsNullOrEmpty(name))
             {
                 if (_inventory.Items == null)
-                    throw new InvalidOperationException("inventory has no item.");
+                    return true;
                 foreach (Item item1 in _inventory.Items)
                 {
                     if (item1.Name == name)
