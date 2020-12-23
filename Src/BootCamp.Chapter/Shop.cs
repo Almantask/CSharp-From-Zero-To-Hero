@@ -42,7 +42,8 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            if (!IsRemoveItemByName(name,out _))
+            bool isRemove = IsRemoveItemByName(name, out _);
+            if (!isRemove)
             {
                 throw new ArgumentNullException();
             }              
@@ -93,22 +94,23 @@ namespace BootCamp.Chapter
         public bool IsRemoveItemByName(string name,out Item removeItem)
         {
             removeItem = null;
-            if (!String.IsNullOrEmpty(name))
+            if (String.IsNullOrEmpty(name))
+                return false;
+            if (_inventory.Items == null)
+                return true;
+            else
             {
-                if (_inventory.Items == null)
-                    return true;
-                foreach (Item item1 in _inventory.Items)
+                foreach (var item1 in _inventory.Items)
                 {
                     if (item1.Name == name)
                     {
                         _inventory.RemoveItem(item1);
                         removeItem = item1;
+                        return true;
                     }
                 }
                 return true;
             }
-            return false;
-
         }
     }
 }
