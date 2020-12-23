@@ -14,25 +14,25 @@
         }
         public string Name
         {
-            get => _name;
-            set => _name = value;
+            get;
+            set;
         }
         public decimal Price
         {
-            get => _price;
-            set => _price = value;
+            get;
+            set;
         }
         public float Weight
         {
-            get => _weight;
-            set => _weight = value;
+            get;
+            set;
         }
 
         private float _defense;
         public float Defense
         {
-            get => _defense;
-            set => _defense = value;
+            get;
+            set;
         }
     }
 }
