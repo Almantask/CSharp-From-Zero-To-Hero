@@ -42,18 +42,10 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public void Remove(string name)
         {
-            if(name is string)
+            if (!IsRemoveItemByName(name,out _))
             {
-                foreach (Item item in _inventory.Items)
-                {
-                    if (item.Name == name)
-                        _inventory.RemoveItem(item);
-                    if (_inventory.Items.Count == 0)
-                        return;
-                }
-            }
-            else
                 throw new ArgumentNullException();
+            }              
         }
 
         /// <summary>
@@ -72,8 +64,6 @@ namespace BootCamp.Chapter
                 return item.Price;
             }
             return 0;
-
-
         }
 
         /// <summary>
@@ -87,22 +77,38 @@ namespace BootCamp.Chapter
         /// </returns>
         public Item Sell(string item)
         {
-            if (item is string && item.Length != 0)
+            if (IsRemoveItemByName(item,out Item removeItem))
             {
-                foreach (Item item1 in _inventory.Items)
+                if (removeItem != null)
                 {
-                    if (item1.Name == item)
-                    {
-                        _inventory.RemoveItem(item1);
-                        _money += item1.Price;
-                        return item1;
-                    }
+                    _money += removeItem.Price;
+                    return removeItem;
                 }
-                return null;
+                else
+                    return null;
             }
             else
-                throw new ArgumentException();
-            
+                throw new ArgumentException();            
+        }
+        public bool IsRemoveItemByName(string name,out Item removeItem)
+        {
+            removeItem = null;
+            if (!String.IsNullOrEmpty(name))
+            {
+                if (_inventory.Items == null)
+                    throw new InvalidOperationException("inventory has no item.");
+                foreach (Item item1 in _inventory.Items)
+                {
+                    if (item1.Name == name)
+                    {
+                        _inventory.RemoveItem(item1);
+                        removeItem = item1;
+                    }
+                }
+                return true;
+            }
+            return false;
+
         }
     }
 }
