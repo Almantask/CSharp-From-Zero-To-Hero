@@ -16,7 +16,17 @@ namespace BootCamp.Chapter
                     where TTeacher : Teacher<TSubject>
                     where TSubject : Subject, new()
         {
-            Console.WriteLine($"student{Id} learn from {teacher.Name} teacher");
+            Console.WriteLine($"student {Id} learn from {teacher.Name} teacher");
         }
+    }
+    class UniversityStudent:Student
+    {
+        public UniversityStudent(long id) : base(id)
+        { }
+    }
+    class HighSchoolStudent:Student
+    {
+        public HighSchoolStudent(long id):base(id)
+        { }
     }
 }

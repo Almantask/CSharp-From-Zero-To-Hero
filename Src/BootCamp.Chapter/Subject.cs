@@ -22,4 +22,11 @@ namespace BootCamp.Chapter
             Console.WriteLine($"welcome to PE lesson");
         }
     }
+    class Art : Subject
+    {
+        public Art()
+        {
+            Console.WriteLine($"welcome to Art lesson");
+        }
+    }
 }

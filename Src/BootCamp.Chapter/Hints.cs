@@ -16,6 +16,8 @@ namespace BootCamp.Chapter.Hints
         // Missing:
         // Add
         // Get
+        void Add(TStudent student);
+        TStudent Get(long id);
     }
 
     interface IStudent
@@ -23,7 +25,7 @@ namespace BootCamp.Chapter.Hints
         long Id { get; }
 
         void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
-            where TTeacher : Teacher<TSubject> 
+            where TTeacher : Teacher<TSubject>
             where TSubject : Subject, new();
     }
 
