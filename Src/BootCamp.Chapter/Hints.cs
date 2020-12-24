@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BootCamp.Chapter;
 
 namespace BootCamp.Chapter.Hints
 {
@@ -23,11 +24,11 @@ namespace BootCamp.Chapter.Hints
 
         void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
             where TTeacher : ITeacher<TSubject>
-            where TSubject : ISubject;
+            where TSubject : Subject;
     }
 
 
-    interface ITeacher<TSubject> where TSubject : ISubject
+    interface ITeacher<TSubject> where TSubject : Subject
     {
         TSubject ProduceMaterial();
     }
