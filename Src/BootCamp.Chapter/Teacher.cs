@@ -5,13 +5,22 @@ using BootCamp.Chapter.Hints;
 
 namespace BootCamp.Chapter
 {
-    class Teacher<TSubject>: ITeacher<TSubject> where TSubject : ISubject
+    class Teacher<TSubject>: ITeacher<TSubject> where TSubject : Subject,new()
     {
        public TSubject ProduceMaterial()
        {
-            Console.WriteLine($"Welcome to {TSubject}lesson");
-            return TSubject;
-
-       }
+            var like = new TSubject();
+            return like;
+        }
+        public string Name
+        {
+            get
+            {
+                string s = typeof(TSubject).ToString(); ;
+                var index = s.LastIndexOf(".");
+                return s.Substring(index + 1);
+            }
+        }
+        
     }
 }

@@ -6,21 +6,20 @@ namespace BootCamp.Chapter
 {
     class Subject
     {
-        private readonly string  _name;
-        public Subject(string s)
-        {
-            _name = s;
-        }
-        public string Name
-        {
-            get => _name;
-        }
+        List<string> subjectArray = new List<string> { "Maths", "Art","PE","Music","English","Programming" };
     }
     class Math : Subject
     {
         public Math()
+        { 
+            Console.WriteLine($"welcome to Math lesson");
+        }
+    }
+    class PE : Subject
+    {
+        public PE()
         {
-            return base.
+            Console.WriteLine($"welcome to PE lesson");
         }
     }
 }

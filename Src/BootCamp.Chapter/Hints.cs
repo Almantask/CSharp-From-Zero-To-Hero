@@ -23,12 +23,12 @@ namespace BootCamp.Chapter.Hints
         long Id { get; }
 
         void LearnFrom<TTeacher, TSubject>(TTeacher teacher)
-            where TTeacher : ITeacher<TSubject>
-            where TSubject : Subject;
+            where TTeacher : Teacher<TSubject> 
+            where TSubject : Subject, new();
     }
 
 
-    interface ITeacher<TSubject> where TSubject : Subject
+    interface ITeacher< TSubject> where TSubject : Subject
     {
         TSubject ProduceMaterial();
     }
