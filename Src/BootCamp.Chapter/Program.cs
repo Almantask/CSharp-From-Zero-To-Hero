@@ -9,6 +9,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("============================= Let's calculate your BMI =============================");
+            Lesson4.Demo();
         }
     }
 }

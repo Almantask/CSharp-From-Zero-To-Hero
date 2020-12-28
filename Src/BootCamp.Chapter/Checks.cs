@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -16,26 +17,56 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+            int variable;
+            bool num = int.TryParse(input, out variable);
+            
+            if (!num)
+            {
+                Console.WriteLine($"{input} is not a valid number.");
+                return -1;
+            }
+            return variable;
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            Console.WriteLine(message);
+            string name = Console.ReadLine();
+            if (name == string.Empty || name == null)
+            { 
+                Console.WriteLine("Names cannot be empty.");
+                return "-";
+            }
+            return name;
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+            bool num = float.TryParse(input, out float variable);
+            if (!num)
+            {
+                Console.WriteLine($"{input} is not a valid number.");
+                return -1;
+            }
+            return float.Parse(input,CultureInfo.InvariantCulture);
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            if(weight <= 0|| height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:" + Environment.NewLine + $"Height cannot be equal or less than zero, but was {height}" + Environment.NewLine + $"Weight cannot be equal or less than zero, but was {weight}");
+                return -1;
+            }
+          
+            float Bmi;
+            Bmi = weight / (height * height) * 10000;
+            return Bmi;
         }
     }
 }
+
