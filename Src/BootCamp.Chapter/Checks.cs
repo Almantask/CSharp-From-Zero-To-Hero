@@ -16,6 +16,11 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
+
+        public const int IntegerError = -1;
+        public const string StringError = "-";
+        public const float FloatError = -1.0f;
+
         public static int PromptInt(string message)
         {
             Console.WriteLine(message);
@@ -26,7 +31,7 @@ namespace BootCamp.Chapter
             if (!num)
             {
                 Console.WriteLine($"{input} is not a valid number.");
-                return -1;
+                return IntegerError;
             }
             return variable;
         }
@@ -38,7 +43,7 @@ namespace BootCamp.Chapter
             if (name == string.Empty || name == null)
             { 
                 Console.WriteLine("Name cannot be empty.");
-                return "-";
+                return StringError;
             }
             return name;
         }
@@ -51,7 +56,7 @@ namespace BootCamp.Chapter
             if (!num)
             {
                 Console.WriteLine($"{input} is not a valid number.");
-                return -1;
+                return FloatError;
             }
             return float.Parse(input,CultureInfo.InvariantCulture);
         }
