@@ -9,19 +9,19 @@ namespace BootCamp.Chapter
         public static void Demo()
         {
             string name = Checks.PromptString("NAME: ");
-            string surName = Checks.PromptString("SURNAME: ");
+            //string surName = Checks.PromptString("SURNAME: ");
             int age = Checks.PromptInt("AGE: ");
-            float weight = Checks.PromptFloat("WEIGHT(kg): ");
-            float height = Checks.PromptFloat("HEIGHT(cm): ");
-            float Bmi = Checks.CalculateBmi(weight, height);
+            float weightKg = Checks.PromptFloat("WEIGHT(kg): ");
+            float heightM = Checks.PromptFloat("HEIGHT(m): ");
+            float Bmi = Checks.CalculateBmi(weightKg, heightM);
             
             Console.WriteLine("----------------------------------------- Your Results -----------------------------");
             
-            if (Bmi == (-1) || age == (-1) || name == "-" || surName == "-")
+            if (Bmi == (-1) || age == (-1) || name == "-")
                 Console.WriteLine("ERROR calculating BMI, please try again.");
             else
             {
-                Console.WriteLine($"{name} {surName} you are {age} years old, your weight is {weight} Kg, and your height is {height} cm.");
+                Console.WriteLine($"{name} you are {age} years old, your weight is {weightKg} Kg, and your height is {heightM} m.");
                 Console.WriteLine($"Your BMI is {Bmi}.");
                 Console.WriteLine("------------------------------------------------------------------------------------");
             }
@@ -29,3 +29,4 @@ namespace BootCamp.Chapter
         }
     }
 }
+

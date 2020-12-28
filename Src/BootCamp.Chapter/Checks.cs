@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
@@ -36,7 +37,7 @@ namespace BootCamp.Chapter
             string name = Console.ReadLine();
             if (name == string.Empty || name == null)
             { 
-                Console.WriteLine("Names cannot be empty.");
+                Console.WriteLine("Name cannot be empty.");
                 return "-";
             }
             return name;
@@ -69,4 +70,5 @@ namespace BootCamp.Chapter
         }
     }
 }
+
 

@@ -1,3 +1,4 @@
+
 using System;
 using BootCamp.Chapter.Tests.Utils;
 using FluentAssertions;
