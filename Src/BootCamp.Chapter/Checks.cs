@@ -65,7 +65,7 @@ namespace BootCamp.Chapter
             }
           
             float Bmi;
-            Bmi = weight / (height * height) * 10000;
+            Bmi = weight / height / height;
             return Bmi;
         }
     }
