@@ -9,7 +9,6 @@ namespace BootCamp.Chapter
         public static void Demo()
         {
             string name = Checks.PromptString("NAME: ");
-            //string surName = Checks.PromptString("SURNAME: ");
             int age = Checks.PromptInt("AGE: ");
             float weightKg = Checks.PromptFloat("WEIGHT(kg): ");
             float heightM = Checks.PromptFloat("HEIGHT(m): ");
@@ -25,7 +24,6 @@ namespace BootCamp.Chapter
                 Console.WriteLine($"Your BMI is {Bmi}.");
                 Console.WriteLine("------------------------------------------------------------------------------------");
             }
-
         }
     }
 }

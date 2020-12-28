@@ -16,7 +16,6 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
-
         public const int IntegerError = -1;
         public const string StringError = "-";
         public const float FloatError = -1.0f;
@@ -30,7 +29,7 @@ namespace BootCamp.Chapter
             
             if (!num)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.WriteLine($"\"{input}\" is not a valid number.");
                 return IntegerError;
             }
             return variable;
@@ -56,7 +55,7 @@ namespace BootCamp.Chapter
             bool num = float.TryParse(input, NumberStyles.Float,CultureInfo.InvariantCulture, out variable);
             if (!num)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.WriteLine($"\"{input}\" is not a valid number.");
                 return FloatError;
             }
             return variable;
@@ -69,7 +68,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Failed calculating BMI. Reason:" + Environment.NewLine + $"Height cannot be equal or less than zero, but was {height}" + Environment.NewLine + $"Weight cannot be equal or less than zero, but was {weight}");
                 return -1;
             }
-          
+
             float Bmi;
             Bmi = weight / height / height;
             return Bmi;
