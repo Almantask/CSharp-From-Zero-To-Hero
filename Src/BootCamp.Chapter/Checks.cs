@@ -52,13 +52,14 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             string input = Console.ReadLine();
-            bool num = float.TryParse(input, out float variable);
+            float variable;
+            bool num = float.TryParse(input, NumberStyles.Float,CultureInfo.InvariantCulture, out variable);
             if (!num)
             {
                 Console.WriteLine($"{input} is not a valid number.");
                 return FloatError;
             }
-            return float.Parse(input,CultureInfo.InvariantCulture);
+            return variable;
         }
 
         public static float CalculateBmi(float weight, float height)
