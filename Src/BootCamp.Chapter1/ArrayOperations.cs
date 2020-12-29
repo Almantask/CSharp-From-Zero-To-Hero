@@ -3,14 +3,32 @@
     public static class ArrayOperations
     {
         /// <summary>
-        /// Sort the array in ascending order.
+        /// 1. Sort the array in ascending order.
         /// If array empty or null- don't do anything.
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0)
+            {
+                return;
+            }
+
+            int tempElement;
+            for (int iOne = 0; iOne < array.Length - 1; iOne++)
+            {
+                for (int iTwo = iOne + 1; iTwo < array.Length; iTwo++)
+                {
+                    if (array[iTwo] < array[iOne])
+                    {
+                        tempElement = array[iOne];
+                        array[iOne] = array[iTwo];
+                        array[iTwo] = tempElement;
+                    }
+                }
+            }
         }
+
 
         /// <summary>
         /// Reverse the array elements, first being last and so on.
