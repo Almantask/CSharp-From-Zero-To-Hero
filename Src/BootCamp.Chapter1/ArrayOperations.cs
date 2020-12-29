@@ -75,8 +75,16 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            var new_array = new int[array.Length - 1];
+            for (int i = 1; i < array.Length; i++)
+            {
+                new_array[i - 1] = array[i];
+            }
+            return new_array;
         }
 
         /// <summary>
