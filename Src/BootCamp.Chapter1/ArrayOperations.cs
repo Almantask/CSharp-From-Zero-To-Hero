@@ -3,7 +3,7 @@
     public static class ArrayOperations
     {
         /// <summary>
-        /// 1. Sort the array in ascending order.
+        /// Sort the array in ascending order.
         /// If array empty or null- don't do anything.
         /// </summary>
         /// <param name="array">Input array in a random order.</param>
