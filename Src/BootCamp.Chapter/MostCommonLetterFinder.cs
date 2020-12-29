@@ -7,6 +7,8 @@ namespace BootCamp.Chapter
     {
         public static char Find(string sentence)
         {
+            if (string.IsNullOrEmpty(sentence))
+                throw new ArgumentNullException();
             Dictionary<char, int> dict = new Dictionary<char, int>();
             foreach(char ch in sentence)
             {

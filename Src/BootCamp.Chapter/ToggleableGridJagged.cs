@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 
 namespace BootCamp.Chapter
 {
@@ -15,6 +15,27 @@ namespace BootCamp.Chapter
 
         public void Toggle(int x, int y)
         {
+            CheckInput(x, y);
+            for(int i =0; i <= y; i++)
+            {
+                if (_toggle[x][i])
+                {
+                    _toggle[x][i] = false;
+                    Console.WriteLine(" ");
+                }
+                else
+                {
+                    _toggle[x][i] = true;
+                    Console.WriteLine("■");
+                }
+            }          
+        }
+        private void CheckInput(int x,int y)
+        {
+            if (x >= _toggle.Rank||x < 0)
+                throw new IndexOutOfRangeException();
+            if(y >= _toggle[x].Length || y < 0)
+                throw new IndexOutOfRangeException();
         }
     }
 } 
