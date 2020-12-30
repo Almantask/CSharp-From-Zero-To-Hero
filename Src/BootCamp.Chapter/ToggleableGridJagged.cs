@@ -19,9 +19,9 @@ namespace BootCamp.Chapter
             _toggle[x][y] = !_toggle[x][y];
             StringBuilder sb = new StringBuilder();            
             CheckInput(x, y);
-            for(int i = 0; i < _toggle.Rank; i++)
+            for(int i = 0; i < _toggle.GetLength(0); i++)
             {
-                for (int j = 0; j <_toggle[i].Length; j++)
+                for (int j = 0; j < _toggle[i].Length; j++)
                 {
                     if (_toggle[i][j])
                     {
@@ -39,7 +39,7 @@ namespace BootCamp.Chapter
         }
         private void CheckInput(int x,int y)
         {
-            if (x >= _toggle.Rank||x < 0)
+            if (x >= _toggle.GetLength(0) || x < 0)
                 throw new IndexOutOfRangeException();
             if(y >= _toggle[x].Length || y < 0)
                 throw new IndexOutOfRangeException();
