@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string s = "asdasa";
+            string s = "asdII";
             WriteLine(MostCommonLetterFinder.Find(s)); //a
             var like =new bool[][] { new bool[]{false, false},new bool[]{false} };
             IGridClearer clearer = new Clean();

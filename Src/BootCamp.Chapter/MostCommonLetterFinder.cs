@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
                 }
             }
             char maxLetter = ' ';
-            int maxNumber = 1;
+            int maxNumber = 0;
             foreach (var item in dict)
             {
                 if(item.Value > maxNumber)
