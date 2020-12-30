@@ -37,5 +37,9 @@ namespace BootCamp.Chapter
             if(y >= _toggle[x].Length || y < 0)
                 throw new IndexOutOfRangeException();
         }
+        public void CleanConsole()
+        {
+            _gridClearer.Clear();
+        }
     }
 } 
