@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -15,20 +16,26 @@ namespace BootCamp.Chapter
         }
         public void Toggle(int x, int y)
         {
+            _toggle[x, y] = !_toggle[x, y];
+            StringBuilder sb = new StringBuilder();
             CheckInput(x, y);
-            for (int i = 0; i <= y; i++)
+            for (int i = 0; i < _toggle.Rank; i++)
             {
-                if (_toggle[x, i])
+                for (int j = 0; j < _toggle.GetLength(0); j++)
                 {
-                    _toggle[x, i] = false;
-                    Console.WriteLine(" ");
+                    if (_toggle[i,j])
+                    {
+                        sb.Append("■");
+                    }
+                    else
+                    {
+                        sb.Append(" ");
+                    }
                 }
-                else
-                {
-                    _toggle[x, i] = true;
-                    Console.WriteLine("■");
-                }
+                sb.Append(Environment.NewLine);
             }
+            var str = sb.ToString().TrimEnd("\r\n".ToCharArray());
+            Console.Write(str);
         }
         private void CheckInput(int x, int y)
         {
