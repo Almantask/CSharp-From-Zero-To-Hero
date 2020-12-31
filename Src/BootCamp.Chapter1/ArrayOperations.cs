@@ -61,12 +61,13 @@
             {
                 return array;
             }
-            var new_array = new int[array.Length - 1];
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                new_array[i] = array[i];
-            }
-            return new_array;
+            return RemoveAt(array, array.Length - 1);
+            /* var new_array = new int[array.Length - 1];
+             for (int i = 0; i < array.Length - 1; i++)
+             {
+                 new_array[i] = array[i];
+             }
+             return new_array;*/
         }
 
         /// <summary>
@@ -79,12 +80,13 @@
             {
                 return array;
             }
-            var new_array = new int[array.Length - 1];
+            return RemoveAt(array, 0);
+            /*var new_array = new int[array.Length - 1];
             for (int i = 1; i < array.Length; i++)
             {
                 new_array[i - 1] = array[i];
             }
-            return new_array;
+            return new_array;*/
         }
 
         /// <summary>
@@ -129,17 +131,17 @@
         {
             if (array == null || array.Length == 0)
             {
-                array = new int[] { number };
-                return array;
+                return new int[] { number };
+                //return array;
             }
-
-            var new_array = new int[array.Length + 1];
-            new_array[0] = number;
-            for (int i = 0; i < array.Length; i++)
-            {
-                new_array[i + 1] = array[i];
-            }
-            return new_array;
+            return InsertAt(array, number, 0);
+            /* var new_array = new int[array.Length + 1];
+             new_array[0] = number;
+             for (int i = 0; i < array.Length; i++)
+             {
+                 new_array[i + 1] = array[i];
+             }
+             return new_array;*/
         }
 
         /// <summary>
@@ -152,17 +154,17 @@
         {
             if (array == null || array.Length == 0)
             {
-                array = new int[] { number };
-                return array;
+                return new int[] { number };
+                //return array;
             }
-
-            var new_array = new int[array.Length + 1];
-            new_array[array.Length] = number;
-            for (int i = 0; i < array.Length; i++)
-            {
-                new_array[i] = array[i];
-            }
-            return new_array;
+            return InsertAt(array, number, array.Length);
+            /* var new_array = new int[array.Length + 1];
+             new_array[array.Length] = number;
+             for (int i = 0; i < array.Length; i++)
+             {
+                 new_array[i] = array[i];
+             }
+             return new_array;*/
         }
 
         /// <summary>
