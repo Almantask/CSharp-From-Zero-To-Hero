@@ -190,7 +190,7 @@
                 }
             }
 
-            if (index >= array.Length || index < 0)
+            if (index > array.Length || index < 0)
             {
                 return array;
             }
