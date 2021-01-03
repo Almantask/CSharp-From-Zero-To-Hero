@@ -1,4 +1,5 @@
-﻿namespace BootCamp.Chapter
+﻿
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
