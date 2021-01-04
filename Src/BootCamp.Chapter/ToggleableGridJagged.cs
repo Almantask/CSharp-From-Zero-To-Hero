@@ -16,26 +16,8 @@ namespace BootCamp.Chapter
 
         public void Toggle(int x, int y)
         {
-            _toggle[x][y] = !_toggle[x][y];
-            StringBuilder sb = new StringBuilder();            
             CheckInput(x, y);
-            for(int i = 0; i < _toggle.GetLength(0); i++)
-            {
-                for (int j = 0; j < _toggle[i].Length; j++)
-                {
-                    if (_toggle[i][j])
-                    {
-                        sb.Append("■");
-                    }
-                    else
-                    {
-                        sb.Append(" ");
-                    }
-                }
-                sb.Append(Environment.NewLine);
-            }           
-            var str = sb.ToString().TrimEnd("\r\n".ToCharArray());
-            Console.Write(str);
+            DisplayGrid.Display(x, y,_toggle);
         }
         private void CheckInput(int x,int y)
         {
