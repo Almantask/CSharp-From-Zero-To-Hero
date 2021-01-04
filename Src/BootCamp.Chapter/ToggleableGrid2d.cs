@@ -17,15 +17,19 @@ namespace BootCamp.Chapter
         public void Toggle(int x, int y)
         {
             CheckInput(x, y);
-            bool[][] tempToggle = new bool[100][100]();
-            for (int i = 0; i < _toggle.GetLength(0);i++)
+            int top = _toggle.GetLength(0);
+            int left = _toggle.GetLength(1);
+            bool[][] tempToggle = new bool[top][];
+            _toggle[x,y] = !_toggle[x,y];
+            for (int i = 0; i < top; i++)
             {
-                for (int j = 0; j < _toggle.GetLength(1); j++)
+                tempToggle[i] = new bool[left];
+                for (int j = 0; j < left; j++)
                 {
-                    tempToggle[i][j] = _toggle[i,j];
+                    tempToggle[i][j] = _toggle[i, j];
                 }
             }
-            //DisplayGrid.Display(x, y, tempToggle);
+            DisplayGrid.Display(tempToggle);
         }
         private void CheckInput(int x, int y)
         {
@@ -34,28 +38,5 @@ namespace BootCamp.Chapter
             if (y >= _toggle.GetLength(1) || y < 0)
                 throw new IndexOutOfRangeException();
         }
-        //public void Backup(int x,int y)
-        //{
-        //    _toggle[x, y] = !_toggle[x, y];
-        //    StringBuilder sb = new StringBuilder();
-        //    CheckInput(x, y);
-        //    for (int i = 0; i < _toggle.GetLength(0); i++)
-        //    {
-        //        for (int j = 0; j < _toggle.GetLength(1); j++)
-        //        {
-        //            if (_toggle[i, j])
-        //            {
-        //                sb.Append("■");
-        //            }
-        //            else
-        //            {
-        //                sb.Append(" ");
-        //            }
-        //        }
-        //        sb.Append(Environment.NewLine);
-        //    }
-        //    var str = sb.ToString().TrimEnd("\r\n".ToCharArray());
-        //    Console.Write(str);
-        //}
     }
 }

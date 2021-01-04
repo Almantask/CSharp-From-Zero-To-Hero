@@ -17,7 +17,8 @@ namespace BootCamp.Chapter
         public void Toggle(int x, int y)
         {
             CheckInput(x, y);
-            DisplayGrid.Display(x, y,_toggle);
+            _toggle[x][y] = !_toggle[x][y];
+            DisplayGrid.Display(_toggle);
         }
         private void CheckInput(int x,int y)
         {

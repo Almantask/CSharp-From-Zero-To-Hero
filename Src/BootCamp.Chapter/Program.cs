@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
             jagged.Toggle(0, 0);
             WriteLine();
 
-            var test = new bool[,] { { false } };
+            var test = new bool[,] { {false} };
             ToggleableGrid2D grid2D = new ToggleableGrid2D(test, null);
             grid2D.Toggle(0, 0);
             WriteLine();

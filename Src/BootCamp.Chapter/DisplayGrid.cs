@@ -6,10 +6,9 @@ namespace BootCamp.Chapter
 {
     class DisplayGrid
     {
-        public static void Display(int x,int y, bool[][] toggles)
+        public static void Display(bool[][] toggles)
         {
             StringBuilder sb = new StringBuilder();
-            toggles[x][y] = !toggles[x][y];
             for (int i = 0; i < toggles.GetLength(0); i++)
             {
                 for (int j = 0; j < toggles[i].Length; j++)
