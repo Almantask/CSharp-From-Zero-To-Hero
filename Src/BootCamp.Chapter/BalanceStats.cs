@@ -156,13 +156,7 @@ namespace BootCamp.Chapter
                 if (string.IsNullOrEmpty(numbers[i]))
                     continue;
 
-                else if (float.TryParse(numbers[i], out float numeric))
-                {
-                    convertList[j] = numeric;
-                    j++;
-                    continue;
-                }
-                else
+                if (float.TryParse(numbers[i], out float numeric))
                 {
                     convertList[j] = numeric;
                     j++;
