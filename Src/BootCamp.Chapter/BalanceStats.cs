@@ -80,10 +80,10 @@ namespace BootCamp.Chapter
 
         private static (StringBuilder peopleNames, float cash) CalculatePeoplesBalances(string[] peoplesBalances, string attribution)
         {
-            var validation = new string[]
+            var options = new string[]
             { "max", "min", "rich", "poor" };
 
-            if (!validation.Contains(attribution)) return (new StringBuilder(), 0);
+            if (!options.Contains(attribution)) return (new StringBuilder(), 0);
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var peopleNames = new string[peoplesBalances.Length];
