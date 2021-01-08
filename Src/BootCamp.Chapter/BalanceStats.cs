@@ -16,9 +16,9 @@ namespace BootCamp.Chapter
 
                 return "N/A.";
 
-            var (peopleNames, cash) = CalculatePeoplesBalances(peoplesBalances, "max");
+            var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "max");
 
-            return $"{peopleNames} had the most money ever. {FormatCash(cash)}.";
+            return $"{peopleNames} had the most money ever. {FormatCash(cashIndex)}.";
         }
 
         /// <summary>
@@ -30,13 +30,13 @@ namespace BootCamp.Chapter
 
                 return "N/A.";
 
-            var (peopleNames, cash) = CalculatePeoplesBalances(peoplesBalances, "min");
+            var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "min");
 
-            if (cash >= 0)
+            if (cashIndex >= 0)
 
                 return "N/A.";
 
-            return $"{peopleNames} lost the most money. {FormatCash(cash)}.";
+            return $"{peopleNames} lost the most money. {FormatCash(cashIndex)}.";
         }
 
         /// <summary>
@@ -49,14 +49,14 @@ namespace BootCamp.Chapter
 
                 return "N/A.";
 
-            var (peopleNames, cash) = CalculatePeoplesBalances(peoplesBalances, "rich");
+            var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "rich");
             var subjects = PeoplePlus(peopleNames);
             var word = new string[]
             {
                 (subjects) ? "are" : "is",
                 (subjects) ? "people" : "person"
             };
-            return $"{peopleNames} {word[0]} the richest {word[1]}. {FormatCash(cash)}.";
+            return $"{peopleNames} {word[0]} the richest {word[1]}. {FormatCash(cashIndex)}.";
         }
 
         /// <summary>
@@ -68,14 +68,14 @@ namespace BootCamp.Chapter
 
                 return "N/A.";
 
-            var (peopleNames, cash) = CalculatePeoplesBalances(peoplesBalances, "poor");
+            var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "poor");
             var subjects = PeoplePlus(peopleNames);
             var word = new string[]
             {
                 (subjects) ? "have" : "has",
             };
 
-            return $"{peopleNames} {word[0]} the least money. {FormatCash(cash)}.";
+            return $"{peopleNames} {word[0]} the least money. {FormatCash(cashIndex)}.";
         }
 
         private static (StringBuilder peopleNames, float cash) CalculatePeoplesBalances(string[] peoplesBalances, string attribution)
@@ -87,7 +87,7 @@ namespace BootCamp.Chapter
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var peopleNames = new string[peoplesBalances.Length];
-            var cash = new float[peoplesBalances.Length];
+            var cashIndex = new float[peoplesBalances.Length];
             int i, j;
 
             for (i = 0; i < peoplesBalances.Length; i++)
@@ -99,7 +99,7 @@ namespace BootCamp.Chapter
 
                 if (attribution == "max")
                 {
-                    cash[i] = values.Max();
+                    cashIndex[i] = values.Max();
                 }
                 else if (attribution == "min")
                 {
@@ -112,16 +112,16 @@ namespace BootCamp.Chapter
                         if (j == values.Length - 1) continue;
                         balance[j] = values[j + 1] - values[j];
                     }
-                    cash[i] = balance.Min();
+                    cashIndex[i] = balance.Min();
                 }
                 else if (attribution == "rich" || attribution == "poor")
                 {
-                    cash[i] = values[^1];
+                    cashIndex[i] = values[^1];
                 }
             }
             var maximumCash = (attribution == "max" || attribution == "rich");
-            float cashCheck = (maximumCash) ? cash.Max() : cash.Min();
-            var listBuilder = LookForPeopleCash(peopleNames, cash, cashCheck);
+            float cashCheck = (maximumCash) ? cashIndex.Max() : cashIndex.Min();
+            var listBuilder = LookForPeopleCash(peopleNames, cashIndex, cashCheck);
             var listAllNames = ListNames(listBuilder.ToString());
 
             return (listAllNames, cashCheck);
@@ -188,14 +188,14 @@ namespace BootCamp.Chapter
             return output;
         }
 
-        private static StringBuilder LookForPeopleCash(string[] names, float[] cash, float cashValidator)
+        private static StringBuilder LookForPeopleCash(string[] names, float[] cashIndex, float cashValidator)
         {
             var pax = new StringBuilder();
             int i;
 
-            for (i = 0; i < cash.Length; i++)
+            for (i = 0; i < cashIndex.Length; i++)
             {
-                if (cash[i] == cashValidator)
+                if (cashIndex[i] == cashValidator)
                 {
                     pax.Append($"{names[i]}, ");
                 }
