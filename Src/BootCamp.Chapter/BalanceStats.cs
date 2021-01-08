@@ -64,9 +64,7 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peoplesBalances)
         {
-            if (IsNullOrEmpty(peoplesBalances))
-
-                return "N/A.";
+            if (IsNullOrEmpty(peoplesBalances)) return "N/A.";
 
             var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "poor");
             var subjects = PeoplePlus(peopleNames);
@@ -77,7 +75,7 @@ namespace BootCamp.Chapter
 
             return $"{peopleNames} {word[0]} the least money. {FormatCash(cashIndex)}.";
         }
-
+         // Calculates and Processes Peoples cash balances.
         private static (StringBuilder peopleNames, float cash) CalculatePeoplesBalances(string[] peoplesBalances, string attribution)
         {
             var options = new string[]
@@ -88,9 +86,8 @@ namespace BootCamp.Chapter
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var peopleNames = new string[peoplesBalances.Length];
             var cashIndex = new float[peoplesBalances.Length];
-            int i, j;
-
-            for (i = 0; i < peoplesBalances.Length; i++)
+          
+            for (int i = 0; i < peoplesBalances.Length; i++)
             {
                 var peopleInfo = peoplesBalances[i].Split(", ");
                 var values = NumPyArrayConversion(peopleInfo[1..]);
@@ -107,7 +104,7 @@ namespace BootCamp.Chapter
 
                     var balance = new float[values.Length - 1];
 
-                    for (j = 0; j < values.Length - 1; j++)
+                    for (int j = 0; j < values.Length - 1; j++)
                     {
                         if (j == values.Length - 1) continue;
                         balance[j] = values[j + 1] - values[j];
@@ -127,44 +124,47 @@ namespace BootCamp.Chapter
             return (listAllNames, cashCheck);
         }
 
+        // Validates if peoples names should contain comma' or and' between them
         private static bool PeoplePlus(StringBuilder names)
         {
             return (names.ToString().Contains(",") || names.ToString().Contains(" and "));
         }
 
+        // Validates if peoples balances are null or empty
         private static bool IsNullOrEmpty(string[] peoplesBalances)
         {
             return (peoplesBalances == null || peoplesBalances.Length == 0);
         }
 
+        // // Converts string array to array of floats
         private static float[] NumPyArrayConversion(string[] numbers)
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var nullString = 0;
-            int i, j;
-
-            for (i = 0; i < numbers.Length; i++)
+            
+            for (int i = 0; i < numbers.Length; i++)
             {
                 if (string.IsNullOrEmpty(numbers[i])) nullString++;
             }
 
             var convertList = new float[numbers.Length - nullString];
-            j = 0;
+            var new_i = 0;
 
-            for (i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
                 if (string.IsNullOrEmpty(numbers[i]))
                     continue;
 
                 if (float.TryParse(numbers[i], out float numeric))
                 {
-                    convertList[j] = numeric;
-                    j++;
+                    convertList[new_i] = numeric;
+                    new_i++;
                 }
             }
             return convertList;
         }
 
+       // Lists out names separated by commas and "and" converting it to more readable string message to console
         private static StringBuilder ListNames(string nameLine)
         {
             var output = new StringBuilder();
@@ -173,13 +173,12 @@ namespace BootCamp.Chapter
                 return output;
 
             var convert = nameLine.Split(", ");
-            int i;
-
+           
             output.Append(convert[0]);
 
             if (convert.Length > 2)
             {
-                for (i = 1; i < convert.Length; i++)
+                for (int i = 1; i < convert.Length; i++)
                 {
                     var andCom = (i == convert.Length - 1) ? " and" : ",";
                     output.Append($"{andCom} {convert[i]}");
@@ -188,12 +187,12 @@ namespace BootCamp.Chapter
             return output;
         }
 
+        // Compares cash index of Peoples Cash bigger than one.
         private static StringBuilder LookForPeopleCash(string[] names, float[] cashIndex, float cashValidator)
         {
             var pax = new StringBuilder();
-            int i;
-
-            for (i = 0; i < cashIndex.Length; i++)
+           
+            for (int i = 0; i < cashIndex.Length; i++)
             {
                 if (cashIndex[i] == cashValidator)
                 {
@@ -205,6 +204,7 @@ namespace BootCamp.Chapter
             return pax;
         }
 
+        // Prints to console the Formatted currency to -¤9999 
         private static string FormatCash(float numeric)
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
