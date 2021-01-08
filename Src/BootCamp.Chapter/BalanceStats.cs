@@ -88,18 +88,18 @@ namespace BootCamp.Chapter
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var peopleNames = new string[peoplesBalances.Length];
             var cash = new float[peoplesBalances.Length];
-            int iOne, iTwo;
+            int i, j;
 
-            for (iOne = 0; iOne < peoplesBalances.Length; iOne++)
+            for (i = 0; i < peoplesBalances.Length; i++)
             {
-                var peopleInfo = peoplesBalances[iOne].Split(", ");
+                var peopleInfo = peoplesBalances[i].Split(", ");
                 var values = NumPyArrayConversion(peopleInfo[1..]);
 
-                peopleNames[iOne] = peopleInfo[0];
+                peopleNames[i] = peopleInfo[0];
 
                 if (attribution == "max")
                 {
-                    cash[iOne] = values.Max();
+                    cash[i] = values.Max();
                 }
                 else if (attribution == "min")
                 {
@@ -107,16 +107,16 @@ namespace BootCamp.Chapter
 
                     var balance = new float[values.Length - 1];
 
-                    for (iTwo = 0; iTwo < values.Length - 1; iTwo++)
+                    for (j = 0; j < values.Length - 1; j++)
                     {
-                        if (iTwo == values.Length - 1) continue;
-                        balance[iTwo] = values[iTwo + 1] - values[iTwo];
+                        if (j == values.Length - 1) continue;
+                        balance[j] = values[j + 1] - values[j];
                     }
-                    cash[iOne] = balance.Min();
+                    cash[i] = balance.Min();
                 }
                 else if (attribution == "rich" || attribution == "poor")
                 {
-                    cash[iOne] = values[^1];
+                    cash[i] = values[^1];
                 }
             }
             var maximumCash = (attribution == "max" || attribution == "rich");
@@ -141,31 +141,31 @@ namespace BootCamp.Chapter
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var nullString = 0;
-            int iThree, iFour;
+            int i, j;
 
-            for (iThree = 0; iThree < numbers.Length; iThree++)
+            for (i = 0; i < numbers.Length; i++)
             {
-                if (string.IsNullOrEmpty(numbers[iThree])) nullString++;
+                if (string.IsNullOrEmpty(numbers[i])) nullString++;
             }
 
             var convertList = new float[numbers.Length - nullString];
-            iFour = 0;
+            j = 0;
 
-            for (iThree = 0; iThree < numbers.Length; iThree++)
+            for (i = 0; i < numbers.Length; i++)
             {
-                if (string.IsNullOrEmpty(numbers[iThree]))
+                if (string.IsNullOrEmpty(numbers[i]))
                     continue;
 
-                else if (float.TryParse(numbers[iThree], out float numeric))
+                else if (float.TryParse(numbers[i], out float numeric))
                 {
-                    convertList[iFour] = numeric;
-                    iFour++;
+                    convertList[j] = numeric;
+                    j++;
                     continue;
                 }
                 else
                 {
-                    convertList[iFour] = numeric;
-                    iFour++;
+                    convertList[j] = numeric;
+                    j++;
                 }
             }
             return convertList;
@@ -179,16 +179,16 @@ namespace BootCamp.Chapter
                 return output;
 
             var convert = nameLine.Split(", ");
-            int iFive;
+            int i;
 
             output.Append(convert[0]);
 
             if (convert.Length > 2)
             {
-                for (iFive = 1; iFive < convert.Length; iFive++)
+                for (i = 1; i < convert.Length; i++)
                 {
-                    var andCom = (iFive == convert.Length - 1) ? " and" : ",";
-                    output.Append($"{andCom} {convert[iFive]}");
+                    var andCom = (i == convert.Length - 1) ? " and" : ",";
+                    output.Append($"{andCom} {convert[i]}");
                 }
             }
             return output;
@@ -197,13 +197,13 @@ namespace BootCamp.Chapter
         private static StringBuilder LookForPeopleCash(string[] names, float[] cash, float cashValidator)
         {
             var pax = new StringBuilder();
-            int iSix;
+            int i;
 
-            for (iSix = 0; iSix < cash.Length; iSix++)
+            for (i = 0; i < cash.Length; i++)
             {
-                if (cash[iSix] == cashValidator)
+                if (cash[i] == cashValidator)
                 {
-                    pax.Append($"{names[iSix]}, ");
+                    pax.Append($"{names[i]}, ");
                 }
             }
             pax.Length -= 2;
