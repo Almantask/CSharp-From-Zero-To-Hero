@@ -16,7 +16,7 @@ namespace BootCamp.Chapter
 
                 return "N/A.";
 
-            var (peopleNames, cash) = CalculatePB(peoplesBalances, "max");
+            var (peopleNames, cash) = CalculatePeoplesBalances(peoplesBalances, "max");
 
             return $"{peopleNames} had the most money ever. {FormatCash(cash)}.";
         }
@@ -30,7 +30,7 @@ namespace BootCamp.Chapter
 
                 return "N/A.";
 
-            var (peopleNames, cash) = CalculatePB(peoplesBalances, "min");
+            var (peopleNames, cash) = CalculatePeoplesBalances(peoplesBalances, "min");
 
             if (cash >= 0)
 
@@ -49,7 +49,7 @@ namespace BootCamp.Chapter
 
                 return "N/A.";
 
-            var (peopleNames, cash) = CalculatePB(peoplesBalances, "rich");
+            var (peopleNames, cash) = CalculatePeoplesBalances(peoplesBalances, "rich");
             var subjects = PeoplePlus(peopleNames);
             var word = new string[]
             {
@@ -68,7 +68,7 @@ namespace BootCamp.Chapter
 
                 return "N/A.";
 
-            var (peopleNames, cash) = CalculatePB(peoplesBalances, "poor");
+            var (peopleNames, cash) = CalculatePeoplesBalances(peoplesBalances, "poor");
             var subjects = PeoplePlus(peopleNames);
             var word = new string[]
             {
@@ -78,7 +78,7 @@ namespace BootCamp.Chapter
             return $"{peopleNames} {word[0]} the least money. {FormatCash(cash)}.";
         }
 
-        private static (StringBuilder peopleNames, float cash) CalculatePB(string[] peoplesBalances, string attribution)
+        private static (StringBuilder peopleNames, float cash) CalculatePeoplesBalances(string[] peoplesBalances, string attribution)
         {
             var validation = new string[]
             { "max", "min", "rich", "poor" };
