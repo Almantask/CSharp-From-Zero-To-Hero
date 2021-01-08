@@ -7,6 +7,7 @@ namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
+        private const string conversionNotPerformed = "N/A.";
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>       
@@ -14,7 +15,7 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peoplesBalances))
 
-                return "N/A.";
+                return conversionNotPerformed;
 
             var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "max");
 
@@ -28,13 +29,13 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peoplesBalances))
 
-                return "N/A.";
+                return conversionNotPerformed;
 
             var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "min");
 
             if (cashIndex >= 0)
 
-                return "N/A.";
+                return conversionNotPerformed;
 
             return $"{peopleNames} lost the most money. {FormatCash(cashIndex)}.";
         }
@@ -47,7 +48,7 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peoplesBalances))
 
-                return "N/A.";
+                return conversionNotPerformed;
 
             var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "rich");
             var subjects = PeoplePlus(peopleNames);
@@ -64,7 +65,9 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peoplesBalances)
         {
-            if (IsNullOrEmpty(peoplesBalances)) return "N/A.";
+            if (IsNullOrEmpty(peoplesBalances)) 
+                
+                return conversionNotPerformed;
 
             var (peopleNames, cashIndex) = CalculatePeoplesBalances(peoplesBalances, "poor");
             var subjects = PeoplePlus(peopleNames);
@@ -75,13 +78,15 @@ namespace BootCamp.Chapter
 
             return $"{peopleNames} {word[0]} the least money. {FormatCash(cashIndex)}.";
         }
-         // Calculates and Processes Peoples cash balances.
+         // Calculates and Processes Peoples cash balances
         private static (StringBuilder peopleNames, float cash) CalculatePeoplesBalances(string[] peoplesBalances, string attribution)
         {
             var options = new string[]
             { "max", "min", "rich", "poor" };
 
-            if (!options.Contains(attribution)) return (new StringBuilder(), 0);
+            if (!options.Contains(attribution)) 
+                
+                return (new StringBuilder(), 0);
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             var peopleNames = new string[peoplesBalances.Length];
@@ -130,7 +135,7 @@ namespace BootCamp.Chapter
             return (names.ToString().Contains(",") || names.ToString().Contains(" and "));
         }
 
-        // Validates if peoples balances are null or empty
+        // Validates if peoples balances are null or empty.
         private static bool IsNullOrEmpty(string[] peoplesBalances)
         {
             return (peoplesBalances == null || peoplesBalances.Length == 0);
