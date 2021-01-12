@@ -11,40 +11,38 @@ namespace BootCamp.Chapter
             var name = GetInputString("Name");
             var lastname = GetInputString("Surname");
             var age = GetInputInt("Age");
-            var weight = GetInputFloat("Weight (in kg)");
-            var height = GetInputFloat("Height (in cm)");
+            var weightInKg = GetInputFloat("Weight (in kg)");
+            var heightInCm = GetInputFloat("Height (in cm)");
 
-            var bmi = CalculateBodyMaxIndex(weight, height);
+            var bmi = CalculateBodyMaxIndex(weightInKg, (heightInCm / 100)); //converting height cm to m
 
             Console.WriteLine(
-                $"{name} {lastname} is {age} years old, his weight is {weight} kg and his height is {height} cm.{Environment.NewLine}" +
+                $"{name} {lastname} is {age} years old, his weight is {weightInKg} kg and his height is {heightInCm} cm.{Environment.NewLine}" +
                 $"Your body mass index is {bmi:0.00}"
                 );
         }
 
         public static string GetInputString(string question)
         {
-            Console.Write("Enter your " + question + ": ");
+            Console.Write(question + " ");
             return Console.ReadLine();
         }
 
         public static int GetInputInt(string question)
         {
-            Console.Write("Enter your " + question + ": ");
+            Console.Write(question + " ");
             return int.Parse(Console.ReadLine());
         }
 
         public static float GetInputFloat(string question)
         {
-            Console.Write("Enter your " + question + ": ");
+            Console.Write(question + " ");
             return float.Parse(Console.ReadLine());
         }
 
-        //height in cm
-        public static float CalculateBodyMaxIndex(float weight, float height)
+        public static float CalculateBodyMaxIndex(float weightInKg, float heightInM)
         {
-            var heightInMeter = height / 100;
-            return weight / (heightInMeter * heightInMeter);
+            return weightInKg / (heightInM * heightInM);
         }
     }
 }
