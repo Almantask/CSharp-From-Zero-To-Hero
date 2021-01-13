@@ -57,6 +57,7 @@ namespace BootCamp.Chapter
                 (subjects) ? "are" : "is",
                 (subjects) ? "people" : "person"
             };
+
             return $"{peopleNames} {word[0]} the richest {word[1]}. {FormatCash(cashIndex)}.";
         }
 
@@ -78,7 +79,8 @@ namespace BootCamp.Chapter
 
             return $"{peopleNames} {word[0]} the least money. {FormatCash(cashIndex)}.";
         }
-         // Calculates and Processes Peoples cash balances
+
+         // Calculates and Processes Peoples names and their cash balances
         private static (StringBuilder peopleNames, float cash) CalculatePeoplesBalances(string[] peoplesBalances, string attribution)
         {
             var options = new string[]
@@ -141,7 +143,7 @@ namespace BootCamp.Chapter
             return (peoplesBalances == null || peoplesBalances.Length == 0);
         }
 
-        // // Converts string array to array of floats
+        // // Converts string array to array of floats.
         private static float[] NumPyArrayConversion(string[] numbers)
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
@@ -169,7 +171,7 @@ namespace BootCamp.Chapter
             return convertList;
         }
 
-       // Lists out names separated by commas and "and" converting it to more readable string message to console
+       // Lists out names separated by "comma" & "and" converting it to a better readable string message to console.
         private static StringBuilder ListNames(string nameLine)
         {
             var output = new StringBuilder();
@@ -192,7 +194,7 @@ namespace BootCamp.Chapter
             return output;
         }
 
-        // Compares cash index of Peoples Cash bigger than one.
+        // Compares cash index of Peoples cash bigger than one.
         private static StringBuilder LookForPeopleCash(string[] names, float[] cashIndex, float cashValidator)
         {
             var pax = new StringBuilder();
