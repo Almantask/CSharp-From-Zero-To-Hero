@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -25,24 +23,45 @@ namespace BootCamp.Chapter
         public static string GetInputString(string question)
         {
             Console.Write(question + " ");
-            return Console.ReadLine();
+            var input = Console.ReadLine();
+
+            if (!string.IsNullOrEmpty(input)) return input;
+
+            Console.WriteLine("Name cannot be empty");
+            return "-";
         }
 
         public static int GetInputInt(string question)
         {
             Console.Write(question + " ");
-            return int.Parse(Console.ReadLine());
+            var input = Console.ReadLine();
+
+            if (int.TryParse(input, out var number)) return number;
+
+            Console.WriteLine($"\"{input}\" is not a valid number.");
+            return -1;
         }
 
         public static float GetInputFloat(string question)
         {
             Console.Write(question + " ");
-            return float.Parse(Console.ReadLine());
+            var input = Console.ReadLine();
+
+            if (float.TryParse(input, out var number)) return number;
+
+            Console.WriteLine($"\"{input}\" is not a valid number.");
+            return -1;
         }
 
         public static float CalculateBodyMaxIndex(float weightInKg, float heightInM)
         {
-            return weightInKg / (heightInM * heightInM);
+            if (weightInKg > 0 && heightInM > 0) return weightInKg / (heightInM * heightInM);
+
+            Console.WriteLine($"Failed calculating BMI. Reason:");
+            if (weightInKg <= 0) Console.WriteLine($"Weight cannot be equal or less than zero, but was {weightInKg}");
+            if (heightInM <= 0) Console.WriteLine($"Height cannot be equal or less than zero, but was {heightInM}");
+
+            return -1;
         }
     }
 }
