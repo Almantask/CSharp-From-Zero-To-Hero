@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System.Runtime.InteropServices;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -63,8 +65,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -75,8 +76,9 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            var arrayLength = 0;
+            if (array != null) arrayLength = array.Length;
+            return InsertAt(array,number, arrayLength);
         }
 
         /// <summary>
@@ -88,8 +90,31 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null) return new[] { number };
+            if (index < 0) return array;
+            if (array.Length < index) return array;
+            if (array.Length == 0) return new[] { number };
+
+            var newArray = new int[array.Length + 1];
+
+            var lengthOfNewArray = newArray.Length;
+            var lengthOfArray = array.Length;
+
+            while (lengthOfNewArray > 0)
+            {
+                var i = lengthOfNewArray - 1;
+                var j = lengthOfArray - 1;
+                lengthOfNewArray--;
+                if (index == i)
+                {
+                    newArray[i] = number;
+                    continue;
+                }
+                newArray[i] = array[j];
+                lengthOfArray--;
+            }
+
+            return newArray;
         }
     }
 }
