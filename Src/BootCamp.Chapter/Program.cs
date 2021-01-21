@@ -6,10 +6,15 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Input name.");
             string name = Console.ReadLine();
+            Console.WriteLine("Input surname.");
             string surName = Console.ReadLine();
+            Console.WriteLine("Input age.");
             string age = Console.ReadLine();
+            Console.WriteLine("Input weight.");
             string weight = Console.ReadLine();
+            Console.WriteLine("Input height..");
             string height = Console.ReadLine();
 
             float weightFloat = float.Parse(weight);
@@ -24,10 +29,15 @@ namespace BootCamp.Chapter
 
             Console.WriteLine($"{name}'s BMI(Body Mass Index) is {bodyMassIndex}");
 
+            Console.WriteLine("Input name.");
             string name2 = Console.ReadLine();
+            Console.WriteLine("Input surname.");
             string surName2 = Console.ReadLine();
+            Console.WriteLine("Input age.");
             string age2 = Console.ReadLine();
+            Console.WriteLine("Input weight.");
             string weight2 = Console.ReadLine();
+            Console.WriteLine("Input height.");
             string height2 = Console.ReadLine();
 
             float weightFloat2 = float.Parse(weight);
