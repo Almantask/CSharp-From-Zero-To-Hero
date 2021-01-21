@@ -24,6 +24,24 @@ namespace BootCamp.Chapter
 
             Console.WriteLine($"{name}'s BMI(Body Mass Index) is {bodyMassIndex}");
 
+            string name2 = Console.ReadLine();
+            string surName2 = Console.ReadLine();
+            string age2 = Console.ReadLine();
+            string weight2 = Console.ReadLine();
+            string height2 = Console.ReadLine();
+
+            float weightFloat2 = float.Parse(weight);
+            float heightFloat2 = float.Parse(height);
+            float ageFloat2 = float.Parse(age);
+
+
+            Console.WriteLine($"{name2} {surName2} is {ageFloat2} years old, weighs {weightFloat2} kilograms, and is {heightFloat2}cm tall.");
+
+            float heightSquared2 = MathF.Sqrt(heightFloat2);
+            float bodyMassIndex2 = weightFloat2 / heightSquared2;
+
+            Console.WriteLine($"{name2}'s BMI(Body Mass Index) is {bodyMassIndex2}");
+
         }
     }
 }
