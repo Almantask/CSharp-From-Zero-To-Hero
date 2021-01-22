@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace BootCamp.Chapter1
+﻿namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -11,7 +9,26 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array == null) return;
+            if (array.Length == 0) return;
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                var numberToCompare = array[i];
+                var indexOfNumber = i;
+
+                for (var j = i; j < array.Length; j++)
+                {
+                    if (numberToCompare <= array[j]) continue;
+                    numberToCompare = array[j];
+                    indexOfNumber = j;
+                }
+
+                array[indexOfNumber] = array[i];
+                array[i] = numberToCompare;
+            }
+            
+
         }
 
         /// <summary>
@@ -21,7 +38,15 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null) return;
+            if (array.Length == 0) return;
+
+            var copyOfArray = (int[]) array.Clone();
+
+            for ( (int i,int j) a = (array.Length - 1, 0); a.i >= 0; a.i--, a.j++)
+            {
+                array[a.j] = copyOfArray[a.i];
+            }
         }
 
         /// <summary>
@@ -31,8 +56,9 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            var arrayLength = 0;
+            if (array != null) arrayLength = array.Length;
+            return RemoveAt(array, arrayLength - 1);
         }
 
         /// <summary>
@@ -41,8 +67,7 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -53,8 +78,32 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null) return null;
+            if (index < 0) return array;
+            if (array.Length - 1 < index) return array;
+            if (array.Length == 0) return array;
+
+            var newArray = new int[array.Length - 1];
+
+            var lengthOfNewArray = newArray.Length;
+            var lengthOfArray = array.Length;
+
+            while (lengthOfNewArray > 0)
+            {
+                var i = lengthOfNewArray - 1;
+                var j = lengthOfArray - 1;
+
+                lengthOfArray--;
+                if (index == j)
+                {
+                    continue;
+                }
+
+                newArray[i] = array[j];
+                lengthOfNewArray--;
+            }
+
+            return newArray;
         }
 
         /// <summary>
@@ -104,12 +153,14 @@ namespace BootCamp.Chapter1
             {
                 var i = lengthOfNewArray - 1;
                 var j = lengthOfArray - 1;
+
                 lengthOfNewArray--;
                 if (index == i)
                 {
                     newArray[i] = number;
                     continue;
                 }
+
                 newArray[i] = array[j];
                 lengthOfArray--;
             }
