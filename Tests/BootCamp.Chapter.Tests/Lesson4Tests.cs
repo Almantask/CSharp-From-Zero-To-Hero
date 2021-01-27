@@ -7,7 +7,7 @@ using Xunit;
 namespace BootCamp.Chapter.Tests
 {
     // You don't have to be here for a long time.
-    public class Lesson3Tests: ConsoleTests
+    public class Lesson4Tests: ConsoleTests
     {
         private readonly string _promptMessage = $"Testing";
 
