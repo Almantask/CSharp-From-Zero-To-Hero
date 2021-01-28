@@ -40,44 +40,30 @@ namespace BootCamp.Chapter
             if (string.IsNullOrEmpty(message)) return "";
 
             var textTable = new StringBuilder();
-            var maxLength = GetMaxLengthInLine(message) + (padding * 2);
             var messageLines = message.Split(Environment.NewLine);
+            var maxLength = GetMaxLengthInLine(messageLines) + (padding * 2);
 
-            var topAndBottomText = String.Concat("+", RepeatWord("-", maxLength), "+", Environment.NewLine);
-            var paddingText = String.Concat("|", RepeatWord(" ", maxLength), "|", Environment.NewLine);
+            var topAndBottomText = string.Concat("+", RepeatWord("-", maxLength), "+", Environment.NewLine);
+            var paddingText = string.Concat("|", RepeatWord(" ", maxLength), "|", Environment.NewLine);
 
             textTable.Append(topAndBottomText);
 
-            for (int i = 0; i < padding; i++)
-            {
-                textTable.Append(paddingText);
-            }
+            AddPadding(textTable, paddingText, padding);
 
             for (int i = 0; i < messageLines.Length; i++)
             {
-                var innerText = String.Concat("|", RepeatWord(" ", padding), messageLines[i], RepeatWord(" ", padding), "|", Environment.NewLine);
-
-                if(innerText.Length < (maxLength + 4))
-                {
-                    innerText = String.Concat("|", RepeatWord(" ", padding), messageLines[i], RepeatWord(" ", (padding + (maxLength + 4) - innerText.Length)), "|", Environment.NewLine);
-                }
-
-                textTable.Append(innerText);
+                textTable.Append(string.Concat("|", RepeatWord(" ", padding), messageLines[i], RepeatWord(" ", maxLength - messageLines[i].Length - padding), "|", Environment.NewLine));
             }
 
-            for (int i = 0; i < padding; i++)
-            {
-                textTable.Append(paddingText);
-            }
+            AddPadding(textTable, paddingText, padding);
 
             textTable.Append(topAndBottomText);
 
             return textTable.ToString();
         }
 
-        private static int GetMaxLengthInLine(string message)
+        private static int GetMaxLengthInLine(string[] messageLines)
         {
-            var messageLines = message.Split(Environment.NewLine);
             if (messageLines.Length == 1) return messageLines[0].Length;
 
             var maxLength = 0;
@@ -100,6 +86,14 @@ namespace BootCamp.Chapter
                 sb.Append(word);
             }
             return sb.ToString();
+        }
+
+        private static void AddPadding(StringBuilder sb, string text, int padding)
+        {
+            for (int i = 0; i < padding; i++)
+            {
+                sb.Append(text);
+            }
         }
     }
 }
