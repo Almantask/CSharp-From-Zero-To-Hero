@@ -7,9 +7,12 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
+
+        private const string DEFAULT_MESSAGE = "N/A.";
+
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null || peopleAndBalances.Length == 0) return "N/A.";
+            if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
             var highestBalance = 0f;
 
@@ -33,6 +36,8 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
+            if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
+
             return "";
         }
 
@@ -41,6 +46,8 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
+            if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
+
             return "";
         }
 
@@ -49,6 +56,8 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
+            if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
+
             return "";
         }
 
@@ -101,6 +110,11 @@ namespace BootCamp.Chapter
             }
 
             return names.ToString();
+        }
+
+        private static bool IsNullOrEmpty(string[] peopleAndBalances)
+        {
+            return peopleAndBalances == null || peopleAndBalances.Length == 0;
         }
     }
 }
