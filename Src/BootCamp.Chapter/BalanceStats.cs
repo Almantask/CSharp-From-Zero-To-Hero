@@ -17,13 +17,8 @@ namespace BootCamp.Chapter
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 var balance = peopleAndBalances[i].Split(",");
-                var lastBalance = float.Parse(balance[balance.Length - 1].Trim());
-                if (lastBalance == 0)
-                {
-                    var index = balance.Length - 2 >= 1 ? balance.Length - 2 : balance.Length - 1;
-                    lastBalance = float.Parse(balance[index].Trim());
-                }
-                if(lastBalance > highestBalance)
+                var lastBalance = GetLastBalance(balance);
+                if (lastBalance > highestBalance)
                 {
                     highestBalance = lastBalance;
                 }
@@ -33,12 +28,7 @@ namespace BootCamp.Chapter
             {
                 var balance = peopleAndBalances[i].Split(",");
                 var name = balance[0];
-                var lastBalance = float.Parse(balance[balance.Length - 1].Trim());
-                if (lastBalance == 0)
-                {
-                    var index = balance.Length - 2 >= 1 ? balance.Length - 2 : balance.Length - 1;
-                    lastBalance = float.Parse(balance[index].Trim());
-                }
+                var lastBalance = GetLastBalance(balance);
                 if (lastBalance == highestBalance)
                 {
                     if(names != "")
@@ -100,6 +90,18 @@ namespace BootCamp.Chapter
             }
 
             return namesToDisplay.ToString();
+        }
+
+        private static float GetLastBalance(string[] balance)
+        {
+            var lastBalance = float.Parse(balance[balance.Length - 1].Trim());
+            if (lastBalance == 0)
+            {
+                var index = balance.Length - 2 >= 1 ? balance.Length - 2 : balance.Length - 1;
+                lastBalance = float.Parse(balance[index].Trim());
+            }
+
+            return lastBalance;
         }
     }
 }
