@@ -16,6 +16,11 @@
             {
                 var balance = peopleAndBalances[i].Split(",");
                 var lastBalance = float.Parse(balance[balance.Length - 1].Trim());
+                if (lastBalance == 0)
+                {
+                    var index = balance.Length - 2 >= 1 ? balance.Length - 2 : balance.Length - 1;
+                    lastBalance = float.Parse(balance[index].Trim());
+                }
                 if(lastBalance > highestBalance)
                 {
                     highestBalance = lastBalance;
@@ -27,6 +32,11 @@
                 var balance = peopleAndBalances[i].Split(",");
                 var name = balance[0];
                 var lastBalance = float.Parse(balance[balance.Length - 1].Trim());
+                if (lastBalance == 0)
+                {
+                    var index = balance.Length - 2 >= 1 ? balance.Length - 2 : balance.Length - 1;
+                    lastBalance = float.Parse(balance[index].Trim());
+                }
                 if (lastBalance == highestBalance)
                 {
                     if(names != "")
