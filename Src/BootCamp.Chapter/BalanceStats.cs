@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Text;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
@@ -50,25 +52,7 @@
                 }
             }
 
-            var arrayNames = names.Split(",");
-            names = "";
-            for (int i = 0; i < arrayNames.Length; i++)
-            {
-                if (i == 0)
-                {
-                    names += arrayNames[i];
-                }
-                else if(i == arrayNames.Length - 1)
-                {
-                    names += $" and{arrayNames[i]}";
-                } 
-                else
-                {
-                    names += $",{arrayNames[i]}";
-                }
-            }
-
-            return $"{names} had the most money ever. ¤{highestBalance}.";
+            return $"{FormatPersonName(names.Split(","))} had the most money ever. ¤{highestBalance}.";
         }
 
         /// <summary>
@@ -93,6 +77,29 @@
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
             return "";
+        }
+
+        private static string FormatPersonName(string[] names)
+        {
+            var namesToDisplay = new StringBuilder();
+
+            for (var i = 0; i < names.Length; i++)
+            {
+                if (i == 0)
+                {
+                    namesToDisplay.Append(names[i]);
+                }
+                else if (i != names.Length - 1)
+                {
+                    namesToDisplay.Append($",{names[i]}");
+                }
+                else
+                {
+                    namesToDisplay.Append($" and{names[i]}");
+                }
+            }
+
+            return namesToDisplay.ToString();
         }
     }
 }
