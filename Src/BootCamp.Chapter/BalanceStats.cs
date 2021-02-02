@@ -62,8 +62,9 @@ namespace BootCamp.Chapter
             }
 
             var names = GetNamesForSameBalance(highestBalance, peopleAndBalances, GetLastBalance);
+            var splitNames = names.Split(",");
 
-            return $"{FormatPersonName(names.Split(","))} is the richest person. ¤{highestBalance}.";
+            return $"{FormatPersonName(splitNames)} {IsOrAre(splitNames.Length)} the richest {PeopleOrPerson(splitNames.Length)}. ¤{highestBalance}.";
         }
 
         /// <summary>
@@ -73,7 +74,22 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
-            return "";
+            var lowestBalance = float.MaxValue;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var balance = peopleAndBalances[i].Split(",");
+                var lastBalance = GetLastBalance(balance);
+                if (lastBalance < lowestBalance)
+                {
+                    lowestBalance = lastBalance;
+                }
+            }
+
+            var names = GetNamesForSameBalance(lowestBalance, peopleAndBalances, GetLastBalance);
+            var splitNames = names.Split(",");
+
+            return $"{FormatPersonName(splitNames)} {HasOrHave(splitNames.Length)} the least money. {FormatBalance(lowestBalance)}.";
         }
 
         private static string FormatPersonName(string[] names)
@@ -140,6 +156,26 @@ namespace BootCamp.Chapter
         private static bool IsNullOrEmpty(string[] peopleAndBalances)
         {
             return peopleAndBalances == null || peopleAndBalances.Length == 0;
+        }
+
+        private static string IsOrAre(int count)
+        {
+            return count > 1 ? "are" : "is";
+        }
+
+        private static string PeopleOrPerson(int count)
+        {
+            return count > 1 ? "people" : "person";
+        }
+
+        private static string FormatBalance(float balance)
+        {
+            return balance >= 0 ? $"¤{balance}" : $"-¤{balance * -1}";
+        }
+
+        private static string HasOrHave(int count)
+        {
+            return count > 1 ? "have" : "has";
         }
     }
 }
