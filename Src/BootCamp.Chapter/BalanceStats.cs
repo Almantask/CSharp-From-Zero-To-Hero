@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -14,21 +15,21 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
-            var highestBalance = 0f;
+            var highestHistoryBalance = 0f;
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 var balance = peopleAndBalances[i].Split(",");
-                var lastBalance = GetLastBalance(balance);
-                if (lastBalance > highestBalance)
+                var lastBalance = GetLastHistoryBalance(balance);
+                if (lastBalance > highestHistoryBalance)
                 {
-                    highestBalance = lastBalance;
+                    highestHistoryBalance = lastBalance;
                 }
             }
 
-            var names = GetNamesForSameBalance(highestBalance, peopleAndBalances);
+            var names = GetNamesForSameBalance(highestHistoryBalance, peopleAndBalances, GetLastHistoryBalance);
 
-            return $"{FormatPersonName(names.Split(","))} had the most money ever. ¤{highestBalance}.";
+            return $"{FormatPersonName(names.Split(","))} had the most money ever. ¤{highestHistoryBalance}.";
         }
 
         /// <summary>
@@ -48,7 +49,21 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
-            return "";
+            var highestBalance = 0f;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var balance = peopleAndBalances[i].Split(",");
+                var lastBalance = GetLastBalance(balance);
+                if (lastBalance > highestBalance)
+                {
+                    highestBalance = lastBalance;
+                }
+            }
+
+            var names = GetNamesForSameBalance(highestBalance, peopleAndBalances, GetLastBalance);
+
+            return $"{FormatPersonName(names.Split(","))} is the richest person. ¤{highestBalance}.";
         }
 
         /// <summary>
@@ -84,19 +99,29 @@ namespace BootCamp.Chapter
             return namesToDisplay.ToString();
         }
 
-        private static float GetLastBalance(string[] balance)
+        private static float GetLastHistoryBalance(string[] balance)
         {
-            var lastBalance = float.Parse(balance[balance.Length - 1].Trim());
-            if (lastBalance == 0)
+            var index = balance.Length - 1;
+            var lastBalance = 0f;
+            while (index >= 1)
             {
-                var index = balance.Length - 2 >= 1 ? balance.Length - 2 : balance.Length - 1;
                 lastBalance = float.Parse(balance[index].Trim());
+                index -= 1;
+                if (lastBalance != 0)
+                {
+                    index = 0;
+                }
             }
 
             return lastBalance;
         }
 
-        private static string GetNamesForSameBalance(float currentBalance, string[] peopleAndBalances)
+        private static float GetLastBalance(string[] balance)
+        {
+            return float.Parse(balance[balance.Length - 1].Trim()); ;
+        }
+
+        private static string GetNamesForSameBalance(float currentBalance, string[] peopleAndBalances, Func<string[],float> calculatedBalance)
         {
             var names = new StringBuilder();
 
@@ -104,7 +129,7 @@ namespace BootCamp.Chapter
             {
                 var balance = peopleAndBalances[i].Split(",");
                 var name = balance[0];
-                var lastBalance = GetLastBalance(balance);
+                var lastBalance = calculatedBalance(balance);
                 if (lastBalance != currentBalance) continue;
                 names.Append(names.Length > 0 ? $", {name}" : $"{name}");
             }
