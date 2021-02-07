@@ -11,7 +11,7 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class CaesarCipher
     {
-        // Constant for the 26 ASCII character keys
+       
         private const int MOD26 = 26;
 
         public static string Encrypt(string message, byte shift)
@@ -37,10 +37,9 @@ namespace BootCamp.Chapter
             return text.ToString();
         }
 
-        // Constant for Upper Alphabet keys
+        
         private const char UPPER = 'A';
 
-        // Constant for the Lower Alphabet keys
         private const char LOWER = 'a';
 
         private static char PlainChar(char character, int digitKey)
