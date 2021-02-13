@@ -1,4 +1,7 @@
 ﻿using System;
+using Builder = BootCamp.Chapter.Builder.Solutions;
+using BootCamp.Chapter.Decorator;
+using Decorator = BootCamp.Chapter.Decorator.Solution;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +9,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Builder.Demo.Run();
+            //Problem.Demo();
+            Decorator.Solution.Demo.Run();
         }
     }
 }
