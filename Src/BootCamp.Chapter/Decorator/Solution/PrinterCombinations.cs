@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BootCamp.Chapter.Decorator.Solution
+﻿namespace BootCamp.Chapter.Decorator.Solution
 {
     public static class PrinterCombinations
     {

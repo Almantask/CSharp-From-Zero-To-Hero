@@ -1,6 +1,4 @@
-﻿using System;
-using Builder = BootCamp.Chapter.Builder.Solutions;
-using BootCamp.Chapter.Decorator;
+﻿using Builder = BootCamp.Chapter.Builder.Solutions;
 using Decorator = BootCamp.Chapter.Decorator.Solution;
 
 namespace BootCamp.Chapter
