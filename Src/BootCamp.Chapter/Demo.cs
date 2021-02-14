@@ -8,26 +8,47 @@ namespace BootCamp.Chapter
     public class Demo
     {
         public event EventHandler OnKeyPressed;
-        public event EventHandler OnDemoEnds;
+
+        private List<char> validChars = new List<char> { 'a', 'b', 'c', 'q' };
 
         ContactsCenter contactsCenter = new ContactsCenter("./Input/MOCK_DATA.csv");
 
-        private List<char> validChars = new List<char> { 'a', 'b', 'c', 'q' };
         public char currentChar;
+
+        private bool _demoRunning = false;
+
+        public bool DemoRunning
+        {
+            get { return _demoRunning; }
+            set
+            {
+                if (_demoRunning != value)
+                {
+                    _demoRunning = value;
+                    Console.WriteLine(_demoRunning == true ? "Demo started." : "Demo Ended.");
+                }
+            }
+        }
 
         public Demo()
         {
-            // TODO - Remove from constructor, create/,move to own class
+            StartDemo();
+        }
+
+        private void StartDemo()
+        {
+            PrintMenuChoice();
+
             OnKeyPressed += RunDemoMenu;
 
-            Console.WriteLine("Welcome! Please press space to start Demo.");
-            
             do
             {
-                GetKeyChar();
-            } while (currentChar != ' ');
-
-            OnKeyPressed?.Invoke(this, null);
+                if (GetKeyChar() == ' ')
+                {
+                    DemoRunning = true;
+                    OnKeyPressed?.Invoke(this, null);
+                }
+            } while (DemoRunning);
         }
 
         private void RunDemoMenu(object sender, EventArgs eventArgs)
@@ -35,9 +56,7 @@ namespace BootCamp.Chapter
             OnKeyPressed -= RunDemoMenu;
             OnKeyPressed += PrintPeopleWithFilter;
 
-            Console.WriteLine("Demo started. Please choose filter or quit demo: ");
-
-            PrintChoice();
+            PrintMenuChoice();
 
             do
             {
@@ -50,14 +69,21 @@ namespace BootCamp.Chapter
             OnKeyPressed -= PrintPeopleWithFilter;
         }
 
-        private void PrintChoice()
+        private void PrintMenuChoice()
         {
-            Console.WriteLine();
-            Console.WriteLine("Press 'a' for people over 18, who do not live in UK, whose surename does not contain letter 'a'.");
-            Console.WriteLine("Press 'b' for people under 18, who do not live in UK, whose surename does not contain letter 'a'.");
-            Console.WriteLine("Press 'c' for people who do not live in UK, whose surename and name does not contain letter 'a'.");
-            Console.WriteLine("Press 'q' to exit demo.");
-            Console.WriteLine();
+            if (DemoRunning)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Press 'a' for people over 18, who do not live in UK, whose surename does not contain letter 'a'.");
+                Console.WriteLine("Press 'b' for people under 18, who do not live in UK, whose surename does not contain letter 'a'.");
+                Console.WriteLine("Press 'c' for people who do not live in UK, whose surename and name does not contain letter 'a'.");
+                Console.WriteLine("Press 'q' to exit demo.");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Start demo with pressing space or any other key to quit program.");
+            }
         }
 
         private char GetKeyChar()
@@ -78,7 +104,7 @@ namespace BootCamp.Chapter
                         Console.WriteLine(person);
                     }
 
-                    PrintChoice();
+                    PrintMenuChoice();
                     break;
                 case 'b':
                     foreach (var person in contactsCenter.Filter(PeoplePredicates.IsB))
@@ -86,7 +112,7 @@ namespace BootCamp.Chapter
                         Console.WriteLine(person);
                     }
 
-                    PrintChoice();
+                    PrintMenuChoice();
                     break;
                 case 'c':
                     foreach (var person in contactsCenter.Filter(PeoplePredicates.IsC))
@@ -94,10 +120,10 @@ namespace BootCamp.Chapter
                         Console.WriteLine(person);
                     }
 
-                    PrintChoice();
+                    PrintMenuChoice();
                     break;
                 case 'q':
-                    OnDemoEnds?.Invoke(this, null);
+                    DemoRunning = false;
                     break;
                 default:
                     break;

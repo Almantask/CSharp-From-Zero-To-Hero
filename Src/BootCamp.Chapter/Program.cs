@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BootCamp.Chapter
 {
-    class Program
+    public class Program
     {
         public static event EventHandler ApplicationCloses;
 
@@ -15,18 +15,7 @@ namespace BootCamp.Chapter
 
             Demo demo = new Demo();
 
-            demo.OnDemoEnds += AfterDemoEnd;
-
             ApplicationCloses?.Invoke(demo, null);
-        }
-
-        private static void AfterDemoEnd(object sender, EventArgs eventArgs)
-        {
-            Console.WriteLine("Demo ended.");
-
-            var demoInstance = sender as Demo;
-
-            demoInstance.OnDemoEnds -= AfterDemoEnd;
         }
 
         private static void PrintQuitMessage(object sender, EventArgs eventArgs)
