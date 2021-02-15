@@ -11,8 +11,8 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class CaesarCipher
     {
-       
-        private const int MOD26 = 26;
+
+        private const int NumOfKeys = 26;
 
         public static string Encrypt(string message, byte shift)
         {
@@ -21,7 +21,7 @@ namespace BootCamp.Chapter
 
         public static string Decrypt(string message, byte shift)
         {
-            return CipherText(message, MOD26 - shift);
+            return CipherText(message, NumOfKeys - shift);
         }
 
         private static string CipherText(string inputText, int shift)
@@ -37,7 +37,7 @@ namespace BootCamp.Chapter
             return text.ToString();
         }
 
-        
+
         private const char UPPER = 'A';
 
         private const char LOWER = 'a';
@@ -50,7 +50,7 @@ namespace BootCamp.Chapter
 
             return (char)
 
-                ((((character + digitKey) - counterBalance) % MOD26) + counterBalance);
+                ((((character + digitKey) - counterBalance) % NumOfKeys) + counterBalance);
         }
     }
 }
