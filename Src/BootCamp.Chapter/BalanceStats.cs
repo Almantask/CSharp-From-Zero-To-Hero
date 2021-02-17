@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -39,7 +41,41 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
-            return "";
+            var peopleLossBalance = new float[peopleAndBalances.Length];
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var balance = peopleAndBalances[i].Split(",");
+                if (balance.Length <= 2)
+                {
+                    peopleLossBalance[i] = float.NaN;
+                }
+                else
+                {
+                    peopleLossBalance[i] = GetLastBalance(balance) - GetBalanceBackwards(balance, 2);
+                }
+            }
+
+            var biggestLossBalance = 0f;
+            var indexOfLossBalance = 0;
+            for (int i = 0; i < peopleLossBalance.Length; i++)
+            {
+                if (float.IsNaN(peopleLossBalance[i]))
+                {
+                    biggestLossBalance = peopleLossBalance[i];
+                    indexOfLossBalance = i;
+                    continue;
+                }
+                if (peopleLossBalance[i] < biggestLossBalance)
+                {
+                    biggestLossBalance = peopleLossBalance[i];
+                    indexOfLossBalance = i;
+                }
+            }
+
+            var names = GetNamesForSameBalance(biggestLossBalance, peopleAndBalances, GetLastBalance);
+
+            return float.IsNaN(biggestLossBalance) ? DEFAULT_MESSAGE : $"{peopleAndBalances[indexOfLossBalance].Split(",")[0]} lost the most money. {FormatBalance(biggestLossBalance)}.";
         }
 
         /// <summary>
@@ -134,7 +170,12 @@ namespace BootCamp.Chapter
 
         private static float GetLastBalance(string[] balance)
         {
-            return float.Parse(balance[balance.Length - 1].Trim()); ;
+            return GetBalanceBackwards(balance, 1);
+        }
+
+        private static float GetBalanceBackwards(string[] balance, int index)
+        {
+            return float.Parse(balance[balance.Length - index].Trim()); ;
         }
 
         private static string GetNamesForSameBalance(float currentBalance, string[] peopleAndBalances, Func<string[],float> calculatedBalance)
