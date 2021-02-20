@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Adapter = BootCamp.Chapter.Examples.Adapter;
+using ChainOfResponsibility = BootCamp.Chapter.Examples.ChainOfResponsibility;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +7,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Adapter.Demo.Run();
+            ChainOfResponsibility.Demo.Run();
         }
     }
 }
