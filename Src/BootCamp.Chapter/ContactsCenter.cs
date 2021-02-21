@@ -18,7 +18,7 @@ namespace BootCamp.Chapter
             {
                 people = File.ReadAllLines(peopleFile);
             }
-            catch (Exception)
+            catch
             {
                 throw new FileNotFoundException();
             }
@@ -48,18 +48,12 @@ namespace BootCamp.Chapter
             Person person = new Person();
 
             person.Name = personData[0];
-
             person.SureName = personData[1];
-
             DateTime.TryParse(personData[2], out DateTime birthday);
             person.Birthday = birthday;
-
             person.Gender = personData[3] == "Male" ? Enums.Gender.Male : Enums.Gender.Female;
-
             person.Country = personData[4];
-
             person.Email = personData[5];
-
             person.StreetAdress = personData[6];
 
             return person;

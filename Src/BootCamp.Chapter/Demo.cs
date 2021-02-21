@@ -54,7 +54,7 @@ namespace BootCamp.Chapter
         private void RunDemoMenu(object sender, EventArgs eventArgs)
         {
             OnKeyPressed -= RunDemoMenu;
-            OnKeyPressed += PrintPeopleWithFilter;
+            OnKeyPressed += ChoosePeopleFilter;
 
             PrintMenuChoice();
 
@@ -66,7 +66,7 @@ namespace BootCamp.Chapter
                 }
             } while (!currentChar.Equals('q'));
 
-            OnKeyPressed -= PrintPeopleWithFilter;
+            OnKeyPressed -= ChoosePeopleFilter;
         }
 
         private void PrintMenuChoice()
@@ -92,35 +92,20 @@ namespace BootCamp.Chapter
             return currentChar;
         }
 
-        private void PrintPeopleWithFilter(object sender, EventArgs eventArgs)
+        private void ChoosePeopleFilter(object sender, EventArgs eventArgs)
         {
             var demoInstance = sender as Demo;
             
             switch (demoInstance.currentChar)
             {
                 case 'a':
-                    foreach (var person in contactsCenter.Filter(PeoplePredicates.IsA))
-                    {
-                        Console.WriteLine(person);
-                    }
-
-                    PrintMenuChoice();
+                    PrintPeople(PeoplePredicates.IsA);
                     break;
                 case 'b':
-                    foreach (var person in contactsCenter.Filter(PeoplePredicates.IsB))
-                    {
-                        Console.WriteLine(person);
-                    }
-
-                    PrintMenuChoice();
+                    PrintPeople(PeoplePredicates.IsB);
                     break;
                 case 'c':
-                    foreach (var person in contactsCenter.Filter(PeoplePredicates.IsC))
-                    {
-                        Console.WriteLine(person);
-                    }
-
-                    PrintMenuChoice();
+                    PrintPeople(PeoplePredicates.IsC);
                     break;
                 case 'q':
                     DemoRunning = false;
@@ -128,6 +113,16 @@ namespace BootCamp.Chapter
                 default:
                     break;
             }
+        }
+
+        private void PrintPeople(Predicate<Person> predicate)
+        {
+            foreach (var person in contactsCenter.Filter(predicate))
+            {
+                Console.WriteLine(person);
+            }
+
+            PrintMenuChoice();
         }
     }
 }
