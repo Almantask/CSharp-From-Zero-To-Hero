@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -17,21 +16,11 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
-            var highestHistoryBalance = 0f;
+            var highestHistoryBalance = peopleAndBalances.Max(GetLastHistoryBalance);
 
-            for (int i = 0; i < peopleAndBalances.Length; i++)
-            {
-                var balance = peopleAndBalances[i].Split(",");
-                var lastBalance = GetLastHistoryBalance(balance);
-                if (lastBalance > highestHistoryBalance)
-                {
-                    highestHistoryBalance = lastBalance;
-                }
-            }
+            var names = peopleAndBalances.GetNamesForSameBalance(highestHistoryBalance, GetLastHistoryBalance);
 
-            var names = GetNamesForSameBalance(highestHistoryBalance, peopleAndBalances, GetLastHistoryBalance);
-
-            return $"{FormatPersonName(names.Split(","))} had the most money ever. ¤{highestHistoryBalance}.";
+            return $"{FormatPersonName(names)} had the most money ever. {FormatBalance(highestHistoryBalance)}.";
         }
 
         /// <summary>
@@ -41,41 +30,26 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
-            var peopleLossBalance = new float[peopleAndBalances.Length];
+            var peopleLossBalance = new string[peopleAndBalances.Length];
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 var balance = peopleAndBalances[i].Split(",");
                 if (balance.Length <= 2)
                 {
-                    peopleLossBalance[i] = float.NaN;
+                    peopleLossBalance[i] = balance[0] + ",NaN";
                 }
                 else
                 {
-                    peopleLossBalance[i] = GetLastBalance(balance) - GetBalanceBackwards(balance, 2);
+                    peopleLossBalance[i] = balance[0] + "," + (balance.GetLastBalance() - balance.GetBalanceBackwards(2)).ToString(CultureInfo.InvariantCulture);
                 }
             }
 
-            var biggestLossBalance = 0f;
-            var indexOfLossBalance = 0;
-            for (int i = 0; i < peopleLossBalance.Length; i++)
-            {
-                if (float.IsNaN(peopleLossBalance[i]))
-                {
-                    biggestLossBalance = peopleLossBalance[i];
-                    indexOfLossBalance = i;
-                    continue;
-                }
-                if (peopleLossBalance[i] < biggestLossBalance)
-                {
-                    biggestLossBalance = peopleLossBalance[i];
-                    indexOfLossBalance = i;
-                }
-            }
+            var biggestLossBalance = peopleLossBalance.Min(GetLastBalance);
 
-            var names = GetNamesForSameBalance(biggestLossBalance, peopleAndBalances, GetLastBalance);
+            var names = peopleLossBalance.GetNamesForSameBalance(biggestLossBalance, GetLastBalance);
 
-            return float.IsNaN(biggestLossBalance) ? DEFAULT_MESSAGE : $"{peopleAndBalances[indexOfLossBalance].Split(",")[0]} lost the most money. {FormatBalance(biggestLossBalance)}.";
+            return float.IsNaN(biggestLossBalance) ? DEFAULT_MESSAGE : $"{FormatPersonName(names)} lost the most money. {FormatBalance(biggestLossBalance)}.";
         }
 
         /// <summary>
@@ -85,22 +59,11 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
-            var highestBalance = 0f;
+            var highestBalance = peopleAndBalances.Max(GetLastBalance);
 
-            for (int i = 0; i < peopleAndBalances.Length; i++)
-            {
-                var balance = peopleAndBalances[i].Split(",");
-                var lastBalance = GetLastBalance(balance);
-                if (lastBalance > highestBalance)
-                {
-                    highestBalance = lastBalance;
-                }
-            }
+            var names = peopleAndBalances.GetNamesForSameBalance(highestBalance, GetLastBalance);
 
-            var names = GetNamesForSameBalance(highestBalance, peopleAndBalances, GetLastBalance);
-            var splitNames = names.Split(",");
-
-            return $"{FormatPersonName(splitNames)} {IsOrAre(splitNames.Length)} the richest {PeopleOrPerson(splitNames.Length)}. ¤{highestBalance}.";
+            return $"{FormatPersonName(names)} {IsOrAre(names.Length)} the richest {PeopleOrPerson(names.Length)}. {FormatBalance(highestBalance)}.";
         }
 
         /// <summary>
@@ -110,22 +73,11 @@ namespace BootCamp.Chapter
         {
             if (IsNullOrEmpty(peopleAndBalances)) return DEFAULT_MESSAGE;
 
-            var lowestBalance = float.MaxValue;
+            var lowestBalance = peopleAndBalances.Min(GetLastBalance);
 
-            for (int i = 0; i < peopleAndBalances.Length; i++)
-            {
-                var balance = peopleAndBalances[i].Split(",");
-                var lastBalance = GetLastBalance(balance);
-                if (lastBalance < lowestBalance)
-                {
-                    lowestBalance = lastBalance;
-                }
-            }
+            var names = peopleAndBalances.GetNamesForSameBalance(lowestBalance, GetLastBalance);
 
-            var names = GetNamesForSameBalance(lowestBalance, peopleAndBalances, GetLastBalance);
-            var splitNames = names.Split(",");
-
-            return $"{FormatPersonName(splitNames)} {HasOrHave(splitNames.Length)} the least money. {FormatBalance(lowestBalance)}.";
+            return $"{FormatPersonName(names)} {HasOrHave(names.Length)} the least money. {FormatBalance(lowestBalance)}.";
         }
 
         private static string FormatPersonName(string[] names)
@@ -168,17 +120,19 @@ namespace BootCamp.Chapter
             return lastBalance;
         }
 
-        private static float GetLastBalance(string[] balance)
+        private static float GetLastBalance(this string[] balance)
         {
-            return GetBalanceBackwards(balance, 1);
+            return balance.GetBalanceBackwards(1);
         }
 
-        private static float GetBalanceBackwards(string[] balance, int index)
+        private static float GetBalanceBackwards(this string[] balance, int index)
         {
-            return float.Parse(balance[balance.Length - index].Trim()); ;
+            var stringBalance = balance[balance.Length - index].Trim();
+            float.TryParse(stringBalance,out var floatBalance);
+            return floatBalance;
         }
 
-        private static string GetNamesForSameBalance(float currentBalance, string[] peopleAndBalances, Func<string[],float> calculatedBalance)
+        private static string[] GetNamesForSameBalance(this string[] peopleAndBalances, float currentBalance, Func<string[],float> calculatedBalance)
         {
             var names = new StringBuilder();
 
@@ -191,7 +145,7 @@ namespace BootCamp.Chapter
                 names.Append(names.Length > 0 ? $", {name}" : $"{name}");
             }
 
-            return names.ToString();
+            return names.ToString().Split(",");
         }
 
         private static bool IsNullOrEmpty(string[] peopleAndBalances)
@@ -217,6 +171,45 @@ namespace BootCamp.Chapter
         private static string HasOrHave(int count)
         {
             return count > 1 ? "have" : "has";
+        }
+
+        private static float Min(this string[] peopleAndBalances, Func<string[], float> calculatedBalance)
+        {
+            var lowestBalance = float.MaxValue;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var balance = peopleAndBalances[i].Split(",");
+                var lastBalance = calculatedBalance(balance);
+                if (lastBalance < lowestBalance)
+                {
+                    lowestBalance = lastBalance;
+                    continue;
+                }
+
+                if (float.IsNaN(lastBalance))
+                {
+                    lowestBalance = float.NaN;
+                }
+            }
+            return lowestBalance;
+        }
+
+        private static float Max(this string[] peopleAndBalances, Func<string[], float> calculatedBalance)
+        {
+            var highestBalance = 0f;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var balance = peopleAndBalances[i].Split(",");
+                var lastBalance = calculatedBalance(balance);
+                if (lastBalance > highestBalance)
+                {
+                    highestBalance = lastBalance;
+                }
+            }
+
+            return highestBalance;
         }
     }
 }
