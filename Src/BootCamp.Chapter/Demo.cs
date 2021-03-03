@@ -17,19 +17,6 @@ namespace BootCamp.Chapter
 
         private bool _demoRunning = false;
 
-        public bool DemoRunning
-        {
-            get { return _demoRunning; }
-            set
-            {
-                if (_demoRunning != value)
-                {
-                    _demoRunning = value;
-                    Console.WriteLine(_demoRunning == true ? "Demo started." : "Demo Ended.");
-                }
-            }
-        }
-
         public Demo()
         {
             StartDemo();
@@ -45,10 +32,13 @@ namespace BootCamp.Chapter
             {
                 if (GetKeyChar() == ' ')
                 {
-                    DemoRunning = true;
+                    Console.WriteLine("Demo started.");
+                    _demoRunning = true;
                     OnKeyPressed?.Invoke(this, null);
                 }
-            } while (DemoRunning);
+            } while (_demoRunning);
+
+            Console.WriteLine("Demo ended.");
         }
 
         private void RunDemoMenu(object sender, EventArgs eventArgs)
@@ -71,7 +61,7 @@ namespace BootCamp.Chapter
 
         private void PrintMenuChoice()
         {
-            if (DemoRunning)
+            if (_demoRunning)
             {
                 Console.WriteLine();
                 Console.WriteLine("Press 'a' for people over 18, who do not live in UK, whose surename does not contain letter 'a'.");
@@ -108,7 +98,7 @@ namespace BootCamp.Chapter
                     PrintPeople(PeoplePredicates.IsC);
                     break;
                 case 'q':
-                    DemoRunning = false;
+                    _demoRunning = false;
                     break;
                 default:
                     break;

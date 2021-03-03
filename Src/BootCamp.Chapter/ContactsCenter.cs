@@ -12,24 +12,28 @@ namespace BootCamp.Chapter
 
         public ContactsCenter(string peopleFile)
         {
-            string[] people;
-
             try
             {
-                people = File.ReadAllLines(peopleFile);
+                _people = File.ReadAllLines(peopleFile).Select(s => StringToPerson(s)).ToList();
             }
-            catch
+            catch (FileNotFoundException ex)
             {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException($"File MOCK_DATA.csv was not found. Details: {ex}");
             }
-
-            foreach (var line in people)
+            catch (DirectoryNotFoundException ex)
             {
-                _people.Add(StringToPerson(line));
+                throw new FileNotFoundException($"Directory with the file MOCK_DATA.csv was not found. Details: {ex}");
             }
 
             // Remove header text.
-            _people.RemoveAt(0);
+            if (_people.Count != 0)
+            {
+                _people.RemoveAt(0);
+            }
+            else
+            {
+                throw new Exception("File was empty.");
+            }
         }
 
         /// <summary>
