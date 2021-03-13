@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Text;
+namespace BootCamp.Chapter
 {
     class Program
     {
@@ -9,6 +11,11 @@
             // - FindPersonWithBiggestLoss
             // - FindRichestPerson
             // - FindMostPoorPerson
+            string[] arr = { "Tom, 1", "Gillie, 1", "Agnes, 1" };
+            
+            Console.WriteLine(BalanceStats.FindRichestPerson(arr));
+            
         }
+
     }
 }
