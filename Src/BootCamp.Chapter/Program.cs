@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace BootCamp.Chapter
 {
@@ -6,7 +7,8 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Demo.AddTwoPetsToOwner();
+            Demo.SetRandomOwnerToPet();
         }
     }
 }
