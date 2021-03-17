@@ -30,7 +30,6 @@ namespace BootCamp.Chapter
 
             //Output BMI
             Console.WriteLine("Your BMI is " + bmi);
-;
 
         }
     }
