@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -9,15 +11,17 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-
-            for (var i=0; i<array.Length-1;i++)
+            if (array != null)
             {
-                if (array[i]>array[i+1])
+                for (var i = 0; i < array.Length - 1; i++)
                 {
-                    int x = array[i];
-                    array[i] = array[i + 1];
-                    array[i + 1] = x;
-                    i = -1;
+                    if (array[i] > array[i + 1])
+                    {
+                        int x = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = x;
+                        i = -1;
+                    }
                 }
             }
         }
@@ -29,16 +33,16 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            for(var i=0;i<array.Length-1;i++)
-            {
-                if (array[i]<array[i+1])
+            if (array != null)
+            { 
+                for (var i = 0; i < array.Length /2; i++)
                 {
-                    int x = array[i + 1];
-                    array[i + 1] = array[i];
-                    array[i] = x;
-                    i = -1;
+                    int x = array[i];
+                    array[i] = array[array.Length - 1 - i ];
+                    array[array.Length - 1 - i] = x;
+
                 }
-            }    
+            }
         }
 
         /// <summary>
@@ -48,20 +52,12 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            if(!(array==null || array.Length==0))
+            if(array != null)
             {
-                int[] newArray = new int[array.Length - 1];
-                int i = 0;
-                do
-                {
-                    newArray[i] = array[i];
-                    i++;
-                }
-                while (i < array.Length-1);
-
-                return newArray;
+                return RemoveAt(array, array.Length - 1);
             }
             return array;
+
         }
 
         /// <summary>
@@ -70,17 +66,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (!(array==null || array.Length==0))
-            {
-                int[] newArray = new int[array.Length - 1];
-                for(var i=1; i<array.Length;i++)
-                {
-                    newArray[i - 1] = array[i];
-                }
-
-                return newArray;
-            }
-            return array;
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -91,7 +77,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            if (!(array==null || array.Length==0) && index < array.Length)
+            if ((array !=null && array.Length>0) && (index >=0 && index < array.Length))
             {
                 int[] newArray = new int[array.Length-1];
 
@@ -119,24 +105,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            int[] newArray;
-            if(!(array==null || array.Length==0))
-            {
-                newArray = new int[array.Length + 1];
-                int i = 0;
-                newArray[i] = number;
-                foreach(var items in array)
-                {
-                    i++;
-                    newArray[i] = items;
-                }
-            }
-            else
-            {
-                newArray = new int[] { number };
-            }
-
-            return newArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -147,25 +116,15 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-
-            int[] newArray;
-            if (!(array == null || array.Length == 0))
+            if ((array != null && array.Length >= 1))
             {
-                newArray = new int[array.Length + 1];
-                int i = 0;
-                foreach(var item in array)
-                {
-                    newArray[i] = item;
-                    i++;
-                }
-
-                newArray[i] = number;
+                return InsertAt(array, number, array.Length);
             }
             else
             {
-                newArray = new int[] { number };
-            }
-            return newArray;
+                int[] newArray = new int[] { number };
+                return newArray;
+            }    
         }
 
         /// <summary>
@@ -179,30 +138,34 @@
         {
             int[] newArray;
 
-            if (!(array == null || array.Length == 0))
-            {
+            //check if array is null && length is greater than 0
+            if ((array != null && array.Length > 0))
+            {                
                 newArray = new int[array.Length + 1];
-                int i = 0;
-                foreach(var item in array)
+                int j = 0;
+                for (var i=0;i<newArray.Length;i++)
                 {
+                    
                     if (i == index)
                     {
-                        newArray[i] = number;
-                        i++;
-                    }
-                    newArray[i] = item;
-                    i++;
-                    
-
-                }
-
+                        newArray[i] = number;                        
+                        continue;
+                    }                    
+                    newArray[i] = array[j];
+                    j++;
+                }               
+                return newArray;
             }
-            else
+
+            //check if index is greater than 0 and less than or equal to the length of the array
+            else if(array == null || (index >=0 && index <= array.Length))
             {
+                Console.WriteLine("Array is NUll");
                 newArray = new int[] { number };
+                return newArray;
             }
 
-            return newArray;
+            return array;
         }
     }
 }
