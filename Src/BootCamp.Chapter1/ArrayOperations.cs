@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BootCamp.Chapter1
+﻿namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -159,8 +157,7 @@ namespace BootCamp.Chapter1
 
             //check if index is greater than 0 and less than or equal to the length of the array
             else if(array == null || (index >=0 && index <= array.Length))
-            {
-                Console.WriteLine("Array is NUll");
+            {                
                 newArray = new int[] { number };
                 return newArray;
             }
