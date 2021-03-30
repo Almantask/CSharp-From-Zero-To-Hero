@@ -14,26 +14,23 @@ namespace BootCamp.Chapter
         {
             if (!(peopleAndBalances == null || peopleAndBalances.Length == 0))
             {
-                StringBuilder namesOfTheHighestValues = new StringBuilder();
-                string[] balances = new string[peopleAndBalances.Length];
-                int balance=0;
+                StringBuilder namesOfTheHighestValues = new StringBuilder();                
+                float highBalance=0;
+
                 for (var i = 0; i < peopleAndBalances.Length; i++)
                 {
-                    balances[i] = FindMaximumByPerson(peopleAndBalances[i]);
+                    if (peopleAndBalances[i].Split(',').Length > 1)
+                        namesOfTheHighestValues.Append(FindMaximumByPerson(peopleAndBalances[i]));
                 }
 
-                namesOfTheHighestValues = FindMaximumValueAndPersons(balances, ref balance);
-                //PrintNames(valueAndNamesHighestBalances);
-
-                CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+                namesOfTheHighestValues = findMaxOrMin(namesOfTheHighestValues, true, ref highBalance);
                 
-
-                return $"{PrintNames(namesOfTheHighestValues)} had the most money ever. {(balance).ToString("C0").Replace(",", "")}.";
+                return $"{PrintNames(namesOfTheHighestValues)} had the most money ever. {PrintValue(highBalance)}.";
             }
             return "N/A.";
         }
 
-        //Returns name and maximum balance
+        //Returns name and maximum balance of person
         public static string FindMaximumByPerson (string balancesByPerson)
         {
             string[] balances = balancesByPerson.Split(',');
@@ -47,42 +44,195 @@ namespace BootCamp.Chapter
                 }
             }
 
-            return $"{balances[0]}:{yearBalanceMax}";
+            return $"{balances[0]}:{yearBalanceMax},";
         }
+        
 
-        public static StringBuilder FindMaximumValueAndPersons(string[] balances, ref int outputBalance)
+        
+        /// <summary>
+        /// Return name and loss of a person with a biggest loss (balance change negative).
+        /// </summary>
+        public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            StringBuilder namesOfHighestBalance = new StringBuilder();
-            float valueOfHighestBalance = 0.0f;
-           // string outputNames = "";
-            for (var i=0;i<balances.Length;i++)
+            if (!(peopleAndBalances == null || peopleAndBalances.Length == 0))
             {
-                float.TryParse(balances[i].Substring(balances[i].IndexOf(':') + 1), out float balance);
-                if (valueOfHighestBalance <= balance)
+                
+                StringBuilder namesOfTheBiggestLosers = new StringBuilder();
+                float valueOfBiggestLoss = 0;
+                
+                for (var i = 0; i < peopleAndBalances.Length; i++)
                 {
-                    valueOfHighestBalance = balance;
-                }
-            }
-
-            
-            for (var i=0;i<balances.Length;i++)
-            {
-                float.TryParse(balances[i].Substring(balances[i].IndexOf(':') + 1), out float balance);
-                if (valueOfHighestBalance == balance)
-                {
-                    namesOfHighestBalance.Append($"{balances[i].Substring(0, balances[i].IndexOf(':'))},");
+                    if(peopleAndBalances[i].Split(',').Length>2)
+                    {
+                        namesOfTheBiggestLosers.Append(PersonsBiggestLoss(peopleAndBalances[i]));
+                    }
                     
                 }
+
+                if (namesOfTheBiggestLosers.ToString().Length > 1)
+                {
+                    namesOfTheBiggestLosers = findMaxOrMin(namesOfTheBiggestLosers, false, ref valueOfBiggestLoss);
+                    
+                }
+                else
+                    return "N/A.";                              
+
+                return $"{PrintNames(namesOfTheBiggestLosers)} lost the most money. {PrintValue(valueOfBiggestLoss)}.";
             }
-            outputBalance = (int)valueOfHighestBalance;
-            return namesOfHighestBalance;
-            
+
+            return "N/A.";
         }
 
+        public static string PersonsBiggestLoss (string balances)
+        {         
+            string[] eachPerson = balances.Split(',');
+            float valueOfBiggestLoss = 0.0f;
 
+            for (var j = 1; j < eachPerson.Length - 1; j++)
+            {
+                float.TryParse(eachPerson[j], out float lowerYearBalance);
+                float.TryParse(eachPerson[j + 1], out float higherYearBalance);
+                if (valueOfBiggestLoss > (higherYearBalance - lowerYearBalance))
+                {
+                    valueOfBiggestLoss = (higherYearBalance - lowerYearBalance);
+                }
+            }
+
+
+            return $"{eachPerson[0]}:{valueOfBiggestLoss},";
+        }
+        
+
+        /// <summary>
+        /// Return name and current money of the richest person.
+        /// </summary>
+        public static string FindRichestPerson(string[] peopleAndBalances)
+        {
+            if (!(peopleAndBalances == null || peopleAndBalances.Length == 0))
+            {
+                StringBuilder richestPerson = new StringBuilder();
+                float richestValue = 0;
+
+                for (var i = 0; i < peopleAndBalances.Length; i++)
+                {
+                    string[] eachPerson = peopleAndBalances[i].Split(',');
+                    float.TryParse(eachPerson[eachPerson.Length - 1], out float balance);
+                    richestPerson.Append($"{eachPerson[0]}:{balance},");
+                }
+
+                StringBuilder names = new StringBuilder();
+
+                names = findMaxOrMin(richestPerson, true, ref richestValue);
+
+
+                string multiple = "is the richest person.";
+
+                if (names.ToString().Split(',').Length > 2)
+                {
+                    multiple = "are the richest people.";
+                }
+
+                return $"{PrintNames(names)} {multiple} {PrintValue(richestValue)}.";
+            }
+            return "N/A.";
+        }
+
+        
+
+        /// <summary>
+        /// Return name and current money of the most poor person.
+        /// </summary>
+        public static string FindMostPoorPerson(string[] peopleAndBalances)
+        {
+            if (!(peopleAndBalances == null || peopleAndBalances.Length == 0))
+            {
+                StringBuilder poorestPerson = new StringBuilder();
+                
+                string[] eachPerson;// = peopleAndBalances[0].Split(',');
+                float balance=0;
+                int counter=0;
+                for (var i = 0; i < peopleAndBalances.Length; i++)
+                {
+                    eachPerson = peopleAndBalances[i].Split(',');
+                    if (eachPerson.Length > 1)
+                    {
+                        float.TryParse(eachPerson[eachPerson.Length - 1], out balance);
+                        poorestPerson.Append($"{eachPerson[0]}:{balance},");
+                        counter++;
+                    }
+                }
+
+                StringBuilder names = new StringBuilder();
+
+                if (counter > 0)
+                {
+                    names = findMaxOrMin(poorestPerson, false, ref balance);
+                }
+                else
+                {
+                    return "N/A.";
+                }
+
+                string multiple = "has";
+
+                if(names.ToString().Split(',').Length>2)
+                {
+                    multiple = "have";
+                }
+
+                return $"{PrintNames(names)} {multiple} the least money. {PrintValue(balance)}.";
+            }
+            return "N/A.";
+        }
+
+        //Returns the list of people with max or min value
+        public static StringBuilder findMaxOrMin(StringBuilder listOfPeople, bool isMax, ref float balance)
+        {
+            string[] namesAndBalances = listOfPeople.ToString()[..^1].Split(',');
+            StringBuilder names = new StringBuilder();
+            //float value=0;
+            if (isMax)
+            {
+                float.TryParse(namesAndBalances[0].Substring(namesAndBalances[0].IndexOf(':') + 1), out balance);
+                for (var i = 1; i < namesAndBalances.Length; i++)
+                {
+                    float.TryParse(namesAndBalances[i].Substring(namesAndBalances[i].IndexOf(':') + 1), out float highBalance);
+                    if (balance <= highBalance)
+                    {
+                        balance = highBalance;
+                    }
+                }
+            }
+            else
+            {
+                float.TryParse(namesAndBalances[0].Substring(namesAndBalances[0].IndexOf(':') + 1), out balance);
+                for (var i = 0; i < namesAndBalances.Length; i++)
+                {
+                    float.TryParse(namesAndBalances[i].Substring(namesAndBalances[i].IndexOf(':') + 1), out float highBalance);
+                    if (balance >= highBalance)
+                    {
+                        balance = highBalance;
+                    }
+                }
+            }
+
+            for (var i = 0; i < namesAndBalances.Length; i++)
+            {
+                float.TryParse(namesAndBalances[i].Substring(namesAndBalances[i].IndexOf(':') + 1), out float highBalance);
+                if (balance == highBalance)
+                {
+                    names.Append($"{namesAndBalances[i].Substring(0, namesAndBalances[i].IndexOf(':'))},");
+
+                }
+            }
+
+            return names;
+        }
+
+        //Print Name(s)
         public static string PrintNames(StringBuilder names)
         {
-            if (names.ToString().CompareTo("N/A.") != 0 && names.ToString().Length>0)
+            if (names.ToString().CompareTo("N/A.") != 0 && names.ToString().Length > 0)
             {
                 string[] writeOutNames = names.ToString()[..^1].Split(',');
                 StringBuilder outputNames = new StringBuilder();
@@ -108,166 +258,16 @@ namespace BootCamp.Chapter
             }
             else
                 return "N/A.";
-            
-
-            
         }
-
-
-        /// <summary>
-        /// Return name and loss of a person with a biggest loss (balance change negative).
-        /// </summary>
-        public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
+        //Print value (formatted)
+        public static string PrintValue(float value)
         {
-            if (!(peopleAndBalances == null || peopleAndBalances.Length == 0))
-            {
-                
-                string[] balances = new string[peopleAndBalances.Length];
-                StringBuilder namesOfTheBiggestLosers = new StringBuilder();
-                float valueOfBiggestLoss = 0;
-                for(var i=0;i<peopleAndBalances.Length;i++)
-                {
-                    balances[i] = PersonsBiggestLoss(peopleAndBalances[i]);
-                }
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            var numberFormat = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+            numberFormat.CurrencyNegativePattern = 1;
 
-                namesOfTheBiggestLosers = NamesOfTheBiggestLoss(balances, ref valueOfBiggestLoss);
-
-                string outputNames = PrintNames(namesOfTheBiggestLosers);
-                if (outputNames.CompareTo("N/A.") == 0)
-                    return "N/A.";
-
-                CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-                culture.NumberFormat.CurrencyNegativePattern = 1;
-                string s = string.Format(culture, "{0:c0}", valueOfBiggestLoss);
-
-                CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-                return $"{outputNames} lost the most money. {s}.";
-            }
-            return "N/A.";
-
+            return value.ToString("C0", numberFormat).Replace(",", "");
         }
 
-        public static string PersonsBiggestLoss (string balances)
-        {
-            
-
-            string[] eachPerson = balances.Split(',');
-            float valueOfBiggestLoss = 0.0f;
-            if (eachPerson.Length > 2)
-            {
-                for (var j = 1; j < eachPerson.Length - 1; j++)
-                {
-                    float.TryParse(eachPerson[j], out float lowerYearBalance);
-                    float.TryParse(eachPerson[j + 1], out float higherYearBalance);
-                    if (valueOfBiggestLoss > (higherYearBalance - lowerYearBalance))
-                    {
-                        valueOfBiggestLoss = (higherYearBalance - lowerYearBalance);
-
-                    }
-                }
-            }
-            else
-                return "N/A.";
-
-            return $"{eachPerson[0]}:{valueOfBiggestLoss}";
-        }
-
-
-        public static StringBuilder NamesOfTheBiggestLoss(string[] balances,ref float outputLoss)
-        {
-            StringBuilder namesOfTheBiggestLosers = new StringBuilder();
-            float valueOfBiggestLoss = 0.0f;
-           
-            for (var i=0;i<balances.Length;i++)
-            {
-                if (balances[i].CompareTo("N/A.")!=0)
-                {
-                    float.TryParse(balances[i].Substring(balances[i].IndexOf(':') + 1), out float loss);
-                    if (valueOfBiggestLoss > loss)
-                    {
-                        valueOfBiggestLoss = loss;
-                    }
-                }
-
-            }
-
-            for (var i = 0; i < balances.Length; i++)
-            {
-                if (balances[i].CompareTo("N/A.") != 0)
-                {
-                    float.TryParse(balances[i].Substring(balances[i].IndexOf(':') + 1), out float balance);
-                    if (valueOfBiggestLoss == balance)
-                    {
-                        namesOfTheBiggestLosers.Append($"{balances[i].Substring(0, balances[i].IndexOf(':'))},");
-
-                    }
-                }
-            }
-
-            outputLoss = valueOfBiggestLoss;
-
-            return namesOfTheBiggestLosers;
-
-        }
-
-
-        /// <summary>
-        /// Return name and current money of the richest person.
-        /// </summary>
-        public static string FindRichestPerson(string[] peopleAndBalances)
-        {
-            if (!(peopleAndBalances == null || peopleAndBalances.Length == 0))
-            {
-                string richestPerson = "";
-                float richestValue = 0;
-
-                for (var i = 0; i < peopleAndBalances.Length; i++)
-                {
-                    string[] eachPerson = peopleAndBalances[i].Split(',');
-                    float.TryParse(eachPerson[eachPerson.Length - 1], out float balance);
-                    if (richestValue < balance)
-                    {
-                        richestPerson = eachPerson[0];
-                        richestValue = balance;
-                    }
-                }
-
-                CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-                return $"{richestPerson}{Environment.NewLine}{richestValue:C0}";
-            }
-            return "N/A.";
-        }
-
-        /// <summary>
-        /// Return name and current money of the most poor person.
-        /// </summary>
-        public static string FindMostPoorPerson(string[] peopleAndBalances)
-        {
-            if (!(peopleAndBalances == null || peopleAndBalances.Length == 0))
-            {
-                string poorestPerson = "";
-                float poorestValue = 0;
-
-                string[] eachPerson = peopleAndBalances[0].Split(',');
-                float.TryParse(eachPerson[eachPerson.Length - 1], out float balance);
-                poorestValue = balance;
-                poorestPerson = eachPerson[0];
-
-                for (var i = 1; i < peopleAndBalances.Length; i++)
-                {
-                    eachPerson = peopleAndBalances[i].Split(',');
-                    float.TryParse(eachPerson[eachPerson.Length - 1], out balance);
-                    if (poorestValue >= balance)
-                    {
-                        poorestPerson = eachPerson[0];
-                        poorestValue = balance;
-                    }
-                }
-
-                CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-                return $"{poorestPerson}{Environment.NewLine}{poorestValue:C0}";
-            }
-            return "N/A.";
-        }
     }
 }
