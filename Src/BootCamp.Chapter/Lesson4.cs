@@ -30,9 +30,11 @@ namespace BootCamp.Chapter
 
         public static float BMICalc(float weight, float height)
         {
+            string errmsg1 = $"Height cannot be equal or less than zero, but was {height}.";
+            string errmsg2 = $"Weight cannot be equal or less than zero, but was {weight}.";
             if (weight <= 0 || height <= 0)
             {
-                Console.WriteLine("Failed calculating BMI. Reason:");
+                Console.WriteLine($"Failed calculating BMI. Reason: \"{errmsg1}\" \"{errmsg2}\" ");
                 return -1;
             }
             else
