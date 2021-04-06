@@ -19,11 +19,17 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Height: ");
                 double height = double.Parse(Console.ReadLine());
 
-                var bmi = weight / ((height / 100) * (height / 100));
+                var bmi = BMICalc(weight, height);
 
                 Console.WriteLine($"{name} {sureName} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
 
-                Console.WriteLine("Your BMI - " + bmi);
+                Console.WriteLine($"Your BMI - {bmi}");
             }
+        }
+
+        static double BMICalc(double weight, double height)
+        {
+            return weight / ((height / 100) * (height / 100));
+        }
     }
 }
