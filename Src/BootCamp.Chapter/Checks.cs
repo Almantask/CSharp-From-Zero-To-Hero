@@ -15,21 +15,19 @@ namespace BootCamp.Chapter
     public static class Checks
     {
         public static int PromptInt(string message)
-        {
-            // To do: call your implementation. 
-            return 0;
+        {       
+            return Lesson4.PrintAndReadInt(message);
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+
+            return Lesson4.PrintAndReadString(message);
         }
 
         public static float PromptFloat(string message)
-        {
-            // To do: call your implementation. 
-            return 0;
+        {         
+            return Lesson4.PrintAndReadFloat(message);
         }
 
         public static float CalculateBmi(float weight, float height)
