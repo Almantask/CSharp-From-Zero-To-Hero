@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
 
                 Console.WriteLine($"{name} {sureName} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
 
-                Console.WriteLine($"Your BMI - {bmi}");
+                Console.WriteLine($"Your BMI - {bmi:N2}");
             }
         }
 
