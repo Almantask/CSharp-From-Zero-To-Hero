@@ -9,7 +9,25 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+
+            if (array == null || array.Length == 0)
+            {
+                array = null;
+                return;
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array.Length - 1; j++)
+                {
+                    if (array[j] < array[j + 1]) continue;
+                    else
+                    {
+                        int temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -19,7 +37,18 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
+            if (array == null || array.Length == 0)
+            {
+                array = null;
+                return;
+            }
             // ToDo: implement.
+            for (int i = 0; i * 2 < array.Length - 1; i++)
+            {
+                int temp = array[i];
+                array[i] = array[array.Length - i - 1];
+                array[array.Length - i - 1] = temp;
+            }
         }
 
         /// <summary>
@@ -29,8 +58,17 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            int[] tempArray = new int[array.Length - 1];
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                tempArray[i] = array[i];
+            }
+            return tempArray;
         }
 
         /// <summary>
@@ -39,8 +77,16 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            int[] tempArray = new int[array.Length - 1];
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                tempArray[i] = array[i + 1];
+            }
+            return tempArray;
         }
 
         /// <summary>
@@ -51,8 +97,17 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            int[] tempArray = new int[array.Length - 1];
+            for(int i = 0; i < array.Length; i++)
+            {
+                
+            }
+            return tempArray;
         }
 
         /// <summary>
@@ -63,8 +118,21 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return new int[] { number };
+            }
+            int[] tempArray = new int[array.Length + 1];
+            for(int i = 0; i < tempArray.Length; i++)
+            {
+                if(i == 0)
+                {
+                    tempArray[0] = number;
+                    continue;
+                }
+                tempArray[i] = array[i - 1];
+            }
+            return tempArray;
         }
 
         /// <summary>
@@ -75,8 +143,17 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return new int[] { number };
+            }
+            int[] tempArray = new int[array.Length + 1];
+            for (int i = 0; i < array.Length; i++)
+            {
+                tempArray[i] = array[i];
+            }
+            tempArray[tempArray.Length - 1] = number;
+            return tempArray;
         }
 
         /// <summary>
