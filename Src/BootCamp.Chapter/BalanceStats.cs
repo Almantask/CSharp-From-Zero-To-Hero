@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+using System.IO;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
     {
