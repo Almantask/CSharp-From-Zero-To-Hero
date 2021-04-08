@@ -104,18 +104,22 @@ namespace BootCamp.Chapter1
             {
                 return array;
             }
+            if (index == 0) return RemoveFirst(array);
             int[] tempArray = new int[array.Length - 1];
-            for(int i = 0; i < array.Length; i++)
+            int i = 0;
+            while(i < tempArray.Length)
             {
-                for(int j = 0; j < array.Length; j++)
+                if (i >= index)
                 {
-                    if(i == index)
-                    {
-
-                    }
+                    tempArray[i] = array[i + 1];
+                    i++;
+                    continue;
                 }
+                tempArray[i] = array[i];
+                i++;
             }
             return tempArray;
+            
         }
 
         /// <summary>
@@ -173,32 +177,26 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array == null)
-            {
-                return new int[] { number };
-            }
-            if(index > array.Length || index < array.Length)
-            {
-                return array;
-            }
+            if (array == null) return new int[] { number };
+            if (index > array.Length || index < 0) return array;
+            if(array.Length == 0) return new int[] { number };
             int[] tempArray = new int[array.Length + 1];
-
-
-            for(int i = 0; i < array.Length; i++)
+            int i = 0;
+            while(i < array.Length)
             {
-                if(index == i)
+                if(i == index)
                 {
+                    tempArray[i] = number;
+                    i++;
                     continue;
                 }
-                if(i > index)
-                {
-                    tempArray[i] = array[i - 1];
-                    break;
-                }
                 tempArray[i] = array[i];
+                i++;
             }
-            tempArray[index] = number;
             return tempArray;
         }
+
+            
     }
 }
+
