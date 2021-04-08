@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter1
+﻿using System.Linq;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -98,14 +100,20 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             
-            if (array == null || array.Length == 0)
+            if (array == null || array.Length == 0 || index > array.Length - 1 || index < 0)
             {
                 return array;
             }
             int[] tempArray = new int[array.Length - 1];
             for(int i = 0; i < array.Length; i++)
             {
-                
+                for(int j = 0; j < array.Length; j++)
+                {
+                    if(i == index)
+                    {
+
+                    }
+                }
             }
             return tempArray;
         }
@@ -165,8 +173,32 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null)
+            {
+                return new int[] { number };
+            }
+            if(index > array.Length || index < array.Length)
+            {
+                return array;
+            }
+            int[] tempArray = new int[array.Length + 1];
+
+
+            for(int i = 0; i < array.Length; i++)
+            {
+                if(index == i)
+                {
+                    continue;
+                }
+                if(i > index)
+                {
+                    tempArray[i] = array[i - 1];
+                    break;
+                }
+                tempArray[i] = array[i];
+            }
+            tempArray[index] = number;
+            return tempArray;
         }
     }
 }
