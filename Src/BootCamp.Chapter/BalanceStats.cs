@@ -26,7 +26,27 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            string solutionStr = "";
+            int currentMoneyRichest = 0;
+            if(peopleAndBalances == null) return "N/A.";
+            if (peopleAndBalances.Length == 0) return "N/A.";
+            for(int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                string[] words = peopleAndBalances[i].Split(",");
+                if(int.Parse(words[words.Length - 1]) > currentMoneyRichest){
+                    currentMoneyRichest = int.Parse(words[words.Length - 1]);
+                }
+            }
+            for(int j = 0; j < peopleAndBalances.Length; j++)
+            {
+                string[] words = peopleAndBalances[j].Split(",");
+                if(int.Parse(words[words.Length - 1]) == currentMoneyRichest)
+                {
+                    solutionStr += " " + words[0];
+                }
+            }
+            solutionStr += " " +currentMoneyRichest;
+            return solutionStr;
         }
 
         /// <summary>
