@@ -14,7 +14,21 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {
-            File.WriteAllText(cleanedFile, "a");
+            if (IsNullOrEmpty(dirtyFile)) throw new ArgumentException();
+
+            if (!File.Exists(dirtyFile)) throw new InvalidBalancesException("No path!", new ArgumentException());
+            string text = File.ReadAllText(dirtyFile);
+            text = text.Replace("_", "");
+            File.WriteAllText(cleanedFile, text);
+        }
+
+        private static bool IsNullOrEmpty(string dirtyFile)
+        {
+            if(dirtyFile == null || dirtyFile.Length == 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

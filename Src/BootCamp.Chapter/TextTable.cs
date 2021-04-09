@@ -34,6 +34,7 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
+            
             return "";
         }
     }
