@@ -11,12 +11,48 @@ namespace BootCamp.Chapter
     {
         public static string Encrypt(string message, byte shift)
         {
+            try
+            {
+                byte[] byteMessage = Encoding.GetEncoding("iso-8859-1").GetBytes(message);
+                for (var i = 0; i < byteMessage.Length; i++)
+                {
+                    
+                    byteMessage[i] = (byte)(byteMessage[i] + shift);
+                    
+                }
+                message = System.Text.Encoding.GetEncoding("iso-8859-1").GetString(byteMessage);
+            }
+            catch(ArgumentNullException e)
+            {
+                return null;
+            }
+            
+
+           
+            
             return message;
         }
 
         public static string Decrypt(string message, byte shift)
         {
-            return message;
+            try
+            {
+                byte[] byteMessage = Encoding.GetEncoding("iso-8859-1").GetBytes(message);
+                for (var i = 0; i < byteMessage.Length; i++)
+                {
+                    
+                    byteMessage[i] = (byte)(byteMessage[i] - shift);
+                    
+                }
+                message = System.Text.Encoding.GetEncoding("iso-8859-1").GetString(byteMessage);
+                return message;
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+
         }
+
     }
 }
