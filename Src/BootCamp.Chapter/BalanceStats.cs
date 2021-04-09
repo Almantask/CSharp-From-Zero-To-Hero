@@ -48,29 +48,33 @@ namespace BootCamp.Chapter
             if (peopleAndBalances == null) return TheFinalStringZero();
             if (peopleAndBalances.Length == 0) return TheFinalStringZero();
 
-            int biggestLossPersonMoney = int.MaxValue;
+            int biggestLossPersonMoney = int.MinValue;
             List<Person> biggestLossArrayPersons = new List<Person>();
             Person[] personsArray = GetArrayOfPerson(peopleAndBalances);
 
             for (int j = 0; j < personsArray.Length; j++)
             {
-                if (personsArray[j].GetLowestMoneyEver() < biggestLossPersonMoney)
+                if (personsArray[j].GetTheBiggestChange() > biggestLossPersonMoney)
                 {
                     biggestLossArrayPersons.Clear();
                     biggestLossArrayPersons.Add(personsArray[j]);
-                    biggestLossPersonMoney = personsArray[j].GetLowestMoneyEver();
+                    biggestLossPersonMoney = personsArray[j].GetTheBiggestChange();
                 }
-                else if (personsArray[j].GetLowestMoneyEver() == biggestLossPersonMoney)
+                else if (personsArray[j].GetTheBiggestChange() == biggestLossPersonMoney)
                 {
                     biggestLossArrayPersons.Add(personsArray[j]);
                 }
             }
+            if(biggestLossPersonMoney == int.MinValue)
+            {
+                return "N/A.";
+            }
             if (biggestLossArrayPersons.Count == 1)
             {
-                return TheFinalStringOne(biggestLossArrayPersons, biggestLossPersonMoney, " lost the most money. ¤");
+                return TheFinalStringOne(biggestLossArrayPersons, biggestLossPersonMoney, " lost the most money. -¤");
             }
 
-            return TheFinalStringMoreThenOne(biggestLossArrayPersons, biggestLossPersonMoney, "are the richest people. ¤");
+            return TheFinalStringMoreThenOne(biggestLossArrayPersons, biggestLossPersonMoney, "are the richest people. -¤");
 
         }
 

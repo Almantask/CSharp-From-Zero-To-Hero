@@ -50,6 +50,20 @@ namespace BootCamp.Chapter
             }
             return LowesetMoneyEver;
         }
+        public int GetTheBiggestChange()
+        {
+            int biggestChange = int.MinValue;
+            for(int i = 0; i < amount.Length - 1; i++)
+            {
+                if (amount[i] > amount[i + 1])
+                {
+                    biggestChange = amount[i] - amount[i + 1];
+                }
+            }
+            
+            return biggestChange;
+
+        }
 
         public int GetCurrentMoney()
         {
