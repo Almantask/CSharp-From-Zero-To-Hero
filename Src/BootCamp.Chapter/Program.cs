@@ -34,10 +34,7 @@ namespace BootCamp.Chapter
             finally
             {            
                 ProgramShutdown(logger);
-            }
-            
-
-            
+            }         
         }
 
         static double BMICalc(double weight, double height)
