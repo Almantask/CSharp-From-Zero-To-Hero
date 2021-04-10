@@ -7,9 +7,29 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            var p = new Program();
-            p.LogToFile("Again");
-            p.LogToConsole("We logged to file.");
+            /*            var p = new Program();
+                        p.LogToFile("Again");
+                        p.LogToConsole("We logged to file.");*/
+
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine("First name: ");
+                string name = Console.ReadLine();
+                Console.WriteLine("Sure Name: ");
+                string sureName = Console.ReadLine();
+                Console.WriteLine("Age: ");
+                int age = int.Parse(Console.ReadLine());
+                Console.WriteLine("Weight: ");
+                double weight = double.Parse(Console.ReadLine());
+                Console.WriteLine("Height: ");
+                double height = double.Parse(Console.ReadLine());
+
+                var bmi = BMICalc(weight, height);
+
+                Console.WriteLine($"{name} {sureName} is {age} years old, his weight is {weight} kg and his height is {height} cm.");
+
+                Console.WriteLine($"Your BMI - {bmi:N2}");
+            }
         }
 
         public void LogToConsole(string text)
