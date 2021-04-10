@@ -1,0 +1,13 @@
+19:22:54   Program Booted UP!!
+19:22:54   First Name: 
+19:22:57   22
+19:22:57   Sure Name: 
+19:23:04   2521
+19:23:04   Age: 
+19:23:06   System.FormatException: Input string was not in a correct format.
+   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Number.ParseInt32(ReadOnlySpan`1 value, NumberStyles styles, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at BootCamp.Chapter.Program.ReadAndWriteInt(String text, ILogger logger) in C:\Users\Rabanian\Desktop\C# Bootcamp\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Program.cs:line 59
+   at BootCamp.Chapter.Program.Main(String[] args) in C:\Users\Rabanian\Desktop\C# Bootcamp\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Program.cs:line 20
+19:23:06   Program Shutdown!!

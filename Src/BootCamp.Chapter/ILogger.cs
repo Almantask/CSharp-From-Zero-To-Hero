@@ -6,8 +6,6 @@ namespace BootCamp.Chapter
 {
     public interface ILogger
     {
-        void LogToConsole(string text);
-
-        void LogToFile(string text);
+        void Log(string text);
     }
 }
