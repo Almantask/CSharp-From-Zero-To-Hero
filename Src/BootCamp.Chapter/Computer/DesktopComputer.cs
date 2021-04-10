@@ -1,16 +1,11 @@
 ﻿namespace BootCamp.Chapter.Computer
 {
-    public abstract class DesktopComputer
+    public class DesktopComputer
     {
 
-        public DesktopComputer(Body body, Ram ram, Cpu cpu, Gpu gpu, HardDisk hardDisk, Motherboard motherboard)
+        public DesktopComputer()
         {
-            body = new Body();
-            ram = new Ram();
-            cpu = new Cpu();
-            gpu = new Gpu();
-            hardDisk = new HardDisk();
-            motherboard = new Motherboard();
+
         }
 
         private Body _body;
@@ -19,10 +14,20 @@
             return _body;
         }
 
+        public void SetBody(Body body)
+        {
+            _body = body;
+        }
+
         private Ram _ram;
         public Ram GetRam()
         {
             return _ram;
+        }
+
+        public void SetRam(Ram ram)
+        {
+            _ram = ram;
         }
 
         private Cpu _cpu;
@@ -32,16 +37,31 @@
 
         }
 
+        public void SetCpu(Cpu cpu)
+        {
+            _cpu = cpu;
+        }
+
         private Gpu _gpu;
         public Gpu GetGpu()
         {
             return _gpu;
         }
 
+        public void SetGpu(Gpu gpu)
+        {
+            _gpu = gpu;
+        }
+
         private HardDisk _hard;
         public HardDisk GetHard()
         {
             return _hard;
+        }
+
+        public void SetHard(HardDisk hardDisk)
+        {
+            _hard = hardDisk;
         }
 
 
@@ -51,7 +71,9 @@
             return _motherboard;
         }
 
-
-
+        public void SetMotherBoard(Motherboard motherboard)
+        {
+            _motherboard = motherboard;
+        }
     }
 }

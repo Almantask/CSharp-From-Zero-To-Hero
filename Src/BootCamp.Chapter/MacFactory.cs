@@ -6,11 +6,49 @@ using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
-    public class MacFactory
+    public class MacFactory : ComputerFactory
     {
-        public DesktopComputer Assemble()
+        public override DesktopComputer Assemble()
         {
-            return new DesktopComputer();
+            var computer = new DesktopComputer();
+            PrepareBody(computer);
+            InstallCpu(computer);
+            InstallGpu(computer);
+            InstallRam(computer);
+            InstallHardDisk(computer);
+            InstallMotherboard(computer);
+
+            return computer;
+        }
+
+        public override void InstallCpu(DesktopComputer computer)
+        {
+            computer.SetCpu(new Cpu());
+        }
+
+        public override void InstallGpu(DesktopComputer computer)
+        {
+            computer.SetGpu(new Gpu());
+        }
+
+        public override void InstallHardDisk(DesktopComputer computer)
+        {
+            computer.SetHard(new HardDisk());
+        }
+
+        public override void InstallMotherboard(DesktopComputer computer)
+        {
+            computer.SetMotherBoard(new Motherboard());
+        }
+
+        public override void InstallRam(DesktopComputer computer)
+        {
+            computer.SetRam(new Ram());
+        }
+
+        public override void PrepareBody(DesktopComputer computer)
+        {
+            computer.SetBody(new Body());
         }
     }
 }
