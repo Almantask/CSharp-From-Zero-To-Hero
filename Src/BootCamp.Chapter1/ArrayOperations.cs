@@ -11,7 +11,6 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-
             if (array == null)
             {
                 return;
@@ -38,9 +37,8 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array == null || array.Length == 0)
+            if (array == null)
             {
-                array = null;
                 return;
             }
             // ToDo: implement.
@@ -64,12 +62,7 @@ namespace BootCamp.Chapter1
             {
                 return array;
             }
-            int[] tempArray = new int[array.Length - 1];
-            for (int i = 0; i < tempArray.Length; i++)
-            {
-                tempArray[i] = array[i];
-            }
-            return tempArray;
+            return RemoveAt(array, array.Length - 1);
         }
 
         /// <summary>
@@ -82,12 +75,8 @@ namespace BootCamp.Chapter1
             {
                 return array;
             }
-            int[] tempArray = new int[array.Length - 1];
-            for (int i = 0; i < tempArray.Length; i++)
-            {
-                tempArray[i] = array[i + 1];
-            }
-            return tempArray;
+
+            return RemoveAt(array, 0);
         }
 
         /// <summary>
@@ -133,17 +122,7 @@ namespace BootCamp.Chapter1
             {
                 return new int[] { number };
             }
-            int[] tempArray = new int[array.Length + 1];
-            for(int i = 0; i < tempArray.Length; i++)
-            {
-                if(i == 0)
-                {
-                    tempArray[0] = number;
-                    continue;
-                }
-                tempArray[i] = array[i - 1];
-            }
-            return tempArray;
+            return InsertAt(array, number, 0);
         }
 
         /// <summary>
@@ -158,13 +137,7 @@ namespace BootCamp.Chapter1
             {
                 return new int[] { number };
             }
-            int[] tempArray = new int[array.Length + 1];
-            for (int i = 0; i < array.Length; i++)
-            {
-                tempArray[i] = array[i];
-            }
-            tempArray[tempArray.Length - 1] = number;
-            return tempArray;
+            return InsertAt(array, number, array.Length - 1);
         }
 
         /// <summary>
