@@ -12,9 +12,8 @@ namespace BootCamp.Chapter1
         public static void Sort(int[] array)
         {
 
-            if (array == null || array.Length == 0)
+            if (array == null)
             {
-                array = null;
                 return;
             }
             for (int i = 0; i < array.Length; i++)
