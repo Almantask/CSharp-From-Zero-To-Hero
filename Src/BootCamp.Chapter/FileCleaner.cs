@@ -15,8 +15,6 @@ namespace BootCamp.Chapter
         public static void Clean(string dirtyFile, string cleanedFile)
         {
             string[] list = File.ReadAllLines(dirtyFile);
-       
-      
             string[] NewList = { };
             StringBuilder sr = new StringBuilder();
 
@@ -25,36 +23,32 @@ namespace BootCamp.Chapter
                 NewList = list[i].Split(",");
                 for (int j = 0; j < NewList.Length; j++)
                 {
-                    NewList[j] = CleanAndVerify(NewList[j]);                  
+                    NewList[j] = CleanAndVerify(NewList[j]);
                     sr.Append(NewList[j] + ",");
                 }
                 sr.Remove(sr.Length - 1, 1);
                 if (i != list.Length - 1) sr.AppendLine();
-            }
+            } 
 
-            static string CleanAndVerify(string Element)
+             File.WriteAllText(cleanedFile, sr.ToString());
+           
+        }
+
+        static string CleanAndVerify(string Element)
+        {
+            string NewElement = "";           
+            foreach (var item in Element)
             {
-                string NewElement = "";
-                foreach (var item in Element)
-                {
-                    if (item != '_')
-                    {
-                        NewElement += item;
-                    }
-                }              
-                try
-                {
-                    float.Parse(NewElement);
-                }
-                catch (FormatException e)
-                {
-                    throw new InvalidBalancesException("this is not a number", e);                    
-                }
+                if (item != '_') NewElement += item;
+            }
+            try
+            {
                 return Convert.ToString(NewElement);
             }
-            Console.WriteLine(sr.ToString());
-            File.WriteAllText(cleanedFile, sr.ToString());
+            catch (FormatException e)
+            {
+                throw new InvalidBalancesException(e.Message,e);
+            }
         }
-        
     }
 }
