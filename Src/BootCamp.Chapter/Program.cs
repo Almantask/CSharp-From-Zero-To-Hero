@@ -26,17 +26,17 @@ namespace BootCamp.Chapter
 
             var list2 = LinqMethods.SnapFingers(intCollection, x => x % 2 == 0);
 
-            Console.WriteLine($"Collection A:{ListToString(intCollection)}{Environment.NewLine}");
-
+            Console.WriteLine($"Task 1&2. Collection A:{ListToString(intCollection)}{Environment.NewLine}");
             Console.WriteLine("Collection B (number starts with 1 from Collection A):");
+
             foreach (var item in list1)
             {
                 Console.WriteLine(item);
             }
 
             Console.WriteLine();
-
             Console.WriteLine("Collection C (number is equal from Collection A):");
+
             foreach (var item in list2)
             {
                 Console.WriteLine(item);
