@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleApp
+namespace BootCamp.Chapter
 {
     class Program
     {
