@@ -9,7 +9,13 @@ namespace BootCamp.Chapter
         public InvalidBalancesException(string reason, Exception innerException)
             : base(reason, innerException)
         {
+           
             
+        }
+        public InvalidBalancesException(string reason)
+          : base(reason)
+        {
+
         }
     }
 }
