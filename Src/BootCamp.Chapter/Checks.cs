@@ -16,26 +16,37 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            var Age = message;
+            var ageConverted = int.Parse(Age);
+
+            Console.WriteLine(ageConverted);
+
+            return ageConverted;
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            var Name = message;
+  
+            return Name;
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            var convertedFloat = float.Parse(message);
+            
+            return convertedFloat;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            var inMeters = height * 100;
+            var metersSquared = Math.Pow(inMeters, 2);
+            var BMI = weight / metersSquared;
+
+            Console.WriteLine($"Your BMI is {BMI}");
+
+            return (float)BMI;
         }
     }
 }
