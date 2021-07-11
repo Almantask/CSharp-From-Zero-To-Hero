@@ -14,29 +14,36 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
-        public static int PromptInt(string message)
+        public static int PromptInt()
         {
-            var Age = message;
-            var ageConverted = int.Parse(Age);
+            Console.WriteLine("Please enter your age:");
+            var age = Console.ReadLine();
+            var ageConverted = int.Parse(age);
 
-            Console.WriteLine(ageConverted);
 
             return ageConverted;
         }
 
-        public static string PromptString(string message)
+
+        public static string PromptString()
         {
-            var Name = message;
-  
-            return Name;
+            Console.WriteLine("Please enter your name:");
+            var name = Console.ReadLine();
+
+            return name;
         }
+
+
 
         public static float PromptFloat(string message)
         {
-            var convertedFloat = float.Parse(message);
-            
-            return convertedFloat;
+        var input = message;
+        var convertedFloat = float.Parse(input);
+
+        return convertedFloat;
         }
+
+
 
         public static float CalculateBmi(float weight, float height)
         {
@@ -44,9 +51,8 @@ namespace BootCamp.Chapter
             var metersSquared = Math.Pow(inMeters, 2);
             var BMI = weight / metersSquared;
 
-            Console.WriteLine($"Your BMI is {BMI}");
-
             return (float)BMI;
         }
+
     }
 }

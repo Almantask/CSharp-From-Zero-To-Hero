@@ -9,25 +9,17 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter your name:");
-            var Name = Console.ReadLine();
-            Checks.PromptString(Name);
-
-            Console.WriteLine("Please enter your age:");
-            var Age = Console.ReadLine();
-            Checks.PromptInt(Age);
-
+            
+            Checks.PromptString();
+            Checks.PromptInt();
             Console.WriteLine("Please enter your height(cm):");
-            var Height = Console.ReadLine();
-            var C_Height = Checks.PromptFloat(Height);
-            Console.WriteLine(C_Height);
+            var height = Console.ReadLine();
+            var cHeight = Checks.PromptFloat(height);
+            Console.WriteLine("Please enter your weight(km):");
+            var weight = Console.ReadLine();
+            var cWeight = Checks.PromptFloat(weight);
 
-            Console.WriteLine("Please enter your weight(kg):");
-            var Weight = Console.ReadLine();
-            var C_Weight = Checks.PromptFloat(Weight);
-            Console.WriteLine(C_Weight);
-
-            Checks.CalculateBmi(C_Weight, C_Height);
+            Checks.CalculateBmi(cWeight, cHeight);
         }
     }
 }
