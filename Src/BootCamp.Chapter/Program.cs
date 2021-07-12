@@ -9,17 +9,9 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            
-            Checks.PromptString();
-            Checks.PromptInt();
-            Console.WriteLine("Please enter your height(cm):");
-            var height = Console.ReadLine();
-            var cHeight = Checks.PromptFloat(height);
-            Console.WriteLine("Please enter your weight(km):");
-            var weight = Console.ReadLine();
-            var cWeight = Checks.PromptFloat(weight);
 
-            Checks.CalculateBmi(cWeight, cHeight);
+            Lesson3.Demo();
+            
         }
     }
 }
