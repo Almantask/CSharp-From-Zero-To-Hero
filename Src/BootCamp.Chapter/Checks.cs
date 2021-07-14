@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -14,44 +15,115 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class Checks
     {
-        public static int PromptInt()
+        public static int PromptInt(string message)
         {
-            Console.WriteLine("Please enter your age:");
+            Console.WriteLine(message);
             var age = Console.ReadLine();
-            var ageConverted = int.Parse(age);
 
+            int intOutput;
+            bool isNumerical = int.TryParse(age, out intOutput);
 
-            return ageConverted;
+            if(isNumerical)
+            {
+                var ageConverted = int.Parse(age);
+                return ageConverted;
+            }
+            else
+            {
+                Console.WriteLine($"\"{age}\" is not a valid number.");
+                return -1;
+            }
         }
 
 
-        public static string PromptString()
+        public static string PromptString(string message)
         {
-            Console.WriteLine("Please enter your name:");
+            Console.WriteLine(message);
             var name = Console.ReadLine();
 
-            return name;
+            var emptyCheck = String.IsNullOrEmpty(name);
+
+            if(emptyCheck)
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            else
+            {
+                return name;
+            }
+
         }
 
 
 
         public static float PromptFloat(string message)
         {
-        var input = message;
-        var convertedFloat = float.Parse(input);
+            Console.WriteLine(message);
+            var input = Console.ReadLine();
+            var emptyCheck = String.IsNullOrWhiteSpace(input);
 
-        return convertedFloat;
+            if (!emptyCheck)
+            {
+                float fltOutput;
+                bool isFlt = float.TryParse(input, out fltOutput);
+
+                if (isFlt)
+                {
+                    var convertedFloat = float.Parse(input, CultureInfo.InvariantCulture);
+                    return convertedFloat;
+                }
+                else
+                {
+                    Console.WriteLine($"\"{input}\" is not a valid number.");
+                    return -1;
+                }
+                
+            }
+            else
+            {
+                return -1;
+            }
+
+ 
         }
 
 
 
         public static float CalculateBmi(float weight, float height)
         {
-            var inMeters = height * 100;
-            var metersSquared = Math.Pow(inMeters, 2);
-            var BMI = weight / metersSquared;
+            if ((weight > 0) && (height > 0))
+            {
+                if (weight > 0)
+                {
+                    if (height > 0)
+                    {
+                        var metersSquared = Math.Pow(height, 2);
+                        var bmi = weight / metersSquared;
 
-            return (float)BMI;
+                        return (float)bmi;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Failed calculating BMI. Reason: Height cannot be equal or less than zero, but was {height}.");
+                        return -1;
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine($"Failed calculating BMI. Reason: Weight cannot be equal or less than zero, but was {weight}.");
+                    return -1;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Failed calculating BMI. Reason: Height cannot be equal or less than zero, but was {height}.");
+                Console.WriteLine($"Failed calculating BMI. Reason: Weight cannot be equal or less than zero, but was {weight}.");
+                return -1;
+            }
+            
+            
         }
 
     }

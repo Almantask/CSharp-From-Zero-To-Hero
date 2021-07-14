@@ -11,16 +11,11 @@ namespace BootCamp.Chapter
         public static void Demo()
         {
 
-            Checks.PromptString();
-            Checks.PromptInt();
+            Checks.PromptString("Please enter your name:");
+            Checks.PromptInt("Please enter your age:");
 
-            Console.WriteLine("Please enter your height(cm):");
-            var height = Console.ReadLine();
-            var cHeight = Checks.PromptFloat(height);
-
-            Console.WriteLine("Please enter your weight(km):");
-            var weight = Console.ReadLine();
-            var cWeight = Checks.PromptFloat(weight);
+            var cHeight = Checks.PromptFloat("Please enter your height(m):");
+            var cWeight = Checks.PromptFloat("Please enter your weight(kg)");
 
             Checks.CalculateBmi(cWeight, cHeight);
 
