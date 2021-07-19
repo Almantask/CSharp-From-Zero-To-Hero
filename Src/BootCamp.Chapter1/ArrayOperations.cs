@@ -54,63 +54,67 @@ namespace BootCamp.Chapter1
         /// </summary>
         /// <param name="array">Input array.</param>
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
-        public static object RemoveLast(int[] array)
+        public static int[] RemoveLast(int[] array)
         {
-            
-            if (array != null || array.Length != 0)
+            if (array == null || array.Length == 0)
             {
-                var type = array.GetType().IsArray;
-
-                if(type)
-                {
-                    if(array.Length == 1)
-                {
-                        var length = 0;
-                        List<int> numbers = new List<int>(array);
-                        numbers.RemoveAt(numbers.IndexOf(length));
-                        array = numbers.ToArray();
-                    }
-                else
-                    {
-                        var length = array.Length - 1;
-                        List<int> numbers = new List<int>(array);
-                        numbers.RemoveAt(numbers.IndexOf(length));
-                        array = numbers.ToArray();
-                    }
-                }
-
+                return array;
             }
             else
             {
-                return array;
-            }
+                var type = array.GetType().IsArray;
 
-                
-                return array;
+                if (type)
+                {
+
+                    var length = array.Length - 1;
+                    List<int> numbers = new List<int>(array);
+                    numbers.RemoveAt(length);
+                    array = numbers.ToArray();
+             
+                    return array;
+                        
+                }
+                else
+                {
+                    return array;
+                }
             }
-            
-    
+        }
+
+
         /// <summary>
         /// Remove first element in array.
         /// </summary>
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            if (array == null)
+            if (array == null || array.Length == 0)
             {
                 return array;
             }
             else
             {
-                
-                Array.Clear(array, 1 , 1);
+                var type = array.GetType().IsArray;
 
-                return array;
+                if (type)
+                {
+
+                    List<int> numbers = new List<int>(array);
+                    numbers.RemoveAt(0);
+                    array = numbers.ToArray();
+
+                    return array;
+
+                }
+                else
+                {
+                    return array;
+                }
+
+
             }
-
-            
         }
-
         /// <summary>
         /// Removes array element at given index.
         /// </summary>
@@ -119,8 +123,37 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                return array;
+            }
+            else
+            {
+                if(index >= 0 && index < array.Length)
+                {
+                    var type = array.GetType().IsArray;
+
+
+                    if (type)
+                    {
+
+                        List<int> numbers = new List<int>(array);
+                        numbers.RemoveAt(index);
+                        array = numbers.ToArray();
+
+                        return array;
+
+                    }
+                    else
+                    {
+                        return array;
+                    }
+                }
+                else
+                {
+                    return array;
+                }           
+            }
         }
 
         /// <summary>
@@ -131,10 +164,29 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
-        }
+            if (array != null)
+            {
+                var type = array.GetType().IsArray;
+                if (type)
+                {
+                    List<int> numbers = new List<int>(array);
+                    numbers.Insert(0, number);
+                    array = numbers.ToArray();
 
+                    return array;
+                }
+                else
+                {
+                    int[] myArray = new int[] { number };
+                    return myArray;
+                }
+            }
+            else
+            {
+                int[] myArray = new int [] { number };
+                return myArray;
+            }
+        }
         /// <summary>
         /// Inserts a new array element at the end.
         /// </summary>
@@ -143,8 +195,29 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array != null)
+            {
+                var type = array.GetType().IsArray;
+                var length = array.Length;
+                if (type)
+                {
+                    List<int> numbers = new List<int>(array);
+                    numbers.Insert(length, number);
+                    array = numbers.ToArray();
+
+                    return array;
+                }
+                else
+                {
+                    int[] myArray = new int[] { number };
+                    return myArray;
+                }
+            }
+            else
+            {
+                int[] myArray = new int[] { number };
+                return myArray;
+            }
         }
 
         /// <summary>
@@ -156,8 +229,40 @@ namespace BootCamp.Chapter1
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array != null)
+            {
+                if(array.Length != 0)
+                {
+                    var type = array.GetType().IsArray;
+                    if (type)
+                    {
+                        List<int> numbers = new List<int>(array);
+                        numbers.Insert(index, number);
+                        array = numbers.ToArray();
+
+                        return array;
+                    }
+                    else
+                    {
+                        return array;
+                    }
+                }
+                else if(array.Length == 0 && index == 0)
+                {
+                    int[] myArray = new int[] { number };
+                    return myArray;
+                }
+                else
+                {
+                    return array;
+                }
+                
+            }
+            else
+            {
+                int[] myArray = new int[] { number };
+                return myArray;
+            }
         }
 
     }

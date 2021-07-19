@@ -6,12 +6,14 @@ namespace BootCamp.Chapter1
     {
         static void Main(string[] args)
         {
-            int[] array = new int[] { 1, 2, 3, 5, 4 };
+            int[] array = new int[] { 1, 1, 1};
+            //int[] array = new int[] { 1 };
 
             /*ArrayOperations.Sort(array);
             ArrayOperations.Reverse(array);
             ArrayOperations.RemoveFirst(array);*/
-            ArrayOperations.RemoveLast(array);
+            //ArrayOperations.RemoveLast(array);
+            ArrayOperations.InsertFirst(null, 10);
         }
     }
 }
