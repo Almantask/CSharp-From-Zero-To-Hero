@@ -28,10 +28,10 @@ namespace BootCamp.Chapter
                 int age = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("What's your weight? (in kg)");
-                double weightInKg = int.Parse(Console.ReadLine());
+                double weightInKg = double.Parse(Console.ReadLine());
 
                 Console.WriteLine("How height are you? (in cm)");
-                double heightInCm = int.Parse(Console.ReadLine());
+                double heightInCm = double.Parse(Console.ReadLine());
 
                 Console.WriteLine("\n{0} {1} is {2} years old, his weight is {3} kg and his height is {4} cm", name, surname, age, weightInKg, heightInCm);
 
