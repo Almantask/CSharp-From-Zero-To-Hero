@@ -2,7 +2,7 @@
 
 namespace BootCamp.Chapter
 {
-    class Person : IPerson
+    class Person
     {
         private string _firstName;
         private string _surName;
@@ -28,9 +28,9 @@ namespace BootCamp.Chapter
         public float Height { get => _height; set => _height = value; }
         public float BMI { get => (float)Math.Round(CalculateBMI(_height, _weight), 2); }
 
-        public void Introduce()
+        public string Introduce()
         {
-            Console.WriteLine($"{_firstName} {_surName} is {_age} years old, his weight is {_weight} kg and his height is {_height} cm.");
+            return $"{_firstName} {_surName} is {_age} years old, his weight is {_weight} kg and his height is {_height} cm.";
         }
 
         private float CalculateBMI(float height, float weight) => (weight / height / height) * 703;

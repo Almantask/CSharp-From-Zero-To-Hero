@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
         {
             for (int x = 1; x <= 2; x++)
             {
-                IPerson person = new Person();
+                Person person = new Person();
 
                 Console.Write("First Name: ");
                 person.FirstName = Console.ReadLine();
@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
                 Console.Write("Height (CM): ");
                 person.Height = float.Parse(Console.ReadLine());
 
-                person.Introduce();
+                Console.WriteLine(person.Introduce());
                 Console.WriteLine($"BMI: {person.BMI} \n");
             }
         }
