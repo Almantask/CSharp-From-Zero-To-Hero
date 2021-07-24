@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
                 Console.Write("Height (CM): ");
                 person.Height = float.Parse(Console.ReadLine());
 
-                Console.WriteLine(person.Introduce());
+                Console.WriteLine(person.Introduction);
                 Console.WriteLine($"BMI: {person.BMI} \n");
             }
         }
