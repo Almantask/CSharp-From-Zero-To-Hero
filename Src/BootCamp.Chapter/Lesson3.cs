@@ -40,7 +40,7 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             float number = float.Parse(Console.ReadLine());
-            return number / 10;
+            return number;
         }
     }
 }
