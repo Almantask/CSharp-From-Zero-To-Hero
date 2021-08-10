@@ -20,39 +20,40 @@ namespace BootCamp.Chapter
 
         public static float calculateBmi(float weight, float height)
         {
+            if (weight <= 0 && height <= 0)
+            {
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}. {Environment.NewLine} Height cannot be equal or less than zero, but was {height}. {Environment.NewLine} Failed calculating BMI. Reason: ");
+                return -1;
+            }
             if (weight <= 0)
             {
-                Console.WriteLine($"Failed calculating BMI.Reason:");
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}. {Environment.NewLine} Failed calculating BMI. Reason: ");
                 return -1;
             }
             if (height <= 0)
             {
-                Console.WriteLine($"Failed calculating BMI.Reason:");
-                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}. {Environment.NewLine} Failed calculating BMI. Reason: ");
                 return -1;
             }
-            float bmi = weight / (height * height);
-            return bmi;
+
+            return weight / (height * height);
         }
 
         public static int promptInt(string message)
         {
             Console.WriteLine(message);
-            int number;
 
             string input = Console.ReadLine();
-            bool succes = int.TryParse(input, out number);
+            bool succes = int.TryParse(input, out int number);
             if (!succes)
             {
-                Console.WriteLine($"{input} is not a valid number.");
+                Console.WriteLine($"\"{input}\" is not a valid number.");
                 return -1;
             }
             else
             {
                 return number;
             }
-            
         }
 
         public static string promptString(string message)
@@ -73,8 +74,18 @@ namespace BootCamp.Chapter
         public static float promptFloat(string message)
         {
             Console.WriteLine(message);
-            float number = float.Parse(Console.ReadLine());
-            return number;
+
+            string input = Console.ReadLine();
+            bool succes = float.TryParse(input, out float number);
+            if (!succes)
+            {
+                Console.WriteLine($"\"{input}\" is not a valid number.");
+                return -1;
+            }
+            else
+            {
+                return number / 10;
+            }
         }
     }
 }
