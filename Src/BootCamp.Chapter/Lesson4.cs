@@ -8,38 +8,42 @@ namespace BootCamp.Chapter
     {
         public static void Demo()
         {
-            string name = promptString("Please enter your name:");
-            int age = promptInt("Please tell me how old you are:");
-            int weight = promptInt("What is your weight?");
-            float height = promptInt("What is your height?");
+            for (int i = 0; i < 2; i++)
+            {
+                string name = PromptString("Please enter your name:");
+                int age = PromptInt("Please tell me how old you are:");
+                int weight = PromptInt("What is your weight?");
+                float height = PromptInt("What is your height?");
 
-            float bmi = calculateBmi(weight, height) * 10000;
+                float bmi = CalculateBmi(weight, height) * 10000;
 
-            Console.WriteLine($"Welcome {name}, you are {age} years old and have a BMI of {bmi:F2}.");
+                Console.WriteLine($"Welcome {name}, you are {age} years old and have a BMI of {bmi:F2}.");
+            }
         }
 
-        public static float calculateBmi(float weight, float height)
+        public static float CalculateBmi(float weight, float height)
         {
             if (weight <= 0 && height <= 0)
             {
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}. {Environment.NewLine} Height cannot be equal or less than zero, but was {height}. {Environment.NewLine} Failed calculating BMI. Reason: ");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}. {Environment.NewLine} Height cannot be equal or less than zero, but was {height}.");
+                Console.WriteLine($"Failed calculating BMI.Reason:");
                 return -1;
             }
             if (weight <= 0)
             {
-                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}. {Environment.NewLine} Failed calculating BMI. Reason: ");
+                Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}. {Environment.NewLine} Failed calculating BMI. Reason:");
                 return -1;
             }
             if (height <= 0)
             {
-                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}. {Environment.NewLine} Failed calculating BMI. Reason: ");
+                Console.WriteLine($"Height cannot be equal or less than zero, but was {height}. {Environment.NewLine} Failed calculating BMI. Reason:");
                 return -1;
             }
 
             return weight / (height * height);
         }
 
-        public static int promptInt(string message)
+        public static int PromptInt(string message)
         {
             Console.WriteLine(message);
 
@@ -56,7 +60,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static string promptString(string message)
+        public static string PromptString(string message)
         {
             Console.WriteLine(message);
             string name = Console.ReadLine();
@@ -71,7 +75,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static float promptFloat(string message)
+        public static float PromptFloat(string message)
         {
             Console.WriteLine(message);
 
@@ -84,7 +88,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                return number / 10;
+                return number;
             }
         }
     }
