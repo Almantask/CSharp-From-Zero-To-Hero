@@ -6,14 +6,17 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string fullName = AskFullName();
-            int age = AskAge();
-            int weight = AskWeight();
-            double height = AskHeight();
+            for (int i = 0; i < 2; i++)
+            {
+                string fullName = AskFullName();
+                int age = AskAge();
+                int weight = AskWeight();
+                double height = AskHeight();
 
-            Console.WriteLine($"{fullName} is {age} years old, his weight is {weight} kg and his height is {height:F1} cm.");
+                Console.WriteLine($"{fullName} is {age} years old, his weight is {weight} kg and his height is {height:F1} cm.");
 
-            CalculateBmi(weight, height);
+                CalculateBmi(weight, height);
+            }
         }
 
         static string AskFullName()
