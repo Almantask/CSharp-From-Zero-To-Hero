@@ -6,17 +6,17 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string fullName = askFullName();
-            int age = askAge();
-            int weight = askWeight();
-            double height = askHeight();
+            string fullName = AskFullName();
+            int age = AskAge();
+            int weight = AskWeight();
+            double height = AskHeight();
 
             Console.WriteLine($"{fullName} is {age} years old, his weight is {weight} kg and his height is {height:F1} cm.");
 
-            CalculateBMI(weight, height);
+            CalculateBmi(weight, height);
         }
 
-        static string askFullName()
+        static string AskFullName()
         {
             Console.WriteLine("What is your first name?");
             string firstname = Console.ReadLine();
@@ -26,7 +26,7 @@ namespace BootCamp.Chapter
             return firstname + " " + surname;
         }
 
-        static int askAge()
+        static int AskAge()
         {
             Console.WriteLine("What is your age?");
             int age = Convert.ToInt32(Console.ReadLine());
@@ -34,7 +34,7 @@ namespace BootCamp.Chapter
             return age;
         }
 
-        static int askWeight()
+        static int AskWeight()
         {
             Console.WriteLine("How much do you weigh?");
             int weight = Convert.ToInt32(Console.ReadLine());
@@ -42,7 +42,7 @@ namespace BootCamp.Chapter
             return weight;
         }
 
-        static double askHeight()
+        static double AskHeight()
         {
             Console.WriteLine("How tall are you?");
             double height = Convert.ToDouble(Console.ReadLine());
@@ -50,7 +50,7 @@ namespace BootCamp.Chapter
             return height;
         }
 
-        static void CalculateBMI(int weight, double height)
+        static void CalculateBmi(int weight, double height)
         {
             double bmi = (weight / (height * height) * 10000);
 
