@@ -11,7 +11,6 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
             if (array != null && array.Length != 0)
             {
                 Array.Sort(array);
