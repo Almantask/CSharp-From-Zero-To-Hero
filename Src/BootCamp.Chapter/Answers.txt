@@ -1,0 +1,39 @@
+﻿Breakpoint at line 55 so in the Locals the value show up before you need to enter it.
+
+Debug this correctly to move on to part 2 of this homework.
+
+
+What is my first return value?
+Debugger!
+What is my second return value?
+51
+What is my third return value?
+79
+What is my last return value?
+77
+
+
+
+Welcome to part 2.
+
+I put a breakpoint at number 71 so every word will get printed in the right position.
+
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+-------------------------------
+What's the passcode?
+A minore ad maius a solis ortu usque ad occasum ab uno disce omnes
+
+YOU MAY PROCEED!
+--------------------------------
+From the smaller to the greater,
+From sunrise to sunset,
+From one, learn all.
+--------------------------------
+
+Hello. Did you solve part 2 of homework 6? (y/n)
+Good. Then a new challange is waiting for you!
+But first let me check that you didn't lie to me:
+Type in the 3 words starting with letter 's' from the answer you've got delimited by ' '.
+
+smaller sunrise sunset
+
