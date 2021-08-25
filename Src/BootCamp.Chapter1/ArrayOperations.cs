@@ -115,13 +115,10 @@ namespace BootCamp.Chapter1
             int[] new_array = new int[array.Length + 1];
 
             // If at first position, add the number, else add value from old array - 1
-            for (int i = 0; i < new_array.Length; i++)
+            new_array[0] = number;
+            for (int i = 1; i < new_array.Length; i++)
             {
-                if (i == 0)
-                {
-                    new_array[0] = number;
-                }
-                else new_array[i] = array[i-1];
+                new_array[i] = array[i-1];
             }
             return new_array;
         }
@@ -141,14 +138,12 @@ namespace BootCamp.Chapter1
             int[] new_array = new int[array.Length + 1];
 
             // If at last position, add the number, else add value from old array
-            for (int i = 0; i < new_array.Length; i++)
+            for (int i = 0; i < new_array.Length-1; i++)
             {
-                if (i == array.Length)
-                {
-                    new_array[i] = number;
-                }
-                else new_array[i] = array[i];
+                new_array[i] = array[i];
             }
+            new_array[array.Length] = number;
+
             return new_array;
         }
 
@@ -163,10 +158,9 @@ namespace BootCamp.Chapter1
         {
             // When array == null return number
             if (array == null) return new int[1] { number };
-            if (array.Length == 0)
+            if (array.Length == 0 && index < 0 || index > array.Length)
             {
-                if (index < 0 || index > array.Length) return array;
-                else return new int[1] { number };
+                return array;
             }
 
             // Create new array with an extra slot
