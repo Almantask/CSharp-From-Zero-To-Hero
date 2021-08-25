@@ -53,10 +53,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine($"\"{input}\" is not a valid number.");
                 return -1;
             }
-            else
-            {
-                return number;
-            }
+            return number;
         }
 
         public static string PromptString(string message)
@@ -68,11 +65,8 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Name cannot be empty");
                 return "-";
             }
-            else
-            {
-                return name;
+            return name;
             }
-        }
 
         public static float PromptFloat(string message)
         {
@@ -85,10 +79,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine($"\"{input}\" is not a valid number.");
                 return -1;
             }
-            else
-            {
-                return number;
+            return number;
             }
-        }
     }
 }
