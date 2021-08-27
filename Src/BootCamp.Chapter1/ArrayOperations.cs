@@ -11,9 +11,21 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
+            int temp = 0;
             if (array != null && array.Length != 0)
             {
-                Array.Sort(array);
+                for(int i = 0; i < array.Length; i++)
+                {
+                    for (int j = i+1; j < array.Length; j++)
+                    {
+                        if (array[i] > array[j])
+                        {
+                            temp = array[i];
+                            array[i] = array[j];
+                            array[j] = temp;
+                        }
+                    }
+                }
             }
         }
 
@@ -24,11 +36,22 @@ namespace BootCamp.Chapter1
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
-            if (array != null && array.Length != 0)
+            if (array == null || array.Length <= 0) return;
+            int i = 0;
+            int j = array.Length - 1;
+
+            if (array != null || array.Length <= 0)
             {
-                Array.Reverse(array);
+                while (i < j)
+                {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
             }
+            return;
         }
 
         /// <summary>
