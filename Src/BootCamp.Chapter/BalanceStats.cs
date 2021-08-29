@@ -1,7 +1,7 @@
-﻿using System.Text;
-using System;
+﻿using System;
 using System.Linq;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -12,62 +12,140 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) return "N/A.";
+
+            int j = 0;
+            int currentMax = 0;
+            List<String> listOfPeople = new List<String>();
+
+            foreach (var values in peopleAndBalances)
             {
-                return "N/A.";
+                // Splitting the values
+                var array = values.Split(", ");
+                int newNumber = 0;
+
+                // Loop around to parse the numbers
+                for (int i = 1; i < array.Length; i++)
+                {
+                    bool succes = int.TryParse(array[i], out int parsed);
+
+                    // find the highest number of each person
+                    if (succes && parsed > newNumber)
+                    {
+                        newNumber = parsed;
+                    }
+                }
+
+                // Check if the current max number is higher than the last one or equal
+                if (newNumber > currentMax)
+                {
+                    listOfPeople.Clear();
+                    listOfPeople.Add(array[0]);
+                    currentMax = newNumber;
+                }
+                else if (newNumber == currentMax)
+                {
+                    listOfPeople.Add(array[0]);
+                }
+                j++;
             }
-            float[] highest = MaxBalance(peopleAndBalances);
 
-            // find highest number
-            float maxNum = highest.Max();
-            int poorPerson = Array.IndexOf(highest, maxNum);
-
-            // link it to the person
-            string[] people = Persons(peopleAndBalances);
-
-            return $"{people[poorPerson]} had the most money ever. ¤{maxNum}.";
+            // Get the list of people
+            string persons = CountPeople(listOfPeople);
+            return $"{persons} had the most money ever. ¤{currentMax}.";
         }
 
         /// <summary>
         /// Return name and loss of a person with a biggest loss (balance change negative).
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
-        {
-            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+        { 
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) return "N/A.";
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+
+            List<String> listOfPeople = new List<String>();
+
+            double biggestLoser = 0;
+
+            foreach (var values in peopleAndBalances)
             {
-                return "N/A.";
+                double currentTopLoss = 0;
+                // Splitting the values
+                var array = values.Split(", ");
+
+                if (array.Length <= 2) return "N/A.";
+
+                // Check the loss between current & next balance
+                for (int i = 1; i < array.Length - 1; i++)
+                {
+                    bool succes = double.TryParse(array[i], out double currentBalance);
+                    bool succes2 = double.TryParse(array[i+1], out double NextBalance);
+
+                    if (succes && succes2)
+                    {
+                        if (currentBalance - NextBalance > currentTopLoss)
+                        {
+                            currentTopLoss = currentBalance - NextBalance;
+                        }
+                    }
+                }
+
+                // Check whom are the ones with the biggest loss
+                if (currentTopLoss > biggestLoser)
+                {
+                    listOfPeople.Clear();
+                    listOfPeople.Add(array[0]);
+                    biggestLoser = currentTopLoss;
+                }
+                else if (currentTopLoss == biggestLoser)
+                {
+                    listOfPeople.Add(array[0]);
+                }
             }
-            float[] lowest = MinBalance(peopleAndBalances);
-
-            // find highest number
-            float minNum = lowest.Max();
-            int poorPerson = Array.IndexOf(lowest, minNum);
-
-            // link it to the person
-            string[] people = Persons(peopleAndBalances);
-
-            return $"{people[poorPerson]} lost the most money. -¤{minNum}.";
+            // Get the list of people
+            string persons = CountPeople(listOfPeople);
+            if (listOfPeople.Count == 1)
+            {
+                return $"{persons} lost the most money. -¤{biggestLoser}.";
+            }
+            return $"{persons} lost the most money. -¤{biggestLoser}.";
         }
+
         /// <summary>
         /// Return name and current money of the richest person.
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) return "N/A.";
+
+            int currentHigh = 0;
+            List<String> listOfPeople = new List<String>();
+
+            foreach (var values in peopleAndBalances)
             {
-                return "N/A.";
+                // Splitting the values
+                var array = values.Split(", ");
+
+                bool succes = int.TryParse(array[^1], out int parsed);
+
+                if (succes && parsed > currentHigh)
+                {
+                    listOfPeople.Clear();
+                    listOfPeople.Add(array[0]);
+                    currentHigh = parsed;
+                }
+                else if (succes && parsed == currentHigh)
+                {
+                    listOfPeople.Add(array[0]);
+                }
             }
-            float[] totals = Totals(peopleAndBalances);
-
-            // find highest number
-            float maxNum = totals.Max();
-            int poorPerson = Array.IndexOf(totals, maxNum);
-
-            // link it to the person
-            string[] people = Persons(peopleAndBalances);
-
-            if (maxNum <= 0) return "N/A.";
-            return $"{people[poorPerson]} is the richest person. ¤{maxNum}.";
+            // Get the list of people
+            string persons = CountPeople(listOfPeople);
+            if (listOfPeople.Count == 1)
+            {
+                return $"{persons} is the richest person. ¤{currentHigh}.";
+            }
+            return $"{persons} are the richest people. ¤{currentHigh}.";
         }
 
         /// <summary>
@@ -75,102 +153,57 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            if (peopleAndBalances == null || peopleAndBalances.Length == 0)
+            if (peopleAndBalances == null || peopleAndBalances.Length == 0) return "N/A.";
+
+            int currentHigh = 999999;
+            List<String> listOfPeople = new List<String>();
+
+            foreach (var values in peopleAndBalances)
             {
-                return "N/A.";
+                // Splitting the values
+                var array = values.Split(", ");
+                bool succes = int.TryParse(array[^1], out int parsed);
+
+                if (succes && parsed < currentHigh)
+                {
+                    listOfPeople.Clear();
+                    listOfPeople.Add(array[0]);
+                    currentHigh = parsed;
+                }
+                else if (succes && parsed == currentHigh)
+                {
+                    listOfPeople.Add(array[0]);
+                }
             }
-            float[] totals = Totals(peopleAndBalances);
-
-            // find highest number
-            float minNum = totals.Min();
-            int poorPerson = Array.IndexOf(totals, minNum);
-
-            // link it to the person
-            string[] people = Persons(peopleAndBalances);
-
-            return $"{people[poorPerson]} has the least money. ¤{minNum}.";
-        }
-
-        public static string[] Persons(string[] peopleAndBalances)
-        {
-
-            string[] arr = new string[peopleAndBalances.Length];
-
-            int i = 0;
-            foreach (var person in peopleAndBalances)
+            // Get the list of people
+            string persons = CountPeople(listOfPeople);
+            if (listOfPeople.Count == 1)
             {
-                arr[i] = person.Split(", ")[0];
-                i++;
+                return $"{persons} has the least money. ¤{currentHigh}.";
             }
-            return arr;
-        }
-
-        public static float[] Totals(string[] peopleAndBalances)
-        {
-            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
-            float[] Totals = new float[peopleAndBalances.Length];
-
-            int i = 0;
-            foreach (var balances in peopleAndBalances)
-            {
-                string numbers = balances.Split(", ")[^1];
-
-                // Change string to numbers
-                Totals[i] = float.Parse(numbers);
-                i++;
-            }
-            return Totals;
-        }
-
-        public static float[] MaxBalance(string[] peopleAndBalances)
-        {
-            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
-            float[] Maximum = new float[peopleAndBalances.Length];
-            int i = 0;
-            foreach (var balances in peopleAndBalances)
-            {
-                string[] total = balances.Split(", ");
-                total = total.Skip(1).ToArray();
-
-                float[] numbers = StringToFloat(total);
-
-                float maxValue = numbers.Max();
-                Maximum[i] = maxValue;
-                i++;
-            }
-            return Maximum;
+            return $"{persons} have the least money. ¤{currentHigh}.";
         }
 
 
-        public static float[] MinBalance(string[] peopleAndBalances)
+        public static string CountPeople(List<string> people)
         {
-            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
-            float[] Minimum = new float[peopleAndBalances.Length];
-            int i = 0;
-            foreach (var balances in peopleAndBalances)
+            if (people.Count == 1)
             {
-                string[] total = balances.Split(", ");
-                total = total.Skip(1).ToArray();
-
-                float[] numbers = StringToFloat(total);
-
-                float minValue = numbers.Max() - numbers.Min();
-                Minimum[i] = minValue;
-                i++;
+                return $"{people[0]}";
             }
-            return Minimum;
-        }
-        public static float[] StringToFloat(string[] array)
-        {
-            float[] items = new float[array.Length];
-
-            for (int i = 0; i < array.Length; i++)
+            else if (people.Count == 2)
             {
-                float parsed;
-                items[i] = float.TryParse(array[i], out parsed) ? parsed : 0f;
+                return $"{people[0]}, {people[1]}";
             }
-
-            return items;
+            else
+            {
+                string listpeople = "";
+                for (int i = 0; i < people.Count - 2; i++)
+                {
+                    listpeople += people[i] + ", ";
+                }
+                return $"{listpeople}{people[^2]} and {people[^1]}";
+            }
         }
     }
 }
