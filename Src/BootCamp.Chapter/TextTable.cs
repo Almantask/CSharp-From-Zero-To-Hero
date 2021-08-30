@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
@@ -34,7 +37,44 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
-            return "";
+            if (message.Length == 0 || message == null) return "";
+
+            string[] text = message.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            int max = 0;
+            foreach (var number in text)
+            {
+                if (number.Length > max)
+                {
+                    max = number.Length;
+                }
+            }
+
+
+
+            string tabs = new string('-', max + (padding*2));
+            string first = $"+{tabs}+\r\n";
+            string last = $"+{tabs}+\r\n";
+            string newline = new string(' ', tabs.Length);
+            string spaces = new string(' ', padding);
+
+            string second = "";
+            string third = "";
+
+
+
+            if (padding > 0)
+            {
+                second = $"|{newline}|\r\n";
+                third = $"|{spaces}{message}{spaces}|\r\n";
+            }
+            else
+            {
+                third = $"|{message}|\r\n";
+            }
+
+            if (padding > 0) return $"{first}{second}{third}{second}{last}";
+
+            return $"{first}{third}{last}";
         }
     }
 }

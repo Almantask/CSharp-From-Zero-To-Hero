@@ -155,7 +155,7 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0) return "N/A.";
 
-            int currentHigh = 999999;
+            int currentHigh = 99999;
             List<String> listOfPeople = new List<String>();
 
             foreach (var values in peopleAndBalances)
@@ -177,11 +177,16 @@ namespace BootCamp.Chapter
             }
             // Get the list of people
             string persons = CountPeople(listOfPeople);
+
+            string amount = "";
+            if (currentHigh < 0) amount = $"-¤{-currentHigh}";
+            else amount = $"¤{currentHigh}";
+
             if (listOfPeople.Count == 1)
             {
-                return $"{persons} has the least money. ¤{currentHigh}.";
+                return $"{persons} has the least money. {amount}.";
             }
-            return $"{persons} have the least money. ¤{currentHigh}.";
+            return $"{persons} have the least money. {amount}.";
         }
 
 
