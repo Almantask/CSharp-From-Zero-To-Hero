@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -39,42 +39,52 @@ namespace BootCamp.Chapter
         {
             if (message.Length == 0 || message == null) return "";
 
-            string[] text = message.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-            int max = 0;
-            foreach (var number in text)
+            var textTable = new StringBuilder();
+            string[] seperatedMessage = message.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            // Find the max length of the longest word in the message
+            int maxCharacters = 0;
+            foreach (var word in seperatedMessage)
             {
-                if (number.Length > max)
+                if (word.Length > maxCharacters)
                 {
-                    max = number.Length;
+                    maxCharacters = word.Length;
                 }
             }
 
+            // Make-up of number of characters
+            int maxWidth = maxCharacters + (padding * 2);
+            string minus = new string('-', maxWidth);
+            string emptyLine = new string(' ', maxWidth);
+            string emptySpace = new string(' ', padding);
 
+            // TopLine
+            textTable.Append($"+{minus}+\r\n");
 
-            string tabs = new string('-', max + (padding*2));
-            string first = $"+{tabs}+\r\n";
-            string last = $"+{tabs}+\r\n";
-            string newline = new string(' ', tabs.Length);
-            string spaces = new string(' ', padding);
-
-            string second = "";
-            string third = "";
-
-
-
-            if (padding > 0)
+            // NewLine if padding
+            for (int i = 0; i < padding; i++)
             {
-                second = $"|{newline}|\r\n";
-                third = $"|{spaces}{message}{spaces}|\r\n";
-            }
-            else
-            {
-                third = $"|{message}|\r\n";
+                textTable.Append($"|{emptyLine}|\r\n");
             }
 
-            if (padding > 0) return $"{first}{second}{third}{second}{last}";
+            // Message line(s)
+            for (int j = 0; j < seperatedMessage.Length; j++)
+            {
+                string leftOver = new string(' ', maxWidth - seperatedMessage[j].Length - (padding*2));
+                textTable.Append($"|{emptySpace}{seperatedMessage[j]}{emptySpace}{leftOver}|\r\n");
+            }
 
-            return $"{first}{third}{last}";
+            // NewLine if padding
+            for (int i = 0; i < padding; i++)
+            {
+                textTable.Append($"|{emptyLine}|\r\n");
+            }
+
+            // BottomLine
+            textTable.Append($"+{minus}+\r\n");
+
+
+            return Convert.ToString(textTable);
         }
     }
 }
