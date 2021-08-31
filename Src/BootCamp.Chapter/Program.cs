@@ -6,7 +6,11 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Person personOne = new Person();
+            personOne.StartProgram();
+
+            Person personTwo = new Person();
+            personTwo.StartProgram();
         }
     }
 }
