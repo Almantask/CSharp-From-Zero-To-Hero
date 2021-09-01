@@ -20,7 +20,7 @@ namespace BootCamp.Chapter
             foreach (var values in peopleAndBalances)
             {
                 // Splitting the values
-                var array = values.Split(',').Select(a => a.Trim()).ToArray(); ;
+                var array = values.Split(',').Select(a => a.Trim()).ToArray();
 
                 decimal currentTopBalance = 0;
 
@@ -68,7 +68,7 @@ namespace BootCamp.Chapter
             foreach (var values in peopleAndBalances)
             {
                 decimal currentTopLoss = 0;
-                var array = values.Split(", ");
+                var array = values.Split(',').Select(a => a.Trim()).ToArray();
 
                 // if the current person doesn't have at least 3 balances
                 if (array.Length <= 2) return "N/A.";
@@ -118,7 +118,7 @@ namespace BootCamp.Chapter
 
             foreach (var values in peopleAndBalances)
             {
-                var array = values.Split(", ");
+                var array = values.Split(',').Select(a => a.Trim()).ToArray();
 
                 // Parse the last value of each person
                 bool parsedAmount = decimal.TryParse(array[^1], out decimal parsed);
@@ -155,7 +155,7 @@ namespace BootCamp.Chapter
 
             foreach (var values in peopleAndBalances)
             {
-                var array = values.Split(", ");
+                var array = values.Split(',').Select(a => a.Trim()).ToArray();
                 bool parsedAmount = decimal.TryParse(array[^1], out decimal parsed);
 
                 if (parsedAmount && parsed < currentHigh)
