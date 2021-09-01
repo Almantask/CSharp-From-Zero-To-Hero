@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -62,10 +63,7 @@ namespace BootCamp.Chapter
             textTable.Append($"+{minus}+\r\n");
 
             // NewLine if padding
-            for (int i = 0; i < padding; i++)
-            {
-                textTable.Append($"|{emptyLine}|\r\n");
-            }
+            textTable.Append(string.Join(Environment.NewLine, Enumerable.Repeat($"|{emptyLine}|\r\n", padding)));
 
             // Message line(s)
             for (int j = 0; j < seperatedMessage.Length; j++)
@@ -75,10 +73,7 @@ namespace BootCamp.Chapter
             }
 
             // NewLine if padding
-            for (int i = 0; i < padding; i++)
-            {
-                textTable.Append($"|{emptyLine}|\r\n");
-            }
+            textTable.Append(string.Join(Environment.NewLine, Enumerable.Repeat($"|{emptyLine}|\r\n", padding)));
 
             // BottomLine
             textTable.Append($"+{minus}+\r\n");
