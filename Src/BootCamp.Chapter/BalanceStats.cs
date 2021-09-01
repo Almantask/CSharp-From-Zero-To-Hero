@@ -150,7 +150,7 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0) return "N/A.";
 
-            decimal currentHigh = decimal.MaxValue;
+            decimal? currentHigh = null;
             List<String> people = new List<String>();
 
             foreach (var inputValues in peopleAndBalances)
@@ -158,7 +158,12 @@ namespace BootCamp.Chapter
                 var splittedValue = inputValues.Split(',').Select(a => a.Trim()).ToArray();
                 bool amountWasParsed = decimal.TryParse(splittedValue[^1], out decimal parsed);
 
-                if (amountWasParsed && parsed < currentHigh)
+                if (amountWasParsed && currentHigh == null)
+                {
+                    people.Add(splittedValue[0]);
+                    currentHigh = parsed;
+                }
+                else if (amountWasParsed && parsed < currentHigh)
                 {
                     people.Clear();
                     people.Add(splittedValue[0]);
