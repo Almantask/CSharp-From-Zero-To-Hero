@@ -17,20 +17,20 @@ namespace BootCamp.Chapter
             decimal highestBalance = 0;
             List<String> people = new List<String>();
 
-            foreach (var values in peopleAndBalances)
+            foreach (var inputValues in peopleAndBalances)
             {
-                // Splitting the values
-                var array = values.Split(',').Select(a => a.Trim()).ToArray();
+                // Splitting the inputValues
+                var splittedValue = inputValues.Split(',').Select(a => a.Trim()).ToArray();
 
                 decimal currentTopBalance = 0;
 
-                // Loop around the array & parse the numbers
-                for (int i = 1; i < array.Length; i++)
+                // Loop around the splittedValue & parse the numbers
+                for (int i = 1; i < splittedValue.Length; i++)
                 {
-                    bool parsedAmount = decimal.TryParse(array[i], out decimal parsed);
+                    bool amountWasParsed = decimal.TryParse(splittedValue[i], out decimal parsed);
 
                     // find the highest number of current person
-                    if (parsedAmount && parsed > currentTopBalance)
+                    if (amountWasParsed && parsed > currentTopBalance)
                     {
                         currentTopBalance = parsed;
                     }
@@ -40,12 +40,12 @@ namespace BootCamp.Chapter
                 if (currentTopBalance > highestBalance)
                 {
                     people.Clear();
-                    people.Add(array[0]);
+                    people.Add(splittedValue[0]);
                     highestBalance = currentTopBalance;
                 }
                 else if (currentTopBalance == highestBalance)
                 {
-                    people.Add(array[0]);
+                    people.Add(splittedValue[0]);
                 }
             }
 
@@ -65,19 +65,19 @@ namespace BootCamp.Chapter
             List<String> people = new List<String>();
             decimal biggestLoser = 0;
 
-            foreach (var values in peopleAndBalances)
+            foreach (var inputValues in peopleAndBalances)
             {
                 decimal currentTopLoss = 0;
-                var array = values.Split(',').Select(a => a.Trim()).ToArray();
+                var splittedValue = inputValues.Split(',').Select(a => a.Trim()).ToArray();
 
                 // if the current person doesn't have at least 3 balances
-                if (array.Length <= 2) return "N/A.";
+                if (splittedValue.Length <= 2) return "N/A.";
 
                 // Check what the biggest loss if for each person between current & next balance
-                for (int i = 1; i < array.Length - 1; i++)
+                for (int i = 1; i < splittedValue.Length - 1; i++)
                 {
-                    bool currentParseBalance = decimal.TryParse(array[i], out decimal currentBalance);
-                    bool nextParseBalance = decimal.TryParse(array[i+1], out decimal NextBalance);
+                    bool currentParseBalance = decimal.TryParse(splittedValue[i], out decimal currentBalance);
+                    bool nextParseBalance = decimal.TryParse(splittedValue[i+1], out decimal NextBalance);
 
                     if (currentParseBalance && nextParseBalance && currentBalance - NextBalance > currentTopLoss)
                     {
@@ -89,12 +89,12 @@ namespace BootCamp.Chapter
                 if (currentTopLoss > biggestLoser)
                 {
                     people.Clear();
-                    people.Add(array[0]);
+                    people.Add(splittedValue[0]);
                     biggestLoser = currentTopLoss;
                 }
                 else if (currentTopLoss == biggestLoser)
                 {
-                    people.Add(array[0]);
+                    people.Add(splittedValue[0]);
                 }
             }
             // Get the list of people
@@ -116,22 +116,22 @@ namespace BootCamp.Chapter
             decimal currentTopBalance = 0;
             List<String> people = new List<String>();
 
-            foreach (var values in peopleAndBalances)
+            foreach (var inputValues in peopleAndBalances)
             {
-                var array = values.Split(',').Select(a => a.Trim()).ToArray();
+                var splittedValue = inputValues.Split(',').Select(a => a.Trim()).ToArray();
 
                 // Parse the last value of each person
-                bool parsedAmount = decimal.TryParse(array[^1], out decimal parsed);
+                bool amountWasParsed = decimal.TryParse(splittedValue[^1], out decimal parsed);
 
-                if (parsedAmount && parsed > currentTopBalance)
+                if (amountWasParsed && parsed > currentTopBalance)
                 {
                     people.Clear();
-                    people.Add(array[0]);
+                    people.Add(splittedValue[0]);
                     currentTopBalance = parsed;
                 }
-                else if (parsedAmount && parsed == currentTopBalance)
+                else if (amountWasParsed && parsed == currentTopBalance)
                 {
-                    people.Add(array[0]);
+                    people.Add(splittedValue[0]);
                 }
             }
             // Get the list of people
@@ -150,25 +150,26 @@ namespace BootCamp.Chapter
         {
             if (peopleAndBalances == null || peopleAndBalances.Length == 0) return "N/A.";
 
-            decimal currentHigh = 99999;
+            decimal currentHigh = decimal.MaxValue;
             List<String> people = new List<String>();
 
-            foreach (var values in peopleAndBalances)
+            foreach (var inputValues in peopleAndBalances)
             {
-                var array = values.Split(',').Select(a => a.Trim()).ToArray();
-                bool parsedAmount = decimal.TryParse(array[^1], out decimal parsed);
+                var splittedValue = inputValues.Split(',').Select(a => a.Trim()).ToArray();
+                bool amountWasParsed = decimal.TryParse(splittedValue[^1], out decimal parsed);
 
-                if (parsedAmount && parsed < currentHigh)
+                if (amountWasParsed && parsed < currentHigh)
                 {
                     people.Clear();
-                    people.Add(array[0]);
+                    people.Add(splittedValue[0]);
                     currentHigh = parsed;
                 }
-                else if (parsedAmount && parsed == currentHigh)
+                else if (amountWasParsed && parsed == currentHigh)
                 {
-                    people.Add(array[0]);
+                    people.Add(splittedValue[0]);
                 }
             }
+
             // Get the list of people
             string persons = ReturnPeople(people);
 
