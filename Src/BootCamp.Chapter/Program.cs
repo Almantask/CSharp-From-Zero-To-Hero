@@ -6,18 +6,47 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.Write("Name: "); 
-            string name = Console.ReadLine();
-            Console.Write("Surname: ");
-            string surname = Console.ReadLine();
-            Console.Write("Age: ");
-            int age = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Height: ");
-            var height = Console.ReadLine();
-            Console.Write("Weight: ");
-            int weight = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                //inputs
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Surname: ");
+                string surname = Console.ReadLine();
+                Console.Write("Age: ");
+                int age = int.Parse(Console.ReadLine());
+                Console.Write("Height (cm): ");
+                float height = float.Parse(Console.ReadLine());
+                Console.Write("Weight (kg): ");
+                float weight = float.Parse(Console.ReadLine());
 
-            Console.WriteLine(name + " " + surname + " is " + height + " cm tall and weighs " + weight*2 + " kg.");
+                //BMI calculation : weight/height^2 (in metres)
+                float bmi = weight / (height / 100 * height / 100);
+
+                Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and their height is " + height + " cm.");
+                Console.WriteLine(name + "'s BMI: " + bmi);
+                
+                //second person
+                Console.Write("Name: ");
+                name = Console.ReadLine();
+                Console.Write("Surname: ");
+                surname = Console.ReadLine();
+                Console.Write("Age: ");
+                age = int.Parse(Console.ReadLine());
+                Console.Write("Height (cm): ");
+                height = float.Parse(Console.ReadLine());
+                Console.Write("Weight (kg): ");
+                weight = float.Parse(Console.ReadLine());
+
+                bmi = weight / (height / 100 * height / 100);
+
+                Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and their height is " + height + " cm.");
+                Console.WriteLine(name + "'s BMI: " + bmi);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input format.");
+            }   
         }
     }
 }
