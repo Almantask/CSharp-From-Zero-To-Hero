@@ -20,10 +20,10 @@ namespace BootCamp.Chapter
                 Console.Write("Weight (kg): ");
                 float weight = float.Parse(Console.ReadLine());
 
-                //BMI calculation : weight/height^2 (in metres)
+                //BMI calculation : weight/(height^2) (height in metres)
                 float bmi = weight / (height / 100 * height / 100);
 
-                Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and their height is " + height + " cm.");
+                Console.WriteLine(name + " " + surname + " is " + age + " years old, their weight is " + weight + " kg and their height is " + height + " cm.");
                 Console.WriteLine(name + "'s BMI: " + bmi);
                 
                 //second person
@@ -40,7 +40,7 @@ namespace BootCamp.Chapter
 
                 bmi = weight / (height / 100 * height / 100);
 
-                Console.WriteLine(name + " " + surname + " is " + age + " years old, his weight is " + weight + " kg and their height is " + height + " cm.");
+                Console.WriteLine(name + " " + surname + " is " + age + " years old, their weight is " + weight + " kg and their height is " + height + " cm.");
                 Console.WriteLine(name + "'s BMI: " + bmi);
             }
             catch (FormatException)
