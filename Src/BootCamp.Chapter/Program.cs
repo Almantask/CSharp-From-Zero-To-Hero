@@ -8,11 +8,7 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine("Stack test!");
 
-            //TODO later
-            Console.WriteLine("Stack test!");
-            Console.WriteLine("Stack test!");
-            Console.WriteLine("Stack test!");
-            Console.WriteLine("Stack test!");
+          
 
         }
     }
