@@ -59,7 +59,7 @@ namespace BootCamp.Chapter.Tests
             // Verify that input was parsed correctly
             convertedInput.Should().Be(expectedConvertedInput);
         }
-
+        /*
         [Theory]
         [InlineData("1.0", 1f)]
         [InlineData("10.0", 10f)]
@@ -77,5 +77,19 @@ namespace BootCamp.Chapter.Tests
             // Verify that input was parsed correctly
             convertedInput.Should().Be(expectedConvertedInput);
         }
+        */
+
+        [Theory]
+        [InlineData("1.0", 1f)]
+        [InlineData("10.0", 10f)]
+        public void PromptFloat_PrintsMessage_And_ReturnsFloat(string input, float expectedConvertedInput)
+        {
+            // This is being tested
+            var convertedInput = Checks.PromptFloat(input);
+
+            // Verify that input was parsed correctly
+            convertedInput.Should().Be(expectedConvertedInput);
+        }
+
     }
 }

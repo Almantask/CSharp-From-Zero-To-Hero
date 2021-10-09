@@ -37,7 +37,6 @@ namespace BootCamp.Chapter
         public static float CalculateBmi(float w, float h)
         {
             float bmi = w / (h * h);
-
             return (float)bmi;
         }
 
@@ -55,8 +54,7 @@ namespace BootCamp.Chapter
         public static float InputFloat(string text)
         {
             Console.WriteLine(text);
-            var input = Console.ReadLine();
-            return float.Parse(input);
+            return float.Parse(text, System.Globalization.CultureInfo.InvariantCulture);
         }
     }
 
