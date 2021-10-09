@@ -7,12 +7,7 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        static double CalculateBmi(double w, double h)
-        {
-            double bmi = w / Math.Pow(h/100, 2);
-
-            return bmi;
-        }
+ 
         static void Main(string[] args)
         {
             int i = 0;
@@ -21,27 +16,49 @@ namespace BootCamp.Chapter
             {
                 Console.Clear();
 
-                Console.WriteLine("What's your name?");
-                string name = Console.ReadLine();
+                string name = InputString("What's your name?");
 
-                Console.WriteLine("What's your surname?");
-                string surname = Console.ReadLine();
+                string surname = InputString("What's your surname?");
 
-                Console.WriteLine("How old are you?");
-                int age = int.Parse(Console.ReadLine());
+                int age = InputInt("How old are you?");
 
-                Console.WriteLine("What's your weight? (in kg)");
-                double weightInKg = double.Parse(Console.ReadLine());
+                float weightInKg = InputFloat("What's your weight? (in kg)");
 
-                Console.WriteLine("How height are you? (in cm)");
-                double heightInCm = double.Parse(Console.ReadLine());
+                float heightInCm = InputFloat("How height are you? (in meters)");
 
                 Console.WriteLine("\n{0} {1} is {2} years old, his weight is {3} kg and his height is {4} cm", name, surname, age, weightInKg, heightInCm);
 
                 Console.WriteLine("\nBMI: {0:F} ", CalculateBmi(weightInKg, heightInCm));
 
+                Console.ReadKey();
+
                 i++;
             }
         }
+        public static float CalculateBmi(float w, float h)
+        {
+            float bmi = w / (h * h);
+
+            return (float)bmi;
+        }
+
+        public static string InputString(string text)
+        {
+            Console.WriteLine(text);
+            return Console.ReadLine();
+        }
+        public static int InputInt(string text)
+        {
+            Console.WriteLine(text);
+            return int.Parse(Console.ReadLine());
+        }
+
+        public static float InputFloat(string text)
+        {
+            Console.WriteLine(text);
+            float x = float.Parse(Console.ReadLine());
+            return x;
+        }
+
     }
 }
