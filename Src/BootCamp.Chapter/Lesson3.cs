@@ -54,7 +54,8 @@ namespace BootCamp.Chapter
         public static float InputFloat(string text)
         {
             Console.WriteLine(text);
-            return float.Parse(text, System.Globalization.CultureInfo.InvariantCulture);
+            string input = Console.ReadLine();
+            return float.Parse(input, System.Globalization.CultureInfo.InvariantCulture);
         }
     }
 

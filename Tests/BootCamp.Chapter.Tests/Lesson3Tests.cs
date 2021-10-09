@@ -84,9 +84,11 @@ namespace BootCamp.Chapter.Tests
         [InlineData("10.0", 10f)]
         public void PromptFloat_PrintsMessage_And_ReturnsFloat(string input, float expectedConvertedInput)
         {
+
+            var consoleOutput = ConsoleStub.StubConsole(input);
             // This is being tested
             var convertedInput = Checks.PromptFloat(input);
-
+                     
             // Verify that input was parsed correctly
             convertedInput.Should().Be(expectedConvertedInput);
         }
