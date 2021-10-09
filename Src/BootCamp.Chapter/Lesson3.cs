@@ -36,26 +36,78 @@ namespace BootCamp.Chapter
 
         public static float CalculateBmi(float w, float h)
         {
-            float bmi = w / (h * h);
-            return (float)bmi;
+            bool isWlessThanZero = w <= 0;
+            bool isHlessThanZero = h <= 0;
+            if (isWlessThanZero || isHlessThanZero)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+
+                if (isWlessThanZero)
+                {
+                    Console.WriteLine("Weight cannot be equal or less than zero, but was {0}.", w);
+                }
+
+                if (isHlessThanZero)
+                {
+                    Console.WriteLine("Height cannot be equal or less than zero, but was {0}.", h);
+                }
+
+                return -1;
+            }
+            else
+            {
+                float bmi = w / (h * h);
+                return (float)bmi;
+            }
         }
 
         public static string InputString(string text)
         {
             Console.WriteLine(text);
-            return Console.ReadLine();
+            string input = Console.ReadLine();
+            bool isNotOk = string.IsNullOrEmpty(input);
+            if (isNotOk)
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            else
+            {
+                return input;
+            }
         }
         public static int InputInt(string text)
         {
             Console.WriteLine(text);
-            return int.Parse(Console.ReadLine());
+            string inputNumber = Console.ReadLine();
+            bool isNumber = int.TryParse(inputNumber, out int number);
+            if (!isNumber)
+            {
+                Console.WriteLine("\"" + inputNumber + "\"" + " is not a valid number.");
+                return -1;
+            }
+            else
+            {
+                return number;
+            }
         }
 
         public static float InputFloat(string text)
         {
             Console.WriteLine(text);
-            string input = Console.ReadLine();
-            return float.Parse(input, System.Globalization.CultureInfo.InvariantCulture);
+            string inputNumber = Console.ReadLine();
+            
+            bool isNumber = float.TryParse(inputNumber, out float number);
+
+            if (!isNumber)
+            {
+                Console.WriteLine("\"" + inputNumber + "\"" + " is not a valid number.");
+                return -1;
+            }
+            else
+            {
+                return number;
+            }
         }
     }
 

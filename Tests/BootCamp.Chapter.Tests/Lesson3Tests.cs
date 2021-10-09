@@ -125,8 +125,8 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Theory]
-        [InlineData("1.0", 1f)]
-        [InlineData("10.0", 10f)]
+        [InlineData("1,0", 1f)]
+        [InlineData("10,0", 10f)]
         [InlineData("", -1)]
         public void PromptFloat_PrintsMessage_And_ReturnsFloat(string input, float expectedConvertedInput)
         {
