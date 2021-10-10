@@ -1,7 +1,14 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
+        public static bool IsNullOrEmpty(this Array array)
+        {
+            return (array == null || array.Length == 0);
+        }
+
         /// <summary>
         /// Sort the array in ascending order.
         /// If array empty or null- don't do anything.
@@ -20,7 +27,8 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            if (array != null || array.Length != 0)
+            var checkNullOrEmpty = IsNullOrEmpty(array);
+            if (!checkNullOrEmpty)
             {
                 // ToDo: implement.
                 int[] tempArr = new int[array.Length];
@@ -49,10 +57,10 @@
         public static int[] RemoveLast(int[] array)
         {
             // ToDo: implement.
-            int[] tempArr = new int[array.Length - 1];
-
-            if (array != null && array.Length != 0)
+            var checkNullOrEmpty = IsNullOrEmpty(array);
+            if (!checkNullOrEmpty)
             {
+                int[] tempArr = new int[array.Length - 1];
                 for (int i = 0; i < array.Length - 1; i++)
                 {
                     tempArr[i] = array[i];
@@ -73,11 +81,11 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            int[] tempArr = new int[array.Length - 1];
             // ToDo: implement.
-            if (array != null || array.Length != 0)
+            var checkNullOrEmpty = IsNullOrEmpty(array);
+            if (!checkNullOrEmpty)
             {
-                
+                int[] tempArr = new int[array.Length - 1];
                 int j = 0;
                 for (int i = 0; i < array.Length - 1; i++)
                 {
@@ -89,10 +97,8 @@
                     {
                         tempArr[i] = array[i];
                     }
-
                     j++;
                 }
-
                 return tempArr;
             }
             else
@@ -110,9 +116,11 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             // ToDo: implement.
-            int[] tempArr = new int[array.Length - 1];
-            if (array != null || array.Length != 0)
+            var checkNullOrEmpty = IsNullOrEmpty(array);
+            if (!checkNullOrEmpty)
             {
+                if (index < 0 || index > array.Length - 1) return array;
+                int[] tempArr = new int[array.Length - 1];
                 if (index == 0)
                 {
                     for (int i = 0; i < array.Length - 1; i++)
@@ -149,7 +157,6 @@
                     {
                         tempArr[i - 1] = array[i];
                     }
-
                 }
 
                 return tempArr;
@@ -169,9 +176,10 @@
         public static int[] InsertFirst(int[] array, int number)
         {
             // ToDo: implement.
-            int[] tempArr = new int[array.Length + 1];
-            if (array != null || array.Length != 0)
+            var checkNullOrEmpty = IsNullOrEmpty(array);
+            if (!checkNullOrEmpty)
             {
+                int[] tempArr = new int[array.Length + 1];
                 tempArr[0] = number;
 
                 for (int i = 0; i <= array.Length - 1; i++)
@@ -183,8 +191,9 @@
             }
             else
             {
-                array[0] = number;
-                return array;
+                int[] tmpArray = new int[1];
+                tmpArray[0] = number;
+                return tmpArray;
             }
         }
 
@@ -197,9 +206,10 @@
         public static int[] InsertLast(int[] array, int number)
         {
             // ToDo: implement.
-            int[] tempArr = new int[array.Length + 1];
-            if (array != null || array.Length != 0)
+            var checkNullOrEmpty = IsNullOrEmpty(array);
+            if (!checkNullOrEmpty)
             {
+                int[] tempArr = new int[array.Length + 1];
                 for (int i = 0; i < array.Length; i++)
                 {
                     tempArr[i] = array[i];
@@ -211,10 +221,10 @@
             }
             else
             {
-                array[0] = number;
-                return array;
+                int[] tmpArray = new int[1];
+                tmpArray[0] = number;
+                return tmpArray;
             }
-
         }
 
         /// <summary>
@@ -227,9 +237,13 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
-            int[] tempArr = new int[array.Length + 1];
-            if (array != null || array.Length != 0)
+            if (index < 0 || index > array.Length - 1) return array;
+            var checkNullOrEmpty = IsNullOrEmpty(array);
+            if (!checkNullOrEmpty)
             {
+                
+                int[] tempArr = new int[array.Length + 1];
+
                 for (int i = 0; i < index; i++)
                 {
                     tempArr[i] = array[i];
@@ -239,15 +253,14 @@
                 {
                     tempArr[i] = array[i - 1];
                 }
-
                 tempArr[index] = number;
-
                 return tempArr;
             }
             else
             {
-                array[0] = number;
-                return array;
+                int[] tmpArray = new int[1];
+                tmpArray[0] = number;
+                return tmpArray;
             }
         }
     }
