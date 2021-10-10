@@ -51,7 +51,7 @@
             // ToDo: implement.
             int[] tempArr = new int[array.Length - 1];
 
-            if (array != null || array.Length != 0)
+            if (array != null && array.Length != 0)
             {
                 for (int i = 0; i < array.Length - 1; i++)
                 {
@@ -64,7 +64,6 @@
             {
                 return array;
             }
-
 
         }
 
