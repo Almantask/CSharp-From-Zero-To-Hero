@@ -17,7 +17,11 @@ namespace BootCamp.Chapter1
         public static void Sort(int[] array)
         {
             // ToDo: implement.
-            Sort(array);
+            var checkNullOrEmpty = IsNullOrEmpty(array);
+            if (!checkNullOrEmpty)
+            {
+                Array.Sort(array);
+            }
         }
 
         /// <summary>
