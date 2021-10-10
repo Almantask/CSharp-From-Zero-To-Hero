@@ -241,11 +241,15 @@ namespace BootCamp.Chapter1
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
-            if (index < 0 || index > array.Length - 1) return array;
+            if (array != null)
+            {
+                if (index < 0 || index > array.Length) return array;
+            }
+
             var checkNullOrEmpty = IsNullOrEmpty(array);
+            
             if (!checkNullOrEmpty)
             {
-                
                 int[] tempArr = new int[array.Length + 1];
 
                 for (int i = 0; i < index; i++)
