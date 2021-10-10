@@ -10,6 +10,7 @@
         public static void Sort(int[] array)
         {
             // ToDo: implement.
+            Sort(array);
         }
 
         /// <summary>
@@ -19,7 +20,25 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array != null || array.Length != 0)
+            {
+                // ToDo: implement.
+                int[] tempArr = new int[array.Length];
+                int j = 0;
+
+                // create reversed array
+                for (int i = array.Length - 1; i >= 0; i--)
+                {
+                    tempArr[i] = array[j];
+                    j++;
+                }
+
+                // update reference array
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = tempArr[i];
+                }
+            }
         }
 
         /// <summary>
@@ -30,7 +49,23 @@
         public static int[] RemoveLast(int[] array)
         {
             // ToDo: implement.
-            return array;
+            int[] tempArr = new int[array.Length - 1];
+
+            if (array != null || array.Length != 0)
+            {
+                for (int i = 0; i < array.Length - 1; i++)
+                {
+                    tempArr[i] = array[i];
+                }
+
+                return tempArr;
+            }
+            else
+            {
+                return array;
+            }
+
+
         }
 
         /// <summary>
@@ -39,8 +74,32 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
+            int[] tempArr = new int[array.Length - 1];
             // ToDo: implement.
-            return array;
+            if (array != null || array.Length != 0)
+            {
+                
+                int j = 0;
+                for (int i = 0; i < array.Length - 1; i++)
+                {
+                    if (j < array.Length - 1)
+                    {
+                        tempArr[i] = array[i + 1];
+                    }
+                    else
+                    {
+                        tempArr[i] = array[i];
+                    }
+
+                    j++;
+                }
+
+                return tempArr;
+            }
+            else
+            {
+                return array;
+            }
         }
 
         /// <summary>
@@ -52,7 +111,54 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             // ToDo: implement.
-            return array;
+            int[] tempArr = new int[array.Length - 1];
+            if (array != null || array.Length != 0)
+            {
+                if (index == 0)
+                {
+                    for (int i = 0; i < array.Length - 1; i++)
+                    {
+                        if (i < array.Length - 1)
+                        {
+                            tempArr[i] = array[i + 1];
+                        }
+                        else
+                        {
+                            tempArr[i] = array[i];
+                        }
+                    }
+
+                }
+                else if (index == array.Length - 1)
+                {
+
+                    //RemoveLast(tempArr);
+                    for (int i = 0; i <= array.Length - 2; i++)
+                    {
+                        tempArr[i] = array[i];
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < index; i++)
+                    {
+                        tempArr[i] = array[i];
+                    }
+
+                    for (int i = index + 1; i <= array.Length - 1; i++)
+                    {
+                        tempArr[i - 1] = array[i];
+                    }
+
+                }
+
+                return tempArr;
+            }
+            else
+            {
+                return array;
+            }
         }
 
         /// <summary>
@@ -64,7 +170,23 @@
         public static int[] InsertFirst(int[] array, int number)
         {
             // ToDo: implement.
-            return array;
+            int[] tempArr = new int[array.Length + 1];
+            if (array != null || array.Length != 0)
+            {
+                tempArr[0] = number;
+
+                for (int i = 0; i <= array.Length - 1; i++)
+                {
+                    tempArr[i + 1] = array[i];
+                }
+
+                return tempArr;
+            }
+            else
+            {
+                array[0] = number;
+                return array;
+            }
         }
 
         /// <summary>
@@ -76,7 +198,24 @@
         public static int[] InsertLast(int[] array, int number)
         {
             // ToDo: implement.
-            return array;
+            int[] tempArr = new int[array.Length + 1];
+            if (array != null || array.Length != 0)
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    tempArr[i] = array[i];
+                }
+
+                tempArr[array.Length] = number;
+
+                return tempArr;
+            }
+            else
+            {
+                array[0] = number;
+                return array;
+            }
+
         }
 
         /// <summary>
@@ -89,7 +228,28 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
-            return array;
+            int[] tempArr = new int[array.Length + 1];
+            if (array != null || array.Length != 0)
+            {
+                for (int i = 0; i < index; i++)
+                {
+                    tempArr[i] = array[i];
+                }
+
+                for (int i = index + 1; i < tempArr.Length; i++)
+                {
+                    tempArr[i] = array[i - 1];
+                }
+
+                tempArr[index] = number;
+
+                return tempArr;
+            }
+            else
+            {
+                array[0] = number;
+                return array;
+            }
         }
     }
 }
