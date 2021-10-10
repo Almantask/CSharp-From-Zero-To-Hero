@@ -111,6 +111,44 @@ namespace BootCamp.Chapter1
             }
         }
 
+        public static void RemoveAtFirstPos(int[] array, int[] tempArr)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (i < array.Length - 1)
+                {
+                    tempArr[i] = array[i + 1];
+                }
+                else
+                {
+                    tempArr[i] = array[i];
+                }
+            }
+        }
+
+        public static void RemoveAtLastPos(int[] array, int[] tempArr)
+        {
+            //RemoveLast(tempArr);
+            for (int i = 0; i <= array.Length - 2; i++)
+            {
+                tempArr[i] = array[i];
+            }
+        }
+
+        public static void RemoveAtDesiredIndex(int[] array, int[] tempArr, int index)
+        {
+            for (int i = 0; i < index; i++)
+            {
+                tempArr[i] = array[i];
+            }
+
+            for (int i = index + 1; i <= array.Length - 1; i++)
+            {
+                tempArr[i - 1] = array[i];
+            }
+        }
+
+
         /// <summary>
         /// Removes array element at given index.
         /// </summary>
@@ -124,43 +162,20 @@ namespace BootCamp.Chapter1
             if (!checkNullOrEmpty)
             {
                 if (index < 0 || index > array.Length - 1) return array;
+
                 int[] tempArr = new int[array.Length - 1];
+
                 if (index == 0)
                 {
-                    for (int i = 0; i < array.Length - 1; i++)
-                    {
-                        if (i < array.Length - 1)
-                        {
-                            tempArr[i] = array[i + 1];
-                        }
-                        else
-                        {
-                            tempArr[i] = array[i];
-                        }
-                    }
-
+                    RemoveAtFirstPos(array, tempArr);
                 }
                 else if (index == array.Length - 1)
                 {
-
-                    //RemoveLast(tempArr);
-                    for (int i = 0; i <= array.Length - 2; i++)
-                    {
-                        tempArr[i] = array[i];
-                    }
-
+                    RemoveAtLastPos(array, tempArr);
                 }
                 else
                 {
-                    for (int i = 0; i < index; i++)
-                    {
-                        tempArr[i] = array[i];
-                    }
-
-                    for (int i = index + 1; i <= array.Length - 1; i++)
-                    {
-                        tempArr[i - 1] = array[i];
-                    }
+                    RemoveAtDesiredIndex(array, tempArr, index);
                 }
 
                 return tempArr;
