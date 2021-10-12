@@ -38,13 +38,11 @@ namespace BootCamp.Chapter
                 isHighestBalance = false;
             }
 
-            //Console.WriteLine(highestBalanceName + currentBalanceS);
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            var b = currentBalanceS;
-            var test = $"{b:C5}";
+            decimal currentBalanceStoDecimal = Convert.ToDecimal(currentBalanceS);
+            string currentBalanceDecimal = $"{currentBalanceStoDecimal:C0}";
 
-            Console.WriteLine("{b:C5}");
-            return $"{highestBalanceName} had the most money ever. {test}.";
+            return $"{highestBalanceName} had the most money ever. {currentBalanceDecimal}.";
         }
 
         /// <summary>
@@ -117,8 +115,11 @@ namespace BootCamp.Chapter
             }
 
             //Console.WriteLine(highestBalanceName + currentBalanceS);
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            decimal currentBalanceStoDecimal = Convert.ToDecimal(currentBalanceS);
+            string currentBalanceDecimal = $"{currentBalanceStoDecimal:C0}";
 
-            return $"{highestBalanceName} is the richest person. {currentBalanceS:C10}.";
+            return $"{highestBalanceName} is the richest person. {currentBalanceDecimal:C0}.";
         }
 
         /// <summary>
@@ -153,8 +154,11 @@ namespace BootCamp.Chapter
             }
 
             //Console.WriteLine(lowestBalanceName + currentBalanceS);
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            decimal currentBalanceStoDecimal = Convert.ToDecimal(currentBalanceS);
+            string currentBalanceDecimal = $"{currentBalanceStoDecimal:C0}";
 
-            return $"{lowestBalanceName} has the least money. {currentBalanceS:C10}.";
+            return $"{lowestBalanceName} has the least money. {currentBalanceDecimal:C0}.";
         }
     }
 }
