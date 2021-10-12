@@ -5,42 +5,150 @@ using System.Text;
 namespace BootCamp.Chapter
 {
     public static class BalanceStats
-    { 
+    {
+        public static double[] FindPersonWithBiggestBalance(double[] pplHighestBalanceArray)
+        {
+            int personIndex = 0;
+            double[] personWithHighestBalance = new double[2];
+            double tmpHighestBalance = double.MinValue;
+
+            for (int i = 0; i < pplHighestBalanceArray.Length; i++)
+            {
+                if (pplHighestBalanceArray[i] > tmpHighestBalance)
+                {
+                    tmpHighestBalance = pplHighestBalanceArray[i];
+                    personIndex = i;
+                }
+            }
+
+            personWithHighestBalance[0] = personIndex;
+            personWithHighestBalance[1] = tmpHighestBalance;
+
+            return personWithHighestBalance;
+        }
+
+        public static double FindHighestValuePerPerson(double accValue, double actualHigestValue)
+        {
+            if (actualHigestValue < accValue)
+            {
+                actualHigestValue = accValue;
+            }
+            return actualHigestValue;
+        }
+
+        public static double HighestHistoryBalancePerPerson(string[] curPersonData)
+        {
+            double actualHighestVal = 0;
+            bool success = false;
+            double accValue = 0;
+
+            for (int i = 0; i < curPersonData.Length; i++)
+            {
+                success = double.TryParse(curPersonData[i], out accValue);
+                if (success)
+                {
+                    actualHighestVal = FindHighestValuePerPerson(accValue, actualHighestVal);
+                }
+            }
+
+            return actualHighestVal;
+        }
+
+        public static double CurrentBalance(string[] personData)
+        {
+            double tmpValue = 0;
+            bool success = false;
+
+            success = double.TryParse(personData[personData.Length - 1], out tmpValue);
+            if (success)
+            {
+                tmpValue = double.Parse(personData[personData.Length - 1]);
+            }
+
+            return tmpValue = 1;
+        }
+
+        public static string FindPersonNameBasedOnIndex(string[] peopleAndBalances, int index)
+        {
+            string[] tmpArray = peopleAndBalances[index].Split(',');
+            string personName = tmpArray[0];
+
+            return personName;
+        }
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            string highestBalanceName = string.Empty;
-            string currentBalanceS = string.Empty;
-            double higestBalanceValue = default;
-            double currentValue;
-            bool isHighestBalance = false;
+            {
+                /*
+                string highestBalanceName = string.Empty;
+                string currentBalanceS = string.Empty;
+                double higestBalanceValue = default;
+                double currentValue;
+                bool isHighestBalance = false;
+
+                for (int i = 0; i < peopleAndBalances.Length; i++)
+                {
+                    var currPersonData = peopleAndBalances[i].Split(',');
+                    for (int j = 0; j < currPersonData.Length; j++)
+                    {
+                        bool success = double.TryParse(currPersonData[j], out currentValue);
+                        if (success)
+                        {
+                            var tmpValue = currentValue;
+                            if (tmpValue > higestBalanceValue)
+                            {
+                                higestBalanceValue = tmpValue;
+                                highestBalanceName = currPersonData[0];
+                                isHighestBalance = true;
+                            }
+                        }
+                    }
+                    if (isHighestBalance) currentBalanceS = currPersonData[^1].Substring(0);
+                    isHighestBalance = false;
+                }
+
+                CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+                decimal currentBalanceStoDecimal = Convert.ToDecimal(currentBalanceS);
+                string currentBalanceDecimal = $"{currentBalanceStoDecimal:C0}";
+
+                return $"{highestBalanceName} had the most money ever. {currentBalanceDecimal}.";
+                */
+            }
+            // test doesnt want current balance, he wants highest history balance
+
+            double[] highestHistoryBalancePerPerson = new double[peopleAndBalances.Length];
+            double[] personWithHighestHistoryBalance = new double[2];
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
-                var currPersonData = peopleAndBalances[i].Split(',');
-                for (int j = 0; j < currPersonData.Length; j++)
-                {
-                    bool success = double.TryParse(currPersonData[j], out currentValue);
-                    if (success)
-                    {
-                        var tmpValue = currentValue;
-                        if (tmpValue > higestBalanceValue)
-                        {
-                            higestBalanceValue = tmpValue;
-                            highestBalanceName = currPersonData[0];
-                            isHighestBalance = true;
-                        }
-                    }
-                }
-                if (isHighestBalance) currentBalanceS = currPersonData[^1].Substring(0);
-                isHighestBalance = false;
+                string[] currentPerson = new string[peopleAndBalances[i].Length];
+                currentPerson = peopleAndBalances[i].Split(',');
+
+                /// <summary>
+                /// save highest history balance of every person
+                /// </summary>
+                highestHistoryBalancePerPerson[i] = HighestHistoryBalancePerPerson(currentPerson);
             }
 
+            ///<summary>
+            /// find person with biggest balance ever
+            ///</summary>
+            personWithHighestHistoryBalance = FindPersonWithBiggestBalance(highestHistoryBalancePerPerson);
+
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            decimal currentBalanceStoDecimal = Convert.ToDecimal(currentBalanceS);
+
+            ///<summary>
+            /// find name of a person with highest balance ever
+            ///</summary>
+            int index = Convert.ToInt32(personWithHighestHistoryBalance[0]);
+            string highestBalanceName = FindPersonNameBasedOnIndex(peopleAndBalances, index);
+
+            double currentBalanceStoDecimal = personWithHighestHistoryBalance[1];
             string currentBalanceDecimal = $"{currentBalanceStoDecimal:C0}";
+
+            currentBalanceDecimal = currentBalanceDecimal.Replace(",", "");
 
             return $"{highestBalanceName} had the most money ever. {currentBalanceDecimal}.";
         }
