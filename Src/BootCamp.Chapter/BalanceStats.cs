@@ -75,6 +75,11 @@ namespace BootCamp.Chapter
 
             return personName;
         }
+        public static bool IsNullOrEmpty(this Array array)
+        {
+            return (array == null || array.Length == 0);
+        }
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -117,6 +122,8 @@ namespace BootCamp.Chapter
                 */
             }
             // test doesnt want current balance, he wants highest history balance
+
+            if (IsNullOrEmpty(peopleAndBalances)) return "N/A.";
 
             double[] highestHistoryBalancePerPerson = new double[peopleAndBalances.Length];
             double[] personWithHighestHistoryBalance = new double[2];
