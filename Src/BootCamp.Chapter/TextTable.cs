@@ -43,11 +43,55 @@ namespace BootCamp.Chapter
             StringBuilder horizontalLines = new StringBuilder();
             StringBuilder emptySpacesSB = new StringBuilder();
             StringBuilder paddingSpaceSB = new StringBuilder();
+            StringBuilder stringDiffLengthSB = new StringBuilder();
 
-            var length = message.Length;
-            var emptySpaces = message.Length;
+            int[] stringDiffLength = new int[2];
+
+            string trimmedMessage = message.Trim();
+            string[] textToParse = trimmedMessage.Split(" ");
+
+            var length = 0;
+            var emptySpaces = 0;
             var paddingSpaces = padding;
+            var shortestTextIndex = 0;
 
+            for (int i = 0; i < stringDiffLength.Length; i++)
+            {
+                stringDiffLengthSB.Append(" ");
+            }
+
+            if (textToParse.Length > 1)
+            {
+                int[] wordLength = new int[textToParse.Length];
+                int longestWord = 0;
+
+
+                if (textToParse[0].Length < textToParse[1].Length)
+                {
+                    stringDiffLength[0] = textToParse[1].Length - textToParse[0].Length;
+                    shortestTextIndex = 0;
+                }
+                else
+                {
+                    stringDiffLength[1] = textToParse[0].Length - textToParse[1].Length;
+                    shortestTextIndex = 1;
+                }
+
+
+                for (int i=0; i <textToParse.Length; i++)
+                {
+                    wordLength[i] = Convert.ToInt16(textToParse[i].Length);
+                    if (longestWord < wordLength[i]) longestWord = wordLength[i];
+
+                }
+                length = longestWord;
+                emptySpaces = longestWord;
+            }
+            else
+            {
+                length = message.Length;
+                emptySpaces = message.Length;
+            }
 
             for (int i = 0; i < length+paddingSpaces*2; i++)
             {
@@ -71,7 +115,25 @@ namespace BootCamp.Chapter
                 sb.Append($"|{paddingSpaceSB}{emptySpacesSB}{paddingSpaceSB}|{Environment.NewLine}");
             }
 
-            sb.Append($"|{paddingSpaceSB}{message}{paddingSpaceSB}|{Environment.NewLine}");
+            if (textToParse.Length > 1)
+            {
+                for (int i = 0; i < textToParse.Length; i++)
+                {
+                    if (i == shortestTextIndex)
+                    {
+                        sb.Append($"|{paddingSpaceSB}{textToParse[i]}{stringDiffLengthSB[i]}{paddingSpaceSB}|{Environment.NewLine}");
+                    }
+                    else
+                    {
+                        sb.Append($"|{paddingSpaceSB}{textToParse[i]}{paddingSpaceSB}|{Environment.NewLine}");
+                    }
+                }
+            }
+            else
+            {
+                sb.Append($"|{paddingSpaceSB}{textToParse[0]}{paddingSpaceSB}|{Environment.NewLine}");
+            }
+
 
             for (int i = 0; i < paddingSpaces; i++)
             {

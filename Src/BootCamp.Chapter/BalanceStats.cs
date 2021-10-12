@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 namespace BootCamp.Chapter
@@ -38,8 +39,12 @@ namespace BootCamp.Chapter
             }
 
             //Console.WriteLine(highestBalanceName + currentBalanceS);
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            var b = currentBalanceS;
+            var test = $"{b:C5}";
 
-            return highestBalanceName + currentBalanceS;
+            Console.WriteLine("{b:C5}");
+            return $"{highestBalanceName} had the most money ever. {test}.";
         }
 
         /// <summary>
@@ -113,7 +118,7 @@ namespace BootCamp.Chapter
 
             //Console.WriteLine(highestBalanceName + currentBalanceS);
 
-            return highestBalanceName + currentBalanceS;
+            return $"{highestBalanceName} is the richest person. {currentBalanceS:C10}.";
         }
 
         /// <summary>
@@ -149,7 +154,7 @@ namespace BootCamp.Chapter
 
             //Console.WriteLine(lowestBalanceName + currentBalanceS);
 
-            return lowestBalanceName + currentBalanceS;
+            return $"{lowestBalanceName} has the least money. {currentBalanceS:C10}.";
         }
     }
 }

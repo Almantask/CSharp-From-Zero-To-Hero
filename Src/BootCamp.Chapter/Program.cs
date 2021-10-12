@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,11 +25,11 @@ namespace BootCamp.Chapter
 
             // FUNKCJA DO DOKONCZENIA!!1
             //BalanceStats.FindPersonWithBiggestLoss(tableOfBalances);
-
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
-            TextTable.Build(BalanceStats.FindRichestPerson(tableOfBalances), 3);
-            TextTable.Build(BalanceStats.FindMostPoorPerson(tableOfBalances), 3);
-            TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3);
+            Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(tableOfBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(tableOfBalances), 3));
+            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
 
 
             Console.ReadKey();
