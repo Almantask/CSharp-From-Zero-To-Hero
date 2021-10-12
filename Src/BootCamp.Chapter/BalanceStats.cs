@@ -1,13 +1,45 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     public static class BalanceStats
-    {
+    { 
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
-            return "";
+            string highestBalanceName = string.Empty;
+            string currentBalanceS = string.Empty;
+            double higestBalanceValue = default;
+            double currentValue;
+            bool isHighestBalance = false;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var currPersonData = peopleAndBalances[i].Split(',');
+                for (int j = 0; j < currPersonData.Length; j++)
+                {
+                    bool success = double.TryParse(currPersonData[j], out currentValue);
+                    if (success)
+                    {
+                        var tmpValue = currentValue;
+                        if (tmpValue > higestBalanceValue)
+                        {
+                            higestBalanceValue = tmpValue;
+                            highestBalanceName = currPersonData[0];
+                            isHighestBalance = true;
+                        }
+                    }
+                }
+                if (isHighestBalance) currentBalanceS = currPersonData[^1].Substring(0);
+                isHighestBalance = false;
+            }
+
+            //Console.WriteLine(highestBalanceName + currentBalanceS);
+
+            return highestBalanceName + currentBalanceS;
         }
 
         /// <summary>
@@ -15,7 +47,36 @@
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            return "";
+            string highestBalanceName = string.Empty;
+            string currentBalanceS = string.Empty;
+            double higestLossValue = default;
+            double currentValue;
+            bool isHighestLoss = false;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var currPersonData = peopleAndBalances[i].Split(',');
+                for (int j = 0; j < currPersonData.Length; j++)
+                {
+                    bool success = double.TryParse(currPersonData[j], out currentValue);
+                    if (success)
+                    {
+                        var tmpValue = currentValue;
+                        if (tmpValue > double.Parse(currPersonData[j+1]))
+                        {
+                            higestLossValue = double.Parse(currPersonData[j+1]) - tmpValue;
+                            highestBalanceName = currPersonData[0];
+                            isHighestLoss = true;
+                        }
+                    }
+                }
+                if (isHighestLoss) currentBalanceS = higestLossValue.ToString();
+                isHighestLoss = false;
+            }
+
+            Console.WriteLine(highestBalanceName + currentBalanceS);
+
+            return highestBalanceName + currentBalanceS;
         }
 
         /// <summary>
@@ -23,7 +84,36 @@
         /// </summary>
         public static string FindRichestPerson(string[] peopleAndBalances)
         {
-            return "";
+            string highestBalanceName = string.Empty;
+            string currentBalanceS = string.Empty;
+            double higestBalanceValue = default;
+            double currentValue;
+            bool isHighestBalance = false;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var currPersonData = peopleAndBalances[i].Split(',');
+                for (int j = currPersonData.Length - 1; j < currPersonData.Length; j++)
+                {
+                    bool success = double.TryParse(currPersonData[j], out currentValue);
+                    if (success)
+                    {
+                        var tmpValue = currentValue;
+                        if (tmpValue > higestBalanceValue)
+                        {
+                            higestBalanceValue = tmpValue;
+                            highestBalanceName = currPersonData[0];
+                            isHighestBalance = true;
+                        }
+                    }
+                }
+                if (isHighestBalance) currentBalanceS = currPersonData[^1].Substring(0);
+                isHighestBalance = false;
+            }
+
+            //Console.WriteLine(highestBalanceName + currentBalanceS);
+
+            return highestBalanceName + currentBalanceS;
         }
 
         /// <summary>
@@ -31,7 +121,35 @@
         /// </summary>
         public static string FindMostPoorPerson(string[] peopleAndBalances)
         {
-            return "";
+            string lowestBalanceName = string.Empty;
+            string currentBalanceS = string.Empty;
+            double currentValue;
+            bool isLowestBalance = false;
+            var tmpValue = double.MaxValue;
+
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var currPersonData = peopleAndBalances[i].Split(',');
+                for (int j = currPersonData.Length - 1; j < currPersonData.Length; j++)
+                {
+                    bool success = double.TryParse(currPersonData[j], out currentValue);
+                    if (success)
+                    {
+                        if (currentValue < tmpValue)
+                        {
+                            tmpValue = currentValue;
+                            lowestBalanceName = currPersonData[0];
+                            isLowestBalance = true;
+                        }
+                    }
+                }
+                if (isLowestBalance) currentBalanceS = currPersonData[^1].Substring(0);
+                isLowestBalance = false;
+            }
+
+            //Console.WriteLine(lowestBalanceName + currentBalanceS);
+
+            return lowestBalanceName + currentBalanceS;
         }
     }
 }

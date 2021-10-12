@@ -1,4 +1,8 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     class Program
     {
@@ -9,6 +13,25 @@
             // - FindPersonWithBiggestLoss
             // - FindRichestPerson
             // - FindMostPoorPerson
+
+            var tableOfBalances = PeoplesBalances.Balances;
+
+            BalanceStats.FindHighestBalanceEver(tableOfBalances);
+
+            BalanceStats.FindRichestPerson(tableOfBalances);
+
+            BalanceStats.FindMostPoorPerson(tableOfBalances);
+
+            // FUNKCJA DO DOKONCZENIA!!1
+            //BalanceStats.FindPersonWithBiggestLoss(tableOfBalances);
+
+            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
+            TextTable.Build(BalanceStats.FindRichestPerson(tableOfBalances), 3);
+            TextTable.Build(BalanceStats.FindMostPoorPerson(tableOfBalances), 3);
+            TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3);
+
+
+            Console.ReadKey();
         }
     }
 }

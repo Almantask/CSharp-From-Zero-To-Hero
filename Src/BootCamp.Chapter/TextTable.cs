@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Text;
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
@@ -34,7 +37,50 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
-            return "";
+            if (message.Length == 0) return "";
+
+            StringBuilder sb = new StringBuilder();
+            StringBuilder horizontalLines = new StringBuilder();
+            StringBuilder emptySpacesSB = new StringBuilder();
+            StringBuilder paddingSpaceSB = new StringBuilder();
+
+            var length = message.Length;
+            var emptySpaces = message.Length;
+            var paddingSpaces = padding;
+
+
+            for (int i = 0; i < length+paddingSpaces*2; i++)
+            {
+                horizontalLines.Append("-");
+            }
+
+            for (int i = 0; i < emptySpaces; i++)
+            {
+                emptySpacesSB.Append(" ");
+            }
+
+            for (int i = 0; i < paddingSpaces; i++)
+            {
+                paddingSpaceSB.Append(" ");
+            }
+
+            sb.Append($"+{horizontalLines}+{Environment.NewLine}");
+
+            for (int i=0; i<paddingSpaces;i++)
+            {
+                sb.Append($"|{paddingSpaceSB}{emptySpacesSB}{paddingSpaceSB}|{Environment.NewLine}");
+            }
+
+            sb.Append($"|{paddingSpaceSB}{message}{paddingSpaceSB}|{Environment.NewLine}");
+
+            for (int i = 0; i < paddingSpaces; i++)
+            {
+                sb.Append($"|{paddingSpaceSB}{emptySpacesSB}{paddingSpaceSB}|{Environment.NewLine}");
+            }
+
+            sb.Append($"+{horizontalLines}+{Environment.NewLine}");
+
+            return sb.ToString();
         }
     }
 }
