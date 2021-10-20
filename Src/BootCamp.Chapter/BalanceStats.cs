@@ -140,21 +140,32 @@ namespace BootCamp.Chapter
         public static double HighestLossPerPerson(string[] curPersonData)
         {
             double highestDifference = double.MinValue;
-            double[] accValues = new double[curPersonData.Length - 1];
+            //double[] accValues = new double[curPersonData.Length - 1];
+            double[] accValues = new double[curPersonData.Length];
             double tmpValue = 0;
             bool success = false;
             double result;
 
             for (int i = 0; i < accValues.Length; i++)
             {
-                if (i < accValues.Length - 1)
+                success = double.TryParse(curPersonData[i], out result);
+                if (success)
                 {
-                    accValues[i] = double.Parse(curPersonData[i + 1]);
+                    if (i < accValues.Length - 1)
+                    {
+                        //accValues[i] = double.Parse(curPersonData[i + 1]);
+                        accValues[i] = result;
+                    }
+                    else
+                    {
+                        accValues[i] = double.Parse(curPersonData[^1]);
+                    }
                 }
                 else
                 {
-                    accValues[i] = double.Parse(curPersonData[^1]);
+                    accValues[i] = 0;
                 }
+             
             }
 
             for (int i = 0; i < accValues.Length; i++)
@@ -315,7 +326,7 @@ namespace BootCamp.Chapter
             }
 
             // if a person has only 1 value in history, function will pass minimum double value
-            if (higestLossValue == double.MinValue) return "N/A.";
+            if (higestLossValue == double.MinValue || higestLossValue == 0) return "N/A.";
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 

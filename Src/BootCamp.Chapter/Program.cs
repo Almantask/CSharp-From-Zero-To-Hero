@@ -25,8 +25,8 @@ namespace BootCamp.Chapter
 
             BalanceStats.FindMostPoorPerson(tableOfBalances);
 
-            // FUNKCJA DO DOKONCZENIA!!1
-            //BalanceStats.FindPersonWithBiggestLoss(tableOfBalances);
+
+            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(tableOfBalances), 3));
             //CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
             Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(tableOfBalances), 3));
