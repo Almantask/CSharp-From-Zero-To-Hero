@@ -46,9 +46,10 @@ namespace BootCamp.Chapter
             StringBuilder stringDiffLengthSB = new StringBuilder();
 
             int[] stringDiffLength = new int[2];
-
             string trimmedMessage = message.Trim();
-            string[] textToParse = trimmedMessage.Split(" ");
+            string[] stringSeparators = new string[] { "\r\n", " " };
+            string[] textToParse = trimmedMessage.Split(stringSeparators, StringSplitOptions.None);
+            //string[] textToParse = trimmedMessage.Split(new char[] {' '});
 
             var length = 0;
             var emptySpaces = 0;

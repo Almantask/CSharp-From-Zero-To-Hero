@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
@@ -120,6 +121,62 @@ namespace BootCamp.Chapter
             return (array == null || array.Length == 0);
         }
 
+        public static double SubtractNumbers(double a, double b)
+        {
+            double diff = 0;
+
+            if (a > b)
+            {
+                diff = a - b;
+            }
+            //else
+            //{ 
+            //    diff = b - a;
+            //}
+
+            return diff;
+        }
+
+        public static double HighestLossPerPerson(string[] curPersonData)
+        {
+            double highestDifference = double.MinValue;
+            double[] accValues = new double[curPersonData.Length - 1];
+            double tmpValue = 0;
+            bool success = false;
+            double result;
+
+            for (int i = 0; i < accValues.Length; i++)
+            {
+                if (i < accValues.Length - 1)
+                {
+                    accValues[i] = double.Parse(curPersonData[i + 1]);
+                }
+                else
+                {
+                    accValues[i] = double.Parse(curPersonData[^1]);
+                }
+            }
+
+            for (int i = 0; i < accValues.Length; i++)
+            {
+                if (i < accValues.Length - 1)
+                {
+                    tmpValue = SubtractNumbers(accValues[i], accValues[i+1]);
+                    if (tmpValue > highestDifference) highestDifference = tmpValue * -1;
+                }
+                //else
+                //{
+                //    if (accValues.Length > 2)
+                //    {
+                //        tmpValue = SubtractNumbers(accValues[i], accValues[^1]);
+                //        if (tmpValue > highestDifference) highestDifference = tmpValue * -1;
+                //    }
+                //}
+            }
+
+            return highestDifference;
+        }
+
         /// <summary>
         /// Return name and balance(current) of person who had the biggest historic balance.
         /// </summary>
@@ -233,36 +290,50 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindPersonWithBiggestLoss(string[] peopleAndBalances)
         {
-            string highestBalanceName = string.Empty;
-            string currentBalanceS = string.Empty;
-            double higestLossValue = default;
+
+            if (IsNullOrEmpty(peopleAndBalances)) return "N/A.";
+
+            double higestLossValue = 0;
             double currentValue;
-            bool isHighestLoss = false;
+
+            List<double> highestLossPerPerson = new List<double>();
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
-            {
-                var currPersonData = peopleAndBalances[i].Split(',');
-                for (int j = 0; j < currPersonData.Length; j++)
-                {
-                    bool success = double.TryParse(currPersonData[j], out currentValue);
-                    if (success)
-                    {
-                        var tmpValue = currentValue;
-                        if (tmpValue > double.Parse(currPersonData[j+1]))
-                        {
-                            higestLossValue = double.Parse(currPersonData[j+1]) - tmpValue;
-                            highestBalanceName = currPersonData[0];
-                            isHighestLoss = true;
-                        }
-                    }
-                }
-                if (isHighestLoss) currentBalanceS = higestLossValue.ToString();
-                isHighestLoss = false;
+            {   
+                highestLossPerPerson.Add(HighestLossPerPerson(peopleAndBalances[i].Split(',')));
             }
 
-            Console.WriteLine(highestBalanceName + currentBalanceS);
+            int highestLossIndex = 0;
 
-            return highestBalanceName + currentBalanceS;
+            for (int i = 0; i < highestLossPerPerson.Count; i++)
+            {
+                if (highestLossPerPerson[i] < higestLossValue)
+                {
+                    higestLossValue = highestLossPerPerson[i];
+                    highestLossIndex = i;
+                }
+            }
+
+            // if a person has only 1 value in history, function will pass minimum double value
+            if (higestLossValue == double.MinValue) return "N/A.";
+
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
+            string highestLossPerPersonString = $"{highestLossPerPerson[highestLossIndex]:C0}";
+            string highestBalanceName = string.Empty;
+
+            var currPersonData = peopleAndBalances[highestLossIndex].Split(',');
+            highestBalanceName = currPersonData[0];
+
+            if (highestLossPerPerson[0] < 0)
+            {
+                highestLossPerPersonString = highestLossPerPersonString.Replace("(", "-");
+                highestLossPerPersonString = highestLossPerPersonString.Replace(")", "");
+            }
+
+            highestLossPerPersonString = highestLossPerPersonString.Replace(",", "");
+
+            return $"{highestBalanceName} lost the most money. {highestLossPerPersonString}.";
         }
 
         /// <summary>
@@ -388,7 +459,7 @@ namespace BootCamp.Chapter
             double currentValue;
             bool isLowestBalance = false;
             var tmpValue = double.MaxValue;
-            double[] multiplePoorPpl = new double[peopleAndBalances.Length];
+            List<string> nameList = new List<string>();
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -401,29 +472,51 @@ namespace BootCamp.Chapter
                         if (currentValue < tmpValue)
                         {
                             tmpValue = currentValue;
-                            lowestBalanceName = currPersonData[0];
                             isLowestBalance = true;
-                        }
-                        else if (currentValue == tmpValue)
-                        {
-                            multiplePoorPpl[i] = tmpValue;
-                            lowestBalanceName = lowestBalanceName + currPersonData[0];
                         }
                     }
                 }
-                if (isLowestBalance) currentBalanceS = currPersonData[^1].Substring(0);
                 isLowestBalance = false;
             }
 
+            for (int i = 0; i < peopleAndBalances.Length; i++)
+            {
+                var currPersonData = peopleAndBalances[i].Split(',');
+                for (int j = currPersonData.Length - 1; j < currPersonData.Length; j++)
+                {
+                    bool success = double.TryParse(currPersonData[j], out currentValue);
+                    if (success)
+                    {
+                        if (currentValue == tmpValue)
+                        {
+                            nameList.Add(currPersonData[0]);
+                            isLowestBalance = true;
+                        }
+                        if (isLowestBalance) currentBalanceS = currPersonData[^1].Substring(0);
+                        isLowestBalance = false;
+                    }
+                }
+                
+            }
 
+            for (int i=0; i < nameList.Count; i++)
+            {
+                if (i == 0)
+                {
+                    lowestBalanceName = lowestBalanceName + nameList[i];
+                }
+                else if (i < nameList.Count - 1)
+                {
+                    lowestBalanceName = lowestBalanceName + ", " + nameList[i];
+                }
+                else if (i < nameList.Count)
+                {
+                    lowestBalanceName = lowestBalanceName + " and " + nameList[i];
+                }
+            }
 
-            //Console.WriteLine(lowestBalanceName + currentBalanceS);
-            //CultureInfo culture = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-            //culture.NumberFormat.CurrencyNegativePattern = 1;
-            //culture.NumberFormat.CurrencySymbol = "¤";
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             
-            //culture.NumberFormat.CurrencyNegativePattern = 1;
             decimal currentBalanceStoDecimal = Convert.ToDecimal(currentBalanceS);
             string currentBalanceDecimal = $"{currentBalanceStoDecimal:C0}";
 
@@ -434,8 +527,16 @@ namespace BootCamp.Chapter
             }
 
             string hasOrHave = string.Empty;
+            if (nameList.Count > 1)
+            {
+                hasOrHave = " have";
+            }
+            else
+            {
+                hasOrHave = " has";
+            }
 
-            return $"{lowestBalanceName} has the least money. {currentBalanceDecimal:C0}.";
+            return $"{lowestBalanceName}{hasOrHave} the least money. {currentBalanceDecimal:C0}.";
         }
     }
 }
