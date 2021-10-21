@@ -83,7 +83,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < curPersonData.Length; i++)
             {
-                success = double.TryParse(curPersonData[i], out accValue);
+                success = double.TryParse(curPersonData[i], NumberStyles.Number, CultureInfo.InvariantCulture , out accValue);
                 if (success)
                 {
                     actualHighestVal = FindHighestValuePerPerson(accValue, actualHighestVal);
@@ -148,7 +148,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < accValues.Length; i++)
             {
-                success = double.TryParse(curPersonData[i], out result);
+                success = double.TryParse(curPersonData[i], NumberStyles.Number, CultureInfo.InvariantCulture, out result);
                 if (success)
                 {
                     if (i < accValues.Length - 1)
@@ -158,7 +158,7 @@ namespace BootCamp.Chapter
                     }
                     else
                     {
-                        accValues[i] = double.Parse(curPersonData[^1]);
+                        accValues[i] = double.Parse(curPersonData[^1], CultureInfo.InvariantCulture);
                     }
                 }
                 else

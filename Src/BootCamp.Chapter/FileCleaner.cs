@@ -14,7 +14,11 @@ namespace BootCamp.Chapter
         /// <param name="cleanedFile">Cleaned up file without any "_".</param>
         public static void Clean(string dirtyFile, string cleanedFile)
         {
-            File.WriteAllText(cleanedFile, "a");
+            string text = File.ReadAllText(dirtyFile, Encoding.UTF8);
+            text = text.Replace("_", "");
+            File.WriteAllText(cleanedFile, text);
+
+            //File.WriteAllText(cleanedFile, "a");
         }
     }
 }

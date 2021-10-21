@@ -18,22 +18,37 @@ namespace BootCamp.Chapter
             // - FindRichestPerson
             // - FindMostPoorPerson
 
+            ///<summary>
+            /// Fix the file, by removing _
+            ///</summary>
+            FileCleaner.Clean(@"C:\Users\piotr\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.corrupted", @"C:\Users\piotr\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.clean");
+            
+            ///<summary>
+            /// Parse line by line to string array 
+            /// </summary>
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\piotr\source\repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.clean");
 
-            var tableOfBalances = PeoplesBalances.Balances;
-           
-            Console.WriteLine( BalanceStats.FindHighestBalanceEver(tableOfBalances));
+            ///<summary>
+            /// Remove currency
+            /// </summary>
+            for (int i=0; i < lines.Length; i++)
+            {
+                lines[i] = lines[i].Replace("£","");
 
-            BalanceStats.FindRichestPerson(tableOfBalances);
+            }
 
-            BalanceStats.FindMostPoorPerson(tableOfBalances);
+            var tableOfBalances = lines;
 
+            Console.WriteLine(BalanceStats.FindPersonWithBiggestLoss(tableOfBalances));
+            Console.WriteLine(BalanceStats.FindHighestBalanceEver(tableOfBalances));
+            Console.WriteLine(BalanceStats.FindRichestPerson(tableOfBalances));
+            Console.WriteLine(BalanceStats.FindMostPoorPerson(tableOfBalances));
 
-            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(tableOfBalances), 3));
-            //CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
-            Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(tableOfBalances), 3));
-            Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(tableOfBalances), 3));
-            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
+            //Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(tableOfBalances), 3));
+            //Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
+            //Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(tableOfBalances), 3));
+            //Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(tableOfBalances), 3));
+            //Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
 
 
             Console.ReadKey();
