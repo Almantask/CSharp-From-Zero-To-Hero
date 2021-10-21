@@ -34,7 +34,6 @@ namespace BootCamp.Chapter
             for (int i=0; i < lines.Length; i++)
             {
                 lines[i] = lines[i].Replace("£","");
-
             }
 
             var tableOfBalances = lines;
