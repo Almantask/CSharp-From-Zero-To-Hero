@@ -9,14 +9,47 @@ namespace BootCamp.Chapter
     /// </summary>
     public static class CaesarCipher
     {
+        public static char cipher(char ch, int key)
+        {
+            if (!char.IsLetter(ch))
+            {
+                return ch;
+            }
+
+            char d = char.IsUpper(ch) ? 'A' : 'a';
+            return (char)((((ch + key) - d) % 26) + d);
+        }
+
         public static string Encrypt(string message, byte shift)
         {
-            return message;
+            try
+            {
+                string output = string.Empty;
+
+                foreach (char ch in message)
+                    output += cipher(ch, shift);
+
+                return output;
+            }
+            catch (NullReferenceException ex)
+            {
+                return null;
+            }
+      
         }
 
         public static string Decrypt(string message, byte shift)
         {
-            return message;
+            try
+            {
+                byte value = Convert.ToByte(26 - shift);
+                return Encrypt(message, value);
+            }
+            catch (NullReferenceException ex)
+            {
+                return null;
+            }
+         
         }
     }
 }
