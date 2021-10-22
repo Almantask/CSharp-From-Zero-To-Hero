@@ -15,18 +15,6 @@ namespace BootCamp.Chapter
 
                 if (IsNullOrEmpty(array)) return 0;
 
-                
-                //for (int i = 0; i < array.Length; i++)
-                //{
-                //    long value = array[i];
-
-                //    if(value != 48)
-                //    {
-                //        if (array[i] != '0' && array[i] != '1') throw new InvalidBinaryNumberException(binary);
-                //    }
-
-                //}
-
                 Array.Reverse(array);
 
                 int sum = 0;
