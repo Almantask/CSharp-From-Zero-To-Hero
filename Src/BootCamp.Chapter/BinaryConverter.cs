@@ -13,13 +13,21 @@ namespace BootCamp.Chapter
             {
                 char[] array = binary.ToCharArray();
 
-                for (int i = 0; i < array.Length; i++)
-                {
-                    if (array[i] != '0' || array[i] != '1') throw new InvalidBinaryNumberException(binary);
-                }
+                if (IsNullOrEmpty(array)) return 0;
+
+                
+                //for (int i = 0; i < array.Length; i++)
+                //{
+                //    long value = array[i];
+
+                //    if(value != 48)
+                //    {
+                //        if (array[i] != '0' && array[i] != '1') throw new InvalidBinaryNumberException(binary);
+                //    }
+
+                //}
 
                 Array.Reverse(array);
-                if (IsNullOrEmpty(array)) return 0;
 
                 int sum = 0;
 
@@ -36,6 +44,7 @@ namespace BootCamp.Chapter
                             sum += (int)Math.Pow(2, i);
                         }
                     }
+                    else if (array[i] != '0' && array[i] != '1') throw new InvalidBinaryNumberException(binary);
                 }
 
                 return sum;
