@@ -9,28 +9,42 @@ namespace BootCamp.Chapter
     {
         public static long ToInteger(string binary)
         {
-            char[] array = binary.ToCharArray();
-            Array.Reverse(array);
-            if (IsNullOrEmpty(array)) return 0;
-
-            int sum = 0;
-
-            for (int i = 0; i < array.Length; i++)
+            try
             {
-                if (array[i] == '1')
+                char[] array = binary.ToCharArray();
+
+                for (int i = 0; i < array.Length; i++)
                 {
-                    if (i == 0)
+                    if (array[i] != '0' || array[i] != '1') throw new InvalidBinaryNumberException(binary);
+                }
+
+                Array.Reverse(array);
+                if (IsNullOrEmpty(array)) return 0;
+
+                int sum = 0;
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] == '1')
                     {
-                        sum += 1;
-                    }
-                    else
-                    {
-                        sum += (int)Math.Pow(2, i);
+                        if (i == 0)
+                        {
+                            sum += 1;
+                        }
+                        else
+                        {
+                            sum += (int)Math.Pow(2, i);
+                        }
                     }
                 }
-            }
 
-            return sum;
+                return sum;
+            }
+            catch(NullReferenceException)
+            {
+                return 0;
+            }
+           
         }
 
         public static string ToBinary(long number)
@@ -39,6 +53,9 @@ namespace BootCamp.Chapter
             int rem = 0;
           
             int num = (int)number;
+
+            if (num == 0) return "0";
+
             while (num > 0)
             {
                 rem = num % 2;
