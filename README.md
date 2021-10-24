@@ -22,6 +22,7 @@ You have an array of strings. Each element in array (a string) follows the same 
 *Name2, balanceY1, balanceY2, balanceY3*...  
 
 So each line is a person with their balance history. The last balance in the array is their current amount of money they have. Currency in the balances is unspecified.  
+All the data is stored in a file.  
 
 However, something went wrong with the file and it got corrupted. It's not said what wrong, so you need to inspect the file and fix it.
 There are 3 files in input folder:
@@ -39,8 +40,25 @@ After the file is fixed, you need to parse the balances and process them in the 
 
 Note: If you did Chapter 1 Homework 8, then you can refactor homework to OOP code.  
 
-
  
 
  
 
+=======
+# C#: From Zero To Hero 
+# The vision
+"Programming is hard". Yes, but not harder than running a marathon for a person who has never run. It's not harder than 
+building a house if you never built one. Programming is hard only until you practice it (like any other skill). 
+I would like to invite you to learn programming and C# following this course. 
+Ignite passion for finding little miracles in code every day 🙂
+
+# For new joiners
+It's never too late to join, because the community is there, all the material is saved
+and you will not be left alone.
+
+Live lessons material (slides + videos + examples + homework) here:  
+https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/Summary
+
+New joiner's guide here:  
+https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/New-joiner-guide  
+![Boot Camp Banner](Res/kaisi_banner.png)
