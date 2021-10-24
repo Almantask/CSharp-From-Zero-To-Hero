@@ -38,16 +38,16 @@ namespace BootCamp.Chapter
 
             var tableOfBalances = lines;
 
-            Console.WriteLine(BalanceStats.FindPersonWithBiggestLoss(tableOfBalances));
-            Console.WriteLine(BalanceStats.FindHighestBalanceEver(tableOfBalances));
-            Console.WriteLine(BalanceStats.FindRichestPerson(tableOfBalances));
-            Console.WriteLine(BalanceStats.FindMostPoorPerson(tableOfBalances));
+            //Console.WriteLine(BalanceStats.FindPersonWithBiggestLoss(tableOfBalances));
+            //Console.WriteLine(BalanceStats.FindHighestBalanceEver(tableOfBalances));
+            //Console.WriteLine(BalanceStats.FindRichestPerson(tableOfBalances));
+            //Console.WriteLine(BalanceStats.FindMostPoorPerson(tableOfBalances));
 
-            Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(tableOfBalances), 3));
-            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
-            Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(tableOfBalances), 3));
-            Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(tableOfBalances), 3));
-            Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(tableOfBalances), 3));
+            Console.WriteLine(TextTable.Build(Checks.FindHighestBalanceEver(tableOfBalances), 3));
+            Console.WriteLine(TextTable.Build(Checks.FindPersonWithBiggestLoss(tableOfBalances), 3));
+            Console.WriteLine(TextTable.Build(Checks.FindRichestPerson(tableOfBalances), 3));
+            Console.WriteLine(TextTable.Build(Checks.FindMostPoorPerson(tableOfBalances), 3));
+            Console.WriteLine(TextTable.Build(Checks.FindHighestBalanceEver(tableOfBalances), 3));
 
 
             Console.ReadKey();

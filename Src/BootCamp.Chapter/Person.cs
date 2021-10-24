@@ -4,27 +4,44 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class Person
+    public class Person
     {
         private string personName;
-        private string[] personBalance;
+        private List<string> personBalance;
         private static int totalPersonCount;
 
-        public Person(string name, string[] balance)
+        public Person()
+        {
+            this.personBalance = new List<string>();
+            totalPersonCount++;
+        }
+        public Person(string name)
         {
             this.personName = name;
-            this.personBalance = balance;
+            this.personBalance = new List<string>();
             totalPersonCount++;
+        }
+
+        public void UpdatePersonBalance(string balance)
+        {
+            this.PersonBalance.Add(balance);
+        }
+
+        public override string ToString()
+        {
+            return this.PersonName;
         }
 
         public string PersonName
         {
             get { return personName; }
+            set { this.personName = value; }
         }
 
-        public string[] PersonBalance
+        public List<string> PersonBalance
         {
             get { return personBalance; }
+            set { this.personBalance = value; }
         }
 
     }
