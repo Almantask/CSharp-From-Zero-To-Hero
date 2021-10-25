@@ -176,10 +176,6 @@ namespace BootCamp.Chapter
 
         public static decimal FindHighHisBal(List<string> currPeronBalanceHistory)
         {
-
-            //decimal[] balanceArray = new decimal[currPeronBalanceHistory.Count];
-
-            //decimal[] balanceArray = currPeronBalanceHistory.ToArray();
             decimal tmpValue = decimal.MinValue;
             decimal value;
 
@@ -208,6 +204,7 @@ namespace BootCamp.Chapter
             decimal highestHisBal = decimal.MinValue;
             decimal tmpHighestHisBal;
             string nameOfPersonWithHighestHistoryBalance = string.Empty;
+            List<string> addPeopleNamesWithHighestHistoryBalance = new List<string>();
 
             for (int i = 0; i < peopleToArray.Length; i++)
             {
@@ -219,68 +216,36 @@ namespace BootCamp.Chapter
                 }
             }
 
-            // dodac obsluge zwracania wielu imion, w przypadku gdy kilka osob ma taki sam stan konta
-
+            for (int i = 0; i < peopleToArray.Length; i++)
             {
-                //double[] highestHistoryBalancePerPerson = new double[peopleAndBalances.Length];
-                //double[] personWithHighestHistoryBalance = new double[peopleAndBalances.Length];
+                tmpHighestHisBal = FindHighHisBal(peopleToArray[i].PersonBalance);
+                if (highestHisBal == tmpHighestHisBal)
+                {
+                    addPeopleNamesWithHighestHistoryBalance.Add(peopleToArray[i].PersonName);
+                }
+            }
 
-                //for (int i = 0; i < peopleAndBalances.Length; i++)
-                //{
-                //    string[] currentPerson = new string[peopleAndBalances[i].Length];
-                //    currentPerson = peopleAndBalances[i].Split(',');
+            int count = 0;
 
-                //    /// <summary>
-                //    /// save highest history balance of every person
-                //    /// </summary>
-                //    highestHistoryBalancePerPerson[i] = HighestHistoryBalancePerPerson(currentPerson);
-                //}
+            for (int i = 0; i < addPeopleNamesWithHighestHistoryBalance.Count; i++)
+            {
+                if (count == 0)
+                {
+                    nameOfPersonWithHighestHistoryBalance = addPeopleNamesWithHighestHistoryBalance[i];
+                }
+                else if (count > 0 && count < addPeopleNamesWithHighestHistoryBalance.Count - 1)
+                {
+                    nameOfPersonWithHighestHistoryBalance = nameOfPersonWithHighestHistoryBalance + ", " + addPeopleNamesWithHighestHistoryBalance[i];
+                }
+                else if (count < addPeopleNamesWithHighestHistoryBalance.Count)
+                {
+                    nameOfPersonWithHighestHistoryBalance = nameOfPersonWithHighestHistoryBalance + " and " + addPeopleNamesWithHighestHistoryBalance[i];
+                }
+                count++;
 
-                ///<summary>
-                /// find person with biggest balance ever
-                ///</summary>
-                ///
-                //personWithHighestHistoryBalance = FindPersonWithBiggestBalance(highestHistoryBalancePerPerson);
-
-                //int nameCount = 0;
-                //for (int i = 0; i < personWithHighestHistoryBalance.Length; i++)
-                //{
-                //    if (personWithHighestHistoryBalance[i] != 0)
-                //    {
-                //        nameCount++;
-                //    }
-                //}
-
-                //double currentBalanceStoDecimal = double.MinValue;
-                //string nameToParse = string.Empty;
-                //int count = 0;
-
-                //for (int i = 0; i < personWithHighestHistoryBalance.Length; i++)
-                //{
-                //    if (personWithHighestHistoryBalance[i] != 0)
-                //    {
-                //        string name = FindPersonNameBasedOnIndex(peopleAndBalances, i);
-
-                //        if (count == 0)
-                //        {
-                //            nameToParse = nameToParse + name;
-                //        }
-                //        else if (count > 0 && count < nameCount - 1)
-                //        {
-                //            nameToParse = nameToParse + ", " + name;
-                //        }
-                //        else if (count < nameCount)
-                //        {
-                //            nameToParse = nameToParse + " and " + name;
-                //        }
-                //        count++;
-                //        currentBalanceStoDecimal = personWithHighestHistoryBalance[i];
-                //    }
-                //}
             }
 
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            //string currentBalanceDecimal = $"{currentBalanceStoDecimal:C0}"
             string currentBalanceDecimal = $"{highestHisBal:C0}";
             currentBalanceDecimal = currentBalanceDecimal.Replace(",", "");
 
@@ -289,11 +254,12 @@ namespace BootCamp.Chapter
 
         public static string Build(string message, in int padding)
         {
-            return "";
+            return TextTable.Build(message, padding);
         }
 
         public static void Clean(string file, string outputFile)
         {
+            FileCleaner.Clean(file, outputFile);
         }
     }
 }
