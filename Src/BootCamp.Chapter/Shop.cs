@@ -18,6 +18,7 @@
         public Shop(decimal money)
         {
             _money = money;
+            this._inventory = new Inventory();
         }
 
         public Item[] GetItems()
@@ -31,6 +32,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -50,7 +52,21 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            var itemPrice = item.GetPrice();
+            decimal priceReturn;
+
+            if (_money >= itemPrice)
+            {
+                _inventory.AddItem(item);
+                _money -= itemPrice;
+                priceReturn = itemPrice;
+            }
+            else
+            {
+                priceReturn = 0;
+            }
+
+            return priceReturn;
         }
 
         /// <summary>
@@ -64,6 +80,8 @@
         /// </returns>
         public Item Sell(string item)
         {
+
+
             return null;
         }
     }

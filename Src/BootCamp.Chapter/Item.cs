@@ -3,6 +3,8 @@
     public class Item
     {
         private string _name;
+
+        public static int totalItemCount = 0;
         public string GetName()
         {
             return _name;
@@ -21,6 +23,8 @@
             _name = name;
             _price = price;
             _weight = weight;
+
+            totalItemCount++;
         }
     }
 }
