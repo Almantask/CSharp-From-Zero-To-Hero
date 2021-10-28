@@ -32,7 +32,7 @@
         /// </summary>
         public void Add(Item item)
         {
-            _inventory.AddItem(item);
+             _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -42,6 +42,14 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            var itemsInInventory = _inventory.GetItems();
+            for(int i = 0; i < itemsInInventory.Length; i++)
+            {
+                if (itemsInInventory[i].GetName() == name)
+                {
+                    _inventory.RemoveItem(itemsInInventory[i]);
+                }
+            }
         }
 
         /// <summary>
@@ -80,9 +88,18 @@
         /// </returns>
         public Item Sell(string item)
         {
+            var itemsInInventory = _inventory.GetItems();
+            int index = 0;
 
+            for (int i = 0; i < itemsInInventory.Length; i++)
+            {
+                if (itemsInInventory[i].GetName() == item) index = i;
+            }
 
-            return null;
+            decimal money = itemsInInventory[index].GetPrice();
+            _money += money;
+
+            return itemsInInventory[index];
         }
     }
 }
