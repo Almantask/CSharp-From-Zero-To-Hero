@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System;
 
 namespace BootCamp.Chapter
 {
@@ -39,6 +40,7 @@ namespace BootCamp.Chapter
         {
             _inventory = new Inventory();
             _equipment = new Equipment();
+            _name = "Mr Null";
             _strenght = 10;
             _maxCarryWeightInKg = (30 + _strenght * 10);
         }
@@ -47,6 +49,7 @@ namespace BootCamp.Chapter
         {
             _inventory = new Inventory();
             _equipment = new Equipment();
+            _name = "Mr Null";
             _strenght = strenght;
             _maxCarryWeightInKg = (30 + _strenght * 10);
         }
@@ -64,9 +67,16 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
-
-
-            _inventory.AddItem(item);
+            float currentWeight = _equipment.GetTotalWeight() + item.GetWeight();
+            decimal test = (decimal)currentWeight;
+            if (test < _maxCarryWeightInKg)
+            {
+                _inventory.AddItem(item);
+            }
+            else
+            {
+                Console.WriteLine("Player {0}, cannot carry more items", _name);
+            }
         }
 
         public void Remove(Item item)
@@ -137,6 +147,17 @@ namespace BootCamp.Chapter
         {
             _equipment.SetGloves(head);
         }
+
+        public decimal GetTotalPlayerAttack()
+        {
+            return (decimal)_equipment.GetTotalAttack();
+        }
+
+        public decimal GetTotalPlayerDefense()
+        {
+            return (decimal)_equipment.GetTotalDefense();
+        }
+
         #endregion
     }
 }

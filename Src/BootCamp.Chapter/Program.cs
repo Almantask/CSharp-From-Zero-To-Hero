@@ -22,8 +22,13 @@ namespace BootCamp.Chapter
             Player p1 = new Player();
 
             Weapon _sword = new Weapon("sword", 20, 2, 15);
-
             p1.Equip(_sword);
+            p1.GetItems();
+            
+
+
+            Console.WriteLine("Total attack: {0}", p1.GetTotalPlayerAttack());
+            Console.WriteLine("Total defense: {0}", p1.GetTotalPlayerDefense());
 
 
 
