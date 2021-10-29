@@ -32,7 +32,18 @@
         /// </summary>
         public void Add(Item item)
         {
-             _inventory.AddItem(item);
+            var itemsInInventory = this._inventory.GetItems();
+            bool existInInventory = false;
+
+            foreach (var tmpItem in itemsInInventory)
+            {
+                if (item == tmpItem) existInInventory = true;
+            }
+
+            if (!existInInventory)
+            {
+                _inventory.AddItem(item);
+            }
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BootCamp.Chapter.Items;
+using System;
 
 namespace BootCamp.Chapter
 {
@@ -18,8 +19,11 @@ namespace BootCamp.Chapter
 
             playerInventory.GetItems(swordString);
 
+            Player p1 = new Player();
 
+            Weapon _sword = new Weapon("sword", 20, 2, 15);
 
+            p1.Equip(_sword);
 
 
 

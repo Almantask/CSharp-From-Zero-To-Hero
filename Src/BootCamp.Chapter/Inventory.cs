@@ -38,17 +38,7 @@ namespace BootCamp.Chapter
 
         public void AddItem(Item item)
         {
-            bool existInInventory = false;
-
-            foreach (var tmpItem in _items)
-            {
-                if (item == tmpItem) existInInventory = true;
-            }
-
-            if (!existInInventory)
-            {
-                _items.Add(item);
-            }
+            _items.Add(item);
         }
 
         /// <summary>
