@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -7,6 +8,19 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
+        public Equipment()
+        {
+            _weapon = new Weapon("", 0, 0, 0);
+            _head = new Headpiece("", 0, 0, 0);
+            _chest = new Chestpiece("", 0, 0, 0);
+            _leftArm = new Armpiece("", 0, 0, 0);
+            _rightArm = new Armpiece("", 0, 0, 0);
+            _leftShoulder = new Shoulderpiece("", 0, 0, 0);
+            _rightShoulder = new Shoulderpiece("", 0, 0, 0);
+            _legs = new Legspiece("", 0, 0, 0);
+            _gloves = new Gloves("", 0, 0, 0);
+        }
+
         private Weapon _weapon;
         public void SetWeapon(Weapon weapon)
         {
