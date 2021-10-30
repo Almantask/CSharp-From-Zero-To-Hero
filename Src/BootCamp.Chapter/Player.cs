@@ -42,6 +42,7 @@ namespace BootCamp.Chapter
             _equipment = new Equipment();
             _name = "Mr Null";
             _strenght = 10;
+            _hp = 2 * _strenght;
             _maxCarryWeightInKg = (30 + _strenght * 10);
         }
 
@@ -51,6 +52,7 @@ namespace BootCamp.Chapter
             _equipment = new Equipment();
             _name = "Mr Null";
             _strenght = strenght;
+            _hp = 2 * _strenght;
             _maxCarryWeightInKg = (30 + _strenght * 10);
         }
 
