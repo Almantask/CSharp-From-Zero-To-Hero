@@ -7,6 +7,11 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
 
+            MsFactory pc = new MsFactory();
+            Console.WriteLine(pc.Assemble());
+
+            Console.ReadKey();
+
         }
     }
 }

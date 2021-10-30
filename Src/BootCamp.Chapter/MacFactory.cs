@@ -9,7 +9,17 @@ namespace BootCamp.Chapter
     {
         public DesktopComputer Assemble()
         {
-            return new DesktopComputer();
+            DesktopComputer mac = new DesktopComputer();
+
+            mac.GetBody();
+            mac.GetCpu();
+            mac.GetRam();
+            mac.GetGpu();
+            mac.GetHard();
+            mac.GetMotherboard();
+
+            return mac;
+            //return new DesktopComputer();
         }
     }
 }

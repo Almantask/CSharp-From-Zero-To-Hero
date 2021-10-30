@@ -3,37 +3,36 @@
     public class DesktopComputer
     {
         private Body _body;
-        public Body GetBody()
+        public virtual Body GetBody()
         {
             return _body;
         }
         
         private Ram _ram;
-        public Ram GetRam()
+        public virtual Ram GetRam()
         {
             return _ram;
         }
 
         private Cpu _cpu;
-        public Cpu GetCpu()
+        public virtual Cpu GetCpu()
         {
             return _cpu;
-
         }
         private Gpu _gpu;
-        public Gpu GetGpu()
+        public virtual Gpu GetGpu()
         {
             return _gpu;
         }
 
         private HardDisk _hard;
-        public HardDisk GetHard()
+        public virtual HardDisk GetHard()
         {
             return _hard;
         }
 
         private Motherboard _motherboard;
-        public Motherboard GetMotherboard()
+        public virtual Motherboard GetMotherboard()
         {
             return _motherboard;
         }
