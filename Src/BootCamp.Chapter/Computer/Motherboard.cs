@@ -27,4 +27,16 @@ namespace BootCamp.Chapter.Computer
             Console.WriteLine("Install Win Motherboard");
         }
     }
+    public class MacMotherBoard : Motherboard
+    {
+        public MacMotherBoard()
+        {
+            assembleMotherboard();
+        }
+
+        public override void assembleMotherboard()
+        {
+            Console.WriteLine("Install Mac Motherboard");
+        }
+    }
 }

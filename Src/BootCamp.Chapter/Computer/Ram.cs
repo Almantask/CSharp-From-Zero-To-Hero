@@ -27,4 +27,16 @@ namespace BootCamp.Chapter.Computer
             Console.WriteLine("Install Win Ram");
         }
     }
+    public class MacRam : Ram
+    {
+        public MacRam()
+        {
+            assembleRam();
+        }
+
+        public override void assembleRam()
+        {
+            Console.WriteLine("Install Mac Ram");
+        }
+    }
 }

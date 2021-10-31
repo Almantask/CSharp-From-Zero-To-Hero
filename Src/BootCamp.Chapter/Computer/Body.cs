@@ -29,6 +29,16 @@ namespace BootCamp.Chapter.Computer
             Console.WriteLine("Install Win Body");
         }
     }
+    public class MacBody : Body
+    {
+        public MacBody()
+        {
+            assembleBody();
+        }
 
-
+        public override void assembleBody()
+        {
+            Console.WriteLine("Install Mac Body");
+        }
+    }
 }

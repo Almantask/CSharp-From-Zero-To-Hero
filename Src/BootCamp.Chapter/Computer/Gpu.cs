@@ -29,4 +29,17 @@ namespace BootCamp.Chapter.Computer
             Console.WriteLine("Install Win Gpu");
         }
     }
+    public class MacGpu : Gpu
+    {
+
+        public MacGpu()
+        {
+            assembleGPU();
+        }
+
+        public override void assembleGPU()
+        {
+            Console.WriteLine("Install Mac Gpu");
+        }
+    }
 }

@@ -26,7 +26,17 @@ namespace BootCamp.Chapter.Computer
         {
             Console.WriteLine("Install Win HardDisk");
         }
-
     }
+    public class MacHardDisk : HardDisk
+    {
+        public MacHardDisk()
+        {
+            assembleHardDisk();
+        }
 
+        public override void assembleHardDisk()
+        {
+            Console.WriteLine("Install Mac HardDisk");
+        }
+    }
 }

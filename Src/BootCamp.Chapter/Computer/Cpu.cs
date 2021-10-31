@@ -13,7 +13,6 @@ namespace BootCamp.Chapter.Computer
         {
             Console.WriteLine("Install CPU");
         }
-
     }
 
     public class MsCpu : Cpu
@@ -27,7 +26,29 @@ namespace BootCamp.Chapter.Computer
         {
             Console.WriteLine("Install Win Cpu");
         }
+
+        public override string ToString()
+        {
+            return string.Format("Win CPU");
+        }
     }
-       
+
+    public class MacCpu : Cpu
+    {
+        public MacCpu()
+        {
+            assembleCpu();
+        }
+
+        public override void assembleCpu()
+        {
+            Console.WriteLine("Install Mac Cpu");
+        }
+        public override string ToString()
+        {
+            return string.Format("Mac CPU");
+        }
+    }
+
 
 }
