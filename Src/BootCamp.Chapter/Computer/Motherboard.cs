@@ -4,11 +4,6 @@ namespace BootCamp.Chapter.Computer
 {
     public class Motherboard
     {
-        public Motherboard()
-        {
-
-        }
-
         public virtual void assembleMotherboard()
         {
             Console.WriteLine("Install Motherboard");
@@ -25,6 +20,10 @@ namespace BootCamp.Chapter.Computer
         public override void assembleMotherboard()
         {
             Console.WriteLine("Install Win Motherboard");
+        }
+        public override string ToString()
+        {
+            return string.Format("Win Motherboard");
         }
     }
     public class MacMotherBoard : Motherboard

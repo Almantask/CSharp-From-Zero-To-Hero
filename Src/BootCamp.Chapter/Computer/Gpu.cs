@@ -4,11 +4,6 @@ namespace BootCamp.Chapter.Computer
 {
     public class Gpu
     {
-        public Gpu()
-        {
-
-        }
-
         public virtual void assembleGPU()
         {
             Console.WriteLine("Install GPU");
@@ -27,6 +22,10 @@ namespace BootCamp.Chapter.Computer
         public override void assembleGPU()
         {
             Console.WriteLine("Install Win Gpu");
+        }
+        public override string ToString()
+        {
+            return string.Format("Win Gpu");
         }
     }
     public class MacGpu : Gpu

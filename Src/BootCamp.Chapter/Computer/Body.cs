@@ -6,11 +6,6 @@ namespace BootCamp.Chapter.Computer
 {
     public  class Body
     {
-        public Body()
-        {
-            
-        }
-
         public virtual void assembleBody()
         {
             Console.WriteLine("Install body");
@@ -27,6 +22,11 @@ namespace BootCamp.Chapter.Computer
         public override void assembleBody()
         {
             Console.WriteLine("Install Win Body");
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Win Body");
         }
     }
     public class MacBody : Body

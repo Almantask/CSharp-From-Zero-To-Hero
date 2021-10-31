@@ -1,40 +1,40 @@
 ﻿namespace BootCamp.Chapter.Computer
 {
-    public class DesktopComputer
+    public abstract class DesktopComputer
     {
-        private Body _body;
-        public virtual Body GetBody()
-        {
-            return _body;
-        }
-        
-        private Ram _ram;
-        public virtual Ram GetRam()
-        {
-            return _ram;
-        }
+        //private Body _body;
+        public abstract Body GetBody();
+        //{
+        //    return _body;
+        //}
 
-        private Cpu _cpu;
-        public virtual Cpu GetCpu()
-        {
-            return _cpu;
-        }
-        private Gpu _gpu;
-        public virtual Gpu GetGpu()
-        {
-            return _gpu;
-        }
+        //private Ram _ram;
+        public abstract Ram GetRam();
+        //{
+        //    return _ram;
+        //}
 
-        private HardDisk _hard;
-        public virtual HardDisk GetHard()
-        {
-            return _hard;
-        }
+        //private Cpu _cpu;
+        public abstract Cpu GetCpu();
+        //{
+        //    return _cpu;
+        //}
+        //private Gpu _gpu;
+        public abstract Gpu GetGpu();
+        //{
+        //    return _gpu;
+        //}
 
-        private Motherboard _motherboard;
-        public virtual Motherboard GetMotherboard()
-        {
-            return _motherboard;
-        }
+        //private HardDisk _hard;
+        public abstract HardDisk GetHard();
+        //{
+        //    return _hard;
+        //}
+
+        //private Motherboard _motherboard;
+        public abstract Motherboard GetMotherboard();
+        //{
+        //    return _motherboard;
+        //}
     }
 }

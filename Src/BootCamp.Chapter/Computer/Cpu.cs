@@ -4,11 +4,6 @@ namespace BootCamp.Chapter.Computer
 {
     public class Cpu
     {
-        public Cpu()
-        {
-
-        }
-
         public virtual void assembleCpu()
         {
             Console.WriteLine("Install CPU");

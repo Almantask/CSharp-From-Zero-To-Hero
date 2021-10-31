@@ -4,11 +4,6 @@ namespace BootCamp.Chapter.Computer
 {
     public class HardDisk
     {
-        public HardDisk()
-        {
-
-        }
-
         public virtual void assembleHardDisk()
         {
             Console.WriteLine("Install HardDisk");
@@ -25,6 +20,10 @@ namespace BootCamp.Chapter.Computer
         public override void assembleHardDisk()
         {
             Console.WriteLine("Install Win HardDisk");
+        }
+        public override string ToString()
+        {
+            return string.Format("Win HardDisk");
         }
     }
     public class MacHardDisk : HardDisk

@@ -4,11 +4,6 @@ namespace BootCamp.Chapter.Computer
 {
     public class Ram
     {
-        public Ram()
-        {
-
-        }
-
         public virtual void assembleRam()
         {
             Console.WriteLine("Install Ram");
@@ -25,6 +20,10 @@ namespace BootCamp.Chapter.Computer
         public override void assembleRam()
         {
             Console.WriteLine("Install Win Ram");
+        }
+        public override string ToString()
+        {
+            return string.Format("Win Ram");
         }
     }
     public class MacRam : Ram
