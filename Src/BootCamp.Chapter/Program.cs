@@ -6,7 +6,18 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            MacFactory mac = new MacFactory();
+            Console.WriteLine(mac.Assemble());
+            
+            MsFactory pc = new MsFactory();
+            Console.WriteLine(pc.Assemble());
+
+            MsFactory pc2 = new MsFactory();
+            Console.WriteLine(pc2.Assemble());
+
+            Console.ReadKey();
+
         }
     }
 }
