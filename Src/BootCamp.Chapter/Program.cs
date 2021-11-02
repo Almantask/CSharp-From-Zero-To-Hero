@@ -18,29 +18,51 @@ namespace BootCamp.Chapter
             {
                 Console.Clear();
 
-                Console.WriteLine("What's your name?");
+                string message = "What's your name?";
+                Console.WriteLine(message);
                 string name = Console.ReadLine();
+                logInfo(message, name);
 
-                Console.WriteLine("What's your surname?");
+                message = "What's your surname?";
+                Console.WriteLine(message);
                 string surname = Console.ReadLine();
+                logInfo(message, surname);
 
-                Console.WriteLine("How old are you?");
+                message = "How old are you?";
+                Console.WriteLine(message);
                 int age = int.Parse(Console.ReadLine());
+                logInfo(message, age.ToString());
 
-                Console.WriteLine("What's your weight? (in kg)");
+                message = "What's your weight? (in kg)";
+                Console.WriteLine(message);
                 double weightInKg = double.Parse(Console.ReadLine());
+                logInfo(message, weightInKg.ToString());
 
-                Console.WriteLine("How height are you? (in cm)");
+                message = "How height are you? (in cm)";
+                Console.WriteLine(message);
                 double heightInCm = double.Parse(Console.ReadLine());
+                logInfo(message, heightInCm.ToString());
 
                 Console.WriteLine("\n{0} {1} is {2} years old, his weight is {3} kg and his height is {4} cm", name, surname, age, weightInKg, heightInCm);
 
                 Console.WriteLine("\nBMI: {0:F} ", CalculateBmi(weightInKg, heightInCm));
 
+                string bmi = CalculateBmi(weightInKg, heightInCm).ToString();
+                logInfo("BMI: ", bmi);
+
                 i++;
             }
         }
 
+
+        public static void logInfo<T>(T message, T value)
+        {
+            Logger log = new Logger();
+            string infoToLog = message.ToString();
+            string infoToLogValue = value.ToString();
+            string finalInfo = infoToLog + " " + infoToLogValue;
+            log.Log(finalInfo);
+        }
       
 
 

@@ -30,5 +30,16 @@ namespace BootCamp.Chapter
                 sw.WriteLine("--------------------------------------------------------------------");
             }
         }
+
+        internal void Log<T>(T message)
+        {
+            using (StreamWriter sw = System.IO.File.AppendText(this.FilePath))
+            {
+                sw.Write("\r\nLog entry : ");
+                sw.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString());
+                sw.WriteLine(" : {0}", message);
+                sw.WriteLine("--------------------------------------------------------------------");
+            }
+        }
     }
 }
