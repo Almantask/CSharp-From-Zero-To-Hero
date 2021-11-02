@@ -4,6 +4,10 @@ namespace BootCamp.Chapter
 {
     class Program
     {
+        static void PrintQuestion(string message)
+        {
+            Console.WriteLine(message);
+        }
         static double CalculateBmi(double w, double h)
         {
             double bmi = w / Math.Pow(h/100, 2);
@@ -19,27 +23,27 @@ namespace BootCamp.Chapter
                 Console.Clear();
 
                 string message = "What's your name?";
-                Console.WriteLine(message);
+                PrintQuestion(message);
                 string name = Console.ReadLine();
                 logInfo(message, name);
 
                 message = "What's your surname?";
-                Console.WriteLine(message);
+                PrintQuestion(message);
                 string surname = Console.ReadLine();
                 logInfo(message, surname);
 
                 message = "How old are you?";
-                Console.WriteLine(message);
+                PrintQuestion(message);
                 int age = int.Parse(Console.ReadLine());
                 logInfo(message, age.ToString());
 
                 message = "What's your weight? (in kg)";
-                Console.WriteLine(message);
+                PrintQuestion(message);
                 double weightInKg = double.Parse(Console.ReadLine());
                 logInfo(message, weightInKg.ToString());
 
                 message = "How height are you? (in cm)";
-                Console.WriteLine(message);
+                PrintQuestion(message);
                 double heightInCm = double.Parse(Console.ReadLine());
                 logInfo(message, heightInCm.ToString());
 
