@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using BootCamp.Chapter.Items;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
-    public class Inventory
+    public class Inventory 
     {
-        private List<Item> _items;
-        
-        public Item[] GetItems()
+        private List<IItem> _items;
+        public IItem[] GetItems()
         {
             var itemArray = _items.ToArray();
             return itemArray;
@@ -14,29 +14,15 @@ namespace BootCamp.Chapter
 
         public Inventory()
         {
-            _items = new List<Item>();
+            _items = new List<IItem>();
         }
 
-        public Item[] GetItems(string name)
+        public IItem[] GetItems(string name)
         {
-            //var indexToReturn = 0;
-            //for (int i = 0; i < _items.Count; i++)
-            //{
-            //    var currentName = (_items[i].GetName());
-            //    if (currentName == name)
-            //    {
-            //        indexToReturn = i;
-            //    }
-            //}
-
-            //Item[] array = _items[0].ToArray();
-
             return _items.ToArray();
-            //return new Item[indexToReturn];
-            //return new Item[0];
         }
 
-        public void AddItem(Item item)
+        public void AddItem(IItem item)
         {
             _items.Add(item);
         }
@@ -45,9 +31,14 @@ namespace BootCamp.Chapter
         /// Removes item matching criteria by item.
         /// Does nothing if no such item exists
         /// </summary>
-        public void RemoveItem(Item item)
+        public void RemoveItem(IItem item)
         {
             _items.Remove(item);
+        }
+
+        public bool ContainItem(IItem item)
+        {
+            return _items.Contains(item);
         }
 
         

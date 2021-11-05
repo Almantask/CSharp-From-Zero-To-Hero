@@ -1,6 +1,6 @@
 ﻿namespace BootCamp.Chapter.Items
 {
-    public class Legspiece
+    public class Legspiece : IArmor
     {
         private string _name;
         public string Name

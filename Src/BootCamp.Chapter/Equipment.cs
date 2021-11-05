@@ -82,11 +82,11 @@ namespace BootCamp.Chapter
         public float GetTotalWeight()
         {
             float totalEquipmentWeight =
-                _leftShoulder.GetShoulderpieceWeightStat() + _rightShoulder.GetShoulderpieceWeightStat() +
-                _legs.GetLegspieceWeightStat() + _head.GetHeadpieceWeightStat() +
-                _gloves.GetGlovesWeightStat() + _chest.GetChestpieceWeightStat() +
-                _leftArm.GetArmpieceWeightStat() + _rightArm.GetArmpieceWeightStat() +
-                _weapon.GetWeaponWeightStat();
+                _leftShoulder.Weight + _rightShoulder.Weight +
+                _legs.Weight + _head.Weight +
+                _gloves.Weight + _chest.Weight +
+                _leftArm.Weight + _rightArm.Weight +
+                _weapon.Weight;
             ;
             return totalEquipmentWeight;
         }
@@ -98,10 +98,10 @@ namespace BootCamp.Chapter
         public float GetTotalDefense()
         {
             float totalDefence =
-                _leftShoulder.GetShoulderpieceDefence() + _rightShoulder.GetShoulderpieceDefence() +
-                _legs.GetLegspieceDefence() + _head.GetHeadpieceDefence() +
-                _gloves.GetGlovesDefence() + _chest.GetChestpieceDefence() +
-                _leftArm.GetArmpieceDefence() + _rightArm.GetArmpieceDefence();
+                _leftShoulder.Defense + _rightShoulder.Defense +
+                _legs.Defense + _head.Defense +
+                _gloves.Defense + _chest.Defense +
+                _leftArm.Defense + _rightArm.Defense;
             
             return totalDefence;
         }
@@ -112,7 +112,7 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public float GetTotalAttack()
         {
-            return _weapon.GetWeaponAttackStat();
+            return _weapon.Attack;
         }
     }
 }

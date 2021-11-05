@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using BootCamp.Chapter.Items;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
@@ -21,7 +23,7 @@
             this._inventory = new Inventory();
         }
 
-        public Item[] GetItems()
+        public IItem[] GetItems()
         {
             return _inventory.GetItems();
         }
@@ -30,7 +32,7 @@
         /// Adds item to the stock.
         /// If item of same name exists, does nothing.
         /// </summary>
-        public void Add(Item item)
+        public void Add(IItem item)
         {
             var itemsInInventory = this._inventory.GetItems();
             bool existInInventory = false;
@@ -56,7 +58,7 @@
             var itemsInInventory = _inventory.GetItems();
             for(int i = 0; i < itemsInInventory.Length; i++)
             {
-                if (itemsInInventory[i].GetName() == name)
+                if (itemsInInventory[i].Name == name)
                 {
                     _inventory.RemoveItem(itemsInInventory[i]);
                 }
@@ -69,9 +71,9 @@
         /// Shop looses money.
         /// </summary>
         /// <returns>Price of an item.</returns>
-        public decimal Buy(Item item)
+        public decimal Buy(IItem item)
         {
-            var itemPrice = item.GetPrice();
+            var itemPrice = item.Price;
             decimal priceReturn;
 
             if (_money >= itemPrice)
@@ -97,17 +99,17 @@
         /// Item sold.
         /// Null, if no item is sold.
         /// </returns>
-        public Item Sell(string item)
+        public IItem Sell(string item)
         {
             var itemsInInventory = _inventory.GetItems();
             int index = 0;
 
             for (int i = 0; i < itemsInInventory.Length; i++)
             {
-                if (itemsInInventory[i].GetName() == item) index = i;
+                if (itemsInInventory[i].Name == item) index = i;
             }
 
-            decimal money = itemsInInventory[index].GetPrice();
+            decimal money = itemsInInventory[index].Price;
             _money += money;
 
             return itemsInInventory[index];

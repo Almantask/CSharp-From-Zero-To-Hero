@@ -24,12 +24,14 @@ namespace BootCamp.Chapter
             p1.AddItem(sword);
             p1.AddItem(longSword);
             p1.AddItem(sword);
-            p1.AddItem(sword);
-            p1.AddItem(sword);
+            //p1.AddItem(sword);
+            //p1.AddItem(sword);
             p1.AddItem(longSword);
-            p1.AddItem(longSword);
+            //p1.AddItem(longSword);
+            
 
-            Weapon _sword = new Weapon("sword", 20, 2, 15);
+            Weapon _sword = new Weapon("_sword", 20, 2, 15);
+            p1.AddItem(_sword);
             p1.Equip(_sword);
             p1.GetItems();
 

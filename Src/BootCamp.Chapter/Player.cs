@@ -59,7 +59,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Gets all items from player's inventory
         /// </summary>
-        public Item[] GetItems()
+        public IItem[] GetItems()
         {
             return _inventory.GetItems();
         }
@@ -67,9 +67,9 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Adds item to player's inventory
         /// </summary>
-        public void AddItem(Item item)
+        public void AddItem(IItem item)
         {
-            float currentWeight = _equipment.GetTotalWeight() + item.GetWeight();
+            float currentWeight = _equipment.GetTotalWeight() + item.Weight;
             decimal test = (decimal)currentWeight;
             if (test < _maxCarryWeightInKg)
             {
@@ -81,7 +81,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public void Remove(Item item)
+        public void Remove(IItem item)
         {
             _inventory.RemoveItem(item);
         }
@@ -90,7 +90,7 @@ namespace BootCamp.Chapter
         /// Gets items with matching name.
         /// </summary>
         /// <param name="name"></param>
-        public Item[] GetItems(string name)
+        public IItem[] GetItems(string name)
         {
             return _inventory.GetItems(name);
         }
@@ -101,19 +101,35 @@ namespace BootCamp.Chapter
         // When a slot is equiped, it contributes to total defense
         // and total attack.
         // Implement equiping logic and total defense/attack calculation.
+        // If an item exist in inventory and is equipped, it dissappear from inventory, and appear as equipment
         public void Equip(Weapon weap)
         {
             _equipment.SetWeapon(weap);
+
+            if (_inventory.ContainItem(weap))
+            {
+                _inventory.RemoveItem(weap);
+            }
         }
 
         public void Equip(Headpiece head)
         {
             _equipment.SetHead(head);
+
+            if (_inventory.ContainItem(head))
+            {
+                _inventory.RemoveItem(head);
+            }
         }
 
         public void Equip(Chestpiece head)
         {
             _equipment.SetChest(head);
+
+            if (_inventory.ContainItem(head))
+            {
+                _inventory.RemoveItem(head);
+            }
         }
 
         public void Equip(Shoulderpiece head, bool isLeft)
@@ -121,16 +137,31 @@ namespace BootCamp.Chapter
             if (isLeft)
             {
                 _equipment.SetLeftShoulder(head);
+
+                if (_inventory.ContainItem(head))
+                {
+                    _inventory.RemoveItem(head);
+                }
             }
             else
             {
                 _equipment.SetRightShoulder(head);
+
+                if (_inventory.ContainItem(head))
+                {
+                    _inventory.RemoveItem(head);
+                }
             }
         }
 
         public void Equip(Legspiece head)
         {
             _equipment.SetLeg(head);
+
+            if (_inventory.ContainItem(head))
+            {
+                _inventory.RemoveItem(head);
+            }
         }
 
         public void Equip(Armpiece head, bool isLeft)
@@ -138,16 +169,31 @@ namespace BootCamp.Chapter
             if (isLeft)
             {
                 _equipment.SetLeftArmp(head);
+
+                if (_inventory.ContainItem(head))
+                {
+                    _inventory.RemoveItem(head);
+                }
             }
             else
             {
                 _equipment.SetRightArm(head);
+
+                if (_inventory.ContainItem(head))
+                {
+                    _inventory.RemoveItem(head);
+                }
             }
         }
 
         public void Equip(Gloves head)
         {
             _equipment.SetGloves(head);
+
+            if (_inventory.ContainItem(head))
+            {
+                _inventory.RemoveItem(head);
+            }
         }
 
         public decimal GetTotalPlayerAttack()
