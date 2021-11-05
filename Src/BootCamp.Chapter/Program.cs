@@ -42,8 +42,6 @@ namespace BootCamp.Chapter
             Console.WriteLine("Total attack: {0}", p1.GetTotalPlayerAttack());
             Console.WriteLine("Total defense: {0}", p1.GetTotalPlayerDefense());
 
-
-
             Console.ReadKey();
         }
 
