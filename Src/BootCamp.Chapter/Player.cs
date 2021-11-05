@@ -13,6 +13,12 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Player
     {
+        private decimal _money;
+        public decimal Money
+        {
+            get => _money;
+        }
+
         /// <summary>
         /// Everyone can carry this much weight at least.
         /// </summary>
@@ -54,6 +60,7 @@ namespace BootCamp.Chapter
             _strenght = 10;
             _hp = 2 * _strenght;
             _maxCarryWeightInKg = (30 + _strenght * 10);
+            _money = 9999;
         }
 
         public Player(int strenght)
@@ -64,6 +71,7 @@ namespace BootCamp.Chapter
             _strenght = strenght;
             _hp = 2 * _strenght;
             _maxCarryWeightInKg = (30 + _strenght * 10);
+            _money = 9999;
         }
 
         /// <summary>
@@ -203,6 +211,37 @@ namespace BootCamp.Chapter
             if (_inventory.ContainItem(head))
             {
                 _inventory.RemoveItem(head);
+            }
+        }
+
+        public void SellItemToShop(IItem item, Shop shop)
+        {
+            if (_inventory.ContainItem(item))
+            {
+                shop.Buy(item);
+                this._money += item.Price;
+                _inventory.RemoveItem(item);
+            }
+        }
+
+        public void BuyItemFromShop(IItem item, Shop shop)
+        {
+            var shopInventory = shop.GetItems();
+            bool hasThisItem = false;
+
+            for (int i = 0; i < shopInventory.Length; i++)
+            {
+                if (shopInventory[i] == item)
+                {
+                    hasThisItem = true;
+                }
+            }
+            
+            if (hasThisItem)
+            {
+                shop.Sell(item.Name);
+                this._money -= item.Price;
+                _inventory.AddItem(item);
             }
         }
 

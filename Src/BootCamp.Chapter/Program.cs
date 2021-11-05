@@ -7,38 +7,48 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            Item sword = new Item("sword", 20, 5);
-            Item longSword = new Item("longsword", 40, 10);
+            Shop shop = new Shop(100000);
 
-            Inventory playerInventory = new Inventory();
+            Item sword = new Item("swordFromShop", 20, 5);
+            Item longSword = new Item("longswordFromShop", 40, 10);
 
-            playerInventory.AddItem(sword);
-            playerInventory.AddItem(longSword);
+            shop.Add(sword);
+            shop.Add(longSword);
 
-            string swordString = "sword";
-
-            playerInventory.GetItems(swordString);
+            //Inventory playerInventory = new Inventory();
+            //string swordString = "sword";
+            //playerInventory.GetItems(swordString);
 
             Player p1 = new Player();
 
-            //p1.AddItem(sword);
-            //p1.AddItem(longSword);
-            //p1.AddItem(sword);
-            ////p1.AddItem(sword);
-            ////p1.AddItem(sword);
-            //p1.AddItem(longSword);
-            //p1.AddItem(longSword);
+            p1.BuyItemFromShop(sword, shop);
+            p1.BuyItemFromShop(longSword, shop);
 
-            Weapon _sword = new Weapon("_sword", 20, 2, 15);
-            Headpiece _helmet = new Headpiece("Iron helmet", 5, 5, 5);
-            Armpiece _leftArmpiece = new Armpiece("Iron armpiece left", 5, 5, 5);
-            Armpiece _rightArmpiece = new Armpiece("Iron armpiece right", 5, 5, 5);
-            Chestpiece _chestpiece = new Chestpiece("Iron chestpiece", 15, 15, 15);
-            Gloves _gloves = new Gloves("Iron gloves", 1, 1, 1);
-            Shoulderpiece _leftShoulderpiece = new Shoulderpiece("Iron shoulderpiece left", 3, 3, 3);
-            Shoulderpiece _rightShoulderpiece = new Shoulderpiece("Iron shoulderpiece right", 3, 3, 3);
-            Legspiece _legs = new Legspiece("Iron legspiece", 10, 10, 10);
+            p1.SellItemToShop(sword, shop);
+            p1.SellItemToShop(longSword, shop);
 
+            Weapon _sword;
+            Headpiece _helmet;
+            Armpiece _leftArmpiece, _rightArmpiece;
+            Chestpiece _chestpiece;
+            Gloves _gloves;
+            Shoulderpiece _leftShoulderpiece, _rightShoulderpiece;
+            Legspiece _legs;
+
+            CreateArmorAndWeapons(out _sword, out _helmet, out _leftArmpiece, out _rightArmpiece, out _chestpiece, out _gloves, out _leftShoulderpiece, out _rightShoulderpiece, out _legs);
+
+            AddItemsToInventoryAndEquip(p1, _sword, _helmet, _leftArmpiece, _rightArmpiece, _chestpiece, _gloves, _leftShoulderpiece, _rightShoulderpiece, _legs);
+
+            Console.WriteLine("Total attack: {0}", p1.GetTotalPlayerAttack());
+            Console.WriteLine("Total defense: {0}", p1.GetTotalPlayerDefense());
+
+
+
+            Console.ReadKey();
+        }
+
+        private static void AddItemsToInventoryAndEquip(Player p1, Weapon _sword, Headpiece _helmet, Armpiece _leftArmpiece, Armpiece _rightArmpiece, Chestpiece _chestpiece, Gloves _gloves, Shoulderpiece _leftShoulderpiece, Shoulderpiece _rightShoulderpiece, Legspiece _legs)
+        {
             p1.AddItem(_sword);
             p1.AddItem(_helmet);
             p1.AddItem(_leftArmpiece);
@@ -60,13 +70,19 @@ namespace BootCamp.Chapter
             p1.Equip(_legs);
 
             p1.GetItems();
+        }
 
-            Console.WriteLine("Total attack: {0}", p1.GetTotalPlayerAttack());
-            Console.WriteLine("Total defense: {0}", p1.GetTotalPlayerDefense());
-
-
-
-            Console.ReadKey();
+        private static void CreateArmorAndWeapons(out Weapon _sword, out Headpiece _helmet, out Armpiece _leftArmpiece, out Armpiece _rightArmpiece, out Chestpiece _chestpiece, out Gloves _gloves, out Shoulderpiece _leftShoulderpiece, out Shoulderpiece _rightShoulderpiece, out Legspiece _legs)
+        {
+            _sword = new Weapon("_sword", 20, 2, 15);
+            _helmet = new Headpiece("Iron helmet", 5, 5, 5);
+            _leftArmpiece = new Armpiece("Iron armpiece left", 5, 5, 5);
+            _rightArmpiece = new Armpiece("Iron armpiece right", 5, 5, 5);
+            _chestpiece = new Chestpiece("Iron chestpiece", 15, 15, 15);
+            _gloves = new Gloves("Iron gloves", 1, 1, 1);
+            _leftShoulderpiece = new Shoulderpiece("Iron shoulderpiece left", 3, 3, 3);
+            _rightShoulderpiece = new Shoulderpiece("Iron shoulderpiece right", 3, 3, 3);
+            _legs = new Legspiece("Iron legspiece", 10, 10, 10);
         }
     }
 }
