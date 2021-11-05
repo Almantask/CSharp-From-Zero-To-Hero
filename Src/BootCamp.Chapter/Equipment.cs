@@ -8,6 +8,69 @@ namespace BootCamp.Chapter
     /// </summary>
     public class Equipment
     {
+        private Weapon _weapon;
+        public Weapon Weapon
+        {
+            get { return _weapon; }
+            set { _weapon = value; }
+        }
+
+        private Headpiece _head;
+        public Headpiece Head
+        {
+            get { return _head; }
+            set { _head = value; }
+        }
+
+        private Chestpiece _chest;
+        public Chestpiece Chest
+        {
+            get { return _chest; }
+            set { _chest = value; }
+        }
+
+        private Shoulderpiece _leftShoulder;
+        public Shoulderpiece LeftShould
+        {
+            get { return _leftShoulder; }
+            set { _leftShoulder = value; }
+        }
+
+        private Shoulderpiece _rightShoulder;
+        public Shoulderpiece RightShoulder
+        {
+            get { return _rightShoulder; }
+            set { _rightShoulder = value; }
+        }
+
+        private Legspiece _legs;
+        public Legspiece Legs
+        {
+            get { return _legs; }
+            set { _legs = value; }
+        }
+
+        private Armpiece _leftArm;
+        public Armpiece LeftArm
+        {
+            get { return _leftArm; }
+            set { _leftArm = value; }
+        }
+
+        private Armpiece _rightArm;
+        public Armpiece RightArm
+        {
+            get { return _rightArm; }
+            set { _rightArm = value; }
+        }
+
+        private Gloves _gloves;
+        public Gloves Gloves
+        {
+            get { return _gloves; }
+            set { _gloves = value; }
+        }
+
         public Equipment()
         {
             _weapon = new Weapon("", 0, 0, 0);
@@ -19,60 +82,6 @@ namespace BootCamp.Chapter
             _rightShoulder = new Shoulderpiece("", 0, 0, 0);
             _legs = new Legspiece("", 0, 0, 0);
             _gloves = new Gloves("", 0, 0, 0);
-        }
-
-        private Weapon _weapon;
-        public void SetWeapon(Weapon weapon)
-        {
-            _weapon = weapon;
-        }
-
-        private Headpiece _head;
-        public void SetHead(Headpiece head)
-        {
-            _head = head;
-        }
-
-        private Chestpiece _chest;
-        public void SetChest(Chestpiece chestpiece)
-        {
-            _chest = chestpiece;
-        }
-
-        private Shoulderpiece _leftShoulder;
-        public void SetLeftShoulder(Shoulderpiece should)
-        {
-            _leftShoulder = should;
-        }
-
-        private Shoulderpiece _rightShoulder;
-        public void SetRightShoulder(Shoulderpiece shoulder)
-        {
-            _rightShoulder = shoulder;
-        }
-
-        private Legspiece _legs;
-        public void SetLeg(Legspiece legs)
-        {
-            _legs = legs;
-        }
-
-        private Armpiece _leftArm;
-        public void SetLeftArmp(Armpiece arm)
-        {
-            _leftArm = arm;
-        }
-
-        private Armpiece _rightArm;
-        public void SetRightArm(Armpiece arm)
-        {
-            _rightArm = arm;
-        }
-
-        private Gloves _gloves;
-        public void SetGloves(Gloves gloves)
-        {
-            _gloves = gloves;
         }
 
         /// <summary>

@@ -19,8 +19,18 @@ namespace BootCamp.Chapter
         private const int baseCarryWeight = 30;
 
         private string _name;
+        public string Name
+        {
+            get => _name;
+        }
+
         private int _hp;
+
         private decimal _maxCarryWeightInKg;
+        public decimal MaxCarryWeightInKg
+        {
+            get => _maxCarryWeightInKg;
+        }
 
         /// <summary>
         /// Each point of strength allows extra 10 kg to carry.
@@ -104,7 +114,7 @@ namespace BootCamp.Chapter
         // If an item exist in inventory and is equipped, it dissappear from inventory, and appear as equipment
         public void Equip(Weapon weap)
         {
-            _equipment.SetWeapon(weap);
+            _equipment.Weapon = weap;
 
             if (_inventory.ContainItem(weap))
             {
@@ -114,7 +124,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Headpiece head)
         {
-            _equipment.SetHead(head);
+            _equipment.Head = head;
 
             if (_inventory.ContainItem(head))
             {
@@ -124,7 +134,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Chestpiece head)
         {
-            _equipment.SetChest(head);
+            _equipment.Chest = head;
 
             if (_inventory.ContainItem(head))
             {
@@ -136,7 +146,7 @@ namespace BootCamp.Chapter
         {
             if (isLeft)
             {
-                _equipment.SetLeftShoulder(head);
+                _equipment.LeftShould = head;
 
                 if (_inventory.ContainItem(head))
                 {
@@ -145,7 +155,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                _equipment.SetRightShoulder(head);
+                _equipment.RightShoulder = head;
 
                 if (_inventory.ContainItem(head))
                 {
@@ -156,7 +166,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Legspiece head)
         {
-            _equipment.SetLeg(head);
+            _equipment.Legs = head;
 
             if (_inventory.ContainItem(head))
             {
@@ -168,7 +178,7 @@ namespace BootCamp.Chapter
         {
             if (isLeft)
             {
-                _equipment.SetLeftArmp(head);
+                _equipment.LeftArm = head;
 
                 if (_inventory.ContainItem(head))
                 {
@@ -177,7 +187,7 @@ namespace BootCamp.Chapter
             }
             else
             {
-                _equipment.SetRightArm(head);
+                _equipment.RightArm = head;
 
                 if (_inventory.ContainItem(head))
                 {
@@ -188,7 +198,7 @@ namespace BootCamp.Chapter
 
         public void Equip(Gloves head)
         {
-            _equipment.SetGloves(head);
+            _equipment.Gloves = head;
 
             if (_inventory.ContainItem(head))
             {
