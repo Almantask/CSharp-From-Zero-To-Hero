@@ -1,26 +1,44 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Collections.Generic;
+
+namespace BootCamp.Chapter
 {
     public class Inventory
     {
-        private Item[] _items;
+        private List<Item> _items;
+        
         public Item[] GetItems()
         {
-            return new Item[0];
+            var itemArray = _items.ToArray();
+            return itemArray;
         }
 
         public Inventory()
         {
-            _items = new Item[0];
+            _items = new List<Item>();
         }
 
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            //var indexToReturn = 0;
+            //for (int i = 0; i < _items.Count; i++)
+            //{
+            //    var currentName = (_items[i].GetName());
+            //    if (currentName == name)
+            //    {
+            //        indexToReturn = i;
+            //    }
+            //}
+
+            //Item[] array = _items[0].ToArray();
+
+            return _items.ToArray();
+            //return new Item[indexToReturn];
+            //return new Item[0];
         }
 
         public void AddItem(Item item)
         {
-
+            _items.Add(item);
         }
 
         /// <summary>
@@ -29,7 +47,9 @@
         /// </summary>
         public void RemoveItem(Item item)
         {
-
+            _items.Remove(item);
         }
+
+        
     }
 }

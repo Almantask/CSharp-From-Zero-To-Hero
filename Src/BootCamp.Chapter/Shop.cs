@@ -18,6 +18,7 @@
         public Shop(decimal money)
         {
             _money = money;
+            this._inventory = new Inventory();
         }
 
         public Item[] GetItems()
@@ -31,6 +32,18 @@
         /// </summary>
         public void Add(Item item)
         {
+            var itemsInInventory = this._inventory.GetItems();
+            bool existInInventory = false;
+
+            foreach (var tmpItem in itemsInInventory)
+            {
+                if (item == tmpItem) existInInventory = true;
+            }
+
+            if (!existInInventory)
+            {
+                _inventory.AddItem(item);
+            }
         }
 
         /// <summary>
@@ -40,6 +53,14 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            var itemsInInventory = _inventory.GetItems();
+            for(int i = 0; i < itemsInInventory.Length; i++)
+            {
+                if (itemsInInventory[i].GetName() == name)
+                {
+                    _inventory.RemoveItem(itemsInInventory[i]);
+                }
+            }
         }
 
         /// <summary>
@@ -50,7 +71,21 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            var itemPrice = item.GetPrice();
+            decimal priceReturn;
+
+            if (_money >= itemPrice)
+            {
+                _inventory.AddItem(item);
+                _money -= itemPrice;
+                priceReturn = itemPrice;
+            }
+            else
+            {
+                priceReturn = 0;
+            }
+
+            return priceReturn;
         }
 
         /// <summary>
@@ -64,7 +99,18 @@
         /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            var itemsInInventory = _inventory.GetItems();
+            int index = 0;
+
+            for (int i = 0; i < itemsInInventory.Length; i++)
+            {
+                if (itemsInInventory[i].GetName() == item) index = i;
+            }
+
+            decimal money = itemsInInventory[index].GetPrice();
+            _money += money;
+
+            return itemsInInventory[index];
         }
     }
 }
