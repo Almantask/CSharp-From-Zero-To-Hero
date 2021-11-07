@@ -12,8 +12,8 @@ namespace BootCamp.Chapter
             Item sword = new Item("swordFromShop", 20, 5);
             Item longSword = new Item("longswordFromShop", 40, 10);
 
-            shop.Add(sword);
-            shop.Add(longSword);
+            shop?.Add(sword);
+            shop?.Add(longSword);
 
             //Inventory playerInventory = new Inventory();
             //string swordString = "sword";
@@ -21,11 +21,11 @@ namespace BootCamp.Chapter
 
             Player p1 = new Player();
 
-            p1.BuyItemFromShop(sword, shop);
-            p1.BuyItemFromShop(longSword, shop);
+            p1?.BuyItemFromShop(sword, shop);
+            p1?.BuyItemFromShop(longSword, shop);
 
-            p1.SellItemToShop(sword, shop);
-            p1.SellItemToShop(longSword, shop);
+            p1?.SellItemToShop(sword, shop);
+            p1?.SellItemToShop(longSword, shop);
 
             Weapon _sword;
             Headpiece _helmet;
@@ -39,8 +39,8 @@ namespace BootCamp.Chapter
 
             AddItemsToInventoryAndEquip(p1, _sword, _helmet, _leftArmpiece, _rightArmpiece, _chestpiece, _gloves, _leftShoulderpiece, _rightShoulderpiece, _legs);
 
-            Console.WriteLine("Total attack: {0}", p1.GetTotalPlayerAttack());
-            Console.WriteLine("Total defense: {0}", p1.GetTotalPlayerDefense());
+            Console.WriteLine("Total attack: {0}", p1?.GetTotalPlayerAttack());
+            Console.WriteLine("Total defense: {0}", p1?.GetTotalPlayerDefense());
 
             Console.ReadKey();
         }

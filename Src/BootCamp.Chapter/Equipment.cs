@@ -102,25 +102,6 @@ namespace BootCamp.Chapter
             return totalEquipmentWeight;
         }
 
-        public float GetTotalWeight(Equipment[] currentEquip)
-        {
-            
-            foreach(var item in currentEquip)
-            {
-                var type = currentEquip.GetType();
-                float totalEquipmentWeight += currentEquip.
-            }
-
-            float totalEquipmentWeight =
-                _leftShoulder.Weight + _rightShoulder.Weight +
-                _legs.Weight + _head.Weight +
-                _gloves.Weight + _chest.Weight +
-                _leftArm.Weight + _rightArm.Weight +
-                _weapon.Weight;
-
-            return totalEquipmentWeight;
-        }
-
         /// <summary>
         /// Returns sums of defense stat of all armour pieces.
         /// </summary>

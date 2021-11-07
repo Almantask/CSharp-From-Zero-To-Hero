@@ -5,9 +5,9 @@ namespace BootCamp.Chapter
     public class Shop
     {
         private decimal _money;
-        public decimal GetMoney()
+        public decimal Money
         {
-            return _money;
+            get => _money;
         }
 
         private Inventory _inventory;

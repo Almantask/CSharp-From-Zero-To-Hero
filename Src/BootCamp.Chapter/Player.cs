@@ -137,7 +137,7 @@ namespace BootCamp.Chapter
 
             if (_inventory.ContainItem(head))
             {
-                _inventory.RemoveItem(head);
+                _inventory?.RemoveItem(head);
             }
         }
 
@@ -147,7 +147,7 @@ namespace BootCamp.Chapter
 
             if (_inventory.ContainItem(head))
             {
-                _inventory.RemoveItem(head);
+                _inventory?.RemoveItem(head);
             }
         }
 
@@ -159,7 +159,7 @@ namespace BootCamp.Chapter
 
                 if (_inventory.ContainItem(head))
                 {
-                    _inventory.RemoveItem(head);
+                    _inventory?.RemoveItem(head);
                 }
             }
             else
@@ -168,7 +168,7 @@ namespace BootCamp.Chapter
 
                 if (_inventory.ContainItem(head))
                 {
-                    _inventory.RemoveItem(head);
+                    _inventory?.RemoveItem(head);
                 }
             }
         }
@@ -179,7 +179,7 @@ namespace BootCamp.Chapter
 
             if (_inventory.ContainItem(head))
             {
-                _inventory.RemoveItem(head);
+                _inventory?.RemoveItem(head);
             }
         }
 
@@ -191,7 +191,7 @@ namespace BootCamp.Chapter
 
                 if (_inventory.ContainItem(head))
                 {
-                    _inventory.RemoveItem(head);
+                    _inventory?.RemoveItem(head);
                 }
             }
             else
@@ -200,7 +200,7 @@ namespace BootCamp.Chapter
 
                 if (_inventory.ContainItem(head))
                 {
-                    _inventory.RemoveItem(head);
+                    _inventory?.RemoveItem(head);
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace BootCamp.Chapter
 
             if (_inventory.ContainItem(head))
             {
-                _inventory.RemoveItem(head);
+                _inventory?.RemoveItem(head);
             }
         }
 
@@ -219,9 +219,9 @@ namespace BootCamp.Chapter
         {
             if (_inventory.ContainItem(item))
             {
-                shop.Buy(item);
+                shop?.Buy(item);
                 this._money += item.Price;
-                _inventory.RemoveItem(item);
+                _inventory?.RemoveItem(item);
             }
         }
 

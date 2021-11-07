@@ -19,12 +19,12 @@ namespace BootCamp.Chapter
 
         public IItem[] GetItems(string name)
         {
-            return _items.ToArray();
+            return _items?.ToArray();
         }
 
         public void AddItem(IItem item)
         {
-            _items.Add(item);
+            _items?.Add(item);
         }
 
         /// <summary>
@@ -33,14 +33,12 @@ namespace BootCamp.Chapter
         /// </summary>
         public void RemoveItem(IItem item)
         {
-            _items.Remove(item);
+            _items?.Remove(item);
         }
 
         public bool ContainItem(IItem item)
         {
             return _items.Contains(item);
         }
-
-        
     }
 }
