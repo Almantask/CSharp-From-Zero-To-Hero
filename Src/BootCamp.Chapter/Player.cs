@@ -1,5 +1,6 @@
 ﻿using BootCamp.Chapter.Items;
 using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -111,7 +112,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public IItem[] GetItems(string name)
         {
-            return _inventory.GetItems(name);
+            return _inventory?.GetItems(name);
         }
 
         #region Extra challenge: Equipment
@@ -123,39 +124,22 @@ namespace BootCamp.Chapter
         // If an item exist in inventory and is equipped, it dissappear from inventory, and appear as equipment
         public void Equip(Weapon weap)
         {
-            _equipment.Weapon = weap;
-
-            if (_inventory.ContainItem(weap))
+            if (weap is Weapon)
             {
+                _equipment.Weapon = weap;
                 _inventory?.RemoveItem(weap);
+            }
+            else
+            {
+                throw new Exception("This item is not a weapon");
             }
         }
 
         public void Equip(Headpiece head)
         {
-            _equipment.Head = head;
-
-            if (_inventory.ContainItem(head))
+            if (head is Headpiece)
             {
-                _inventory?.RemoveItem(head);
-            }
-        }
-
-        public void Equip(Chestpiece head)
-        {
-            _equipment.Chest = head;
-
-            if (_inventory.ContainItem(head))
-            {
-                _inventory?.RemoveItem(head);
-            }
-        }
-
-        public void Equip(Shoulderpiece head, bool isLeft)
-        {
-            if (isLeft)
-            {
-                _equipment.LeftShould = head;
+                _equipment.Head = head;
 
                 if (_inventory.ContainItem(head))
                 {
@@ -164,54 +148,116 @@ namespace BootCamp.Chapter
             }
             else
             {
-                _equipment.RightShoulder = head;
-
-                if (_inventory.ContainItem(head))
-                {
-                    _inventory?.RemoveItem(head);
-                }
+                throw new Exception("This item is not a headpiece");
             }
         }
 
-        public void Equip(Legspiece head)
+        public void Equip(Chestpiece chest)
         {
-            _equipment.Legs = head;
-
-            if (_inventory.ContainItem(head))
+            if (chest is Chestpiece)
             {
-                _inventory?.RemoveItem(head);
-            }
-        }
+                _equipment.Chest = chest;
 
-        public void Equip(Armpiece head, bool isLeft)
-        {
-            if (isLeft)
-            {
-                _equipment.LeftArm = head;
-
-                if (_inventory.ContainItem(head))
+                if (_inventory.ContainItem(chest))
                 {
-                    _inventory?.RemoveItem(head);
+                    _inventory?.RemoveItem(chest);
                 }
             }
             else
             {
-                _equipment.RightArm = head;
-
-                if (_inventory.ContainItem(head))
-                {
-                    _inventory?.RemoveItem(head);
-                }
+                throw new Exception("This item is not a chestpiece");
             }
         }
 
-        public void Equip(Gloves head)
+        public void Equip(Shoulderpiece shoulder, bool isLeft)
         {
-            _equipment.Gloves = head;
-
-            if (_inventory.ContainItem(head))
+            if (shoulder is Shoulderpiece)
             {
-                _inventory?.RemoveItem(head);
+                if (isLeft)
+                {
+                    _equipment.LeftShould = shoulder;
+
+                    if (_inventory.ContainItem(shoulder))
+                    {
+                        _inventory?.RemoveItem(shoulder);
+                    }
+                }
+                else
+                {
+                    _equipment.RightShoulder = shoulder;
+
+                    if (_inventory.ContainItem(shoulder))
+                    {
+                        _inventory?.RemoveItem(shoulder);
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("This item is not a shoulderpiece");
+            }
+        }
+
+        public void Equip(Legspiece legs)
+        {
+            if (legs is Legspiece)
+            {
+                _equipment.Legs = legs;
+
+                if (_inventory.ContainItem(legs))
+                {
+                    _inventory?.RemoveItem(legs);
+                }
+            }
+            else
+            {
+                throw new Exception("This item is not a legspiece");
+            }
+        }
+
+        public void Equip(Armpiece armpiece, bool isLeft)
+        {
+            if (armpiece is Armpiece)
+            {
+                if (isLeft)
+                {
+                    _equipment.LeftArm = armpiece;
+
+                    if (_inventory.ContainItem(armpiece))
+                    {
+                        _inventory?.RemoveItem(armpiece);
+                    }
+                }
+                else
+                {
+                    _equipment.RightArm = armpiece;
+
+                    if (_inventory.ContainItem(armpiece))
+                    {
+                        _inventory?.RemoveItem(armpiece);
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("This item is not an armpiece");
+            }
+        }
+
+        public void Equip(Gloves gloves)
+        {
+            if (gloves is Gloves)
+            {
+                _equipment.Gloves = gloves;
+
+                if (_inventory.ContainItem(gloves))
+                {
+                    _inventory?.RemoveItem(gloves);
+                }
+            }
+            else
+            {
+                throw new Exception("This item is not a glove");
             }
         }
 
@@ -248,12 +294,12 @@ namespace BootCamp.Chapter
 
         public decimal GetTotalPlayerAttack()
         {
-            return (decimal)_equipment.GetTotalAttack();
+            return (decimal)_equipment?.GetTotalAttack();
         }
 
         public decimal GetTotalPlayerDefense()
         {
-            return (decimal)_equipment.GetTotalDefense();
+            return (decimal)_equipment?.GetTotalDefense();
         }
 
         #endregion

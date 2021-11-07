@@ -5,7 +5,7 @@ namespace BootCamp.Chapter
 {
     public class Inventory 
     {
-        private List<IItem> _items;
+        private List<IItem> _items = new List<IItem>();
         public IItem[] GetItems()
         {
             var itemArray = _items.ToArray();
@@ -14,7 +14,7 @@ namespace BootCamp.Chapter
 
         public Inventory()
         {
-            _items = new List<IItem>();
+            //_items = new List<IItem>();
         }
 
         public IItem[] GetItems(string name)

@@ -24,6 +24,11 @@ namespace BootCamp.Chapter
 
         public static int totalItemCount = 0;
 
+        public Item()
+        {
+
+        }
+
         public Item(string name, decimal price, float weight)
         {
             _name = name;

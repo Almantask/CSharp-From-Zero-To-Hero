@@ -12,6 +12,13 @@ namespace BootCamp.Chapter
             Item sword = new Item("swordFromShop", 20, 5);
             Item longSword = new Item("longswordFromShop", 40, 10);
 
+            Player dummyPlaya = new Player();
+            Inventory dummy = new Inventory();
+            Weapon nullItem = new Weapon("sword", 1, 1, 1);
+            dummy?.AddItem(nullItem);
+            dummyPlaya.AddItem(nullItem);
+            dummyPlaya.Equip(nullItem);
+
             shop?.Add(sword);
             shop?.Add(longSword);
 

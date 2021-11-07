@@ -44,7 +44,7 @@ namespace BootCamp.Chapter
 
             if (!existInInventory)
             {
-                _inventory.AddItem(item);
+                _inventory?.AddItem(item);
             }
         }
 
@@ -60,7 +60,7 @@ namespace BootCamp.Chapter
             {
                 if (itemsInInventory[i].Name == name)
                 {
-                    _inventory.RemoveItem(itemsInInventory[i]);
+                    _inventory?.RemoveItem(itemsInInventory[i]);
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace BootCamp.Chapter
 
             if (_money >= itemPrice)
             {
-                _inventory.AddItem(item);
+                _inventory?.AddItem(item);
                 _money -= itemPrice;
                 priceReturn = itemPrice;
             }
@@ -106,7 +106,7 @@ namespace BootCamp.Chapter
 
             for (int i = 0; i < itemsInInventory.Length; i++)
             {
-                if (itemsInInventory[i].Name == item) index = i;
+                if (itemsInInventory[i]?.Name == item) index = i;
             }
 
             decimal money = itemsInInventory[index].Price;

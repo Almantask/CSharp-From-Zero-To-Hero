@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter.Items
+﻿using System;
+
+namespace BootCamp.Chapter.Items
 {
     public class Armpiece : IArmor
     {
@@ -28,7 +30,7 @@
 
         public Armpiece(string name, decimal price, float weight, float defense)
         {
-            _name = name;
+            _name = name ?? throw new ArgumentNullException("name");
             _price = price;
             _weight = weight;
             _defense = defense;

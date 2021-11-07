@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace BootCamp.Chapter
@@ -70,8 +71,6 @@ namespace BootCamp.Chapter
             get { return _gloves; }
             set { _gloves = value; }
         }
-
-        public Equipment[] currentEquip { get; set; }
 
         public Equipment()
         {
