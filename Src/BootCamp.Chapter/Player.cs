@@ -89,9 +89,10 @@ namespace BootCamp.Chapter
         {
             float currentWeight = _equipment.GetTotalWeight() + item.Weight;
             decimal test = (decimal)currentWeight;
+
             if (test < _maxCarryWeightInKg)
             {
-                _inventory.AddItem(item);
+                _inventory?.AddItem(item);
             }
             else
             {
@@ -101,7 +102,7 @@ namespace BootCamp.Chapter
 
         public void Remove(IItem item)
         {
-            _inventory.RemoveItem(item);
+            _inventory?.RemoveItem(item);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace BootCamp.Chapter
 
             if (_inventory.ContainItem(weap))
             {
-                _inventory.RemoveItem(weap);
+                _inventory?.RemoveItem(weap);
             }
         }
 

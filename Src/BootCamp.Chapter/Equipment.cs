@@ -71,6 +71,8 @@ namespace BootCamp.Chapter
             set { _gloves = value; }
         }
 
+        public Equipment[] currentEquip { get; set; }
+
         public Equipment()
         {
             _weapon = new Weapon("", 0, 0, 0);
@@ -96,7 +98,26 @@ namespace BootCamp.Chapter
                 _gloves.Weight + _chest.Weight +
                 _leftArm.Weight + _rightArm.Weight +
                 _weapon.Weight;
-            ;
+
+            return totalEquipmentWeight;
+        }
+
+        public float GetTotalWeight(Equipment[] currentEquip)
+        {
+            
+            foreach(var item in currentEquip)
+            {
+                var type = currentEquip.GetType();
+                float totalEquipmentWeight += currentEquip.
+            }
+
+            float totalEquipmentWeight =
+                _leftShoulder.Weight + _rightShoulder.Weight +
+                _legs.Weight + _head.Weight +
+                _gloves.Weight + _chest.Weight +
+                _leftArm.Weight + _rightArm.Weight +
+                _weapon.Weight;
+
             return totalEquipmentWeight;
         }
 
