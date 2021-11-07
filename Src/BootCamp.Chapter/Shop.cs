@@ -25,7 +25,7 @@ namespace BootCamp.Chapter
 
         public IItem[] GetItems()
         {
-            return _inventory.GetItems();
+            return _inventory?.GetItems();
         }
 
         /// <summary>

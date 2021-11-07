@@ -19,6 +19,8 @@ namespace BootCamp.Chapter
             dummyPlaya.AddItem(nullItem);
             dummyPlaya.Equip(nullItem);
 
+            dummyPlaya.Inventory = dummy;
+
             shop?.Add(sword);
             shop?.Add(longSword);
 

@@ -48,6 +48,11 @@ namespace BootCamp.Chapter
         /// Player items. There can be multiple of items with same name.
         /// </summary>
         private Inventory _inventory;
+        public Inventory Inventory
+        {
+            get => _inventory;
+            set => value = _inventory;
+        }
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
@@ -281,6 +286,7 @@ namespace BootCamp.Chapter
                 if (shopInventory[i] == item)
                 {
                     hasThisItem = true;
+                    break;
                 }
             }
             
