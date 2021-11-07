@@ -1,17 +1,24 @@
-# C#: From Zero To Hero 
-# The vision
-"Programming is hard". Yes, but not harder than running a marathon for a person who has never run. It's not harder than 
-building a house if you never built one. Programming is hard only until you practice it (like any other skill). 
-I would like to invite you to learn programming and C# following this course. 
-Ignite passion for finding little miracles in code every day 🙂
 
-# For new joiners
-It's never too late to join, because the community is there, all the material is saved
-and you will not be left alone.
+# C#: From Zero To Hero
+## Chapter 3: C#. Homework 3: Null related operators and more sugar
+### Intro
+C# is a modern high-level programming language. It has many nice features and it's time to explore some of it.
+In particular, it's really cool the way C# handles null. There are several operators/patterns in regards to null handling and typecheck.
+There is:
+- ?. - null-conditional operator
+- ?? - null-coalecense operator
+- ? valueIfTrue : valueIfFalse - conditional operator
+- value is Type1 - pattern matching  
 
-Live lessons material (slides + videos + examples + homework) here:  
-https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/Summary
+A lot of neat quality of programmer life improvements provided by a language design. It's time to try it out!
 
-New joiner's guide here:  
-https://github.com/csinn/CSharp-From-Zero-To-Hero/wiki/New-joiner-guide  
-![Boot Camp Banner](Res/kaisi_banner.png)
+### Task
+Take [homework 1 assignment](https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter3/Homework/1/Src/BootCamp.Chapter)
+and refactor it trying to apply the operators and functions learned in lesson- as much as you can.
+If you haven't done homework 1, refer to [chapter 2 homework 3](https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter2/Homework/2) what needs to be done.
+
+Also apply null validation for every method and constructor:
+1) Don't allow passing null references  
+2) Don't allow passing null or empty strings
+
+Note: the tests still are meant for getter/setter METHODS, so you will need to update them in case you didn't already.
