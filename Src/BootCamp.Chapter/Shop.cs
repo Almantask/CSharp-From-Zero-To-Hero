@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using BootCamp.Chapter.Items;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
@@ -18,9 +20,10 @@
         public Shop(decimal money)
         {
             _money = money;
+            this._inventory = new Inventory();
         }
 
-        public Item[] GetItems()
+        public IItem[] GetItems()
         {
             return _inventory.GetItems();
         }
@@ -29,8 +32,20 @@
         /// Adds item to the stock.
         /// If item of same name exists, does nothing.
         /// </summary>
-        public void Add(Item item)
+        public void Add(IItem item)
         {
+            var itemsInInventory = this._inventory.GetItems();
+            bool existInInventory = false;
+
+            foreach (var tmpItem in itemsInInventory)
+            {
+                if (item == tmpItem) existInInventory = true;
+            }
+
+            if (!existInInventory)
+            {
+                _inventory.AddItem(item);
+            }
         }
 
         /// <summary>
@@ -40,6 +55,14 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            var itemsInInventory = _inventory.GetItems();
+            for(int i = 0; i < itemsInInventory.Length; i++)
+            {
+                if (itemsInInventory[i].Name == name)
+                {
+                    _inventory.RemoveItem(itemsInInventory[i]);
+                }
+            }
         }
 
         /// <summary>
@@ -48,9 +71,23 @@
         /// Shop looses money.
         /// </summary>
         /// <returns>Price of an item.</returns>
-        public decimal Buy(Item item)
+        public decimal Buy(IItem item)
         {
-            return 0;
+            var itemPrice = item.Price;
+            decimal priceReturn;
+
+            if (_money >= itemPrice)
+            {
+                _inventory.AddItem(item);
+                _money -= itemPrice;
+                priceReturn = itemPrice;
+            }
+            else
+            {
+                priceReturn = 0;
+            }
+
+            return priceReturn;
         }
 
         /// <summary>
@@ -62,9 +99,20 @@
         /// Item sold.
         /// Null, if no item is sold.
         /// </returns>
-        public Item Sell(string item)
+        public IItem Sell(string item)
         {
-            return null;
+            var itemsInInventory = _inventory.GetItems();
+            int index = 0;
+
+            for (int i = 0; i < itemsInInventory.Length; i++)
+            {
+                if (itemsInInventory[i].Name == item) index = i;
+            }
+
+            decimal money = itemsInInventory[index].Price;
+            _money += money;
+
+            return itemsInInventory[index];
         }
     }
 }
