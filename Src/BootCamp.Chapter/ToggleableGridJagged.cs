@@ -42,6 +42,9 @@ namespace BootCamp.Chapter
                 throw new IndexOutOfRangeException("Index was out of range", ex);
             }
 
+            ///<summary>
+            ///     create copy of _jaggedarray in type string, to output squares to the console
+            /// </summary>
             string[][] outputArray = new string[_jaggedArray.GetLength(0)][];
             InitializeArray(_jaggedArray, outputArray);
             BuildArray(_jaggedArray, outputArray);
