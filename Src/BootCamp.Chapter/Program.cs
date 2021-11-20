@@ -26,17 +26,20 @@ namespace BootCamp.Chapter
                 bool[][] jaggedArray = new bool[rowsAmount][];
                 CreateJaggedArray(rowsAmount, jaggedArray, gridLength);
 
-                //IGridClearer gridClearer = null;
-                ToggleableGridJagged test = new ToggleableGridJagged(jaggedArray, null);
+                //(string tupleTest, int value) = TuplesTest("test", 4);
+                //Console.WriteLine($"{tupleTest}, {value}");
 
-                (string tupleTest, int value) = TuplesTest("test", 4);
-                Console.WriteLine($"{tupleTest}, {value}");
+                ClearGrid gridClearer = new ClearGrid();
+                ToggleableGridJagged toggleableGridJagged = new ToggleableGridJagged(jaggedArray, gridClearer);
 
-                test.Toggle(2, 1);
+                bool isRunning = false;
+                do
+                {
+                    isRunning = ToggleArray(toggleableGridJagged);
+                } while (isRunning);
+
             }
            
-
-
             Console.ReadKey();
         }
 
@@ -72,6 +75,32 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine(message);
             return Console.ReadLine();
+        }
+
+        public static bool ToggleArray(ToggleableGridJagged toggleableGridJagged)
+        {
+            string userInput = PrintMessage("Input x,y to toggle element in an array");
+            string[] input = userInput.Split(",");
+            int x, y, xResult, yResult;
+
+            if (input.Length > 1)
+            {
+                bool isXOk = int.TryParse(input[0], out xResult);
+                if (isXOk)
+                {
+                    x = xResult;
+                }
+                bool isYOk = int.TryParse(input[1], out yResult);
+                if (isYOk)
+                {
+                    y = yResult;
+                }
+
+                toggleableGridJagged.Toggle(xResult, yResult);
+                return true;
+            }
+   
+            return false;
         }
 
         public static (string test, int numberOne) TuplesTest(string message, int numberOne)
