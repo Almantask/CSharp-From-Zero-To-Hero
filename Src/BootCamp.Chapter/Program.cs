@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BootCamp.Chapter
 {
@@ -17,13 +18,14 @@ namespace BootCamp.Chapter
 
             ContactsCenter contacts = new ContactsCenter(@"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\MOCK_DATA.csv");
 
-            for ( int i = 0; i < contacts.People.Count; i++)
-            {
-                Predicate<Person> isOverEighteen = (person) => person.Age > 18 && person.Country != "UK";
-                isOverEighteen(contacts.People[i]);
-            }
+            Predicate<Person> predicateIsA = new Predicate<Person>(PeoplePredicates.IsA);
+            List<Person> aList = contacts.Filter(predicateIsA);
 
+            Predicate<Person> predicateIsB = new Predicate<Person>(PeoplePredicates.IsB);
+            List<Person> bList = contacts.Filter(predicateIsB);
 
+            Predicate<Person> predicateIsC = new Predicate<Person>(PeoplePredicates.IsC);
+            List<Person> cList = contacts.Filter(predicateIsC);
 
             Console.ReadKey();
         }

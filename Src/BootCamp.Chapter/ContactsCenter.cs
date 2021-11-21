@@ -61,16 +61,14 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public List<Person> Filter(Predicate<Person> predicate)
         {
+            // https://zetcode.com/csharp/predicate/ (zawiera negacje)
+            // https://stackoverflow.com/questions/1710301/what-is-a-predicate-in-c
+
             var people = new List<Person>();
             // ToDo: implement applying filter.
 
-            ///bool containA = predicate.Surname.Contains('a');
-            //if (!containA)
-            {
-                var a = predicate = (person) => person.Age > 18 && person.Country != "UK";
-                people.Add(predicate);
-            }
-            
+            people = _people.FindAll(predicate);
+
             return people;
         }
     }
