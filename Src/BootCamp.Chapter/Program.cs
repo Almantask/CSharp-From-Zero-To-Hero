@@ -11,6 +11,7 @@ namespace BootCamp.Chapter
 
             Console.WriteLine("1 - jagged array test");
             Console.WriteLine("2 - 2d array test");
+            Console.WriteLine("3 - most common letter finder");
             option = int.Parse(Console.ReadLine());
 
             switch (option)
@@ -20,6 +21,11 @@ namespace BootCamp.Chapter
                     break;
                 case 2:
                     Create2dArray();
+                    break;
+                case 3:
+                    string input = PrintMessage("Input a word");
+                    char mostCommon = MostCommonLetterFinder.Find(input);
+                    Console.WriteLine($"Most common char: {mostCommon}");
                     break;
                 default:
                     Console.WriteLine("Wrong input");
