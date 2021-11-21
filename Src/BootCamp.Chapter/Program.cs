@@ -26,16 +26,13 @@ namespace BootCamp.Chapter
                 bool[][] jaggedArray = new bool[rowsAmount][];
                 CreateJaggedArray(rowsAmount, jaggedArray, gridLength);
 
-                //(string tupleTest, int value) = TuplesTest("test", 4);
-                //Console.WriteLine($"{tupleTest}, {value}");
-
                 ClearGrid gridClearer = new ClearGrid();
                 ToggleableGridJagged toggleableGridJagged = new ToggleableGridJagged(jaggedArray, gridClearer);
 
                 bool isRunning = false;
                 do
                 {
-                    isRunning = ToggleArray(toggleableGridJagged);
+                    isRunning = ToggleJaggedArray(toggleableGridJagged);
                 } while (isRunning);
 
             }
@@ -77,7 +74,7 @@ namespace BootCamp.Chapter
             return Console.ReadLine();
         }
 
-        public static bool ToggleArray(ToggleableGridJagged toggleableGridJagged)
+        public static bool ToggleJaggedArray(ToggleableGridJagged toggleableGridJagged)
         {
             string userInput = PrintMessage("Input x,y to toggle element in an array");
             string[] input = userInput.Split(",");
@@ -90,6 +87,7 @@ namespace BootCamp.Chapter
                 {
                     x = xResult;
                 }
+
                 bool isYOk = int.TryParse(input[1], out yResult);
                 if (isYOk)
                 {
@@ -97,6 +95,7 @@ namespace BootCamp.Chapter
                 }
 
                 toggleableGridJagged.Toggle(xResult, yResult);
+
                 return true;
             }
    
