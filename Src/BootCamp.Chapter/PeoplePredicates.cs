@@ -25,7 +25,19 @@ namespace BootCamp.Chapter
         /// <param name="person"></param>
         /// <returns></returns>
         public static bool IsC(Person person) => person.Country != "UK" && !SurnameContainA(person) && !NameContainA(person);
+
+        /// <summary>
+        /// checks if person name contain 'a'
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
         public static bool NameContainA(Person person) => person.Name.Contains('a');
+
+        /// <summary>
+        /// checks if person surname contains 'a'
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
         public static bool SurnameContainA(Person person) => person.Surname.Contains('a');
     }
 }
