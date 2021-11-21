@@ -17,6 +17,14 @@ namespace BootCamp.Chapter
 
             ContactsCenter contacts = new ContactsCenter(@"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\MOCK_DATA.csv");
 
+            for ( int i = 0; i < contacts.People.Count; i++)
+            {
+                Predicate<Person> isOverEighteen = (person) => person.Age > 18 && person.Country != "UK";
+                isOverEighteen(contacts.People[i]);
+            }
+
+
+
             Console.ReadKey();
         }
     }
