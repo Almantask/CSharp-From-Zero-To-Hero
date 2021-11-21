@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BootCamp.Chapter
 {
@@ -53,18 +54,39 @@ namespace BootCamp.Chapter
             get { return this.streetAddress; }
         }
 
-        public Person(string name, string surname, DateTime birthday, string gender, string country, string email, string streetAddress)
+        private int age;
+        public int Age
+        {
+            get { return age; }
+        }
+
+        public Person(string name, string surname, string birthday, string gender, string country, string email, string streetAddress)
         {
             this.name = name;
             this.surname = surname;
-            this.birthday = birthday;
-            this.gender = (Gender)Enum.Parse(typeof(Gender), gender); //https://www.dotnetperls.com/enum-parse
+            CultureInfo culture = new CultureInfo("en-US");
+            DateTime tempDate = Convert.ToDateTime(birthday, culture);
+            this.birthday = tempDate;
+            this.gender = (Gender)Enum.Parse(typeof(Gender), gender, true); //https://www.dotnetperls.com/enum-parse
             this.country = country;
             this.email = email;
             this.streetAddress = streetAddress;
+            this.age = CalculateAge(tempDate);
         }
 
+        public int CalculateAge(DateTime birth)
+        {
+            var now = DateTime.Now;
+            int age = now.Year - birth.Year;
+            if (birth > now.AddYears(-age))
+                age--;
 
+            return age;
+        }
 
+        public override string ToString()
+        {
+            return String.Format($"{Name} {Surname}");
+        }
     }
 }
