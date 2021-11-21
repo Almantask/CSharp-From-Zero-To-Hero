@@ -74,7 +74,6 @@ namespace BootCamp.Chapter
                     else
                     {
                         outputArray[row][col] = "\u25A0";
-                        //outputArray[row][col] = "■";
                     }
                 }
             }
