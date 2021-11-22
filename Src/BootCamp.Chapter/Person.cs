@@ -8,6 +8,7 @@ namespace BootCamp.Chapter
         male,
         female
     }
+
     public class Person
     {
         // add missing properties
