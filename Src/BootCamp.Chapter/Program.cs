@@ -162,7 +162,7 @@ namespace BootCamp.Chapter
         public static void MyTests()
         {
 
-            Person p = new Person("Pete", "R", "12/18/1990", "male", "Poland", "mail@mail.com", "some address");
+            Person p = new Person("Pete", "R", "05/06/1992", "male", "Poland", "mail@mail.com", "some address");
 
             if (p.Gender == Gender.male)
             {
