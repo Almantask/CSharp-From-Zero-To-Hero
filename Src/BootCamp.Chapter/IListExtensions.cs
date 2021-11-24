@@ -20,31 +20,25 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static void SnapFingers<T>(this IList<T> list, Predicate<T> predicate)
-        {
-            List<T> tmpList = new List<T>();
-            int count = list.Count;
+        //public static void SnapFingers<T>(this IList<T> list, Predicate<T> predicate)
+        //{
+        //    List<T> tmpList = new List<T>();
+        //    int count = list.Count;
+        //    bool isEven = count % 2 == 0;
+        //    if (isEven)
+        //    {
+        //        int itemToDel = count / 2;
+        //        for (int i = 0; i < itemToDel; i++)
+        //        {
+        //            tmpList.Add(i);
+        //        }
+        //    }
+        //    else
+        //    {
+        //    }
+        //}
 
-            bool isEven = count % 2 == 0;
-
-            if (isEven)
-            {
-                int itemToDel = count / 2;
-                for (int i = 0; i < itemToDel; i++)
-                {
-                    tmpList.Add(i);
-                }
-
-            }
-            else
-            {
-
-            }
-
-
-        }
-
-        public static void SnapFingers(this List<int> list, Predicate<bool> predicate)
+        public static List<int> SnapFingers(this List<int> list, Predicate<int> predicate)
         {
             List<int> tmpList = new List<int>();
             int count = list.Count;
@@ -56,15 +50,27 @@ namespace BootCamp.Chapter
                 int itemToDel = count / 2;
                 for (int i = 0; i < itemToDel; i++)
                 {
-                    tmpList.Add(i);
+                    if (predicate(list[i]))
+                    {
+                        tmpList?.Add(i);
+                    }
                 }
             }
             else
             {
-
+                int itemToDel = (count / 2) - 1;
+                for (int i = 0; i < itemToDel; i++)
+                {
+                    if (predicate(list[i]))
+                    {
+                        tmpList?.Add(i);
+                    }
+                }
             }
 
+            list = tmpList;
 
+            return list;
         }
     }
 }
