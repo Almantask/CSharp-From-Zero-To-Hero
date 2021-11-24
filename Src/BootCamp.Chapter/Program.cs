@@ -15,6 +15,22 @@ namespace BootCamp.Chapter
             Console.ReadKey();
         }
 
+        private static void FirstAssignment()
+        {
+            List<int> lista2 = new List<int> { 1, 2, 3, 4, 5, 6 };
+            lista2.ShuffleListIList();
+
+            int[] arrayList = new int[] { 1, 2, 3, 4, 5 };
+            arrayList.ShuffleListIList();
+        }
+        private static void SecondAssignment()
+        {
+            List<int> lista = new List<int> { 1, 2, 3, 4, 5, 6 };
+            var test = lista.SnapFingers(n => n > 1);
+
+            List<int> lista3 = new List<int> { 1, 2, 3 };
+            var test2 = lista3.SnapFingers(n => n > 0);
+        }
         private static void ThirdAssignment()
         {
             /*
@@ -73,23 +89,6 @@ namespace BootCamp.Chapter
             /// Linq subtract
             /// </summary>
             List<Student> subtractedStudentList = mergedStudentList.Except(studentList).ToList();
-        }
-
-        private static void FirstAssignment()
-        {
-            List<int> lista2 = new List<int> { 1, 2, 3, 4, 5, 6 };
-            lista2.ShuffleListIList();
-
-            int[] arrayList = new int[] { 1, 2, 3, 4, 5 };
-            arrayList.ShuffleListIList();
-        }
-        private static void SecondAssignment()
-        {
-            List<int> lista = new List<int> { 1, 2, 3, 4, 5, 6 };
-            var test = lista.SnapFingers(n => n > 1);
-
-            List<int> lista3 = new List<int> { 1, 2, 3 };
-            var test2 = lista3.SnapFingers(n => n > 0);
         }
     }
 }
