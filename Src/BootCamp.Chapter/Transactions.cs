@@ -44,12 +44,12 @@ namespace BootCamp.Chapter
             get { return this.price; }
         }
 
-        private List<Transactions> transactionList = new List<Transactions>();
-        public List<Transactions> TransactionList
-        {
-            get { return this.transactionList; }
-            //set { this.transactionList = value; }
-        }
+        //private List<Transactions> transactionList = new List<Transactions>();
+        //public List<Transactions> TransactionList
+        //{
+        //    get { return this.transactionList; }
+        //    //set { this.transactionList = value; }
+        //}
 
         public Transactions(string shop, string city, string street, string item, string dateTime,  string price)
         {
@@ -72,5 +72,10 @@ namespace BootCamp.Chapter
         //{
         //    TransactionList.Add(items);
         //}
+
+        public override string ToString()
+        {
+            return string.Format($"Name: {shop}\n City: {city}\n Street: {street}\n Item: {item}\n Time: {time}\n Price: {price}\n\n");
+        }
     }
 }

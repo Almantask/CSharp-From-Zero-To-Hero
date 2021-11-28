@@ -40,7 +40,6 @@ namespace BootCamp.Chapter
 
                         if (!ok)
                         {
-
                             //Microsoft.VisualBasic.FileIO.TextFieldParser parser = new Microsoft.VisualBasic.FileIO.TextFieldParser(new StringReader(line));
                             //parser.SetDelimiters(",");
                             //parser.HasFieldsEnclosedInQuotes = true;
