@@ -44,7 +44,7 @@ namespace BootCamp.Chapter
             get { return this.price; }
         }
 
-        private List<Transactions> transactionList;
+        private List<Transactions> transactionList = new List<Transactions>();
         public List<Transactions> TransactionList
         {
             get { return this.transactionList; }
@@ -65,12 +65,12 @@ namespace BootCamp.Chapter
             bool ok = decimal.TryParse(price, out decimal result);
             this.price = ok ? result : -1;
 
-            AddTransaction(this);
+            //AddTransaction(this);
         }
 
-        public void AddTransaction(Transactions items)
-        {
-            TransactionList.Add(items);
-        }
+        //public void AddTransaction(Transactions items)
+        //{
+        //    TransactionList.Add(items);
+        //}
     }
 }
