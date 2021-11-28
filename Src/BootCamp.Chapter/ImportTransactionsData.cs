@@ -16,7 +16,9 @@ namespace BootCamp.Chapter
         }
         public void ImportTransactionsDataT(string inputFile)
         {
-            // load people
+            ///<summary>
+            ///     load transaction list
+            ///</summary>
             try
             {
                 StreamReader reader = new StreamReader(inputFile);
