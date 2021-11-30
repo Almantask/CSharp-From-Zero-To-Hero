@@ -47,6 +47,13 @@ namespace BootCamp.Chapter
                 var dataGroupedByHour = Time.GroupByHour(dataInput.Data);
                 var getTotalPriceByHour = Time.GetTotalPriceByHour(dataGroupedByHour);
                 var getItemCountByHour = Time.GetItemCountByHour(dataGroupedByHour);
+
+                var test = dataGroupedByHour
+                    .GroupJoin(getTotalPriceByHour,
+                    byHour => byHour.Key,
+                    byPrice => byPrice.Key,
+                    (Transactions, getTotalPriceByHour) => new Transactions((dataGroupedByHour, getTotalPriceByHour));
+                    
             }
 
             if (command.ToLowerInvariant() == "time")
