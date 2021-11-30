@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    class Transactions
+    public class Transactions
     {
         //Shop,City,Street,Item,DateTime,Price
         private string shop;
