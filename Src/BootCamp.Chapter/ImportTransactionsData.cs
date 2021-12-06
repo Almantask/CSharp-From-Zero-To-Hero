@@ -56,7 +56,7 @@ namespace BootCamp.Chapter
                             List<string> inputDataList = new List<string>();
                             for (int i=0; i<regexData.Length; i++)
                             {
-                                if (regexData[i] != "") inputDataList.Add(regexData[i]);
+                                if (regexData[i] != "" && regexData[i] != " ") inputDataList.Add(regexData[i]);
                             }
                             string[] inputData = inputDataList.ToArray();
 
