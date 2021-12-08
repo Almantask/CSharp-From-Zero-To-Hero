@@ -81,5 +81,47 @@ namespace BootCamp.Chapter
             return totalCountPerHour;
         }
 
+        public static void FullDayReportData(List<decimal> getTotalPriceByHour, List<int> getItemCountByHour, List<string> avgMoneyPerHour, List<string> rushHourDataSave, List<List<string>> fullDayReportData)
+        {
+            for (int i = 0; i < 1; i++)
+            {
+                for (int j = 0; j < getTotalPriceByHour.Count; j++)
+                {
+                    List<string> test = new List<string>();
+                    test.Add(j.ToString());
+                    test.Add(getItemCountByHour[j].ToString());
+                    test.Add(avgMoneyPerHour[j].ToString());
+
+                    fullDayReportData.Add(test);
+                }
+
+                fullDayReportData.Add(rushHourDataSave);
+            }
+        }
+
+        public static void GetRushHour(List<string> avgMoneyPerHour, List<string> rushHourDataSave)
+        {
+            var rushHourValue = avgMoneyPerHour.Max();
+            var rushHour = avgMoneyPerHour.Select(x => x == rushHourValue).ToList();
+            int value = 0;
+            foreach (var hour in rushHour)
+            {
+                if (hour == true)
+                {
+                    Console.Write(value);
+                    string input = ("Rush hour: " + value);
+                    rushHourDataSave.Add(input);
+                }
+                value++;
+            }
+        }
+
+        public static void GetAverageMoney(List<decimal> getTotalPriceByHourRange, List<int> getItemCountByHourRange, List<string> avgMoneyPerHour)
+        {
+            for (int i = 0; i < getTotalPriceByHourRange.Count; i++)
+            {
+                avgMoneyPerHour.Add((getTotalPriceByHourRange[i] / getItemCountByHourRange[i]).ToString("0.##"));
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace BootCamp.Chapter
 {
-    class ImportTransactionsData
+    public class ImportTransactionsData
     {
         public List<Transactions> Data { get; private set; } = new List<Transactions>();
 
@@ -49,11 +49,11 @@ namespace BootCamp.Chapter
 
                             string pattern = "(?:,|\n|^)(\"(?:(?:\"\")*[^\"]*)*\"|[^\",\n]*|(?:\n|$))";
                             Regex rg = new Regex(pattern);
-
+                            List<string> inputDataList = new List<string>();
                             string[] regexData = rg.Split(line);
 
                             // remove empty string imported from regex
-                            List<string> inputDataList = new List<string>();
+
                             for (int i=0; i<regexData.Length; i++)
                             {
                                 if (regexData[i] != "" && regexData[i] != " ") inputDataList.Add(regexData[i]);
@@ -78,6 +78,10 @@ namespace BootCamp.Chapter
             catch (FileNotFoundException ex)
             {
                 throw new FileNotFoundException();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
             }
         }
 

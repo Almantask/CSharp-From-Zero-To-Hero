@@ -8,7 +8,7 @@ namespace BootCamp.Chapter
 {
     public static class ExportDataToReport
     {
-        public static void printReport(List<List<string>> outputFile, string outputPath, string fileName)
+        public static void PrintTimeReport(List<List<string>> outputFile, string outputPath, string fileName)
         {
             try
             {
@@ -33,6 +33,33 @@ namespace BootCamp.Chapter
                         if (count == 24) sw.WriteLine(lines[0]);
                         count++;
                     }
+                    Console.WriteLine("File has been written to console - check 1");
+                }
+                Console.WriteLine("File has been written to console - check 2");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("**** ERRROR ****");
+                Console.WriteLine(ex);
+            }
+        }
+
+        public static void PrintMinMaxReport(string cityName, string outputPath, string fileName)
+        {
+            try
+            {
+                string filePath = outputPath;
+                string dirPath = Path.GetDirectoryName(outputPath);
+                if (!Directory.Exists(outputPath))
+                    Directory.CreateDirectory(outputPath);
+
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                var enc1252 = Encoding.GetEncoding(1252);
+
+                using (StreamWriter sw = new StreamWriter(Path.Combine(outputPath, fileName)))
+                {
+                    CultureInfo invC = CultureInfo.InvariantCulture;
+                    sw.WriteLine(cityName);
                 }
             }
             catch(Exception ex)
