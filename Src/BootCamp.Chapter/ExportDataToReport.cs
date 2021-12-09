@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Globalization;
+using System.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -33,9 +34,9 @@ namespace BootCamp.Chapter
                         if (count == 24) sw.WriteLine(lines[0]);
                         count++;
                     }
-                    Console.WriteLine("File has been written to console - check 1");
                 }
-                Console.WriteLine("File has been written to console - check 2");
+
+                Console.WriteLine("File has been written to hdd");
             }
             catch(Exception ex)
             {
@@ -63,6 +64,43 @@ namespace BootCamp.Chapter
                 }
             }
             catch(Exception ex)
+            {
+                Console.WriteLine("**** ERRROR ****");
+                Console.WriteLine(ex);
+            }
+        }
+
+        public static void PrintDailyReport(List<DailyRepData> data, string outputPath, string shopName)
+        {
+            try
+            {
+                int count = 0;
+                string filePath = outputPath;
+                string dirPath = Path.GetDirectoryName(outputPath);
+                if (!Directory.Exists(outputPath))
+                    Directory.CreateDirectory(outputPath);
+
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                var enc1252 = Encoding.GetEncoding(1252);
+
+                var shopNameExt = shopName + ".csv";
+
+                using (StreamWriter sw = new StreamWriter(Path.Combine(outputPath, shopNameExt)))
+                {
+                    CultureInfo invC = CultureInfo.InvariantCulture;
+                    
+                    foreach(var shop in  data)
+                    {
+                        if (shop.ShopName == shopName)
+                        {
+                            if (count < 1) sw.Write("Day, Earned" + Environment.NewLine);
+                            sw.Write(shop.Time.ToString("dddd", CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB")) + ", \"" + shop.Price + " €\"" + Environment.NewLine, enc1252);
+                            if (count < 2 ) count++;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("**** ERRROR ****");
                 Console.WriteLine(ex);

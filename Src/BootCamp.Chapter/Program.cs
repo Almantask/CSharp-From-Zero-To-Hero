@@ -23,10 +23,14 @@ namespace BootCamp.Chapter
                 ///     For debug without automated tests
                 /// </summary>
                 filePath = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Transactions.csv";
-                command.Add("time");
+                //command.Add("time");
+
                 //command.Add("city");
                 //command.Add("money");
                 //command.Add("min");
+
+                command.Add("daily");
+
                 startTime = new DateTime(2021, 1, 1, 0, 11, 0, 0);
                 endTime = new DateTime(2021, 1, 1, 0, 17, 0, 0); ;
                 outputFilePath = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
@@ -66,6 +70,7 @@ namespace BootCamp.Chapter
                     /// </summary>
                     FilterByItemMoney.FindCityNameMinMax(dataInput, command, outputFilePath);
                     break;
+
                 case "time":
                     if (command.Count == 1)
                     {
@@ -82,9 +87,18 @@ namespace BootCamp.Chapter
                         FilterByTime.FilterByTimeHourRange(dataInput, command, outputFilePath);
                     }
                     break;
+
+                case "daily":
+                    //
+                    FilterByDay.PrintDayAndMoneyEarned(dataInput, command, outputFilePath);
+                    break;
+
+                case "full":
+                    //sortowanie po nazwie sklepu, nazwa pliku NazwaSklepu.csv ; w pliku wszystkie informacje oprocz nazyw sklepu bo to okresla nazwa pliku
+                    break;
             }
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         private static void DebugInput(ImportTransactionsData dataInput)

@@ -7,6 +7,14 @@ namespace BootCamp.Chapter
 {
     public static class Time
     {
+        public static void GroupByShopName(List<Transactions> data)
+        {
+            var groupDataByShopName = data.Select(x => new DailyRepData(x.Shop, x.Time, x.Price))
+            .GroupBy(element => element.ShopName)
+            .OrderBy(x => x.Key)
+            .ToList();
+        }
+
         public static List<IGrouping<int, Transactions>> GroupByHourIntRange(List<Transactions> data, int startTime, int endTime)
         {
             var groupDataByHourRange = data.Where(x => x.Time.Hour >= startTime && x.Time.Hour <= endTime)
