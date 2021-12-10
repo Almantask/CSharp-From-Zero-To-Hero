@@ -30,6 +30,8 @@ namespace BootCamp.Chapter
                 //command.Add("min");
 
                 command.Add("daily");
+                command.Add("Kwiki");
+                command.Add("Mart");
 
                 startTime = new DateTime(2021, 1, 1, 0, 11, 0, 0);
                 endTime = new DateTime(2021, 1, 1, 0, 17, 0, 0); ;
@@ -89,7 +91,9 @@ namespace BootCamp.Chapter
                     break;
 
                 case "daily":
-                    //
+                    ///<summary>
+                    ///     Daily money earned for specific shop.
+                    /// </summary>
                     FilterByDay.PrintDayAndMoneyEarned(dataInput, command, outputFilePath);
                     break;
 

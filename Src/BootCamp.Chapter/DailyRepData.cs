@@ -7,14 +7,14 @@ namespace BootCamp.Chapter
     public class DailyRepData
     {
         public string ShopName { get; set; }
-        public DateTime Time { get; set; }
+        public string WeekDay { get; set; }
         public decimal Price { get; set; }
         public static List<DailyRepData> DataList { get; set; } = new List<DailyRepData>();
 
-        public DailyRepData(string shopName, DateTime time, decimal price)
+        public DailyRepData(string shopName, string weekDay, decimal price)
         {
             ShopName = shopName;
-            Time = time;
+            WeekDay = weekDay;
             Price = price;
             DataList.Add(this);
         }

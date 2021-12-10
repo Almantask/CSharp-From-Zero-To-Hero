@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace BootCamp.Chapter
     {
         public static void GroupByShopName(List<Transactions> data)
         {
-            var groupDataByShopName = data.Select(x => new DailyRepData(x.Shop, x.Time, x.Price))
+            var groupDataByShopName = data.Select(x => new DailyRepData(x.Shop, x.Time.ToString("dddd", CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB")), x.Price))
             .GroupBy(element => element.ShopName)
             .OrderBy(x => x.Key)
             .ToList();

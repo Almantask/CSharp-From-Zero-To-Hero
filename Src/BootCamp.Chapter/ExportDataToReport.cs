@@ -70,7 +70,7 @@ namespace BootCamp.Chapter
             }
         }
 
-        public static void PrintDailyReport(List<DailyRepData> data, string outputPath, string shopName)
+        public static void PrintDailyReport(List<List<String>> data, string outputPath, string shopName, string fileName)
         {
             try
             {
@@ -83,20 +83,15 @@ namespace BootCamp.Chapter
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                 var enc1252 = Encoding.GetEncoding(1252);
 
-                var shopNameExt = shopName + ".csv";
-
-                using (StreamWriter sw = new StreamWriter(Path.Combine(outputPath, shopNameExt)))
+                using (StreamWriter sw = new StreamWriter(Path.Combine(outputPath, fileName)))
                 {
                     CultureInfo invC = CultureInfo.InvariantCulture;
                     
-                    foreach(var shop in  data)
+                    foreach(var day in data)
                     {
-                        if (shop.ShopName == shopName)
-                        {
-                            if (count < 1) sw.Write("Day, Earned" + Environment.NewLine);
-                            sw.Write(shop.Time.ToString("dddd", CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB")) + ", \"" + shop.Price + " €\"" + Environment.NewLine, enc1252);
-                            if (count < 2 ) count++;
-                        }
+                        if (count < 1) sw.Write("Day, Earned" + Environment.NewLine);
+                        sw.Write(day[0] + ", \"" + day[1] + " €\"" + Environment.NewLine);
+                        if (count < 2) count++;
                     }
                 }
             }
