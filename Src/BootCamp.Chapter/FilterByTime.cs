@@ -45,8 +45,9 @@ namespace BootCamp.Chapter
                 ///<summary>
                 ///     Export data to FullDayRange.csv
                 /// </summary>
-                var curDir = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
-                ExportDataToReport.PrintTimeReport(fullDayReportData, Path.Combine(curDir, outputFilePath), "FullDayRange.csv");
+                //var curDir = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
+                var curDir = "";
+               ExportDataToReport.PrintTimeReport(fullDayReportData, Path.Combine(curDir, outputFilePath), "FullDayRange.csv");
             }
         }
     

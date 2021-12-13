@@ -16,7 +16,8 @@ namespace BootCamp.Chapter
                 /// </summary>
                 FindMinMaxByCity.GroupDataByCity(dataInput.Data);
 
-                var curDir = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
+                //var curDir = @"C:\Users\piotr\Source\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Output";
+                var curDir = "";
 
                 ///<summary>
                 ///     search for min or max
