@@ -77,12 +77,13 @@ namespace BootCamp.Chapter
             }
             catch (FileNotFoundException ex)
             {
-                throw new FileNotFoundException();
+                throw new NoTransactionsFoundException();
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                throw new NoTransactionsFoundException();
             }
+            
         }
 
 

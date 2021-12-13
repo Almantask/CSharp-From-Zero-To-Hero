@@ -40,7 +40,21 @@ namespace BootCamp.Chapter
             else
             {
                 filePath = args[0];
+
+                ///<summary>
+                ///     check count of passed arguments, to contain "path/to/input" "command" "path/to/output"
+                /// </summary>
+                if (args.Length != 3)
+                    throw new InvalidCommandException();
+
                 string[] commandString = args[1].Split(new char[] { '-', ' ' });
+
+                ///<summary>
+                ///     check for invalid command name
+                /// </summary>
+                if (commandString[0] != "time" && commandString[0] != "city" && commandString[0] != "daily" && commandString[0] != "full")
+                    throw new InvalidCommandException();
+
                 foreach (var data in commandString)
                 {
                     if (data != "") command.Add(data);
