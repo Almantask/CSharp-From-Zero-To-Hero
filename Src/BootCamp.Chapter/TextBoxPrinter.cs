@@ -7,6 +7,6 @@ namespace BootCamp.Chapter
     public static class TextBoxPrinter
     {
         // TODO: Implement.
-        public static string Print(object obj) => "";
+        public static string Print(object obj) => AttributesGetter.GetClassAttribute<PrintAttribute>(GetType());
     }
 }

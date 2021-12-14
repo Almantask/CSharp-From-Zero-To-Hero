@@ -6,6 +6,7 @@ namespace BootCamp.Chapter
 {
     // This should have the following attribute
     // [Textable]
+    [Textable("X")]
     public class Car
     {
         public string Brand { get; }
