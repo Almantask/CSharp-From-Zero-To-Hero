@@ -21,5 +21,16 @@ namespace BootCamp.Chapter
             Corner = corner;
         }
 
+        /// <summary>
+        ///     Default attribute
+        /// </summary>
+        public TextableAttribute()
+        {
+            Padding = 0;
+            SideTop = "-";
+            SideLeft = "|";
+            Corner = "+";
+        }
+
     }
 }

@@ -6,7 +6,7 @@ namespace BootCamp.Chapter
 {
     // This should have the following attribute
     // [Textable]
-    [Textable(4, "-", "|", "+")]
+    [Textable]
     public class Car
     {
         public string Brand { get; }
@@ -17,14 +17,6 @@ namespace BootCamp.Chapter
             Brand = brand;
             Name = name;
             var print = AttributesGetter.GetClassAttribute<TextableAttribute>(GetType());
-            //if (print != null)
-            //{
-            //    //Console.WriteLine(print.Padding);
-            //    //Console.WriteLine(print.SideLeft);
-            //    //Console.WriteLine(print.SideTop);
-            //    //Console.WriteLine(print.Corner);
-            //    TextBoxPrinter.Print(this);
-            //}
         }
 
         // Do not change the bellow
