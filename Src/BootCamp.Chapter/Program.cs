@@ -7,6 +7,8 @@ namespace BootCamp.Chapter
         static void Main(string[] args)
         {
             Console.WriteLine("There's are the official changes");
+            
+            // Hahahahahahaaaaa
         }
     }
 }
