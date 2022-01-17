@@ -8,7 +8,8 @@ namespace BootCamp.Chapter
         {
             Console.WriteLine("There's are the official changes");
 
-            Console.WriteLine("Testing");
+
+            //Mofufu
         }
     }
 }
