@@ -1,4 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using Console = System.Console;
+
+namespace BootCamp.Chapter
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {using System;
 
 namespace BootCamp.Chapter
 {
@@ -92,6 +102,10 @@ namespace BootCamp.Chapter
             Console.WriteLine("Press any key to end");
             Console.ReadKey();
         
+        }
+    }
+}
+            
         }
     }
 }
