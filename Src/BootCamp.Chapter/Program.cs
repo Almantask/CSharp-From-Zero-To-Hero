@@ -8,13 +8,6 @@ namespace BootCamp.Chapter
     class Program
     {
         static void Main(string[] args)
-        {using System;
-
-namespace BootCamp.Chapter
-{
-    class Program
-    {
-        static void Main(string[] args)
         {
             string firstName1;
             string surname1;
@@ -102,10 +95,6 @@ namespace BootCamp.Chapter
             Console.WriteLine("Press any key to end");
             Console.ReadKey();
         
-        }
-    }
-}
-            
         }
     }
 }
