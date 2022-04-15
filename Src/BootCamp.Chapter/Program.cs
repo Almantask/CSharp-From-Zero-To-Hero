@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        static void Main(string[] args)
+        static void PersonInfo()
         {
             Console.Write("First name: ");
             string firstName = Console.ReadLine();
@@ -21,7 +21,12 @@ namespace BootCamp.Chapter
 
             float heightMetres = height / 100;
             float bmi = weight / heightMetres * heightMetres;
-            Console.WriteLine("BMI: " + bmi);
+            Console.WriteLine("BMI: " + bmi); 
+        }
+        static void Main(string[] args)
+        {
+            PersonInfo();
+            PersonInfo();
         }
     }
 }
