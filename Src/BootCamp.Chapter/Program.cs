@@ -16,11 +16,11 @@ namespace BootCamp.Chapter
         public static int ParseInt(string message)
         {
             Console.WriteLine(message);
-            string maybeNumber = Console.ReadLine();
-            bool isNumber = int.TryParse(maybeNumber, out int number);
+            string input = Console.ReadLine();
+            bool isNumber = int.TryParse(input, out int number);
             if (!isNumber)
             {
-                Console.WriteLine($"\"{maybeNumber}\" is not a valid number.");
+                Console.WriteLine($"\"{input}\" is not a valid number.");
                 return -1;
             }
             return number;
@@ -30,11 +30,11 @@ namespace BootCamp.Chapter
         {
             CultureInfo.CurrentCulture = new CultureInfo("en-US");
             Console.WriteLine(message);
-            string maybeNumber = Console.ReadLine();
-            bool isNumber = float.TryParse(maybeNumber, out float number);
+            string input = Console.ReadLine();
+            bool isNumber = float.TryParse(input, out float number);
             if (!isNumber)
             {
-                Console.WriteLine($"\"{maybeNumber}\" is not a valid number.");
+                Console.WriteLine($"\"{input}\" is not a valid number.");
                 return -1;
             }
             return number;
