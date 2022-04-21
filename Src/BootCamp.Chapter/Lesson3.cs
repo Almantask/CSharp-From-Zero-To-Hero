@@ -8,6 +8,9 @@ namespace BootCamp.Chapter
     {
         public static void Demo() { }
 
-
+        public static float CalculateBmi(float weight, float height)
+        {
+            return weight / (float)Math.Pow(height, 2);
+        }
     }
 }
