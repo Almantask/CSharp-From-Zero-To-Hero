@@ -23,7 +23,7 @@ namespace BootCamp.Chapter
         public static string PromptString(string message)
         {
             // To do: call your implementation. 
-            return "";
+            return Lesson3.PromptString(message);
         }
 
         public static float PromptFloat(string message)
