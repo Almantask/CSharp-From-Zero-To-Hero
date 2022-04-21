@@ -52,5 +52,25 @@ namespace BootCamp.Chapter
             }
             return input;
         }
+
+        public static float CalculateBmi(float weight, float height)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            if ((weight <= 0 || height <= 0))
+            {
+                string underNull = "";
+                if (height <= 0)
+                {
+                    underNull = string.Format($"Height cannot be equal or less than zero, but was {height}.");
+                }
+                if (weight <= 0)
+                {
+                    underNull += string.Format($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
+                Console.WriteLine("Failed calculating BMI. Reason:" + underNull);
+                return -1;
+            }
+            return weight / (float)Math.Pow(height, 2);
+        }
     }
 }
