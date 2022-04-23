@@ -34,15 +34,21 @@
         {
             if (array == null || array.Length == 0) return;
 
-            int pomocna = array.Length - 1;
+            int j = array.Length - 1;
+
             for (int i = 0; i < array.Length; i++)
             {
-                int buffer = array[pomocna];
-                array[pomocna] = array[i];
-                array[i] = buffer;
-                if (i == pomocna) return;
-                pomocna--;
+                int buffer = array[i];
+                System.Console.WriteLine("Before: " + array[i]);
+                array[i] = array[j];
+                System.Console.WriteLine("After: " + array[i]);
+                array[j] = buffer;
+                j--;
+                System.Console.WriteLine("Hodnota i " + i);
+                System.Console.WriteLine("Hodnota j " + j);
+                if (i >= j) break;
             }
+            return;
         }
 
         /// <summary>
@@ -87,7 +93,7 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             if (array == null || array.Length == 0) return array;
-            if (index > array.Length || index < 0) return array;
+            if (index >= array.Length || index < 0) return array;
 
             int[] removedIndex = new int[array.Length - 1];
             for (int i = 0; i < removedIndex.Length; i++)
@@ -159,11 +165,7 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            if (array == null || array.Length == 0)
-            {
-                int[] emptyArray = new int[] { number };
-                return emptyArray;
-            }
+            if (array == null ) return new[] { number };
             if (index > array.Length || index < 0) return array;
 
             int[] insertedElementAtIndex = new int[array.Length + 1];
@@ -171,10 +173,10 @@
             {
                 if (index == i)
                     insertedElementAtIndex[i] = number;
-                else if (index < i)
-                    insertedElementAtIndex[i] = array[i - 1];
-                else
+                else if (index > i)
                     insertedElementAtIndex[i] = array[i];
+                else
+                    insertedElementAtIndex[i] = array[i - 1];
             }
             return insertedElementAtIndex;
         }
