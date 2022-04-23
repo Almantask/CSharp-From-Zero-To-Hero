@@ -9,7 +9,20 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0) return;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 1; j < array.Length; j++)
+                {
+                    if (array[j - 1] > array[j])
+                    {
+                        int buffer = array[j];
+                        array[j] = array[j - 1];
+                        array[j - 1] = buffer;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -19,7 +32,23 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            if (array == null || array.Length == 0) return;
+
+            int j = array.Length - 1;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                int buffer = array[i];
+                System.Console.WriteLine("Before: " + array[i]);
+                array[i] = array[j];
+                System.Console.WriteLine("After: " + array[i]);
+                array[j] = buffer;
+                j--;
+                System.Console.WriteLine("Hodnota i " + i);
+                System.Console.WriteLine("Hodnota j " + j);
+                if (i >= j) break;
+            }
+            return;
         }
 
         /// <summary>
@@ -29,8 +58,14 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0) return array;
+
+            int[] removedLastElement = new int[array.Length - 1];
+            for (int i = 0; i < removedLastElement.Length; i++)
+            {
+                removedLastElement[i] = array[i];
+            }
+            return removedLastElement;
         }
 
         /// <summary>
@@ -39,8 +74,14 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0) return array;
+
+            int[] removedFirstElement = new int[array.Length - 1];
+            for (int i = 0; i < removedFirstElement.Length; i++)
+            {
+                removedFirstElement[i] = array[i + 1];
+            }
+            return removedFirstElement;
         }
 
         /// <summary>
@@ -51,8 +92,18 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0) return array;
+            if (index >= array.Length || index < 0) return array;
+
+            int[] removedIndex = new int[array.Length - 1];
+            for (int i = 0; i < removedIndex.Length; i++)
+            {
+                if (index <= i)
+                    removedIndex[i] = array[i + 1];
+                else
+                    removedIndex[i] = array[i];
+            }
+            return removedIndex;
         }
 
         /// <summary>
@@ -63,8 +114,21 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                int[] emptyArray = new int[] { number };
+                return emptyArray;
+            }
+
+            int[] insertedFirstElement = new int[array.Length + 1];
+            for (int i = 0; i < insertedFirstElement.Length; i++)
+            {
+                if (i == 0)
+                    insertedFirstElement[i] = number;
+                else
+                    insertedFirstElement[i] = array[i - 1];
+            }
+            return insertedFirstElement;
         }
 
         /// <summary>
@@ -75,8 +139,21 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null || array.Length == 0)
+            {
+                int[] emptyArray = new int[] { number };
+                return emptyArray;
+            }
+
+            int[] insertedLastElement = new int[array.Length + 1];
+            for (int i = 0; i < insertedLastElement.Length; i++)
+            {
+                if (i == (insertedLastElement.Length - 1))
+                    insertedLastElement[i] = number;
+                else
+                    insertedLastElement[i] = array[i];
+            }
+            return insertedLastElement;
         }
 
         /// <summary>
@@ -88,8 +165,20 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if (array == null ) return new[] { number };
+            if (index > array.Length || index < 0) return array;
+
+            int[] insertedElementAtIndex = new int[array.Length + 1];
+            for (int i = 0; i < insertedElementAtIndex.Length; i++)
+            {
+                if (index == i)
+                    insertedElementAtIndex[i] = number;
+                else if (index > i)
+                    insertedElementAtIndex[i] = array[i];
+                else
+                    insertedElementAtIndex[i] = array[i - 1];
+            }
+            return insertedElementAtIndex;
         }
     }
 }
