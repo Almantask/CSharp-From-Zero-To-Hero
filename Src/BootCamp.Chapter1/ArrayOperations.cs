@@ -152,8 +152,22 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
-            return array;
+            if(array.Length == 0)
+            {
+                int[] emptyArray = new int[] { 0 };
+                return emptyArray;
+            }
+            int[] insertedElementAtIndex = new int[array.Length + 1];
+            for (int i = 0; i < insertedElementAtIndex.Length; i++)
+            {
+                if(index == i)
+                    insertedElementAtIndex[i] = number;
+                else if (index < i)
+                    insertedElementAtIndex[i] = array[i - 1];
+                else
+                    insertedElementAtIndex[i] = array[i];
+            }
+            return insertedElementAtIndex;
         }
     }
 }
