@@ -34,17 +34,14 @@
         {
             if (array == null || array.Length == 0) return;
 
-            for (int i = (array.Length - 1); i >= 0; i--)
+            int pomocna = array.Length - 1;
+            for (int i = 0; i < array.Length; i++)
             {
-                for (int j = (array.Length - 1); j >= 0; j--)
-                {
-                    if (array[i] < array[j])
-                    {
-                        int buffer = array[i];
-                        array[i] = array[j];
-                        array[j] = buffer;
-                    }
-                }
+                int buffer = array[pomocna];
+                array[pomocna] = array[i];
+                array[i] = buffer;
+                if (i == pomocna) return;
+                pomocna--;
             }
         }
 
@@ -90,6 +87,7 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             if (array == null || array.Length == 0) return array;
+            if (index > array.Length || index < 0) return array;
 
             int[] removedIndex = new int[array.Length - 1];
             for (int i = 0; i < removedIndex.Length; i++)
@@ -166,6 +164,7 @@
                 int[] emptyArray = new int[] { number };
                 return emptyArray;
             }
+            if (index > array.Length || index < 0) return array;
 
             int[] insertedElementAtIndex = new int[array.Length + 1];
             for (int i = 0; i < insertedElementAtIndex.Length; i++)
