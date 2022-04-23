@@ -10,6 +10,7 @@
         public static void Sort(int[] array)
         {
             if (array.Length == 0 || array == null) return;
+
             for (int i = 0; i < array.Length; i++)
             {
                 for (int j = 1; j < array.Length; j++)
@@ -32,6 +33,7 @@
         public static void Reverse(int[] array)
         {
             if (array.Length == 0 || array == null) return;
+
             for (int i = (array.Length - 1); i >= 0; i--)
             {
                 for (int j = (array.Length - 1); j >= 0; j--)
@@ -54,6 +56,7 @@
         public static int[] RemoveLast(int[] array)
         {
             if (array.Length == 0 || array == null) return array;
+
             int[] removedLastElement = new int[array.Length - 1];
             for (int i = 0; i < removedLastElement.Length; i++)
             {
@@ -69,6 +72,7 @@
         public static int[] RemoveFirst(int[] array)
         {
             if (array.Length == 0 || array == null) return array;
+
             int[] removedFirstElement = new int[array.Length - 1];
             for (int i = 0; i < removedFirstElement.Length; i++)
             {
@@ -86,6 +90,7 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             if (array.Length == 0 || array == null) return array;
+
             int[] removedIndex = new int[array.Length - 1];
             for (int i = 0; i < removedIndex.Length; i++)
             {
@@ -110,6 +115,7 @@
                 int[] emptyArray = new int[] { 0 };
                 return emptyArray;
             }
+
             int[] insertedFirstElement = new int[array.Length + 1];
             for (int i = 0; i < insertedFirstElement.Length; i++)
             {
@@ -134,6 +140,7 @@
                 int[] emptyArray = new int[] { 0 };
                 return emptyArray;
             }
+
             int[] insertedLastElement = new int[array.Length + 1];
             for (int i = 0; i < insertedLastElement.Length; i++)
             {
@@ -159,6 +166,7 @@
                 int[] emptyArray = new int[] { 0 };
                 return emptyArray;
             }
+
             int[] insertedElementAtIndex = new int[array.Length + 1];
             for (int i = 0; i < insertedElementAtIndex.Length; i++)
             {
