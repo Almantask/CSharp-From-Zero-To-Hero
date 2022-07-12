@@ -18,7 +18,19 @@ namespace BootCamp.Chapter
         /// <returns>One of the arrow characters. '↥' by default.</returns>
         public static char GetIndicator(char symbol)
         {
-            return '-';
+            switch (symbol)
+            {
+                case 'D':
+                case 'd':
+                    return '↦';
+                case 'S':
+                case 's':
+                    return '↧';
+                case 'A':
+                case 'a':
+                    return '↤';
+            }
+            return '↥';
         }
     }
 }
