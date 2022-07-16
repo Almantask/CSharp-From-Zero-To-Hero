@@ -37,5 +37,15 @@
         {
             return _motherboard;
         }
+
+        public DesktopComputer(Body body, Ram ram, Cpu cpu, Gpu gpu, HardDisk hard, Motherboard motherboard)
+        {
+            _body = body;
+            _ram = ram;
+            _cpu = cpu;
+            _gpu = gpu;
+            _hard = hard;
+            _motherboard = motherboard;
+        }
     }
 }
