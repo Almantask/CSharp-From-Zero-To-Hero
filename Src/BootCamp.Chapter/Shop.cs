@@ -1,4 +1,7 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Linq;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
@@ -8,7 +11,7 @@
             return _money;
         }
 
-        private Inventory _inventory;
+        private Inventory _inventory = new();
 
         public Shop()
         {
@@ -31,6 +34,7 @@
         /// </summary>
         public void Add(Item item)
         {
+            if (!_inventory.GetItems().Contains(item)) _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,6 +44,7 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            _inventory.SetInventory(_inventory.GetItems().SkipWhile(item => item.GetName() == name).ToArray());
         }
 
         /// <summary>
@@ -50,7 +55,10 @@
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            if (item.GetPrice() > _money) return 0;
+            Add(item);
+            _money -= item.GetPrice();
+            return item.GetPrice();
         }
 
         /// <summary>
@@ -62,9 +70,13 @@
         /// Item sold.
         /// Null, if no item is sold.
         /// </returns>
-        public Item Sell(string item)
+        public Item Sell(string itemName)
         {
-            return null;
+            var item = Array.Find(_inventory.GetItems(), item => item.GetName() == itemName);
+            if (_inventory.GetItems(itemName).Length == 0) return null;
+            Remove(itemName);
+            _money += item.GetPrice();
+            return item;
         }
     }
 }

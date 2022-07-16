@@ -16,6 +16,11 @@
 
         private float _weight;
 
+        public float Getweight()
+        {
+            return _weight;
+        }
+
         public Item(string name, decimal price, float weight)
         {
             _name = name;
