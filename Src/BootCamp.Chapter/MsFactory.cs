@@ -5,11 +5,7 @@ using BootCamp.Chapter.Computer;
 
 namespace BootCamp.Chapter
 {
-    public class MsFactory
+    public class MsFactory : ComputerFactory
     {
-        public DesktopComputer Assemble()
-        {
-            return new DesktopComputer();
-        }
     }
 }
