@@ -10,7 +10,6 @@ namespace BootCamp.Chapter
         private Weapon _weapon;
         public void SetWeapon(Weapon weapon)
         {
-
         }
 
         private Headpiece _head;

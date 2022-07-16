@@ -28,7 +28,7 @@ namespace BootCamp.Chapter
         /// <summary>
         /// Player items. There can be multiple of items with same name.
         /// </summary>
-        private Inventory _inventory;
+        private Inventory _inventory = new();
         /// <summary>
         /// Needed only for the extra task.
         /// </summary>
@@ -51,11 +51,13 @@ namespace BootCamp.Chapter
         /// </summary>
         public void AddItem(Item item)
         {
+            _inventory.AddItem(item);
+            
         }
 
         public void Remove(Item item)
         {
-
+            _inventory.RemoveItem(item);
         }
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace BootCamp.Chapter
         /// <param name="name"></param>
         public Item[] GetItems(string name)
         {
-            return new Item[0];
+            return _inventory.GetItems(name);
         }
 
         #region Extra challenge: Equipment
