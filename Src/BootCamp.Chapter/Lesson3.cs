@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    internal class Lession3
+    internal class Lesson3
     {
         public static void Demo()
         {
