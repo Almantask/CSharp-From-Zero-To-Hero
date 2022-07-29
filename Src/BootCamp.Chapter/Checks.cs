@@ -16,26 +16,66 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.Write(message);
+            string input = Console.ReadLine();
+            bool isNumber = int.TryParse(input, out int number);
+
+            if (!isNumber)
+            {
+                Console.WriteLine($"\"{input}\" is not a valid number.");
+                return -1;
+            }
+
+            return number;
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            Console.Write(message);
+            string str = Console.ReadLine();
+            bool isString = string.IsNullOrEmpty(str);
+            
+            if (isString)
+            {
+                Console.WriteLine("Name cannot be empty");
+                return "-";
+            }
+                
+            
+            return str;
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.Write(message);
+            string input = Console.ReadLine();
+            bool isNumber = float.TryParse(input, out float number);
+
+            if (!isNumber)
+            {
+                Console.WriteLine($"\"{input}\" is not a valid number.");
+                return -1;
+            }
+
+            return number;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            if (weight <= 0 || height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason: ");
+
+                if (weight <= 0) Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
+                
+
+                if (height <= 0) Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
+           
+
+                return -1;
+            }
+            return (float)(weight / Math.Pow(height, 2));
         }
+
     }
 }
