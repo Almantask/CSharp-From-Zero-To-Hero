@@ -6,6 +6,12 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            GetUserInput();
+            GetUserInput();
+        }
+
+        static void GetUserInput()
+        {
             Console.Write("What is your name? ");
             string firstName = Console.ReadLine();
 
@@ -23,7 +29,7 @@ namespace BootCamp.Chapter
 
             double bmi = weight / Math.Pow((height / 100), 2);
 
-            Console.WriteLine($"\n{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. BMI is {bmi}.");
+            Console.WriteLine($"\n{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is {height} cm. BMI is {bmi}.\n");
         }
     }
 }
