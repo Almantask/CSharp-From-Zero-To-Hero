@@ -9,7 +9,6 @@ namespace BootCamp.Chapter
             Console.WriteLine("Hello World!");
             Console.WriteLine("Hello World!");
             Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!");
         }
     }
 }
