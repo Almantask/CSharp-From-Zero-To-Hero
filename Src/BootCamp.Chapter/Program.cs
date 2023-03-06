@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -6,44 +8,35 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            string name;
-            string surename;
-            int age;
-            double weight;
-            double height;
-
-            GetPersonData();
-
-            double BMI;
-            CalculateBMI(weight, height);
-
-            Console.WriteLine($"{name} {surename} is {age}, weight is {weight} kg and his height is {height} cm.");
+            string name = GetPersonData("name");
+            string surename = GetPersonData("surename");
+            int age = int.Parse(GetPersonData("age"));
+            double weight = double.Parse(GetPersonData("weight"));
+            double height = double.Parse(GetPersonData("height in cm"));
+            double BMI = CalculateBMI(weight, height);
+            Console.WriteLine($"{name} {surename} is {age}, weight is {weight} kg and height is {height} cm.");
             Console.WriteLine($"BMI is {BMI:f2}");
 
+            name = GetPersonData("name");
+            surename = GetPersonData("surename");
+            age = int.Parse(GetPersonData("age"));
+            weight = double.Parse(GetPersonData("weight"));
+            height = double.Parse(GetPersonData("height in cm"));
+            BMI = CalculateBMI(weight, height);
+            Console.WriteLine($"{name} {surename} is {age}, weight is {weight} kg and height is {height} cm.");
+            Console.WriteLine($"BMI is {BMI:f2}");
+        }
 
+        public static string GetPersonData(string text)
+        {
+            Console.WriteLine($"Enter person {text}:");
+            return Console.ReadLine();
+        }
 
-
-            void GetPersonData()
-            {
-                Console.WriteLine("Enter person name:");
-                name = Console.ReadLine();
-                Console.WriteLine("Enter person surename:");
-                surename = Console.ReadLine();
-                Console.WriteLine("Enter person age:");
-                age = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Enter person weight in kg:");
-                weight = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Enter person height in cm:");
-                height = Convert.ToDouble(Console.ReadLine());
-            }
-
-            void CalculateBMI(double weight, double height)
-            {
+        public static double CalculateBMI(double weight, double height)
+        {
             double heightMt = height / 100.0;
-            BMI = weight / (heightMt * heightMt);
-            }
-
-
+            return weight / (heightMt * heightMt);
         }
 
     }
