@@ -6,30 +6,45 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
+            string name;
+            string surename;
+            int age;
+            double weight;
+            double height;
+
             GetPersonData();
-            GetPersonData();
+
+            double BMI;
+            CalculateBMI(weight, height);
+
+            Console.WriteLine($"{name} {surename} is {age}, weight is {weight} kg and his height is {height} cm.");
+            Console.WriteLine($"BMI is {BMI:f2}");
+
+
 
 
             void GetPersonData()
             {
                 Console.WriteLine("Enter person name:");
-                string name = Console.ReadLine();
+                name = Console.ReadLine();
                 Console.WriteLine("Enter person surename:");
-                string surename = Console.ReadLine();
+                surename = Console.ReadLine();
                 Console.WriteLine("Enter person age:");
-                int age = Convert.ToInt32(Console.ReadLine());
+                age = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter person weight in kg:");
-                double weight = Convert.ToDouble(Console.ReadLine());
+                weight = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("Enter person height in cm:");
-                double height = Convert.ToDouble(Console.ReadLine());
-                double heightMt = height / 100.0;
-                Console.WriteLine($"{name} {surename} is {age}, weight is {weight} kg and his height is {height} cm.");
-                var BMI = weight / (heightMt * heightMt);
-                Console.WriteLine($"BMI is {BMI:f2}");
+                height = Convert.ToDouble(Console.ReadLine());
+            }
 
+            void CalculateBMI(double weight, double height)
+            {
+            double heightMt = height / 100.0;
+            BMI = weight / (heightMt * heightMt);
             }
 
 
         }
+
     }
 }
