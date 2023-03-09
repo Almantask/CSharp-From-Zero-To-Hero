@@ -6,11 +6,6 @@ namespace BootCamp.Chapter
 {
     internal class Lesson3
     {
-        static void Main(string[] args)
-        {
-            Lesson3.Demo();
-        }
-
         public static void Demo()
         {
             string name = PromptString("Enter person´s name");
@@ -19,7 +14,7 @@ namespace BootCamp.Chapter
             float weight = PromptFloat("Enter person´s weight in kg");
             float height = PromptFloat("Enter person´s height in m");
             Console.WriteLine($"{Environment.NewLine}{name} {surename} is {age}, weight is {weight} kg and height is {height} cm.");
-            Console.WriteLine(CalculateBMI(weight, height));
+            Console.WriteLine($"BMI is {CalculateBMI(weight, height):f2}");
 
             Console.WriteLine("");
 
@@ -54,6 +49,7 @@ namespace BootCamp.Chapter
         {
             return weight / (height * height);
         }
+
 
     }
 
