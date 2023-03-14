@@ -16,26 +16,70 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.Write(message);
+            string input = Console.ReadLine();
+            bool isNumber = int.TryParse(input, out int number);
+
+            if (!isNumber)
+            {
+                Console.WriteLine($"\"{input}\" is not a valid number.");
+                return -1;
+            }
+
+            return number;
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            Console.WriteLine(message);
+            var validString = Console.ReadLine();
+            if (string.IsNullOrEmpty(validString))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
+            return validString;
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.Write(message);
+            string input = Console.ReadLine();
+            bool isNumber = float.TryParse(input, out float number);
+
+            if (!isNumber)
+            {
+                Console.WriteLine($"\"{input}\" is not a valid number.");
+                return -1;
+            }
+
+            return number;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            if (weight <= 0 || height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+                
+                if (height <= 0)
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
+                if (weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
+
+                return -1;
+            }
+
+            return (float)(weight / Math.Pow(height, 2));
+        }
+
+        public static void DisplayDetail(string name, int age, float weight, float height, float bmi)
+        {
+            Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg & his height is {height} cm. The bmi is {bmi}");
         }
     }
 }
