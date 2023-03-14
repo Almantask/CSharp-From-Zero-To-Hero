@@ -9,7 +9,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Sort(int[] array)
         {
-            // ToDo: implement.
+            Program.SortArray(array);
         }
 
         /// <summary>
@@ -19,7 +19,7 @@
         /// <param name="array">Input array in a random order.</param>
         public static void Reverse(int[] array)
         {
-            // ToDo: implement.
+            Program.ReverseArray(array);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@
         /// <returns>A new array with the last element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveLast(int[] array)
         {
-            // ToDo: implement.
+            array = Program.RemoveLast(array);
             return array;
         }
 
@@ -39,7 +39,7 @@
         /// <returns>A new array with the first element removed. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveFirst(int[] array)
         {
-            // ToDo: implement.
+            array = Program.RemoveFirst(array);
             return array;
         }
 
@@ -51,7 +51,7 @@
         /// <returns>A new array with element removed at a given index. If an array is empty or null, returns input array.</returns>
         public static int[] RemoveAt(int[] array, int index)
         {
-            // ToDo: implement.
+            array = Program.RemoveAtIndex(array, index);
             return array;
         }
 
@@ -63,7 +63,7 @@
         /// <returns>A new array with element added at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertFirst(int[] array, int number)
         {
-            // ToDo: implement.
+            array = Program.InsertAtStart(array, number);
             return array;
         }
 
@@ -75,7 +75,7 @@
         /// <returns>A new array with element added in the end of array. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertLast(int[] array, int number)
         {
-            // ToDo: implement.
+            array = Program.InsertAtLast(array, number);
             return array;
         }
 
@@ -88,7 +88,7 @@
         /// <returns>A new array with element inserted at a given index. If an array is empty or null, returns new array with number in it.</returns>
         public static int[] InsertAt(int[] array, int number, int index)
         {
-            // ToDo: implement.
+            array = Program.InsertAtIndex(array, index, number);
             return array;
         }
     }
