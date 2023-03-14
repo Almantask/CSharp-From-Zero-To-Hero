@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -16,26 +17,33 @@ namespace BootCamp.Chapter
     {
         public static int PromptInt(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.Write($"{message}");
+            int.TryParse(Console.ReadLine(), out int value);
+            return value;
         }
 
         public static string PromptString(string message)
         {
-            // To do: call your implementation. 
-            return "";
+            Console.Write($"{message}");
+            return Console.ReadLine();
         }
 
         public static float PromptFloat(string message)
         {
-            // To do: call your implementation. 
-            return 0;
+            Console.Write($"{message}");
+            float.TryParse(Console.ReadLine(), out float value);
+            return value;
         }
 
         public static float CalculateBmi(float weight, float height)
         {
-            // To do: call your implementation. 
-            return 0;
+            float bmi = (float)(weight / Math.Pow(height, 2));
+            return bmi;
+        }
+
+        public static void DisplayDetail(string name, int age, float weight, float height, float bmi)
+        {
+            Console.WriteLine($"{name} is {age} years old, his weight is {weight} kg & his height is {height} cm. The bmi is {bmi}");
         }
     }
 }
