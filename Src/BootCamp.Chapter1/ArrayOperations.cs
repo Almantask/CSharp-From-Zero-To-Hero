@@ -1,4 +1,8 @@
-﻿namespace BootCamp.Chapter1
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace BootCamp.Chapter1
 {
     public static class ArrayOperations
     {
@@ -10,6 +14,8 @@
         public static void Sort(int[] array)
         {
             // ToDo: implement.
+            if (array == null) return;
+            Array.Sort(array);
         }
 
         /// <summary>
@@ -20,6 +26,8 @@
         public static void Reverse(int[] array)
         {
             // ToDo: implement.
+            if (array == null) return;
+            Array.Reverse(array);
         }
 
         /// <summary>
@@ -30,6 +38,8 @@
         public static int[] RemoveLast(int[] array)
         {
             // ToDo: implement.
+            if (array == null) return array;
+            array = array.SkipLast(1).ToArray();
             return array;
         }
 
@@ -40,6 +50,8 @@
         public static int[] RemoveFirst(int[] array)
         {
             // ToDo: implement.
+            if (array == null) return array;
+            array = array.Skip(1).ToArray();
             return array;
         }
 
@@ -52,6 +64,8 @@
         public static int[] RemoveAt(int[] array, int index)
         {
             // ToDo: implement.
+            if (array == null) return array;
+            array = array.Where((source, i) => i != index).ToArray();
             return array;
         }
 
@@ -64,7 +78,11 @@
         public static int[] InsertFirst(int[] array, int number)
         {
             // ToDo: implement.
-            return array;
+            if (array == null) return new int[] {number};
+            var newArr = new int[array.Length+1];
+            newArr[0] = number;
+            array.CopyTo(newArr, 1);
+            return newArr;
         }
 
         /// <summary>
@@ -76,7 +94,11 @@
         public static int[] InsertLast(int[] array, int number)
         {
             // ToDo: implement.
-            return array;
+            if (array == null) return new int[] { number };
+            var newArr = new int[array.Length + 1];
+            array.CopyTo(newArr, 0);
+            newArr[array.Length] = number;
+            return newArr;
         }
 
         /// <summary>
@@ -89,7 +111,11 @@
         public static int[] InsertAt(int[] array, int number, int index)
         {
             // ToDo: implement.
-            return array;
+            if (array == null) return new int[] { number };
+            if (index < 0 || index > array.Length) return array;
+            var newArr =  array.ToList();
+            newArr.Insert(index, number);
+            return newArr.ToArray();
         }
     }
 }
