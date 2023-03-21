@@ -66,7 +66,7 @@ namespace BootCamp.Chapter1
             // doesn't work -var unknown;
             Console.WriteLine(myName);
 
-            // We can add any two nubmers together
+            // We can add any two numbers together
             int sum = 1 + 5; // 6
             int sumx2 = sum + sum; // 12
             sumx2 = sumx2 * 2; // 24
