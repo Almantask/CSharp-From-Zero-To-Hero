@@ -14,19 +14,29 @@ namespace BootCamp.Chapter
             string corrupted = @"C:\Users\Pedro Win\Documents\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.corrupted";
             string cleaned = @"C:\Users\Pedro Win\Documents\Repos\CSharp-From-Zero-To-Hero\Src\BootCamp.Chapter\Input\Balances.cleaned";
             FileCleaner.Clean(corrupted, cleaned);
-            var balances = File.ReadAllText(cleaned).Split("\r\n");
 
-            // Print each of the statistical output using Text Table with padding 3:
-            // - FindHighestBalanceEver
-            Console.WriteLine(Frame(FindHighestBalanceEver(balances), 3));
-            // - FindPersonWithBiggestLoss
-            Console.WriteLine(Frame(FindPersonWithBiggestLoss(balances), 3));
-            // - FindRichestPerson
-            Console.WriteLine(Frame(FindRichestPerson(balances), 3));
-            // - FindMostPoorPerson
-            Console.WriteLine(Frame(FindMostPoorPerson(balances), 3));
+            //// Print each of the statistical output using Text Table with padding 3:
+            //// - FindHighestBalanceEver
+            //Console.WriteLine(Frame(FindHighestBalanceEver(balances), 3));
+            //// - FindPersonWithBiggestLoss
+            //Console.WriteLine(Frame(FindPersonWithBiggestLoss(balances), 3));
+            //// - FindRichestPerson
+            //Console.WriteLine(Frame(FindRichestPerson(balances), 3));
+            //// - FindMostPoorPerson
+            //Console.WriteLine(Frame(FindMostPoorPerson(balances), 3));
         }
 
+        public static Person[] ParseBalances(string file)
+        {
+            var lines = File.ReadAllText(file).Split("\r\n");
+            foreach (var line in lines)
+            {
+                
+            }
+
+
+            return null;
+        }
         public static string FindHighestBalanceEver(string[] balances)
         {
             if (balances == null || balances.Length == 0)
