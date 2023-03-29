@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
@@ -8,11 +10,10 @@
             return _money;
         }
 
-        private Inventory _inventory;
+        private Inventory _inventory = new Inventory();
 
         public Shop()
         {
-
         }
 
         public Shop(decimal money)
@@ -31,6 +32,13 @@
         /// </summary>
         public void Add(Item item)
         {
+            var existingItems = _inventory.GetItems(item.GetName());
+            if (existingItems.Length > 0)
+            {
+                return;
+            }
+            
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,17 +48,36 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            var items = _inventory.GetItems(name);
+
+            if (items.Length == 0)
+            {
+                return;
+            }
+            
+            _inventory.RemoveItem(items[0]);
         }
 
         /// <summary>
         /// Player can sell items to a shop.
         /// All items can be sold.
-        /// Shop looses money.
+        /// Shop loses money.
         /// </summary>
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            _inventory.AddItem(item);
+
+            var itemPrice = item.GetPrice();
+
+            if (itemPrice > _money)
+            {
+                return 0;
+            }
+            
+            _money -= itemPrice;
+            
+            return itemPrice;
         }
 
         /// <summary>
@@ -64,7 +91,15 @@
         /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            var items = _inventory.GetItems(item);
+            if (items.Length == 0)
+            {
+                return null;
+            }
+
+            _money += items[0].GetPrice();
+            
+            return items[0];
         }
     }
 }
