@@ -30,9 +30,9 @@ namespace BootCamp.Chapter
                 string pattern = @"[^a-zA-Z '-]";
                 bool containsInvalidChars = Regex.IsMatch(name, pattern);
                 if (containsInvalidChars)
-                {
+                {                   
                     throw new InvalidBalancesException($"line {i + 1} of the file is not a valid balance",
-                            new InvalidBPersonNameException(name));
+                            new InvalidBPersonNameException(name));                    
                 }
 
                 for (int j = 1; j < lineArr.Length; j++)
