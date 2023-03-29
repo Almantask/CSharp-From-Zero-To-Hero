@@ -8,23 +8,23 @@ namespace BootCamp.Chapter1
         static void Main(string[] args)
         {
             //int[] array = new int[0];
-            var array = new[] {0,1};
+            var array = new[] {4,0,1,2};
 
             Console.WriteLine("Before sort: ");
             PrintArray(array);
-            var arraySorted = SortArray(array);
+            SortArray(array);
             Console.WriteLine("After sort: ");
-            PrintArray(arraySorted);
-            var arrayReversed = ReverseArray(array);
+            PrintArray(array);
+            ReverseArray(array);
             Console.WriteLine("After reverse: ");
-            PrintArray(arrayReversed);
+            PrintArray(array);
             var arrayWithoutFirst = RemoveFirst(array);
             Console.WriteLine("After RemoveFirst: ");
             PrintArray(arrayWithoutFirst);
             var arrayWithoutLast = RemoveLast(array);
             Console.WriteLine("After RemoveLast: ");
             PrintArray(arrayWithoutLast);
-            var arrayWithoutNdx = RemoveAtIndex(array, 4);
+            var arrayWithoutNdx = RemoveAtIndex(array, 3);
             Console.WriteLine("After RemoveOnIndex: ");
             PrintArray(arrayWithoutNdx);
             var arrayInsertAtStart = InsertAtStart(array, 0);
@@ -49,44 +49,32 @@ namespace BootCamp.Chapter1
             Console.WriteLine("\n");
         }
 
-        public static int[] SortArray(int[] ints)
+        public static void SortArray(int[] ints)
         {
-            if (ints == null || ints.Length == 0)
+            if (ints == null) return;
+            int temp;
+            for (int i = 0; i < ints.Length - 1; i++)
             {
-                return ints;
-            }
-
-            int[] sortedArray = (int[])ints.Clone();
-            int length = sortedArray.Length;
-            int temp = 0;
-            for (int i = 0; i < length - 1; i++)
-            {
-                for (int j = i + 1; j < length; j++)
+                for (int j = i + 1; j < ints.Length; j++)
                 {
-                    if (sortedArray[i] > sortedArray[j])
+                    if (ints[i] > ints[j])
                     {
-                        temp = sortedArray[i];
-                        sortedArray[i] = sortedArray[j];
-                        sortedArray[j] = temp;
+                        temp = ints[i];
+                        ints[i] = ints[j];
+                        ints[j] = temp;
                     }
                 }
             }
-            return sortedArray;
         }
 
-        public static int[] ReverseArray(int[] ints)
+        public static void ReverseArray(int[] ints)
         {
-            if (ints == null || ints.Length == 0)
+            if (ints == null) return;
+            var temp = (int[])ints.Clone();
+            for(int i = 0; i < temp.Length; i++)
             {
-                return ints;
+                ints[i] = temp[temp.Length - 1 - i];
             }
-
-            var reversedArray = new int[ints.Length];
-            for(int i = 0; i < ints.Length; i++)
-            {
-                reversedArray[reversedArray.Length-1-i] = ints[i];
-            }
-            return reversedArray;
         }
         public static int[] RemoveFirst(int[] ints)
         {
