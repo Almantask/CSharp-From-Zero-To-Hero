@@ -68,12 +68,12 @@ namespace BootCamp.Chapter.Tests
         {
             var sword = new Item(ItemName, ItemPrice, 2);
             
-            var baughtItemPrice = _shop.Buy(sword);
+            var boughtItemPrice = _shop.Buy(sword);
 
             using (new AssertionScope())
             {
-                baughtItemPrice.Should().Be(ItemPrice);
-                _shop.GetMoney().Should().Be(InitialShopMoney - baughtItemPrice);
+                boughtItemPrice.Should().Be(ItemPrice);
+                _shop.GetMoney().Should().Be(InitialShopMoney - boughtItemPrice);
             }
         }
 
@@ -84,11 +84,11 @@ namespace BootCamp.Chapter.Tests
             var sword = new Item(ItemName, InitialShopMoney + 1, 2);
 
             // Ignores buying- not enough money.
-            var baughtItemPrice = _shop.Buy(sword);
+            var boughtItemPrice = _shop.Buy(sword);
 
             using (new AssertionScope())
             {
-                baughtItemPrice.Should().Be(0);
+                boughtItemPrice.Should().Be(0);
                 _shop.GetMoney().Should().Be(InitialShopMoney);
             }
         }
