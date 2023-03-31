@@ -2,15 +2,17 @@
 {
     public class Armpiece
     {
-        private string _name;
-        private decimal _price;
-        private float _weight;
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public float Weight { get; set; }
+        public int Defense { get; set; }
 
-        public Armpiece(string name, decimal price, float weight)
+        public Armpiece(string name, decimal price, float weight, int defense)
         {
-            _name = name;
-            _price = price;
-            _weight = weight;
+            Name = name;
+            Price = price;
+            Weight = weight;
+            Defense = defense;
         }
     }
 }
