@@ -1,28 +1,24 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+
+namespace BootCamp.Chapter
 {
     public class Shop
     {
-        private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
+        public decimal Money { get; set; }
 
-        private Inventory _inventory;
-
-        public Shop()
-        {
-
-        }
+        public List<Item> Items => _inventory.Items;
+        private readonly Inventory _inventory = new Inventory();
 
         public Shop(decimal money)
         {
-            _money = money;
+            Money = money;
         }
 
-        public Item[] GetItems()
+        public List<Item> GetItems()
         {
-            return _inventory.GetItems();
+            return _inventory.Items;
         }
 
         /// <summary>
@@ -31,6 +27,13 @@
         /// </summary>
         public void Add(Item item)
         {
+            var existingItems = _inventory.GetItems(item.Name);
+            if (existingItems.Count > 0)
+            {
+                return;
+            }
+            
+            _inventory.AddItem(item);
         }
 
         /// <summary>
@@ -40,17 +43,36 @@
         /// <param name="name"></param>
         public void Remove(string name)
         {
+            var items = _inventory.GetItems(name);
+
+            if (items.Count == 0)
+            {
+                return;
+            }
+            
+            _inventory.RemoveItem(items[0]);
         }
 
         /// <summary>
         /// Player can sell items to a shop.
         /// All items can be sold.
-        /// Shop looses money.
+        /// Shop loses money.
         /// </summary>
         /// <returns>Price of an item.</returns>
         public decimal Buy(Item item)
         {
-            return 0;
+            _inventory.AddItem(item);
+
+            var itemPrice = item.Price;
+
+            if (itemPrice > Money)
+            {
+                return 0;
+            }
+            
+            Money -= itemPrice;
+            
+            return itemPrice;
         }
 
         /// <summary>
@@ -64,7 +86,15 @@
         /// </returns>
         public Item Sell(string item)
         {
-            return null;
+            var items = _inventory.GetItems(item);
+            if (items.Count == 0)
+            {
+                return null;
+            }
+
+            Money += items[0].Price;
+            
+            return items[0];
         }
     }
 }
