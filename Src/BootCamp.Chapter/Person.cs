@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BootCamp.Chapter
 {
-    internal class Person
+    public class Person
     {
         string _name;
         public string GetName() { return _name; }
