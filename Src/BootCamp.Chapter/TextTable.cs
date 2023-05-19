@@ -1,4 +1,9 @@
-﻿namespace BootCamp.Chapter
+﻿using Microsoft.VisualBasic;
+using System.Linq;
+using System.Text;
+using System;
+
+namespace BootCamp.Chapter
 {
     /// <summary>
     /// Part 1.
@@ -34,7 +39,48 @@
         /// </summary>
         public static string Build(string message, int padding)
         {
-            return "";
+            if (message.Length == 0 || message == null) return "";
+
+            var textTable = new StringBuilder();
+            string[] seperatedMessage = message.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            // Find the max length of the longest word in the message
+            int maxCharacters = 0;
+            foreach (var word in seperatedMessage)
+            {
+                if (word.Length > maxCharacters)
+                {
+                    maxCharacters = word.Length;
+                }
+            }
+
+            // Make-up of number of characters
+            int maxWidth = maxCharacters + (padding * 2);
+            string minus = new string('-', maxWidth);
+            string emptyLine = new string(' ', maxWidth);
+            string emptySpace = new string(' ', padding);
+
+            // TopLine
+            textTable.Append($"+{minus}+\r\n");
+
+            // NewLine if padding
+            textTable.Append(string.Join(Environment.NewLine, Enumerable.Repeat($"|{emptyLine}|\r\n", padding)));
+
+            // Message line(s)
+            for (int j = 0; j < seperatedMessage.Length; j++)
+            {
+                string leftOver = new string(' ', maxWidth - seperatedMessage[j].Length - (padding * 2));
+                textTable.Append($"|{emptySpace}{seperatedMessage[j]}{emptySpace}{leftOver}|\r\n");
+            }
+
+            // NewLine if padding
+            textTable.Append(string.Join(Environment.NewLine, Enumerable.Repeat($"|{emptyLine}|\r\n", padding)));
+
+            // BottomLine
+            textTable.Append($"+{minus}+\r\n");
+
+
+            return Convert.ToString(textTable);
         }
     }
 }
