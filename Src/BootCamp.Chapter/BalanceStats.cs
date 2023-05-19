@@ -13,18 +13,14 @@ namespace BootCamp.Chapter
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
             List<string> names = new List<string>();
-            
-            double currentMax = 0;
             double maxNum = 0;
-            
-            string currentName = string.Empty;
-            string currentMaxName = string.Empty;
-            
-            
-            
+
+
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
                 var items = GetCleanData(peopleAndBalances, i);
+                var currentName = items[0];
+                double currentMax = 0;
 
                 for (int j = 1; j<items.Length; j++)
                 {
@@ -34,42 +30,39 @@ namespace BootCamp.Chapter
                         if (item > currentMax)
                         {
                             currentMax = item;
-                            currentName = items[0];
                         }
                     }
                 }
+
+                //THIS IS WHERE CURRENTMAX NUMBER & OWNER OF THAT NUMBER a
 
                 if (currentMax >= maxNum)
                 {
                     if (currentMax > maxNum)
                     {
                         maxNum = currentMax;
-                        currentMaxName = currentName;
-                        names.Add(currentMaxName);
-                        if (names.Count > 1)
-                        {
-                            names.RemoveAt(0);
-                        }
+                        names.Clear();
+                        names.Add(currentName);
+
                     }
                     else if (currentMax == maxNum)
                     {
                         names.Add(currentName);
                     }
-
                 }
 
                 
             }
 
             string final = string.Empty;
-            if (names.Count >= 3)
+            if (names.Count > 2)
             {
                 for (int k = 0; k < names.Count - 2; k++)
                 {
                     final += $"{names[k]}, ";
                 }
 
-                final += $"{names[names.Count - 2]} and ";
+                final += $"{names[^2]} and ";
                 final += $"{names.Last()}";
             }
             else if (names.Count == 2)
@@ -80,7 +73,7 @@ namespace BootCamp.Chapter
             { 
                 final = names[0];
             }
-            return $"{final} had the most money ever. {maxNum}";
+            return $"{final} had the most money ever. ¤{maxNum}.";
         }
 
         /// <summary>
