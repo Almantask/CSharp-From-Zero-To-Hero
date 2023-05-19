@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 
 namespace BootCamp.Chapter
 {
@@ -12,9 +13,14 @@ namespace BootCamp.Chapter
         /// </summary>
         public static string FindHighestBalanceEver(string[] peopleAndBalances)
         {
+            if (peopleAndBalances == null)
+                return "N/A.";
+
+
             List<string> names = new List<string>();
             double maxNum = 0;
 
+            
 
             for (int i = 0; i < peopleAndBalances.Length; i++)
             {
@@ -22,15 +28,12 @@ namespace BootCamp.Chapter
                 var currentName = items[0];
                 double currentMax = 0;
 
-                for (int j = 1; j<items.Length; j++)
+                for (int j = 1; j < items.Length; j++)
                 {
                     var isParse = double.TryParse(items[j], out double item);
-                    if (isParse)
+                    if (isParse && item > currentMax)
                     {
-                        if (item > currentMax)
-                        {
-                            currentMax = item;
-                        }
+                        currentMax = item;
                     }
                 }
 
@@ -45,35 +48,42 @@ namespace BootCamp.Chapter
                         names.Add(currentName);
 
                     }
-                    else if (currentMax == maxNum)
+                    else
                     {
                         names.Add(currentName);
                     }
                 }
-
-                
             }
 
-            string final = string.Empty;
+            string nameInput = GetDisplayName(names);
+
+            return $"{nameInput} had the most money ever. ¤{maxNum}.";
+        }
+
+        private static string GetDisplayName(List<string> names)
+        {
+            var nameInput = new StringBuilder();
+
             if (names.Count > 2)
             {
                 for (int k = 0; k < names.Count - 2; k++)
                 {
-                    final += $"{names[k]}, ";
+                    nameInput.Append($"{names[k]}, ");
                 }
 
-                final += $"{names[^2]} and ";
-                final += $"{names.Last()}";
+                nameInput.Append($"{names[^2]} and ");
+                nameInput.Append($"{names.Last()}");
             }
             else if (names.Count == 2)
             {
-                final += $"{names[0]} and {names[1]}";
+                nameInput.Append($"{names[0]} and {names[1]}");
             }
-            else 
-            { 
-                final = names[0];
+            else
+            {
+                    nameInput.Append(names[0]);
             }
-            return $"{final} had the most money ever. ¤{maxNum}.";
+
+            return nameInput.ToString();
         }
 
         /// <summary>
