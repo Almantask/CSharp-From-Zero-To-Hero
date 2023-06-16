@@ -6,18 +6,18 @@ namespace BootCamp.Chapter
 {
     class Program
     {
+		const int PADDING = 3;
         static void Main(string[] args)
         {
-			string message = "test\ntest2";
-			Console.WriteLine(TextTable.Build(message, 0));
-			Console.WriteLine(TextTable.Build(message, 1));
-			Console.WriteLine(TextTable.Build(message, 2));
-
 			// Print each of the statistical output using Text Table with padding 3:
 			// - FindHighestBalanceEver
+			Console.WriteLine(TextTable.Build(BalanceStats.FindHighestBalanceEver(PeoplesBalances.Balances), PADDING));
 			// - FindPersonWithBiggestLoss
+			Console.WriteLine(TextTable.Build(BalanceStats.FindPersonWithBiggestLoss(PeoplesBalances.Balances), PADDING));
 			// - FindRichestPerson
+			Console.WriteLine(TextTable.Build(BalanceStats.FindRichestPerson(PeoplesBalances.Balances), PADDING));
 			// - FindMostPoorPerson
+			Console.WriteLine(TextTable.Build(BalanceStats.FindMostPoorPerson(PeoplesBalances.Balances), PADDING));
 
 			Console.ReadLine();
 		}
