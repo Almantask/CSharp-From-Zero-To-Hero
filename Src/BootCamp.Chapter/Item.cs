@@ -2,25 +2,30 @@
 {
 	public class Item
 	{
-		private string _name;
-		public string GetName()
+		public string Name { get; private set; }
+
+		public decimal Price { get; private set; }
+
+		public float Weight { get; private set; }
+
+		public Item(string name, decimal price = 0, float weight = 0)
 		{
-			return _name;
+			Name = name;
+			Price = price;
+			Weight = weight;
 		}
 
-		private decimal _price;
-		public decimal GetPrice()
+		public override bool Equals(object obj)
 		{
-			return _price;
-		}
+			//False if obj is null or isn't an Item
+			if (obj == null || !this.GetType().Equals(obj.GetType()))
+			{
+				return false;
+			}
 
-		private float _weight;
-
-		public Item(string name, decimal price, float weight)
-		{
-			_name = name;
-			_price = price;
-			_weight = weight;
+			//Only need to compare names
+			Item item = (Item)obj;
+			return Name.Equals(item.Name);
 		}
 	}
 }

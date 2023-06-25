@@ -26,9 +26,14 @@ namespace BootCamp.Chapter
 		private int _strenght;
 
 		/// <summary>
+		/// Gets all items from player's inventory
+		/// </summary>
+		public Item[] Items { get { return Inventory.Items; } }
+
+		/// <summary>
 		/// Player items. There can be multiple of items with same name.
 		/// </summary>
-		private Inventory _inventory;
+		private Inventory Inventory { get; set; }
 		/// <summary>
 		/// Needed only for the extra task.
 		/// </summary>
@@ -36,14 +41,7 @@ namespace BootCamp.Chapter
 
 		public Player()
 		{
-		}
-
-		/// <summary>
-		/// Gets all items from player's inventory
-		/// </summary>
-		public Item[] GetItems()
-		{
-			return new Item[0];
+			Inventory = new Inventory();
 		}
 
 		/// <summary>
@@ -51,11 +49,12 @@ namespace BootCamp.Chapter
 		/// </summary>
 		public void AddItem(Item item)
 		{
+			Inventory.AddItem(item);
 		}
 
 		public void Remove(Item item)
 		{
-
+			Inventory.RemoveItem(item);
 		}
 
 		/// <summary>
@@ -64,7 +63,7 @@ namespace BootCamp.Chapter
 		/// <param name="name"></param>
 		public Item[] GetItems(string name)
 		{
-			return new Item[0];
+			return Inventory.GetItems(name);
 		}
 
 		#region Extra challenge: Equipment

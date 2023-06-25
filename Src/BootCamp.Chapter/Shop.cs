@@ -1,28 +1,22 @@
-﻿namespace BootCamp.Chapter
-{
-	public class Shop
-	{
-		private decimal _money;
-		public decimal GetMoney()
-		{
-			return _money;
-		}
+﻿using System.Linq;
 
-		private Inventory _inventory;
+namespace BootCamp.Chapter
+{
+    public class Shop
+	{
+		public decimal Money { get; private set; } = 0;
+
+		private Inventory Inventory { get;  set; }
+		public Item[] Items { get { return Inventory.Items; } }
 
 		public Shop()
 		{
-
+			Inventory = new Inventory();
 		}
 
-		public Shop(decimal money)
+		public Shop(decimal money) : this()
 		{
-			_money = money;
-		}
-
-		public Item[] GetItems()
-		{
-			return _inventory.GetItems();
+			Money = money;
 		}
 
 		/// <summary>
@@ -31,6 +25,13 @@
 		/// </summary>
 		public void Add(Item item)
 		{
+			//Return if item already exists
+			if (Inventory.Items.Contains(item))
+			{
+				return;
+			}
+			//Add item
+			Inventory.AddItem(item);
 		}
 
 		/// <summary>
@@ -40,6 +41,7 @@
 		/// <param name="name"></param>
 		public void Remove(string name)
 		{
+			Inventory.RemoveItem(new Item(name));
 		}
 
 		/// <summary>
@@ -50,7 +52,18 @@
 		/// <returns>Price of an item.</returns>
 		public decimal Buy(Item item)
 		{
-			return 0;
+			decimal itemPrice = item.Price;
+
+			//Return 0 if we don't have enough money to buy
+			if (itemPrice > Money)
+			{
+				return 0;
+			}
+
+			//Update money
+			Money -= itemPrice;
+
+			return itemPrice;
 		}
 
 		/// <summary>
@@ -64,7 +77,18 @@
 		/// </returns>
 		public Item Sell(string item)
 		{
-			return null;
+			Item[] soldItem = Inventory.GetItems(item);
+
+			//Return if no item found or more than 1 was found
+			if (soldItem == null || soldItem.Length != 1)
+			{
+				return null;
+			}
+
+			//Add cost to money
+			Money += soldItem[0].Price;
+
+			return soldItem[0];
 		}
 	}
 }
