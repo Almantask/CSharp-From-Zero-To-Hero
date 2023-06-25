@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -91,6 +92,40 @@ namespace BootCamp.Chapter.Tests
                 baughtItemPrice.Should().Be(0);
                 _shop.Money.Should().Be(InitialShopMoney);
             }
+        }
+
+        [Fact]
+        public void Add_Null_Item_Throws_ArgumentNullException()
+        {
+            Action action = () => _shop.Add(null);
+
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void Buy_Null_Item_Throws_ArgumentNullException()
+        {
+            Action action = () => _shop.Add(null);
+
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void Remove_Null_Item_Throws_ArgumentNullException()
+        {
+            Action action = () => _shop.Remove(null);
+
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void Sell_Null_Or_Empty_Item_Throws_ArgumentException(string item)
+        {
+            Action action = () => _shop.Sell(item);
+
+            action.Should().Throw<ArgumentException>();
         }
     }
 }
