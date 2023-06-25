@@ -5,6 +5,7 @@ namespace BootCamp.Chapter
 	public class Shop
 	{
 		private decimal _money = 0;
+
 		public decimal GetMoney()
 		{
 			return _money;

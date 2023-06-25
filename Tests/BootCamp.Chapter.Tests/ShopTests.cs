@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
@@ -24,7 +25,7 @@ namespace BootCamp.Chapter.Tests
             var sword = new Item(ItemName, ItemPrice, 2);
             _shop.Add(sword);
 
-            _shop.GetItems().Should().Contain(sword);
+            _shop.Items.Should().Contain(sword);
         }
 
         [Fact]
@@ -34,7 +35,7 @@ namespace BootCamp.Chapter.Tests
             _shop.Add(sword);
             _shop.Add(sword);
 
-            _shop.GetItems().Should().Contain(sword);
+            _shop.Items.Should().Contain(sword);
         }
 
         [Fact]
@@ -45,7 +46,7 @@ namespace BootCamp.Chapter.Tests
 
             _shop.Remove(ItemName);
             
-            _shop.GetItems().Should().NotContain(sword);
+            _shop.Items.Should().NotContain(sword);
         }
 
         [Fact]
@@ -59,7 +60,7 @@ namespace BootCamp.Chapter.Tests
             using (new AssertionScope())
             {
                 itemSold.Should().Be(sword);
-                _shop.GetMoney().Should().Be(InitialShopMoney + itemSold.GetPrice());
+                _shop.Money.Should().Be(InitialShopMoney + itemSold.Price);
             }
         }
 
@@ -73,7 +74,7 @@ namespace BootCamp.Chapter.Tests
             using (new AssertionScope())
             {
                 baughtItemPrice.Should().Be(ItemPrice);
-                _shop.GetMoney().Should().Be(InitialShopMoney - baughtItemPrice);
+                _shop.Money.Should().Be(InitialShopMoney - baughtItemPrice);
             }
         }
 
@@ -89,8 +90,42 @@ namespace BootCamp.Chapter.Tests
             using (new AssertionScope())
             {
                 baughtItemPrice.Should().Be(0);
-                _shop.GetMoney().Should().Be(InitialShopMoney);
+                _shop.Money.Should().Be(InitialShopMoney);
             }
+        }
+
+        [Fact]
+        public void Add_Null_Item_Throws_ArgumentNullException()
+        {
+            Action action = () => _shop.Add(null);
+
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void Buy_Null_Item_Throws_ArgumentNullException()
+        {
+            Action action = () => _shop.Add(null);
+
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void Remove_Null_Item_Throws_ArgumentNullException()
+        {
+            Action action = () => _shop.Remove(null);
+
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void Sell_Null_Or_Empty_Item_Throws_ArgumentException(string item)
+        {
+            Action action = () => _shop.Sell(item);
+
+            action.Should().Throw<ArgumentException>();
         }
     }
 }

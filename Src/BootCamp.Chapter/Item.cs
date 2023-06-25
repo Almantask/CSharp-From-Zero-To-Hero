@@ -2,23 +2,23 @@
 
 namespace BootCamp.Chapter
 {
-    public class Item
-    {
-        private string _name;
-        public string GetName()
-        {
-            return _name;
-        }
+	public class Item
+	{
+		private string _name;
+		public string GetName()
+		{
+			return _name;
+		}
 
-        private decimal _price;
-        public decimal GetPrice()
-        {
-            return _price;
-        }
+		private decimal _price;
+		public decimal GetPrice()
+		{
+			return _price;
+		}
 
-        private float _weight;
+		private float _weight;
 
-        public Item(string name, decimal price = 0, float weight = 0)
+    public Item(string name, decimal price = 0, float weight = 0)
         {
             _name = name;
             _price = price;
