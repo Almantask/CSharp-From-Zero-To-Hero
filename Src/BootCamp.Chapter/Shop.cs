@@ -1,8 +1,11 @@
-﻿namespace BootCamp.Chapter
+﻿using System.Linq;
+
+namespace BootCamp.Chapter
 {
 	public class Shop
 	{
-		private decimal _money;
+		private decimal _money = 0;
+
 		public decimal GetMoney()
 		{
 			return _money;
@@ -12,10 +15,10 @@
 
 		public Shop()
 		{
-
+			_inventory = new Inventory();
 		}
 
-		public Shop(decimal money)
+		public Shop(decimal money) : this()
 		{
 			_money = money;
 		}
@@ -31,6 +34,13 @@
 		/// </summary>
 		public void Add(Item item)
 		{
+			//Return if item already exists
+			if (_inventory.GetItems().Contains(item))
+			{
+				return;
+			}
+			//Add item
+			_inventory.AddItem(item);
 		}
 
 		/// <summary>
@@ -40,6 +50,7 @@
 		/// <param name="name"></param>
 		public void Remove(string name)
 		{
+			_inventory.RemoveItem(new Item(name));
 		}
 
 		/// <summary>
@@ -50,7 +61,18 @@
 		/// <returns>Price of an item.</returns>
 		public decimal Buy(Item item)
 		{
-			return 0;
+			decimal itemPrice = item.GetPrice();
+
+			//Return 0 if we don't have enough money to buy
+			if (itemPrice > _money)
+			{
+				return 0;
+			}
+			
+			//Update money
+			_money -= itemPrice;
+
+			return itemPrice;
 		}
 
 		/// <summary>
@@ -64,7 +86,18 @@
 		/// </returns>
 		public Item Sell(string item)
 		{
-			return null;
+			Item[] soldItem = _inventory.GetItems(item);
+
+			//Return if no item found or more than 1 was found
+			if (soldItem == null || soldItem.Length != 1)
+			{
+				return null;
+			}
+
+			//Add cost to money
+			_money += soldItem[0].GetPrice();
+
+			return soldItem[0];
 		}
 	}
 }
