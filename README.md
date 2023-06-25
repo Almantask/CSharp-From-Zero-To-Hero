@@ -1,41 +1,23 @@
 # C#: From Zero To Hero
-## Chapter 2. Homework 2: Inheritance
+## Chapter 3: C#. Homework 3: Null related operators and more sugar
 ### Intro
-Inheritance is a swiss army knife of OOP. It is a powerful tool to form strong relations between our **domain objects**.
-Using inheritance we can achieve generalization of other objects, reuse code and much more...
-However, with great power comes great responsibility. Inheritance should not be overused, exactly because it forms strong relations of our domain objects.
-It's hard to design clean inheritance, because it needs to be stable, purely additive and not too deep so we can maintain it easilly.
-Prefer composition over inheritance is a principle that should be followed in most cases,
-because it allows us to build more modular and less coupled code, with a price of some duplicate code.
+C# is a modern high-level programming language. It has many nice features and it's time to explore some of it.
+In particular, it's really cool the way C# handles null. There are several operators/patterns in regards to null handling and typecheck.
+There is:
+- ?. - null-conditional operator
+- ?? - null-coalecense operator
+- ? valueIfTrue : valueIfFalse - conditional operator
+- value is Type1 - pattern matching  
+
+A lot of neat quality of programmer life improvements provided by a language design. It's time to try it out!
 
 ### Task
-Player has inventory where they store their items. They can buy and sell items to/from a shop.
-Shop sells/buys items. You can also just add and remove Item from a shop selection of merchandise.
+Take [homework 1 assignment](https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter3/Homework/1/Src/BootCamp.Chapter)
+and refactor it trying to apply the operators and functions learned in lesson- as much as you can.
+If you haven't done homework 1, refer to [chapter 2 homework 3](https://github.com/csinn/CSharp-From-Zero-To-Hero/tree/Chapter2/Homework/2) what needs to be done.
 
-Do a shop simulator, where player can buy and sell different items from their inventory. You need to support selling all sorts of items: armour, chestpieces, weapons, armpieces...
+Also apply null validation for every method and constructor:
+1) Don't allow passing null references  
+2) Don't allow passing null or empty strings
 
-#### Rules
-##### Shop 
-Sell- adds money to the shop. Shop can only sell items that it has. Selling item doesn't reduce item count in shop. Returns item sold.
-Buy- removes money from shop. Shop cannot buy an item if it doesn't have enough money.
-AddItem- shop can add extra items to the stock, but adding the same item twice has no effect.
-RemoveItem- shop can remove items from stock by their name
-
-##### Player
-AddItem- adds item to players inventory. Can have multiple items of the same name.
-RemoveItem0 removes item from players inventory. Does nothing if item is not found.
-
-Note: you have initial structure and objects, but there is a lot of redundant and incomplete pieces. 
-You need to fix that too. 
-
-#### Extra task: Equipment
-(no tests)  
-
-Player also has equipment. Equipement has different slots for armor and for weapon. Player can equip and unequip different pieces of gear.
-Sum of defense value of all equipment equals to total defense of player.
-Attack value of weapon is player's total attack.
-Player cannot have more items in their inventory than total weight allowed. The total max weight player has is determined by their strength status (30 + strength * 10 (kg)).
-
-## Glossary
-**Domain**- is the area of interest that you are working on. For example if you are building rockets, rocket science would be your domain.
-Or if you are doing money related transaction processing, finances would be your domain.  
+Note: the tests still are meant for getter/setter METHODS, so you will need to update them in case you didn't already.
