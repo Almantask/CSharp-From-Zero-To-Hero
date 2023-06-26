@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Xml.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -25,6 +28,9 @@ namespace BootCamp.Chapter
 		/// </summary>
 		public void Add(Item item)
 		{
+			//Throw exception if item is null
+			_ = item ?? throw new ArgumentNullException(nameof(item));
+
 			//Return if item already exists
 			if (Inventory.Items.Contains(item))
 			{
@@ -41,6 +47,12 @@ namespace BootCamp.Chapter
 		/// <param name="name"></param>
 		public void Remove(string name)
 		{
+			//Throw exception if name is null or blank
+			if (string.IsNullOrEmpty(name))
+			{
+				throw new ArgumentNullException(nameof(name));
+			}
+
 			Inventory.RemoveItem(new Item(name));
 		}
 
@@ -52,6 +64,9 @@ namespace BootCamp.Chapter
 		/// <returns>Price of an item.</returns>
 		public decimal Buy(Item item)
 		{
+			//Throw exception if item is null
+			_ = item ?? throw new ArgumentNullException(nameof(item));
+
 			decimal itemPrice = item.Price;
 
 			//Return 0 if we don't have enough money to buy
@@ -77,10 +92,16 @@ namespace BootCamp.Chapter
 		/// </returns>
 		public Item Sell(string item)
 		{
+			//Throw exception if name is null or blank
+			if (string.IsNullOrEmpty(item))
+			{
+				throw new ArgumentNullException(nameof(item));
+			}
+
 			Item[] soldItem = Inventory.GetItems(item);
 
 			//Return if no item found or more than 1 was found
-			if (soldItem == null || soldItem.Length != 1)
+			if (soldItem is null || soldItem.Length != 1)
 			{
 				return null;
 			}

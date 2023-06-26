@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace BootCamp.Chapter
 {
@@ -14,6 +16,12 @@ namespace BootCamp.Chapter
 
 		public Item[] GetItems(string name)
 		{
+			//Throw exception if name is null or blank
+			if (string.IsNullOrEmpty(name))
+			{
+				throw new ArgumentNullException(nameof(name));
+			}
+
 			Item searchItem = new Item(name);
 
 			//Return if the item doesn't exist
@@ -37,6 +45,9 @@ namespace BootCamp.Chapter
 
 		public void AddItem(Item item)
 		{
+			//Throw exception if null
+			_ = item ?? throw new ArgumentNullException(nameof(item));
+
 			//Make new array to add the item
 			Item[] newItems = new Item[Items.Length + 1];
 			//Copy existing items
@@ -56,6 +67,9 @@ namespace BootCamp.Chapter
 		/// </summary>
 		public void RemoveItem(Item item)
 		{
+			//Throw exception if null
+			_ = item ?? throw new ArgumentNullException(nameof(item));
+
 			//Number of item instances
 			int itemCount = Items.Count(i => i.Equals(item));
 

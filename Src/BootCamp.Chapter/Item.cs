@@ -1,4 +1,6 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+
+namespace BootCamp.Chapter
 {
 	public class Item
 	{
@@ -10,7 +12,7 @@
 
 		public Item(string name, decimal price = 0, float weight = 0)
 		{
-			Name = name;
+			Name = name ?? throw new ArgumentNullException(nameof(name));
 			Price = price;
 			Weight = weight;
 		}
@@ -18,7 +20,7 @@
 		public override bool Equals(object obj)
 		{
 			//False if obj is null or isn't an Item
-			if (obj == null || !this.GetType().Equals(obj.GetType()))
+			if (obj is null || !(obj is Item))
 			{
 				return false;
 			}

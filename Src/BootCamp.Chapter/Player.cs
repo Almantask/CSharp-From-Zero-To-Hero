@@ -1,4 +1,5 @@
 ﻿using BootCamp.Chapter.Items;
+using System;
 
 namespace BootCamp.Chapter
 {
@@ -49,11 +50,17 @@ namespace BootCamp.Chapter
 		/// </summary>
 		public void AddItem(Item item)
 		{
+			//Throw exception if item is null
+			_ = item ?? throw new ArgumentNullException(nameof(item));
+
 			Inventory.AddItem(item);
 		}
 
 		public void Remove(Item item)
 		{
+			//Throw exception if item is null
+			_ = item ?? throw new ArgumentNullException(nameof(item));
+
 			Inventory.RemoveItem(item);
 		}
 
@@ -63,6 +70,12 @@ namespace BootCamp.Chapter
 		/// <param name="name"></param>
 		public Item[] GetItems(string name)
 		{
+			//Throw exception if name is null or blank
+			if (string.IsNullOrEmpty(name))
+			{
+				throw new ArgumentNullException();
+			}
+
 			return Inventory.GetItems(name);
 		}
 
