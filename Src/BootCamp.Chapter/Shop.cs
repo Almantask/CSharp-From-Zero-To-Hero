@@ -1,70 +1,115 @@
-﻿namespace BootCamp.Chapter
+﻿using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Xml.Linq;
+
+namespace BootCamp.Chapter
 {
     public class Shop
-    {
-        private decimal _money;
-        public decimal GetMoney()
-        {
-            return _money;
-        }
+	{
+		public decimal Money { get; private set; } = 0;
 
-        private Inventory _inventory;
+		private Inventory Inventory { get;  set; }
+		public Item[] Items { get { return Inventory.Items; } }
 
-        public Shop()
-        {
+		public Shop()
+		{
+			Inventory = new Inventory();
+		}
 
-        }
+		public Shop(decimal money) : this()
+		{
+			Money = money;
+		}
 
-        public Shop(decimal money)
-        {
-            _money = money;
-        }
+		/// <summary>
+		/// Adds item to the stock.
+		/// If item of same name exists, does nothing.
+		/// </summary>
+		public void Add(Item item)
+		{
+			//Throw exception if item is null
+			_ = item ?? throw new ArgumentNullException(nameof(item));
 
-        public Item[] GetItems()
-        {
-            return _inventory.GetItems();
-        }
+			//Return if item already exists
+			if (Inventory.Items.Contains(item))
+			{
+				return;
+			}
+			//Add item
+			Inventory.AddItem(item);
+		}
 
-        /// <summary>
-        /// Adds item to the stock.
-        /// If item of same name exists, does nothing.
-        /// </summary>
-        public void Add(Item item)
-        {
-        }
+		/// <summary>
+		/// Removes item from the stock.
+		/// If item doesn't exist, does nothing.
+		/// </summary>
+		/// <param name="name"></param>
+		public void Remove(string name)
+		{
+			//Throw exception if name is null or blank
+			if (string.IsNullOrEmpty(name))
+			{
+				throw new ArgumentNullException(nameof(name));
+			}
 
-        /// <summary>
-        /// Removes item from the stock.
-        /// If item doesn't exist, does nothing.
-        /// </summary>
-        /// <param name="name"></param>
-        public void Remove(string name)
-        {
-        }
+			Inventory.RemoveItem(new Item(name));
+		}
 
-        /// <summary>
-        /// Player can sell items to a shop.
-        /// All items can be sold.
-        /// Shop looses money.
-        /// </summary>
-        /// <returns>Price of an item.</returns>
-        public decimal Buy(Item item)
-        {
-            return 0;
-        }
+		/// <summary>
+		/// Player can sell items to a shop.
+		/// All items can be sold.
+		/// Shop looses money.
+		/// </summary>
+		/// <returns>Price of an item.</returns>
+		public decimal Buy(Item item)
+		{
+			//Throw exception if item is null
+			_ = item ?? throw new ArgumentNullException(nameof(item));
 
-        /// <summary>
-        /// Sell item from a shop.
-        /// Shop increases it's money.
-        /// No money is increased if item does not exist.
-        /// </summary>
-        /// <returns>
-        /// Item sold.
-        /// Null, if no item is sold.
-        /// </returns>
-        public Item Sell(string item)
-        {
-            return null;
-        }
-    }
+			decimal itemPrice = item.Price;
+
+			//Return 0 if we don't have enough money to buy
+			if (itemPrice > Money)
+			{
+				return 0;
+			}
+
+			//Update money
+			Money -= itemPrice;
+
+			return itemPrice;
+		}
+
+		/// <summary>
+		/// Sell item from a shop.
+		/// Shop increases it's money.
+		/// No money is increased if item does not exist.
+		/// </summary>
+		/// <returns>
+		/// Item sold.
+		/// Null, if no item is sold.
+		/// </returns>
+		public Item Sell(string item)
+		{
+			//Throw exception if name is null or blank
+			if (string.IsNullOrEmpty(item))
+			{
+				throw new ArgumentNullException(nameof(item));
+			}
+
+			Item[] soldItem = Inventory.GetItems(item);
+
+			//Return if no item found or more than 1 was found
+			if (soldItem is null || soldItem.Length != 1)
+			{
+				return null;
+			}
+
+			//Add cost to money
+			Money += soldItem[0].Price;
+
+			return soldItem[0];
+		}
+	}
 }
