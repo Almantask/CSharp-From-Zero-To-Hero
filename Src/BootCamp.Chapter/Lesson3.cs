@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace BootCamp.Chapter
 {
@@ -45,6 +46,22 @@ namespace BootCamp.Chapter
 
         public static float CalculatingBMI(float weight, float height)
         {
+            if (weight <= 0 || height <= 0)
+            {
+                Console.WriteLine("Failed calculating BMI. Reason:");
+
+                if (height <= 0)
+                {
+                    Console.WriteLine($"Height cannot be equal or less than zero, but was {height}.");
+                }
+                if (weight <= 0)
+                {
+                    Console.WriteLine($"Weight cannot be equal or less than zero, but was {weight}.");
+                }
+
+                return -1;
+
+            }
             float bmi = (weight / height / height);
             return bmi;
         }
@@ -52,20 +69,43 @@ namespace BootCamp.Chapter
         public static int PromtInt(string msg)
         {
             Console.WriteLine(msg);
-            int input = int.Parse(Console.ReadLine());
-            return input;
+            string input = Console.ReadLine();
+
+            bool isNum = int.TryParse(input, out int num);
+
+            if (!isNum)
+            {
+                Console.WriteLine($"\"{input}\" is not a valid number.");
+
+                return -1;
+            }
+            return num;
         }
 
         public static float PromtFloat(string msg)
         {
             Console.WriteLine(msg);
-            float input = float.Parse(Console.ReadLine());
-            return input;
+            string input = Console.ReadLine();
+
+            bool isNum = float.TryParse(input, out float num);
+
+            if (!isNum)
+            {
+                Console.WriteLine($"\"{input}\" is not a valid number.");
+                return -1;
+            }
+            return num;
         }
         public static string PromtString(string msg)
         {
             Console.WriteLine(msg);
             string input = Console.ReadLine();
+
+            if (String.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                return "-";
+            }
             return input;
         }
 
