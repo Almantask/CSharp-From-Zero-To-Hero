@@ -11,7 +11,8 @@ namespace BootCamp.Chapter
         public ContactsCenter(string peopleFile)
         {
             // load people
-        }
+            _people = Person.ConvertFromFile(peopleFile);
+		}
 
         /// <summary>
         /// Gets people by filter predicate.
@@ -19,8 +20,16 @@ namespace BootCamp.Chapter
         /// <returns></returns>
         public List<Person> Filter(Predicate<Person> predicate)
         {
-            var people = new List<Person>();
-            // ToDo: implement applying filter.
+			List<Person> people = new List<Person>();
+            //implement applying filter.
+            foreach (Person person in _people)
+            {
+                if (predicate(person))
+                {
+                    people.Add(person);
+                }
+            }
+
             return people;
         }
     }
