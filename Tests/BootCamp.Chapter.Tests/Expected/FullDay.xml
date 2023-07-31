@@ -1,6 +1,11 @@
 ﻿<Earnings>
   <Times>
     <Time>
+      <Hour>0</Hour>
+      <Count>0</Count>
+      <Earned>€0</Earned>
+    </Time>
+    <Time>
       <Hour>1</Hour>
       <Count>0</Count>
       <Earned>€0</Earned>
@@ -106,14 +111,14 @@
       <Earned>€0</Earned>
     </Time>
     <Time>
-      <Hour>2</Hour>
+      <Hour>22</Hour>
       <Count>2</Count>
       <Earned>€25</Earned>
     </Time>
     <Time>
       <Hour>23</Hour>
       <Count>2</Count>
-      <Earned>€10.05</Earned>
+      <Earned>€10.5</Earned>
     </Time>
   </Times>
   <RushHour>22</RushHour>

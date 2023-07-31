@@ -1,22 +1,25 @@
- [
-  {
-    "Hour": 20,
-    "Count": 3,
-    "Earned": "€8"
-  },
-  {
-    "Hour": 21,
-    "Count": 0,
-    "Earned": "€0"
-  },
-  {
-    "Hour": 22,
-    "Count": 2,
-    "Earned": "€25"
-  },
-  {
-    "Hour": 23,
-    "Count": 2,
-    "Earned": "€10.5"
-  }
-]
+{
+  "Times": [
+    {
+      "Hour": 20,
+      "Count": 3,
+      "Earned": "â‚¬8"
+    },
+    {
+      "Hour": 21,
+      "Count": 0,
+      "Earned": "â‚¬0"
+    },
+    {
+      "Hour": 22,
+      "Count": 2,
+      "Earned": "â‚¬25"
+    },
+    {
+      "Hour": 23,
+      "Count": 2,
+      "Earned": "â‚¬10.5"
+    }
+  ],
+  "RushHour": 22
+}

@@ -42,7 +42,7 @@ namespace BootCamp.Chapter.Tests
             Program.Main(new []{ ValidTransactionsFile + extension, cmd, OutputFile + extension });
             
             var expectedOutput = "Expected/FullDay" + extension;
-            AssertMatchingContents(expectedOutput, OutputFile);
+            AssertMatchingContents(expectedOutput, OutputFile + extension);
         }
 
         [Theory]
@@ -52,7 +52,7 @@ namespace BootCamp.Chapter.Tests
         {
             const string cmd = "time 20:00-00:00";
 
-            Program.Main(new[] { ValidTransactionsFile, cmd, OutputFile + extension });
+            Program.Main(new[] { ValidTransactionsFile + extension, cmd, OutputFile + extension });
 
             var expectedOutput = "Expected/Night" + extension;
             AssertMatchingContents(expectedOutput, OutputFile + extension);
@@ -72,15 +72,15 @@ namespace BootCamp.Chapter.Tests
         }
 
         [Theory]
-        [InlineData("city -money -max", "CityItemsMax", ".json")]
-        [InlineData("city -money -min", "CityItemsMin", ".json")]
-        [InlineData("city -items -max", "CityMoneyMax", ".json")]
-        [InlineData("city -items -min", "CityMoneyMin", ".json")]
-        [InlineData("city -money -max", "CityItemsMax", ".xml")]
-        [InlineData("city -money -min", "CityItemsMin", ".xml")]
-        [InlineData("city -items -max", "CityMoneyMax", ".xml")]
-        [InlineData("city -items -min", "CityMoneyMin", ".xml")]
-        public void Main_When_Valid_MinMax_Command_With_Returns_Expected_Cities_With_Min_Max(string cmd, string expectedOutput, string extension)
+		[InlineData("city -money -max", "Expected/CityMoneyMax", ".json")]
+		[InlineData("city -money -min", "Expected/CityMoneyMin", ".json")]
+		[InlineData("city -items -max", "Expected/CityItemsMax", ".json")]
+		[InlineData("city -items -min", "Expected/CityItemsMin", ".json")]
+		[InlineData("city -money -max", "Expected/CityMoneyMax", ".xml")]
+		[InlineData("city -money -min", "Expected/CityMoneyMin", ".xml")]
+		[InlineData("city -items -max", "Expected/CityItemsMax", ".xml")]
+		[InlineData("city -items -min", "Expected/CityItemsMin", ".xml")]
+		public void Main_When_Valid_MinMax_Command_With_Returns_Expected_Cities_With_Min_Max(string cmd, string expectedOutput, string extension)
         {
             Program.Main(new[] { ValidTransactionsFile + extension, cmd, OutputFile });
 
