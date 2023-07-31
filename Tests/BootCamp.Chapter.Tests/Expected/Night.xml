@@ -1,22 +1,25 @@
-<Times>
-  <Time>
-    <Hour>20</Hour>
-    <Count>3</Count>
-    <Earned>€8</Earned>
-  </Time>
-  <Time>
-    <Hour>21</Hour>
-    <Count>0</Count>
-    <Earned>€0</Earned>
-  </Time>
-  <Time>
-    <Hour>2</Hour>
-    <Count>2</Count>
-    <Earned>€25</Earned>
-  </Time>
-  <Time>
-    <Hour>23</Hour>
-    <Count>2</Count>
-    <Earned>€10.05</Earned>
-  </Time>
-</Times>
+<Earnings>
+  <Times>
+    <Time>
+      <Hour>20</Hour>
+      <Count>3</Count>
+      <Earned>€8</Earned>
+    </Time>
+    <Time>
+      <Hour>21</Hour>
+      <Count>0</Count>
+      <Earned>€0</Earned>
+    </Time>
+    <Time>
+      <Hour>22</Hour>
+      <Count>2</Count>
+      <Earned>€25</Earned>
+    </Time>
+    <Time>
+      <Hour>23</Hour>
+      <Count>2</Count>
+      <Earned>€10.5</Earned>
+    </Time>
+  </Times>
+  <RushHour>22</RushHour>
+</Earnings>
