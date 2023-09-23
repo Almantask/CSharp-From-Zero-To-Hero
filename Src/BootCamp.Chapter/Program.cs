@@ -4,7 +4,7 @@ namespace BootCamp.Chapter
 {
     class Program
     {
-        // Homework1
+        // Homework1 by Divan
         static void Main(string[] args)
         {
             // Person One
