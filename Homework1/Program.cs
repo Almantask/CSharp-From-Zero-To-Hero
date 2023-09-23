@@ -1,10 +1,7 @@
-﻿using System;
-
-namespace BootCamp.Chapter
+﻿namespace Homework1
 {
     class Program
     {
-        // Homework1 by Divan
         static void Main(string[] args)
         {
             // Person One
@@ -20,7 +17,7 @@ namespace BootCamp.Chapter
 
             userDetails = $"{firstName} {lastName} is {age} years old, his weight is {weight} kg and his height is ";
 
-            return userDetails;
+            return userDetails; 
         }
         public static double BodyMassIndex(int weight, double height)
         {
@@ -30,4 +27,3 @@ namespace BootCamp.Chapter
         }
     }
 }
-
