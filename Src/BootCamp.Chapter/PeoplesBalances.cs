@@ -11,12 +11,14 @@
         /// Line is made by name (no spaces), follow by balances separated by comma (",").
         /// Example: "Gily, 1, 0". Means that currently Gily has 0, which dropped from initial 1.
         /// </summary>
-        public static string[] Balances => new[]
+        public static string[] Balances => new string []
         {
-            "Tom, 15.5, 200, 500, 600, 200, 500, 1000",
-            "Katherine, 85, 0, -500, 0, 500, 10000, 1500.99",
-            "Bill, 99999, , 99970, 99900",
-            "Catie, 0, 500, 990, 1300"
+          //"tom, 1, 4  , ,  ,  , 5 "
+         //"Tom, 1", "Avi, 1", "dae, 1"
+          "Tom, 15.5, 200, 500, 600, 200, 500, 1000",
+          "Katherine, 85, 0, 500, 0, -500, 10000, 1500.99",
+          "Bill, 99999, , 99970, 99900",
+          "Catie, 0, 500, 990, 99900"
         };
     }
 }
