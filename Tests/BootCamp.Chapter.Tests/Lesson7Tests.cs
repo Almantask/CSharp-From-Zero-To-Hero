@@ -66,7 +66,7 @@ namespace BootCamp.Chapter.Tests
             File.Delete(outputFile);
         }
 
-        [Theory]
+       [Theory]
         [ClassData(typeof(TableMessageInput))]
         public void BuildTabledMessage_With_Message_Hello_AndPadding_0_Returns_Message_In_Table(string message, int padding, string expectation)
         {
