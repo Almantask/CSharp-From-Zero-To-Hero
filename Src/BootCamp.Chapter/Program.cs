@@ -6,34 +6,41 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            double bmi,bmi1 = 0;
-            Console.WriteLine("Enter the first name:");
-            string firstName=Console.ReadLine();
-            Console.WriteLine("Enter the last name:");
-            string lastName=Console.ReadLine();
+            // Console.WriteLine("Hello World!");
+            Console.WriteLine("Enter the First name:");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter the Surname:");
+            string surName = Console.ReadLine();
             Console.WriteLine("Enter the age:");
-            int age=int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the weight:");
-            float weight=float.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the height:");
-            float height=float.Parse(Console.ReadLine());
-            Console.WriteLine($"{firstName} {lastName} is {age} years old, his weight is {weight}kg and his height is {height}cm.");
-            bmi = weight / ((height/100) * (height/100));
-            Console.WriteLine($"BMI of {firstName} {lastName} is {bmi}");
-            Console.WriteLine("Enter the first name:");
+            int age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the weight(kg):");
+            decimal weight = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the height(cm):");
+            decimal height = decimal.Parse(Console.ReadLine());
+            Console.WriteLine($"{firstName} {surName} is {age} years old, his weight is {weight} kg and his height is {height} cm");
+            decimal Bmi = CalculateBMI(weight, height);
+            Console.WriteLine($"BMI of {firstName} {surName} is {Bmi}");
+            Console.WriteLine("Enter the First name:");
             string firstName1 = Console.ReadLine();
-            Console.WriteLine("Enter the last name:");
-            string lastName1 = Console.ReadLine();
+            Console.WriteLine("Enter the Surname:");
+            string surName1 = Console.ReadLine();
             Console.WriteLine("Enter the age:");
             int age1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the weight:");
-            float weight1 = float.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the height:");
-            float height1 = float.Parse(Console.ReadLine());
-            Console.WriteLine($"{firstName1} {lastName1} is {age1} years old, his weight is {weight1}kg and his height is {height1}cm.");
-            bmi1 = weight1 / ((height1 / 100) * (height1 / 100));
-            Console.WriteLine($"BMI of {firstName1} {lastName1} is {bmi1}");
+            Console.WriteLine("Enter the weight(kg):");
+            decimal weight1 = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the height(cm):");
+            decimal height1 = decimal.Parse(Console.ReadLine());
+            Console.WriteLine($"{firstName1} {surName1} is {age1} years old, his weight is {weight1} kg and his height is {height1} cm");
+            decimal Bmi1 = CalculateBMI(weight1, height1);
+            Console.WriteLine($"BMI of {firstName1} {surName1} is {Bmi1}");
 
+        }
+
+        static decimal CalculateBMI(decimal weight, decimal height)
+        {
+            decimal high = (height / 100) * (height / 100);
+            decimal bmi = weight / high;
+            return bmi;
         }
     }
 }
