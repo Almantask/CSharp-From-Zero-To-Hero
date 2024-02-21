@@ -9,33 +9,23 @@ namespace BootCamp.Chapter
     {
         static void Main(string[] args)
         {
-            ReadPersonDetails();
-             
-            ReadPersonDetails();
+            ReadPersonDetailsAndCalculateBMI();
+            ReadPersonDetailsAndCalculateBMI();
+
 
         }
-         static void ReadPersonDetails()
-        {
-            Console.WriteLine("\nEnter the First name:");
-            string firstName = Console.ReadLine();
-            Console.WriteLine("Enter the Surname:");
-            string surName = Console.ReadLine();
-            Console.WriteLine("Enter the age:");
-            int age = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the weight(kg):");
-            decimal weight = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the height(cm):");
-            decimal height = decimal.Parse(Console.ReadLine());
-            Console.WriteLine($"\n{firstName} {surName} is {age} years old, his weight is {weight} kg and his height is {height} cm");
-            decimal Bmi = CalculateBMI(weight, height);
-            Console.WriteLine($"\nBMI of {firstName} {surName} is {Bmi}");
-        }
 
-        static decimal CalculateBMI(decimal weight, decimal height)
+        static void ReadPersonDetailsAndCalculateBMI()
         {
-            decimal high = (height / 100) * (height / 100);
-            decimal bmi = weight / high;
-            return bmi;
+            string firstName=Lesson3.PromptString("Enter the First name:");
+            string surName=Lesson3.PromptString("Enter the Surname:");
+            int age=Lesson3.PromptInt("Enter the age:");
+            float weight=Lesson3.PromptFloat("Enter the weight(kg):");
+            float height=Lesson3.PromptFloat("Enter the height(m):");
+            float bmi=Lesson3.CalculateBmi(weight,height);
+            Console.WriteLine($"\n{firstName} {surName} is {age} years old, his weight is {weight} kg and his height is {height} m ");
+            Console.WriteLine($"His BMI is {bmi}");
         }
+         
     }
 }
